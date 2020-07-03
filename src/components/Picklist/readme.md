@@ -317,3 +317,130 @@ initialState = { value: { name: 'option 3', label: 'Central Park' } };
     </GlobalHeader>
 </div>;
 ```
+
+##### Picklist with Modal
+
+```js
+import React from 'react';
+import { Picklist, Option, Modal, Input, Button, GoogleAddressLookup } from 'react-rainbow-components';
+import { Field, reduxForm } from 'redux-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBuilding } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+
+initialState = { isOpen: false, selection: { name: '', label: '' } };
+
+const StyledField = styled(Field)`
+    margin-bottom: 30px;
+`;
+
+const StyledGoogleAddress = styled(GoogleAddressLookup)`
+    margin-bottom: 80px;
+`;
+
+const containerStyles = {
+    width: '220px'
+};
+
+function SimpleForm() {
+
+    const handleSubmit = values => {
+        console.log('submitted');
+    };
+
+    return (
+        <form id="redux-form-id" noValidate onSubmit={handleSubmit()}>
+            <StyledField
+                component={Input}
+                name="subject"
+                required
+                label="Building Name"
+                placeholder="Enter Building name"
+                icon={<BuildingIcon />}
+                className="rainbow-p-horizontal_xx-large"
+            />
+
+            <StyledGoogleAddress
+                id="gaddresslookup-1"
+                label="Building Location"
+                required
+                onChange={value => setState({ value })}
+                value={state.value}
+                placeholder="Enter the building Location"
+                apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
+                className="rainbow-p-horizontal_xx-large"
+            />
+        </form>
+    );
+}
+
+const Form = reduxForm({
+    form: 'building-form',
+    touchOnBlur: false,
+})(SimpleForm);
+
+function handlePicklistChange(value) {
+    if (value.name === 'option 1') {
+        setState({
+            isOpen: true,
+            value: null,
+            title: 'New Building',
+        });
+    } else {
+        setState({ selection: value });
+    }
+}
+
+<div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+    <GlobalHeader
+        src="images/user/user3.jpg"
+        className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
+        variant="neutral">
+        <div className="rainbow-flex rainbow-align_right">
+            <Picklist
+                id="picklist-9"
+                style={containerStyles}
+                onChange={handlePicklistChange}
+                value={state.selection}
+                placeholder="Select your building"
+                variant="shaded"
+            >
+                <Option name="option 1" label="New Building" icon={<AddFilledIcon />} />
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option 2" label="Central Park Tower" />
+                <Option name="option 3" label="Empire State" />
+                <Option name="option 5" label="Panorama Tower" />
+                <Option name="option 4" label="Chrysler" />
+                <Option name="option 6" label="Bennet Towers" />
+            </Picklist>
+        </div>
+    </GlobalHeader>
+    <Modal
+        title={state.title}
+        isOpen={state.isOpen}
+        variant="double"
+        value={state.value}
+        selectionType="range"
+        onRequestClose={() => setState({ isOpen: false })}
+        footer={
+            <div className="rainbow-flex rainbow-justify_end">
+                <Button
+                    form="redux-form-id"
+                    className="rainbow-m-right_large"
+                    label="Cancel"
+                    variant="neutral"
+                    onClick={() => setState({ isOpen: false })}
+                />
+                <Button
+                    form="redux-form-id"
+                    label="Save"
+                    variant="brand"
+                    type="submit"
+                />
+            </div>
+        }
+    >
+        <Form className="rainbow-p-horizontal_large"/>
+    </Modal>
+</div>
+```
