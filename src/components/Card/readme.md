@@ -251,8 +251,8 @@ const ActiveUsers = styled.h1`
 `;
 
 const usersActivity = {
-    'usersTotal': 19,
-    'activeUsers': 12
+    usersTotal: 19,
+    activeUsers: 12,
 };
 
 const style = { width: '250px' };
