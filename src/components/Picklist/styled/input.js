@@ -43,6 +43,7 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
         box-shadow: none;
         background-color: transparent;
         border: 2px solid transparent;
+        pointer-events: none;
         user-select: none;
         padding-left: 0;
         padding-right: 0;
@@ -51,7 +52,6 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
         :hover {
             cursor: text;
         }
-
         
         &::-ms-expand {
             display: none;
