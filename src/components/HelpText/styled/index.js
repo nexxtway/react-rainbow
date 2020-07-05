@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-export const StyledButton = attachThemeAttrs(styled.button)`
+export const StyledButton = styled.button`
     border: none;
     background: transparent;
     height: fit-content;
