@@ -4,7 +4,6 @@ import ChartJS from 'chart.js';
 import { withTheme } from 'styled-components';
 import resolveOptions from './resolveOptions';
 import resolveDatasets from './resolveDatasets';
-import getGlobalsPlugins from './helpers/getGlobalsPlugins';
 import StyledContainer from './styled/container';
 
 /**
@@ -49,7 +48,7 @@ export class Chart extends Component {
     renderChart() {
         const { type, labels, plugins, ...conditions } = this.props;
         if (plugins) {
-            ChartJS.plugins.unregister(getGlobalsPlugins(plugins));
+            ChartJS.plugins.clear();
         }
         const node = this.chartRef.current;
 
@@ -60,7 +59,7 @@ export class Chart extends Component {
                 datasets: this.datasets,
             },
             plugins: plugins || null,
-            options: resolveOptions({ type, ...conditions }),
+            options: resolveOptions({ type, plugins, ...conditions }),
         });
     }
 

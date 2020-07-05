@@ -898,18 +898,18 @@ import { Chart, Dataset } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import datalabels from 'chartjs-plugin-datalabels';
-import deferred from 'chartjs-plugin-deferred';
+import colorschemes from 'chartjs-plugin-colorschemes';
 
-const plugins = [ datalabels, deferred ];
+const plugins = [datalabels, colorschemes];
 
-const datalabelsLevelChart = {color: '#fe4849', anchor: 'end', align: 'top'};
-const deferredChart = {delay: 500};
-const pluginsChartConf = {datalabels: datalabelsLevelChart, deferred: deferredChart};
+const datalabelsLevelChart = { color: '#fc8d62', anchor: 'end', align: 'top' };
+const colorschemesChart = { scheme: 'brewer.SetTwo7' };
+const pluginsChartConf = { datalabels: datalabelsLevelChart, colorschemes: colorschemesChart };
 
-const datalabelsLebelDataSet_0 = {color: '#ff6837'};
-const datalabelsLebelDataSet_2 = {color: '#01b6f5'};
-const pluginsDatasetConf_0 = {datalabels: datalabelsLebelDataSet_0};
-const pluginsDatasetConf_2 = {datalabels: datalabelsLebelDataSet_2};
+const datalabelsLebelDataSet_0 = { color: '#66c2a5' };
+const datalabelsLebelDataSet_2 = { color: '#8da0cb' };
+const pluginsDatasetConf_0 = { datalabels: datalabelsLebelDataSet_0 };
+const pluginsDatasetConf_2 = { datalabels: datalabelsLebelDataSet_2 };
 
 const containerStyles = {
     maxWidth: 600,
@@ -930,21 +930,15 @@ const containerStyles = {
                 pluginsDatasetConf={pluginsDatasetConf_0}
                 title="Dataset 1"
                 values={[15, 33, 111, 42]}
-                backgroundColor="#ff6837"
-                borderColor="#ff6837"
             />
             <Dataset
                 title="Dataset 2"
                 values={[23, 45, 123, 56]}
-                backgroundColor="#fe4849"
-                borderColor="#fe4849"
             />
             <Dataset
                 pluginsDatasetConf={pluginsDatasetConf_2}
                 title="Dataset 3"
                 values={[66, 100, 30, 156]}
-                backgroundColor="#01b6f5"
-                borderColor="#01b6f5"
             />
         </Chart>
     </div>

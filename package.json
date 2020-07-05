@@ -115,7 +115,7 @@
         "babel-jest": "^24.9.0",
         "babel-loader": "^8.0.6",
         "chartjs-plugin-datalabels": "^0.7.0",
-        "chartjs-plugin-deferred": "^1.0.1",
+        "chartjs-plugin-colorschemes": "^0.4.0",
         "classnames": "^2.2.6",
         "codemirror": "^5.49.2",
         "copy-webpack-plugin": "^4.0.1",
