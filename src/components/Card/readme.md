@@ -139,14 +139,14 @@ const BigPriceText = styled.h2`
     font-family: 'Lato Black';
     font-size: 56px;
     line-height: 56px;
-    color: ${props => props.theme.rainbow.palette.brand.main};
+    color: ${props => props.theme.rainbow.palette.text.main};
 `;
 
 const NormalPriceText = styled.h3`
     font-family: Lato;
     font-size: 20px;
     font-weight: 500;
-    color: ${props => props.theme.rainbow.palette.brand.main};
+    color: ${props => props.theme.rainbow.palette.text.main};
     ${props => props.alignEnd && 'align-self: flex-end'}
 `;
 
@@ -202,14 +202,14 @@ function PriceCard(props) {
     </Subtitle>
 
 
-    <div className="rainbow-flex rainbow-justify_space-around rainbow-flex_wrap rainbow-p-around_medium">
+    <div className="rainbow-align-content_center rainbow-flex_wrap rainbow-p-around_medium">
         <PriceCard packageType="Standard" packagePrice="24" projectsCount="100" members="5" contacts="50"/>
         <PriceCard packageType="Standard" packagePrice="85" projectsCount="500" members="50" contacts="150"/>
         <PriceCard packageType="Standard" packagePrice="149" projectsCount="1000" members="100" contacts="200"/>
     </div>
 </div>
-
 ```
+
 ##### Card with Progress circular chart
 
 ```js
@@ -247,7 +247,7 @@ const ActiveUsers = styled.h1`
     font-weight: 800;
     line-height: 40px;
     margin-top: 12px;
-    color: ${props => props.theme.rainbow.palette.brand.main};
+    color: ${props => props.theme.rainbow.palette.text.main};
 `;
 
 const usersActivity = {
@@ -276,7 +276,7 @@ function ProgressCard(props) {
     )
 }
 
-<div className="rainbow-align-content_center rainbow-p-around_large">
+<div className="rainbow-align-content_center rainbow-p-horizontal_medium rainbow-p-vertical_xx-large">
     <ProgressCard usersActivity={usersActivity} progressValue={progressValue} />
 </div>
 ```
