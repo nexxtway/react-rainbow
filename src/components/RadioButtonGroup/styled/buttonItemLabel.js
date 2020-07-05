@@ -29,7 +29,7 @@ const paddingMap = {
 const StyledButtonItemLabel = attachThemeAttrs(styled.label).attrs(props => {
     const { getContrastText, brand, text } = props.palette;
     const brandMainContrastText = getContrastText(brand.main);
-    const inverseLabel = props.palette.isDark ? COLOR_GRAY_4 : text.label;
+    const inverseLabel = props.palette.isDark ? text.label : text.header;
 
     return {
         brandMainContrastText,
@@ -62,6 +62,14 @@ const StyledButtonItemLabel = attachThemeAttrs(styled.label).attrs(props => {
                 cursor: not-allowed;
             }
         `};
+        
+    ${props =>
+        props.disabled &&
+        props.palette.isDark &&
+        `
+            color: ${props.palette.text.header};
+        `};
+
     ${props =>
         props.variant === 'brand' &&
         props.isChecked &&
