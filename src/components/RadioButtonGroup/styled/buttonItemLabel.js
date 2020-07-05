@@ -12,7 +12,6 @@ import {
     PADDING_SMALL,
     PADDING_X_SMALL,
 } from '../../../styles/paddings';
-import { COLOR_GRAY_4 } from '../../../styles/colors';
 
 const fontSizeMap = {
     large: FONT_SIZE_TEXT_LARGE,
