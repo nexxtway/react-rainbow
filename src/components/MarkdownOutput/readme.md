@@ -38,7 +38,7 @@ const MarkdownCard = props => {
 
     const content = mode === 'edit'
         ? <Textarea value={text} rows={15} onChange={event => setText(event.target.value)}/>
-        : <MarkdownOutput id="markdown-output-1" source={text} />
+        : <MarkdownOutput id="markdown-output-1" value={text} />
 
     return (
         <StyledCard

@@ -3,9 +3,6 @@ import { BaseProps } from '../types';
 
 export interface MarkdownOutputProps extends BaseProps {
     id?: string;
-    renderers?: object;
-    plugins?: object[];
-    parserOptions?: object;
     source: string;
 }
 

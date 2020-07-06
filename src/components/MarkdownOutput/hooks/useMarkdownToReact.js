@@ -2,18 +2,15 @@ import { useMemo } from 'react';
 import unified from 'unified';
 import markdownParse from 'remark-parse';
 import remark2react from 'remark-react';
+import defaultRenderers from '../renderers';
 
-export default function useMarkdown2React(source, parserOptions, plugins, renderers = {}) {
+export default function useMarkdown2React(source) {
     return useMemo(() => {
-        const parserPlugins = [[markdownParse, parserOptions]].concat(plugins || []);
-        const markdownParser = parserPlugins.reduce((parser, plugin) => {
-            return Array.isArray(plugin) ? parser.use(...plugin) : parser.use(plugin);
-        }, unified());
-
-        return markdownParser
+        return unified()
+            .use(markdownParse)
             .use(remark2react, {
-                remarkReactComponents: renderers,
+                remarkReactComponents: defaultRenderers,
             })
             .processSync(source).result;
-    }, [parserOptions, plugins, renderers, source]);
+    }, [source]);
 }
