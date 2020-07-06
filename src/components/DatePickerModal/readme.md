@@ -95,22 +95,28 @@ import styled from 'styled-components';
 
 const Row = styled.div`
     box-shadow: 0 0 5px ${props => props.theme.rainbow.palette.text.header};
+    background-color: ${props => props.theme.rainbow.palette.background.main};
+    border-radius: 22px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
 `;
 
 const Column = styled.div`
-    width: 300px;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 0.9rem 0 0.9rem 0;
-    @media screen and (max-width: 1025px) {
-        width: 550px;
-    }
+
     @media screen and (max-width: 500px) {
-        width: 200px;
+        width: 100%;
     }
 `;
 
 const Divider = styled.div`
     height: 50px;
-    width: 2px;
+    width: 1px;
     margin: 1rem 0;
     background-color: ${props => props.theme.rainbow.palette.border.divider};
     @media screen and (max-width: 1025px) {
@@ -124,7 +130,6 @@ const Divider = styled.div`
 
 const Title = styled.h4`
     color: ${props => props.theme.rainbow.palette.text.main};
-    widht: 100%;
     font-size: 0.8rem;
     margin: 0 0 0 0.5rem;
     font-weight: 900;
@@ -185,105 +190,99 @@ function formatDates(dates) {
 }
 
 <div className="rainbow-p-around_large">
-    <Row className=" rainbow-border-radius_oval rainbow-flex rainbow-justify_space-around rainbow-flex_wrap ">
-        <Column className="rainbow-flex rainbow-align_start rainbow-justify_spread">
+    <Row>
+        <Column>
             <div>
                 <Title>LOCATION</Title>
                 <Features>{state.location}</Features>
             </div>
-            <div>
-                <ButtonMenu
-                    menuAlignment="right"
-                    menuSize="x-small"
-                    buttonVariant="base"
-                    icon={<ArrowIcon />}
-                >
-                    <MenuItem
-                        label="Mexico"
-                        onClick={() => {
-                            setLocation('Mexico');
-                        }}
-                    />
-                    <MenuItem
-                        label="Brasil"
-                        onClick={() => {
-                            setLocation('Brasil');
-                        }}
-                    />
-                    <MenuItem
-                        label="Canada"
-                        onClick={() => {
-                            setLocation('Canada');
-                        }}
-                    />
-                    <MenuItem
-                        label="United State"
-                        onClick={() => {
-                            setLocation('United State');
-                        }}
-                    />
-                </ButtonMenu>
-            </div>
+            <ButtonMenu
+                menuAlignment="right"
+                menuSize="x-small"
+                buttonVariant="base"
+                icon={<ArrowIcon />}
+            >
+                <MenuItem
+                    label="Mexico"
+                    onClick={() => {
+                        setLocation('Mexico');
+                    }}
+                />
+                <MenuItem
+                    label="Brasil"
+                    onClick={() => {
+                        setLocation('Brasil');
+                    }}
+                />
+                <MenuItem
+                    label="Canada"
+                    onClick={() => {
+                        setLocation('Canada');
+                    }}
+                />
+                <MenuItem
+                    label="United State"
+                    onClick={() => {
+                        setLocation('United State');
+                    }}
+                />
+            </ButtonMenu>
         </Column>
-        <Divider className="rainbow-flex rainbow-align_start" />
-        <Column className="rainbow-flex rainbow-align_start rainbow-justify_spread">
+        <Divider />
+        <Column>
             <div>
                 <Title>CHECK IN / CHECK OUT</Title>
                 <Features>{state.dates}</Features>
             </div>
-            <div>
-                <ButtonIcon
-                    icon={<ArrowIcon />}
-                    onClick={() =>
-                        setState({
-                            isOpen: true,
-                            selectionType: 'range',
-                            value: null,
-                            title: 'Select range of dates',
-                        })
-                    }
-                />
-            </div>
+            <ButtonIcon
+                icon={<ArrowIcon />}
+                onClick={() =>
+                    setState({
+                        isOpen: true,
+                        selectionType: 'range',
+                        value: null,
+                        title: 'Select range of dates',
+                    })
+                }
+            />
         </Column>
-        <Divider className="rainbow-flex rainbow-align_start" />
-        <Column className="rainbow-flex rainbow-align_start rainbow-justify_spread">
+        <Divider />
+        <Column>
             <div>
                 <Title>GUESTS</Title>
                 <Features>{state.guests}</Features>
             </div>
-            <div>
-                <ButtonMenu
-                    menuAlignment="right"
-                    menuSize="xx-small"
-                    buttonVariant="base"
-                    icon={<ArrowIcon />}
-                >
-                    <MenuItem
-                        label="1"
-                        onClick={() => {
-                            setGuests('1');
-                        }}
-                    />
-                    <MenuItem
-                        label="2"
-                        onClick={() => {
-                            setGuests('2');
-                        }}
-                    />
-                    <MenuItem
-                        label="3"
-                        onClick={() => {
-                            setGuests('3');
-                        }}
-                    />
-                    <MenuItem
-                        label="4"
-                        onClick={() => {
-                            setGuests('4');
-                        }}
-                    />
-                </ButtonMenu>
-            </div>
+            <ButtonMenu
+                menuAlignment="right"
+                menuSize="xx-small"
+                buttonVariant="base"
+                icon={<ArrowIcon />}
+            >
+                <MenuItem
+                    label="1"
+                    onClick={() => {
+                        setGuests('1');
+                    }}
+                />
+                <MenuItem
+                    label="2"
+                    onClick={() => {
+                        setGuests('2');
+                    }}
+                />
+                <MenuItem
+                    label="3"
+                    onClick={() => {
+                        setGuests('3');
+                    }}
+                />
+                <MenuItem
+                    label="4"
+                    onClick={() => {
+                        setGuests('4');
+                    }}
+                />
+            </ButtonMenu>
         </Column>
     </Row>
 
