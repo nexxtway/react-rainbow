@@ -40,9 +40,9 @@ export const StyledCode = attachThemeAttrs(styled.code)`
     background: ${props => props.palette.background.highlight};
     color: ${props => props.palette.text.main};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
-    border-radius: 10px;
+    border-radius: 4px;
     border: 1px solid ${props => props.palette.border.divider};
-    padding: 3px 6px 2px 7px;
+    padding: 2px 6px;
 
     pre > & {
         display: block;
@@ -50,8 +50,8 @@ export const StyledCode = attachThemeAttrs(styled.code)`
     }
 
     p > & {
-        margin-left: 3px;
-        margin-right: 3px;
+        margin-left: 4px;
+        margin-right: 4px;
     }
 `;
 
@@ -145,18 +145,45 @@ export const StyledOrderedList = styled.ol`
 
 export const StyledListItem = attachThemeAttrs(styled.li)`
     margin-left: 1rem;
+    margin-bottom: 4px;
 
     input[type='checkbox'] {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
         display: inline-block;
         position: relative;
         vertical-align: middle;
         border: 1px solid ${props => props.palette.border.divider};
         border-radius: ${BORDER_RADIUS_3};
-        background: ${props => props.palette.background.main};
-        margin-right: 0.1rem;
+        background-color: ${props => props.palette.background.main};
+        margin-right: 6px;
         transition: border 0.1s linear, background-color 0.1s linear;
         box-sizing: border-box;
+        appearance: none;
+
+        :checked {
+            border: 2px solid ${props => props.palette.brand.main};
+
+            &::after {
+                display: block;
+                content: '';
+                height: 0.3rem;
+                width: 0.6rem;
+                position: absolute;
+                top: 46%;
+                left: 50%;
+                transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+                border-bottom: 2px solid;
+                border-left: 2px solid;
+                box-sizing: border-box;
+                padding: 0;
+                border-color: ${props => props.palette.brand.main};
+            }
+        }
+
+        :focus {
+            border: 2px solid ${props => props.palette.brand.main};
+            box-shadow: ${props => props.shadows.brand};
+        }
     }
 `;
