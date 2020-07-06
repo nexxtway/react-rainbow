@@ -17,8 +17,8 @@ import {
     StyledPlaceholder,
     StyledCombobox,
     StyledCountText,
+    StyledDropdown,
 } from './styled';
-import InternalDropdown from '../InternalDropdown';
 import InternalOverlay from '../InternalOverlay';
 import RenderIf from '../RenderIf';
 import HelpText from '../Input/styled/helpText';
@@ -28,6 +28,9 @@ import { ENTER_KEY, SPACE_KEY, ESCAPE_KEY, TAB_KEY } from '../../libs/constants'
 import { hasContent, positionResolver } from './helpers';
 import normalizeValue from './helpers/normalizeValue';
 import Content from './content';
+import PlaceholderOption from './placeholderOption';
+import getAllValues from './helpers/getAllValues';
+import getIsChecked from './helpers/getIsChecked';
 
 const MultiSelect = React.forwardRef((props, ref) => {
     const {
@@ -51,6 +54,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
         onFocus,
         onBlur,
         children,
+        showCheckbox,
     } = useReduxForm(props);
 
     const triggerRef = useRef();
@@ -85,7 +89,9 @@ const MultiSelect = React.forwardRef((props, ref) => {
     };
 
     const handleChange = val => {
-        closeAndFocusInput();
+        if (!showCheckbox) {
+            closeAndFocusInput();
+        }
         return onChange(normalizeValue(val));
     };
 
@@ -122,6 +128,11 @@ const MultiSelect = React.forwardRef((props, ref) => {
             return;
         }
 
+        if (isOpen) {
+            dropdownRef.current.focus();
+            return;
+        }
+
         if (readOnly) {
             inputRef.current.focus();
             return;
@@ -147,6 +158,20 @@ const MultiSelect = React.forwardRef((props, ref) => {
         }
     };
 
+    const handleTopOptionClick = event => {
+        event.preventDefault();
+        if (Array.isArray(value)) {
+            if (value.length === 0) {
+                return onChange(getAllValues(children));
+            }
+            return onChange([]);
+        }
+        if (value) {
+            return onChange([]);
+        }
+        return onChange(getAllValues(children));
+    };
+
     const handleOutsideClick = event => {
         if (
             event.target !== triggerRef.current.buttonRef.current &&
@@ -168,6 +193,9 @@ const MultiSelect = React.forwardRef((props, ref) => {
     const shouldRenderCount = !!value && selectedCount > 0 && variant === 'default';
     const shouldRenderButton = !readOnly && !disabled;
     const inputTabIndex = readOnly ? tabIndex : '-1';
+    const isChecked = getIsChecked(value, children);
+
+    const dropdownWidth = comboboxRef.current ? comboboxRef.current.offsetWidth : 0;
 
     return (
         <StyledContainer id={id} className={className} style={style}>
@@ -238,19 +266,29 @@ const MultiSelect = React.forwardRef((props, ref) => {
                     isVisible={isOpen}
                     positionResolver={positionResolver}
                     onOpened={() => dropdownRef.current.focus()}
-                    render={() => (
-                        <InternalDropdown
-                            id={dropdownId}
-                            value={value}
-                            onChange={handleChange}
-                            ref={dropdownRef}
-                            multiple
-                        >
-                            {children}
-                        </InternalDropdown>
-                    )}
-                    triggerElementRef={() => triggerRef.current.buttonRef}
-                />
+                    triggerElementRef={() => comboboxRef}
+                >
+                    <StyledDropdown
+                        id={dropdownId}
+                        value={value}
+                        onChange={handleChange}
+                        ref={dropdownRef}
+                        width={dropdownWidth}
+                        multiple
+                        showCheckbox={showCheckbox}
+                    >
+                        <RenderIf isTrue={showCheckbox}>
+                            <PlaceholderOption
+                                name="header"
+                                label={placeholder}
+                                onClick={handleTopOptionClick}
+                                isChecked={isChecked}
+                                tabIndex="-1"
+                            />
+                        </RenderIf>
+                        {children}
+                    </StyledDropdown>
+                </InternalOverlay>
             </StyledCombobox>
             <RenderIf isTrue={!!bottomHelpText}>
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>

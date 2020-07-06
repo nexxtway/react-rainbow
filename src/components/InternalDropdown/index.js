@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
-import { UP_KEY, DOWN_KEY, SPACE_KEY, ENTER_KEY } from '../../libs/constants';
+import { UP_KEY, DOWN_KEY, SPACE_KEY, ENTER_KEY, TAB_KEY } from '../../libs/constants';
 import { Provider } from './context';
 import Content from './content';
 import isChildRegistered from './helpers/isChildRegistered';
@@ -49,6 +49,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         className,
         style,
         multiple,
+        showCheckbox,
     } = props;
     const [showScrollUpArrow, setShowScrollUpArrow] = useState(false);
     const [showScrollDownArrow, setShowScrollDownArrow] = useState(false);
@@ -160,7 +161,19 @@ const InternalDropdown = forwardRef((props, reference) => {
 
     const handleChange = useCallback(
         option => {
-            const { name } = option;
+            const { name, only } = option;
+            if (only) {
+                const { label, icon, value: optionValue } = option;
+                return onChange([
+                    {
+                        label,
+                        name,
+                        icon,
+                        value: optionValue,
+                    },
+                ]);
+            }
+
             if (multiple) {
                 if (Array.isArray(value)) {
                     if (value.some(v => v.name === name)) {
@@ -207,10 +220,17 @@ const InternalDropdown = forwardRef((props, reference) => {
         return handleChange(rest);
     };
 
+    const handleTabKeyPressed = event => {
+        if (showCheckbox && event.target.tagName !== 'BUTTON') {
+            event.stopPropagation();
+        }
+    };
+
     const keyHandlerMap = {
         [UP_KEY]: handleKeyUpPressed,
         [DOWN_KEY]: handleKeyDownPressed,
         [ENTER_KEY]: handleKeyEnterPressed,
+        [TAB_KEY]: handleTabKeyPressed,
     };
 
     const handleKeyPressed = event => {
@@ -219,7 +239,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         }
         if (preventDefaultKeys[event.keyCode]) event.preventDefault();
         if (keyHandlerMap[event.keyCode]) {
-            keyHandlerMap[event.keyCode]();
+            keyHandlerMap[event.keyCode](event);
         }
     };
 
@@ -259,6 +279,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             currentValues,
             activeChildrenMap,
             multiple,
+            showCheckbox,
         };
     }, [
         value,
@@ -269,6 +290,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         activeChildrenMap,
         handleChange,
         multiple,
+        showCheckbox,
     ]);
 
     return (
@@ -355,6 +377,8 @@ InternalDropdown.propTypes = {
     enableSearch: PropTypes.bool,
     /** Specifies that multiple items can be selected */
     multiple: PropTypes.bool,
+    /** Show checkbox */
+    showCheckbox: PropTypes.bool,
 };
 
 InternalDropdown.defaultProps = {
@@ -367,6 +391,7 @@ InternalDropdown.defaultProps = {
     onChange: () => {},
     enableSearch: false,
     multiple: false,
+    showCheckbox: false,
 };
 
 export default InternalDropdown;

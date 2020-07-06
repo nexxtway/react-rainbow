@@ -89,6 +89,7 @@ const InternalOverlay = props => {
         triggerElementRef,
         positionResolver,
         onOpened,
+        children,
     } = props;
     const [contentMeta, updateContentMeta] = useState(false);
     useEffect(() => {
@@ -100,6 +101,7 @@ const InternalOverlay = props => {
         }
     }, [isVisible, contentMeta, onOpened]);
     if (isVisible) {
+        const content = children || <ContentComponent />;
         if (contentMeta) {
             const triggerMeta = resolveTriggerMeta(triggerElementRef);
             const viewportMeta = resolveViewportMeta();
@@ -110,13 +112,15 @@ const InternalOverlay = props => {
                 positionResolver,
             });
             return createPortal(
-                <Container position={position}>
-                    <ContentComponent />
-                </Container>,
+                <Container position={position}>{content}</Container>,
                 document.body,
             );
         }
-        return <ContentMetaResolver component={ContentComponent} onResolved={updateContentMeta} />;
+        return (
+            <ContentMetaResolver component={ContentComponent} onResolved={updateContentMeta}>
+                {children}
+            </ContentMetaResolver>
+        );
     }
     return null;
 };
@@ -134,6 +138,10 @@ InternalOverlay.propTypes = {
      * to an element after it is opened.
      */
     onOpened: PropTypes.func,
+    /**
+     * @ignore
+     */
+    children: PropTypes.node,
 };
 
 InternalOverlay.defaultProps = {
@@ -141,6 +149,7 @@ InternalOverlay.defaultProps = {
     isVisible: false,
     positionResolver: undefined,
     onOpened: () => {},
+    children: undefined,
 };
 
 InternalOverlay.defaultPositionResolver = defaultPositionResolver;

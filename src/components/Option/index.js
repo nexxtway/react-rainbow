@@ -9,6 +9,9 @@ import StyledItem from './styled/item';
 import StyledIconContainer from './styled/iconContainer';
 import StyledCheckmarkIcon from './styled/checkmarkIcon';
 import StyledUncheckIcon from './styled/uncheckIcon';
+import StyledInput from './styled/input';
+import RenderIf from '../RenderIf';
+import OptionButton from './button';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -23,6 +26,7 @@ class OptionItem extends Component {
         this.itemRef = React.createRef();
         this.handleClick = this.handleClick.bind(this);
         this.handleHover = this.handleHover.bind(this);
+        this.handleOnlyClick = this.handleOnlyClick.bind(this);
     }
 
     componentDidMount() {
@@ -51,17 +55,48 @@ class OptionItem extends Component {
     }
 
     handleClick(event) {
-        const { disabled, privateOnClick, label, name, icon, value } = this.props;
+        const { disabled, privateOnClick, label, name, icon, value, showCheckbox } = this.props;
+        if (showCheckbox) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
         if (disabled) {
             event.preventDefault();
             return null;
         }
-        return privateOnClick(event, {
-            label,
-            name,
-            icon,
-            value,
-        });
+        return setTimeout(
+            () =>
+                privateOnClick(event, {
+                    label,
+                    name,
+                    icon,
+                    value,
+                }),
+            0,
+        );
+    }
+
+    handleOnlyClick(event) {
+        const { disabled, privateOnClick, label, name, icon, value } = this.props;
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (disabled) {
+            event.preventDefault();
+            return null;
+        }
+
+        return setTimeout(
+            () =>
+                privateOnClick(event, {
+                    label,
+                    name,
+                    icon,
+                    value,
+                    only: true,
+                }),
+            0,
+        );
     }
 
     handleHover(event) {
@@ -95,13 +130,24 @@ class OptionItem extends Component {
     }
 
     renderRightIcon() {
-        const { name, currentValues, icon, iconPosition, activeOptionName, multiple } = this.props;
+        const {
+            name,
+            currentValues,
+            icon,
+            iconPosition,
+            activeOptionName,
+            multiple,
+            showCheckbox,
+        } = this.props;
         const hasRightIcon = !!(icon && iconPosition === 'right');
-        if (currentValues && currentValues.includes(name)) {
+        if (currentValues && currentValues.includes(name) && !showCheckbox) {
             if (multiple && activeOptionName === name) {
                 return <StyledUncheckIcon />;
             }
             return <StyledCheckmarkIcon />;
+        }
+        if (showCheckbox && activeOptionName === name) {
+            return <OptionButton onMouseDown={this.handleOnlyClick} />;
         }
         return (
             <Icon
@@ -127,6 +173,7 @@ class OptionItem extends Component {
             name,
             currentValues,
             activeChildrenMap,
+            showCheckbox,
         } = this.props;
         const isSelected = currentValues && currentValues.includes(name);
         const isActive = activeOptionName === name;
@@ -169,6 +216,10 @@ class OptionItem extends Component {
                         isActive={isActive}
                     >
                         <StyledIconContainer title={title}>
+                            <RenderIf isTrue={showCheckbox}>
+                                <StyledInput type="checkbox" checked={isSelected} tabIndex="-1" />
+                            </RenderIf>
+
                             <Icon
                                 data-id="menu-item-left-icon"
                                 icon={icon}
