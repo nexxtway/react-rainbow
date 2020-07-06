@@ -5,6 +5,7 @@ import { withTheme } from 'styled-components';
 import resolveOptions from './resolveOptions';
 import resolveDatasets from './resolveDatasets';
 import StyledContainer from './styled/container';
+import unregisterGlobalPLugins from './helpers/unregisterGlobalPlugins';
 
 /**
  * The Chart components are based on Charts.js an open source HTML5 based charting library.
@@ -46,10 +47,8 @@ export class Chart extends Component {
     }
 
     renderChart() {
+        unregisterGlobalPLugins(ChartJS);
         const { type, labels, plugins, ...conditions } = this.props;
-        if (plugins) {
-            ChartJS.plugins.clear();
-        }
         const node = this.chartRef.current;
 
         this.chartInstance = new ChartJS(node, {

@@ -4,6 +4,8 @@ import ChartJS from 'chart.js';
 import { Chart } from '../index';
 import Dataset from '../../Dataset';
 
+jest.mock('../helpers/unregisterGlobalPlugins', () => jest.fn());
+
 jest.mock('chart.js', () =>
     jest.fn(() => ({
         update: jest.fn(),
