@@ -45,7 +45,7 @@ export default class Modal extends Component {
             CounterManager.increment();
             disableBodyScroll(this.contentRef.current);
             this.modalTriggerElement = document.activeElement;
-            setTimeout(() => this.modalRef.current.focus(), 0);
+            his.modalRef.current.focus();
         }
     }
 
@@ -61,7 +61,7 @@ export default class Modal extends Component {
             this.contentElement = this.contentRef.current;
             disableBodyScroll(this.contentRef.current);
             this.modalTriggerElement = document.activeElement;
-            setTimeout(() => this.modalRef.current.focus(), 0);
+            this.modalRef.current.focus();
             onOpened();
         }
 
