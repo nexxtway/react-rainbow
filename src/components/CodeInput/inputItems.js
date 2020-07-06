@@ -64,7 +64,6 @@ InputItems.propTypes = {
     onKeyDown: PropTypes.func,
     onPaste: PropTypes.func,
     focusedIndex: PropTypes.number,
-    id: PropTypes.string,
 };
 
 InputItems.defaultProps = {
@@ -81,7 +80,6 @@ InputItems.defaultProps = {
     onKeyDown: () => {},
     onPaste: () => {},
     focusedIndex: undefined,
-    id: undefined,
 };
 
 export default InputItems;
