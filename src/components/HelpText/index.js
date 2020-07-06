@@ -22,7 +22,6 @@ import {
     QuestionInverseIcon,
     WarningInverseIcon,
 } from './icons';
-import positionResolver from './helpers/positionResolver';
 
 const iconMap = {
     question: <QuestionIcon />,
@@ -37,6 +36,8 @@ const inverseIconMap = {
     error: <ErrorInverseIcon />,
     warning: <WarningInverseIcon />,
 };
+
+const positionResolver = opts => InternalOverlay.defaultPositionResolver(opts, 0);
 
 /**
  * HelpText is a popup that displays information related to an element.

@@ -7,8 +7,6 @@ import resolverUpCenter from './resolverUpCenter';
 import resolverCenterLeft from './resolverCenterLeft';
 import resolverCenterRight from './resolverCenterRight';
 
-const DEFAULT_MARGIN = 5;
-
 const resolvers = [
     resolverBottomLeft,
     resolverBottomRight,
@@ -20,10 +18,10 @@ const resolvers = [
     resolverCenterRight,
 ];
 
-export default function defaultPositionResolver(opts) {
+export default function defaultPositionResolver(opts, margin = 5) {
     let pos;
     resolvers.some(resolver => {
-        const ret = resolver(opts, DEFAULT_MARGIN);
+        const ret = resolver(opts, margin);
         if (ret) {
             pos = ret;
             return true;
