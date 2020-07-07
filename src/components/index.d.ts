@@ -40,6 +40,7 @@ export { default as ImportRecordsFlow } from './ImportRecordsFlow';
 export { default as Input } from './Input';
 export { default as Lookup } from './Lookup';
 export { default as MapMarker } from './MapMarker';
+export { default as MarkdownOutput } from './MarkdownOutput';
 export { default as MenuDivider } from './MenuDivider';
 export { default as MenuItem } from './MenuItem';
 export { default as Modal } from './Modal';
