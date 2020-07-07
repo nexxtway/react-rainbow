@@ -221,6 +221,7 @@ class Picklist extends Component {
                 </RenderIf>
 
                 <StyledInnerContainer
+                    readOnly={readOnly}
                     aria-expanded={isOpen}
                     aria-haspopup="listbox"
                     // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
