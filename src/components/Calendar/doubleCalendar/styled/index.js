@@ -13,7 +13,6 @@ export const StyledSection = styled.section`
 `;
 
 export const StyledCalendarWrapper = styled.div`
-    flex-grow: 1;
     flex: 1;
 `;
 
