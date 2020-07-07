@@ -136,7 +136,7 @@ initialState = {
     ]
 };
 const calendarContainerStyles = {
-    maxWidth: '820px',
+    maxWidth: '820px'
 };
 
 <div>
