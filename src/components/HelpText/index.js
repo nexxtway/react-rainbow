@@ -37,8 +37,6 @@ const inverseIconMap = {
     warning: <WarningInverseIcon />,
 };
 
-const positionResolver = opts => InternalOverlay.defaultPositionResolver(opts, 0);
-
 /**
  * HelpText is a popup that displays information related to an element.
  */
@@ -72,7 +70,7 @@ export default function HelpText(props) {
         if (!isFocused) {
             setTimeout(() => {
                 if (!isHoverTooltip.current) closeOverlay();
-            });
+            }, 50);
         }
     };
 
@@ -128,7 +126,6 @@ export default function HelpText(props) {
             <RenderIf isTrue={!!text}>
                 <InternalOverlay
                     isVisible={isOpen}
-                    positionResolver={positionResolver}
                     render={() => {
                         return (
                             <StyledTooltip
