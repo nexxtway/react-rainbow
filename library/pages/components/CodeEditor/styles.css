@@ -9,7 +9,7 @@
 }
 
 .react-codemirror2 {
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 8px 8px;
     overflow-y: hidden;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .CodeMirror-gutters {
-    background-color: #141c2a !important;
+    background-color: #282A36 !important;
     border: none !important;
 }
 
