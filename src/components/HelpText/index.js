@@ -24,10 +24,10 @@ import {
 } from './icons';
 
 const iconMap = {
-    question: <QuestionIcon />,
-    info: <InfoIcon />,
-    error: <ErrorIcon />,
-    warning: <WarningIcon />,
+    question: QuestionIcon,
+    info: InfoIcon,
+    error: ErrorIcon,
+    warning: WarningIcon,
 };
 
 const inverseIconMap = {
@@ -101,7 +101,7 @@ export default function HelpText(props) {
         }
     };
 
-    const icon = iconMap[variant] || iconMap.info;
+    const Icon = iconMap[variant] || iconMap.info;
     const inverseIcon = inverseIconMap[variant] || inverseIconMap.info;
 
     return (
@@ -120,7 +120,7 @@ export default function HelpText(props) {
                 tabIndex={tabIndex}
                 ariaLabelledby={helpTextId}
             >
-                {icon}
+                <Icon isFocused={isFocused} />
                 <AssistiveText text={variant} />
             </StyledButton>
             <RenderIf isTrue={!!text}>

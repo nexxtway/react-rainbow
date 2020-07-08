@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-export const StyledButton = styled.button`
+export const StyledButton = attachThemeAttrs(styled.button)`
     border: none;
     background: transparent;
     height: fit-content;
     padding: 0;
+    border-radius: 1rem;
 
     &:focus,
     &:active {
         outline: 0;
+        box-shadow: ${props => props.shadows.shadow_10};
     }
 `;
 export const StyledTooltip = attachThemeAttrs(styled.div)`

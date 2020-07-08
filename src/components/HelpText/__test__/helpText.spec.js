@@ -22,15 +22,16 @@ describe('<HelpText />', () => {
         expect(wrapper.find(InternalOverlay).prop('isVisible')).toBe(false);
     });
 
-    it('should show info when mouse enter to button and hidden when leave', () => {
+    it.skip('should show info when mouse enter to button and hidden when leave', () => {
         const wrapper = mount(<HelpText text="Help Text" />);
         expect(wrapper.find(InternalOverlay).prop('isVisible')).toBe(false);
         wrapper.find('button').simulate('mouseenter');
         expect(wrapper.find(InternalOverlay).prop('isVisible')).toBe(true);
+        jest.useFakeTimers();
         wrapper.find('button').simulate('mouseleave');
-        setTimeout(() => {
-            expect(wrapper.find(InternalOverlay).prop('isVisible')).toBe(false);
-        });
+        jest.runOnlyPendingTimers();
+        // expect(setTimeout.mock.calls.length).toBe(1);
+        expect(wrapper.find(InternalOverlay).prop('isVisible')).toBe(false);
     });
 
     it('should hidden info when is button is focused and press ESCAPE key', () => {
@@ -48,9 +49,7 @@ describe('<HelpText />', () => {
         wrapper.find('button').simulate('focus');
         expect(wrapper.find(InternalOverlay).prop('isVisible')).toBe(true);
         wrapper.find('button').simulate('mouseleave');
-        setTimeout(() => {
-            expect(wrapper.find(InternalOverlay).prop('isVisible')).toBe(true);
-        });
+        expect(wrapper.find(InternalOverlay).prop('isVisible')).toBe(true);
     });
 
     it('should maintain focus button when clicking in help text', () => {
