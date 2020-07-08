@@ -1,5 +1,6 @@
 import { replaceAlpha } from '../../styles/helpers/color';
 import defaultTheme from '../../styles/defaultTheme';
+import getPluginsConf from './helpers/getPluginsConf';
 
 export default function resolveOptions(conditions) {
     const {
@@ -19,7 +20,7 @@ export default function resolveOptions(conditions) {
         theme,
         type,
         plugins,
-        pluginsChartConf,
+        ...rest
     } = conditions;
     const palette = theme ? theme.rainbow.palette : defaultTheme.palette;
     const legend = {
@@ -156,9 +157,7 @@ export default function resolveOptions(conditions) {
                     bottom: 0,
                 },
             },
-            plugins: {
-                ...pluginsChartConf,
-            },
+            plugins: getPluginsConf(rest, plugins),
         };
     }
 

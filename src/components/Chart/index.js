@@ -119,10 +119,6 @@ Chart.propTypes = {
     maintainAspectRatio: PropTypes.bool,
     /** Plugins to customize the Chart. */
     plugins: PropTypes.arrayOf(PropTypes.object),
-    /** The configuration options for the plugins at the Chart level. */
-    pluginsChartConf: PropTypes.objectOf(PropTypes.object),
-    /** The configuration options for the plugins at the Dataset level. */
-    pluginsDatasetConf: PropTypes.objectOf(PropTypes.object),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -151,8 +147,6 @@ Chart.defaultProps = {
     disableYAxisTickLabels: false,
     maintainAspectRatio: true,
     plugins: undefined,
-    pluginsChartConf: undefined,
-    pluginsDatasetConf: undefined,
     className: undefined,
     style: undefined,
     children: undefined,

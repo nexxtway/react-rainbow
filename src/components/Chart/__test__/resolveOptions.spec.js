@@ -1,3 +1,4 @@
+import datalabels from 'chartjs-plugin-datalabels';
 import resolveOptions from '../resolveOptions';
 
 jest.mock('../../../styles/defaultTheme', () => ({
@@ -154,6 +155,7 @@ describe('resolveOptions function', () => {
         });
     });
     it('should return the conf option with legend, layout and plugins parameters', () => {
+        const rest = { datalabels: { color: '#CCC' }, className: 'rainbow-class' };
         const conditions = {
             disableAnimations: false,
             disableLines: false,
@@ -161,8 +163,8 @@ describe('resolveOptions function', () => {
             showLegend: true,
             legendPosition: 'bottom',
             showStacked: false,
-            plugins: [],
-            pluginsChartConf: { datalabels: { color: '#CCC' } },
+            plugins: [datalabels],
+            ...rest,
         };
 
         const options = resolveOptions(conditions);
@@ -185,6 +187,7 @@ describe('resolveOptions function', () => {
         });
     });
     it('should return the conf option with all parameters', () => {
+        const rest = { datalabels: { color: '#CCC' }, className: 'rainbow-class' };
         const conditions = {
             disableAnimations: true,
             disableLines: true,
@@ -192,8 +195,8 @@ describe('resolveOptions function', () => {
             showLegend: true,
             legendPosition: 'bottom',
             showStacked: true,
-            plugins: [],
-            pluginsChartConf: { datalabels: { color: '#CCC' } },
+            plugins: [datalabels],
+            ...rest,
         };
 
         const options = resolveOptions(conditions);

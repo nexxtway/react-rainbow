@@ -902,15 +902,6 @@ import colorschemes from 'chartjs-plugin-colorschemes';
 
 const plugins = [datalabels, colorschemes];
 
-const datalabelsLevelChart = { color: '#fc8d62', anchor: 'end', align: 'top' };
-const colorschemesChart = { scheme: 'brewer.SetTwo7' };
-const pluginsChartConf = { datalabels: datalabelsLevelChart, colorschemes: colorschemesChart };
-
-const datalabelsLebelDataSet_0 = { color: '#66c2a5' };
-const datalabelsLebelDataSet_2 = { color: '#8da0cb' };
-const pluginsDatasetConf_0 = { datalabels: datalabelsLebelDataSet_0 };
-const pluginsDatasetConf_2 = { datalabels: datalabelsLebelDataSet_2 };
-
 const containerStyles = {
     maxWidth: 600,
 };
@@ -919,7 +910,8 @@ const containerStyles = {
     <div className="rainbow-align-content_center">
         <Chart
             plugins={plugins}
-            pluginsChartConf={pluginsChartConf}
+            datalabels={ { color: '#fc8d62', anchor: 'end', align: 'top' } }
+            colorschemes={ { scheme: 'brewer.SetTwo7' } }
             labels={['A', 'B', 'C', 'D']}
             type="bar"
             className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
@@ -927,7 +919,7 @@ const containerStyles = {
             disableYAxisGridLines
         >
             <Dataset
-                pluginsDatasetConf={pluginsDatasetConf_0}
+                datalabels={ { color: '#66c2a5' } }
                 title="Dataset 1"
                 values={[15, 33, 111, 42]}
             />
@@ -936,7 +928,7 @@ const containerStyles = {
                 values={[23, 45, 123, 56]}
             />
             <Dataset
-                pluginsDatasetConf={pluginsDatasetConf_2}
+                datalabels={ { color: '#8da0cb' } }
                 title="Dataset 3"
                 values={[66, 100, 30, 156]}
             />
