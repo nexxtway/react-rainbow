@@ -330,7 +330,7 @@ import styled from 'styled-components';
 
 initialState = { isOpen: false, selection: { name: '', label: '' } };
 
-const StyledField = styled(Field)`
+const StyledInput = styled(Input)`
     margin-bottom: 30px;
 `;
 
@@ -341,44 +341,6 @@ const StyledGoogleAddress = styled(GoogleAddressLookup)`
 const containerStyles = {
     width: '220px'
 };
-
-function SimpleForm() {
-
-    initialState = { value: null };
-
-    const handleSubmit = values => {
-        console.log('submitted');
-    };
-
-    return (
-        <form id="redux-form-id" noValidate onSubmit={handleSubmit()}>
-            <StyledField
-                component={Input}
-                name="subject"
-                required
-                label="Building Name"
-                placeholder="Enter Building name"
-                icon={<BuildingIcon />}
-                className="rainbow-p-horizontal_xx-large"
-            />
-
-            <StyledGoogleAddress
-                id="gaddresslookup-1"
-                label="Building Location"
-                required
-                onChange={value => setState({ value })}
-                value={state.value}
-                placeholder="Enter the building Location"
-                apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
-                className="rainbow-p-horizontal_xx-large"
-            />
-        </form>
-    );
-}
-
-const Form = reduxForm({
-    form: 'building-form',
-})(SimpleForm);
 
 function handlePicklistChange(value) {
     if (value.name === 'option 1') {
@@ -436,7 +398,27 @@ function handlePicklistChange(value) {
             </div>
         }
     >
-        <Form className="rainbow-p-horizontal_large"/>
+        <div className="rainbow-p-horizontal_large">
+            <StyledInput
+                    name="subject"
+                    required
+                    label="Building Name"
+                    placeholder="Enter Building name"
+                    icon={<BuildingIcon />}
+                    className="rainbow-p-horizontal_xx-large"
+                />
+
+                <StyledGoogleAddress
+                    id="gaddresslookup-1"
+                    label="Building Location"
+                    required
+                    onChange={value => setState({ value })}
+                    value={state.value}
+                    placeholder="Enter the building Location"
+                    apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
+                    className="rainbow-p-horizontal_xx-large"
+                />
+        </div>
     </Modal>
 </div>
 ```
