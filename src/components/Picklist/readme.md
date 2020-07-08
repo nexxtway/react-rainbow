@@ -344,6 +344,8 @@ const containerStyles = {
 
 function SimpleForm() {
 
+    initialState = { value: null };
+
     const handleSubmit = values => {
         console.log('submitted');
     };
@@ -376,15 +378,12 @@ function SimpleForm() {
 
 const Form = reduxForm({
     form: 'building-form',
-    touchOnBlur: false,
 })(SimpleForm);
 
 function handlePicklistChange(value) {
     if (value.name === 'option 1') {
         setState({
             isOpen: true,
-            value: null,
-            title: 'New Building',
         });
     } else {
         setState({ selection: value });
@@ -416,11 +415,8 @@ function handlePicklistChange(value) {
         </div>
     </GlobalHeader>
     <Modal
-        title={state.title}
+        title="New Building"
         isOpen={state.isOpen}
-        variant="double"
-        value={state.value}
-        selectionType="range"
         onRequestClose={() => setState({ isOpen: false })}
         footer={
             <div className="rainbow-flex rainbow-justify_end">
