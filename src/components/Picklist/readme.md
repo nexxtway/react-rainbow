@@ -331,11 +331,8 @@ import styled from 'styled-components';
 initialState = { isOpen: false, selection: { name: '', label: '' } };
 
 const StyledInput = styled(Input)`
-    margin-bottom: 30px;
-`;
-
-const StyledGoogleAddress = styled(GoogleAddressLookup)`
-    margin-bottom: 80px;
+    margin-bottom: 90px;
+    margin-top: 32px;
 `;
 
 const containerStyles = {
@@ -398,25 +395,23 @@ function handlePicklistChange(value) {
             </div>
         }
     >
-        <div className="rainbow-p-horizontal_large">
+        <div className="rainbow-p-horizontal_small">
+            <GoogleAddressLookup
+                id="gaddresslookup-1"
+                label="Building Location"
+                required
+                onChange={value => setState({ value })}
+                value={state.value}
+                placeholder="Enter the building Location"
+                apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
+                size="small"
+            />
             <StyledInput
                     name="subject"
                     required
                     label="Building Name"
                     placeholder="Enter Building name"
                     icon={<BuildingIcon />}
-                    className="rainbow-p-horizontal_xx-large"
-                />
-
-                <StyledGoogleAddress
-                    id="gaddresslookup-1"
-                    label="Building Location"
-                    required
-                    onChange={value => setState({ value })}
-                    value={state.value}
-                    placeholder="Enter the building Location"
-                    apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
-                    className="rainbow-p-horizontal_xx-large"
                 />
         </div>
     </Modal>
