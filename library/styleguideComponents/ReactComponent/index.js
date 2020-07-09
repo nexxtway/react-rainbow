@@ -44,14 +44,13 @@ export default class ReactComponent extends Component {
     }
 
     render() {
-        const { name, heading, description, examples, tabBody } = this.props;
+        const { name, description, examples, tabBody } = this.props;
         const descriptionText = description ? description.props.text : null;
         const { activeTabName } = this.state;
 
         return (
             <Prismic repo="rainbow-doc">
                 <div className="react-rainbow-component_top-content">
-                    {heading}
                     <div className="react-rainbow-component_header">
                         <div>
                             <div className="rainbow-p-top_medium rainbow-p-left_x-large">
@@ -160,7 +159,6 @@ export default class ReactComponent extends Component {
 
 ReactComponent.propTypes = {
     name: PropTypes.string.isRequired,
-    heading: PropTypes.node.isRequired,
     tabBody: PropTypes.node.isRequired,
     description: PropTypes.node.isRequired,
     examples: PropTypes.node.isRequired,

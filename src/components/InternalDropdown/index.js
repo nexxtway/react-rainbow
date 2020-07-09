@@ -164,7 +164,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             if (multiple) {
                 if (Array.isArray(value)) {
                     if (value.some(v => v.name === name)) {
-                        return null;
+                        return onChange(value.filter(v => v.name !== name));
                     }
                     return onChange(value.concat([option]));
                 }
@@ -258,6 +258,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             activeOptionName,
             currentValues,
             activeChildrenMap,
+            multiple,
         };
     }, [
         value,
@@ -267,6 +268,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         activeOptionName,
         activeChildrenMap,
         handleChange,
+        multiple,
     ]);
 
     return (
@@ -281,7 +283,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             ref={containerRef}
         >
             <RenderIf isTrue={enableSearch}>
-                <SearchContainer>
+                <SearchContainer isLoading={isLoading}>
                     <Icon />
                     <InputSearch onChange={handleSearch} ref={searchRef} type="search" />
                 </SearchContainer>
