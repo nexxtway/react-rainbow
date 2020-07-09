@@ -5,7 +5,7 @@ import HiddenElement from '../../Structural/hiddenElement';
 import LabelText from './labelText';
 
 export default function Label(props) {
-    const { label, required, inputId, readOnly, id, hideLabel } = props;
+    const { label, required, inputId, readOnly, disabled, id, hideLabel } = props;
 
     if (hideLabel) {
         return (
@@ -17,7 +17,7 @@ export default function Label(props) {
     }
 
     return (
-        <LabelText readOnly={readOnly} htmlFor={inputId} id={id}>
+        <LabelText readOnly={readOnly} disabled={disabled} htmlFor={inputId} id={id}>
             <RequiredAsterisk required={required} />
             {label}
         </LabelText>
@@ -29,6 +29,7 @@ Label.propTypes = {
     required: PropTypes.bool,
     inputId: PropTypes.string,
     readOnly: PropTypes.bool,
+    disabled: PropTypes.bool,
     id: PropTypes.string,
     hideLabel: PropTypes.bool,
 };
@@ -38,6 +39,7 @@ Label.defaultProps = {
     required: false,
     inputId: undefined,
     readOnly: false,
+    disabled: false,
     id: undefined,
     hideLabel: false,
 };

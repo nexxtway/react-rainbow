@@ -14,7 +14,7 @@ const Label = attachThemeAttrs(styled.label)`
         margin: 0;
     }
 
-    ${props => props.readOnly && 'align-self: flex-start;'};
+    ${props => props.readOnly && !props.disabled && 'align-self: flex-start;'};
 `;
 
 export default Label;

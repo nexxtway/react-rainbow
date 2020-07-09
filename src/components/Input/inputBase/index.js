@@ -99,6 +99,7 @@ export default class InputBase extends Component {
                     required={required}
                     inputId={this.inputId}
                     readOnly={readOnly}
+                    disabled={disabled}
                     id={this.getInlineTextLabelId()}
                 />
 

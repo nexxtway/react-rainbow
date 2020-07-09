@@ -39,6 +39,7 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
 
     ${props =>
         props.isReadOnly &&
+        !props.disabled &&
         `
         box-shadow: none;
         background-color: transparent;

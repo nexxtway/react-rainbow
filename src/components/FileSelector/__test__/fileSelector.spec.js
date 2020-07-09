@@ -45,6 +45,7 @@ describe('<FileSelector />', () => {
             label: 'custom label',
             required: true,
             readOnly: false,
+            disabled: false,
             hideLabel: false,
             inputId: expect.any(String),
             id: expect.any(String),
