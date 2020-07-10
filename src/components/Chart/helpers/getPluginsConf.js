@@ -1,9 +1,9 @@
 export default function getPluginsConf(rest, plugins) {
     const pluginsConf = {};
-    const keys = plugins.map(plugin => plugin.id);
-    keys.forEach(key => {
-        if (rest[key]) {
-            pluginsConf[key] = rest[key];
+    plugins.forEach(plugin => {
+        const { id } = plugin;
+        if (rest[id]) {
+            pluginsConf[id] = rest[id];
         }
     });
     return pluginsConf;
