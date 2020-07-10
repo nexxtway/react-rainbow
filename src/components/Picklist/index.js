@@ -92,11 +92,12 @@ class Picklist extends Component {
 
     handleKeyPressed(event) {
         const { isOpen } = this.state;
+        const { readOnly } = this.props;
         if (isOpen) {
             if (this.keyHandlerMap[event.keyCode]) {
                 return this.keyHandlerMap[event.keyCode]();
             }
-        } else if (shouldOpenMenu(event.keyCode)) {
+        } else if (shouldOpenMenu(event.keyCode) && !readOnly) {
             event.preventDefault();
             this.openMenu();
         }

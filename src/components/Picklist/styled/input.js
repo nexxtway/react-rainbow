@@ -44,10 +44,15 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
         box-shadow: none;
         background-color: transparent;
         border: 2px solid transparent;
+        user-select: none;
         pointer-events: none;
         padding-left: 0;
         padding-right: 0;
         outline: 0;
+
+        &::-ms-expand {
+            display: none;
+        }
 
         :focus,
         :active {
