@@ -221,6 +221,7 @@ class Picklist extends Component {
                 </RenderIf>
 
                 <StyledInnerContainer
+                    disabled={disabled}
                     readOnly={readOnly}
                     aria-expanded={isOpen}
                     aria-haspopup="listbox"
