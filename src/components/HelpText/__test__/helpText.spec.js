@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { act } from 'react-test-renderer';
 import { ESCAPE_KEY } from '../../../libs/constants';
 import HelpText from '../';
 import InternalOverlay from '../../InternalOverlay';
@@ -22,7 +23,7 @@ describe('<HelpText />', () => {
         expect(wrapper.find(InternalOverlay).prop('isVisible')).toBe(false);
     });
 
-    it.skip('should show info when mouse enter to button and hidden when leave', () => {
+    it.skin('should show info when mouse enter to button and hidden when leave', () => {
         const wrapper = mount(<HelpText text="Help Text" />);
         expect(wrapper.find(InternalOverlay).prop('isVisible')).toBe(false);
         wrapper.find('button').simulate('mouseenter');
@@ -30,7 +31,6 @@ describe('<HelpText />', () => {
         jest.useFakeTimers();
         wrapper.find('button').simulate('mouseleave');
         jest.runOnlyPendingTimers();
-        // expect(setTimeout.mock.calls.length).toBe(1);
         expect(wrapper.find(InternalOverlay).prop('isVisible')).toBe(false);
     });
 
