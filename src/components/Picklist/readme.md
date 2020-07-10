@@ -328,7 +328,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBuilding } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
-initialState = { isOpen: false, selection: { name: '', label: '' } };
+initialState = { isOpen: false, selection: { name: '', label: '' }, googleAddressValue: null, buildingNameValue: '' };
 
 const StyledInput = styled(Input)`
     margin-bottom: 90px;
@@ -356,7 +356,7 @@ function handlePicklistChange(value) {
         variant="neutral">
         <div className="rainbow-flex rainbow-align_right">
             <Picklist
-                id="picklist-9"
+                id="picklist-15"
                 style={containerStyles}
                 onChange={handlePicklistChange}
                 value={state.selection}
@@ -401,18 +401,19 @@ function handlePicklistChange(value) {
                 label="Building Location"
                 required
                 onChange={value => setState({ value })}
-                value={state.value}
+                value={state.googleAddressValue}
                 placeholder="Enter the building Location"
                 apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
                 size="small"
             />
             <StyledInput
-                    name="subject"
-                    required
-                    label="Building Name"
-                    placeholder="Enter Building name"
-                    icon={<BuildingIcon />}
-                />
+                name="subject"
+                required
+                label="Building Name"
+                placeholder="Enter Building name"
+                icon={<BuildingIcon />}
+                value={state.buildingNameValue}
+            />
         </div>
     </Modal>
 </div>
