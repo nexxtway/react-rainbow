@@ -79,7 +79,6 @@ Tree.propTypes = {
 Tree.defaultProps = {
     data: [],
     onNodeExpand: () => {},
-    onNodeCollapse: () => {},
     onNodeCheck: () => {},
     onNodeSelect: () => {},
     selectedNode: undefined,

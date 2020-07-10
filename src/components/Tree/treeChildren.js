@@ -16,8 +16,6 @@ export default function TreeChildren(props) {
     return data.map((nodeProps, index) => {
         const nodeName = getNodeName({ parentName, index });
         const isSelected = selectedNode === nodeName;
-        debugger;
-
         return (
             <Child
                 {...nodeProps}
