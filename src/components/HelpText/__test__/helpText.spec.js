@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { act } from 'react-test-renderer';
 import { ESCAPE_KEY } from '../../../libs/constants';
 import HelpText from '../';
 import InternalOverlay from '../../InternalOverlay';
