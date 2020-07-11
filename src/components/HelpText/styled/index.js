@@ -11,7 +11,24 @@ export const StyledButton = attachThemeAttrs(styled.button)`
     &:focus,
     &:active {
         outline: 0;
-        box-shadow: ${props => props.shadows.shadow_10};
+
+        ${props =>
+            props.variant === 'info' &&
+            `
+                box-shadow: ${props.shadows.brand};
+        `};
+
+        ${props =>
+            props.variant === 'error' &&
+            `
+                box-shadow: ${props.shadows.error};
+        `};
+
+        ${props =>
+            props.variant === 'question' &&
+            `
+                box-shadow: ${props.shadows.shadow_10};
+        `};
     }
 `;
 export const StyledTooltip = attachThemeAttrs(styled.div)`

@@ -119,6 +119,7 @@ export default function HelpText(props) {
                 type="button"
                 tabIndex={tabIndex}
                 ariaLabelledby={helpTextId}
+                variant={variant}
             >
                 <Icon isFocused={isFocused} />
                 <AssistiveText text={variant} />
