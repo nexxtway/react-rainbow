@@ -1,5 +1,6 @@
 import { replaceAlpha } from '../../styles/helpers/color';
 import defaultTheme from '../../styles/defaultTheme';
+import getPluginsConf from './helpers/getPluginsConf';
 
 export default function resolveOptions(conditions) {
     const {
@@ -18,6 +19,8 @@ export default function resolveOptions(conditions) {
         maintainAspectRatio,
         theme,
         type,
+        plugins,
+        ...rest
     } = conditions;
     const palette = theme ? theme.rainbow.palette : defaultTheme.palette;
     const legend = {
@@ -140,6 +143,21 @@ export default function resolveOptions(conditions) {
                     },
                 ],
             },
+        };
+    }
+
+    if (plugins) {
+        options = {
+            ...options,
+            layout: {
+                padding: {
+                    top: 20,
+                    right: 20,
+                    left: 0,
+                    bottom: 0,
+                },
+            },
+            plugins: getPluginsConf(rest, plugins),
         };
     }
 

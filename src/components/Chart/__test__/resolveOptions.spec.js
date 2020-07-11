@@ -1,3 +1,4 @@
+import datalabels from 'chartjs-plugin-datalabels';
 import resolveOptions from '../resolveOptions';
 
 jest.mock('../../../styles/defaultTheme', () => ({
@@ -153,7 +154,40 @@ describe('resolveOptions function', () => {
             },
         });
     });
+    it('should return the conf option with legend, layout and plugins parameters', () => {
+        const rest = { datalabels: { color: '#CCC' }, className: 'rainbow-class' };
+        const conditions = {
+            disableAnimations: false,
+            disableLines: false,
+            disableCurves: false,
+            showLegend: true,
+            legendPosition: 'bottom',
+            showStacked: false,
+            plugins: [datalabels],
+            ...rest,
+        };
+
+        const options = resolveOptions(conditions);
+
+        expect(options).toEqual({
+            ...baseOptions,
+            layout: {
+                padding: {
+                    bottom: 0,
+                    left: 0,
+                    right: 20,
+                    top: 20,
+                },
+            },
+            plugins: {
+                datalabels: {
+                    color: '#CCC',
+                },
+            },
+        });
+    });
     it('should return the conf option with all parameters', () => {
+        const rest = { datalabels: { color: '#CCC' }, className: 'rainbow-class' };
         const conditions = {
             disableAnimations: true,
             disableLines: true,
@@ -161,6 +195,8 @@ describe('resolveOptions function', () => {
             showLegend: true,
             legendPosition: 'bottom',
             showStacked: true,
+            plugins: [datalabels],
+            ...rest,
         };
 
         const options = resolveOptions(conditions);
@@ -178,6 +214,19 @@ describe('resolveOptions function', () => {
             elements: {
                 line: {
                     tension: 0,
+                },
+            },
+            layout: {
+                padding: {
+                    bottom: 0,
+                    left: 0,
+                    right: 20,
+                    top: 20,
+                },
+            },
+            plugins: {
+                datalabels: {
+                    color: '#CCC',
                 },
             },
             scales: {
