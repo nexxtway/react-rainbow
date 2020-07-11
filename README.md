@@ -21,6 +21,7 @@ React Rainbow is a collection of components that will reliably help you build yo
 [![Known Vulnerabilities](https://snyk.io/test/github/nexxtway/react-rainbow/badge.svg)](https://snyk.io/test/github/nexxtway/react-rainbow)
 [![Coverage Status](https://coveralls.io/repos/github/nexxtway/react-rainbow/badge.svg?branch=master)](https://coveralls.io/github/nexxtway/react-rainbow?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7b6b6ca99faf933f4f46/maintainability)](https://codeclimate.com/repos/5f09ff9e21593600e3004f47/maintainability)
 
 [![CLA assistant](https://cla-assistant.io/readme/badge/nexxtway/react-rainbow)](https://cla-assistant.io/nexxtway/react-rainbow)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
