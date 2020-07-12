@@ -32,6 +32,20 @@ describe('<Option />', () => {
         const component = mount(<Option label="option 1" name="option1" />);
         expect(component.find(StyledItem).exists()).toBe(true);
     });
+    it('should render a regular option when type name is string or number', () => {
+        const names = ['option 1', 1];
+        names.forEach(name => {
+            const component = mount(<Option label="option 1" name={name} />);
+            expect(component.find(StyledItem).exists()).toBe(true);
+        });
+    });
+    it('should return null when type name is not string or number', () => {
+        const names = [{}, [], undefined, null, true, new Date()];
+        names.forEach(name => {
+            const component = mount(<Option label="option 1" name={name} />);
+            expect(component).toEqual({});
+        });
+    });
     it('should not register when is disabled', () => {
         mount(<Option disabled />);
         expect(optionRegisterFn).not.toHaveBeenCalled();

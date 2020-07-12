@@ -3,7 +3,7 @@ import { BaseProps } from '../types';
 
 interface PicklistValue {
     label?: string;
-    name?: string;
+    name?: string | number;
     icon?: ReactNode;
     value?: any;
 }
