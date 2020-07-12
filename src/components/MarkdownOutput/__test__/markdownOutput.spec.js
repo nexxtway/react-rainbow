@@ -6,7 +6,7 @@ import useMarkdownToReact from '../hooks/useMarkdownToReact';
 jest.mock('../hooks/useMarkdownToReact', () => jest.fn());
 
 describe('<MarkdownOutput />', () => {
-    it('', () => {
+    it('should call useMarkdownToReact hook with right value', () => {
         const value = '# This is a level 1 header';
         mount(<MarkdownOutput value={value} />);
         expect(useMarkdownToReact).toHaveBeenCalledWith(value);
