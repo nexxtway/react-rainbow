@@ -200,6 +200,7 @@ class Picklist extends Component {
         const value = valueLabel || '';
         const errorMessageId = this.getErrorMessageId();
         const { isOpen } = this.state;
+        const isReadOnly = !!(!disabled && readOnly);
 
         return (
             <StyledContainer
@@ -217,7 +218,7 @@ class Picklist extends Component {
                         hideLabel={hideLabel}
                         required={required}
                         inputId={this.inputId}
-                        readOnly={readOnly}
+                        readOnly={isReadOnly}
                     />
                 </RenderIf>
 
