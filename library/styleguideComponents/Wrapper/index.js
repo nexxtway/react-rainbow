@@ -6,7 +6,6 @@ import { reducer as formReducer } from 'redux-form';
 import { Provider } from 'react-redux';
 import Application from '../../../src/components/Application';
 import MenuItem from '../../../src/components/MenuItem';
-import InfoFilled from '../../exampleComponents/Icons/infoFilled';
 import RenderIf from '../../../src/components/RenderIf';
 import isNotComponentPage from '../utils';
 import ColorBox from './colorBox';
@@ -14,14 +13,13 @@ import {
     StyledWrapper,
     StyledTopBar,
     StyledLeftElement,
-    StyledTitle,
     StyledContent,
-    StyledHighlight,
     StyledPickerTheme,
     StyledColorCircle,
     StyledCheckIcon,
 } from './styled';
 import useCachedState from '../../hooks/useCachedState';
+import HelpText from './../../../src/components/HelpText/index';
 
 const rootReducer = combineReducers({
     form: formReducer,
@@ -31,7 +29,7 @@ const store = createStore(rootReducer);
 
 const orangeTheme = {
     rainbow: {
-        palette: {
+        palette
             brand: '#f8752d',
             success: '#00a042',
             error: '#e53935',
@@ -84,11 +82,14 @@ export default function Wrapper(props) {
             <StyledWrapper>
                 <StyledTopBar>
                     <StyledLeftElement>
-                        <InfoFilled />
-                        <StyledTitle>
-                            The theme support is <StyledHighlight>BETA</StyledHighlight>and{' '}
-                            <StyledHighlight>WIP</StyledHighlight>
-                        </StyledTitle>
+                        <HelpText
+                            title="Information"
+                            text={
+                                <>
+                                    The theme support is <strong>BETA</strong>
+                                </>
+                            }
+                        />
                     </StyledLeftElement>
                     <RenderIf isTrue={!isCustimizationPage}>
                         <StyledPickerTheme
