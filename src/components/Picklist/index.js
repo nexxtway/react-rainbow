@@ -299,7 +299,7 @@ Picklist.propTypes = {
     value: PropTypes.oneOfType([
         PropTypes.shape({
             label: PropTypes.string,
-            name: PropTypes.string,
+            name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
             icon: PropTypes.node,
             value: PropTypes.any,
         }),
