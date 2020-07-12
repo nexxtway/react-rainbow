@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ChartJS from 'chart.js';
 import { withTheme } from 'styled-components';
+import ChartJS from './chart';
 import resolveOptions from './resolveOptions';
 import resolveDatasets from './resolveDatasets';
 import StyledContainer from './styled/container';
