@@ -889,3 +889,50 @@ const containerStyles = {
     </div>
 </div>
 ```
+
+##### Bar chart with integrated plugins:
+
+```js
+import React from 'react';
+import { Chart, Dataset } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import datalabels from 'chartjs-plugin-datalabels';
+import colorschemes from 'chartjs-plugin-colorschemes';
+
+const plugins = [datalabels, colorschemes];
+
+const containerStyles = {
+    maxWidth: 600,
+};
+
+<div className="rainbow-p-vertical_large rainbow-m_auto" style={containerStyles}>
+    <div className="rainbow-align-content_center">
+        <Chart
+            plugins={plugins}
+            datalabels={ { color: '#fc8d62', anchor: 'end', align: 'top' } }
+            colorschemes={ { scheme: 'brewer.SetTwo7' } }
+            labels={['A', 'B', 'C', 'D']}
+            type="bar"
+            className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
+            disableXAxisGridLines
+            disableYAxisGridLines
+        >
+            <Dataset
+                datalabels={ { color: '#66c2a5' } }
+                title="Dataset 1"
+                values={[15, 33, 111, 42]}
+            />
+            <Dataset
+                title="Dataset 2"
+                values={[23, 45, 123, 56]}
+            />
+            <Dataset
+                datalabels={ { color: '#8da0cb' } }
+                title="Dataset 3"
+                values={[66, 100, 30, 156]}
+            />
+        </Chart>
+    </div>
+</div>
+```
