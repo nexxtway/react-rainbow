@@ -36,7 +36,7 @@ export default class EditorLoader extends Component {
     render() {
         const { code } = this.state;
         return (
-            <div>
+            <div className="react-rainbow-editor-content-container">
                 <EditorHeader code={code} />
                 <CodeMirror
                     value={code}

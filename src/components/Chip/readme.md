@@ -63,7 +63,6 @@ import styled from 'styled-components';
 const AvatarStyles = {
     width: '30px',
     height: '30px',
-    marginTop: '-2px',
 };
 
 const ChipContainer = {
@@ -83,7 +82,6 @@ const Icon = styled.span.attrs(props => {
         `
             color: ${props.brand.main};
         `};
-    
 `;
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
@@ -91,7 +89,7 @@ const Icon = styled.span.attrs(props => {
         style={ChipContainer}
         className="rainbow-m-around_medium"
         label={
-            <span>
+            <span className="rainbow-align-content_center">
                 <Avatar
                     style={AvatarStyles}
                     className="rainbow-m-right_x-small"
@@ -111,7 +109,7 @@ const Icon = styled.span.attrs(props => {
         variant="neutral"
         onDelete={() => alert('Delete Chip!')}
         label={
-            <span>
+            <span className="rainbow-align-content_center">
                 <Avatar
                     style={AvatarStyles}
                     className="rainbow-m-right_x-small"
