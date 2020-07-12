@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { FONT_SIZE_TEXT_MEDIUM, FONT_SIZE_TEXT_SMALL } from '../../../styles/fontSizes';
+import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
 const StyledButton = attachThemeAttrs(styled.button)`
     font: inherit;
@@ -25,23 +25,6 @@ const StyledButton = attachThemeAttrs(styled.button)`
 
     :hover {
         color: ${props => props.palette.brand.main};
-    }
-
-    :active {
-        font-size: ${FONT_SIZE_TEXT_SMALL};
-        padding: 0 10px;
-    }
-
-    :after {
-        display: block;
-        content: "";
-        border-bottom: 3px solid ${props => props.palette.brand.main};
-        transform: scaleX(0);
-        transition: transform 250ms ease-in-out;
-    }
-
-    :hover:after {
-        transform: scaleX(1);
     }
 
     ${props =>

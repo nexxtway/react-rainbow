@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { FONT_SIZE_TEXT_SMALL } from '../../../styles/fontSizes';
 
 const StyledOl = attachThemeAttrs(styled.ol)`
     display: flex;
@@ -17,13 +18,36 @@ const StyledOl = attachThemeAttrs(styled.ol)`
     > li:last-child > a {
         font-weight: 900;
         color: ${props => props.palette.text.main};
-        pointer-events: none;
+        text-decoration:none;
     }
 
     > li:last-child > button {
         font-weight: 900;
         color: ${props => props.palette.text.main};
-        pointer-events: none;
+    }
+
+    li:not(:last-child){
+        padding:1px 0;
+    }
+
+    li:last-child:active > button {        
+        font-size: ${FONT_SIZE_TEXT_SMALL};
+    }
+
+    li:last-child:active > a {
+        font-size: ${FONT_SIZE_TEXT_SMALL};
+    }
+
+    li:last-child::after {
+        display: block;
+        content: "";
+        border-bottom: 2px solid ${props => props.palette.brand.main};
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
+    }
+
+    li:last-child:hover::after {
+        transform: scaleX(1);
     }
 
     > li:not(:last-child)::after {
