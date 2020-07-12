@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '../../../libs/hooks';
 
-function ErrorIcon({ className, style }) {
-    const background = useTheme().rainbow.palette.error.main;
+function ErrorIcon({ className, style, isFocused }) {
+    const error = useTheme().rainbow.palette.error;
+    const background = isFocused ? error.dark : error.main;
     return (
         <svg width={22} height={22} viewBox="0 0 22 22" className={className} style={style}>
             <path
@@ -16,10 +17,12 @@ function ErrorIcon({ className, style }) {
 ErrorIcon.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
+    isFocused: PropTypes.bool,
 };
 
 ErrorIcon.defaultProps = {
     className: undefined,
     style: undefined,
+    isFocused: false,
 };
 export default ErrorIcon;
