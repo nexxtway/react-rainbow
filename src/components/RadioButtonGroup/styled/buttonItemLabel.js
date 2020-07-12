@@ -12,7 +12,6 @@ import {
     PADDING_SMALL,
     PADDING_X_SMALL,
 } from '../../../styles/paddings';
-import { COLOR_GRAY_4 } from '../../../styles/colors';
 
 const fontSizeMap = {
     large: FONT_SIZE_TEXT_LARGE,
@@ -29,7 +28,7 @@ const paddingMap = {
 const StyledButtonItemLabel = attachThemeAttrs(styled.label).attrs(props => {
     const { getContrastText, brand, text } = props.palette;
     const brandMainContrastText = getContrastText(brand.main);
-    const inverseLabel = props.palette.isDark ? COLOR_GRAY_4 : text.label;
+    const inverseLabel = props.palette.isDark ? text.label : text.header;
 
     return {
         brandMainContrastText,
@@ -62,6 +61,14 @@ const StyledButtonItemLabel = attachThemeAttrs(styled.label).attrs(props => {
                 cursor: not-allowed;
             }
         `};
+        
+    ${props =>
+        props.disabled &&
+        props.palette.isDark &&
+        `
+            color: ${props.palette.text.header};
+        `};
+
     ${props =>
         props.variant === 'brand' &&
         props.isChecked &&
