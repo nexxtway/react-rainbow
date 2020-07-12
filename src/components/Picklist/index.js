@@ -147,9 +147,11 @@ class Picklist extends Component {
     handleChange(option) {
         const { onChange } = this.props;
         const { label, name, icon, value } = option;
-        setTimeout(() => this.focus(), 0);
         this.closeMenu();
-        return onChange({ label, name, icon, value });
+        setTimeout(() => {
+            this.focus();
+            return onChange({ label, name, icon, value });
+        }, 0);
     }
 
     /**

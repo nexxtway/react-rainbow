@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '../../../libs/hooks';
 
-function InfoIcon({ className, style }) {
-    const background = useTheme().rainbow.palette.brand.main;
+function InfoIcon({ className, style, isFocused }) {
+    const brand = useTheme().rainbow.palette.brand;
+    const background = isFocused ? brand.dark : brand.main;
     return (
         <svg width={22} height={22} viewBox="0 0 22 22" className={className} style={style}>
             <path
@@ -16,10 +17,12 @@ function InfoIcon({ className, style }) {
 InfoIcon.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
+    isFocused: PropTypes.bool,
 };
 
 InfoIcon.defaultProps = {
     className: undefined,
     style: undefined,
+    isFocused: false,
 };
 export default InfoIcon;

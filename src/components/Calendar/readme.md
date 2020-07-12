@@ -107,19 +107,18 @@ import { Calendar } from 'react-rainbow-components';
 
 initialState = { date: new Date('2019-12-11 00:00:00') };
 const calendarContainerStyles = {
-    width: '80%',
+    maxWidth: '820px'
 };
 
 <div>
-    <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_small">
-        <div style={calendarContainerStyles}>
+    <div className="rainbow-m_auto rainbow-align-content_center rainbow-p-vertical_xx-large"
+        style={calendarContainerStyles}>
             <Calendar
                 id="calendar-7"
                 variant="double"
                 value={state.date}
                 onChange={value => setState({ date: value })}
             />
-        </div>
     </div>
 </div>
 ```
@@ -137,12 +136,12 @@ initialState = {
     ]
 };
 const calendarContainerStyles = {
-    width: '80%',
+    maxWidth: '820px'
 };
 
 <div>
-    <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_small">
-        <div style={calendarContainerStyles}>
+    <div className="rainbow-m_auto rainbow-align-content_center rainbow-p-vertical_xx-large"
+        style={calendarContainerStyles}>
             <Calendar
                 id="calendar-9"
                 variant="double"
@@ -150,7 +149,6 @@ const calendarContainerStyles = {
                 value={state.range}
                 onChange={value => setState({ range: value })}
             />
-        </div>
     </div>
 </div>
 ```
