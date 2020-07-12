@@ -1,5 +1,5 @@
 .cm-s-base16-light {
-    background: #141c2a !important;
+    background: #282A36 !important;
     border-radius: 0 0 8px 8px;
     padding: 0 !important;
 }
@@ -9,8 +9,8 @@
 }
 
 .CodeMirror {
-    background: #141c2a !important;
-    background-color: #141c2a !important;
+    background: #282A36 !important;
+    background-color: #282A36 !important;
 }
 
 .CodeMirror-line {
@@ -51,7 +51,7 @@
 }
 
 .CodeMirror-gutters {
-    background-color: #141c2a !important;
+    background-color: #282A36 !important;
 }
 
 .CodeMirror-linenumbers {

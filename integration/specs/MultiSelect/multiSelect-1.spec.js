@@ -15,12 +15,12 @@ describe('MultiSelect base', () => {
     it('should put the input element focused when clicked', () => {
         const input = new PageMultiSelect(MULTI_SELECT);
         input.click();
-        expect(input.hasFocus()).toBe(true);
+        expect(input.hasTriggerFocus()).toBe(true);
     });
 
     it('should put the input element focused when the label element is clicked', () => {
         const input = new PageMultiSelect(MULTI_SELECT);
         input.clickLabel();
-        expect(input.hasFocus()).toBe(true);
+        expect(input.hasTriggerFocus()).toBe(true);
     });
 });

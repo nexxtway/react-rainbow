@@ -19,6 +19,8 @@ const StyledTh = attachThemeAttrs(styled.th)`
     }
 
     :focus {
+        outline:none;
+
         .rainbow-table_header-container {
             background-color: ${props => props.palette.background.main};
             border-color: ${props => props.palette.brand.main};

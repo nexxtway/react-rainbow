@@ -7,6 +7,7 @@ import {
     useErrorMessageId,
     useReduxForm,
     useLabelId,
+    useWindowResize,
 } from '../../libs/hooks';
 import {
     StyledInput,
@@ -15,6 +16,7 @@ import {
     StyledButtonIcon,
     StyledPlaceholder,
     StyledCombobox,
+    StyledCountText,
 } from './styled';
 import InternalDropdown from '../InternalDropdown';
 import InternalOverlay from '../InternalOverlay';
@@ -23,9 +25,9 @@ import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import PlusIcon from './icons/plus';
 import { ENTER_KEY, SPACE_KEY, ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
-import { hasChips, positionResolver } from './helpers';
-import Chips from './chips';
+import { hasContent, positionResolver } from './helpers';
 import normalizeValue from './helpers/normalizeValue';
+import Content from './content';
 
 const MultiSelect = React.forwardRef((props, ref) => {
     const {
@@ -43,6 +45,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
         tabIndex,
         variant,
         chipVariant,
+        isBare,
         value,
         onChange,
         onFocus,
@@ -53,15 +56,16 @@ const MultiSelect = React.forwardRef((props, ref) => {
     const triggerRef = useRef();
     const dropdownRef = useRef();
     const comboboxRef = useRef();
+    const inputRef = useRef();
     useImperativeHandle(ref, () => ({
         focus: () => {
-            comboboxRef.current.focus();
+            triggerRef.current.focus();
         },
         click: () => {
-            comboboxRef.current.click();
+            triggerRef.current.click();
         },
         blur: () => {
-            comboboxRef.current.blur();
+            triggerRef.current.blur();
         },
     }));
 
@@ -77,7 +81,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
         setIsOpen(false);
         // eslint-disable-next-line no-use-before-define
         stopListeningOutsideClick();
-        comboboxRef.current.focus();
+        setTimeout(() => triggerRef.current.focus(), 0);
     };
 
     const handleChange = val => {
@@ -113,6 +117,18 @@ const MultiSelect = React.forwardRef((props, ref) => {
         }
     };
 
+    const handleClick = () => {
+        if (disabled) {
+            return;
+        }
+
+        if (readOnly) {
+            inputRef.current.focus();
+            return;
+        }
+        triggerRef.current.focus();
+    };
+
     const handleTriggerClick = event => {
         event.preventDefault();
         event.stopPropagation();
@@ -120,11 +136,15 @@ const MultiSelect = React.forwardRef((props, ref) => {
     };
 
     const handleFocus = () => {
-        comboboxRef.current.focus();
+        if (!readOnly) {
+            triggerRef.current.focus();
+        }
     };
 
     const handleBlur = () => {
-        comboboxRef.current.blur();
+        if (!readOnly) {
+            triggerRef.current.blur();
+        }
     };
 
     const handleOutsideClick = event => {
@@ -141,8 +161,13 @@ const MultiSelect = React.forwardRef((props, ref) => {
         dropdownRef,
         handleOutsideClick,
     );
+    useWindowResize(() => setIsOpen(false), isOpen);
 
-    const shouldRenderChips = hasChips(value);
+    const selectedCount = Array.isArray(value) ? value.length : 1;
+    const shouldRenderContent = hasContent(value);
+    const shouldRenderCount = !!value && selectedCount > 0 && variant === 'default';
+    const shouldRenderButton = !readOnly && !disabled;
+    const inputTabIndex = readOnly ? tabIndex : '-1';
 
     return (
         <StyledContainer id={id} className={className} style={style}>
@@ -155,16 +180,14 @@ const MultiSelect = React.forwardRef((props, ref) => {
             />
             <StyledCombobox
                 id={comboboxId}
-                variant={variant}
+                isBare={isBare}
                 error={error}
                 disabled={disabled}
                 role="combobox"
                 aria-controls={dropdownId}
                 aria-expanded={isOpen}
-                onFocus={onFocus}
-                onBlur={onBlur}
+                onClick={handleClick}
                 onKeyDown={handleKeyDown}
-                tabIndex={tabIndex}
                 ref={comboboxRef}
                 aria-labelledby={labelId}
             >
@@ -172,29 +195,45 @@ const MultiSelect = React.forwardRef((props, ref) => {
                     id={inputId}
                     role="textbox"
                     aria-autocomplete="none"
-                    tabIndex="-1"
+                    tabIndex={inputTabIndex}
+                    disabled={disabled}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
+                    ref={inputRef}
                     readOnly
                 />
                 <StyledChipContainer>
-                    <RenderIf isTrue={!shouldRenderChips}>
+                    <RenderIf isTrue={!shouldRenderContent}>
                         <StyledPlaceholder>{placeholder}</StyledPlaceholder>
                     </RenderIf>
-                    <RenderIf isTrue={shouldRenderChips}>
-                        <Chips value={value} variant={chipVariant} onDelete={handleDelete} />
+                    <RenderIf isTrue={shouldRenderContent}>
+                        <Content
+                            variant={variant}
+                            chipVariant={chipVariant}
+                            readOnly={readOnly}
+                            disabled={disabled}
+                            value={value}
+                            onDelete={handleDelete}
+                        />
                     </RenderIf>
                 </StyledChipContainer>
-                <StyledButtonIcon
-                    title="Add"
-                    variant="neutral"
-                    size="small"
-                    icon={<PlusIcon />}
-                    onClick={handleTriggerClick}
-                    disabled={disabled}
-                    ref={triggerRef}
-                    tabIndex="-1"
-                />
+                <RenderIf isTrue={shouldRenderCount}>
+                    <StyledCountText readOnly={readOnly}>({selectedCount})</StyledCountText>
+                </RenderIf>
+                <RenderIf isTrue={shouldRenderButton}>
+                    <StyledButtonIcon
+                        title="Add"
+                        variant="neutral"
+                        size="small"
+                        icon={<PlusIcon />}
+                        onClick={handleTriggerClick}
+                        disabled={disabled}
+                        ref={triggerRef}
+                        tabIndex={tabIndex}
+                        onFocus={onFocus}
+                        onBlur={onBlur}
+                    />
+                </RenderIf>
                 <InternalOverlay
                     isVisible={isOpen}
                     positionResolver={positionResolver}
@@ -250,9 +289,11 @@ MultiSelect.propTypes = {
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** Specifies the variant for the input. */
-    variant: PropTypes.oneOf(['default', 'bare']),
+    variant: PropTypes.oneOf(['default', 'chip']),
     /** Specifies the variant for the chips. */
     chipVariant: PropTypes.oneOf(['base', 'neutral', 'outline-brand', 'brand']),
+    /** Specifies that an input will not have border. This value defaults to false. */
+    isBare: PropTypes.bool,
     /** Specifies the value of an input element. */
     value: PropTypes.arrayOf(
         PropTypes.shape({
@@ -288,6 +329,7 @@ MultiSelect.defaultProps = {
     tabIndex: 0,
     variant: 'default',
     chipVariant: 'base',
+    isBare: false,
     value: undefined,
     onChange: () => {},
     onFocus: () => {},

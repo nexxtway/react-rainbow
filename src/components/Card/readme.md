@@ -139,14 +139,14 @@ const BigPriceText = styled.h2`
     font-family: 'Lato Black';
     font-size: 56px;
     line-height: 56px;
-    color: ${props => props.theme.rainbow.palette.brand.main};
+    color: ${props => props.theme.rainbow.palette.text.main};
 `;
 
 const NormalPriceText = styled.h3`
     font-family: Lato;
     font-size: 20px;
     font-weight: 500;
-    color: ${props => props.theme.rainbow.palette.brand.main};
+    color: ${props => props.theme.rainbow.palette.text.main};
     ${props => props.alignEnd && 'align-self: flex-end'}
 `;
 
@@ -202,11 +202,81 @@ function PriceCard(props) {
     </Subtitle>
 
 
-    <div className="rainbow-flex rainbow-justify_space-around rainbow-flex_wrap rainbow-p-around_medium">
+    <div className="rainbow-align-content_center rainbow-flex_wrap rainbow-p-around_medium">
         <PriceCard packageType="Standard" packagePrice="24" projectsCount="100" members="5" contacts="50"/>
         <PriceCard packageType="Standard" packagePrice="85" projectsCount="500" members="50" contacts="150"/>
         <PriceCard packageType="Standard" packagePrice="149" projectsCount="1000" members="100" contacts="200"/>
     </div>
 </div>
+```
 
+##### Card with Progress circular chart
+
+```js
+import React from 'react';
+import { Card, HelpText, ProgressCircular } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const StyledCard = styled(Card)`
+    width: 257px;
+    height: 105px;
+    display: flex;
+    justify-content: space-between;
+`;
+
+const StyledProgressCircular = styled(ProgressCircular)`
+    width: 80px;
+    height: 80px;
+`;
+
+const Subtitle = styled.h2`
+    font-family: 'Lato Light';
+    font-size: 16px;
+    color: ${props => props.theme.rainbow.palette.text.header};
+`;
+
+const Col = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+`;
+
+const ActiveUsers = styled.h1`
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 40px;
+    margin-top: 12px;
+    color: ${props => props.theme.rainbow.palette.text.main};
+`;
+
+const usersActivity = {
+    usersTotal: 19,
+    activeUsers: 12,
+};
+
+const style = { width: '250px' };
+
+const progressValue = Math.round(usersActivity.activeUsers * 100 / usersActivity.usersTotal);
+
+function ProgressCard(props) {
+    const { usersActivity, progressValue } = props;
+    return (
+        <StyledCard className="rainbow-flex rainbow-p-vertical_small rainbow-p-horizontal_small">
+            <Col>
+                <Subtitle>
+                    <HelpText title="Active Users"
+                        text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>} />
+                    Active Users
+                </Subtitle>
+                <ActiveUsers>{usersActivity.activeUsers}</ActiveUsers>
+            </Col>
+        <StyledProgressCircular value={progressValue} />
+    </StyledCard>
+    )
+}
+
+<div className="rainbow-align-content_center rainbow-p-horizontal_medium rainbow-p-vertical_xx-large">
+    <ProgressCard usersActivity={usersActivity} progressValue={progressValue} />
+</div>
 ```

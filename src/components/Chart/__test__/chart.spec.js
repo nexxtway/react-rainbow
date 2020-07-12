@@ -4,6 +4,8 @@ import ChartJS from 'chart.js';
 import { Chart } from '../index';
 import Dataset from '../../Dataset';
 
+jest.mock('../helpers/unregisterGlobalPlugins', () => jest.fn());
+
 jest.mock('chart.js', () =>
     jest.fn(() => ({
         update: jest.fn(),
@@ -25,6 +27,7 @@ describe('<Chart />', () => {
                 labels: ['A', 'B', 'C', 'D'],
                 datasets: [expect.any(Object)],
             },
+            plugins: null,
             options: expect.any(Object),
         });
     });
