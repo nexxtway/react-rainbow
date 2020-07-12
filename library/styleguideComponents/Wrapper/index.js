@@ -29,7 +29,7 @@ const store = createStore(rootReducer);
 
 const orangeTheme = {
     rainbow: {
-        palette
+        palette: {
             brand: '#f8752d',
             success: '#00a042',
             error: '#e53935',
