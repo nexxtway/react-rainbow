@@ -1,13 +1,31 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledDropdown = attachThemeAttrs(styled.div)`
+export const StyledContainer = styled.div`
+    position: relative;
+    display: inline-block;
+
+    &:hover,
+    &:focus {
+        outline: 0;
+    }
+`;
+
+export const StyledContent = styled.ul`
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+`;
+
+export const StyledDropdown = attachThemeAttrs(styled.div)`
     position: absolute;
     z-index: 2000;
     left: 50%;
     float: left;
     min-width: 6rem;
     max-width: 20rem;
+    max-height: 372px;
     margin-top: 0.125rem;
     margin-bottom: 0.125rem;
     border: solid 1px ${props => props.palette.border.divider};
@@ -21,7 +39,7 @@ const StyledDropdown = attachThemeAttrs(styled.div)`
     opacity: 0;
     transition: opacity 0.1s linear, visibility 0.1s linear;
     visibility: hidden;
-    overflow: hidden;
+    overflow: auto;
     top: 100%;
     ${props =>
         props.isOpen &&
@@ -85,5 +103,3 @@ const StyledDropdown = attachThemeAttrs(styled.div)`
             transform: translateX(0);
         `};
 `;
-
-export default StyledDropdown;
