@@ -39,7 +39,8 @@ export const StyledDropdown = attachThemeAttrs(styled.div)`
     opacity: 0;
     transition: opacity 0.1s linear, visibility 0.1s linear;
     visibility: hidden;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     top: 100%;
     ${props =>
         props.isOpen &&
