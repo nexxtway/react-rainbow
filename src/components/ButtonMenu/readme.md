@@ -661,21 +661,16 @@ const FlightCard = ( props ) => {
                 menuSize="x-small"
                 icon={<FontAwesomeIcon icon={faEllipsisV} />}
             >
-                <MenuItem
-                    label="Edit Resevation"
-                    icon={<PencilIcon />}
-                    iconPosition="left"
-                />
-                <MenuItem
-                    label="Delete Reservation"
-                    icon={<TrashIcon />}
-                    iconPosition="left"
-                />
-                <MenuItem
-                    label="Add Promo Code"
-                    icon={<PricingIcon />}
-                    iconPosition="left"
-                />
+                <MenuItem label="New Resevation" />
+                <MenuItem label="Edit Resevation" />
+                <MenuItem label="Delete Reservation" />
+                <MenuItem label="Confirm Reservation" />
+                <MenuItem label="Recent Reservations" />
+                <MenuItem label="Availability" />
+                <MenuItem label="Promo Code" />
+                <MenuItem label="Contact Support" />
+                <MenuItem label="Feedbacks" />
+                <MenuItem label="Premium Plan" />
             </ButtonMenu>
         </div>
         <div>
