@@ -6,24 +6,27 @@ const hasLeftIcon = props => props.icon && props.iconPosition === 'left';
 const hasRightIcon = props => props.icon && props.iconPosition === 'right';
 
 const StyledInput = attachThemeAttrs(styled(Input))`
-    &[readonly] {
-        padding-left: 0;
-        padding-right: 0;
-        background-color: transparent;
-        border: 2px transparent solid;
-        color: ${props => props.palette.text.main};
-        font-weight: 400;
-        cursor: text;
-        box-sizing: border-box;
-
-        &:focus,
-        &:active {
-            box-shadow: none;
+    ${props =>
+        !props.disabled &&
+        `
+        &[readonly] {
+            padding-left: 0;
+            padding-right: 0;
             background-color: transparent;
             border: 2px transparent solid;
+            color: ${props.palette.text.main};
+            font-weight: 400;
+            cursor: text;
+            box-sizing: border-box;
+    
+            &:focus,
+            &:active {
+                box-shadow: none;
+                background-color: transparent;
+                border: 2px transparent solid;
+            }
         }
-    }
-
+    `}
     ${props =>
         props.error &&
         `
