@@ -356,7 +356,6 @@ function handlePicklistChange(value) {
         variant="neutral">
         <div className="rainbow-flex rainbow-align_right">
             <Picklist
-                id="picklist-15"
                 style={containerStyles}
                 onChange={handlePicklistChange}
                 value={state.selection}
@@ -400,11 +399,11 @@ function handlePicklistChange(value) {
                 id="gaddresslookup-1"
                 label="Building Location"
                 required
-                onChange={value => setState({ value })}
-                value={state.googleAddressValue}
                 placeholder="Enter the building Location"
                 apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
                 size="small"
+                value={state.googleAddressValue}
+                onChange={value => setState({ googleAddressValue: value })}
             />
             <StyledInput
                 name="subject"
@@ -413,6 +412,7 @@ function handlePicklistChange(value) {
                 placeholder="Enter Building name"
                 icon={<BuildingIcon />}
                 value={state.buildingNameValue}
+                onChange={value => setState({ buildingNameValue: value })}
             />
         </div>
     </Modal>
