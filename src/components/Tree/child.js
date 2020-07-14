@@ -9,6 +9,8 @@ import Label from './styled/label';
 import IconContainer from './styled/iconContainer';
 import InputCheckbox from './styled/inputCheckbox';
 import ChildrenContainerUl from './styled/childrenContainer';
+import getNodeLevel from './helpers/getNodeLevel';
+import getTabIndex from './helpers/getTabIndex';
 
 export default function Child(props) {
     const {
@@ -25,17 +27,19 @@ export default function Child(props) {
         isSelected,
         name,
         selectedNode,
+        isFirstNode,
     } = props;
     const hasChildren = Array.isArray(children);
     const hasCheckbox = typeof isChecked === 'boolean' || isChecked === 'indeterminate';
     const hasIcon = !!icon;
-    const levelMatch = name.match(/\./g);
-    const ariaLevelValue = name && levelMatch ? levelMatch.length + 1 : 1;
-    const tabIndex = isSelected ? 0 : -1;
+    const ariaLevelValue = getNodeLevel({ name });
+    const ariaExpandedValue = hasChildren ? isExpanded : undefined;
+    const ariaSelectedValue = isSelected === true ? isSelected : undefined;
+    const tabIndex = getTabIndex({ selectedNode, isFirstNode, isSelected });
 
     const handleNodeSelect = event => {
         event.stopPropagation();
-        onNodeSelect({ name });
+        onNodeSelect({ name, nodePath });
     };
 
     const handleExpandCollapse = () => {
@@ -50,15 +54,13 @@ export default function Child(props) {
             hasChildren={hasChildren}
             onClick={handleNodeSelect}
             role="treeitem"
-            aria-label={hasChildren ? label : undefined}
             aria-level={ariaLevelValue}
-            aria-expanded={hasChildren ? isExpanded : undefined}
-            aria-selected={isSelected === true ? isSelected : undefined}
+            aria-expanded={ariaExpandedValue}
+            aria-selected={ariaSelectedValue}
             tabIndex={tabIndex}
         >
             <NodeContainer data-id="node-element" isSelected={isSelected}>
                 <ExpandCollapseButton
-                    hasChildren={hasChildren}
                     isExpanded={isExpanded === true}
                     isLoading={isLoading === true}
                     onClick={handleExpandCollapse}
@@ -100,20 +102,14 @@ Child.propTypes = {
     isLoading: PropTypes.bool,
     icon: PropTypes.node,
     children: PropTypes.array,
-    /** The action triggered when the user clicks in the tree node checkbox. */
     onNodeCheck: PropTypes.func,
-    /** The action triggered when the user clicks in the tree node expand or collapse button. */
     onNodeExpand: PropTypes.func,
-    /** An array with the node path. */
     nodePath: PropTypes.array,
-    /** The action triggered when the user clicks in the tree node label. */
     onNodeSelect: PropTypes.func,
-    /** Boolean value that indicates if a node is or not selected */
     isSelected: PropTypes.bool,
-    /** Child node name generated based on parent node level and child node level */
     name: PropTypes.string,
-    /** The tree node name. */
     selectedNode: PropTypes.string,
+    isFirstNode: PropTypes.bool,
 };
 
 Child.defaultProps = {
@@ -130,4 +126,5 @@ Child.defaultProps = {
     isSelected: undefined,
     name: undefined,
     selectedNode: undefined,
+    isFirstNode: undefined,
 };

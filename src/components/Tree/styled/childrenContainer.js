@@ -3,21 +3,10 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const ChildrenContainerUl = attachThemeAttrs(styled.ul)`
     margin-left: 10px;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    // margin-top: 2px;
+    // margin-bottom: 2px;
     border-left: 1px solid ${props => props.palette.border.divider};
     padding-left: 10px;
-
-    ${props =>
-        props.icon &&
-        `
-        padding-left: 20px;
-    `};
-    ${props =>
-        props.isChecked &&
-        `
-        padding-left: 20px;
-    `};
 `;
 
 export default ChildrenContainerUl;

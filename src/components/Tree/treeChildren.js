@@ -16,6 +16,7 @@ export default function TreeChildren(props) {
     return data.map((nodeProps, index) => {
         const nodeName = getNodeName({ parentName, index });
         const isSelected = selectedNode === nodeName;
+        const isFirstNode = index === 0;
         return (
             <Child
                 {...nodeProps}
@@ -27,14 +28,13 @@ export default function TreeChildren(props) {
                 name={nodeName}
                 onNodeSelect={onNodeSelect}
                 selectedNode={selectedNode}
+                isFirstNode={isFirstNode}
             />
         );
     });
 }
 
 TreeChildren.propTypes = {
-    /** A array with the nodes of the Tree. This is a recursive shape that is used for render the nested nodes passed on children of the array.
-     */
     data: PropTypes.arrayOf(
         PropTypes.shape({
             label: PropTypes.node,
@@ -45,17 +45,11 @@ TreeChildren.propTypes = {
             children: PropTypes.array,
         }),
     ),
-    /** The action triggered when the user clicks in the tree node checkbox. */
     onNodeCheck: PropTypes.func,
-    /** The action triggered when the user clicks in the tree node expand or collapse button. */
     onNodeCollapse: PropTypes.func,
-    /** A string with the generated parent node name based on root node level. */
     parentName: PropTypes.string,
-    /** An array with the node path. */
     nodePath: PropTypes.array,
-    /** The action triggered when the user clicks in the tree node label. */
     onNodeSelect: PropTypes.func,
-    /** The tree node name. */
     selectedNode: PropTypes.string,
 };
 

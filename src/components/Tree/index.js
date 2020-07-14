@@ -70,10 +70,11 @@ Tree.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** The label of node with role="tree". */
-    ariaLabel: PropTypes.string,
-    /** The id of the outer element. */
+    /** The id of the tree heading element. Set to the parent element of the tree who contains the tree nodes.
+     * No need to use "ariaLabel" atribute if this one apply */
     ariaLabelledBy: PropTypes.string,
+    /** The label for the parent element of the tree who contains the tree nodes. Apply if no tree heading element present */
+    ariaLabel: PropTypes.string,
 };
 
 Tree.defaultProps = {

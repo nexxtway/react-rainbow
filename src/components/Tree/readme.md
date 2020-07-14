@@ -1,7 +1,7 @@
 ##### Tree basic
 
 ```js
-    const data = [
+const data = [
         { label: 'Tree Item' },
         { label: 'Tree Item' },
         {
@@ -14,7 +14,24 @@
                     isLoading: false,
                     children: [
                         { label: 'Tree Item' },
-                    ]
+                      	{ label: 'Tree Item',
+                        children: [
+                            { label: 'Tree Item' },
+                            { label: 'Tree Item' },
+                            { label: 'Tree Item',
+                            children: [
+                                { label: 'Tree Item' },
+                                { label: 'Tree Item',
+                                children: [
+                                    { label: 'Tree Item' },
+                                    { label: 'Tree Item' },
+                                ],
+                                },
+                            ],
+                            },
+                        ],
+                      },
+                    ],
                 },
             ],
         },
@@ -95,8 +112,8 @@
     import React, { useState, useEffect } from 'react';
 
     const TreeExample = () => {
-        const [data, setData] = React.useState(initialData);
-        const [node, setSelectedNode] = React.useState(selectedNode);
+        const [data, setData] = useState(initialData);
+        const [node, setSelectedNode] = useState(selectedNode);
         const openNode = ({ nodePath }) => {
             const child = Tree.getNode(data, nodePath);
             if(!child.isExpanded){
