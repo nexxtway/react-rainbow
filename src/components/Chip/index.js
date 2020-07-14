@@ -35,8 +35,16 @@ Chip.propTypes = {
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
     /** The variant changes the appearance of the Chip. Accepted variants include base,
-     * neutral, outline-brand and brand. This value defaults to base. */
-    variant: PropTypes.oneOf(['base', 'neutral', 'outline-brand', 'brand']),
+     * neutral, outline-brand, brand, success, warning and error. This value defaults to base. */
+    variant: PropTypes.oneOf([
+        'base',
+        'neutral',
+        'outline-brand',
+        'brand',
+        'success',
+        'warning',
+        'error',
+    ]),
     /** The action triggered when the close button is clicked. */
     onDelete: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */

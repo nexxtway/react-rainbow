@@ -42,6 +42,27 @@ const StyledContainer = attachThemeAttrs(styled.span)`
             border: 1px solid ${props.palette.brand.main};
             color: ${props.palette.getContrastText(props.palette.brand.main)};
         `};
+    ${props =>
+        props.variant === 'success' &&
+        `
+            background-color: ${props.palette.success.main};
+            border: 1px solid ${props.palette.success.main};
+            color: ${props.palette.getContrastText(props.palette.success.main)};
+        `};
+    ${props =>
+        props.variant === 'warning' &&
+        `
+            background-color: ${props.palette.warning.main};
+            border: 1px solid ${props.palette.warning.main};
+            color: ${props.palette.getContrastText(props.palette.warning.main)};
+        `};
+    ${props =>
+        props.variant === 'error' &&
+        `
+            background-color: ${props.palette.error.main};
+            border: 1px solid ${props.palette.error.main};
+            color: ${props.palette.getContrastText(props.palette.error.main)};
+        `};
 `;
 
 export default StyledContainer;
