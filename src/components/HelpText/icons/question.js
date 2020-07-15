@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '../../../libs/hooks';
+import { darken } from '../../../styles/helpers/color';
 
-function QuestionIcon({ className, style }) {
-    const background = useTheme().rainbow.palette.text.header;
+function QuestionIcon({ className, style, isFocused }) {
+    const gray = useTheme().rainbow.palette.text.header;
+    const background = isFocused ? darken(gray) : gray;
     return (
         <svg width={22} height={22} viewBox="0 0 22 22" className={className} style={style}>
             <path
@@ -16,10 +18,12 @@ function QuestionIcon({ className, style }) {
 QuestionIcon.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
+    isFocused: PropTypes.bool,
 };
 
 QuestionIcon.defaultProps = {
     className: undefined,
     style: undefined,
+    isFocused: false,
 };
 export default QuestionIcon;

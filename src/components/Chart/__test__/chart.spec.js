@@ -1,12 +1,12 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ChartJS from 'chart.js';
+import ChartJS from '../chart';
 import { Chart } from '../index';
 import Dataset from '../../Dataset';
 
 jest.mock('../helpers/unregisterGlobalPlugins', () => jest.fn());
 
-jest.mock('chart.js', () =>
+jest.mock('../chart', () =>
     jest.fn(() => ({
         update: jest.fn(),
         config: {},
