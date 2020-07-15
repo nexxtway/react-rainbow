@@ -14,7 +14,7 @@ function getIcon(isExpanded) {
 }
 
 export default function ExpandCollapseButton(props) {
-    const { isExpanded, isLoading, onClick } = props;
+    const { hasChildren, isExpanded, isLoading, onClick } = props;
     if (isLoading) {
         return (
             <SpinnerContainer>
@@ -22,10 +22,14 @@ export default function ExpandCollapseButton(props) {
             </SpinnerContainer>
         );
     }
-    return <Button size="x-small" icon={getIcon(isExpanded)} onClick={onClick} tabIndex={-1} />;
+    if (hasChildren) {
+        return <Button size="x-small" icon={getIcon(isExpanded)} onClick={onClick} tabIndex={-1} />;
+    }
+    return null;
 }
 
 ExpandCollapseButton.propTypes = {
+    hasChildren: PropTypes.bool.isRequired,
     isExpanded: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,

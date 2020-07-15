@@ -15,22 +15,22 @@ const data = [
                     children: [
                         { label: 'Tree Item' },
                       	{ label: 'Tree Item',
-                        children: [
-                            { label: 'Tree Item' },
-                            { label: 'Tree Item' },
-                            { label: 'Tree Item',
                             children: [
                                 { label: 'Tree Item' },
+                                { label: 'Tree Item' },
                                 { label: 'Tree Item',
-                                children: [
-                                    { label: 'Tree Item' },
-                                    { label: 'Tree Item' },
-                                ],
+                                    children: [
+                                        { label: 'Tree Item' },
+                                        { label: 'Tree Item',
+                                            children: [
+                                                { label: 'Tree Item' },
+                                                { label: 'Tree Item' },
+                                            ],
+                                        },
+                                    ],
                                 },
                             ],
-                            },
-                        ],
-                      },
+                        },
                     ],
                 },
             ],

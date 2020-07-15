@@ -4,7 +4,7 @@ import ButtonIcon from '../../ButtonIcon';
 
 const Button = attachThemeAttrs(styled(ButtonIcon))`
     color: ${props => props.palette.brand.main};
-    margin-top: 3px;
+    margin-top: 4px;
     margin-right: 8px;
 `;
 

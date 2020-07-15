@@ -59,8 +59,14 @@ export default function Child(props) {
             aria-selected={ariaSelectedValue}
             tabIndex={tabIndex}
         >
-            <NodeContainer data-id="node-element" isSelected={isSelected}>
+            <NodeContainer
+                data-id="node-element"
+                isSelected={isSelected}
+                ariaLevelValue={ariaLevelValue}
+                hasChildren={hasChildren}
+            >
                 <ExpandCollapseButton
+                    hasChildren={hasChildren}
                     isExpanded={isExpanded === true}
                     isLoading={isLoading === true}
                     onClick={handleExpandCollapse}

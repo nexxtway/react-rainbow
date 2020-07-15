@@ -1,9 +1,9 @@
-const getNodeLevel = ({ name }) => {
-    let levelMatch = [];
-    if (name) {
-        levelMatch = name.match(/\./g);
+const getNodeLevel = ({ name = '' }) => {
+    const levelMatch = name.match(/\./g);
+    if (levelMatch) {
+        return levelMatch.length + 1;
     }
-    return name && levelMatch ? levelMatch.length + 1 : 1;
+    return 1;
 };
 
 export default getNodeLevel;
