@@ -1,12 +1,15 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const ItemContainerLi = styled.li`
+const ItemContainerLi = attachThemeAttrs(styled.li)`
     box-sizing: border-box;
+
     &:focus {
         outline: 0;
     }
+
     &:focus > div {
-        background-color: ${props => props.theme.rainbow.palette.action.active};
+        background-color: ${props => props.palette.action.active};
     }
 `;
 

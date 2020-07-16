@@ -1,22 +1,33 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const NodeContainer = styled.div`
+function getMarginLeft(props) {
+    return `-${(props.ariaLevelValue - 1) * 20 + props.ariaLevelValue - 1}px`;
+}
+
+function getPaddingLeft(props) {
+    if (props.hasChildren) {
+        return `${(props.ariaLevelValue - 1) * 20 + props.ariaLevelValue - 1}px}`;
+    }
+    return `${(props.ariaLevelValue - 1) * 20 + props.ariaLevelValue - 1 + 28}px}`;
+}
+
+const NodeContainer = attachThemeAttrs(styled.div)`
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    margin-left: ${props => `-${(props.ariaLevelValue - 1) * 20 + props.ariaLevelValue - 1}px`};
-    padding-left: ${props =>
-        props.hasChildren
-            ? `${(props.ariaLevelValue - 1) * 20 + props.ariaLevelValue - 1}px`
-            : `${(props.ariaLevelValue - 1) * 20 + props.ariaLevelValue - 1 + 28}px`};
+    margin-left: ${getMarginLeft};
+    padding-left: ${getPaddingLeft};
+
     &:hover {
         cursor: pointer;
-        background-color: ${props => props.theme.rainbow.palette.action.hover};
+        background-color: ${props => props.palette.action.hover};
     }
+
     ${props =>
         props.isSelected &&
         `
-        background-color: ${props.theme.rainbow.palette.action.active};
+        background-color: ${props.palette.action.active};
     `};
 `;
 
