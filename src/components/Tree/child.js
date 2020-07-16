@@ -8,7 +8,9 @@ import NodeContainer from './styled/nodeContainer';
 import Label from './styled/label';
 import IconContainer from './styled/iconContainer';
 import InputCheckbox from './styled/inputCheckbox';
-import ChildrenContainer from './styled/childrenContainer';
+import ChildrenContainerUl from './styled/childrenContainer';
+import getNodeLevel from './helpers/getNodeLevel';
+import getTabIndex from './helpers/getTabIndex';
 
 export default function Child(props) {
     const {
@@ -19,26 +21,62 @@ export default function Child(props) {
         isChecked,
         icon,
         nodePath,
-        onExpandCollapse,
-        onSelect,
+        onNodeExpand,
+        onNodeCheck,
+        onNodeSelect,
+        isSelected,
+        name,
+        selectedNode,
+        isFirstNode,
     } = props;
     const hasChildren = Array.isArray(children);
     const hasCheckbox = typeof isChecked === 'boolean' || isChecked === 'indeterminate';
     const hasIcon = !!icon;
+    const ariaLevelValue = getNodeLevel({ name });
+    const ariaExpandedValue = hasChildren ? isExpanded : undefined;
+    const ariaSelectedValue = isSelected === true ? isSelected : undefined;
+    const tabIndex = getTabIndex({ selectedNode, isFirstNode, isSelected });
+
+    const handleNodeSelect = event => {
+        event.stopPropagation();
+        onNodeSelect({ name, nodePath });
+    };
+
+    const handleExpandCollapse = () => {
+        return onNodeExpand({ nodePath });
+    };
+
     return (
-        <ItemContainerLi hasChildren={hasChildren} icon={icon} data-id="node-element-li">
-            <NodeContainer data-id="node-element">
+        <ItemContainerLi
+            id={name}
+            data-id="node-element-li"
+            icon={icon}
+            hasChildren={hasChildren}
+            onClick={handleNodeSelect}
+            role="treeitem"
+            aria-level={ariaLevelValue}
+            aria-expanded={ariaExpandedValue}
+            aria-selected={ariaSelectedValue}
+            tabIndex={tabIndex}
+        >
+            <NodeContainer
+                data-id="node-element"
+                isSelected={isSelected}
+                ariaLevelValue={ariaLevelValue}
+                hasChildren={hasChildren}
+            >
                 <ExpandCollapseButton
                     hasChildren={hasChildren}
                     isExpanded={isExpanded === true}
                     isLoading={isLoading === true}
-                    onClick={() => onExpandCollapse({ nodePath })}
+                    onClick={handleExpandCollapse}
                 />
                 <RenderIf isTrue={hasCheckbox}>
                     <InputCheckbox
                         type="checkbox"
+                        label=""
                         checked={isChecked}
-                        onChange={() => onSelect({ nodePath })}
+                        onChange={() => onNodeCheck({ nodePath })}
                     />
                 </RenderIf>
                 <RenderIf isTrue={hasIcon}>
@@ -47,14 +85,17 @@ export default function Child(props) {
                 <Label icon={icon}>{label}</Label>
             </NodeContainer>
             <RenderIf isTrue={hasChildren && isExpanded}>
-                <ChildrenContainer icon={icon} isChecked={isChecked}>
+                <ChildrenContainerUl icon={icon} isChecked={isChecked} role="group">
                     <TreeChildren
                         data={children}
-                        onSelect={onSelect}
-                        onExpandCollapse={onExpandCollapse}
+                        onNodeCheck={onNodeCheck}
+                        onNodeExpand={onNodeExpand}
                         nodePath={nodePath}
+                        parentName={name}
+                        onNodeSelect={onNodeSelect}
+                        selectedNode={selectedNode}
                     />
-                </ChildrenContainer>
+                </ChildrenContainerUl>
             </RenderIf>
         </ItemContainerLi>
     );
@@ -67,9 +108,14 @@ Child.propTypes = {
     isLoading: PropTypes.bool,
     icon: PropTypes.node,
     children: PropTypes.array,
-    onExpandCollapse: PropTypes.func,
-    onSelect: PropTypes.func,
+    onNodeCheck: PropTypes.func,
+    onNodeExpand: PropTypes.func,
     nodePath: PropTypes.array,
+    onNodeSelect: PropTypes.func,
+    isSelected: PropTypes.bool,
+    name: PropTypes.string,
+    selectedNode: PropTypes.string,
+    isFirstNode: PropTypes.bool,
 };
 
 Child.defaultProps = {
@@ -79,7 +125,12 @@ Child.defaultProps = {
     isLoading: undefined,
     children: undefined,
     icon: null,
-    onExpandCollapse: () => {},
-    onSelect: () => {},
+    onNodeExpand: () => {},
+    onNodeCheck: () => {},
     nodePath: [],
+    onNodeSelect: undefined,
+    isSelected: undefined,
+    name: undefined,
+    selectedNode: undefined,
+    isFirstNode: undefined,
 };

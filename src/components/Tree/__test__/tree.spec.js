@@ -39,26 +39,26 @@ const data = [
 ];
 
 describe('<Tree/>', () => {
-    it('should call onExpandCollapse with the right parameters when the button is clicked', () => {
+    it('should call onNodeExpand with the right parameters when the button is clicked', () => {
         const nodePath = [2, 1];
-        const onExpandCollapsekMock = jest.fn();
-        const component = mount(<Tree data={data} onExpandCollapse={onExpandCollapsekMock} />);
+        const onNodeExandMock = jest.fn();
+        const component = mount(<Tree data={data} onNodeExpand={onNodeExandMock} />);
         component
             .find('ButtonIcon')
             .at(1)
             .simulate('click');
-        expect(onExpandCollapsekMock).toHaveBeenCalledWith({ nodePath });
+        expect(onNodeExandMock).toHaveBeenCalledWith({ nodePath });
     });
-    it('should call onSelect with the right parameters when the node is selected', () => {
+    it('should call onNodeCheck with the right parameters when the node is selected', () => {
         const nodePath = [2];
-        const onSelectMock = jest.fn();
-        const component = mount(<Tree data={data} onSelect={onSelectMock} />);
+        const onNodeCheckMock = jest.fn();
+        const component = mount(<Tree data={data} onNodeCheck={onNodeCheckMock} />);
         component
             .find('PrimitiveCheckbox')
             .at(2)
             .find('input')
             .simulate('change');
-        expect(onSelectMock).toHaveBeenCalledWith({ nodePath });
+        expect(onNodeCheckMock).toHaveBeenCalledWith({ nodePath });
     });
     it('should render the correct number of children', () => {
         const component = mount(<Tree data={data} />);

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const Label = attachThemeAttrs(styled.h1)`
+const Label = attachThemeAttrs(styled.span)`
     margin: 0;
     padding: 0;
     font-weight: inherit;
