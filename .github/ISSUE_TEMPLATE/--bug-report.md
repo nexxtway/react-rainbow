@@ -33,16 +33,25 @@ Steps to reproduce the behavior:
 3. Scroll down to '....'
 4. See error
 
+<!--
+if specific code snippet, paste the example here
+-->
+```js
+const your => (code) => here;
+```
+
 ## Expected Behavior 🤔
 
 <!---
     A clear and concise description of what you expected to happen.
+    Example: No error is throw
 -->
 
 ## Current Behavior 😯
 
 <!---
     Describe what happens instead of the expected behavior.
+    Example: Error is thrown
 -->
 
 ## Context 🔦
@@ -68,3 +77,11 @@ Providing context helps us come up with a solution that is most useful in the re
 -   OS: [e.g. iOS8.1]
 -   Browser [e.g. stock browser, safari]
 -   Version [e.g. 22]
+
+
+**Possible Solution**
+<!--- Only if you have suggestions on a fix for the bug -->
+
+
+**Additional context/Screenshots**
+Add any other context about the problem here. If applicable, add screenshots to help explain.
