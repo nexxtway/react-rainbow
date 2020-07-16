@@ -1,6 +1,6 @@
 ---
-name: Feature request
-about: Suggest an idea for React Rainbow Components
+name: 🎉 Feature request
+about: Suggest a new idea for React Rainbow Components.
 title: 'feat: add the menuSize to the avatarMenu component'
 labels: Enhancements
 assignees: ''
