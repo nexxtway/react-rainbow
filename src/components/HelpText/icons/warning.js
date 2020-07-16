@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '../../../libs/hooks';
+import { darken } from '../../../styles/helpers/color';
 
-function WarningIcon({ className, style }) {
-    const background = useTheme().rainbow.palette.warning.main;
+function WarningIcon({ className, style, isFocused }) {
+    const warning = useTheme().rainbow.palette.warning.main;
+    const background = isFocused ? darken(warning) : warning;
     return (
         <svg width={24} height={22} viewBox="0 0 24 22" className={className} style={style}>
             <path
@@ -16,10 +18,12 @@ function WarningIcon({ className, style }) {
 WarningIcon.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
+    isFocused: PropTypes.bool,
 };
 
 WarningIcon.defaultProps = {
     className: undefined,
     style: undefined,
+    isFocused: false,
 };
 export default WarningIcon;

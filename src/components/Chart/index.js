@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ChartJS from 'chart.js';
 import { withTheme } from 'styled-components';
+import ChartJS from './chart';
 import resolveOptions from './resolveOptions';
 import resolveDatasets from './resolveDatasets';
 import StyledContainer from './styled/container';
+import unregisterGlobalPlugins from './helpers/unregisterGlobalPlugins';
 
 /**
  * The Chart components are based on Charts.js an open source HTML5 based charting library.
@@ -46,7 +47,8 @@ export class Chart extends Component {
     }
 
     renderChart() {
-        const { type, labels, ...conditions } = this.props;
+        unregisterGlobalPlugins(ChartJS);
+        const { type, labels, plugins, ...conditions } = this.props;
         const node = this.chartRef.current;
 
         this.chartInstance = new ChartJS(node, {
@@ -55,7 +57,8 @@ export class Chart extends Component {
                 labels,
                 datasets: this.datasets,
             },
-            options: resolveOptions({ type, ...conditions }),
+            plugins: plugins || null,
+            options: resolveOptions({ type, plugins, ...conditions }),
         });
     }
 
@@ -114,6 +117,8 @@ Chart.propTypes = {
     disableCurves: PropTypes.bool,
     /** Maintain the original canvas aspect ratio. */
     maintainAspectRatio: PropTypes.bool,
+    /** Plugins to customize the Chart. */
+    plugins: PropTypes.arrayOf(PropTypes.object),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -141,6 +146,7 @@ Chart.defaultProps = {
     disableXAxisTickLabels: false,
     disableYAxisTickLabels: false,
     maintainAspectRatio: true,
+    plugins: undefined,
     className: undefined,
     style: undefined,
     children: undefined,
