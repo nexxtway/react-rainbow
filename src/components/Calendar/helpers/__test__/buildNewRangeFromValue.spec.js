@@ -18,14 +18,13 @@ describe('buildNewRangeFromValue', () => {
             range: [date1, date2],
         });
     });
-    it('should return array with two dates and date3 as first date', () => {
+    it('should return array with single date equal to date3', () => {
         const date1 = new Date(2019, 0, 2);
         const date2 = new Date(2019, 0, 21, 23, 59, 59, 999);
         const date3 = new Date(2019, 0, 15);
         const range = [date1, date2];
         expect(buildNewRangeFromValue(date3, range)).toEqual({
-            range: [date3, date2],
-            nextUpdatePosition: 1,
+            range: [date3],
         });
     });
 });
