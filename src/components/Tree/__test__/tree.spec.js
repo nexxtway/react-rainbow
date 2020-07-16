@@ -64,4 +64,37 @@ describe('<Tree/>', () => {
         const component = mount(<Tree data={data} />);
         expect(component.find('Child').length).toBe(10);
     });
+    it('should have the container ul element a role tree', () => {
+        const component = mount(<Tree data={data} />);
+        const container = component.find('ul').at(0);
+        expect(container.prop('role')).toBe('tree');
+    });
+    it('should set the first li element with tabIndex 0', () => {
+        const component = mount(<Tree data={data} />);
+        const firstLi = component.find('li').at(0);
+        expect(firstLi.prop('tabIndex')).toBe(0);
+    });
+    it('should all li element with tabIndex -1 except the first one', () => {
+        const component = mount(<Tree data={data} />);
+        const secondLi = component.find('li').at(1);
+        expect(secondLi.prop('tabIndex')).toBe(-1);
+        const thirdLi = component.find('li').at(2);
+        expect(thirdLi.prop('tabIndex')).toBe(-1);
+    });
+    it('should tabIndex 0 to the selected node', () => {
+        const component = mount(<Tree data={data} selectedNode="node-3.2" />);
+        const li = component.find('li').at(4);
+        expect(li.prop('tabIndex')).toBe(0);
+    });
+    it('should generate the right node names', () => {
+        const component = mount(<Tree data={data} />);
+        const firstLi = component.find('li').at(0);
+        expect(firstLi.prop('id')).toBe('node-1');
+        const secondLi = component.find('li').at(1);
+        expect(secondLi.prop('id')).toBe('node-2');
+        const fourthLi = component.find('li').at(3);
+        expect(fourthLi.prop('id')).toBe('node-3.1');
+        const fifthLi = component.find('li').at(4);
+        expect(fifthLi.prop('id')).toBe('node-3.2');
+    });
 });
