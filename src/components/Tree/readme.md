@@ -1,7 +1,7 @@
 ##### Tree basic
 
 ```js
-    const data = [
+const data = [
         { label: 'Tree Item' },
         { label: 'Tree Item' },
         {
@@ -14,7 +14,24 @@
                     isLoading: false,
                     children: [
                         { label: 'Tree Item' },
-                    ]
+                      	{ label: 'Tree Item',
+                            children: [
+                                { label: 'Tree Item' },
+                                { label: 'Tree Item' },
+                                { label: 'Tree Item',
+                                    children: [
+                                        { label: 'Tree Item' },
+                                        { label: 'Tree Item',
+                                            children: [
+                                                { label: 'Tree Item' },
+                                                { label: 'Tree Item' },
+                                            ],
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                    ],
                 },
             ],
         },
@@ -29,17 +46,28 @@
             ],
         }
     ];
-    const initialState = { data };
-    const openNode = ({ nodePath }) => {
+
+    const initialState = {
+        data,
+        selectedNode: '',
+    };
+
+    const expandNode = ({ nodePath }) => {
         const child = Tree.getNode(state.data, nodePath);
         child.isExpanded = !child.isExpanded;
         setState({ data: state.data });
     }
+
     <Tree
         id="tree-component-1"
         data={state.data}
-        onExpandCollapse={openNode}
         className="rainbow-m-around_xx-large"
+        onNodeExpand={expandNode}
+        selectedNode={state.selectedNode}
+        onNodeSelect={({ name }) => {
+            setState({ selectedNode: name });
+        }}
+        ariaLabel="tree-basic"
     />
 ```
 
@@ -79,10 +107,13 @@
         }
     ];
 
+    const selectedNode = '';
+
     import React, { useState, useEffect } from 'react';
 
     const TreeExample = () => {
-        const [data, setData] = React.useState(initialData);
+        const [data, setData] = useState(initialData);
+        const [node, setSelectedNode] = useState(selectedNode);
         const openNode = ({ nodePath }) => {
             const child = Tree.getNode(data, nodePath);
             if(!child.isExpanded){
@@ -104,8 +135,13 @@
         return (
             <Tree
                 data={data}
-                onExpandCollapse={openNode}
                 className="rainbow-m-around_xx-large"
+                onNodeExpand={openNode}
+                selectedNode={node}
+                onNodeSelect={({ name }) => 
+                    {setSelectedNode(name)}
+                }
+                ariaLabel="tree-loading"
             />
         );
     }
@@ -148,7 +184,10 @@
             ],
         },
     ];
-    const initialState = { data };
+    const initialState = { 
+        data,
+        selectedNode: ''
+    };
     const openNode = ({ nodePath }) => {
         const child = Tree.getNode(state.data, nodePath);
         child.isExpanded = !child.isExpanded;
@@ -156,8 +195,13 @@
     }
     <Tree
         data={state.data}
-        onExpandCollapse={openNode}
         className="rainbow-m-around_xx-large"
+        onNodeExpand={openNode}
+        selectedNode={state.selectedNode}
+        onNodeSelect={({ name }) => {
+            setState({ selectedNode: name });
+        }}
+        ariaLabel="tree-icons"
     />
 ```
 
@@ -214,7 +258,11 @@
             ],
         },
     ];
-    const initialState = { data };
+    const initialState = { 
+        data,
+        selectedNode: ''
+    };
+
     const openNode = ({ nodePath }) => {
         const child = Tree.getNode(state.data, nodePath);
         child.isExpanded = !child.isExpanded;
@@ -272,7 +320,7 @@
         return children;
     }
 
-    const selectNode = ({ nodePath }) => {
+    const handleCheck = ({ nodePath }) => {
         const node = Tree.getNode(state.data, nodePath);
         node.isChecked = !node.isChecked;
 
@@ -285,10 +333,16 @@
         }
         setState({ data: state.data });
     }
+
     <Tree
         data={state.data}
-        onExpandCollapse={openNode}
-        onSelect={selectNode}
         className="rainbow-m-around_xx-large"
+        onNodeCheck={handleCheck}
+        onNodeExpand={openNode}
+        selectedNode={state.selectedNode}
+        onNodeSelect={({ name }) => {
+            setState({ selectedNode: name });
+        }}
+        ariaLabel="tree-icons"
     />
 ```
