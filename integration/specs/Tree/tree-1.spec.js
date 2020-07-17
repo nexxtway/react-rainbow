@@ -25,13 +25,13 @@ describe('Tree basic', () => {
         node.click();
         expect(node.isExpanded()).toBe(false);
     });
-    it('should move focus to the next button icon when the first button icon is focused and press tab', () => {
+    it('should move focus outside the tree when the first button icon is focused and press tab', () => {
         const tree = new PageTree(TREE);
         const firstNode = tree.getNode(2);
         const secondNode = tree.getNode(3);
         firstNode.click();
         browser.keys(TAB_KEY);
-        expect(secondNode.hasFocus()).toBe(true);
+        expect(secondNode.hasFocus()).toBe(false);
     });
     it('should expand the node when its button icon is focused, press enter and the node was initially expanded', () => {
         const tree = new PageTree(TREE);

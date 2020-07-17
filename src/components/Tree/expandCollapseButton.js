@@ -23,7 +23,7 @@ export default function ExpandCollapseButton(props) {
         );
     }
     if (hasChildren) {
-        return <Button size="x-small" icon={getIcon(isExpanded)} onClick={onClick} />;
+        return <Button size="x-small" icon={getIcon(isExpanded)} onClick={onClick} tabIndex={-1} />;
     }
     return null;
 }
