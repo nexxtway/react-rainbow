@@ -41,13 +41,13 @@ const data = [
 describe('<Tree/>', () => {
     it('should call onNodeExpand with the right parameters when the button is clicked', () => {
         const nodePath = [2, 1];
-        const onNodeExandMock = jest.fn();
-        const component = mount(<Tree data={data} onNodeExpand={onNodeExandMock} />);
+        const onNodeExpandMock = jest.fn();
+        const component = mount(<Tree data={data} onNodeExpand={onNodeExpandMock} />);
         component
             .find('ButtonIcon')
             .at(1)
             .simulate('click');
-        expect(onNodeExandMock).toHaveBeenCalledWith({ nodePath });
+        expect(onNodeExpandMock).toHaveBeenCalledWith({ nodePath });
     });
     it('should call onNodeCheck with the right parameters when the node is selected', () => {
         const nodePath = [2];
@@ -59,6 +59,17 @@ describe('<Tree/>', () => {
             .find('input')
             .simulate('change');
         expect(onNodeCheckMock).toHaveBeenCalledWith({ nodePath });
+    });
+    it('should call onNodeSelect with the right data', () => {
+        const name = 'node-2';
+        const nodePath = [1];
+        const onNodeSelectMock = jest.fn();
+        const component = mount(<Tree data={data} onNodeSelect={onNodeSelectMock} />);
+        component
+            .find('li')
+            .at(1)
+            .simulate('click');
+        expect(onNodeSelectMock).toHaveBeenCalledWith({ name, nodePath });
     });
     it('should render the correct number of children', () => {
         const component = mount(<Tree data={data} />);
@@ -96,5 +107,33 @@ describe('<Tree/>', () => {
         expect(fourthLi.prop('id')).toBe('node-3.1');
         const fifthLi = component.find('li').at(4);
         expect(fifthLi.prop('id')).toBe('node-3.2');
+    });
+    it('should set tabIndex to -1 in expand collapse button', () => {
+        const component = mount(<Tree data={data} />);
+        const firstExpandButton = component.find('ButtonIcon').at(0);
+        expect(firstExpandButton.prop('tabIndex')).toBe(-1);
+        const fourthExpandButton = component.find('ButtonIcon').at(2);
+        expect(fourthExpandButton.prop('tabIndex')).toBe(-1);
+    });
+    it('should pass right aria-level number', () => {
+        const component = mount(<Tree data={data} />);
+        const firstLi = component.find('li').at(0);
+        expect(firstLi.prop('aria-level')).toBe(1);
+        const fourthLi = component.find('li').at(3);
+        expect(fourthLi.prop('aria-level')).toBe(2);
+        const sixthLi = component.find('li').at(5);
+        expect(sixthLi.prop('aria-level')).toBe(3);
+    });
+    it('should pass the right aria-label', () => {
+        const ariaLabel = 'labelSample';
+        const component = mount(<Tree data={data} ariaLabel={ariaLabel} />);
+        const container = component.find('ul').at(0);
+        expect(container.prop('aria-label')).toBe(ariaLabel);
+    });
+    it('should pass the right aria-labelledby', () => {
+        const ariaLabelledBy = 'labelledBySample';
+        const component = mount(<Tree data={data} ariaLabelledBy={ariaLabelledBy} />);
+        const container = component.find('ul').at(0);
+        expect(container.prop('aria-labelledby')).toBe(ariaLabelledBy);
     });
 });
