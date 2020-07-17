@@ -80,6 +80,11 @@ describe('<Tree/>', () => {
         const container = component.find('ul').at(0);
         expect(container.prop('role')).toBe('tree');
     });
+    it('should have the role group in the child ul element', () => {
+        const component = mount(<Tree data={data} />);
+        const container = component.find('ul').at(1);
+        expect(container.prop('role')).toBe('group');
+    });
     it('should set the first li element with tabIndex 0', () => {
         const component = mount(<Tree data={data} />);
         const firstLi = component.find('li').at(0);
@@ -135,5 +140,15 @@ describe('<Tree/>', () => {
         const component = mount(<Tree data={data} ariaLabelledBy={ariaLabelledBy} />);
         const container = component.find('ul').at(0);
         expect(container.prop('aria-labelledby')).toBe(ariaLabelledBy);
+    });
+    it('should not set aria-expanded when the node does not have children', () => {
+        const component = mount(<Tree data={data} />);
+        const firstLi = component.find('li').at(1);
+        expect(firstLi.prop('aria-expanded')).toBeUndefined();
+    });
+    it('should set the aria-expanded value of the node when it has children', () => {
+        const component = mount(<Tree data={data} />);
+        const node = component.find('li').at(2);
+        expect(node.prop('aria-expanded')).toBe(true);
     });
 });
