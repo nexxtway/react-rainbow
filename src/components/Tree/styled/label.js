@@ -12,6 +12,13 @@ const Label = attachThemeAttrs(styled.span)`
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+
+    ${props =>
+        props.isSelected &&
+        `
+        color: ${props.palette.getContrastText(props.palette.brand.light)};
+        font-weight: 900;
+    `};
 `;
 
 export default Label;
