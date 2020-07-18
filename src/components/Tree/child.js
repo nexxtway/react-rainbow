@@ -82,7 +82,9 @@ export default function Child(props) {
                 <RenderIf isTrue={hasIcon}>
                     <IconContainer>{icon}</IconContainer>
                 </RenderIf>
-                <Label icon={icon}>{label}</Label>
+                <Label isSelected={isSelected} icon={icon}>
+                    {label}
+                </Label>
             </NodeContainer>
             <RenderIf isTrue={hasChildren && isExpanded}>
                 <ChildrenContainerUl icon={icon} isChecked={isChecked} role="group">
