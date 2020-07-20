@@ -9,7 +9,7 @@ const ItemContainerLi = attachThemeAttrs(styled.li)`
     }
 
     &:focus > div {
-        background-color: ${props => props.palette.action.active};
+        box-shadow: ${props => props.shadows.brand};
     }
 `;
 

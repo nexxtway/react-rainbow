@@ -9,8 +9,10 @@ import Label from './styled/label';
 import IconContainer from './styled/iconContainer';
 import InputCheckbox from './styled/inputCheckbox';
 import ChildrenContainerUl from './styled/childrenContainer';
+import InnerContainer from './styled/innerContainer';
 import getNodeLevel from './helpers/getNodeLevel';
 import getTabIndex from './helpers/getTabIndex';
+import shouldSelectNode from './helpers/shouldSelectNode';
 
 export default function Child(props) {
     const {
@@ -38,12 +40,17 @@ export default function Child(props) {
     const tabIndex = getTabIndex({ selectedNode, isFirstNode, isSelected });
 
     const handleNodeSelect = event => {
-        event.stopPropagation();
-        onNodeSelect({ name, nodePath });
+        if (shouldSelectNode(event.target, name)) {
+            onNodeSelect({ name, nodePath });
+        }
     };
 
-    const handleExpandCollapse = () => {
-        return onNodeExpand({ nodePath });
+    const handleNodeExpand = () => {
+        return onNodeExpand({ name, nodePath });
+    };
+
+    const handleNodeCheck = () => {
+        onNodeCheck({ name, nodePath });
     };
 
     return (
@@ -65,24 +72,23 @@ export default function Child(props) {
                 ariaLevelValue={ariaLevelValue}
                 hasChildren={hasChildren}
             >
-                <ExpandCollapseButton
-                    hasChildren={hasChildren}
-                    isExpanded={isExpanded === true}
-                    isLoading={isLoading === true}
-                    onClick={handleExpandCollapse}
-                />
-                <RenderIf isTrue={hasCheckbox}>
-                    <InputCheckbox
-                        type="checkbox"
-                        label=""
-                        checked={isChecked}
-                        onChange={() => onNodeCheck({ nodePath })}
+                <InnerContainer data-id="no-selectable-container">
+                    <ExpandCollapseButton
+                        hasChildren={hasChildren}
+                        isExpanded={isExpanded === true}
+                        isLoading={isLoading === true}
+                        onClick={handleNodeExpand}
                     />
-                </RenderIf>
+                    <RenderIf isTrue={hasCheckbox}>
+                        <InputCheckbox checked={isChecked} onChange={handleNodeCheck} />
+                    </RenderIf>
+                </InnerContainer>
                 <RenderIf isTrue={hasIcon}>
                     <IconContainer>{icon}</IconContainer>
                 </RenderIf>
-                <Label icon={icon}>{label}</Label>
+                <Label isSelected={isSelected} icon={icon}>
+                    {label}
+                </Label>
             </NodeContainer>
             <RenderIf isTrue={hasChildren && isExpanded}>
                 <ChildrenContainerUl icon={icon} isChecked={isChecked} role="group">

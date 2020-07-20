@@ -15,19 +15,23 @@ function getPaddingLeft(props) {
 const NodeContainer = attachThemeAttrs(styled.div)`
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     margin-left: ${getMarginLeft};
     padding-left: ${getPaddingLeft};
 
     &:hover {
         cursor: pointer;
-        background-color: ${props => props.palette.action.hover};
+        background-color: ${props => props.palette.background.highlight};
     }
 
     ${props =>
         props.isSelected &&
         `
-        background-color: ${props.palette.action.active};
+        background-color: ${props.palette.brand.light};
+
+        &:hover {
+            background-color: ${props.palette.brand.light};
+        }
     `};
 `;
 
