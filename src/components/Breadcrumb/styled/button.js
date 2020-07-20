@@ -27,6 +27,23 @@ const StyledButton = attachThemeAttrs(styled.button)`
         color: ${props => props.palette.brand.main};
     }
 
+    :active {
+        transform: scale(0.95);
+        transition: all 0.2s ease;
+    }
+
+    ::after {
+        display: block;
+        content: "";
+        border-bottom: 3px solid ${props => props.palette.brand.main};
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
+    }
+
+    :hover::after {
+        transform: scaleX(1);
+    }
+
     ${props =>
         props.disabled &&
         `
