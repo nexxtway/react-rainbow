@@ -297,7 +297,7 @@ MultiSelect.propTypes = {
     /** Specifies the value of an input element. */
     value: PropTypes.arrayOf(
         PropTypes.shape({
-            name: PropTypes.string,
+            name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
             label: PropTypes.string,
             value: PropTypes.any,
         }),
