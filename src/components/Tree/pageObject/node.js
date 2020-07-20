@@ -18,7 +18,7 @@ class PageNodeItem {
      */
     click() {
         $(this.rootElement)
-            .$('[data-id="node-element"] > button')
+            .$('[data-id="node-element"] button')
             .click();
     }
 
@@ -29,7 +29,7 @@ class PageNodeItem {
      */
     hasFocus() {
         return $(this.rootElement)
-            .$('[data-id="node-element"] > button')
+            .$('[data-id="node-element"] button')
             .isFocused();
     }
 
@@ -42,18 +42,6 @@ class PageNodeItem {
         return $(this.rootElement)
             .$('[data-id="node-element-li"]')
             .isDisplayed();
-    }
-
-    /**
-     * Returns the label of the node.
-     * @method
-     * @returns {string}
-     */
-    getLabel() {
-        return $(this.rootElement)
-            .$('[data-id="node-element"]')
-            .$('h1')
-            .getText();
     }
 }
 
