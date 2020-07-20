@@ -21,4 +21,14 @@ describe('<Child/>', () => {
         const component = mount(<Child children={children} isExpanded />);
         expect(component.find('TreeChildren').exists()).toBe(true);
     });
+    it('should set the aria-selected value to true when the node is selected', () => {
+        const component = mount(<Child isSelected />);
+        const node = component.find('li');
+        expect(node.prop('aria-selected')).toBe(true);
+    });
+    it('should not set the aria-selected value when the node is not selected', () => {
+        const component = mount(<Child />);
+        const node = component.find('li');
+        expect(node.prop('aria-selected')).toBeUndefined();
+    });
 });
