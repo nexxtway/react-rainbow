@@ -1271,6 +1271,19 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.1.tgz#53f349bb986ab273d601175aa1b25a655ab90ee3"
   integrity sha512-KU/VDjC5RwtDUZiz3d+DHXJF2lp5hB9dn552TXIyptj8SH1vXmR40mG0JgGq03IlYsOgGfcv8xrLpSQ0YUMQdA==
 
+"@rainbow-modules/hooks@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@rainbow-modules/hooks/-/hooks-0.1.1.tgz#b12b5608ab83bcb0baa4ea5daaef83972ace0682"
+  integrity sha512-KoZt5/mj8/8bKHf9d2mBV531jKgno+PBB2fUqNg7iUNNmZrl1wzlVJiEHqASfb9Wrmh/2z9FCnYKzt3zqlyOgQ==
+  dependencies:
+    "@rainbow-modules/validation" "^0.1.1"
+    react "^16.13.1"
+
+"@rainbow-modules/validation@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@rainbow-modules/validation/-/validation-0.1.1.tgz#366a1d1b7242f13549c254398f642a2da9cff7e4"
+  integrity sha512-9U0jy0Ch918OfTazvsCpkEWiaSegCF7g+BskopKwYdRb6rkddpqyjEIiuHS2vL9mXk9vKu76J7ldsAWyRB46Og==
+
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
@@ -12525,6 +12538,15 @@ react-textarea-autosize@^6.1.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     schedule "^0.5.0"
+
+react@^16.13.1:
+  version "16.13.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
+  integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
 
 react@^16.4.2:
   version "16.4.2"
