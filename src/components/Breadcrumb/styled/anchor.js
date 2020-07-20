@@ -3,32 +3,45 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
 const StyledAnchor = attachThemeAttrs(styled.a)`
+    font: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    outline: inherit;
+    cursor: pointer;
     letter-spacing: 0.3px;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     color: ${props => props.palette.text.label};
-    background-color: transparent;
-    text-decoration: none;
-    transition: color 0.1s linear;
-    cursor: pointer;
-    box-sizing: border-box;
+    margin: 0;
+    overflow: visible;
+    text-transform: none;
+    appearance: button;
 
-    :hover,
-    :focus {
-        text-decoration: underline;
+    ::-moz-focus-inner,
+    ::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
+    :hover {
         color: ${props => props.palette.brand.main};
     }
 
     :active {
-        color: ${props => props.palette.brand.main};
+        transform: scale(0.95);
+        transition: all 0.2s ease;
     }
 
-    :active,
-    :hover {
-        outline: 0;
+    ::after {
+        display: block;
+        content: "";
+        border-bottom: 3px solid ${props => props.palette.brand.main};
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
     }
 
-    :hover {
-        color: ${props => props.palette.brand.main};
+    :hover::after {
+        transform: scaleX(1);
     }
 
     ${props =>

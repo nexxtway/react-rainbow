@@ -18,6 +18,7 @@ const StyledOl = attachThemeAttrs(styled.ol)`
         font-weight: 900;
         color: ${props => props.palette.text.main};
         text-decoration: none;
+        pointer-events: none;
     }
 
     > li:last-child > button {
