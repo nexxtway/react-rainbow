@@ -3,8 +3,7 @@
 ```js
 import { ButtonIcon } from 'react-rainbow-components';
 import { useRef, useState } from 'react';
-import styled from 'styled-components';
-import { useOutsideClick } from '@rainbow-modules/hooks';
+import styled, { useTheme } from 'styled-components';
 import RenderIf from '../RenderIf';
 import { useWindowResize } from '../../libs/hooks';
 
@@ -52,18 +51,9 @@ const Component = (props) => {
     const dropdownRef = useRef();
     const iconRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
+ const theme = useTheme();
 
-    useOutsideClick(
-        dropdownRef,
-        event => {
-            if (event.target !== triggerRef.current.buttonRef.current) {
-                stopListeningOutsideClick();
-                setIsOpen(false);
-            }        
-        },
-        isOpen,
-    );
-    useWindowResize(() => setIsOpen(false), isOpen);
+ console.log(theme);
 
     return (
         <>
