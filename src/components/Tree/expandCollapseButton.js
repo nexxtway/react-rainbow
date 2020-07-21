@@ -18,7 +18,7 @@ export default function ExpandCollapseButton(props) {
     if (isLoading) {
         return (
             <SpinnerContainer>
-                <Spinner variant="brand" size="x-small" />
+                <Spinner variant="brand" type="arc" size="x-small" />
             </SpinnerContainer>
         );
     }

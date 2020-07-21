@@ -3,7 +3,7 @@ import { BaseProps, IconPosition } from '../types';
 
 export interface OptionProps extends BaseProps {
     label?: string;
-    name?: string;
+    name?: string | number;
     variant?: 'default' | 'header';
     icon?: ReactNode;
     iconPosition?: IconPosition;

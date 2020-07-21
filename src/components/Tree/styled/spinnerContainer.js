@@ -6,7 +6,6 @@ const SpinnerContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 20px;
-    margin-top: 16px;
     margin-right: 8px;
 `;
 
