@@ -22,6 +22,7 @@ export interface SelectProps extends BaseProps {
     options?: Option[];
     id?: string;
     hideLabel?: boolean;
+    tabIndex?: number | string;
 }
 
 declare const Select: React.ComponentType<SelectProps>;
