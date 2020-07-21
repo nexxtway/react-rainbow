@@ -27,7 +27,7 @@ const StyledOl = attachThemeAttrs(styled.ol)`
         pointer-events: none;
     }
 
-    > li:not(:last-child)::after {
+    > li:not(:first-child)::before {
         margin: 0 10px;
         content: '>';
         color: ${props => props.palette.text.label};
