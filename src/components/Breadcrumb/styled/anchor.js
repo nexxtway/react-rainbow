@@ -17,13 +17,11 @@ const StyledAnchor = attachThemeAttrs(styled.a)`
     text-transform: none;
     appearance: button;
 
-    ::-moz-focus-inner,
-    ::-moz-focus-inner {
-        border: 0;
-        padding: 0;
+    :hover {
+        color: ${props => props.palette.brand.main};
     }
 
-    :hover {
+    &:focus {
         color: ${props => props.palette.brand.main};
     }
 
@@ -35,7 +33,7 @@ const StyledAnchor = attachThemeAttrs(styled.a)`
     ::after {
         display: block;
         content: "";
-        border-bottom: 3px solid ${props => props.palette.brand.main};
+        border-bottom: 2px solid ${props => props.palette.brand.main};
         transform: scaleX(0);
         transition: transform 250ms ease-in-out;
     }
