@@ -1,6 +1,6 @@
 import React, { useRef, useState, useMemo, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { RIGHT_KEY, LEFT_KEY } from '../../../../libs/constants';
+import { RIGHT_KEY, LEFT_KEY } from '../../../libs/constants';
 import Select from '../../Select';
 import RightIcon from '../icons/rightArrow';
 import LeftIcon from '../icons/leftArrow';
