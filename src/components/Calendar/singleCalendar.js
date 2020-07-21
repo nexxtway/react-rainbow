@@ -1,9 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Select from '../Select';
-import RightIcon from './icons/rightArrow';
-import LeftIcon from './icons/leftArrow';
 import DaysOfWeek from './daysOfWeek';
 import Month from './month';
 import {
@@ -24,10 +21,7 @@ import {
     isSameDatesRange,
     isEmptyRange,
 } from './helpers';
-import StyledControlsContainer from './styled/controlsContainer';
-import StyledMonthContainer from './styled/monthContainer';
-import StyledMonth from './styled/month';
-import StyledArrowButton from './styled/arrowButton';
+import CalendarHeader from './calendarHeader/single';
 import StyledTable from './styled/table';
 import {
     UP_KEY,
@@ -327,36 +321,18 @@ class SingleCalendar extends Component {
 
         return (
             <section id={id} className={className} style={style} data-calendar-type="single">
-                <StyledControlsContainer>
-                    <StyledMonthContainer>
-                        <StyledArrowButton
-                            onClick={this.previousMonth}
-                            size="medium"
-                            disabled={disablePreviousMonth}
-                            icon={<LeftIcon />}
-                            assistiveText="Previous Month"
-                        />
-
-                        <StyledMonth id={this.monthLabelId} data-id="month">
-                            {formattedMonth}
-                        </StyledMonth>
-
-                        <StyledArrowButton
-                            onClick={this.nextMonth}
-                            size="medium"
-                            disabled={disableNextMonth}
-                            icon={<RightIcon />}
-                            assistiveText="Next Month"
-                        />
-                    </StyledMonthContainer>
-                    <Select
-                        label="select year"
-                        hideLabel
-                        value={currentYear}
-                        options={yearsRange}
-                        onChange={this.handleYearChange}
-                    />
-                </StyledControlsContainer>
+                <CalendarHeader
+                    variant="single"
+                    monthLabelId={this.monthLabelId}
+                    formattedMonth={formattedMonth}
+                    currentYear={currentYear}
+                    yearsRange={yearsRange}
+                    disablePreviousMonth={disablePreviousMonth}
+                    disableNextMonth={disableNextMonth}
+                    onPrevMonthClick={this.previousMonth}
+                    onNextMonthClick={this.nextMonth}
+                    onYearChange={this.handleYearChange}
+                />
                 <StyledTable role="grid" aria-labelledby={this.monthLabelId}>
                     <DaysOfWeek locale={locale} />
                     <Provider value={this.getContext()}>
