@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
-import { RIGHT_KEY, LEFT_KEY } from '../../../../libs/constants';
+import { RIGHT_KEY, LEFT_KEY } from '../../../libs/constants';
 
 export default function useHeaderArrowNav({
     disableNextMonth,
