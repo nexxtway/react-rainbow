@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useUniqueIdentifier } from '../../../libs/hooks';
 import { Provider } from '../context';
@@ -20,7 +20,7 @@ import {
     useFormattedMonth,
     useHandleKeyDown,
 } from './hooks';
-import MonthHeader from './monthHeader';
+import YearSelect from './yearSelect';
 import StyledControlsContainer from '../styled/controlsContainer';
 import StyledArrowButton from '../styled/arrowButton';
 import StyledTable from '../styled/table';
@@ -31,8 +31,11 @@ import {
     StyledDivider,
     StyledCalendarWrapper,
     StyledSection,
+    StyledHeaderContainer,
+    StyledMonth,
 } from './styled';
 import shouldUpdateCurrentMonth from './helpers/shouldUpdateCurrentMonth';
+import useHeaderArrowNav from '../hooks/useHeaderArrowNav';
 
 export default function DoubleCalendar(props) {
     const {
@@ -81,6 +84,20 @@ export default function DoubleCalendar(props) {
         setCurrentMonth,
     );
 
+    const headerElementsRefs = [useRef(), useRef(), useRef(), useRef()];
+    const {
+        updateFocusedItem,
+        clearFocusedItems,
+        handleKeyDown: handleHeaderElementKeyDown,
+    } = useHeaderArrowNav({
+        disableNextMonth,
+        disablePreviousMonth,
+        refs: headerElementsRefs,
+        delta: 1,
+        firstIndex: disablePreviousMonth ? 1 : 0,
+        lastIndex: disableNextMonth ? 2 : 3,
+    });
+
     const handleOnDayFocus = () => setEnableNavKeys(true);
     const handleOnDayBlur = () => setEnableNavKeys(false);
     const handleOnDayHover = useCallback(
@@ -105,13 +122,15 @@ export default function DoubleCalendar(props) {
         const newMonth = addMonths(currentMonth, -1);
         setFocusedDate(getNextFocusedDate(value, newMonth));
         setCurrentMonth(newMonth);
-    }, [value, currentMonth]);
+        updateFocusedItem(0);
+    }, [value, currentMonth, updateFocusedItem]);
 
     const nextMonthClick = useCallback(() => {
         const newMonth = addMonths(currentMonth, 1);
         setFocusedDate(getNextFocusedDate(value, newMonth));
         setCurrentMonth(newMonth);
-    }, [value, currentMonth]);
+        updateFocusedItem(3);
+    }, [value, currentMonth, updateFocusedItem]);
 
     const handleLeftCalendarYearChange = useCallback(
         event => {
@@ -152,20 +171,33 @@ export default function DoubleCalendar(props) {
             <StyledCalendarWrapper>
                 <StyledControlsContainer>
                     <StyledArrowButton
+                        ref={headerElementsRefs[0]}
                         onClick={prevMonthClick}
                         disabled={disablePreviousMonth}
                         size="medium"
                         icon={<LeftIcon />}
                         assistiveText="Previous Month"
+                        onKeyDown={handleHeaderElementKeyDown}
+                        onFocus={() => updateFocusedItem(0)}
+                        onBlur={clearFocusedItems}
                     />
                     <StyledMonthsContainer>
-                        <MonthHeader
-                            id={currentMonthLabelId}
-                            label={currentMonthFormattedLabel}
-                            currentYear={currentYear}
-                            yearsRange={yearsRange}
-                            onYearChange={handleLeftCalendarYearChange}
-                        />
+                        <StyledHeaderContainer>
+                            <StyledMonth id={currentMonthLabelId} data-id="month">
+                                {currentMonthFormattedLabel}
+                            </StyledMonth>
+                            <YearSelect
+                                ref={headerElementsRefs[1]}
+                                currentYear={currentYear}
+                                yearsRange={yearsRange}
+                                onYearChange={handleLeftCalendarYearChange}
+                                tabIndex={disablePreviousMonth ? undefined : -1}
+                                onClick={() => updateFocusedItem(1)}
+                                onKeyDown={handleHeaderElementKeyDown}
+                                onFocus={() => updateFocusedItem(1)}
+                                onBlur={clearFocusedItems}
+                            />
+                        </StyledHeaderContainer>
                     </StyledMonthsContainer>
                 </StyledControlsContainer>
                 <StyledContainer>
@@ -204,20 +236,34 @@ export default function DoubleCalendar(props) {
             <StyledCalendarWrapper>
                 <StyledControlsContainer>
                     <StyledMonthsContainer>
-                        <MonthHeader
-                            id={rightMonthLabelId}
-                            label={rightMonthFormattedLabel}
-                            currentYear={rightCalendarYear}
-                            yearsRange={yearsRange}
-                            onYearChange={handleRightCalendarYearChange}
-                        />
+                        <StyledHeaderContainer>
+                            <StyledMonth id={rightMonthLabelId} data-id="month">
+                                {rightMonthFormattedLabel}
+                            </StyledMonth>
+                            <YearSelect
+                                ref={headerElementsRefs[2]}
+                                currentYear={rightCalendarYear}
+                                yearsRange={yearsRange}
+                                onYearChange={handleRightCalendarYearChange}
+                                tabIndex={-1}
+                                onClick={() => updateFocusedItem(2)}
+                                onKeyDown={handleHeaderElementKeyDown}
+                                onFocus={() => updateFocusedItem(2)}
+                                onBlur={clearFocusedItems}
+                            />
+                        </StyledHeaderContainer>
                     </StyledMonthsContainer>
                     <StyledArrowButton
+                        ref={headerElementsRefs[3]}
                         onClick={nextMonthClick}
                         disabled={disableNextMonth}
                         size="medium"
                         icon={<RightIcon />}
                         assistiveText="Next Month"
+                        tabIndex={-1}
+                        onKeyDown={handleHeaderElementKeyDown}
+                        onFocus={() => updateFocusedItem(3)}
+                        onBlur={clearFocusedItems}
                     />
                 </StyledControlsContainer>
                 <StyledContainer>
