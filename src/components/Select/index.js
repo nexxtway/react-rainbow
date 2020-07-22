@@ -55,7 +55,6 @@ class Select extends Component {
             onFocus,
             onBlur,
             onClick,
-            onKeyDown,
             bottomHelpText,
             error,
             required,
@@ -84,7 +83,6 @@ class Select extends Component {
                         onFocus={onFocus}
                         onBlur={onBlur}
                         onClick={onClick}
-                        onKeyDown={onKeyDown}
                         value={value}
                         tabIndex={tabIndex}
                         required={required}
@@ -148,8 +146,6 @@ Select.propTypes = {
     hideLabel: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    /** The action triggered when a key is pressed on the element. */
-    onKeyDown: PropTypes.func,
 };
 
 Select.defaultProps = {
@@ -170,7 +166,6 @@ Select.defaultProps = {
     id: undefined,
     hideLabel: false,
     tabIndex: undefined,
-    onKeyDown: () => {},
 };
 
 export default withReduxForm(Select);

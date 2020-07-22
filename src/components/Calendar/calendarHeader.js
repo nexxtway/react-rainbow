@@ -47,7 +47,7 @@ export default function SingleCalendarHeader(props) {
     }, [updateFocusedItem]);
 
     return (
-        <StyledControlsContainer>
+        <StyledControlsContainer onKeyDown={handleKeyDown}>
             <StyledMonthContainer>
                 <StyledArrowButton
                     ref={refs[0]}
@@ -56,7 +56,6 @@ export default function SingleCalendarHeader(props) {
                     disabled={disablePreviousMonth}
                     icon={<LeftIcon />}
                     assistiveText="Previous Month"
-                    onKeyDown={handleKeyDown}
                     onFocus={() => updateFocusedItem(0)}
                     onBlur={clearFocusedItems}
                 />
@@ -73,7 +72,6 @@ export default function SingleCalendarHeader(props) {
                     disabled={disableNextMonth}
                     icon={<RightIcon />}
                     assistiveText="Next Month"
-                    onKeyDown={handleKeyDown}
                     onFocus={() => updateFocusedItem(1)}
                     onBlur={clearFocusedItems}
                 />
@@ -87,7 +85,6 @@ export default function SingleCalendarHeader(props) {
                 options={yearsRange}
                 onChange={onYearChange}
                 onClick={handleYearSelectClick}
-                onKeyDown={handleKeyDown}
                 onFocus={() => updateFocusedItem(2)}
                 onBlur={clearFocusedItems}
             />
