@@ -1,13 +1,13 @@
-import React, { useRef, useState, useMemo, useEffect, useCallback } from 'react';
+import React, { useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { RIGHT_KEY, LEFT_KEY } from '../../../libs/constants';
-import Select from '../../Select';
-import RightIcon from '../icons/rightArrow';
-import LeftIcon from '../icons/leftArrow';
-import StyledControlsContainer from '../styled/controlsContainer';
-import StyledMonthContainer from '../styled/monthContainer';
-import StyledMonth from '../styled/month';
-import StyledArrowButton from '../styled/arrowButton';
+import Select from '../Select';
+import RightIcon from './icons/rightArrow';
+import LeftIcon from './icons/leftArrow';
+import StyledControlsContainer from './styled/controlsContainer';
+import StyledMonthContainer from './styled/monthContainer';
+import StyledMonth from './styled/month';
+import StyledArrowButton from './styled/arrowButton';
+import useHeaderArrowNav from './hooks/useHeaderArrowNav';
 
 export default function SingleCalendarHeader(props) {
     const {
@@ -22,68 +22,29 @@ export default function SingleCalendarHeader(props) {
         onYearChange,
     } = props;
 
-    const [enableNavKeys, setEnableNavKeys] = useState(false);
     const refs = [useRef(), useRef(), useRef()];
-    const [focusedItemIndex, setFocusedItemIndex] = useState(-1);
+    const { updateFocusedItem, clearFocusedItems, handleKeyDown } = useHeaderArrowNav({
+        disableNextMonth,
+        disablePreviousMonth,
+        refs,
+        delta: disableNextMonth ? 2 : 1,
+        firstIndex: disablePreviousMonth ? 1 : 0,
+        lastIndex: 2,
+    });
 
     const handlePrevMonthClick = useCallback(() => {
         onPrevMonthClick();
-        setFocusedItemIndex(0);
-    }, [onPrevMonthClick]);
+        updateFocusedItem(0);
+    }, [onPrevMonthClick, updateFocusedItem]);
 
     const handleNextMonthClick = useCallback(() => {
         onNextMonthClick();
-        setFocusedItemIndex(1);
-    }, [onNextMonthClick]);
+        updateFocusedItem(1);
+    }, [onNextMonthClick, updateFocusedItem]);
 
     const handleYearSelectClick = useCallback(() => {
-        setFocusedItemIndex(2);
-    }, []);
-
-    const keyHandlerMap = useMemo(
-        () => ({
-            [LEFT_KEY]: () => {
-                const delta = disableNextMonth ? 2 : 1;
-                const firstIndx = disablePreviousMonth ? 1 : 0;
-                setFocusedItemIndex(Math.max(focusedItemIndex - delta, firstIndx));
-            },
-            [RIGHT_KEY]: () => {
-                const delta = disableNextMonth ? 2 : 1;
-                setFocusedItemIndex(Math.min(focusedItemIndex + delta, refs.length - 1));
-            },
-        }),
-        [disableNextMonth, disablePreviousMonth, focusedItemIndex, refs.length],
-    );
-
-    const handleKeyDown = useCallback(
-        event => {
-            if (disableNextMonth && disablePreviousMonth) return;
-            if (enableNavKeys) {
-                const { keyCode } = event;
-                if (keyHandlerMap[keyCode]) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    keyHandlerMap[keyCode]();
-                }
-            }
-        },
-        [enableNavKeys, keyHandlerMap, disableNextMonth, disablePreviousMonth],
-    );
-
-    const handleOnFocus = useCallback(index => {
-        setFocusedItemIndex(index);
-        setEnableNavKeys(true);
-    }, []);
-
-    const handleOnBlur = useCallback(() => {
-        setEnableNavKeys(false);
-    }, []);
-
-    useEffect(() => {
-        if (enableNavKeys && refs[focusedItemIndex].current) {
-            refs[focusedItemIndex].current.focus();
-        }
-    }, [enableNavKeys, focusedItemIndex, refs]);
+        updateFocusedItem(2);
+    }, [updateFocusedItem]);
 
     return (
         <StyledControlsContainer>
@@ -96,8 +57,8 @@ export default function SingleCalendarHeader(props) {
                     icon={<LeftIcon />}
                     assistiveText="Previous Month"
                     onKeyDown={handleKeyDown}
-                    onFocus={() => handleOnFocus(0)}
-                    onBlur={handleOnBlur}
+                    onFocus={() => updateFocusedItem(0)}
+                    onBlur={clearFocusedItems}
                 />
 
                 <StyledMonth id={monthLabelId} data-id="month">
@@ -113,8 +74,8 @@ export default function SingleCalendarHeader(props) {
                     icon={<RightIcon />}
                     assistiveText="Next Month"
                     onKeyDown={handleKeyDown}
-                    onFocus={() => handleOnFocus(1)}
-                    onBlur={handleOnBlur}
+                    onFocus={() => updateFocusedItem(1)}
+                    onBlur={clearFocusedItems}
                 />
             </StyledMonthContainer>
             <Select
@@ -127,8 +88,8 @@ export default function SingleCalendarHeader(props) {
                 onChange={onYearChange}
                 onClick={handleYearSelectClick}
                 onKeyDown={handleKeyDown}
-                onFocus={() => handleOnFocus(2)}
-                onBlur={handleOnBlur}
+                onFocus={() => updateFocusedItem(2)}
+                onBlur={clearFocusedItems}
             />
         </StyledControlsContainer>
     );

@@ -21,7 +21,7 @@ import {
     isSameDatesRange,
     isEmptyRange,
 } from './helpers';
-import CalendarHeader from './calendarHeader/single';
+import CalendarHeader from './calendarHeader';
 import StyledTable from './styled/table';
 import {
     UP_KEY,
