@@ -40,7 +40,6 @@ export default function useHeaderArrowNav({
                 const { keyCode } = event;
                 if (keyHandlerMap[keyCode]) {
                     event.preventDefault();
-                    event.stopPropagation();
                     keyHandlerMap[keyCode]();
                 }
             }
