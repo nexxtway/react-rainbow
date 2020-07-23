@@ -1,62 +1,75 @@
-import React, { useRef } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { uniqueId } from '../../libs/utils';
 import StyledButtonItem from './styled/buttonItem';
 import StyledButtonItemLabel from './styled/buttonItemLabel';
 import StyledInput from './styled/input';
-import { useUniqueIdentifier, useFixFocus } from '../../libs/hooks';
+import { isFirefox, isSafari } from '../../libs/validation';
 
-export default function RadioButtonItem(props) {
-    const {
-        itemRef,
-        label,
-        ariaDescribedby,
-        onChange,
-        value,
-        disabled,
-        isChecked,
-        name,
-        required,
-        variant,
-        size,
-    } = props;
-    const radioId = useUniqueIdentifier('radiobutton');
-    const inputRef = useRef();
+export default class RadioButtonItem extends Component {
+    constructor(props) {
+        super(props);
+        this.radioId = uniqueId('radiobutton');
+        this.buttonRef = React.createRef();
+        this.handleClick = this.handleClick.bind(this);
+    }
 
-    useFixFocus(inputRef);
+    handleClick() {
+        if (isFirefox() || isSafari()) {
+            this.buttonRef.current.focus();
+        }
+    }
 
-    return (
-        <StyledButtonItem
-            data-id="radio-button-group_radio-container"
-            variant={variant}
-            size={size}
-            isChecked={isChecked}
-            disabled={disabled}
-            ref={itemRef}
-        >
-            <StyledInput
-                type="radio"
-                ref={inputRef}
-                required={required}
-                id={radioId}
-                name={name}
-                value={value}
-                checked={isChecked}
-                aria-describedby={ariaDescribedby}
-                onChange={onChange}
-                disabled={disabled}
-            />
+    render() {
+        const {
+            itemRef,
+            label,
+            ariaDescribedby,
+            onChange,
+            value,
+            disabled,
+            isChecked,
+            name,
+            required,
+            variant,
+            size,
+        } = this.props;
 
-            <StyledButtonItemLabel
-                disabled={disabled}
-                isChecked={isChecked}
+        return (
+            <StyledButtonItem
+                data-id="radio-button-group_radio-container"
                 variant={variant}
-                htmlFor={radioId}
                 size={size}
+                isChecked={isChecked}
+                disabled={disabled}
+                onClick={this.handleClick}
+                ref={itemRef}
             >
-                {label}
-            </StyledButtonItemLabel>
-        </StyledButtonItem>
-    );
+                <StyledInput
+                    type="radio"
+                    required={required}
+                    id={this.radioId}
+                    name={name}
+                    value={value}
+                    checked={isChecked}
+                    aria-describedby={ariaDescribedby}
+                    onChange={onChange}
+                    disabled={disabled}
+                    ref={this.buttonRef}
+                />
+
+                <StyledButtonItemLabel
+                    disabled={disabled}
+                    isChecked={isChecked}
+                    variant={variant}
+                    htmlFor={this.radioId}
+                    size={size}
+                >
+                    {label}
+                </StyledButtonItemLabel>
+            </StyledButtonItem>
+        );
+    }
 }
 
 RadioButtonItem.propTypes = {

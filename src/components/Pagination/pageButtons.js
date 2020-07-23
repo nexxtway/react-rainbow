@@ -32,8 +32,8 @@ export default function PageButtons(props) {
                             page={page}
                             isActivePage={isActivePage}
                             onChange={onChange}
-                            aria-current={getAriaCurrent(page)}
-                            aria-label={ariaLabel}
+                            ariaCurrent={getAriaCurrent(page)}
+                            ariaLabel={ariaLabel}
                         />
                     </StyledPageButton>
                 );
