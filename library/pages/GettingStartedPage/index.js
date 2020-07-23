@@ -193,8 +193,37 @@ export default class GettingStartedPage extends Component {
                                     alt="github logo"
                                     className="react-rainbow-getting-started_github-icon rainbow-m-right_x-small"
                                 />
-                                Create an Issue Here
+                                Create an Issue here
                             </a>
+                            <h2 className="react-rainbow-getting-started_section-heading-2">
+                                Discussions
+                            </h2>
+                            <h5 className="react-rainbow-getting-started_section-heading-5">
+                                While using our components on your project and/or collaborating with
+                                the development of any of the the react-rainbow-components, you have
+                                suggestions for improvements, implementation questions, or any
+                                issues that may merit discussion. We recommend creating a
+                                “Discussions” issue type in Github.
+                            </h5>
+                            <h5 className="react-rainbow-getting-started_section-heading-5">
+                                Discussions are created through specific Github issues
+                            </h5>
+                            <a
+                                className="rainbow-link rainbow-m-left_xx-small react-rainbow-getting-started_issue-link"
+                                href="https://github.com/nexxtway/react-rainbow/issues/new?assignees=&labels=discussion&template=discussion.md&title="
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                <img
+                                    src={githublogo}
+                                    alt="github logo"
+                                    className="react-rainbow-getting-started_github-icon rainbow-m-right_x-small"
+                                />
+                                Create a Discussion here
+                            </a>
+                            <h2 className="react-rainbow-getting-started_section-heading-2">
+                                Start contributing
+                            </h2>
                             <h5 className="react-rainbow-getting-started_section-heading-5">
                                 Feel free to contribute in rainbow-components available in
                                 <a
