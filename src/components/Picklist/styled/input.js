@@ -39,20 +39,17 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
 
     ${props =>
         props.isReadOnly &&
+        !props.disabled &&
         `
         box-shadow: none;
         background-color: transparent;
         border: 2px solid transparent;
         user-select: none;
+        pointer-events: none;
         padding-left: 0;
         padding-right: 0;
         outline: 0;
-        
-        :hover {
-            cursor: text;
-        }
 
-        
         &::-ms-expand {
             display: none;
         }

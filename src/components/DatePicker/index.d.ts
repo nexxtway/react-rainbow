@@ -29,5 +29,4 @@ export interface DatePickerProps extends BaseProps {
     variant?: 'single' | 'double';
 }
 
-declare const DatePicker: ComponentType<DatePickerProps>;
-export default DatePicker;
+export default function(props: DatePickerProps): JSX.Element | null;

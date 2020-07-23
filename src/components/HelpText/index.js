@@ -1,8 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useUniqueIdentifier, useDisclosure } from '../../libs/hooks';
+import { useUniqueIdentifier, useDisclosure, useWindowResize } from '../../libs/hooks';
 import InternalOverlay from '../InternalOverlay';
 import RenderIf from '../RenderIf';
+import AssistiveText from '../AssistiveText';
 import { ESCAPE_KEY } from '../../libs/constants';
 import {
     StyledTooltip,
@@ -21,13 +22,12 @@ import {
     QuestionInverseIcon,
     WarningInverseIcon,
 } from './icons';
-import positionResolver from './helpers/positionResolver';
 
 const iconMap = {
-    question: <QuestionIcon />,
-    info: <InfoIcon />,
-    error: <ErrorIcon />,
-    warning: <WarningIcon />,
+    question: QuestionIcon,
+    info: InfoIcon,
+    error: ErrorIcon,
+    warning: WarningIcon,
 };
 
 const inverseIconMap = {
@@ -58,6 +58,8 @@ export default function HelpText(props) {
         }
     }, [closeOverlay, isFocused, openOverlay]);
 
+    useWindowResize(() => closeOverlay(), isOpen);
+
     const handleBlur = () => {
         if (!isClickTooltip.current) {
             setIsFocused(false);
@@ -68,7 +70,7 @@ export default function HelpText(props) {
         if (!isFocused) {
             setTimeout(() => {
                 if (!isHoverTooltip.current) closeOverlay();
-            });
+            }, 50);
         }
     };
 
@@ -99,12 +101,15 @@ export default function HelpText(props) {
         }
     };
 
-    const icon = iconMap[variant] || iconMap.info;
+    const Icon = iconMap[variant] || iconMap.info;
     const inverseIcon = inverseIconMap[variant] || inverseIconMap.info;
 
     return (
         <>
             <StyledButton
+                id={id}
+                className={className}
+                style={style}
                 ref={triggerRef}
                 onMouseEnter={openOverlay}
                 onMouseLeave={handleButtonMouseLeave}
@@ -114,16 +119,14 @@ export default function HelpText(props) {
                 type="button"
                 tabIndex={tabIndex}
                 ariaLabelledby={helpTextId}
-                id={id}
-                className={className}
-                style={style}
+                variant={variant}
             >
-                {icon}
+                <Icon isFocused={isFocused} />
+                <AssistiveText text={variant} />
             </StyledButton>
             <RenderIf isTrue={!!text}>
                 <InternalOverlay
                     isVisible={isOpen}
-                    positionResolver={positionResolver}
                     render={() => {
                         return (
                             <StyledTooltip
