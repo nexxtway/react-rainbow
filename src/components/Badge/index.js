@@ -29,8 +29,17 @@ Badge.propTypes = {
      * Children takes precedence over label. */
     children: PropTypes.node,
     /** The variant changes the appearance of the badge. Accepted variants include default,
-     * inverse, lightest, brand and outline-brand. This value defaults to default. */
-    variant: PropTypes.oneOf(['default', 'inverse', 'lightest', 'outline-brand', 'brand']),
+     * inverse, lightest, brand, outline-brand, warning, success and error. This value defaults to default. */
+    variant: PropTypes.oneOf([
+        'default',
+        'inverse',
+        'lightest',
+        'outline-brand',
+        'brand',
+        'warning',
+        'success',
+        'error',
+    ]),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */

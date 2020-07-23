@@ -43,6 +43,56 @@ import { Badge } from 'react-rainbow-components';
         variant="brand"
         title="the badge title"
     />
+
+    <Badge
+        className="rainbow-m-around_medium"
+        label="Warning Badge"
+        variant="warning"
+        title="the badge title"
+    />
+
+    <Badge
+        className="rainbow-m-around_medium"
+        label="Success Badge"
+        variant="success"
+        title="the badge title"
+    />
+
+    <Badge
+        className="rainbow-m-around_medium"
+        label="Error Badge"
+        variant="error"
+        title="the badge title"
+    />
+</div>
+```
+##### badges custom variant
+
+```js
+import React from 'react';
+import { Badge } from 'react-rainbow-components';
+
+<div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+    <Badge
+        className="rainbow-m-around_medium"
+        label="Signal Badge"
+        title="the badge title"
+        style={{'color': 'white', 'backgroundColor': 'forestgreen', 'boxShadow': 'inset 0 0 0 1px'}}
+    />
+
+    <Badge
+        className="rainbow-m-around_medium"
+        label="Floating Badge"
+        title="the badge title"
+        style={{'color': 'white', 'backgroundColor': 'lightsalmon', 'borderColor': 'darksalmon', 'boxShadow': 'gray 0 6px 16px -6px'}}
+    />
+
+    <Badge
+        className="rainbow-m-around_medium"
+        label="Desert Badge"
+        title="the badge title"
+        style={{'color': 'peru', 'backgroundColor': 'bisque',}}
+    />
 </div>
 ```
 
