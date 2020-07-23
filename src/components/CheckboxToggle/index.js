@@ -7,6 +7,7 @@ import RenderIf from '../RenderIf';
 import StyledLabelContainer from './styled/labelContainer';
 import StyledLabel from './styled/label';
 import HiddenElement from '../Structural/hiddenElement';
+import { isFirefox, isSafari } from '../../libs/validation';
 
 /**
  * Checkbox toggle is a checkable input that communicates if an option is true,
@@ -18,6 +19,7 @@ class CheckboxToggle extends Component {
         super(props);
         this.checkboxToggleRef = React.createRef();
         this.inputIndentifier = props.name || uniqueId('checkbox-toggle');
+        this.handleClick = this.handleClick.bind(this);
     }
 
     /**
@@ -44,6 +46,14 @@ class CheckboxToggle extends Component {
         this.checkboxToggleRef.current.blur();
     }
 
+    handleClick(event) {
+        const { onClick } = this.props;
+        onClick(event);
+        if (isFirefox() || isSafari()) {
+            this.checkboxToggleRef.current.focus();
+        }
+    }
+
     render() {
         const {
             style,
@@ -54,7 +64,6 @@ class CheckboxToggle extends Component {
             onChange,
             onFocus,
             onBlur,
-            onClick,
             id,
         } = this.props;
 
@@ -70,7 +79,7 @@ class CheckboxToggle extends Component {
                     onChange={onChange}
                     onFocus={onFocus}
                     onBlur={onBlur}
-                    onClick={onClick}
+                    onClick={this.handleClick}
                     disabled={disabled}
                     ref={this.checkboxToggleRef}
                 />

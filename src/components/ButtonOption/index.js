@@ -1,30 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { ButtonGroupPickerContext } from '../ButtonGroupPicker/context';
 import HiddenElement from '../Structural/hiddenElement';
 import { StyledLabel, StyledText } from './styled';
 import isOptionSelected from './helpers/isOptionSelected';
-import { useUniqueIdentifier } from '../../libs/hooks';
+import { useUniqueIdentifier, useFixFocus } from '../../libs/hooks';
 
 /**
  * @category Form
  */
 export default function ButtonOption(props) {
-    const inputId = useUniqueIdentifier('button-option');
     const { className, style, name, label, disabled, onClick } = props;
-
     const { type, values, name: contextName, onChange, ariaDescribedBy, size } = useContext(
         ButtonGroupPickerContext,
     );
+    const inputId = useUniqueIdentifier('button-option');
+    const inputRef = useRef();
     const checked = isOptionSelected(values, name);
 
-    const handleClick = () => onClick({ isSelected: checked });
+    useFixFocus(inputRef);
 
     return (
         <StyledLabel
             className={className}
             style={style}
-            onClick={handleClick}
+            onClick={() => onClick({ isSelected: checked })}
             checked={checked}
             htmlFor={inputId}
         >
@@ -38,6 +38,7 @@ export default function ButtonOption(props) {
                 checked={checked}
                 onChange={onChange}
                 disabled={disabled}
+                ref={inputRef}
             />
             <StyledText size={size} disabled={disabled} checked={checked}>
                 {label}

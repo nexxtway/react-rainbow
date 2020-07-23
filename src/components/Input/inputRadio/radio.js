@@ -4,12 +4,14 @@ import { uniqueId } from '../../../libs/utils';
 import Label from '../checkboxRadioLabel';
 import StyledContainer from './styled/container';
 import StyledRadioInput from './styled/radio';
+import { isFirefox, isSafari } from '../../../libs/validation';
 
 export default class Radio extends Component {
     constructor(props) {
         super(props);
         this.inputId = uniqueId('input-radio');
         this.inputRef = React.createRef();
+        this.handleClick = this.handleClick.bind(this);
     }
 
     /**
@@ -36,6 +38,14 @@ export default class Radio extends Component {
         this.inputRef.current.blur();
     }
 
+    handleClick(event) {
+        const { onClick } = this.props;
+        onClick(event);
+        if (isFirefox() || isSafari()) {
+            this.inputRef.current.focus();
+        }
+    }
+
     render() {
         const {
             name,
@@ -44,7 +54,6 @@ export default class Radio extends Component {
             tabIndex,
             onFocus,
             onBlur,
-            onClick,
             onKeyDown,
             disabled,
             checked,
@@ -67,10 +76,7 @@ export default class Radio extends Component {
                     tabIndex={tabIndex}
                     onFocus={onFocus}
                     onBlur={onBlur}
-                    onClick={event => {
-                        this.inputRef.current.focus();
-                        onClick(event);
-                    }}
+                    onClick={this.handleClick}
                     onKeyDown={onKeyDown}
                     disabled={disabled}
                     checked={checked}

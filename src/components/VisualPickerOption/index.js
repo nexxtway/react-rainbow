@@ -11,11 +11,13 @@ import StyledLabel from './styled/label';
 import StyledContent from './styled/content';
 import StyledCheckedTriangle from './styled/checkedTriangle';
 import StyledFooter from './styled/footer';
+import { isFirefox, isSafari } from '../../libs/validation';
 
 class PickerOption extends Component {
     constructor(props) {
         super(props);
         this.inputId = uniqueId('radio');
+        this.inputRef = React.createRef();
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -39,6 +41,9 @@ class PickerOption extends Component {
     handleChange(event) {
         const { name, privateOnChange } = this.props;
         privateOnChange(name, event.target.checked);
+        if (isFirefox() || isSafari) {
+            this.inputRef.current.focus();
+        }
     }
 
     render() {
@@ -60,6 +65,7 @@ class PickerOption extends Component {
                     aria-describedby={ariaDescribedby}
                     onChange={this.handleChange}
                     disabled={disabled}
+                    ref={this.inputRef}
                 />
 
                 <StyledLabel data-id="visual-picker_option-label" htmlFor={this.inputId}>

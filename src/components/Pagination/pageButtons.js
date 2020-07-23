@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import getFirstItem from './getFirstItem';
 import StyledPageButton from './styled/pageButton';
-import StyledButton from './styled/button';
+import Button from './button';
 
 export default function PageButtons(props) {
     const { pages, activePage, onChange } = props;
@@ -28,14 +28,13 @@ export default function PageButtons(props) {
 
                 return (
                     <StyledPageButton key={key} pages={pages}>
-                        <StyledButton
+                        <Button
+                            page={page}
                             isActivePage={isActivePage}
-                            onClick={event => onChange(event, page)}
+                            onChange={onChange}
                             aria-current={getAriaCurrent(page)}
                             aria-label={ariaLabel}
-                        >
-                            <span>{page}</span>
-                        </StyledButton>
+                        />
                     </StyledPageButton>
                 );
             });

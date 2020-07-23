@@ -4,12 +4,14 @@ import { uniqueId } from '../../../libs/utils';
 import Label from '../checkboxRadioLabel';
 import StyledContainer from './styled/container';
 import StyledCheckboxInput from './styled/checkbox';
+import { isFirefox, isSafari } from '../../../libs/validation';
 
 export default class Checkbox extends Component {
     constructor(props) {
         super(props);
         this.inputId = uniqueId('input-checkbox');
         this.inputRef = React.createRef();
+        this.handleClick = this.handleClick.bind(this);
     }
 
     /**
@@ -36,6 +38,14 @@ export default class Checkbox extends Component {
         this.inputRef.current.blur();
     }
 
+    handleClick(event) {
+        const { onClick } = this.props;
+        onClick(event);
+        if (isFirefox() || isSafari()) {
+            this.inputRef.current.focus();
+        }
+    }
+
     render() {
         const {
             name,
@@ -44,7 +54,6 @@ export default class Checkbox extends Component {
             tabIndex,
             onFocus,
             onBlur,
-            onClick,
             onKeyDown,
             disabled,
             checked,
@@ -67,7 +76,7 @@ export default class Checkbox extends Component {
                     tabIndex={tabIndex}
                     onFocus={onFocus}
                     onBlur={onBlur}
-                    onClick={onClick}
+                    onClick={this.handleClick}
                     onKeyDown={onKeyDown}
                     disabled={disabled}
                     checked={checked}
