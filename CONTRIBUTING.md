@@ -14,6 +14,10 @@ When you create an issue, you will need to select one of these issue types and f
 
 When you write the issue title please follow this convention: `type: [description]`.This issue title follows the same convention of the commit message. See: [How to Write a Git Commit Message](https://www.conventionalcommits.org/en/v1.0.0-beta.2/) for a great explanation.
 
+## Discussion
+
+While using our components on your project and/or collaborating with the development of any of the the react-rainbow-components, you have suggestions for improvements, implementation questions, or any issues that may merit discussion. We recommend creating a “Discussions” issue type in Github.
+
 ## Submitting a pull request
 
 React Rainbow Components is a community project, so pull requests are always welcome, but, before working on a large change, it is best to open an issue first to discuss it.
