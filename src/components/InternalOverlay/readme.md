@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
 import styled from 'styled-components';
 import RenderIf from '../RenderIf';
-import { useWindowResize, useOutsideClick } from '../../libs/hooks';
+import { useOutsideClick, useWindowResize } from '../../libs/hooks';
 
 const Container = styled.div`
     height: 240px;
@@ -105,7 +105,7 @@ import { useRef, useState } from 'react';
 import { Button, ButtonIcon } from 'react-rainbow-components';
 import styled from 'styled-components';
 import RenderIf from '../RenderIf';
-import { useWindowResize, useOutsideClick } from '../../libs/hooks';
+import { useOutsideClick, useWindowResize } from '../../libs/hooks';
 
 const Container = styled.div`
     height: 240px;

@@ -4,9 +4,7 @@ import MenuContent from './menuContent';
 import { Provider } from './context';
 import { findItemByKey, findItemIndex, insertChildOrderly, getChildMenuItemNodes } from './utils';
 import { UP_KEY, DOWN_KEY, ESCAPE_KEY, TAB_KEY, ENTER_KEY } from './../../libs/constants';
-import StyledContainer from './styled/container';
-import StyledDropdown from './styled/dropdown';
-import StyledContent from './styled/content';
+import { StyledContainer, StyledDropdown, StyledContent } from './styled';
 
 export default class PrimitiveMenu extends Component {
     constructor(props) {

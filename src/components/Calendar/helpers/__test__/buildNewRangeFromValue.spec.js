@@ -18,14 +18,21 @@ describe('buildNewRangeFromValue', () => {
             range: [date1, date2],
         });
     });
-    it('should return array with two dates and date3 as first date', () => {
+    it('should return array with single date equal to value when value is outside range', () => {
         const date1 = new Date(2019, 0, 2);
         const date2 = new Date(2019, 0, 21, 23, 59, 59, 999);
         const date3 = new Date(2019, 0, 15);
         const range = [date1, date2];
         expect(buildNewRangeFromValue(date3, range)).toEqual({
-            range: [date3, date2],
-            nextUpdatePosition: 1,
+            range: [date3],
+        });
+    });
+    it('should return array with single date equal to value when only range start is specified and value is before', () => {
+        const date1 = new Date(2019, 0, 2);
+        const date3 = new Date(2019, 0, 15);
+        const range = [date3];
+        expect(buildNewRangeFromValue(date1, range)).toEqual({
+            range: [date1],
         });
     });
 });

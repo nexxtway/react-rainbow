@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const Label = attachThemeAttrs(styled.h1)`
+const Label = attachThemeAttrs(styled.span)`
     margin: 0;
     padding: 0;
     font-weight: inherit;
@@ -12,6 +12,13 @@ const Label = attachThemeAttrs(styled.h1)`
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+
+    ${props =>
+        props.isSelected &&
+        `
+        color: ${props.palette.getContrastText(props.palette.brand.light)};
+        font-weight: 900;
+    `};
 `;
 
 export default Label;
