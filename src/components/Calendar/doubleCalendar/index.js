@@ -21,17 +21,14 @@ import {
     useHandleKeyDown,
 } from './hooks';
 import YearSelect from './yearSelect';
-import StyledControlsContainer from '../styled/controlsContainer';
 import StyledArrowButton from '../styled/arrowButton';
 import StyledTable from '../styled/table';
 import {
-    StyledContainer,
     StyledCalendar,
-    StyledDivider,
-    StyledCalendarWrapper,
     StyledSection,
     StyledHeaderContainer,
     StyledMonth,
+    StyledControlsContainer,
 } from './styled';
 import shouldUpdateCurrentMonth from './helpers/shouldUpdateCurrentMonth';
 import useHeaderArrowNav from '../hooks/useHeaderArrowNav';
@@ -167,128 +164,119 @@ export default function DoubleCalendar(props) {
 
     return (
         <StyledSection id={id} className={className} style={style} data-calendar-type="double">
-            <StyledCalendarWrapper>
-                <StyledControlsContainer>
-                    <StyledArrowButton
-                        ref={headerElementsRefs[0]}
-                        onClick={prevMonthClick}
-                        disabled={disablePreviousMonth}
-                        size="medium"
-                        icon={<LeftIcon />}
-                        assistiveText="Previous Month"
+            <StyledControlsContainer>
+                <StyledArrowButton
+                    ref={headerElementsRefs[0]}
+                    onClick={prevMonthClick}
+                    disabled={disablePreviousMonth}
+                    size="medium"
+                    icon={<LeftIcon />}
+                    assistiveText="Previous Month"
+                    onKeyDown={handleHeaderElementKeyDown}
+                    onFocus={() => updateFocusedItem(0)}
+                    onBlur={clearFocusedItems}
+                />
+                <StyledHeaderContainer>
+                    <StyledMonth id={currentMonthLabelId} data-id="month">
+                        {currentMonthFormattedLabel}
+                    </StyledMonth>
+                    <YearSelect
+                        ref={headerElementsRefs[1]}
+                        currentYear={currentYear}
+                        yearsRange={yearsRange}
+                        onYearChange={handleLeftCalendarYearChange}
+                        tabIndex={disablePreviousMonth ? undefined : -1}
+                        onClick={() => updateFocusedItem(1)}
                         onKeyDown={handleHeaderElementKeyDown}
-                        onFocus={() => updateFocusedItem(0)}
+                        onFocus={() => updateFocusedItem(1)}
                         onBlur={clearFocusedItems}
                     />
-                    <StyledHeaderContainer>
-                        <StyledMonth id={currentMonthLabelId} data-id="month">
-                            {currentMonthFormattedLabel}
-                        </StyledMonth>
-                        <YearSelect
-                            ref={headerElementsRefs[1]}
-                            currentYear={currentYear}
-                            yearsRange={yearsRange}
-                            onYearChange={handleLeftCalendarYearChange}
-                            tabIndex={disablePreviousMonth ? undefined : -1}
-                            onClick={() => updateFocusedItem(1)}
-                            onKeyDown={handleHeaderElementKeyDown}
-                            onFocus={() => updateFocusedItem(1)}
-                            onBlur={clearFocusedItems}
-                        />
-                    </StyledHeaderContainer>
-                </StyledControlsContainer>
-                <StyledContainer>
-                    <Provider
-                        value={{
-                            useAutoFocus: enableNavKeys,
-                            focusedDate,
-                            selectionType,
-                            selectedRange,
-                            currentRange,
-                            privateOnFocus: handleOnDayFocus,
-                            privateOnBlur: handleOnDayBlur,
-                            privateKeyDown: handleKeyDown,
-                            privateOnHover: handleOnDayHover,
-                        }}
-                    >
-                        <StyledCalendar>
-                            <StyledTable role="grid" aria-labelledby={currentMonthLabelId}>
-                                <DaysOfWeek locale={locale} />
-                                <Month
-                                    value={value}
-                                    firstDayMonth={currentMonth}
-                                    minDate={minDate}
-                                    maxDate={maxDate}
-                                    onChange={onChange}
-                                    selectedRange={currentRange}
-                                />
-                            </StyledTable>
-                        </StyledCalendar>
-                    </Provider>
-                </StyledContainer>
-            </StyledCalendarWrapper>
-            <StyledDivider />
-            <StyledCalendarWrapper>
-                <StyledControlsContainer>
-                    <StyledHeaderContainer>
-                        <StyledMonth id={rightMonthLabelId} data-id="month">
-                            {rightMonthFormattedLabel}
-                        </StyledMonth>
-                        <YearSelect
-                            ref={headerElementsRefs[2]}
-                            currentYear={rightCalendarYear}
-                            yearsRange={yearsRange}
-                            onYearChange={handleRightCalendarYearChange}
-                            tabIndex={-1}
-                            onClick={() => updateFocusedItem(2)}
-                            onKeyDown={handleHeaderElementKeyDown}
-                            onFocus={() => updateFocusedItem(2)}
-                            onBlur={clearFocusedItems}
-                        />
-                    </StyledHeaderContainer>
-                    <StyledArrowButton
-                        ref={headerElementsRefs[3]}
-                        onClick={nextMonthClick}
-                        disabled={disableNextMonth}
-                        size="medium"
-                        icon={<RightIcon />}
-                        assistiveText="Next Month"
+                </StyledHeaderContainer>
+            </StyledControlsContainer>
+            <StyledControlsContainer>
+                <StyledHeaderContainer>
+                    <StyledMonth id={rightMonthLabelId} data-id="month">
+                        {rightMonthFormattedLabel}
+                    </StyledMonth>
+                    <YearSelect
+                        ref={headerElementsRefs[2]}
+                        currentYear={rightCalendarYear}
+                        yearsRange={yearsRange}
+                        onYearChange={handleRightCalendarYearChange}
                         tabIndex={-1}
+                        onClick={() => updateFocusedItem(2)}
                         onKeyDown={handleHeaderElementKeyDown}
-                        onFocus={() => updateFocusedItem(3)}
+                        onFocus={() => updateFocusedItem(2)}
                         onBlur={clearFocusedItems}
                     />
-                </StyledControlsContainer>
-                <StyledContainer>
-                    <Provider
-                        value={{
-                            useAutoFocus: enableNavKeys,
-                            focusedDate,
-                            selectionType,
-                            selectedRange,
-                            currentRange,
-                            privateOnFocus: handleOnDayFocus,
-                            privateOnBlur: handleOnDayBlur,
-                            privateKeyDown: handleKeyDown,
-                            privateOnHover: handleOnDayHover,
-                        }}
-                    >
-                        <StyledCalendar>
-                            <StyledTable role="grid" aria-labelledby={rightMonthLabelId}>
-                                <DaysOfWeek locale={locale} />
-                                <Month
-                                    value={value}
-                                    firstDayMonth={rightCalendarMonth}
-                                    minDate={minDate}
-                                    maxDate={maxDate}
-                                    onChange={onChange}
-                                    selectedRange={currentRange}
-                                />
-                            </StyledTable>
-                        </StyledCalendar>
-                    </Provider>
-                </StyledContainer>
-            </StyledCalendarWrapper>
+                </StyledHeaderContainer>
+                <StyledArrowButton
+                    ref={headerElementsRefs[3]}
+                    onClick={nextMonthClick}
+                    disabled={disableNextMonth}
+                    size="medium"
+                    icon={<RightIcon />}
+                    assistiveText="Next Month"
+                    tabIndex={-1}
+                    onKeyDown={handleHeaderElementKeyDown}
+                    onFocus={() => updateFocusedItem(3)}
+                    onBlur={clearFocusedItems}
+                />
+            </StyledControlsContainer>
+            <StyledCalendar>
+                <Provider
+                    value={{
+                        useAutoFocus: enableNavKeys,
+                        focusedDate,
+                        selectionType,
+                        selectedRange,
+                        currentRange,
+                        privateOnFocus: handleOnDayFocus,
+                        privateOnBlur: handleOnDayBlur,
+                        privateKeyDown: handleKeyDown,
+                        privateOnHover: handleOnDayHover,
+                    }}
+                >
+                    <StyledTable role="grid" aria-labelledby={currentMonthLabelId}>
+                        <DaysOfWeek locale={locale} />
+                        <Month
+                            value={value}
+                            firstDayMonth={currentMonth}
+                            minDate={minDate}
+                            maxDate={maxDate}
+                            onChange={onChange}
+                            selectedRange={currentRange}
+                        />
+                    </StyledTable>
+                </Provider>
+            </StyledCalendar>
+            <StyledCalendar>
+                <Provider
+                    value={{
+                        useAutoFocus: enableNavKeys,
+                        focusedDate,
+                        selectionType,
+                        selectedRange,
+                        currentRange,
+                        privateOnFocus: handleOnDayFocus,
+                        privateOnBlur: handleOnDayBlur,
+                        privateKeyDown: handleKeyDown,
+                        privateOnHover: handleOnDayHover,
+                    }}
+                >
+                    <StyledTable role="grid" aria-labelledby={rightMonthLabelId}>
+                        <DaysOfWeek locale={locale} />
+                        <Month
+                            value={value}
+                            firstDayMonth={rightCalendarMonth}
+                            minDate={minDate}
+                            maxDate={maxDate}
+                            onChange={onChange}
+                            selectedRange={currentRange}
+                        />
+                    </StyledTable>
+                </Provider>
+            </StyledCalendar>
         </StyledSection>
     );
 }
