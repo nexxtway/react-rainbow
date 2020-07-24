@@ -37,6 +37,15 @@ class PageInternalDropdown {
     }
 
     /**
+     * It moves the pointer over the menu item.
+     * @method
+     */
+    hover() {
+        const itemElement = $(`${this.rootElement} > div[role="option"]`);
+        itemElement.moveTo();
+    }
+
+    /**
      * Get the number of registered options.
      * @method
      * @returns {number}
@@ -74,6 +83,73 @@ class PageInternalDropdown {
             right: x + width,
             bottom: y + height,
         };
+    }
+
+    /**
+     * Returns true when the arrow to scroll down exits, false otherwise.
+     * @method
+     * @returns {bool}
+     */
+    arrowDownExists() {
+        return $(this.rootElement)
+            .$('[data-id="internal-dropdown-arrow-down"]')
+            .isExisting();
+    }
+
+    /**
+     * Returns true when the arrow to scroll down exits, false otherwise.
+     * @method
+     * @returns {bool}
+     */
+    arrowUpExists() {
+        return $(this.rootElement)
+            .$('[data-id="internal-dropdown-arrow-up"]')
+            .isExisting();
+    }
+    /**
+     * Returns true when the search no results found, false otherwise.
+     * @method
+     * @returns {bool}
+     */
+    emptyMessageExist() {
+        return $(this.rootElement)
+            .$('p*=Our robots')
+            .isExisting();
+    }
+
+    /**
+     * Clicks the input element.
+     * @method
+     */
+    clickInputSearch() {
+        $(this.rootElement)
+            .$('input[type="search"]')
+            .click();
+    }
+    /**
+     * Type in the input element.
+     * @method
+     * @param {string} value - The value to type in the input element.
+     */
+    setSearchCriteria(value) {
+        $(this.rootElement)
+            .$('input[type="search"]')
+            .setValue(value);
+    }
+    /**
+     * Returns true when the menu item is visible inside the menu container.
+     * @method
+     * @returns {bool}
+     */
+    isVisible() {
+        return $(this.rootElement).isDisplayedInViewport();
+    }
+    /**
+     *  Wait until the option is visible.
+     * @method
+     */
+    waitUntilIsVisible() {
+        browser.waitUntil(() => this.isVisible());
     }
 }
 
