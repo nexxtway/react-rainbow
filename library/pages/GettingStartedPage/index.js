@@ -195,18 +195,15 @@ export default class GettingStartedPage extends Component {
                                 />
                                 Create an Issue here
                             </a>
-                            <h2 className="react-rainbow-getting-started_section-heading-2">
+                            <h3 className="react-rainbow-getting-started_section-heading-3">
                                 Discussions
-                            </h2>
+                            </h3>
                             <h5 className="react-rainbow-getting-started_section-heading-5">
                                 While using our components on your project and/or collaborating with
                                 the development of any of the the react-rainbow-components, you have
                                 suggestions for improvements, implementation questions, or any
                                 issues that may merit discussion. We recommend creating a
                                 “Discussions” issue type in Github.
-                            </h5>
-                            <h5 className="react-rainbow-getting-started_section-heading-5">
-                                Discussions are created through specific Github issues
                             </h5>
                             <a
                                 className="rainbow-link rainbow-m-left_xx-small react-rainbow-getting-started_issue-link"
@@ -221,9 +218,9 @@ export default class GettingStartedPage extends Component {
                                 />
                                 Create a Discussion here
                             </a>
-                            <h2 className="react-rainbow-getting-started_section-heading-2">
+                            <h3 className="react-rainbow-getting-started_section-heading-3">
                                 Start contributing
-                            </h2>
+                            </h3>
                             <h5 className="react-rainbow-getting-started_section-heading-5">
                                 Feel free to contribute in rainbow-components available in
                                 <a
@@ -261,7 +258,7 @@ export default class GettingStartedPage extends Component {
                                 5. Visit GitHub and make your pull request.
                             </h5>
                             <a
-                                className="rainbow-link rainbow-m-left_xx-small react-rainbow-getting-started_issue-link"
+                                className="rainbow-link rainbow-m-left_xx-small react-rainbow-getting-started_issue-link rainbow-m-bottom_large"
                                 href="https://github.com/nexxtway/react-rainbow/blob/master/CONTRIBUTING.md"
                                 rel="noopener noreferrer"
                                 target="_blank"
