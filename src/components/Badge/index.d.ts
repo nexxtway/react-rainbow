@@ -5,7 +5,15 @@ export interface BadgeProps extends BaseProps {
     label?: ReactNode;
     title?: string;
     children?: ReactNode;
-    variant?: 'default' | 'inverse' | 'lightest' | 'outline-brand' | 'brand';
+    variant?:
+        | 'default'
+        | 'inverse'
+        | 'lightest'
+        | 'outline-brand'
+        | 'brand'
+        | 'warning'
+        | 'success'
+        | 'error';
 }
 
 export default function(props: BadgeProps): JSX.Element | null;
