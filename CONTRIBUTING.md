@@ -11,8 +11,13 @@ When you create an issue, you will need to select one of these issue types and f
 1. Bug report (Create a bug report to help us improve React Rainbow Components)
 2. Feature request (Suggest an idea for React Rainbow Components)
 3. New Component (Suggest a new component idea for React Rainbow Components)
+4. Discussion (Suggest an improvements, implementation questions, or any issues that may merit discussion)
 
 When you write the issue title please follow this convention: `type: [description]`.This issue title follows the same convention of the commit message. See: [How to Write a Git Commit Message](https://www.conventionalcommits.org/en/v1.0.0-beta.2/) for a great explanation.
+
+## Discussion
+
+While using our components on your project and/or collaborating with the development of any of the the react-rainbow-components, you have suggestions for improvements, implementation questions, or any issues that may merit discussion. We recommend creating a “Discussions” issue type in Github.
 
 ## Submitting a pull request
 
@@ -114,7 +119,7 @@ It is simple. Only have to go through the following steps:
 
 1. Following this directory `src/components/` create a folder with the component name. The component folder has to follow this convention `[ComponentName]` in camelcase.
 
-    - Create all basic files for the components: - `index.js` This is the file where is the main logic of the component, props and methods showed in the documentation. - `styles.scss` This is the styles file in SASS. - `readme.md` The have the Interactive Example for the component.
+    - Create all basic files for the components: - `index.js` This is the file where is the main logic of the component, props and methods showed in the documentation. - `styled` In this folder will be the file `index.js` with the styles of the component using `styled-components`  - `readme.md` The have the Interactive Example for the component.
     - Depending on the functionality and complexity of the component it will be necessary also to add: - `_test_` In this folder will be the files `componentName.spec.js` with the tests of the component. - `pageObject` In this folder will be the file index.js with the Page Object of the component.(If the component need integrationTest)
 
 2. If the component needs Integration Test then follow this directory `integration/specs/`, create a folder with the component name. The component folder has to follow this convention `[ComponentName]` in camelcase.
