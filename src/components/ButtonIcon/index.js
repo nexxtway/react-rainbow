@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AssistiveText from './../AssistiveText';
 import StyledButton from './styled/button';
+import fixFocusClick from '../../libs/fixFocusClick';
 
 /**
  * Buttons Icons provide the user with visual iconography that
@@ -11,6 +12,7 @@ export default class ButtonIcon extends Component {
     constructor(props) {
         super(props);
         this.buttonRef = React.createRef();
+        this.handleClick = this.handleClick.bind(this);
     }
 
     /**
@@ -37,13 +39,18 @@ export default class ButtonIcon extends Component {
         this.buttonRef.current.blur();
     }
 
+    handleClick(event) {
+        const { onClick } = this.props;
+        onClick(event);
+        fixFocusClick(this.buttonRef);
+    }
+
     render() {
         const {
             title,
             type,
             disabled,
             tabIndex,
-            onClick,
             onFocus,
             onBlur,
             assistiveText,
@@ -77,7 +84,7 @@ export default class ButtonIcon extends Component {
                 tabIndex={tabIndex}
                 onFocus={onFocus}
                 onBlur={onBlur}
-                onClick={onClick}
+                onClick={this.handleClick}
                 title={title}
                 type={type}
                 aria-haspopup={ariaHaspopup}

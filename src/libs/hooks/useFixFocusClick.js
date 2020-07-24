@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react';
-import { isFirefox, isSafari } from '../validation';
+import { isFirefox, isSafari } from '../fixFocusClick/helpers';
 
-export default function useFixFocus(ref) {
+export default function useFixFocusClick(ref) {
     const handleClick = useCallback(() => {
         ref.current.focus();
     }, [ref]);

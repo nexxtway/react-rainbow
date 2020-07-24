@@ -1,5 +1,5 @@
 /* eslint-disable no-script-url, react/prop-types */
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Consumer as NavigationConsumer } from '../VerticalNavigation/context';
 import { Consumer as SectionConsumer } from '../VerticalSection/context';
@@ -10,6 +10,7 @@ import StyledAnchor from './styled/anchor';
 import StyledIcon from './styled/icon';
 import StyledButton from './styled/button';
 import ItemContent from './itemContent';
+import { useFixFocusClick } from '../../libs/hooks';
 
 function Item(props) {
     const {
@@ -27,6 +28,10 @@ function Item(props) {
         isExpanded,
     } = props;
     const isSelected = name === selectedItem;
+
+    const buttonRef = useRef();
+
+    useFixFocusClick(buttonRef);
 
     const getAriaCurrent = () => {
         if (isSelected) {
@@ -78,6 +83,7 @@ function Item(props) {
                     aria-current={getAriaCurrent()}
                     tabIndex={resolveTabIndex()}
                     isSelected={isSelected}
+                    ref={buttonRef}
                 >
                     <ItemContent label={label} notification={notification} />
                 </StyledButton>

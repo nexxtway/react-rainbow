@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Content from './content';
 import StyledButton from './styled/button';
+import fixFocusClick from '../../libs/fixFocusClick';
 
 /**
  * Buttons are clickable items used to perform an action.
@@ -10,6 +11,7 @@ export default class Button extends Component {
     constructor(props) {
         super(props);
         this.buttonRef = React.createRef();
+        this.handleClick = this.handleClick.bind(this);
     }
 
     isDisabled() {
@@ -41,6 +43,12 @@ export default class Button extends Component {
         this.buttonRef.current.blur();
     }
 
+    handleClick(event) {
+        const { onClick } = this.props;
+        onClick(event);
+        fixFocusClick(this.buttonRef);
+    }
+
     render() {
         const {
             style,
@@ -49,7 +57,6 @@ export default class Button extends Component {
             tabIndex,
             onFocus,
             onBlur,
-            onClick,
             title,
             type,
             ariaHaspopup,
@@ -78,7 +85,7 @@ export default class Button extends Component {
                 tabIndex={tabIndex}
                 onFocus={onFocus}
                 onBlur={onBlur}
-                onClick={onClick}
+                onClick={this.handleClick}
                 title={title}
                 type={type}
                 aria-haspopup={ariaHaspopup}

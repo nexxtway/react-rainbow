@@ -7,7 +7,7 @@ import RenderIf from '../RenderIf';
 import StyledLabelContainer from './styled/labelContainer';
 import StyledLabel from './styled/label';
 import HiddenElement from '../Structural/hiddenElement';
-import { isFirefox, isSafari } from '../../libs/validation';
+import fixFocusClick from '../../libs/fixFocusClick';
 
 /**
  * Checkbox toggle is a checkable input that communicates if an option is true,
@@ -49,9 +49,7 @@ class CheckboxToggle extends Component {
     handleClick(event) {
         const { onClick } = this.props;
         onClick(event);
-        if (isFirefox() || isSafari()) {
-            this.checkboxToggleRef.current.focus();
-        }
+        fixFocusClick(this.checkboxToggleRef);
     }
 
     render() {

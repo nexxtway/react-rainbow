@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import AssistiveText from '../../AssistiveText';
 import StyledIndicatorLi from '../styled/indicatorLi';
 import StyledIndicatorButton from '../styled/indicatorButton';
+import fixFocusClick from '../../../libs/fixFocusClick';
 
 function getAssistiveText(header) {
     if (typeof header === 'string') {
@@ -16,6 +17,7 @@ export default class Indicator extends Component {
     constructor(props) {
         super(props);
         this.indicatorRef = React.createRef();
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -42,8 +44,14 @@ export default class Indicator extends Component {
         return selectedItem === id;
     }
 
+    handleClick() {
+        const { onSelect, indicatorID } = this.props;
+        onSelect(indicatorID);
+        fixFocusClick(this.indicatorRef);
+    }
+
     render() {
-        const { indicatorID, containerID, header, onSelect } = this.props;
+        const { indicatorID, containerID, header } = this.props;
         const assistiveText = getAssistiveText(header);
         const isSelected = this.isSelected(indicatorID);
         return (
@@ -56,7 +64,7 @@ export default class Indicator extends Component {
                     aria-selected={isSelected}
                     aria-controls={containerID}
                     title={assistiveText}
-                    onClick={() => onSelect(indicatorID)}
+                    onClick={this.handleClick}
                     ref={this.indicatorRef}
                 >
                     <AssistiveText text={assistiveText} />

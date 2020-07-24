@@ -4,7 +4,7 @@ import { ButtonGroupPickerContext } from '../ButtonGroupPicker/context';
 import HiddenElement from '../Structural/hiddenElement';
 import { StyledLabel, StyledText } from './styled';
 import isOptionSelected from './helpers/isOptionSelected';
-import { useUniqueIdentifier, useFixFocus } from '../../libs/hooks';
+import { useUniqueIdentifier, useFixFocusClick } from '../../libs/hooks';
 
 /**
  * @category Form
@@ -18,7 +18,7 @@ export default function ButtonOption(props) {
     const inputRef = useRef();
     const checked = isOptionSelected(values, name);
 
-    useFixFocus(inputRef);
+    useFixFocusClick(inputRef);
 
     return (
         <StyledLabel

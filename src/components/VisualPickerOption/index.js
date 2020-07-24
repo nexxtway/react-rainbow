@@ -11,7 +11,7 @@ import StyledLabel from './styled/label';
 import StyledContent from './styled/content';
 import StyledCheckedTriangle from './styled/checkedTriangle';
 import StyledFooter from './styled/footer';
-import { isFirefox, isSafari } from '../../libs/validation';
+import fixFocusClick from '../../libs/fixFocusClick';
 
 class PickerOption extends Component {
     constructor(props) {
@@ -41,9 +41,7 @@ class PickerOption extends Component {
     handleChange(event) {
         const { name, privateOnChange } = this.props;
         privateOnChange(name, event.target.checked);
-        if (isFirefox() || isSafari) {
-            this.inputRef.current.focus();
-        }
+        fixFocusClick(this.inputRef);
     }
 
     render() {

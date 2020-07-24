@@ -4,7 +4,7 @@ import { uniqueId } from '../../../libs/utils';
 import Label from '../checkboxRadioLabel';
 import StyledContainer from './styled/container';
 import StyledRadioInput from './styled/radio';
-import { isFirefox, isSafari } from '../../../libs/validation';
+import fixFocusClick from '../../../libs/fixFocusClick';
 
 export default class Radio extends Component {
     constructor(props) {
@@ -41,9 +41,7 @@ export default class Radio extends Component {
     handleClick(event) {
         const { onClick } = this.props;
         onClick(event);
-        if (isFirefox() || isSafari()) {
-            this.inputRef.current.focus();
-        }
+        fixFocusClick(this.inputRef);
     }
 
     render() {

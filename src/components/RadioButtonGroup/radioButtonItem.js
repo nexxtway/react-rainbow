@@ -4,7 +4,7 @@ import { uniqueId } from '../../libs/utils';
 import StyledButtonItem from './styled/buttonItem';
 import StyledButtonItemLabel from './styled/buttonItemLabel';
 import StyledInput from './styled/input';
-import { isFirefox, isSafari } from '../../libs/validation';
+import fixFocusClick from '../../libs/fixFocusClick';
 
 export default class RadioButtonItem extends Component {
     constructor(props) {
@@ -15,9 +15,7 @@ export default class RadioButtonItem extends Component {
     }
 
     handleClick() {
-        if (isFirefox() || isSafari()) {
-            this.buttonRef.current.focus();
-        }
+        fixFocusClick(this.buttonRef);
     }
 
     render() {

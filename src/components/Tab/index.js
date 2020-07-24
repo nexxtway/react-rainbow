@@ -5,6 +5,7 @@ import { Consumer } from '../Tabset/context';
 import StyledContainer from './styled/container';
 import TruncatedText from '../Structural/truncatedText';
 import StyledButton from './styled/button';
+import fixFocusClick from '../../libs/fixFocusClick';
 
 class TabItem extends Component {
     constructor(props) {
@@ -43,6 +44,7 @@ class TabItem extends Component {
         const { disabled, onSelect, name } = this.props;
         if (!disabled) {
             onSelect(e, name);
+            fixFocusClick(this.tabRef);
         }
     }
 

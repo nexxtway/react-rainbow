@@ -8,6 +8,7 @@ import StyledDayButton from './styled/dayButton';
 import StyledRangeHighlight from './styled/rangeHighlight';
 import { isSameDay, compareDates } from './helpers';
 import { useRangeStartDate, useRangeEndDate } from './hooks';
+import { useFixFocusClick } from '../../libs/hooks';
 
 function DayComponent(props) {
     const {
@@ -41,6 +42,8 @@ function DayComponent(props) {
             buttonRef.current.focus();
         }
     }, [tabIndex, useAutoFocus]);
+
+    useFixFocusClick(buttonRef);
 
     if (isAdjacentDate || isDisabled) {
         return (

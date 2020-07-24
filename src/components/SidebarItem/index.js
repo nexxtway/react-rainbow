@@ -1,5 +1,5 @@
 /* eslint-disable no-script-url, react/prop-types */
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { withContext } from '../Sidebar/context';
 import RenderIf from '../RenderIf';
@@ -7,6 +7,7 @@ import StyledLi from './styled/li';
 import StyledAnchorContent from './styled/anchorContent';
 import StyledButtonContent from './styled/buttonContent';
 import ItemContent from './itemContent';
+import { useFixFocusClick } from '../../libs/hooks';
 /**
  * @category Layout
  */
@@ -25,6 +26,10 @@ function SidebarItem(props) {
     } = props;
     const isSelected = name === selectedItem;
     const currentIcon = isSelected && !!selectedIcon ? selectedIcon : icon;
+
+    const buttonRef = useRef();
+
+    useFixFocusClick(buttonRef);
 
     const getAriaCurrent = () => {
         if (isSelected) {
@@ -62,6 +67,7 @@ function SidebarItem(props) {
                     onClick={hanldeOnClick}
                     aria-current={getAriaCurrent()}
                     isSelected={isSelected}
+                    ref={buttonRef}
                 >
                     <ItemContent isSelected={isSelected} label={label} icon={currentIcon} />
                 </StyledButtonContent>

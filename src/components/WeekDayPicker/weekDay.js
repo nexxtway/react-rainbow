@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useUniqueIdentifier } from '../../libs/hooks';
+import { useUniqueIdentifier, useFixFocusClick } from '../../libs/hooks';
 import getWeekDayLabel from './helpers/getWeekDayLabel';
 import { StyledInput, StyledWeekDayContainer, StyledWeekDayLabel } from './styled';
 
@@ -21,6 +21,11 @@ const WeekDay = React.forwardRef((props, ref) => {
     const weekDayId = useUniqueIdentifier('week-day');
     const inputType = multiple ? 'checkbox' : 'radio';
 
+    const currentRef = useRef();
+    const inputRef = ref || currentRef;
+
+    useFixFocusClick(inputRef);
+
     return (
         <StyledWeekDayContainer>
             <StyledInput
@@ -35,7 +40,7 @@ const WeekDay = React.forwardRef((props, ref) => {
                 readOnly={readOnly}
                 error={error}
                 onChange={onChange}
-                ref={ref}
+                ref={inputRef}
             />
 
             <StyledWeekDayLabel

@@ -12,6 +12,7 @@ import StyledActionContainer from './styled/actionContainer';
 import StyledActionLabel from './styled/actionLabel';
 import StyledOverflow from './styled/overflow';
 import StyledUl from './styled/ul';
+import fixFocusClick from '../../libs/fixFocusClick';
 
 /**
  * Represents an overflow of items from a preceding VerticalNavigationSection,
@@ -26,6 +27,7 @@ export default class VerticalSectionOverflow extends Component {
             isExpanded: props.expanded,
         };
         this.toggleOverflow = this.toggleOverflow.bind(this);
+        this.buttonRef = React.createRef();
     }
 
     static getDerivedStateFromProps(nextProps, state) {
@@ -44,6 +46,7 @@ export default class VerticalSectionOverflow extends Component {
         if (typeof onToggleSection === 'function') {
             return onToggleSection(event);
         }
+        fixFocusClick(this.buttonRef);
         return this.setState({ isExpanded: !isExpanded });
     }
 
@@ -68,6 +71,7 @@ export default class VerticalSectionOverflow extends Component {
                     onClick={this.toggleOverflow}
                     isExpanded={isExpanded}
                     description={description}
+                    ref={this.buttonRef}
                 >
                     <StyledActionContainer as="div">
                         <StyledActionLabel>{label}</StyledActionLabel>

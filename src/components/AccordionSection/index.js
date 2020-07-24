@@ -13,6 +13,7 @@ import StyledSummary from './styled/summary';
 import StyledHeading from './styled/heading';
 import StyledIcon from './styled/icon';
 import StyledContent from './styled/content';
+import fixFocusClick from '../../libs/fixFocusClick';
 
 class AccordionItem extends Component {
     constructor(props) {
@@ -81,6 +82,7 @@ class AccordionItem extends Component {
         const { disabled, privateOnToggleSection } = this.props;
         if (!disabled) {
             privateOnToggleSection(event, this.resolveActiveNames());
+            fixFocusClick(this.buttonRef);
         }
     }
 

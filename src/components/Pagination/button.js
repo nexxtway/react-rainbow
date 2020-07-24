@@ -1,13 +1,13 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import StyledButton from './styled/button';
-import { useFixFocus } from '../../libs/hooks';
+import { useFixFocusClick } from '../../libs/hooks';
 
 export default function Button(props) {
     const { page, ariaCurrent, ariaLabel, isActivePage, onChange } = props;
     const buttonRef = useRef();
 
-    useFixFocus(buttonRef);
+    useFixFocusClick(buttonRef);
 
     return (
         <StyledButton
