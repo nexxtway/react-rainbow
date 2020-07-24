@@ -50,6 +50,24 @@ const StyledContainer = attchThemeAttrs(styled.span).attrs(props => {
             color: ${props.palette.getContrastText(props.inverse)};
             background-color: ${props.inverse};
         `};
+    ${props =>
+        props.variant === 'warning' &&
+        `
+            color: ${props.palette.getContrastText(props.palette.warning.main)};
+            background-color: ${props.palette.warning.main};
+        `};
+    ${props =>
+        props.variant === 'success' &&
+        `
+            color: ${props.palette.getContrastText(props.palette.success.main)};
+            background-color: ${props.palette.success.main};
+        `};
+    ${props =>
+        props.variant === 'error' &&
+        `
+            color: ${props.palette.getContrastText(props.palette.error.main)};
+            background-color: ${props.palette.error.main};
+        `};
 `;
 
 export default StyledContainer;
