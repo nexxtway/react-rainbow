@@ -14,15 +14,15 @@ jobs:
 
             - restore_cache:
                   keys:
-                      - v1-dependencies-{{ checksum "yarn.lock" }}
-                      - v1-dependencies-
+                      - v2-dependencies-{{ checksum "yarn.lock" }}
+                      - v2-dependencies-
 
             - run: yarn install
 
             - save_cache:
                   paths:
                       - node_modules
-                  key: v1-dependencies-{{ checksum "yarn.lock" }}
+                  key: v2-dependencies-{{ checksum "yarn.lock" }}
 
             - run: yarn lint
 
@@ -49,8 +49,8 @@ jobs:
 
             - restore_cache:
                   keys:
-                      - v1-dependencies-{{ checksum "yarn.lock" }}
-                      - v1-dependencies-
+                      - v2-dependencies-{{ checksum "yarn.lock" }}
+                      - v2-dependencies-
 
             - run: yarn install
 
@@ -91,8 +91,8 @@ jobs:
             - checkout
             - restore_cache:
                   keys:
-                      - v1-dependencies-{{ checksum "yarn.lock" }}
-                      - v1-dependencies-
+                      - v2-dependencies-{{ checksum "yarn.lock" }}
+                      - v2-dependencies-
             - run: git config --global user.email "admin@nexxtway.com"
             - run: git config --global user.name "TheAdmin"
             - run: yarn install
@@ -110,8 +110,8 @@ jobs:
 
             - restore_cache:
                   keys:
-                      - v1-dependencies-{{ checksum "yarn.lock" }}
-                      - v1-dependencies-
+                      - v2-dependencies-{{ checksum "yarn.lock" }}
+                      - v2-dependencies-
 
             - run:
                   name: Create .env file
