@@ -40,8 +40,8 @@ export default class Radio extends Component {
 
     handleClick(event) {
         const { onClick } = this.props;
-        onClick(event);
         fixFocusClick(this.inputRef);
+        onClick(event);
     }
 
     render() {

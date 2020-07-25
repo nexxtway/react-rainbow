@@ -40,8 +40,8 @@ class PickerOption extends Component {
 
     handleChange(event) {
         const { name, privateOnChange } = this.props;
-        privateOnChange(name, event.target.checked);
         fixFocusClick(this.inputRef);
+        privateOnChange(name, event.target.checked);
     }
 
     render() {

@@ -81,8 +81,8 @@ class AccordionItem extends Component {
     handleToggleSection(event) {
         const { disabled, privateOnToggleSection } = this.props;
         if (!disabled) {
-            privateOnToggleSection(event, this.resolveActiveNames());
             fixFocusClick(this.buttonRef);
+            privateOnToggleSection(event, this.resolveActiveNames());
         }
     }
 

@@ -40,8 +40,8 @@ export default class Checkbox extends Component {
 
     handleClick(event) {
         const { onClick } = this.props;
-        onClick(event);
         fixFocusClick(this.inputRef);
+        onClick(event);
     }
 
     render() {

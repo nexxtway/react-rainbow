@@ -43,10 +43,10 @@ export default class VerticalSectionOverflow extends Component {
     toggleOverflow(event) {
         const { isExpanded } = this.state;
         const { onToggleSection } = this.props;
+        fixFocusClick(this.buttonRef);
         if (typeof onToggleSection === 'function') {
             return onToggleSection(event);
         }
-        fixFocusClick(this.buttonRef);
         return this.setState({ isExpanded: !isExpanded });
     }
 

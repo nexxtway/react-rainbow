@@ -46,8 +46,8 @@ export default class Indicator extends Component {
 
     handleClick() {
         const { onSelect, indicatorID } = this.props;
-        onSelect(indicatorID);
         fixFocusClick(this.indicatorRef);
+        onSelect(indicatorID);
     }
 
     render() {

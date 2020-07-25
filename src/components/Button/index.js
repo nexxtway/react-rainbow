@@ -45,8 +45,8 @@ export default class Button extends Component {
 
     handleClick(event) {
         const { onClick } = this.props;
-        onClick(event);
         fixFocusClick(this.buttonRef);
+        onClick(event);
     }
 
     render() {

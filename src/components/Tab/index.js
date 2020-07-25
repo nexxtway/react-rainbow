@@ -43,8 +43,8 @@ class TabItem extends Component {
     handleSelect(e) {
         const { disabled, onSelect, name } = this.props;
         if (!disabled) {
-            onSelect(e, name);
             fixFocusClick(this.tabRef);
+            onSelect(e, name);
         }
     }
 

@@ -48,8 +48,8 @@ class CheckboxToggle extends Component {
 
     handleClick(event) {
         const { onClick } = this.props;
-        onClick(event);
         fixFocusClick(this.checkboxToggleRef);
+        onClick(event);
     }
 
     render() {

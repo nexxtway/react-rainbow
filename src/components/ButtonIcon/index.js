@@ -41,8 +41,8 @@ export default class ButtonIcon extends Component {
 
     handleClick(event) {
         const { onClick } = this.props;
-        onClick(event);
         fixFocusClick(this.buttonRef);
+        onClick(event);
     }
 
     render() {
