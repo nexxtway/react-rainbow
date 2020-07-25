@@ -86,19 +86,6 @@ describe('<InternalOverlay />', () => {
         expect(mockContentMetaResolver).toHaveBeenCalledTimes(1);
     });
 
-    it('should call positionResolver when it is passed', () => {
-        const positionResolverMock = jest.fn();
-        mount(
-            <InternalOverlay
-                render={() => <div id="test-id" />}
-                triggerElementRef={{}}
-                positionResolver={positionResolverMock}
-                isVisible
-            />,
-        );
-        expect(positionResolverMock).toHaveBeenCalledTimes(1);
-    });
-
     it('should call positionResolver with the right parameters when it is passed', () => {
         const positionResolverMock = jest.fn();
         mount(
