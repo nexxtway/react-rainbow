@@ -8,6 +8,7 @@ import {
     FONT_SIZE_TEXT_MEDIUM,
 } from '../../../styles/fontSizes';
 import { BORDER_RADIUS_3 } from '../../../styles/borderRadius';
+import { darken } from '../../../styles/helpers/color';
 
 export const StyledHeading = attachThemeAttrs(styled.h1)`
     font-size: ${FONT_SIZE_HEADING_SMALL};
@@ -52,6 +53,62 @@ export const StyledCode = attachThemeAttrs(styled.code)`
     p > & {
         margin-left: 4px;
         margin-right: 4px;
+    }
+
+    .hljs-built_in,
+    .hljs-selector-tag,
+    .hljs-section,
+    .hljs-link {
+        color: ${props => props.palette.brand.main};
+    }
+
+    .hljs-keyword {
+        color: ${props => props.palette.brand.dark};
+    }
+
+    .hljs-title {
+        color: ${props => props.palette.success.main};
+    }
+
+    .hljs-string,
+    .hljs-meta,
+    .hljs-name,
+    .hljs-type,
+    .hljs-attr,
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-addition,
+    .hljs-variable,
+    .hljs-template-tag,
+    .hljs-template-variable {
+        color: ${props => props.palette.brand.main};
+    }
+
+    .hljs-comment,
+    .hljs-quote,
+    .hljs-deletion {
+        color: ${props => props.palette.success.dark};
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-literal,
+    .hljs-title,
+    .hljs-section,
+    .hljs-doctag,
+    .hljs-type,
+    .hljs-name,
+    .hljs-strong {
+    font-weight: bold;
+    }
+
+    .hljs-literal,
+    .hljs-number {
+        color: ${props => darken(props.palette.warning.main)};
+    }
+
+    .hljs-emphasis {
+        font-style: italic;
     }
 `;
 

@@ -57,7 +57,7 @@ describe('useMarkdownToReact', () => {
     it('should return valid html for code', () => {
         const values = ['```js\ndoSomething();\n```', '`doSomenthing`'];
         const patterns = [
-            /<pre[^>]*><code[^>]*>([^<]*)<\/code><\/pre>/,
+            /<pre[^>]*><code class="hljs language-js[^>]*>([^<]*)<\/code><\/pre>/,
             /<code\s[^>]*>doSomenthing<\/code>/,
         ];
         values.forEach((value, index) => {
@@ -73,10 +73,10 @@ describe('useMarkdownToReact', () => {
             '| Header |\n| :-------: |\n| Cell |',
         ];
         const patterns = [
-            /<table[^>]*><thead[^>]*><tr[^>]*><td[^>]*>Header<\/td><\/tr><\/thead><tbody[^>]*><tr[^>]*><td[^>]*>Cell<\/td><\/tr><\/tbody><\/table>/,
-            /<table[^>]*><thead[^>]*><tr[^>]*><td style="text-align:left"[^>]*>Header<\/td><\/tr><\/thead><tbody[^>]*><tr[^>]*><td style="text-align:left"[^>]*>Cell<\/td><\/tr><\/tbody><\/table>/,
-            /<table[^>]*><thead[^>]*><tr[^>]*><td style="text-align:right"[^>]*>Header<\/td><\/tr><\/thead><tbody[^>]*><tr[^>]*><td style="text-align:right"[^>]*>Cell<\/td><\/tr><\/tbody><\/table>/,
-            /<table[^>]*><thead[^>]*><tr[^>]*><td style="text-align:center"[^>]*>Header<\/td><\/tr><\/thead><tbody[^>]*><tr[^>]*><td style="text-align:center"[^>]*>Cell<\/td><\/tr><\/tbody><\/table>/,
+            /<table[^>]*>\n<thead>\n<tr[^>]*>\n<td[^>]*>Header<\/td>\n<\/tr>\n<\/thead>\n<tbody[^>]*>\n<tr[^>]*>\n<td[^>]*>Cell<\/td>\n<\/tr>\n<\/tbody>\n<\/table>/,
+            /<table[^>]*>\n<thead>\n<tr[^>]*>\n<td style="text-align:left"[^>]*>Header<\/td>\n<\/tr>\n<\/thead>\n<tbody[^>]*>\n<tr[^>]*>\n<td style="text-align:left"[^>]*>Cell<\/td>\n<\/tr>\n<\/tbody>\n<\/table>/,
+            /<table[^>]*>\n<thead[^>]*>\n<tr[^>]*>\n<td style="text-align:right"[^>]*>Header<\/td>\n<\/tr>\n<\/thead>\n<tbody[^>]*>\n<tr[^>]*>\n<td style="text-align:right"[^>]*>Cell<\/td>\n<\/tr>\n<\/tbody>\n<\/table>/,
+            /<table[^>]*>\n<thead[^>]*>\n<tr[^>]*>\n<td style="text-align:center"[^>]*>Header<\/td>\n<\/tr>\n<\/thead>\n<tbody[^>]*>\n<tr[^>]*>\n<td style="text-align:center"[^>]*>Cell<\/td>\n<\/tr>\n<\/tbody>\n<\/table>/,
         ];
         values.forEach((value, index) => {
             const { result } = renderHook(() => useMarkdownToReact(value));
