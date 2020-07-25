@@ -16,7 +16,7 @@ const YearSelect = React.forwardRef((props, ref) => {
         tabIndex,
         onKeyDown,
     } = props;
-    const selectRef = ref || useRef(null);
+    const selectRef = ref || useRef();
     const selectId = useUniqueIdentifier('select');
     const [isEditMode, setEditMode] = useState(false);
     const [isFocused, setIsFocused] = useState(false);

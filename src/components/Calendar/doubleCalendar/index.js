@@ -171,7 +171,7 @@ export default function DoubleCalendar(props) {
                     onKeyDown={handleHeaderElementKeyDown}
                     onFocus={() => updateFocusedItem(0)}
                 />
-                <StyledHeaderContainer>
+                <StyledHeaderContainer onKeyDown={handleHeaderElementKeyDown}>
                     <StyledMonth id={currentMonthLabelId} data-id="month">
                         {currentMonthFormattedLabel}
                     </StyledMonth>
@@ -182,12 +182,11 @@ export default function DoubleCalendar(props) {
                         onYearChange={handleLeftCalendarYearChange}
                         tabIndex={disablePreviousMonth ? undefined : -1}
                         onClick={() => updateFocusedItem(1)}
-                        onKeyDown={handleHeaderElementKeyDown}
                         onFocus={() => updateFocusedItem(1)}
                     />
                 </StyledHeaderContainer>
             </StyledControlsContainer>
-            <StyledControlsContainer>
+            <StyledControlsContainer onKeyDown={handleHeaderElementKeyDown}>
                 <StyledHeaderContainer>
                     <StyledMonth id={rightMonthLabelId} data-id="month">
                         {rightMonthFormattedLabel}
@@ -199,7 +198,6 @@ export default function DoubleCalendar(props) {
                         onYearChange={handleRightCalendarYearChange}
                         tabIndex={-1}
                         onClick={() => updateFocusedItem(2)}
-                        onKeyDown={handleHeaderElementKeyDown}
                         onFocus={() => updateFocusedItem(2)}
                     />
                 </StyledHeaderContainer>
