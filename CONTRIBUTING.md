@@ -119,11 +119,18 @@ It is simple. Only have to go through the following steps:
 
 1. Following this directory `src/components/` create a folder with the component name. The component folder has to follow this convention `[ComponentName]` in camelcase.
 
-    - Create all basic files for the components: - `index.js` This is the file where is the main logic of the component, props and methods showed in the documentation. - `styled` In this folder will be the file `index.js` with the styles of the component using `styled-components`  - `readme.md` The have the Interactive Example for the component.
-    - Depending on the functionality and complexity of the component it will be necessary also to add: - `_test_` In this folder will be the files `componentName.spec.js` with the tests of the component. - `pageObject` In this folder will be the file index.js with the Page Object of the component.(If the component need integrationTest)
+    - Create all basic files for the components: 
+         - `index.js` This is the file where is the main logic of the component, props and methods showed in the documentation. 
+         - `styled` In this folder will be the file `index.js` with the styles of the component using `styled-components`  
+         - `readme.md` The have the Interactive Example for the component.
+    - Depending on the functionality and complexity of the component it will be necessary also to add: 
+         - `_test_` In this folder will be the files `componentName.spec.js` with the tests of the component.
+         - `pageObject` In this folder will be the file index.js with the Page Object of the component.(If the component need integrationTest)
 
 2. If the component needs Integration Test then follow this directory `integration/specs/`, create a folder with the component name. The component folder has to follow this convention `[ComponentName]` in camelcase.
-    - Create all necessary files and update the tutorial.json file for the components integration test: - `[componentName]-[number].spec.js` .The `[number]` is the assigned number to the Interactive Example to be tested. Numbers are assigned to the Interactive Example in consecutive odd numbers. I.e 1, 3, 5 etc. - Update the tutorial.json file. Add this code:
+    - Create all necessary files and update the tutorial.json file for the components integration test:
+         - `[componentName]-[number].spec.js` .The `[number]` is the assigned number to the Interactive Example to be tested. Numbers are assigned to the Interactive Example in consecutive odd numbers. I.e 1, 3, 5 etc. 
+         - Update the tutorial.json file. Add this code:
 
 ```sh
 "componentName": {
