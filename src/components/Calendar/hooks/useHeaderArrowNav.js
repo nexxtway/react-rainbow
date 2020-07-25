@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
-import { RIGHT_KEY, LEFT_KEY } from '../../../libs/constants';
+import { RIGHT_KEY, LEFT_KEY, TAB_KEY } from '../../../libs/constants';
 
 export default function useHeaderArrowNav({
     disableNextMonth,
@@ -41,6 +41,8 @@ export default function useHeaderArrowNav({
                 if (keyHandlerMap[keyCode]) {
                     event.preventDefault();
                     keyHandlerMap[keyCode]();
+                } else if (keyCode === TAB_KEY) {
+                    setEnableNavKeys(false);
                 }
             }
         },

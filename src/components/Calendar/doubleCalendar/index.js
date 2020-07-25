@@ -81,11 +81,7 @@ export default function DoubleCalendar(props) {
     );
 
     const headerElementsRefs = [useRef(), useRef(), useRef(), useRef()];
-    const {
-        updateFocusedItem,
-        clearFocusedItems,
-        handleKeyDown: handleHeaderElementKeyDown,
-    } = useHeaderArrowNav({
+    const { updateFocusedItem, handleKeyDown: handleHeaderElementKeyDown } = useHeaderArrowNav({
         disableNextMonth,
         disablePreviousMonth,
         refs: headerElementsRefs,
@@ -174,7 +170,6 @@ export default function DoubleCalendar(props) {
                     assistiveText="Previous Month"
                     onKeyDown={handleHeaderElementKeyDown}
                     onFocus={() => updateFocusedItem(0)}
-                    onBlur={clearFocusedItems}
                 />
                 <StyledHeaderContainer>
                     <StyledMonth id={currentMonthLabelId} data-id="month">
@@ -189,7 +184,6 @@ export default function DoubleCalendar(props) {
                         onClick={() => updateFocusedItem(1)}
                         onKeyDown={handleHeaderElementKeyDown}
                         onFocus={() => updateFocusedItem(1)}
-                        onBlur={clearFocusedItems}
                     />
                 </StyledHeaderContainer>
             </StyledControlsContainer>
@@ -207,7 +201,6 @@ export default function DoubleCalendar(props) {
                         onClick={() => updateFocusedItem(2)}
                         onKeyDown={handleHeaderElementKeyDown}
                         onFocus={() => updateFocusedItem(2)}
-                        onBlur={clearFocusedItems}
                     />
                 </StyledHeaderContainer>
                 <StyledArrowButton
@@ -220,7 +213,6 @@ export default function DoubleCalendar(props) {
                     tabIndex={-1}
                     onKeyDown={handleHeaderElementKeyDown}
                     onFocus={() => updateFocusedItem(3)}
-                    onBlur={clearFocusedItems}
                 />
             </StyledControlsContainer>
             <StyledCalendar>
