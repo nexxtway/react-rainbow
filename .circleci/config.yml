@@ -1,7 +1,3 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
 
 defaults: &defaults
@@ -16,12 +12,10 @@ jobs:
         steps:
             - checkout
 
-            # Download and cache dependencies
-            # - restore_cache:
-            #       keys:
-            #           - v1-dependencies-{{ checksum "yarn.lock" }}
-            #           # fallback to using the latest cache if no exact match is found
-            #           - v1-dependencies-
+            - restore_cache:
+                  keys:
+                      - v1-dependencies-{{ checksum "yarn.lock" }}
+                      - v1-dependencies-
 
             - run: yarn install
 
@@ -53,11 +47,9 @@ jobs:
         steps:
             - checkout
 
-            # Download and cache dependencies
             - restore_cache:
                   keys:
                       - v1-dependencies-{{ checksum "yarn.lock" }}
-                      # fallback to using the latest cache if no exact match is found
                       - v1-dependencies-
 
             - run: yarn install
@@ -97,11 +89,9 @@ jobs:
 
         steps:
             - checkout
-            # Download and cache dependencies
             - restore_cache:
                   keys:
                       - v1-dependencies-{{ checksum "yarn.lock" }}
-                      # fallback to using the latest cache if no exact match is found
                       - v1-dependencies-
             - run: git config --global user.email "admin@nexxtway.com"
             - run: git config --global user.name "TheAdmin"
@@ -118,11 +108,9 @@ jobs:
         steps:
             - checkout
 
-            # Download and cache dependencies
             - restore_cache:
                   keys:
                       - v1-dependencies-{{ checksum "yarn.lock" }}
-                      # fallback to using the latest cache if no exact match is found
                       - v1-dependencies-
 
             - run:
