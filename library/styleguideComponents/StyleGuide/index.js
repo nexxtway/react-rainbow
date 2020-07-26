@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classnames from 'classnames';
+import styled from 'styled-components';
+import ButtonIcon from '../../../src/components/ButtonIcon';
 import Application from './../../../src/components/Application';
 import ReactGA from '.././../ga';
 import RenderIf from '../../../src/components/RenderIf';
@@ -12,7 +14,6 @@ import ChatIcon from '../../exampleComponents/Icons/chat';
 import TwitterIcon from '../../exampleComponents/Icons/twitter';
 import Ribbon from '../RibbonRenderer';
 import BarsIcon from './barsIcon';
-import { GitterButtonIcon, HamburgerButtonIcon, TwitterLink } from './styled1';
 
 import './styles.css';
 
@@ -26,6 +27,64 @@ const twitterIconStyle = {
     height: '15px',
     color: '#ffffff',
 };
+
+export const GitterButtonIcon = styled(ButtonIcon)`
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 64px;
+    height: 64px;
+    z-index: 6000;
+
+    @media (max-width: 800px) {
+        bottom: 12px;
+        right: 12px;
+    }
+
+    svg {
+        width: 36px !important;
+        height: 35px !important;
+        color: #fff;
+    }
+`;
+
+export const HamburgerButtonIcon = styled(ButtonIcon)`
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    z-index: 6000;
+    display: none;
+
+    @media (max-width: 800px) {
+        display: inline-block;
+    }
+`;
+
+export const TwitterLink = styled.a`
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    background-color: #d7dae8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.05s ease;
+    position: absolute;
+    bottom: 24px;
+    left: 34px;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: rgb(29, 161, 242);
+        transition: all 0.05s ease;
+        border-radius: 36px;
+        height: 36px;
+        width: 36px;
+        bottom: 22px;
+        left: 32px;
+    }
+`;
 
 class StyleGuide extends React.Component {
     constructor(props) {
