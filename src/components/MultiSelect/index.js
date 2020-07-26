@@ -57,6 +57,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
     const dropdownRef = useRef();
     const comboboxRef = useRef();
     const inputRef = useRef();
+    const dropdownContainerRef = useRef();
     useImperativeHandle(ref, () => ({
         focus: () => {
             triggerRef.current.focus();
@@ -142,7 +143,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
     };
 
     useOutsideClick(
-        dropdownRef,
+        dropdownContainerRef,
         event => {
             if (
                 event.target !== triggerRef.current.buttonRef.current &&
@@ -232,15 +233,17 @@ const MultiSelect = React.forwardRef((props, ref) => {
                     positionResolver={positionResolver}
                     onOpened={() => dropdownRef.current.focus()}
                     render={() => (
-                        <InternalDropdown
-                            id={dropdownId}
-                            value={value}
-                            onChange={handleChange}
-                            ref={dropdownRef}
-                            multiple
-                        >
-                            {children}
-                        </InternalDropdown>
+                        <div ref={dropdownContainerRef}>
+                            <InternalDropdown
+                                id={dropdownId}
+                                value={value}
+                                onChange={handleChange}
+                                ref={dropdownRef}
+                                multiple
+                            >
+                                {children}
+                            </InternalDropdown>
+                        </div>
                     )}
                     triggerElementRef={() => triggerRef.current.buttonRef}
                 />
