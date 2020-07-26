@@ -72,4 +72,29 @@ describe('Calendar', () => {
             }),
         );
     });
+    it('should fire onChange with a date as parameter when selectionType is single', () => {
+        const value = new Date('04/24/2019');
+        const mockChangeFn = jest.fn();
+        const simpleCalendar = mount(<Calendar value={value} onChange={mockChangeFn} />);
+        simpleCalendar
+            .find('table')
+            .find('button')
+            .at(7)
+            .simulate('click');
+        expect(mockChangeFn).toHaveBeenCalledWith(new Date('04/08/2019'));
+    });
+    it('should fire onChange with an array of dates as parameter when selectionType is range', () => {
+        const value = new Date(2019, 3, 3);
+        const date1 = new Date(2019, 3, 8, 23, 59, 59, 999);
+        const mockChangeFn = jest.fn();
+        const simpleCalendar = mount(
+            <Calendar value={value} selectionType="range" onChange={mockChangeFn} />,
+        );
+        simpleCalendar
+            .find('table')
+            .find('button')
+            .at(7)
+            .simulate('click');
+        expect(mockChangeFn).toHaveBeenCalledWith([value, date1]);
+    });
 });

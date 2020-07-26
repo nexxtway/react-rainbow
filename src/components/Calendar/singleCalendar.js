@@ -326,7 +326,7 @@ class SingleCalendar extends Component {
         const disablePreviousMonth = prevDate < minSelectableDate;
 
         return (
-            <section id={id} className={className} style={style}>
+            <section id={id} className={className} style={style} data-calendar-type="single">
                 <StyledControlsContainer>
                     <StyledMonthContainer>
                         <StyledArrowButton

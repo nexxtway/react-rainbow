@@ -9,6 +9,7 @@ describe('resolveDatasets function', () => {
                 type="line"
                 values={[34, 23, 46]}
                 title="Dataset 1"
+                datalabels={{ color: 'red' }}
                 backgroundColor="red"
                 borderColor="blue"
                 stack="A"
@@ -20,6 +21,7 @@ describe('resolveDatasets function', () => {
             {
                 data: [34, 23, 46],
                 label: 'Dataset 1',
+                datalabels: { color: 'red' },
                 type: 'line',
                 backgroundColor: 'red',
                 borderColor: 'blue',

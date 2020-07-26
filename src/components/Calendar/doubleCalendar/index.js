@@ -7,19 +7,32 @@ import LeftIcon from '../icons/leftArrow';
 import DaysOfWeek from '../daysOfWeek';
 import Month from '../month';
 import {
-    normalizeDate,
     getFirstDayMonth,
     addMonths,
     getNextFocusedDate,
     isEmptyRange,
     isDateBelowLimit,
 } from '../helpers';
-import { useYearsRange, useDisabledControls, useFormattedMonth, useHandleKeyDown } from './hooks';
+import {
+    useNormalizedValue,
+    useYearsRange,
+    useDisabledControls,
+    useFormattedMonth,
+    useHandleKeyDown,
+} from './hooks';
 import MonthHeader from './monthHeader';
 import StyledControlsContainer from '../styled/controlsContainer';
 import StyledArrowButton from '../styled/arrowButton';
 import StyledTable from '../styled/table';
-import { StyledMonthsContainer, StyledContainer, StyledCalendar, StyledDivider } from './styled';
+import {
+    StyledMonthsContainer,
+    StyledContainer,
+    StyledCalendar,
+    StyledDivider,
+    StyledCalendarWrapper,
+    StyledSection,
+} from './styled';
+import shouldUpdateCurrentMonth from './helpers/shouldUpdateCurrentMonth';
 
 export default function DoubleCalendar(props) {
     const {
@@ -34,8 +47,9 @@ export default function DoubleCalendar(props) {
         selectedRange,
         selectionType,
     } = props;
-    const [focusedDate, setFocusedDate] = useState(normalizeDate(value));
-    const [currentMonth, setCurrentMonth] = useState(getFirstDayMonth(normalizeDate(value)));
+    const currentValue = useNormalizedValue(value);
+    const [focusedDate, setFocusedDate] = useState(currentValue);
+    const [currentMonth, setCurrentMonth] = useState(getFirstDayMonth(currentValue));
     const [currentRange, setCurrentRange] = useState(selectedRange);
     const [enableNavKeys, setEnableNavKeys] = useState(false);
 
@@ -122,92 +136,121 @@ export default function DoubleCalendar(props) {
     );
 
     useEffect(() => {
-        setFocusedDate(normalizeDate(value));
-    }, [value]);
+        setFocusedDate(currentValue);
+        if (shouldUpdateCurrentMonth(currentValue, currentMonth, rightCalendarMonth)) {
+            setCurrentMonth(getFirstDayMonth(currentValue));
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentValue]);
 
     useEffect(() => {
         setCurrentRange(selectedRange);
     }, [selectedRange]);
 
     return (
-        <section id={id} className={className} style={style}>
-            <StyledControlsContainer>
-                <StyledArrowButton
-                    onClick={prevMonthClick}
-                    disabled={disablePreviousMonth}
-                    size="medium"
-                    icon={<LeftIcon />}
-                    assistiveText="Previous Month"
-                />
-                <StyledMonthsContainer>
-                    <MonthHeader
-                        id={currentMonthLabelId}
-                        label={currentMonthFormattedLabel}
-                        currentYear={currentYear}
-                        yearsRange={yearsRange}
-                        onYearChange={handleLeftCalendarYearChange}
+        <StyledSection id={id} className={className} style={style} data-calendar-type="double">
+            <StyledCalendarWrapper>
+                <StyledControlsContainer>
+                    <StyledArrowButton
+                        onClick={prevMonthClick}
+                        disabled={disablePreviousMonth}
+                        size="medium"
+                        icon={<LeftIcon />}
+                        assistiveText="Previous Month"
                     />
-                    <StyledDivider />
-                    <MonthHeader
-                        id={rightMonthLabelId}
-                        label={rightMonthFormattedLabel}
-                        currentYear={rightCalendarYear}
-                        yearsRange={yearsRange}
-                        onYearChange={handleRightCalendarYearChange}
+                    <StyledMonthsContainer>
+                        <MonthHeader
+                            id={currentMonthLabelId}
+                            label={currentMonthFormattedLabel}
+                            currentYear={currentYear}
+                            yearsRange={yearsRange}
+                            onYearChange={handleLeftCalendarYearChange}
+                        />
+                    </StyledMonthsContainer>
+                </StyledControlsContainer>
+                <StyledContainer>
+                    <Provider
+                        value={{
+                            useAutoFocus: enableNavKeys,
+                            focusedDate,
+                            selectionType,
+                            selectedRange,
+                            currentRange,
+                            privateOnFocus: handleOnDayFocus,
+                            privateOnBlur: handleOnDayBlur,
+                            privateKeyDown: handleKeyDown,
+                            privateOnHover: handleOnDayHover,
+                        }}
+                    >
+                        <StyledCalendar>
+                            <StyledTable role="grid" aria-labelledby={currentMonthLabelId}>
+                                <DaysOfWeek locale={locale} />
+                                <Month
+                                    value={value}
+                                    firstDayMonth={currentMonth}
+                                    minDate={minDate}
+                                    maxDate={maxDate}
+                                    onChange={onChange}
+                                    selectedRange={currentRange}
+                                />
+                            </StyledTable>
+                        </StyledCalendar>
+                    </Provider>
+                </StyledContainer>
+            </StyledCalendarWrapper>
+
+            <StyledDivider />
+
+            <StyledCalendarWrapper>
+                <StyledControlsContainer>
+                    <StyledMonthsContainer>
+                        <MonthHeader
+                            id={rightMonthLabelId}
+                            label={rightMonthFormattedLabel}
+                            currentYear={rightCalendarYear}
+                            yearsRange={yearsRange}
+                            onYearChange={handleRightCalendarYearChange}
+                        />
+                    </StyledMonthsContainer>
+                    <StyledArrowButton
+                        onClick={nextMonthClick}
+                        disabled={disableNextMonth}
+                        size="medium"
+                        icon={<RightIcon />}
+                        assistiveText="Next Month"
                     />
-                </StyledMonthsContainer>
-                <StyledArrowButton
-                    onClick={nextMonthClick}
-                    disabled={disableNextMonth}
-                    size="medium"
-                    icon={<RightIcon />}
-                    assistiveText="Next Month"
-                />
-            </StyledControlsContainer>
-            <StyledContainer>
-                <Provider
-                    value={{
-                        useAutoFocus: enableNavKeys,
-                        focusedDate,
-                        selectionType,
-                        selectedRange,
-                        currentRange,
-                        privateOnFocus: handleOnDayFocus,
-                        privateOnBlur: handleOnDayBlur,
-                        privateKeyDown: handleKeyDown,
-                        privateOnHover: handleOnDayHover,
-                    }}
-                >
-                    <StyledCalendar>
-                        <StyledTable role="grid" aria-labelledby={currentMonthLabelId}>
-                            <DaysOfWeek locale={locale} />
-                            <Month
-                                value={value}
-                                firstDayMonth={currentMonth}
-                                minDate={minDate}
-                                maxDate={maxDate}
-                                onChange={onChange}
-                                selectedRange={currentRange}
-                            />
-                        </StyledTable>
-                    </StyledCalendar>
-                    <StyledDivider />
-                    <StyledCalendar>
-                        <StyledTable role="grid" aria-labelledby={rightMonthLabelId}>
-                            <DaysOfWeek locale={locale} />
-                            <Month
-                                value={value}
-                                firstDayMonth={rightCalendarMonth}
-                                minDate={minDate}
-                                maxDate={maxDate}
-                                onChange={onChange}
-                                selectedRange={currentRange}
-                            />
-                        </StyledTable>
-                    </StyledCalendar>
-                </Provider>
-            </StyledContainer>
-        </section>
+                </StyledControlsContainer>
+                <StyledContainer>
+                    <Provider
+                        value={{
+                            useAutoFocus: enableNavKeys,
+                            focusedDate,
+                            selectionType,
+                            selectedRange,
+                            currentRange,
+                            privateOnFocus: handleOnDayFocus,
+                            privateOnBlur: handleOnDayBlur,
+                            privateKeyDown: handleKeyDown,
+                            privateOnHover: handleOnDayHover,
+                        }}
+                    >
+                        <StyledCalendar>
+                            <StyledTable role="grid" aria-labelledby={rightMonthLabelId}>
+                                <DaysOfWeek locale={locale} />
+                                <Month
+                                    value={value}
+                                    firstDayMonth={rightCalendarMonth}
+                                    minDate={minDate}
+                                    maxDate={maxDate}
+                                    onChange={onChange}
+                                    selectedRange={currentRange}
+                                />
+                            </StyledTable>
+                        </StyledCalendar>
+                    </Provider>
+                </StyledContainer>
+            </StyledCalendarWrapper>
+        </StyledSection>
     );
 }
 

@@ -3,14 +3,20 @@ import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import ContentMetaResolver from './ContentMetaResolver';
-import defaultPositionResolver from './defaultPositionResolver';
-import { disableScroll, enableScroll } from './scroll';
+import defaultPositionResolver from './helpers/defaultPositionResolver';
+import { disableBodyScroll, enableBodyScroll } from '../../libs/scrollController';
 
 const Container = styled.div`
     position: fixed;
     z-index: 999999999;
-    top: ${props => props.posistion && props.posistion.top}px;
-    left: ${props => props.posistion && props.posistion.left}px;
+    top: ${props => props.position && props.position.top}px;
+    left: ${props => props.position && props.position.left}px;
+    ${props =>
+        props.position &&
+        props.position.width &&
+        `
+            width: ${props.position.width}px;
+        `};
 `;
 
 const resolveElement = ref => {
@@ -30,6 +36,8 @@ const resolveTriggerMeta = ref => {
             leftBottomAnchor: { x, y: y + height },
             rightUpAnchor: { x: x + width, y },
             rightBottomAnchor: { x: x + width, y: y + height },
+            width,
+            height,
         };
     }
     // eslint-disable-next-line no-console
@@ -39,6 +47,8 @@ const resolveTriggerMeta = ref => {
         leftBottomAnchor: { x: 0, y: 0 },
         rightUpAnchor: { x: 0, y: 0 },
         rightBottomAnchor: { x: 0, y: 0 },
+        width: 0,
+        height: 0,
     };
 };
 
@@ -73,15 +83,22 @@ const resolvePosition = opts => {
  * @category Internal
  */
 const InternalOverlay = props => {
-    const { render: ContentComponent, isVisible, triggerElementRef, positionResolver } = props;
+    const {
+        render: ContentComponent,
+        isVisible,
+        triggerElementRef,
+        positionResolver,
+        onOpened,
+    } = props;
     const [contentMeta, updateContentMeta] = useState(false);
     useEffect(() => {
         if (isVisible && contentMeta) {
-            disableScroll();
+            onOpened();
+            disableBodyScroll(undefined, { reserveScrollBarGap: true });
         } else {
-            enableScroll();
+            enableBodyScroll();
         }
-    }, [isVisible, contentMeta]);
+    }, [isVisible, contentMeta, onOpened]);
     if (isVisible) {
         if (contentMeta) {
             const triggerMeta = resolveTriggerMeta(triggerElementRef);
@@ -93,7 +110,7 @@ const InternalOverlay = props => {
                 positionResolver,
             });
             return createPortal(
-                <Container posistion={position}>
+                <Container position={position}>
                     <ContentComponent />
                 </Container>,
                 document.body,
@@ -113,12 +130,19 @@ InternalOverlay.propTypes = {
     triggerElementRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
     /** It could be used to write your own position resolution. The function passed here will receive the necessary data to compute an object with { top, left } CSS position of the component rendered. */
     positionResolver: PropTypes.func,
+    /** A callback triggered when the overlay component is opened. This is useful for example to set focus
+     * to an element after it is opened.
+     */
+    onOpened: PropTypes.func,
 };
 
 InternalOverlay.defaultProps = {
     render: () => {},
     isVisible: false,
     positionResolver: undefined,
+    onOpened: () => {},
 };
+
+InternalOverlay.defaultPositionResolver = defaultPositionResolver;
 
 export default InternalOverlay;

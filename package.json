@@ -1,6 +1,6 @@
 {
     "name": "react-rainbow-components",
-    "version": "1.15.0",
+    "version": "1.16.0",
     "description": "React Rainbow Components",
     "keywords": [
         "react",
@@ -32,11 +32,14 @@
     },
     "dependencies": {
         "autosize": "^4.0.2",
-        "chart.js": "^2.7.3",
+        "chart.js": "2.7.3",
         "clipboard-copy": "^2.0.0",
         "prop-types": "^15.6.2",
         "react-async-script-loader": "^0.3.0",
         "styled-components": "^5.0.0",
+        "remark-parse": "^8.0.2",
+        "remark-react": "^7.0.1",
+        "unified": "^9.0.0",
         "xlsx": "^0.14.4"
     },
     "peerDependencies": {
@@ -54,8 +57,7 @@
         "url": "git://github.com/nexxtway/react-rainbow.git"
     },
     "authors": [
-        "Reinier Guerra",
-        "Leandro Torres"
+        "Nexxtway Team"
     ],
     "license": "MIT",
     "jest": {
@@ -115,6 +117,8 @@
         "babel-eslint": "^10.0.3",
         "babel-jest": "^24.9.0",
         "babel-loader": "^8.0.6",
+        "chartjs-plugin-datalabels": "^0.7.0",
+        "chartjs-plugin-colorschemes": "^0.4.0",
         "classnames": "^2.2.6",
         "codemirror": "^5.49.2",
         "copy-webpack-plugin": "^4.0.1",
@@ -153,6 +157,7 @@
         "react-codemirror2": "^6.0.0",
         "react-dom": "^16.8.6",
         "react-ga": "^2.5.3",
+        "react-is": "16.8.6",
         "react-prismic-cms": "^0.3.1",
         "react-redux": "^5.1.0",
         "react-styleguidist": "^9.2.0",

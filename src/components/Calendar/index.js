@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useLocale } from '../../libs/hooks';
 import SingleCalendar from './singleCalendar';
@@ -12,19 +12,16 @@ import { useCurrentDateFromValue, useRangeFromValue } from './hooks';
 export default function Calendar(props) {
     const { locale, selectionType, variant, value, onChange, ...rest } = props;
     const currentLocale = useLocale(locale);
-    const [currentRangeUpdatePosition, setCurrentRangeUpdatePosition] = useState(0);
     const currentValue = useCurrentDateFromValue(value);
     const range = useRangeFromValue(value, selectionType);
 
     const handleChange = useCallback(
         newValue => {
             if (selectionType === 'single') return onChange(newValue);
-            const result = buildNewRangeFromValue(newValue, range, currentRangeUpdatePosition);
-            if (Number.isInteger(result.nextUpdatePosition))
-                setCurrentRangeUpdatePosition(result.nextUpdatePosition);
+            const result = buildNewRangeFromValue(newValue, range);
             return onChange(result.range);
         },
-        [selectionType, onChange, range, currentRangeUpdatePosition],
+        [selectionType, onChange, range],
     );
 
     if (variant === 'double')
@@ -55,7 +52,6 @@ export { SingleCalendar as Component };
 
 Calendar.propTypes = {
     /** Sets the date for the Calendar programmatically. */
-    // value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
     value: PropTypes.oneOfType([
         PropTypes.instanceOf(Date),
         PropTypes.string,

@@ -49,8 +49,7 @@ export default class AmPmSelect extends PureComponent {
     }
 
     render() {
-        const { isFocused } = this.props;
-        const { tabIndex, onFocus, value } = this.props;
+        const { isFocused, tabIndex, onFocus, value, onClick } = this.props;
 
         if (isFocused) {
             return (
@@ -71,6 +70,7 @@ export default class AmPmSelect extends PureComponent {
                         value="AM"
                         checked={this.isInputChecked('AM')}
                         onChange={this.handleOnChange}
+                        onClick={onClick}
                         onBlur={handleAmPmBlur}
                     />
 
@@ -83,6 +83,7 @@ export default class AmPmSelect extends PureComponent {
                         value="PM"
                         checked={this.isInputChecked('PM')}
                         onChange={this.handleOnChange}
+                        onClick={onClick}
                         onBlur={handleAmPmBlur}
                     />
 
@@ -107,6 +108,7 @@ AmPmSelect.propTypes = {
     value: PropTypes.string,
     defaultValue: PropTypes.string,
     onChange: PropTypes.func,
+    onClick: PropTypes.func,
     onFocus: PropTypes.func,
     tabIndex: PropTypes.string,
     isFocused: PropTypes.bool,
@@ -115,6 +117,7 @@ AmPmSelect.propTypes = {
 AmPmSelect.defaultProps = {
     value: undefined,
     defaultValue: undefined,
+    onClick: () => {},
     onChange: () => {},
     onFocus: () => {},
     tabIndex: undefined,

@@ -1,13 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import InternalOverlay from '..';
-import * as scroll from '../scroll';
+import * as scroll from '../../../libs/scrollController';
 import * as resolver from '../ContentMetaResolver';
 
 const mockDisableScroll = jest.fn();
 const mockEnableScroll = jest.fn();
-scroll.disableScroll = mockDisableScroll;
-scroll.enableScroll = mockEnableScroll;
+scroll.disableBodyScroll = mockDisableScroll;
+scroll.enableBodyScroll = mockEnableScroll;
 
 describe('<InternalOverlay />', () => {
     beforeEach(() => {

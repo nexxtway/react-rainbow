@@ -36,6 +36,15 @@ describe('<Tabset />', () => {
         );
         expect(component.find('p').text()).toBe('testing tabset');
     });
+    it('should render children with only one tab', () => {
+        const component = mount(
+            <Tabset activeTabName="tab-1">
+                <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />
+            </Tabset>,
+        );
+        const item1 = component.find('Tab[name="tab-1"]').find(StyledButton);
+        expect(item1.prop('isActive')).toBe(true);
+    });
     it('should set isActive to true only on the third Tab when activeTabName is tab-3', () => {
         const component = mount(
             <Tabset activeTabName="tab-3">

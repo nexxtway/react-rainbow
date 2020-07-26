@@ -6,6 +6,7 @@ const StyledRow = attachThemeAttrs(styled.tr)`
     box-shadow: ${props => props.shadows.shadow_8};
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     box-sizing: border-box;
+    counter-increment: rowCounter;
 
     &:hover {
         background-color: ${props => replaceAlpha(props.palette.action.hover, 0.4)};

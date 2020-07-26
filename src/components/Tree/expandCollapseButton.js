@@ -18,12 +18,12 @@ export default function ExpandCollapseButton(props) {
     if (isLoading) {
         return (
             <SpinnerContainer>
-                <Spinner variant="brand" size="x-small" />
+                <Spinner variant="brand" type="arc" size="x-small" />
             </SpinnerContainer>
         );
     }
     if (hasChildren) {
-        return <Button size="x-small" icon={getIcon(isExpanded)} onClick={onClick} />;
+        return <Button size="x-small" icon={getIcon(isExpanded)} onClick={onClick} tabIndex={-1} />;
     }
     return null;
 }

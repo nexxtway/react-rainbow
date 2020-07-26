@@ -1,6 +1,6 @@
-const PagePicklistOption = require('../../PicklistOption/pageObject');
+const PageInternalDropdown = require('../../InternalDropdown/pageObject');
 
-const privateGetMenuBoundsRect = Symbol('privateGetMenuBoundsRect');
+const privateGetMenu = Symbol('privateGetMenu');
 
 /**
  * Picklist page object class.
@@ -32,9 +32,9 @@ class PagePicklist {
      * @method
      */
     focusInput() {
-        this.clickInput();
-        this.waitUntilOpen();
-        this.clickInput();
+        $(this.rootElement)
+            .$('input[type="text"]')
+            .doubleClick();
     }
 
     /**
@@ -49,40 +49,10 @@ class PagePicklist {
     }
 
     /**
-     * It moves the pointer over the menu scroll up arrow
+     * It move the pointer off any menu scroll arrow
      * @method
      */
-    hoverScrollUpArrow() {
-        return $(this.rootElement)
-            .$('[data-id=picklist-arrow-button-up]')
-            .moveTo();
-    }
-
-    /**
-     * It moves the pointer out of the menu scroll up arrow
-     * @method
-     */
-    mouseLeaveScrollUpArrow() {
-        return $(this.rootElement)
-            .$('input[type="text"]')
-            .moveTo();
-    }
-
-    /**
-     * It moves the pointer over the menu scroll down arrow
-     * @method
-     */
-    hoverScrollDownArrow() {
-        return $(this.rootElement)
-            .$('[data-id=picklist-arrow-button-down]')
-            .moveTo();
-    }
-
-    /**
-     * It moves the pointer out of the menu scroll down arrow
-     * @method
-     */
-    mouseLeaveScrollDownArrow() {
+    mouseLeaveScrollArrow() {
         return $(this.rootElement)
             .$('input[type="text"]')
             .moveTo();
@@ -100,54 +70,16 @@ class PagePicklist {
     }
 
     /**
-     * Get the number of registered options.
-     * @method
-     * @returns {number}
-     */
-    getOptionsLength() {
-        return $(this.rootElement).$$('li[data-selected="false"]').length;
-    }
-
-    /**
-     * Returns a new PicklistOption page object of the element in item position.
-     * @method
-     * @param {number} optionIndex - The base 0 index of the PicklistOption.
-     */
-    getOption(optionIndex) {
-        const activeOptions = $(this.rootElement).$$('li[data-selected="false"]');
-        const option = activeOptions[optionIndex];
-        if (option && !option.error) {
-            return new PagePicklistOption(option, this[privateGetMenuBoundsRect]());
-        }
-        return null;
-    }
-
-    /**
      * Returns true when the options menu is open, false otherwise.
      * @method
      * @returns {bool}
      */
     isMenuOpen() {
-        return $(this.rootElement)
-            .$('[role="listbox"]')
-            .isDisplayed();
-    }
-
-    /**
-     * Returns the boundaries of Picklist dropdown menu.
-     * @method
-     * @returns {object}
-     */
-    [privateGetMenuBoundsRect]() {
-        const menu = $(this.rootElement).$('[role="listbox"]');
-        const { x, y } = menu.getLocation();
-        const { width, height } = menu.getSize();
-        return {
-            left: x,
-            top: y,
-            right: x + width,
-            bottom: y + height,
-        };
+        return (
+            $(this.rootElement)
+                .$('div[role="combobox"]')
+                .getAttribute('aria-expanded') === 'true'
+        );
     }
 
     /**
@@ -156,6 +88,54 @@ class PagePicklist {
      */
     waitUntilOpen() {
         browser.waitUntil(() => this.isMenuOpen());
+    }
+
+    /**
+     * Returns a new InternalDropdown page object for the element with the supplied id.
+     * @method
+     */
+    [privateGetMenu]() {
+        const menuId = `#${$(this.rootElement)
+            .$('input[type="text"]')
+            .getAttribute('aria-controls')}`;
+        if (this.isMenuOpen()) {
+            return new PageInternalDropdown(menuId);
+        }
+        return null;
+    }
+
+    /**
+     * It moves the pointer over the menu scroll up arrow
+     * @method
+     */
+    hoverScrollUpArrow() {
+        return this[privateGetMenu]().hoverScrollUpArrow();
+    }
+
+    /**
+     * It moves the pointer over the menu scroll down arrow
+     * @method
+     */
+    hoverScrollDownArrow() {
+        return this[privateGetMenu]().hoverScrollDownArrow();
+    }
+
+    /**
+     * Get the number of registered options.
+     * @method
+     * @returns {number}
+     */
+    getOptionsLength() {
+        return this[privateGetMenu]().getOptionsLength();
+    }
+
+    /**
+     * Returns a new PicklistOption page object of the element in item position.
+     * @method
+     * @param {number} optionIndex - The base 0 index of the PicklistOption.
+     */
+    getOption(optionIndex) {
+        return this[privateGetMenu]().getOption(optionIndex);
     }
 }
 

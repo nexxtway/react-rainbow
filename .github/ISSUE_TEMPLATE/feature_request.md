@@ -1,6 +1,6 @@
 ---
-name: Feature request
-about: Suggest an idea for React Rainbow Components
+name: 🎉 Feature request
+about: Suggest an idea for React Rainbow Components.
 title: 'feat: add the menuSize to the avatarMenu component'
 labels: Enhancements
 assignees: ''
@@ -12,10 +12,6 @@ assignees: ''
     Thank you very much for contributing to React Rainbow ComponentsI by creating an issue! ❤️
     To avoid duplicate issues we ask you to check off the following.
 -->
-
-<!-- Checked checkbox should look like this: [x] -->
-
--   [ ] I have searched the [issues](https://github.com/nexxtway/react-rainbow/issues) of this repository and believe that this is not a duplicate.
 
 **Is your feature request related to a problem? Please describe.**
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]

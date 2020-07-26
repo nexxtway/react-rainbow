@@ -46,7 +46,7 @@ describe('Picklist with multiple options', () => {
         option.waitUntilIsVisible();
         expect(option.isVisible()).toBe(true);
     });
-    it.skip('should up down when hover the up arrow', () => {
+    it.skip('should scroll up when hover the up arrow', () => {
         const picklist = new PagePicklist(PICKLIST);
         picklist.clickInput();
         picklist.waitUntilOpen();

@@ -1,5 +1,5 @@
 import React from 'react';
-import { SELECTABLE_CHECKBOX } from './';
+import { getEnumerableWidth, SELECTABLE_CHECKBOX, WITH_ENUMERABLE } from './';
 
 function getDefaultWidth(defaultWidth, minColumnWidth, maxColumnWidth) {
     const minColWidth = Number(minColumnWidth);
@@ -16,11 +16,35 @@ function getDefaultWidth(defaultWidth, minColumnWidth, maxColumnWidth) {
 }
 
 export default function getColumns(params) {
-    const { children = [], showCheckboxColumn, minColumnWidth, maxColumnWidth } = params;
+    const {
+        children = [],
+        showCheckboxColumn,
+        showRowNumberColumn,
+        rowNumberOffset,
+        minColumnWidth,
+        maxColumnWidth,
+    } = params;
+
+    const configColumns = [];
+
+    if (showRowNumberColumn) {
+        configColumns.push({
+            type: WITH_ENUMERABLE,
+            rowNumberOffset,
+            width: getEnumerableWidth(rowNumberOffset),
+        });
+    }
+
+    if (showCheckboxColumn) {
+        configColumns.push({
+            type: SELECTABLE_CHECKBOX,
+            width: 52,
+        });
+    }
 
     const columnsData = React.Children.map(
         children,
-        column => {
+        (column, index) => {
             if (column && column.props) {
                 const { type, width, defaultWidth } = column.props;
                 const widthNumber = Number(width);
@@ -34,6 +58,7 @@ export default function getColumns(params) {
                     ...column.props,
                     width: widthNumber || undefined,
                     defaultWidth: getDefaultWidth(defaultWidth, minColumnWidth, maxColumnWidth),
+                    isFirstDataColumn: index === 0,
                 };
             }
             return null;
@@ -41,14 +66,9 @@ export default function getColumns(params) {
         null,
     );
 
-    if (showCheckboxColumn) {
-        return [
-            {
-                type: SELECTABLE_CHECKBOX,
-                width: 52,
-            },
-            ...columnsData,
-        ];
+    if (configColumns.length) {
+        return configColumns.concat(columnsData);
     }
+
     return columnsData;
 }

@@ -8,7 +8,11 @@ import './styles.css';
 function Header({ code }) {
     return (
         <div className="react-rainbow-editor-header">
-            <img src={windowsActionsSvg} alt="widnows actions img" className="rainbow-m-left_x-small" />
+            <img
+                src={windowsActionsSvg}
+                alt="widnows actions img"
+                className="rainbow-m-left_x-small"
+            />
             <CopyToClipboard text={code} />
         </div>
     );

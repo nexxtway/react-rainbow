@@ -9,6 +9,7 @@ const StyledContent = attachThemeAttrs(styled.span)`
     height: 100%;
     text-shadow: ${props => props.shadows.shadow_1};
     box-sizing: border-box;
+    width: 100%
 
     &:hover {
         color: currentColor;

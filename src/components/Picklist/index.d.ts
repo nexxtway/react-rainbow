@@ -3,7 +3,7 @@ import { BaseProps } from '../types';
 
 interface PicklistValue {
     label?: string;
-    name?: string;
+    name?: string | number;
     icon?: ReactNode;
     value?: any;
 }
@@ -13,6 +13,7 @@ export interface PicklistProps extends BaseProps {
     hideLabel?: boolean;
     children?: ReactNode;
     isLoading?: boolean;
+    enableSearch?: boolean;
     value?: PicklistValue;
     variant?: 'default' | 'shaded';
     onChange?: (value: PicklistValue) => void;

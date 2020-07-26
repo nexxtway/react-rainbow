@@ -6,7 +6,6 @@ import Card from '../../../src/components/Card';
 import Input from '../../../src/components/Input';
 import RenderIf from '../../../src/components/RenderIf';
 import SearchIcon from './searchIcon';
-import SectionHeading from '../../styleguideComponents/SectionHeading';
 import CarbonAds from '../components/CarbonAds';
 import './styles.css';
 
@@ -88,34 +87,44 @@ export default class ComponentsPage extends Component {
             <div className="react-rainbow-components-page_cards-container">
                 <RenderIf isTrue={!!layouts.length}>
                     <h1 className="react-rainbow-components-page_category-title">
-                        Layout Components
+                        Layout Components ({layouts.length})
                     </h1>
                 </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">{layouts}</div>
                 <RenderIf isTrue={!!forms.length}>
-                    <h1 className="react-rainbow-components-page_category-title">Forms</h1>
+                    <h1 className="react-rainbow-components-page_category-title">
+                        Forms ({forms.length})
+                    </h1>
                 </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">{forms}</div>
                 <RenderIf isTrue={!!miscellaneous.length}>
-                    <h1 className="react-rainbow-components-page_category-title">Miscellaneous</h1>
+                    <h1 className="react-rainbow-components-page_category-title">
+                        Miscellaneous ({miscellaneous.length})
+                    </h1>
                 </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">
                     {miscellaneous}
                 </div>
                 <RenderIf isTrue={!!dataViews.length}>
-                    <h1 className="react-rainbow-components-page_category-title">Data View</h1>
+                    <h1 className="react-rainbow-components-page_category-title">
+                        Data View ({dataViews.length})
+                    </h1>
                 </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">
                     {dataViews}
                 </div>
                 <RenderIf isTrue={!!experiences.length}>
-                    <h1 className="react-rainbow-components-page_category-title">Experiences</h1>
+                    <h1 className="react-rainbow-components-page_category-title">
+                        Experiences ({experiences.length})
+                    </h1>
                 </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">
                     {experiences}
                 </div>
                 <RenderIf isTrue={!!internal.length}>
-                    <h1 className="react-rainbow-components-page_category-title">Internal</h1>
+                    <h1 className="react-rainbow-components-page_category-title">
+                        Internal ({internal.length})
+                    </h1>
                     <h1 className="react-rainbow-components-page_category-description">
                         These components are for internal use only, it's not recommended to use them
                         directly since it's the main purpose is as a building block of other
@@ -130,13 +139,14 @@ export default class ComponentsPage extends Component {
 
     render() {
         const { searchTerm } = this.state;
-
+        const { components } = this.props;
         return (
             <div>
-                <SectionHeading />
                 <div className="react-rainbow-components-page_container">
                     <CarbonAds className="react-rainbow-components-page_carbon-ads" />
-                    <h1 className="react-rainbow-components-page_title">More than 70 components</h1>
+                    <h1 className="react-rainbow-components-page_title">
+                        {components.length} components ready to use.
+                    </h1>
                     <Input
                         className="react-rainbow-components-page_search"
                         label="Find Components"
