@@ -14,7 +14,6 @@ import ChatIcon from '../../exampleComponents/Icons/chat';
 import TwitterIcon from '../../exampleComponents/Icons/twitter';
 import Ribbon from '../RibbonRenderer';
 import BarsIcon from './barsIcon';
-
 import './styles.css';
 
 // analytics
