@@ -12,7 +12,7 @@ import ChatIcon from '../../exampleComponents/Icons/chat';
 import TwitterIcon from '../../exampleComponents/Icons/twitter';
 import Ribbon from '../RibbonRenderer';
 import BarsIcon from './barsIcon';
-import { GitterButtonIcon, HamburgerButtonIcon, StyledTwitterLink } from './styled';
+import { GitterButtonIcon, HamburgerButtonIcon, TwitterLink } from './styled1';
 
 import './styles.css';
 
@@ -89,13 +89,13 @@ class StyleGuide extends React.Component {
                 <Ribbon />
                 <aside className={this.getSideBarClassNames()}>
                     {toc}
-                    <StyledTwitterLink
+                    <TwitterLink
                         href="https://twitter.com/ReactRainbow"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         <TwitterIcon style={twitterIconStyle} />
-                    </StyledTwitterLink>
+                    </TwitterLink>
                 </aside>
                 <div
                     className={this.getBackdropClassNames()}
