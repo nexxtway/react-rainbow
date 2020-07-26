@@ -1,11 +1,11 @@
-import { useMemo } from 'react';
-import { useTheme as useStyledTheme } from 'styled-components';
+import { useContext, useMemo } from 'react';
+import { ThemeContext } from 'styled-components';
 import normalizeThemeColors from '../../styles/helpers/normalizeThemeColors';
 import defaultTheme from '../../styles/defaultTheme';
 import normalizeTheme from '../../styles/helpers/normalizeTheme';
 
 export default function useTheme(localTheme) {
-    const styledTheme = useStyledTheme();
+    const styledTheme = useContext(ThemeContext);
     return useMemo(
         () =>
             (localTheme && normalizeTheme(localTheme)) ||

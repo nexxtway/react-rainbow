@@ -38,31 +38,6 @@
     transition: transform 230ms linear, opacity 230ms linear;
 }
 
-.react-rainbow-styleguide_twitter-link {
-    height: 32px;
-    width: 32px;
-    border-radius: 32px;
-    background-color: #d7dae8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.05s ease;
-    position: absolute;
-    bottom: 24px;
-    left: 34px;
-}
-
-.react-rainbow-styleguide_twitter-link:hover,
-.react-rainbow-styleguide_twitter-link:focus,
-.react-rainbow-styleguide_twitter-link:active {
-    background-color: rgb(29, 161, 242);
-    transition: all 0.05s ease;
-    border-radius: 36px;
-    height: 36px;
-    width: 36px;
-    left: 24px;
-}
-
 .react-rainbow-main-content {
     background-color: white;
     min-height: calc(100vh - 68px);
@@ -79,36 +54,10 @@
     z-index: 6500;
 }
 
-.react-rainbow-styleguide-open-chat-button {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 64px;
-    height: 64px;
-    z-index: 6000;
-}
-
-.react-rainbow-styleguide_hamburger-button {
-    position: fixed;
-    top: 8px;
-    right: 8px;
-    z-index: 6000;
-    display: none;
-}
-
 @media (max-width: 800px) {
     .react-rainbow-main-content {
         width: 100vw;
         margin-left: 0;
-    }
-
-    .react-rainbow-styleguide-open-chat-button {
-        bottom: 12px;
-        right: 12px;
-    }
-
-    .react-rainbow-styleguide_hamburger-button {
-        display: inline-block;
     }
 
     .react-rainbow-styleguide-sidebar {

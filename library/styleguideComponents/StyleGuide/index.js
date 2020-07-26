@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classnames from 'classnames';
 import Application from './../../../src/components/Application';
 import ReactGA from '.././../ga';
 import RenderIf from '../../../src/components/RenderIf';
-import ButtonIcon from '../../../src/components/ButtonIcon';
 import ComponentsPage from '../../pages/ComponentsPage';
 import ProjectSelector from '../ProjectSelector';
 import GitterChat from '../GitterChat';
@@ -14,6 +12,7 @@ import ChatIcon from '../../exampleComponents/Icons/chat';
 import TwitterIcon from '../../exampleComponents/Icons/twitter';
 import Ribbon from '../RibbonRenderer';
 import BarsIcon from './barsIcon';
+import { GitterButtonIcon, HamburgerButtonIcon, StyledTwitterLink } from './styled';
 
 import './styles.css';
 
@@ -27,14 +26,6 @@ const twitterIconStyle = {
     height: '15px',
     color: '#ffffff',
 };
-
-const StyleButtonIcon = styled(ButtonIcon)`
-    svg {
-        width: 36px !important;
-        height: 35px !important;
-        color: #fff;
-    }
-`;
 
 class StyleGuide extends React.Component {
     constructor(props) {
@@ -98,14 +89,13 @@ class StyleGuide extends React.Component {
                 <Ribbon />
                 <aside className={this.getSideBarClassNames()}>
                     {toc}
-                    <a
+                    <StyledTwitterLink
                         href="https://twitter.com/ReactRainbow"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="react-rainbow-styleguide_twitter-link"
                     >
                         <TwitterIcon style={twitterIconStyle} />
-                    </a>
+                    </StyledTwitterLink>
                 </aside>
                 <div
                     className={this.getBackdropClassNames()}
@@ -118,19 +108,12 @@ class StyleGuide extends React.Component {
                         <ComponentsPage components={components} />
                     </RenderIf>
                 </main>
-                <ButtonIcon
-                    className="react-rainbow-styleguide_hamburger-button"
+                <HamburgerButtonIcon
                     icon={<BarsIcon />}
                     size="large"
                     onClick={this.toggleSidebar}
                 />
-                <StyleButtonIcon
-                    className="react-rainbow-styleguide-open-chat-button"
-                    shaded
-                    variant="brand"
-                    size="large"
-                    icon={<ChatIcon />}
-                />
+                <GitterButtonIcon shaded variant="brand" size="large" icon={<ChatIcon />} />
                 <GitterChat
                     room="react-rainbow-components/community"
                     activationElement=".react-rainbow-styleguide-open-chat-button"
