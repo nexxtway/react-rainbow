@@ -1,8 +1,9 @@
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 export default function RenderIf({ isTrue, children }) {
     if (isTrue) {
-        return children;
+        return <Fragment>{children}</Fragment>;
     }
     return null;
 }
