@@ -1,10 +1,6 @@
 import { ReactNode } from 'react';
 import { BaseProps } from '../types';
 
-interface nodePath {
-    nodePath: number[];
-}
-
 interface selectValue {
     nodePath: number[];
     name: string;
@@ -21,8 +17,8 @@ interface DataItem {
 
 export interface TreeProps extends BaseProps {
     data?: DataItem[];
-    onNodeExpand?: (args: nodePath) => void;
-    onNodeCheck?: (args: nodePath) => void;
+    onNodeExpand?: (args: selectValue) => void;
+    onNodeCheck?: (args: selectValue) => void;
     onNodeSelect?: (args: selectValue) => void;
     selectedNode?: string;
     id?: string;

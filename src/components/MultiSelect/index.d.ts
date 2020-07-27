@@ -2,7 +2,7 @@ import { ReactNode, FocusEvent } from 'react';
 import { BaseProps } from '../types';
 
 export interface MultiSelectOption {
-    name?: string;
+    name?: string | number;
     label?: string;
     value?: any;
 }

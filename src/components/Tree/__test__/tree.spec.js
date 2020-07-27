@@ -40,17 +40,19 @@ const data = [
 
 describe('<Tree/>', () => {
     it('should call onNodeExpand with the right parameters when the button is clicked', () => {
-        const nodePath = [2, 1];
         const onNodeExpandMock = jest.fn();
         const component = mount(<Tree data={data} onNodeExpand={onNodeExpandMock} />);
         component
             .find('ButtonIcon')
             .at(1)
             .simulate('click');
-        expect(onNodeExpandMock).toHaveBeenCalledWith({ nodePath });
+        expect(onNodeExpandMock).toHaveBeenCalledTimes(1);
+        expect(onNodeExpandMock).toHaveBeenCalledWith({
+            nodePath: [2, 1],
+            name: 'node-3.2',
+        });
     });
     it('should call onNodeCheck with the right parameters when the node is selected', () => {
-        const nodePath = [2];
         const onNodeCheckMock = jest.fn();
         const component = mount(<Tree data={data} onNodeCheck={onNodeCheckMock} />);
         component
@@ -58,18 +60,24 @@ describe('<Tree/>', () => {
             .at(2)
             .find('input')
             .simulate('change');
-        expect(onNodeCheckMock).toHaveBeenCalledWith({ nodePath });
+        expect(onNodeCheckMock).toHaveBeenCalledTimes(1);
+        expect(onNodeCheckMock).toHaveBeenCalledWith({
+            nodePath: [2],
+            name: 'node-3',
+        });
     });
     it('should call onNodeSelect with the right data', () => {
-        const name = 'node-2';
-        const nodePath = [1];
         const onNodeSelectMock = jest.fn();
         const component = mount(<Tree data={data} onNodeSelect={onNodeSelectMock} />);
         component
             .find('li')
             .at(1)
             .simulate('click');
-        expect(onNodeSelectMock).toHaveBeenCalledWith({ name, nodePath });
+        expect(onNodeSelectMock).toHaveBeenCalledTimes(1);
+        expect(onNodeSelectMock).toHaveBeenCalledWith({
+            nodePath: [1],
+            name: 'node-2',
+        });
     });
     it('should render the correct number of children', () => {
         const component = mount(<Tree data={data} />);
