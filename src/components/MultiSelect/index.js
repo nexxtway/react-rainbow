@@ -1,9 +1,9 @@
 import React, { useState, useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
+import { useOutsideClick } from '@rainbow-modules/hooks';
 import Label from '../Input/label';
 import {
     useUniqueIdentifier,
-    useOutsideClick,
     useErrorMessageId,
     useReduxForm,
     useLabelId,
@@ -57,6 +57,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
     const dropdownRef = useRef();
     const comboboxRef = useRef();
     const inputRef = useRef();
+    const dropdownContainerRef = useRef();
     useImperativeHandle(ref, () => ({
         focus: () => {
             triggerRef.current.focus();
@@ -79,8 +80,6 @@ const MultiSelect = React.forwardRef((props, ref) => {
 
     const closeAndFocusInput = () => {
         setIsOpen(false);
-        // eslint-disable-next-line no-use-before-define
-        stopListeningOutsideClick();
         setTimeout(() => triggerRef.current.focus(), 0);
     };
 
@@ -99,10 +98,6 @@ const MultiSelect = React.forwardRef((props, ref) => {
     const toggleDropdown = () => {
         if (disabled || readOnly) return;
         setIsOpen(!isOpen);
-        if (!isOpen) {
-            // eslint-disable-next-line no-use-before-define
-            startListeningOutsideClick();
-        }
     };
 
     const handleKeyDown = event => {
@@ -147,20 +142,19 @@ const MultiSelect = React.forwardRef((props, ref) => {
         }
     };
 
-    const handleOutsideClick = event => {
-        if (
-            event.target !== triggerRef.current.buttonRef.current &&
-            !triggerRef.current.buttonRef.current.contains(event.target)
-        ) {
-            // eslint-disable-next-line no-use-before-define
-            stopListeningOutsideClick();
-            setIsOpen(false);
-        }
-    };
-    const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(
-        dropdownRef,
-        handleOutsideClick,
+    useOutsideClick(
+        dropdownContainerRef,
+        event => {
+            if (
+                event.target !== triggerRef.current.buttonRef.current &&
+                !triggerRef.current.buttonRef.current.contains(event.target)
+            ) {
+                setIsOpen(false);
+            }
+        },
+        isOpen,
     );
+
     useWindowResize(() => setIsOpen(false), isOpen);
 
     const selectedCount = Array.isArray(value) ? value.length : 1;
@@ -239,15 +233,17 @@ const MultiSelect = React.forwardRef((props, ref) => {
                     positionResolver={positionResolver}
                     onOpened={() => dropdownRef.current.focus()}
                     render={() => (
-                        <InternalDropdown
-                            id={dropdownId}
-                            value={value}
-                            onChange={handleChange}
-                            ref={dropdownRef}
-                            multiple
-                        >
-                            {children}
-                        </InternalDropdown>
+                        <div ref={dropdownContainerRef}>
+                            <InternalDropdown
+                                id={dropdownId}
+                                value={value}
+                                onChange={handleChange}
+                                ref={dropdownRef}
+                                multiple
+                            >
+                                {children}
+                            </InternalDropdown>
+                        </div>
                     )}
                     triggerElementRef={() => triggerRef.current.buttonRef}
                 />

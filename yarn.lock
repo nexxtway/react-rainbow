@@ -1271,6 +1271,11 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.1.tgz#53f349bb986ab273d601175aa1b25a655ab90ee3"
   integrity sha512-KU/VDjC5RwtDUZiz3d+DHXJF2lp5hB9dn552TXIyptj8SH1vXmR40mG0JgGq03IlYsOgGfcv8xrLpSQ0YUMQdA==
 
+"@rainbow-modules/hooks@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@rainbow-modules/hooks/-/hooks-0.1.2.tgz#b7803d73ed4e775db9a93398aef3512dfb91b107"
+  integrity sha512-bHpwYOJ7XeHfxAAxlad7KvHF2z7SLx1GQLXArnigCloOnfstsagbVgqpoWbs1fp4t8NoNpfa+MifsNwhnL+Vjw==
+
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
