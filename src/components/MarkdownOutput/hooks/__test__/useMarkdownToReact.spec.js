@@ -32,9 +32,9 @@ describe('useMarkdownToReact', () => {
             '- [x] Item #1\n- [ ] Item #2\n- [ ] Item #3',
         ];
         const patterns = [
-            /<ul class="(.*)">\n<li class="(.*)">Item #1<\/li>\n<li class="(.*)">Item #2<\/li>\n<li class="(.*)">Item #3<\/li>\n<\/ul>/,
-            /<ol class="(.*)">\n<li class="(.*)">Item #1<\/li>\n<li class="(.*)">Item #2<\/li>\n<li class="(.*)">Item #3<\/li>\n<\/ol>/,
-            /<ul class="(.*)">\n<li class="(.*)"><input type="checkbox" checked="" disabled=""\/>(.*)Item #1<\/li>\n<li class="(.*)"><input type="checkbox" disabled=""\/>(.*)Item #2<\/li>\n<li class="(.*)"><input type="checkbox" disabled=""\/>(.*)Item #3<\/li>\n<\/ul>/,
+            /<ul class="(.*)"><li class="(.*)">Item #1<\/li><li class="(.*)">Item #2<\/li><li class="(.*)">Item #3<\/li><\/ul>/,
+            /<ol class="(.*)"><li class="(.*)">Item #1<\/li><li class="(.*)">Item #2<\/li><li class="(.*)">Item #3<\/li><\/ol>/,
+            /<ul class="(.*)"><li class="(.*)"><input type="checkbox" checked="" disabled=""\/>(.*)Item #1<\/li><li class="(.*)"><input type="checkbox" disabled=""\/>(.*)Item #2<\/li><li class="(.*)"><input type="checkbox" disabled=""\/>(.*)Item #3<\/li><\/ul>/,
         ];
         values.forEach((value, index) => {
             const { result } = renderHook(() => useMarkdownToReact(value));
@@ -73,10 +73,10 @@ describe('useMarkdownToReact', () => {
             '| Header |\n| :-------: |\n| Cell |',
         ];
         const patterns = [
-            /<table[^>]*>\n<thead>\n<tr[^>]*>\n<td[^>]*>Header<\/td>\n<\/tr>\n<\/thead>\n<tbody[^>]*>\n<tr[^>]*>\n<td[^>]*>Cell<\/td>\n<\/tr>\n<\/tbody>\n<\/table>/,
-            /<table[^>]*>\n<thead>\n<tr[^>]*>\n<td style="text-align:left"[^>]*>Header<\/td>\n<\/tr>\n<\/thead>\n<tbody[^>]*>\n<tr[^>]*>\n<td style="text-align:left"[^>]*>Cell<\/td>\n<\/tr>\n<\/tbody>\n<\/table>/,
-            /<table[^>]*>\n<thead[^>]*>\n<tr[^>]*>\n<td style="text-align:right"[^>]*>Header<\/td>\n<\/tr>\n<\/thead>\n<tbody[^>]*>\n<tr[^>]*>\n<td style="text-align:right"[^>]*>Cell<\/td>\n<\/tr>\n<\/tbody>\n<\/table>/,
-            /<table[^>]*>\n<thead[^>]*>\n<tr[^>]*>\n<td style="text-align:center"[^>]*>Header<\/td>\n<\/tr>\n<\/thead>\n<tbody[^>]*>\n<tr[^>]*>\n<td style="text-align:center"[^>]*>Cell<\/td>\n<\/tr>\n<\/tbody>\n<\/table>/,
+            /<table[^>]*><thead><tr[^>]*><td[^>]*>Header<\/td><\/tr><\/thead><tbody[^>]*><tr[^>]*><td[^>]*>Cell<\/td><\/tr><\/tbody><\/table>/,
+            /<table[^>]*><thead><tr[^>]*><td style="text-align:left"[^>]*>Header<\/td><\/tr><\/thead><tbody[^>]*><tr[^>]*><td style="text-align:left"[^>]*>Cell<\/td><\/tr><\/tbody><\/table>/,
+            /<table[^>]*><thead[^>]*><tr[^>]*><td style="text-align:right"[^>]*>Header<\/td><\/tr><\/thead><tbody[^>]*><tr[^>]*><td style="text-align:right"[^>]*>Cell<\/td><\/tr><\/tbody><\/table>/,
+            /<table[^>]*><thead[^>]*><tr[^>]*><td style="text-align:center"[^>]*>Header<\/td><\/tr><\/thead><tbody[^>]*><tr[^>]*><td style="text-align:center"[^>]*>Cell<\/td><\/tr><\/tbody><\/table>/,
         ];
         values.forEach((value, index) => {
             const { result } = renderHook(() => useMarkdownToReact(value));

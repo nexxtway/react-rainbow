@@ -37,6 +37,7 @@
         "prop-types": "^15.6.2",
         "react-async-script-loader": "^0.3.0",
         "rehype-highlight": "^4.0.0",
+        "rehype-minify-whitespace": "^4.0.4",
         "rehype-react": "^6.1.0",
         "remark-parse": "^8.0.2",
         "remark-rehype": "^7.0.0",
