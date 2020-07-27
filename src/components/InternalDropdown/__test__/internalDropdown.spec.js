@@ -156,8 +156,8 @@ describe('InternalDropdown', () => {
                 <PicklistOption label="Option 3" name="option3" />
             </InternalDropdown>,
         );
-        expect(component.find('svg').exists()).toBe(true);
-        expect(component.find('input').exists()).toBe(true);
+        expect(component.find('SearchIcon').exists()).toBe(true);
+        expect(component.find('input[type="search"]').exists()).toBe(true);
     });
     it('should not render svg and input elements if enableSearch is not passed', () => {
         const component = mount(
@@ -167,8 +167,8 @@ describe('InternalDropdown', () => {
                 <PicklistOption label="Option 3" name="option3" />
             </InternalDropdown>,
         );
-        expect(component.find('svg').exists()).toBe(false);
-        expect(component.find('input').exists()).toBe(false);
+        expect(component.find('SearchIcon').exists()).toBe(false);
+        expect(component.find('input[type="search"]').exists()).toBe(false);
     });
     it('should render loading icon when isLoading is passed', () => {
         const component = mount(

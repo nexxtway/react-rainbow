@@ -37,15 +37,6 @@ class PageInternalDropdown {
     }
 
     /**
-     * It moves the pointer over the menu item.
-     * @method
-     */
-    hover() {
-        const itemElement = $(`${this.rootElement} > div[role="option"]`);
-        itemElement.moveTo();
-    }
-
-    /**
      * Get the number of registered options.
      * @method
      * @returns {number}
@@ -106,6 +97,7 @@ class PageInternalDropdown {
             .$('[data-id="internal-dropdown-arrow-up"]')
             .isExisting();
     }
+
     /**
      * Returns true when the search no results found, false otherwise.
      * @method
@@ -113,7 +105,7 @@ class PageInternalDropdown {
      */
     emptyMessageExist() {
         return $(this.rootElement)
-            .$('p*=Our robots')
+            .$('[data-id="internal-dropdown-empty-message"]')
             .isExisting();
     }
 
@@ -121,7 +113,7 @@ class PageInternalDropdown {
      * Clicks the input element.
      * @method
      */
-    clickInputSearch() {
+    clickSearch() {
         $(this.rootElement)
             .$('input[type="search"]')
             .click();
@@ -131,25 +123,10 @@ class PageInternalDropdown {
      * @method
      * @param {string} value - The value to type in the input element.
      */
-    setSearchCriteria(value) {
+    setQuery(value) {
         $(this.rootElement)
             .$('input[type="search"]')
             .setValue(value);
-    }
-    /**
-     * Returns true when the menu item is visible inside the menu container.
-     * @method
-     * @returns {bool}
-     */
-    isVisible() {
-        return $(this.rootElement).isDisplayedInViewport();
-    }
-    /**
-     *  Wait until the option is visible.
-     * @method
-     */
-    waitUntilIsVisible() {
-        browser.waitUntil(() => this.isVisible());
     }
 }
 

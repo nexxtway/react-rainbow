@@ -13,22 +13,14 @@ describe('InternalDropdown base example', () => {
     });
     it('should render only filtered options when type in search', () => {
         const internalDropdown = new PageInternalDropdown(INTERNALDROPDOWN);
-        internalDropdown.clickInputSearch();
-        internalDropdown.setSearchCriteria('c');
+        internalDropdown.clickSearch();
+        internalDropdown.setQuery('c');
         expect(internalDropdown.getOptionsLength()).toBe(2);
-    });
-    it('should not render Arrow component when the list of options fits the container', () => {
-        const internalDropdown = new PageInternalDropdown(INTERNALDROPDOWN);
-        internalDropdown.clickInputSearch();
-        internalDropdown.setSearchCriteria('c');
-        expect(internalDropdown.getOptionsLength()).toBe(2);
-        expect(internalDropdown.arrowUpExists()).toBe(false);
-        expect(internalDropdown.arrowDownExists()).toBe(false);
     });
     it('should render EmptyMessage component when no results found in the search.', () => {
         const internalDropdown = new PageInternalDropdown(INTERNALDROPDOWN);
-        internalDropdown.clickInputSearch();
-        internalDropdown.setSearchCriteria('cx');
+        internalDropdown.clickSearch();
+        internalDropdown.setQuery('cx');
         expect(internalDropdown.emptyMessageExist()).toBe(true);
     });
     it('should not render EmptyMessage component when no results found in the search.', () => {

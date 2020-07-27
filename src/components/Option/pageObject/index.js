@@ -61,7 +61,7 @@ class PageOption {
      * @returns {bool}
      */
     isSelected() {
-        return this.rootElement.$('li[data-selected="true"]').isExisting();
+        return this.rootElement.getAttribute('data-selected') === 'true';
     }
 
     /**
