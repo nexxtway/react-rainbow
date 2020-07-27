@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import PhoneInput from '../';
 
 describe('<PhoneInput />', () => {
-    it('Should accept only numbers.', () => {
+    it('should accept only numbers.', () => {
         const onChangeMockFn = jest.fn();
         const wrapper = mount(<PhoneInput label="Phone Number" onChange={onChangeMockFn} />);
 
