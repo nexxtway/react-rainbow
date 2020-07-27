@@ -1,8 +1,8 @@
 ##### Using InternalOverlay with default position resolver:
 
 ```js
-import { ButtonIcon } from 'react-rainbow-components';
 import { useRef, useState } from 'react';
+import { ButtonIcon } from 'react-rainbow-components';
 import styled from 'styled-components';
 import RenderIf from '../RenderIf';
 import { useOutsideClick, useWindowResize } from '../../libs/hooks';
@@ -36,7 +36,7 @@ const Text = styled.h1`
     margin-top: 4px;
 `;
 
-const Images = styled(ParisIcon)`
+const Image = styled(ParisIcon)`
     width: 60%;
     height: 60%;
 `;
@@ -45,29 +45,23 @@ const StyledPlusIcon = styled(PlusIcon)`
     pointer-events: none;
 `;
 
-const Component = (props) => {
+const Component = props => {
     const { id, buttonId } = props;
     const triggerRef = useRef(null);
     const dropdownRef = useRef();
-    const iconRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
-    const handleOutsideClick = event => {
-        if (event.target !== triggerRef.current.buttonRef.current) {
-            stopListeningOutsideClick();
-            setIsOpen(false);
-        }        
-    }
-    const handleClick = (event) => {
-        setIsOpen(!isOpen);
-        if (!isOpen) {
-            startListeningOutsideClick();
-        }        
-    };
-    const startListening = () => {
-        startListeningOutsideClick();
-    }
-    const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(dropdownRef, handleOutsideClick);
+
+    useOutsideClick(
+        dropdownRef,
+        event => {
+            if (event.target !== triggerRef.current.buttonRef.current) {
+                setIsOpen(false);
+            }
+        },
+        isOpen,
+    );
     useWindowResize(() => setIsOpen(false), isOpen);
+
     return (
         <>
             <ButtonIcon
@@ -75,19 +69,16 @@ const Component = (props) => {
                 variant="neutral"
                 icon={<StyledPlusIcon />}
                 ref={triggerRef}
-                onClick={handleClick}
+                onClick={() => setIsOpen(!isOpen)}
             />
             <InternalOverlay
                 isVisible={isOpen}
-                render={() => {
-                    return (
-                        <Dropdown id={id} ref={dropdownRef}>
-                            <Images />
-                            <Text>
-                                Paris
-                            </Text>
-                        </Dropdown>);
-                }}
+                render={() => (
+                    <Dropdown id={id} ref={dropdownRef}>
+                        <Image />
+                        <Text>Paris</Text>
+                    </Dropdown>
+                )}
                 triggerElementRef={() => triggerRef.current.buttonRef}
             />
 
@@ -104,15 +95,14 @@ const Component = (props) => {
         <Component />
         <Component />
     </div>
-
 </Container>
 ```
 
 ##### Using InternalOverlay with custom position resolver:
 
 ```js
-import { Button, ButtonIcon } from 'react-rainbow-components';
 import { useRef, useState } from 'react';
+import { Button, ButtonIcon } from 'react-rainbow-components';
 import styled from 'styled-components';
 import RenderIf from '../RenderIf';
 import { useOutsideClick, useWindowResize } from '../../libs/hooks';
@@ -235,19 +225,16 @@ const Component = () => {
     const triggerRef = useRef(null);
     const dropdownRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
-    const handleOutsideClick = event => {
-        stopListeningOutsideClick();
-        if (event.target !== triggerRef.current) {
-            setIsOpen(false);
-        }
-    }
-    const handleClick = () => {
-        setIsOpen(!isOpen);
-        if (!isOpen) {
-            startListeningOutsideClick();
-        }        
-    };
-    const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(dropdownRef, handleOutsideClick);
+
+    useOutsideClick(
+        dropdownRef,
+        event => {
+            if (event.target !== triggerRef.current) {
+                setIsOpen(false);
+            }
+        },
+        isOpen,
+    );
     useWindowResize(() => setIsOpen(false), isOpen);
     
     return (
@@ -256,37 +243,40 @@ const Component = () => {
                 <Day>May 5</Day>
                 <Event
                     ref={triggerRef}
-                    onClick={handleClick}
-                    type="button">
+                    onClick={() => setIsOpen(!isOpen)}
+                    type="button"
+                >
                     React Rainbow Event
                 </Event>
                 <InternalOverlay
                     isVisible={isOpen}
-                    render={() => {
-                        return (
-                            <Dropdown ref={dropdownRef}>
-                                <Header>
-                                    <ButtonIcon icon={<TrashBorderIcon />} />
-                                    <ButtonIcon icon={<PencilBorderIcon />} className="rainbow-m-left_small" />
-                                    <ButtonIcon icon={<CloseIcon />} className="rainbow-m-left_small" />
-                                </Header>
-                                <div  className="rainbow-flex rainbow-m-around_medium">
-                                    <Icon />
-                                    <div>
-                                        <Title>
-                                            React Rainbow Event
-                                        </Title>
-                                        <Description>
-                                            Wednesday, May 5 ⋅ 11:00 – 11:30am
-                                        </Description>
-                                    </div>
+                    render={() => (
+                        <Dropdown ref={el => {dropdownRef.current = el}}>
+                            <Header>
+                                <ButtonIcon icon={<TrashBorderIcon />} />
+                                <ButtonIcon
+                                    icon={<PencilBorderIcon />}
+                                    className="rainbow-m-left_small"
+                                />
+                                <ButtonIcon
+                                    icon={<CloseIcon />}
+                                    className="rainbow-m-left_small"
+                                    onClick={() => setIsOpen(false)}
+                                />
+                            </Header>
+                            <div className="rainbow-flex rainbow-m-around_medium">
+                                <Icon />
+                                <div>
+                                    <Title>React Rainbow Event</Title>
+                                    <Description>Wednesday, May 5 ⋅ 11:00 – 11:30am</Description>
                                 </div>
-                                <Body>
-                                    React Rainbow is a collection of components that will reliably help you build your application in a snap.
-                                </Body>
-                            </Dropdown>);
-                    }}
-                    triggerElementRef={() => triggerRef}
+                            </div>
+                            <Body>
+                                React Rainbow is a collection of components that will reliably help you build your application in a snap.
+                            </Body>
+                        </Dropdown>
+                    )}
+                    triggerElementRef={triggerRef}
                     positionResolver={positionResolver}
                 />
             </Cell>

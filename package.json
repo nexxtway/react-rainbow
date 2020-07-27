@@ -31,6 +31,7 @@
         "prepare:canary": "node scripts/prepare-canary.js"
     },
     "dependencies": {
+        "@rainbow-modules/hooks": "^0.1.2",
         "autosize": "^4.0.2",
         "chart.js": "2.7.3",
         "clipboard-copy": "^2.0.0",

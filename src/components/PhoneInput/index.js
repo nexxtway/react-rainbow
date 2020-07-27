@@ -1,5 +1,6 @@
 import React, { useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
+import { useOutsideClick } from '@rainbow-modules/hooks';
 import Label from '../Input/label';
 import RenderIf from '../RenderIf';
 import StyledContainer from '../Input/styled/container';
@@ -83,6 +84,14 @@ const PhoneInput = React.forwardRef((props, ref) => {
         searchRef,
         inputRef,
     );
+    useOutsideClick(
+        containerRef,
+        () => {
+            setFocusIndex(-1);
+        },
+        focusIndex > -1,
+    );
+
     const handleFocus = useHandleFocus(focusIndex, onFocus, setFocusIndex);
     const handleBlur = useHandleBlur(focusIndex, onBlur);
 
