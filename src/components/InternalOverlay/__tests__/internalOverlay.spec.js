@@ -127,4 +127,16 @@ describe('<InternalOverlay />', () => {
         );
         expect(onOpenedMock).not.toHaveBeenCalled();
     });
+
+    it('should call triggerElementRef when triggerElementRef is a function', () => {
+        const triggerElementRefMock = jest.fn();
+        mount(
+            <InternalOverlay
+                render={() => <div id="test-id" />}
+                triggerElementRef={triggerElementRefMock}
+                isVisible
+            />,
+        );
+        expect(triggerElementRefMock).toHaveBeenCalledTimes(1);
+    });
 });
