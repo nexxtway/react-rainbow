@@ -19,7 +19,7 @@ describe('InternalDropdown base example', () => {
     });
     it('should not render Arrow component when the list of options fits the container', () => {
         const internalDropdown = new PageInternalDropdown(INTERNALDROPDOWN);
-        internalDropdown.clickInputSearch();
+        internalDropdown.clickSearch();
         internalDropdown.setSearchCriteria('c');
         expect(internalDropdown.getOptionsLength()).toBe(2);
         expect(internalDropdown.arrowUpExists()).toBe(false);
