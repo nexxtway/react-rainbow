@@ -981,6 +981,145 @@ function TableExample(props) {
 <TableExample data={data} />;
 ```
 
+##### Data Table with custom actions and wrap description
+
+```js
+import {
+    Table,
+    Column,
+    ButtonGroup,
+    ButtonIcon,
+} from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from 'styled-components';
+import React, { useState } from 'react';
+import {faEllipsisV,
+        faPlus,
+        faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
+const data = [
+    {
+        name: 'Leandro Torres',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        id: '1234qwerty',
+    },
+    {
+        name: 'Jose Torres',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        id: '1234asdfgh',
+    },
+    {
+        name: 'Reinier',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        id: '1234zxcvbn',
+    },
+    {
+        name: 'Sara',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        id: '5678qwerty',
+    },
+    {
+        name: 'Tahimi',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        id: '5678asdfgh',
+    },
+    {
+        name: 'Leo',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        id: '5678zxcvbn',
+    },
+    {
+        name: 'Tahimi Leon',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        id: '9012qwerty',
+    },
+    {
+        name: 'Alejandro',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',  
+        id: '5678zdfgdf',
+    },
+    {
+        name: 'Carlos',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        id: '3434fgfgdf',
+    },
+    {
+        name: 'Luis',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        id: '9012asdfgh',
+    },
+];
+const Title = styled.h1.attrs(props => props.theme.rainbow)`        
+    font-family: 'Lato Light';
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: 10px;
+    color: ${props => props.palette.text.main};
+    `;  
+
+const Subtitle = styled.h3.attrs(props => props.theme.rainbow)`
+    font-family: Lato;
+    font-size: 14px;
+    color: ${props => props.palette.text.title};
+    `;
+
+function TableCustomAction(props) {
+    const [data, setData] = useState(props.data);
+
+    function handleOnDeleteElement(id) {
+            console.log(id)
+            const newData = data.filter(e => e.id!==id);
+            setData(newData)
+        }
+    const customActionStyles ={marginLeft: "auto"};
+    const StyledActionCell = styled.div`
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        margin: auto;
+        box-sizing: border-box;
+    `;
+    const CustomAction = ({row})=>(
+            <StyledActionCell>
+                <ButtonIcon
+                        onClick={()=>handleOnDeleteElement(row.id)}
+                        buttonSize="small"
+                        style={customActionStyles}
+                        icon={<FontAwesomeIcon icon={faTrashAlt} />}
+                        />
+            </StyledActionCell>    
+    );
+    return ( 
+        <div className="rainbow-p-bottom_xx-large"> 
+            <GlobalHeader  src="images/user/user3.jpg">
+                <ButtonGroup className="rainbow-m-right_medium">
+                    <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faPlus} />} />
+                    <ButtonIcon
+                        variant="border-filled"
+                        disabled
+                        icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                    />
+                </ButtonGroup>
+            </GlobalHeader>
+            <div className="rainbow-flex rainbow-justify_spread rainbow-align_center rainbow-p-around_large">
+                    <div>
+                        <Title>Members</Title>
+                        <Subtitle>Total • {data.length}</Subtitle>
+                    </div>
+                        
+            </div>
+            <Table keyField="id" data={data}>
+                <Column header="Name" field="name" />
+                <Column header="Description" field="description" />
+                <Column component={CustomAction}/>       
+            </Table>
+        </div>
+    );
+}
+<TableCustomAction data={data}/>
+```
+
 ##### dinamically Table
 
 ```js
