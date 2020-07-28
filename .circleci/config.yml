@@ -1,7 +1,3 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
 
 defaults: &defaults
@@ -16,19 +12,17 @@ jobs:
         steps:
             - checkout
 
-            # Download and cache dependencies
             - restore_cache:
                   keys:
-                      - v1-dependencies-{{ checksum "yarn.lock" }}
-                      # fallback to using the latest cache if no exact match is found
-                      - v1-dependencies-
+                      - v2-dependencies-{{ checksum "yarn.lock" }}
+                      - v2-dependencies-
 
             - run: yarn install
 
             - save_cache:
                   paths:
                       - node_modules
-                  key: v1-dependencies-{{ checksum "yarn.lock" }}
+                  key: v2-dependencies-{{ checksum "yarn.lock" }}
 
             - run: yarn lint
 
@@ -40,7 +34,6 @@ jobs:
                       else
                           yarn test --ci --maxWorkers=2 
                       fi
-
             - store_test_results:
                   path: test-results/jest-junit-results
 
@@ -53,12 +46,10 @@ jobs:
         steps:
             - checkout
 
-            # Download and cache dependencies
             - restore_cache:
                   keys:
-                      - v1-dependencies-{{ checksum "yarn.lock" }}
-                      # fallback to using the latest cache if no exact match is found
-                      - v1-dependencies-
+                      - v2-dependencies-{{ checksum "yarn.lock" }}
+                      - v2-dependencies-
 
             - run: yarn install
 
@@ -69,7 +60,6 @@ jobs:
                       sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
                       sudo apt-get update
                       sudo apt-get -y install google-chrome-stable
-
             - run:
                   command: yarn start
                   background: true
@@ -80,12 +70,10 @@ jobs:
                   name: run integration test
                   command: |
                       yarn test:integration --headless
-
             - run:
                   name: generate report
                   command: |
                       yarn allure generate test-results/wdio-allure-results --clean --output test-results/allure-report
-
             - store_test_results:
                   path: test-results/wdio-junit-results
 
@@ -97,12 +85,10 @@ jobs:
 
         steps:
             - checkout
-            # Download and cache dependencies
             - restore_cache:
                   keys:
-                      - v1-dependencies-{{ checksum "yarn.lock" }}
-                      # fallback to using the latest cache if no exact match is found
-                      - v1-dependencies-
+                      - v2-dependencies-{{ checksum "yarn.lock" }}
+                      - v2-dependencies-
             - run: git config --global user.email "admin@nexxtway.com"
             - run: git config --global user.name "TheAdmin"
             - run: yarn install
@@ -118,12 +104,10 @@ jobs:
         steps:
             - checkout
 
-            # Download and cache dependencies
             - restore_cache:
                   keys:
-                      - v1-dependencies-{{ checksum "yarn.lock" }}
-                      # fallback to using the latest cache if no exact match is found
-                      - v1-dependencies-
+                      - v2-dependencies-{{ checksum "yarn.lock" }}
+                      - v2-dependencies-
 
             - run:
                   name: Create .env file
@@ -134,7 +118,6 @@ jobs:
                       echo REACT_APP_RECAPTCHA_APIKEY=$REACT_APP_RECAPTCHA_APIKEY >> .env;
                       echo REACT_APP_CARBON_ADS_SRC=$REACT_APP_CARBON_ADS_SRC >> .env;
                       echo REACT_APP_STRIPE_APIKEY=$REACT_APP_STRIPE_APIKEY >> .env;
-
             - run: yarn install
             - run: yarn deploy:library --token=$FIREBASE_TOKEN
 
