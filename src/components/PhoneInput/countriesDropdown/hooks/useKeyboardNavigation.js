@@ -84,7 +84,9 @@ export default function useKeyboardNavigation(
 
     useEffect(() => {
         handleActiveChange(0);
-        scrollableRef.current.scrollTo(0, 0);
+        if (scrollableRef.current && scrollableRef.current.scrollTo) {
+            scrollableRef.current.scrollTo(0, 0);
+        }
         activeIndex.current = 0;
     }, [country, handleActiveChange, itemsRef, length, scrollableRef]);
 
