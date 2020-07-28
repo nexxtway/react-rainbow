@@ -2,17 +2,19 @@ import { useContext, useMemo } from 'react';
 import { ThemeContext } from 'styled-components';
 import normalizeThemeColors from '../../styles/helpers/normalizeThemeColors';
 import defaultTheme from '../../styles/defaultTheme';
+import normalizeTheme from '../../styles/helpers/normalizeTheme';
 
-export default function useTheme() {
-    const themeContext = useContext(ThemeContext);
+export default function useTheme(localTheme) {
+    const styledTheme = useContext(ThemeContext);
     return useMemo(
         () =>
-            themeContext || {
+            (localTheme && normalizeTheme(localTheme)) ||
+            styledTheme || {
                 rainbow: {
                     ...defaultTheme,
                     ...normalizeThemeColors(defaultTheme),
                 },
             },
-        [themeContext],
+        [localTheme, styledTheme],
     );
 }

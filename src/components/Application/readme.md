@@ -39,49 +39,35 @@ const inputStyles = {
 
 <Application>
     <section>
-        <header className="rainbow-align-content_space-between rainbow-background-color_white rainbow-p-vertical_medium react-rainbow-global-header">
-            <img
-                src="images/rainbow-logo.svg"
-                alt="rainbow logo"
-                className="rainbow-m-left_medium react-rainbow-global-header_logo"
-            />
-
-            <article className="rainbow-flex rainbow-align_center">
-                <ButtonGroup>
-                    <ButtonIcon
-                        variant="border"
-                        disabled
-                        icon={<FontAwesomeIcon icon={faPencilAlt} />}
-                    />
-                    <ButtonIcon
-                        variant="border"
-                        disabled
-                        icon={<FontAwesomeIcon icon={faBell} />}
-                    />
-                    <ButtonMenu
-                        menuSize="x-small"
-                        menuAlignment="right"
-                        icon={<FontAwesomeIcon icon={faAngleDown} />}
-                    >
-                        <MenuItem label="Options" variant="header" />
-                        <MenuItem label="Menu Item" />
-                        <MenuItem label="Menu Item" />
-                        <MenuDivider variant="space" />
-                        <MenuItem
-                            label="Right Icon"
-                            icon={<FontAwesomeIcon icon={faTasks} />}
-                            iconPosition="right"
-                        />
-                    </ButtonMenu>
-                </ButtonGroup>
-
-                <Avatar
-                    src="images/user/user2.jpg"
-                    variant="circle"
-                    className="rainbow-m-horizontal_medium"
+        <GlobalHeader src="images/user/user2.jpg">
+            <ButtonGroup>
+                <ButtonIcon
+                    variant="border"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faPencilAlt} />}
                 />
-            </article>
-        </header>
+                <ButtonIcon
+                    variant="border"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faBell} />}
+                />
+                <ButtonMenu
+                    menuSize="x-small"
+                    menuAlignment="right"
+                    icon={<FontAwesomeIcon icon={faAngleDown} />}
+                >
+                    <MenuItem label="Options" variant="header" />
+                    <MenuItem label="Menu Item" />
+                    <MenuItem label="Menu Item" />
+                    <MenuDivider variant="space" />
+                    <MenuItem
+                        label="Right Icon"
+                        icon={<FontAwesomeIcon icon={faTasks} />}
+                        iconPosition="right"
+                    />
+                </ButtonMenu>
+            </ButtonGroup>
+        </GlobalHeader>
         <section className="rainbow-m-horizontal_large rainbow-m-top_large rainbow-m-bottom_xx-large">
             <Card
                 title="Tasks"

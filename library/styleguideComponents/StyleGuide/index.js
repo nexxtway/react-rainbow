@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classnames from 'classnames';
+import styled from 'styled-components';
+import ButtonIcon from '../../../src/components/ButtonIcon';
 import Application from './../../../src/components/Application';
 import ReactGA from '.././../ga';
 import RenderIf from '../../../src/components/RenderIf';
-import ButtonIcon from '../../../src/components/ButtonIcon';
 import ComponentsPage from '../../pages/ComponentsPage';
 import ProjectSelector from '../ProjectSelector';
 import GitterChat from '../GitterChat';
@@ -28,11 +28,61 @@ const twitterIconStyle = {
     color: '#ffffff',
 };
 
-const StyleButtonIcon = styled(ButtonIcon)`
+export const GitterButtonIcon = styled(ButtonIcon)`
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 64px;
+    height: 64px;
+    z-index: 6000;
+
+    @media (max-width: 800px) {
+        bottom: 12px;
+        right: 12px;
+    }
+
     svg {
         width: 36px !important;
         height: 35px !important;
         color: #fff;
+    }
+`;
+
+export const HamburgerButtonIcon = styled(ButtonIcon)`
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    z-index: 6000;
+    display: none;
+
+    @media (max-width: 800px) {
+        display: inline-block;
+    }
+`;
+
+export const TwitterLink = styled.a`
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    background-color: #d7dae8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.05s ease;
+    position: absolute;
+    bottom: 24px;
+    left: 34px;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: rgb(29, 161, 242);
+        transition: all 0.05s ease;
+        border-radius: 36px;
+        height: 36px;
+        width: 36px;
+        bottom: 22px;
+        left: 32px;
     }
 `;
 
@@ -98,14 +148,13 @@ class StyleGuide extends React.Component {
                 <Ribbon />
                 <aside className={this.getSideBarClassNames()}>
                     {toc}
-                    <a
+                    <TwitterLink
                         href="https://twitter.com/ReactRainbow"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="react-rainbow-styleguide_twitter-link"
                     >
                         <TwitterIcon style={twitterIconStyle} />
-                    </a>
+                    </TwitterLink>
                 </aside>
                 <div
                     className={this.getBackdropClassNames()}
@@ -118,19 +167,12 @@ class StyleGuide extends React.Component {
                         <ComponentsPage components={components} />
                     </RenderIf>
                 </main>
-                <ButtonIcon
-                    className="react-rainbow-styleguide_hamburger-button"
+                <HamburgerButtonIcon
                     icon={<BarsIcon />}
                     size="large"
                     onClick={this.toggleSidebar}
                 />
-                <StyleButtonIcon
-                    className="react-rainbow-styleguide-open-chat-button"
-                    shaded
-                    variant="brand"
-                    size="large"
-                    icon={<ChatIcon />}
-                />
+                <GitterButtonIcon shaded variant="brand" size="large" icon={<ChatIcon />} />
                 <GitterChat
                     room="react-rainbow-components/community"
                     activationElement=".react-rainbow-styleguide-open-chat-button"
