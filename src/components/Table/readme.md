@@ -997,7 +997,7 @@ import {faEllipsisV,
         faPlus,
         faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-const data = [
+const initialData = [
     {
         name: 'Leandro Torres',
         description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
@@ -1063,33 +1063,24 @@ const Subtitle = styled.h3.attrs(props => props.theme.rainbow)`
     color: ${props => props.palette.text.title};
     `;
 
-function TableCustomAction(props) {
-    const [data, setData] = useState(props.data);
+function CustomAction(props){
+    const {row, onDeleteElement} = props;
+    return (
+            <ButtonIcon
+                onClick={()=>onDeleteElement(row.id)}
+                buttonSize="small"
+                icon={<FontAwesomeIcon icon={faTrashAlt} />}
+            />
+    );
+}
 
+function TableCustomAction() {
+    const [data, setData] = useState(initialData);
     function handleOnDeleteElement(id) {
-            console.log(id)
             const newData = data.filter(e => e.id!==id);
             setData(newData)
         }
-    const customActionStyles ={marginLeft: "auto"};
-    const StyledActionCell = styled.div`
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-        margin: auto;
-        box-sizing: border-box;
-    `;
-    const CustomAction = ({row})=>(
-            <StyledActionCell>
-                <ButtonIcon
-                        onClick={()=>handleOnDeleteElement(row.id)}
-                        buttonSize="small"
-                        style={customActionStyles}
-                        icon={<FontAwesomeIcon icon={faTrashAlt} />}
-                        />
-            </StyledActionCell>    
-    );
+   
     return ( 
         <div className="rainbow-p-bottom_xx-large"> 
             <GlobalHeader  src="images/user/user3.jpg">
@@ -1102,22 +1093,20 @@ function TableCustomAction(props) {
                     />
                 </ButtonGroup>
             </GlobalHeader>
-            <div className="rainbow-flex rainbow-justify_spread rainbow-align_center rainbow-p-around_large">
-                    <div>
-                        <Title>Members</Title>
-                        <Subtitle>Total • {data.length}</Subtitle>
-                    </div>
-                        
+            <div className="rainbow-p-around_large">
+                <Title>Members</Title>
+                <Subtitle>Total • {data.length}</Subtitle>
             </div>
             <Table keyField="id" data={data}>
-                <Column header="Name" field="name" />
-                <Column header="Description" field="description" />
-                <Column component={CustomAction}/>       
+                <Column  defaultWidth={200} header="Name" field="name" />
+                <Column  header="Description" field="description" />
+                <Column  width={60} component={
+                    ({row}) =><CustomAction row={row} onDeleteElement={handleOnDeleteElement} />}/> 
             </Table>
         </div>
     );
 }
-<TableCustomAction data={data}/>
+<TableCustomAction />
 ```
 
 ##### dinamically Table
