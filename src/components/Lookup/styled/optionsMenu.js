@@ -2,8 +2,13 @@ import styled, { keyframes } from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const ListOptionsMenu = keyframes`
-  0% { opacity: 0; }
-  100% { opacity: 1;}
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 `;
 
 const StyledOptionsMenu = attachThemeAttrs(styled.div)`
