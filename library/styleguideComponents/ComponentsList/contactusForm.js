@@ -29,6 +29,7 @@ function ContactusForm(props) {
     const onSubmit = async values => {
         // eslint-disable-next-line no-debugger
         debugger;
+        // console.log(values);
         setLoading(true);
         const res = await fetch('https://us-central1-nexxtway.cloudfunctions.net/api/contactus', {
             method: 'POST',
@@ -59,6 +60,7 @@ function ContactusForm(props) {
                         required
                         placeholder="Enter your first name"
                         icon={<Avatar />}
+                        disabled={isLoading}
                     />
                     <Field
                         name="lastname"
@@ -67,6 +69,7 @@ function ContactusForm(props) {
                         required
                         placeholder="Enter your last name"
                         icon={<Avatar />}
+                        disabled={isLoading}
                     />
                 </Row>
                 <Row>
@@ -78,6 +81,7 @@ function ContactusForm(props) {
                         required
                         placeholder="Enter your email"
                         icon={<EmailCustom />}
+                        disabled={isLoading}
                     />
                     <Field
                         name="phone"
@@ -87,6 +91,7 @@ function ContactusForm(props) {
                         placeholder="Enter your phone number"
                         onChange={setPhone}
                         value={phone}
+                        disabled={isLoading}
                     />
                 </Row>
                 <Row>
@@ -95,20 +100,24 @@ function ContactusForm(props) {
                         component={SmallInput}
                         label="Company Name"
                         placeholder="Enter your company name"
+                        disabled={isLoading}
                     />
                     <Field
                         name="jobtitle"
                         component={SmallInput}
                         label="Job Title"
                         placeholder="Enter your job title"
+                        disabled={isLoading}
                     />
                 </Row>
                 <Field
+                    required
                     component={Textarea}
                     name="message"
                     className="rainbow-m-bottom_large"
                     label="Message"
                     placeholder="What else should we know?"
+                    disabled={isLoading}
                 />
                 <Footer>
                     <Field
@@ -127,20 +136,25 @@ function ContactusForm(props) {
 }
 
 const validate = values => {
-    const { firstname, lastname, email, message } = values;
+    const { firstname, lastname, email, message, recaptcha } = values;
     const errors = {};
     if (!firstname) {
-        errors.firstname = 'Look like you forget enter your first name';
+        errors.firstname = 'Looks like you forgot your first name.';
     }
     if (!lastname) {
-        errors.lastname = 'Look like you forget enter your last name';
+        errors.lastname = 'Looks like you forgot your last name.';
     }
     if (!email) {
-        errors.email = 'Look like you forget enter your email';
+        errors.email = 'Looks like you forgot your email.';
     }
     if (!message) {
-        errors.message = 'Look like you forget enter a message';
+        errors.message = 'Looks like you forgot leave a message.';
     }
+    if (!recaptcha) {
+        errors.recaptcha = 'Are you a robot?';
+    }
+    // eslint-disable-next-line no-debugger
+    debugger;
     return errors;
 };
 
@@ -151,4 +165,5 @@ ContactusForm.propTypes = {
 export default reduxForm({
     form: 'contactUs',
     validate,
+    touchOnBlur: false,
 })(ContactusForm);
