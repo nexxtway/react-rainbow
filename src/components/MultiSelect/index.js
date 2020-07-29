@@ -26,11 +26,8 @@ import ErrorText from '../Input/styled/errorText';
 import PlusIcon from './icons/plus';
 import { ENTER_KEY, SPACE_KEY, ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
 import { hasContent, positionResolver } from './helpers';
-import normalizeValue from './helpers/normalizeValue';
+import normalizeValue from '../InternalDropdown/helpers/normalizeValue';
 import Content from './content';
-import PlaceholderOption from './placeholderOption';
-import getAllValues from './helpers/getAllValues';
-import getIsChecked from './helpers/getIsChecked';
 
 const MultiSelect = React.forwardRef((props, ref) => {
     const {
@@ -158,20 +155,6 @@ const MultiSelect = React.forwardRef((props, ref) => {
         }
     };
 
-    const handleTopOptionClick = event => {
-        event.preventDefault();
-        if (Array.isArray(value)) {
-            if (value.length === 0) {
-                return onChange(getAllValues(children));
-            }
-            return onChange([]);
-        }
-        if (value) {
-            return onChange([]);
-        }
-        return onChange(getAllValues(children));
-    };
-
     const handleOutsideClick = event => {
         if (
             event.target !== triggerRef.current.buttonRef.current &&
@@ -188,12 +171,21 @@ const MultiSelect = React.forwardRef((props, ref) => {
     );
     useWindowResize(() => setIsOpen(false), isOpen);
 
+    const [chipsBoundingRect, setChipsBoundingRect] = useState();
+    const refCallback = element => {
+        if (element) {
+            const elementRect = JSON.stringify(element.getBoundingClientRect());
+            if (!chipsBoundingRect || chipsBoundingRect !== elementRect) {
+                setChipsBoundingRect(elementRect);
+            }
+        }
+    };
+
     const selectedCount = Array.isArray(value) ? value.length : 1;
     const shouldRenderContent = hasContent(value);
     const shouldRenderCount = !!value && selectedCount > 0 && variant === 'default';
     const shouldRenderButton = !readOnly && !disabled;
     const inputTabIndex = readOnly ? tabIndex : '-1';
-    const isChecked = getIsChecked(value, children);
 
     const dropdownWidth = comboboxRef.current ? comboboxRef.current.offsetWidth : 0;
 
@@ -230,7 +222,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                     ref={inputRef}
                     readOnly
                 />
-                <StyledChipContainer>
+                <StyledChipContainer ref={refCallback}>
                     <RenderIf isTrue={!shouldRenderContent}>
                         <StyledPlaceholder>{placeholder}</StyledPlaceholder>
                     </RenderIf>
@@ -265,7 +257,9 @@ const MultiSelect = React.forwardRef((props, ref) => {
                 <InternalOverlay
                     isVisible={isOpen}
                     positionResolver={positionResolver}
-                    onOpened={() => dropdownRef.current.focus()}
+                    onOpened={() => {
+                        dropdownRef.current.focus();
+                    }}
                     triggerElementRef={() => comboboxRef}
                 >
                     <StyledDropdown
@@ -274,18 +268,10 @@ const MultiSelect = React.forwardRef((props, ref) => {
                         onChange={handleChange}
                         ref={dropdownRef}
                         width={dropdownWidth}
-                        multiple
+                        placeholder={placeholder}
                         showCheckbox={showCheckbox}
+                        multiple
                     >
-                        <RenderIf isTrue={showCheckbox}>
-                            <PlaceholderOption
-                                name="header"
-                                label={placeholder}
-                                onClick={handleTopOptionClick}
-                                isChecked={isChecked}
-                                tabIndex="-1"
-                            />
-                        </RenderIf>
                         {children}
                     </StyledDropdown>
                 </InternalOverlay>

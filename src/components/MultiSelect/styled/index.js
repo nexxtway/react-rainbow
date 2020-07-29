@@ -4,7 +4,6 @@ import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 import Chip from '../../Chip';
 import ButtonIcon from '../../ButtonIcon';
 import { TruncatedText } from '../../Structural';
-import PrimitiveCheckbox from '../../PrimitiveCheckbox';
 import InternalDropdown from '../../InternalDropdown';
 
 export const StyledContainer = styled.div`
@@ -147,13 +146,6 @@ export const StyledCountText = attachThemeAttrs(styled.span)`
         `
             margin-right: 0.8rem;
         `}
-`;
-
-export const StyledPrimitiveCheckbox = styled(PrimitiveCheckbox)`
-    display: inline;
-    margin-bottom: 0;
-    margin-left: 4px;
-    margin-right: 8px;
 `;
 
 export const StyledDropdown = styled(InternalDropdown)`

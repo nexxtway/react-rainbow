@@ -23,6 +23,9 @@ import getValueNames from './helpers/getValueNames';
 import isEmptyObject from './helpers/isEmptyObject';
 import EmptyMessage from './emptyMessage';
 import { Dropdown, Ul, Arrow, InputSearch, UlContainer, SearchContainer, Icon } from './styled';
+import PlaceholderOption from './placeholderOption';
+import isChecked from './helpers/isChecked';
+import getAllValues from './helpers/getAllValues';
 
 const sizeMap = {
     medium: 227,
@@ -50,6 +53,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         style,
         multiple,
         showCheckbox,
+        placeholder,
     } = props;
     const [showScrollUpArrow, setShowScrollUpArrow] = useState(false);
     const [showScrollDownArrow, setShowScrollDownArrow] = useState(false);
@@ -268,6 +272,20 @@ const InternalDropdown = forwardRef((props, reference) => {
         setTimeout(() => updateScrollingArrows(), 0);
     };
 
+    const handleTopOptionClick = event => {
+        event.preventDefault();
+        if (Array.isArray(value)) {
+            if (value.length === 0) {
+                return onChange(getAllValues(activeChildren.current));
+            }
+            return onChange([]);
+        }
+        if (value) {
+            return onChange([]);
+        }
+        return onChange(getAllValues(activeChildren.current));
+    };
+
     const context = useMemo(() => {
         const currentValues = getValueNames(value);
         return {
@@ -292,6 +310,9 @@ const InternalDropdown = forwardRef((props, reference) => {
         multiple,
         showCheckbox,
     ]);
+
+    const isPlaceholderOptionChecked = isChecked(value, activeChildren.current);
+    const shouldRenderPlaceholderOption = placeholder && showCheckbox;
 
     return (
         <Dropdown
@@ -327,7 +348,18 @@ const InternalDropdown = forwardRef((props, reference) => {
                     showEmptyMessage={showEmptyMessage}
                 >
                     <Content isLoading={isLoading}>
-                        <Provider value={context}>{children}</Provider>
+                        <Provider value={context}>
+                            <RenderIf isTrue={shouldRenderPlaceholderOption}>
+                                <PlaceholderOption
+                                    name="header"
+                                    label={placeholder}
+                                    onClick={handleTopOptionClick}
+                                    isChecked={isPlaceholderOptionChecked}
+                                    tabIndex="-1"
+                                />
+                            </RenderIf>
+                            {children}
+                        </Provider>
                     </Content>
                 </Ul>
                 <RenderIf isTrue={showEmptyMessage}>
@@ -379,6 +411,8 @@ InternalDropdown.propTypes = {
     multiple: PropTypes.bool,
     /** Show checkbox */
     showCheckbox: PropTypes.bool,
+    /** The text to show on the header when showCheckbox is true */
+    placeholder: PropTypes.string,
 };
 
 InternalDropdown.defaultProps = {
@@ -392,6 +426,7 @@ InternalDropdown.defaultProps = {
     enableSearch: false,
     multiple: false,
     showCheckbox: false,
+    placeholder: undefined,
 };
 
 export default InternalDropdown;

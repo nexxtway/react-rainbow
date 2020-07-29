@@ -63,6 +63,7 @@ const MultiSelectExample = props => {
             onChange={setValue}
             bottomHelpText="You can select several options"
             variant="chip"
+            showCheckbox
         >
             <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
             <Option name="option-2" label="New Building" icon={<AddFilledIcon />} />

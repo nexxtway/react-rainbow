@@ -11,7 +11,7 @@ import StyledCheckmarkIcon from './styled/checkmarkIcon';
 import StyledUncheckIcon from './styled/uncheckIcon';
 import StyledInput from './styled/input';
 import RenderIf from '../RenderIf';
-import OptionButton from './button';
+import StyledButton from './styled/button';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -108,7 +108,7 @@ class OptionItem extends Component {
     }
 
     register() {
-        const { privateRegisterChild, label, name, icon, value } = this.props;
+        const { privateRegisterChild, label, name, icon, value, variant } = this.props;
         return setTimeout(
             () =>
                 privateRegisterChild(this.itemRef.current, {
@@ -116,6 +116,7 @@ class OptionItem extends Component {
                     name,
                     icon,
                     value,
+                    variant,
                 }),
             0,
         );
@@ -141,13 +142,11 @@ class OptionItem extends Component {
         } = this.props;
         const hasRightIcon = !!(icon && iconPosition === 'right');
         if (currentValues && currentValues.includes(name) && !showCheckbox) {
-            if (multiple && activeOptionName === name) {
-                return <StyledUncheckIcon />;
-            }
+            if (multiple && activeOptionName === name) return <StyledUncheckIcon />;
             return <StyledCheckmarkIcon />;
         }
         if (showCheckbox && activeOptionName === name) {
-            return <OptionButton onMouseDown={this.handleOnlyClick} />;
+            return <StyledButton label="Only" onClick={this.handleOnlyClick} />;
         }
         return (
             <Icon
