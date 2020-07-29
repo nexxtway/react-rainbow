@@ -2,7 +2,7 @@
 name: 💡 Idea
 about: Feel free to create an idea on React Rainbow Components.
 title: ''
-labels: 💡%20idea
+labels: 💡 idea
 assignees: ''
 ---
 
