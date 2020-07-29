@@ -27,13 +27,20 @@ function ContactusForm() {
             <FormTitle>Need Custom Work?</FormTitle>
             <FormSubtitle>Get in touch with us.</FormSubtitle>
             <FormContainer>
-                <NameInput
-                    className="rainbow-m-bottom_medium"
-                    label="Name"
-                    required
-                    placeholder="Enter your full name"
-                    icon={<Avatar />}
-                />
+                <Row>
+                    <NameInput
+                        label="First Name"
+                        required
+                        placeholder="Enter your first name"
+                        icon={<Avatar />}
+                    />
+                    <NameInput
+                        label="Last Name"
+                        required
+                        placeholder="Enter your last name"
+                        icon={<Avatar />}
+                    />
+                </Row>
                 <Row>
                     <EmailInput
                         label="Email"

@@ -113,7 +113,7 @@ export const EmailInput = styled(SmallInput)`
     }
 `;
 
-export const NameInput = styled(Input)`
+export const NameInput = styled(SmallInput)`
     & span > svg {
         height: 40px !important;
         width: 40px !important;
