@@ -75,6 +75,59 @@ class PageInternalDropdown {
             bottom: y + height,
         };
     }
+
+    /**
+     * Returns true when the arrow to scroll down exits, false otherwise.
+     * @method
+     * @returns {bool}
+     */
+    arrowDownExists() {
+        return $(this.rootElement)
+            .$('[data-id="internal-dropdown-arrow-down"]')
+            .isExisting();
+    }
+
+    /**
+     * Returns true when the arrow to scroll down exits, false otherwise.
+     * @method
+     * @returns {bool}
+     */
+    arrowUpExists() {
+        return $(this.rootElement)
+            .$('[data-id="internal-dropdown-arrow-up"]')
+            .isExisting();
+    }
+
+    /**
+     * Returns true when the search no results found, false otherwise.
+     * @method
+     * @returns {bool}
+     */
+    emptyMessageExist() {
+        return $(this.rootElement)
+            .$('[data-id="internal-dropdown-empty-message"]')
+            .isExisting();
+    }
+
+    /**
+     * Clicks the input element.
+     * @method
+     */
+    clickSearch() {
+        $(this.rootElement)
+            .$('input[type="search"]')
+            .click();
+    }
+    /**
+     * Type in the input element.
+     * @method
+     * @param {string} value - The value to type in the input element.
+     */
+    setQuery(value) {
+        $(this.rootElement)
+            .$('input[type="search"]')
+            .setValue(value);
+    }
 }
 
 module.exports = PageInternalDropdown;
