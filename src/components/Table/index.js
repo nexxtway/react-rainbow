@@ -409,6 +409,7 @@ export default class Table extends Component {
             emptyTitle,
             emptyDescription,
             keyField,
+            variant,
         } = this.props;
         const { columns, tableWidth, rows, bulkSelection } = this.state;
         const tableStyles = {
@@ -451,6 +452,7 @@ export default class Table extends Component {
                                                 maxRowSelection={maxRowSelection}
                                                 bulkSelection={bulkSelection}
                                                 hasScroll={this.isScrollActive()}
+                                                variant={variant}
                                             />
                                         </tr>
                                     </thead>
@@ -466,6 +468,7 @@ export default class Table extends Component {
                                             emptyDescription={emptyDescription}
                                             onSelectRow={this.handleSelectRow}
                                             onDeselectRow={this.handleDeselectRow}
+                                            variant={variant}
                                         />
                                     </StyledTableBody>
                                 </StyledTable>
@@ -534,6 +537,8 @@ Table.propTypes = {
      *  If not passed a fallback description will be showed.
      */
     emptyDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** The variant changes the appearance of the button. Accepted variants include defualt and listview. */
+    variant: PropTypes.oneOf(['defualt', 'listview']),
     /** The id of the outer element. */
     id: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -566,6 +571,7 @@ Table.defaultProps = {
     emptyIcon: <EmptyIcon />,
     emptyTitle: 'It’s empty here',
     emptyDescription: 'Our robots did not find any match...',
+    variant: 'default',
     id: undefined,
     className: undefined,
     style: undefined,

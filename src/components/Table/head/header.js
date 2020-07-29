@@ -67,6 +67,7 @@ export default class Header extends Component {
             maxRowSelection,
             bulkSelection,
             hasScroll,
+            variant,
         } = this.props;
 
         const headerStyles = {
@@ -98,6 +99,7 @@ export default class Header extends Component {
                 scope="col"
                 tabIndex={this.getTabIndex()}
                 aria-label={this.getHeaderContent()}
+                variant={variant}
             >
                 <StyledWrapper style={headerStyles}>
                     <StyledHeaderContainer
@@ -151,6 +153,7 @@ Header.propTypes = {
     maxRowSelection: PropTypes.number,
     bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
     hasScroll: PropTypes.bool,
+    variant: PropTypes.oneOf(['defualt', 'listview']),
 };
 
 Header.defaultProps = {
@@ -172,4 +175,5 @@ Header.defaultProps = {
     maxRowSelection: undefined,
     bulkSelection: 'none',
     hasScroll: false,
+    variant: 'defualt',
 };

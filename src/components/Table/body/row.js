@@ -21,6 +21,7 @@ export default function Row(props) {
             type: columnType,
             isFirstDataColumn,
             children,
+            variant,
             ...restColumnProps
         } = column;
         const key = `cell-${index}`;
@@ -39,6 +40,7 @@ export default function Row(props) {
                 isFirst={isFirstDataColumn}
                 isSelected={isSelected}
                 columnChildren={children}
+                variant={variant}
             />
         );
     });
@@ -67,10 +69,12 @@ Row.propTypes = {
     rowData: PropTypes.object,
     columns: PropTypes.array,
     isSelected: PropTypes.bool,
+    variant: PropTypes.oneOf(['defualt', 'listview']),
 };
 
 Row.defaultProps = {
     rowData: {},
     columns: [],
     isSelected: false,
+    variant: 'defualt',
 };

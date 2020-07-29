@@ -1062,3 +1062,119 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
     </Table>
 </div>
 ```
+##### data Table whit listview variant
+
+```js
+import React from 'react';
+import styled from 'styled-components';
+import { Table, Column, ButtonGroup, ButtonIcon, Avatar } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faCog,
+    faEllipsisV,
+    faCoins,
+} from '@fortawesome/free-solid-svg-icons';
+
+const data = [
+    {
+        task: 'fix: keyboard navigation on Tree.',
+        coins: 2,
+        constributor: 'yvmunayev@gmail.com',
+        priority: 'hight',
+        id: '1234qwerty',
+    },
+    {
+        task: 'feat: implement Notification Manager',
+        coins: 4,
+        constributor: 'yvmunayev@gmail.com',
+        priority: 'hight',
+        id: '1234asdfgh',
+    },
+    {
+        task: 'test: InternalDropdown.',
+        coins: 2,
+        constributor: 'yvmunayev@gmail.com',
+        priority: 'hight',
+        id: '1234zxcvbn',
+    },
+    {
+        task: 'feat: implement MultiSelect.',
+        coins: 8,
+        constributor: 'yvmunayev@gmail.com',
+        priority: 'hight',
+        id: '5678qwerty',
+    },
+    {
+        task: 'fix: position resolver on InternalOverlay',
+        coins: 8,
+        constributor: 'yvmunayev@gmail.com',
+        priority: 'medium',
+        id: '5678asdfgh',
+    },
+    {
+        task: 'refactor: ButtonMenu component.',
+        coins: 8,
+        constributor: 'yvmunayev@gmail.com',
+        priority: 'low',
+        id: '5278aswegh',
+    },
+];
+
+const Container = styled.div`
+    padding: 0 2rem;
+`;
+
+const StyledPriority = styled.div`
+    text-transform: capitalize;
+    color: #ffffff;
+    ${props =>
+        props.priority === 'hight' &&
+        `
+            background-color: #fc5e5f;
+        `};
+    ${props =>
+        props.priority === 'medium' &&
+        `
+            background-color: #fc9c44;
+        `};
+    ${props =>
+        props.priority === 'low' &&
+        `
+            background-color: #ffd86a;
+        `};
+`;
+
+const Coins = ({ value }) => (
+    <>
+        <FontAwesomeIcon icon={faCoins} />
+        {value} coins
+    </>
+);
+
+const Priority = ({ value }) => (<StyledPriority priority={value}>{value}</StyledPriority>);
+
+<div className="rainbow-p-bottom_xx-large">
+    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+        <ButtonGroup className="rainbow-m-right_medium">
+            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+            <ButtonIcon
+                variant="border-filled"
+                disabled
+                icon={<FontAwesomeIcon icon={faEllipsisV} />}
+            />
+        </ButtonGroup>
+    </GlobalHeader>
+    <Container>
+        <Table data={data} keyField="id" variant="listview">
+            <Column header="Task" field="task" />
+            <Column header="Coins" field="coins" component={Coins}/>
+            <Column
+                header="Constributor"
+                field="constributor"
+                component={() => <Avatar src="images/user/user3.jpg" variant="circle"/>}
+            />
+            <Column header="Priority" field="priority" component={Priority} />
+        </Table>
+    </Container>
+</div>
+```

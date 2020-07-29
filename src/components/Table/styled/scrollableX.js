@@ -11,6 +11,12 @@ const StyledScrollableX = attachThemeAttrs(styled.div)`
     position: relative;
     -webkit-overflow-scrolling: touch;
     border-top: 1px solid ${props => props.palette.border.divider};
+
+    ${props =>
+        props.variant === 'listview' &&
+        `
+            border-top: none;
+        `};
 `;
 
 export default StyledScrollableX;
