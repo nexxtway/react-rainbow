@@ -90,6 +90,7 @@ export default class InputBase extends Component {
             isCentered,
             iconPosition,
         } = this.props;
+        const isReadOnly = !!(!disabled && readOnly);
 
         return (
             <StyledContainer id={id} className={className} style={style}>
@@ -98,7 +99,7 @@ export default class InputBase extends Component {
                     hideLabel={hideLabel}
                     required={required}
                     inputId={this.inputId}
-                    readOnly={readOnly}
+                    readOnly={isReadOnly}
                     id={this.getInlineTextLabelId()}
                 />
 

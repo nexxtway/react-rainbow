@@ -32,7 +32,7 @@ class OptionItem extends Component {
     componentDidMount() {
         const { disabled, variant, name } = this.props;
         const isHeader = variant === 'header';
-        if (disabled || isHeader || typeof name !== 'string') {
+        if (disabled || isHeader || (typeof name !== 'string' && typeof name !== 'number')) {
             return null;
         }
         return this.register();
@@ -251,7 +251,7 @@ Option.propTypes = {
     /** Text of the PicklistOption. */
     label: PropTypes.string,
     /** The name of the PicklistOption. */
-    name: PropTypes.string,
+    name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /** The variant changes the type of PicklistOption.
      * Accepted variants include default and header.
      * This value defaults to default. */

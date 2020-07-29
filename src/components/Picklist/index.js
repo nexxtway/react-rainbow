@@ -92,11 +92,12 @@ class Picklist extends Component {
 
     handleKeyPressed(event) {
         const { isOpen } = this.state;
+        const { readOnly } = this.props;
         if (isOpen) {
             if (this.keyHandlerMap[event.keyCode]) {
                 return this.keyHandlerMap[event.keyCode]();
             }
-        } else if (shouldOpenMenu(event.keyCode)) {
+        } else if (shouldOpenMenu(event.keyCode) && !readOnly) {
             event.preventDefault();
             this.openMenu();
         }
@@ -146,9 +147,11 @@ class Picklist extends Component {
     handleChange(option) {
         const { onChange } = this.props;
         const { label, name, icon, value } = option;
-        setTimeout(() => this.focus(), 0);
         this.closeMenu();
-        return onChange({ label, name, icon, value });
+        setTimeout(() => {
+            this.focus();
+            return onChange({ label, name, icon, value });
+        }, 0);
     }
 
     /**
@@ -199,6 +202,7 @@ class Picklist extends Component {
         const value = valueLabel || '';
         const errorMessageId = this.getErrorMessageId();
         const { isOpen } = this.state;
+        const isReadOnly = !!(!disabled && readOnly);
 
         return (
             <StyledContainer
@@ -216,11 +220,13 @@ class Picklist extends Component {
                         hideLabel={hideLabel}
                         required={required}
                         inputId={this.inputId}
-                        readOnly={readOnly}
+                        readOnly={isReadOnly}
                     />
                 </RenderIf>
 
                 <StyledInnerContainer
+                    disabled={disabled}
+                    readOnly={readOnly}
                     aria-expanded={isOpen}
                     aria-haspopup="listbox"
                     // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
@@ -297,7 +303,7 @@ Picklist.propTypes = {
     value: PropTypes.oneOfType([
         PropTypes.shape({
             label: PropTypes.string,
-            name: PropTypes.string,
+            name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
             icon: PropTypes.node,
             value: PropTypes.any,
         }),

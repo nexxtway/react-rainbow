@@ -9,9 +9,15 @@ import { Chip } from 'react-rainbow-components';
 
     <Chip className="rainbow-m-around_medium" label="Chip Neutral" variant="neutral" />
 
-    <Chip className="rainbow-m-around_medium" label="Chip Neutral" variant="outline-brand" />
+    <Chip className="rainbow-m-around_medium" label="Chip Outline Brand" variant="outline-brand" />
 
     <Chip className="rainbow-m-around_medium" label="Chip Brand" variant="brand" />
+
+    <Chip className="rainbow-m-around_medium" label="Chip Success" variant="success" />
+
+    <Chip className="rainbow-m-around_medium" label="Chip Warning" variant="warning" />
+
+    <Chip className="rainbow-m-around_medium" label="Chip Error" variant="error" />
 </div>
 ```
 
@@ -48,6 +54,27 @@ import { Chip } from 'react-rainbow-components';
         variant="brand"
         onDelete={() => alert('Delete Chip!')}
     />
+
+    <Chip
+        className="rainbow-m-around_medium"
+        label="Chip Success"
+        variant="success"
+        onDelete={() => alert('Delete Chip!')}
+    />
+
+    <Chip
+        className="rainbow-m-around_medium"
+        label="Chip Warning"
+        variant="warning"
+        onDelete={() => alert('Delete Chip!')}
+    />
+
+    <Chip
+        className="rainbow-m-around_medium"
+        label="Chip Error"
+        variant="error"
+        onDelete={() => alert('Delete Chip!')}
+    />
 </div>
 ```
 
@@ -63,27 +90,27 @@ import styled from 'styled-components';
 const AvatarStyles = {
     width: '30px',
     height: '30px',
-    marginTop: '-2px',
 };
 
 const ChipContainer = {
     paddingLeft: 0,
 };
 
+const variants = ['brand', 'success', 'warning', 'error'];
+
 const Icon = styled.span.attrs(props => {
     return props.theme.rainbow.palette;
 })`
     ${props =>
-        props.variant === 'brand' &&
+        variants.includes(props.variant) &&
         `
-            color: ${props.getContrastText(props.brand.main)};
+            color: ${props.getContrastText(props[props.variant].main)};
         `};
     ${props =>
         props.variant === 'outline-brand' &&
         `
             color: ${props.brand.main};
         `};
-    
 `;
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
@@ -91,7 +118,7 @@ const Icon = styled.span.attrs(props => {
         style={ChipContainer}
         className="rainbow-m-around_medium"
         label={
-            <span>
+            <span className="rainbow-align-content_center">
                 <Avatar
                     style={AvatarStyles}
                     className="rainbow-m-right_x-small"
@@ -111,7 +138,7 @@ const Icon = styled.span.attrs(props => {
         variant="neutral"
         onDelete={() => alert('Delete Chip!')}
         label={
-            <span>
+            <span className="rainbow-align-content_center">
                 <Avatar
                     style={AvatarStyles}
                     className="rainbow-m-right_x-small"
@@ -150,6 +177,49 @@ const Icon = styled.span.attrs(props => {
                     className="rainbow-m-right_xx-small"
                 />{' '}
                 Chip Brand{' '}
+            </Icon>
+        }
+    />
+
+    <Chip
+        className="rainbow-m-around_medium"
+        variant="success"
+        label={
+            <Icon variant="success">
+                <FontAwesomeIcon
+                    icon={faStar}
+                    className="rainbow-m-right_xx-small"
+                />{' '}
+                Chip Success{' '}
+            </Icon>
+        }
+    />
+
+    <Chip
+        className="rainbow-m-around_medium"
+        variant="warning"
+        onDelete={() => alert('Delete Chip!')}
+        label={
+            <Icon variant="warning">
+                <FontAwesomeIcon
+                    icon={faStar}
+                    className="rainbow-m-right_xx-small"
+                />{' '}
+                Chip Warning{' '}
+            </Icon>
+        }
+    />
+
+    <Chip
+        className="rainbow-m-around_medium"
+        variant="error"
+        label={
+            <Icon variant="error">
+                <FontAwesomeIcon
+                    icon={faStar}
+                    className="rainbow-m-right_xx-small"
+                />{' '}
+                Chip Error{' '}
             </Icon>
         }
     />

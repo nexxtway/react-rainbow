@@ -4,6 +4,7 @@ import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { PADDING_SMALL } from '../../../styles/paddings';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
+const variants = ['brand', 'success', 'warning', 'error'];
 const StyledContainer = attachThemeAttrs(styled.span)`
     display: inline-flex;
     align-items: center;
@@ -36,11 +37,11 @@ const StyledContainer = attachThemeAttrs(styled.span)`
             color: ${props.palette.brand.main};
         `};
     ${props =>
-        props.variant === 'brand' &&
+        variants.includes(props.variant) &&
         `
-            background-color: ${props.palette.brand.main};
-            border: 1px solid ${props.palette.brand.main};
-            color: ${props.palette.getContrastText(props.palette.brand.main)};
+            background-color: ${props.palette[props.variant].main};
+            border: 1px solid ${props.palette[props.variant].main};
+            color: ${props.palette.getContrastText(props.palette[props.variant].main)};
         `};
 `;
 

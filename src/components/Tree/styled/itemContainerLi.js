@@ -1,13 +1,16 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const ItemContainerLi = styled.li`
+const ItemContainerLi = attachThemeAttrs(styled.li)`
     box-sizing: border-box;
-    margin-left: 28px;
-    ${props =>
-        props.hasChildren &&
-        `
-        margin-left: 0px;
-    `};
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:focus > div {
+        box-shadow: ${props => props.shadows.brand};
+    }
 `;
 
 export default ItemContainerLi;
