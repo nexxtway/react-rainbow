@@ -931,7 +931,7 @@ function TableExample(props) {
         setSortDirection(nextSortDirection);
     }
 
-    function handleOnDeleteElements() {
+    function handleDeleteElements() {
         const selectionIds = selection.map(x => x.id);
         const newData = data.filter(e => !selectionIds.includes(e.id));
         return setData(newData);
@@ -952,7 +952,7 @@ function TableExample(props) {
                         menuSize="xx-small"
                         icon={<FontAwesomeIcon icon={faEllipsisV} />}
                     >
-                        <MenuItem label="Delete Selection" onClick={handleOnDeleteElements} />
+                        <MenuItem label="Delete Selection" onClick={handleDeleteElements} />
                     </ButtonMenu>
                 </ButtonGroup>
             </div>
@@ -1074,18 +1074,29 @@ function CustomAction(props){
     );
 }
 
+const WrapDescription = styled.p`
+    overflow-wrap: break-word;
+    width:80%;
+    white-space:pre-line;
+    line-height: 30px;
+`;
+
 function TableCustomAction() {
     const [data, setData] = useState(initialData);
-    function handleOnDeleteElement(id) {
-            const newData = data.filter(e => e.id!==id);
-            setData(newData)
+    function handleDeleteElement(id) {
+        const newData = data.filter(e => e.id !== id);
+        setData(newData);
         }
    
     return ( 
         <div className="rainbow-p-bottom_xx-large"> 
             <GlobalHeader  src="images/user/user3.jpg">
                 <ButtonGroup className="rainbow-m-right_medium">
-                    <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faPlus} />} />
+                    <ButtonIcon 
+                        variant="border-filled" 
+                        disabled 
+                        icon={<FontAwesomeIcon icon={faPlus} />} 
+                    />
                     <ButtonIcon
                         variant="border-filled"
                         disabled
@@ -1098,10 +1109,16 @@ function TableCustomAction() {
                 <Subtitle>Total • {data.length}</Subtitle>
             </div>
             <Table keyField="id" data={data}>
-                <Column  defaultWidth={200} header="Name" field="name" />
-                <Column  header="Description" field="description" />
-                <Column  width={60} component={
-                    ({row}) =><CustomAction row={row} onDeleteElement={handleOnDeleteElement} />}/> 
+               <Column  defaultWidth={250} header="Name" field="name" />
+               <Column
+                header="Description"
+                field="description"
+                component={({value})=><WrapDescription>{value}</WrapDescription>}
+               />
+               <Column
+                width={60}
+                component={({row})=><CustomAction row={row} onDeleteElement={handleDeleteElement}/>}  
+               /> 
             </Table>
         </div>
     );
