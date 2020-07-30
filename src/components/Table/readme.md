@@ -1000,56 +1000,56 @@ import {faEllipsisV,
 const initialData = [
     {
         name: 'Leandro Torres',
-        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
         id: '1234qwerty',
     },
     {
         name: 'Jose Torres',
-        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
         id: '1234asdfgh',
     },
     {
         name: 'Reinier',
-        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
         id: '1234zxcvbn',
     },
     {
         name: 'Sara',
-        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
         id: '5678qwerty',
     },
     {
         name: 'Tahimi',
-        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
         id: '5678asdfgh',
     },
     {
         name: 'Leo',
-        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
         id: '5678zxcvbn',
     },
     {
         name: 'Tahimi Leon',
-        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
         id: '9012qwerty',
     },
     {
         name: 'Alejandro',
-        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',  
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',  
         id: '5678zdfgdf',
     },
     {
         name: 'Carlos',
-        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
         id: '3434fgfgdf',
     },
     {
         name: 'Luis',
-        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
         id: '9012asdfgh',
     },
 ];
-const Title = styled.h1.attrs(props => props.theme.rainbow)`        
+const Title = styled.h1.attrs(props => props.theme.rainbow)`
     font-family: 'Lato Light';
     font-size: 25px;
     text-align: left;
@@ -1076,9 +1076,9 @@ function CustomAction(props){
 
 const WrapDescription = styled.p`
     overflow-wrap: break-word;
-    width:80%;
-    white-space:pre-line;
-    line-height: 30px;
+    white-space: normal;
+    line-height: 20px;
+    margin: 4px 0;
 `;
 
 function TableCustomAction() {
@@ -1087,15 +1087,15 @@ function TableCustomAction() {
         const newData = data.filter(e => e.id !== id);
         setData(newData);
         }
-   
-    return ( 
-        <div className="rainbow-p-bottom_xx-large"> 
+
+    return (
+        <div className="rainbow-p-bottom_xx-large">
             <GlobalHeader  src="images/user/user3.jpg">
                 <ButtonGroup className="rainbow-m-right_medium">
-                    <ButtonIcon 
-                        variant="border-filled" 
-                        disabled 
-                        icon={<FontAwesomeIcon icon={faPlus} />} 
+                    <ButtonIcon
+                        variant="border-filled"
+                        disabled
+                        icon={<FontAwesomeIcon icon={faPlus} />}
                     />
                     <ButtonIcon
                         variant="border-filled"
@@ -1108,7 +1108,7 @@ function TableCustomAction() {
                 <Title>Members</Title>
                 <Subtitle>Total • {data.length}</Subtitle>
             </div>
-            <Table keyField="id" data={data}>
+            <Table keyField="id" data={data} minColumnWidth="220">
                <Column  defaultWidth={250} header="Name" field="name" />
                <Column
                 header="Description"
@@ -1118,7 +1118,7 @@ function TableCustomAction() {
                <Column
                 width={60}
                 component={({row})=><CustomAction row={row} onDeleteElement={handleDeleteElement}/>}  
-               /> 
+               />
             </Table>
         </div>
     );
