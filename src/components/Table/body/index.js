@@ -85,7 +85,7 @@ Body.propTypes = {
     emptyTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     emptyDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     isLoading: PropTypes.bool,
-    variant: PropTypes.oneOf(['defualt', 'listview']),
+    variant: PropTypes.oneOf(['default', 'listview']),
 };
 
 Body.defaultProps = {
@@ -98,5 +98,5 @@ Body.defaultProps = {
     onSelectRow: () => {},
     onDeselectRow: () => {},
     isLoading: false,
-    variant: 'defualt',
+    variant: 'default',
 };

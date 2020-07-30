@@ -426,14 +426,15 @@ export default class Table extends Component {
                 <StyledContainer id={id} className={className} style={style}>
                     <div ref={this.resizeTarget} />
                     <StyledContainer>
-                        <StyledScrollableX ref={this.tableContainerRef}>
+                        <StyledScrollableX ref={this.tableContainerRef} variant={variant}>
                             <StyledScrollableY
                                 isEmpty={isEmpty}
                                 isLoading={isLoading}
                                 ref={this.scrollableY}
                                 style={tableStyles}
+                                variant={variant}
                             >
-                                <StyledTable style={tableStyles}>
+                                <StyledTable style={tableStyles} variant={variant}>
                                     <thead>
                                         <tr>
                                             <Head
@@ -456,7 +457,10 @@ export default class Table extends Component {
                                             />
                                         </tr>
                                     </thead>
-                                    <StyledTableBody rowNumberOffset={rowNumberOffset}>
+                                    <StyledTableBody
+                                        rowNumberOffset={rowNumberOffset}
+                                        variant={variant}
+                                    >
                                         <Body
                                             data={normalizeData(data)}
                                             columns={columns}
@@ -537,8 +541,8 @@ Table.propTypes = {
      *  If not passed a fallback description will be showed.
      */
     emptyDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The variant changes the appearance of the button. Accepted variants include defualt and listview. */
-    variant: PropTypes.oneOf(['defualt', 'listview']),
+    /** The variant changes the appearance of the button. Accepted variants include default and listview. */
+    variant: PropTypes.oneOf(['default', 'listview']),
     /** The id of the outer element. */
     id: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */

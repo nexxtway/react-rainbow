@@ -6,7 +6,7 @@ import LoadingCells from './loadingCells';
 import StyledRow from './styled/row';
 
 export default function Row(props) {
-    const { rowData, columns, isSelected, ...rest } = props;
+    const { rowData, columns, isSelected, variant, ...rest } = props;
 
     const cells = columns.map((column, index) => {
         const {
@@ -21,7 +21,6 @@ export default function Row(props) {
             type: columnType,
             isFirstDataColumn,
             children,
-            variant,
             ...restColumnProps
         } = column;
         const key = `cell-${index}`;
@@ -59,6 +58,7 @@ export default function Row(props) {
             tabIndex={-1}
             aria-selected={isSelected}
             isSelected={isSelected}
+            variant={variant}
         >
             {cells}
         </StyledRow>
@@ -69,12 +69,12 @@ Row.propTypes = {
     rowData: PropTypes.object,
     columns: PropTypes.array,
     isSelected: PropTypes.bool,
-    variant: PropTypes.oneOf(['defualt', 'listview']),
+    variant: PropTypes.oneOf(['default', 'listview']),
 };
 
 Row.defaultProps = {
     rowData: {},
     columns: [],
     isSelected: false,
-    variant: 'defualt',
+    variant: 'default',
 };

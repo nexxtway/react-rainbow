@@ -138,7 +138,7 @@ Cell.propTypes = {
     rowIndex: PropTypes.number,
     rowData: PropTypes.object,
     restColumnProps: PropTypes.object.isRequired,
-    variant: PropTypes.oneOf(['defualt', 'listview']),
+    variant: PropTypes.oneOf(['default', 'listview']),
 };
 
 Cell.defaultProps = {
@@ -156,5 +156,5 @@ Cell.defaultProps = {
     rowsLength: undefined,
     rowIndex: undefined,
     rowData: {},
-    variant: 'defualt',
+    variant: 'default',
 };

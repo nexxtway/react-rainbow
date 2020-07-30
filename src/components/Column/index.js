@@ -38,7 +38,7 @@ Column.propTypes = {
      *
      * e.g  `width={100}` */
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    /** Specifies the inital width of a column in pixels and allows the column to be resizable.
+    /** Specifies the initial width of a column in pixels and allows the column to be resizable.
      * It must be within the minColumnWidth and maxColumnWidth values passed to Table.
      *
      * e.g  `defaultWidth={100}`

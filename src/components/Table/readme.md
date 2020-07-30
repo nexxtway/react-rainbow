@@ -1065,7 +1065,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ##### data Table whit listview variant
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Table, Column, ButtonGroup, ButtonIcon, Avatar } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -1075,47 +1075,47 @@ import {
     faCoins,
 } from '@fortawesome/free-solid-svg-icons';
 
-const data = [
+const initialData = [
     {
         task: 'fix: keyboard navigation on Tree.',
         coins: 2,
         constributor: 'yvmunayev@gmail.com',
-        priority: 'hight',
+        priority: 2,
         id: '1234qwerty',
     },
     {
         task: 'feat: implement Notification Manager',
         coins: 4,
         constributor: 'yvmunayev@gmail.com',
-        priority: 'hight',
+        priority: 2,
         id: '1234asdfgh',
     },
     {
         task: 'test: InternalDropdown.',
         coins: 2,
         constributor: 'yvmunayev@gmail.com',
-        priority: 'hight',
+        priority: 2,
         id: '1234zxcvbn',
     },
     {
         task: 'feat: implement MultiSelect.',
         coins: 8,
         constributor: 'yvmunayev@gmail.com',
-        priority: 'hight',
+        priority: 2,
         id: '5678qwerty',
     },
     {
         task: 'fix: position resolver on InternalOverlay',
         coins: 8,
         constributor: 'yvmunayev@gmail.com',
-        priority: 'medium',
+        priority: 1,
         id: '5678asdfgh',
     },
     {
         task: 'refactor: ButtonMenu component.',
         coins: 8,
         constributor: 'yvmunayev@gmail.com',
-        priority: 'low',
+        priority: 0,
         id: '5278aswegh',
     },
 ];
@@ -1127,6 +1127,7 @@ const Container = styled.div`
 const StyledPriority = styled.div`
     text-transform: capitalize;
     color: #ffffff;
+    text-align: center;
     ${props =>
         props.priority === 'hight' &&
         `
@@ -1144,37 +1145,99 @@ const StyledPriority = styled.div`
         `};
 `;
 
+const StyledConstributor = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+`;
+
+const StyledCoins = styled.div`
+    text-align: center;
+`;
+
 const Coins = ({ value }) => (
-    <>
+    <StyledCoins>
         <FontAwesomeIcon icon={faCoins} />
         {value} coins
-    </>
+    </StyledCoins>
 );
 
-const Priority = ({ value }) => (<StyledPriority priority={value}>{value}</StyledPriority>);
+const Constributor = () => (
+    <StyledConstributor>
+        <Avatar src="images/user/user3.jpg" variant="circle" size="small" />
+    </StyledConstributor>
+);
 
-<div className="rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-        <ButtonGroup className="rainbow-m-right_medium">
-            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-            <ButtonIcon
-                variant="border-filled"
-                disabled
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-            />
-        </ButtonGroup>
-    </GlobalHeader>
-    <Container>
-        <Table data={data} keyField="id" variant="listview">
-            <Column header="Task" field="task" />
-            <Column header="Coins" field="coins" component={Coins}/>
-            <Column
-                header="Constributor"
-                field="constributor"
-                component={() => <Avatar src="images/user/user3.jpg" variant="circle"/>}
-            />
-            <Column header="Priority" field="priority" component={Priority} />
-        </Table>
-    </Container>
-</div>
+const priorityMap = ['low', 'medium', 'hight'];
+const Priority = ({ value }) => {
+    const priority = priorityMap[value];
+    return (<StyledPriority priority={priority}>{priority}</StyledPriority>);
+}; 
+
+function TableListView() {
+    const [data, setData] = useState(initialData);
+    const [sortedBy, setSortedBy] = useState();
+    const [sortDirection, setSortDirection] = useState('asc');
+
+    function handleSort(event, field, nextSortDirection) {
+        const newData = [...data];
+        const key = x => x[field];
+        const reverse = nextSortDirection === 'asc' ? 1 : -1;
+
+        const sortedData = newData.sort((a, b) => {
+            a = key(a);
+            b = key(b);
+            return reverse * ((a > b) - (b > a));
+        });
+
+        setData(sortedData);
+        setSortedBy(field);
+        setSortDirection(nextSortDirection);
+    }
+
+    return (
+        <div className="rainbow-p-bottom_xx-large">
+            <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+                <ButtonGroup className="rainbow-m-right_medium">
+                    <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                    <ButtonIcon
+                        variant="border-filled"
+                        disabled
+                        icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                    />
+                </ButtonGroup>
+            </GlobalHeader>
+            <Container>
+                <Table
+                    data={data}
+                    keyField="id"
+                    variant="listview"
+                    onSort={handleSort}
+                    sortDirection={sortDirection}
+                    sortedBy={sortedBy}
+                >
+                    <Column header="Task" field="task" />
+                    <Column header="Coins" field="coins" component={Coins} defaultWidth={120} />
+                    <Column
+                        header="Constributor"
+                        field="constributor"
+                        component={Constributor}
+                        defaultWidth={180}
+                        sortable
+                    />
+                    <Column
+                        header="Priority"
+                        field="priority"
+                        component={Priority}
+                        defaultWidth={200}
+                        sortable
+                    />
+                </Table>
+            </Container>
+        </div>
+    );
+}
+
+<TableListView/>;
 ```

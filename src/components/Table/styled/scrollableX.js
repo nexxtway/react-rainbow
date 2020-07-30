@@ -16,6 +16,7 @@ const StyledScrollableX = attachThemeAttrs(styled.div)`
         props.variant === 'listview' &&
         `
             border-top: none;
+            background-color: transparent;
         `};
 `;
 

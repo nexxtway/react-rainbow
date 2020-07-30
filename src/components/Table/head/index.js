@@ -20,7 +20,7 @@ export default class Head extends PureComponent {
     }
 
     render() {
-        const { columns, ...rest } = this.props;
+        const { columns, variant, ...rest } = this.props;
 
         if (columns) {
             return columns.map((column, index) => {
@@ -37,6 +37,7 @@ export default class Head extends PureComponent {
                         sortDirection={this.resolveSortDirection(field)}
                         isSorted={this.isSorted(field)}
                         field={field}
+                        variant={variant}
                     />
                 );
             });
@@ -51,6 +52,7 @@ Head.propTypes = {
     defaultSortDirection: PropTypes.string,
     sortedBy: PropTypes.string,
     hasScroll: PropTypes.bool,
+    variant: PropTypes.oneOf(['default', 'listview']),
 };
 
 Head.defaultProps = {
@@ -59,4 +61,5 @@ Head.defaultProps = {
     defaultSortDirection: 'asc',
     sortedBy: undefined,
     hasScroll: false,
+    variant: 'default',
 };
