@@ -1055,22 +1055,23 @@ const Title = styled.h1.attrs(props => props.theme.rainbow)`
     text-align: left;
     margin-bottom: 10px;
     color: ${props => props.palette.text.main};
-    `;  
+`;  
 
 const Subtitle = styled.h3.attrs(props => props.theme.rainbow)`
     font-family: Lato;
     font-size: 14px;
     color: ${props => props.palette.text.title};
-    `;
+`;
 
 function CustomAction(props){
     const {row, onDeleteElement} = props;
+
     return (
-            <ButtonIcon
-                onClick={()=>onDeleteElement(row.id)}
-                buttonSize="small"
-                icon={<FontAwesomeIcon icon={faTrashAlt} />}
-            />
+        <ButtonIcon
+            onClick={()=>onDeleteElement(row.id)}
+            buttonSize="small"
+            icon={<FontAwesomeIcon icon={faTrashAlt} />}
+        />
     );
 }
 
@@ -1083,9 +1084,10 @@ const WrapDescription = styled.p`
 
 function TableCustomAction() {
     const [data, setData] = useState(initialData);
+
     function handleDeleteElement(id) {
         const newData = data.filter(e => e.id !== id);
-        setData(newData);
+            setData(newData);
         }
 
     return (
@@ -1109,13 +1111,13 @@ function TableCustomAction() {
                 <Subtitle>Total • {data.length}</Subtitle>
             </div>
             <Table keyField="id" data={data} minColumnWidth="220">
-               <Column  defaultWidth={250} header="Name" field="name" />
-               <Column
+                <Column  defaultWidth={250} header="Name" field="name" />
+                <Column
                     header="Description"
                     field="description"
                     component={({value})=><WrapDescription>{value}</WrapDescription>}
-               />
-               <Column
+                />
+                <Column
                     width={60}
                     component={({row})=><CustomAction row={row} onDeleteElement={handleDeleteElement}/>}
                 />
