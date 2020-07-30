@@ -55,10 +55,10 @@ const MultiSelect = React.forwardRef((props, ref) => {
     } = useReduxForm(props);
 
     const triggerRef = useRef();
+    const dropdownContainerRef = useRef();
     const dropdownRef = useRef();
     const comboboxRef = useRef();
     const inputRef = useRef();
-    const dropdownContainerRef = useRef();
     useImperativeHandle(ref, () => ({
         focus: () => {
             triggerRef.current.focus();
@@ -254,18 +254,20 @@ const MultiSelect = React.forwardRef((props, ref) => {
                     onOpened={() => dropdownRef.current.focus()}
                     triggerElementRef={() => comboboxRef}
                 >
-                    <StyledDropdown
-                        id={dropdownId}
-                        value={value}
-                        onChange={handleChange}
-                        ref={dropdownRef}
-                        width={dropdownWidth}
-                        placeholder={placeholder}
-                        showCheckbox={showCheckbox}
-                        multiple
-                    >
-                        {children}
-                    </StyledDropdown>
+                    <div ref={dropdownContainerRef}>
+                        <StyledDropdown
+                            id={dropdownId}
+                            value={value}
+                            onChange={handleChange}
+                            ref={dropdownRef}
+                            width={dropdownWidth}
+                            placeholder={placeholder}
+                            showCheckbox={showCheckbox}
+                            multiple
+                        >
+                            {children}
+                        </StyledDropdown>
+                    </div>
                 </InternalOverlay>
             </StyledCombobox>
             <RenderIf isTrue={!!bottomHelpText}>
