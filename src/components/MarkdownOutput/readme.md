@@ -137,10 +137,10 @@ const MarkdownCard = props => {
 <div
     className="rainbow-m-vertical_large rainbow-p-horizontal_large rainbow-m_auto rainbow-flex_wrap"
 >
-        <HighlightTheme>
-            <MarkdownCard text={state.text} />
-        </HighlightTheme>
-    </div>
+    <HighlightTheme>
+        <MarkdownCard text={state.text} />
+    </HighlightTheme>
+</div>
 ```
 
 ##### MarkdownOutput code:
@@ -285,5 +285,5 @@ const MarkdownCard = props => {
     <HighlightTheme>
         <MarkdownCard text={state.text} />
     </HighlightTheme>
-    </div>
+</div>
 ```
