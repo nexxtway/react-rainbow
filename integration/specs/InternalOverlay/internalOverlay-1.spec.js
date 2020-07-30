@@ -2,6 +2,7 @@ const PageInternalOverlay = require('../../../src/components/InternalOverlay/pag
 
 const BUTTON = '#button-icon-element';
 const OVERLAY = '#overlay-1';
+const CONTAINER = '#overlay-1-container';
 
 describe('InternalOverlay with default position resolver', () => {
     beforeAll(() => {
@@ -24,10 +25,11 @@ describe('InternalOverlay with default position resolver', () => {
 
     it('should not exists after click outside of element', () => {
         const internalOverlay = new PageInternalOverlay(OVERLAY);
+        const internalOverlayContainer = $(CONTAINER);
         const triggerButton = $(BUTTON);
         triggerButton.click();
         expect(internalOverlay.exists()).toBe(true);
-        $('[data-preview="InternalOverlay"]').click();
+        internalOverlayContainer.click();
         expect(internalOverlay.exists()).toBe(false);
     });
 });
