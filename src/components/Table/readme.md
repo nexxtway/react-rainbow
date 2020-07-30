@@ -1111,14 +1111,14 @@ function TableCustomAction() {
             <Table keyField="id" data={data} minColumnWidth="220">
                <Column  defaultWidth={250} header="Name" field="name" />
                <Column
-                header="Description"
-                field="description"
-                component={({value})=><WrapDescription>{value}</WrapDescription>}
+                    header="Description"
+                    field="description"
+                    component={({value})=><WrapDescription>{value}</WrapDescription>}
                />
                <Column
-                width={60}
-                component={({row})=><CustomAction row={row} onDeleteElement={handleDeleteElement}/>}  
-               />
+                    width={60}
+                    component={({row})=><CustomAction row={row} onDeleteElement={handleDeleteElement}/>}
+                />
             </Table>
         </div>
     );
