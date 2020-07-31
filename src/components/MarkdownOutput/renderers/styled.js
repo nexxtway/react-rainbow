@@ -53,6 +53,10 @@ export const StyledCode = attachThemeAttrs(styled.code)`
         margin-left: 4px;
         margin-right: 4px;
     }
+
+    .hljs-emphasis {
+        font-style: italic;
+    }
 `;
 
 export const StyledHR = attachThemeAttrs(styled.hr)`

@@ -67,3 +67,73 @@ const MarkdownCard = props => {
         <MarkdownCard text={state.text} />
     </div>
 ```
+
+##### MarkdownOutput code:
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Card, RadioButtonGroup, Textarea, MarkdownOutput } from 'react-rainbow-components';
+
+initialState = {
+    text: '# Code examples\n ### Standard \n```\nconst data = \'Lorem ipsum....\';\n\nconst doSomething = (param) => {\n};\n\nconst xx = doSomething(data);\n```\n\n ### Javascript \n```js\nconst data = \'Lorem ipsum....\';\n\nconst doSomething = (param) => {\n};\n\nconst xx = doSomething(data);\n```\n\n ### Shell \n```sh\n$ node index.js;\n```\n\n ### Java \n ```java\n String foo = 5;\n```',
+};
+
+const StyledCard = styled(Card)`
+    padding: 1rem 2rem 2rem;
+`;
+
+const ToggleMode = props => {
+    const [mode, setMode] = useState(props.mode);
+
+    const handleChange = event => {
+        setMode(event.target.value);
+        props.onModeChange(event.target.value);
+    };
+
+    return (
+        <RadioButtonGroup
+            variant="brand"
+            value={mode}
+            options={props.options}
+            onChange={handleChange}
+            size="small"
+        />
+    );
+};
+
+const MarkdownCard = props => {
+    const [mode, setMode] = useState('preview');
+    const [text, setText] = useState(props.text);
+
+    const content = mode === 'edit'
+        ? <Textarea value={text} rows={15} onChange={event => setText(event.target.value)}/>
+        : <MarkdownOutput id="markdown-output-1" value={text} />
+
+    return (
+        <StyledCard
+            actions={
+                <ToggleMode
+                    mode={mode}
+                    options={[{
+                        label: 'Edit',
+                        value: 'edit',
+                    }, {
+                        label: 'Preview',
+                        value: 'preview',
+                    }]}
+                    onModeChange={value => setMode(value)}
+                />
+            }
+        >
+            {content}
+        </StyledCard>
+    );
+};
+
+<div
+    className="rainbow-m-vertical_large rainbow-p-horizontal_large rainbow-m_auto rainbow-flex_wrap"
+>
+        <MarkdownCard text={state.text} />
+    </div>
+```

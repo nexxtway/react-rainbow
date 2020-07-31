@@ -5,7 +5,7 @@ import { MessageContainer, MessageDescription, MessageHighLight } from './styled
 
 export default function EmptyMessage({ searchValue }) {
     return (
-        <MessageContainer>
+        <MessageContainer data-id="internal-dropdown-empty-message">
             <SearchIcon />
             <MessageDescription>Our robots did not find any match for:</MessageDescription>
             <MessageHighLight> “{searchValue}”</MessageHighLight>

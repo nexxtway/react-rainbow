@@ -1,5 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+
+const ListOptionsMenu = keyframes`
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+`;
 
 const StyledOptionsMenu = attachThemeAttrs(styled.div)`
     position: absolute;
@@ -11,7 +21,8 @@ const StyledOptionsMenu = attachThemeAttrs(styled.div)`
     overflow: hidden;
     margin-top: 0.2rem;
     z-index: 2000;
-    transition: all 0.1s linear;
+    animation: ${ListOptionsMenu};
+    animation-duration: 0.3s
     padding: 1.15rem 0;
 `;
 
