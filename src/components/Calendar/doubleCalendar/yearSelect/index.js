@@ -6,16 +6,7 @@ import Options from './options';
 import { StyledContainer, StyledSelect } from './styled';
 
 const YearSelect = React.forwardRef((props, ref) => {
-    const {
-        currentYear,
-        yearsRange,
-        onYearChange,
-        onClick,
-        onFocus,
-        onBlur,
-        tabIndex,
-        onKeyDown,
-    } = props;
+    const { currentYear, yearsRange, onYearChange, onClick, onFocus, onBlur, tabIndex } = props;
     const selectRef = ref || useRef();
     const selectId = useUniqueIdentifier('select');
     const [isEditMode, setEditMode] = useState(false);
@@ -65,12 +56,11 @@ const YearSelect = React.forwardRef((props, ref) => {
                 ref={selectRef}
                 value={currentYear}
                 editMode={isEditMode}
-                conClick={onClick}
+                onClick={onClick}
                 onChange={handleYearChange}
                 onFocus={handleSelectFocus}
                 onBlur={handleSelectBlur}
                 tabIndex={tabIndex}
-                onKeyDown={onKeyDown}
             >
                 <Options options={yearsRange} />
             </StyledSelect>
@@ -86,7 +76,6 @@ YearSelect.propTypes = {
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    onKeyDown: PropTypes.func,
 };
 
 YearSelect.defaultProps = {
@@ -97,7 +86,6 @@ YearSelect.defaultProps = {
     onFocus: () => {},
     onBlur: () => {},
     tabIndex: undefined,
-    onKeyDown: () => {},
 };
 
 export default YearSelect;

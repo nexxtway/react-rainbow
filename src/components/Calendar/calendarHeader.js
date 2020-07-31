@@ -46,6 +46,9 @@ export default function SingleCalendarHeader(props) {
         updateFocusedItem(2);
     }, [updateFocusedItem]);
 
+    const nextMonthTabIndex = disablePreviousMonth ? undefined : -1;
+    const yearSelectTabIndex = disablePreviousMonth && disableNextMonth ? undefined : -1;
+
     return (
         <StyledControlsContainer onKeyDown={handleKeyDown}>
             <StyledMonthContainer>
@@ -68,7 +71,7 @@ export default function SingleCalendarHeader(props) {
                     ref={refs[1]}
                     onClick={handleNextMonthClick}
                     size="medium"
-                    tabIndex={disablePreviousMonth ? undefined : -1}
+                    tabIndex={nextMonthTabIndex}
                     disabled={disableNextMonth}
                     icon={<RightIcon />}
                     assistiveText="Next Month"
@@ -80,7 +83,7 @@ export default function SingleCalendarHeader(props) {
                 ref={refs[2]}
                 label="select year"
                 hideLabel
-                tabIndex={disablePreviousMonth && disableNextMonth ? undefined : -1}
+                tabIndex={yearSelectTabIndex}
                 value={currentYear}
                 options={yearsRange}
                 onChange={onYearChange}

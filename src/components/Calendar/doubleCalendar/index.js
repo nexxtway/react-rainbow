@@ -158,6 +158,8 @@ export default function DoubleCalendar(props) {
         setCurrentRange(selectedRange);
     }, [selectedRange]);
 
+    const currentYearSelectTabIndex = disablePreviousMonth ? undefined : -1;
+
     return (
         <StyledSection id={id} className={className} style={style} data-calendar-type="double">
             <StyledControlsContainer>
@@ -180,7 +182,7 @@ export default function DoubleCalendar(props) {
                         currentYear={currentYear}
                         yearsRange={yearsRange}
                         onYearChange={handleLeftCalendarYearChange}
-                        tabIndex={disablePreviousMonth ? undefined : -1}
+                        tabIndex={currentYearSelectTabIndex}
                         onClick={() => updateFocusedItem(1)}
                         onFocus={() => updateFocusedItem(1)}
                     />
