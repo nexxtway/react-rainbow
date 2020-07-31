@@ -86,6 +86,7 @@ export default class Header extends Component {
                     bulkSelection={bulkSelection}
                     hasScroll={hasScroll}
                     style={headerStyles}
+                    variant={variant}
                 />
             );
         }

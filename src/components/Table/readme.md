@@ -776,6 +776,8 @@ const tableContainerStyles = { height: 300 };
 ##### Table
 
 ```js
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import {
     Table,
     Column,
@@ -786,9 +788,6 @@ import {
     ButtonMenu,
 } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
-import React, { useState, useEffect } from 'react';
-
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const tableContainerStyles = { height: 300 };
@@ -800,7 +799,7 @@ const StatusBadge = ({ value }) => {
     return <Badge label={value} variant="lightest" />;
 };
 
-const data = [
+const initialData = [
     {
         name: 'Leandro Torres',
         company: 'nexxtway',
@@ -908,13 +907,13 @@ const StyledLink = styled.a.attrs(props => props.theme.rainbow)`
 
 const ProfileLink = ({ value, row }) => <StyledLink href={row.link}>{value}</StyledLink>;
 
-function TableExample(props) {
-    const [data, setData] = useState(props.data);
+function TableExample() {
+    const [data, setData] = useState(initialData);
     const [sortedBy, setSortedBy] = useState();
     const [sortDirection, setSortDirection] = useState('asc');
     const [selection, setSelection] = useState([]);
 
-    function handleOnSort(event, field, nextSortDirection) {
+    function handleSort(event, field, nextSortDirection) {
         let newData = [...data];
 
         const key = x => x[field];
@@ -931,7 +930,7 @@ function TableExample(props) {
         setSortDirection(nextSortDirection);
     }
 
-    function handleOnDeleteElements() {
+    function handleDeleteElements() {
         const selectionIds = selection.map(x => x.id);
         const newData = data.filter(e => !selectionIds.includes(e.id));
         return setData(newData);
@@ -952,7 +951,7 @@ function TableExample(props) {
                         menuSize="xx-small"
                         icon={<FontAwesomeIcon icon={faEllipsisV} />}
                     >
-                        <MenuItem label="Delete Selection" onClick={handleOnDeleteElements} />
+                        <MenuItem label="Delete Selection" onClick={handleDeleteElements} />
                     </ButtonMenu>
                 </ButtonGroup>
             </div>
@@ -962,7 +961,7 @@ function TableExample(props) {
                 showCheckboxColumn
                 data={data}
                 onRowSelection={setSelection}
-                onSort={handleOnSort}
+                onSort={handleSort}
                 sortDirection={sortDirection}
                 sortedBy={sortedBy}
             >
@@ -978,7 +977,7 @@ function TableExample(props) {
     );
 }
 
-<TableExample data={data} />;
+<TableExample />;
 ```
 
 ##### dinamically Table
@@ -1062,7 +1061,8 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
     </Table>
 </div>
 ```
-##### data Table whit listview variant
+
+##### data Table with listview variant
 
 ```js
 import React, { useState } from 'react';
@@ -1156,9 +1156,15 @@ const StyledCoins = styled.div`
     text-align: center;
 `;
 
+const StyleCoin = styled(Coin)`
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+`;
+
 const Coins = ({ value }) => (
     <StyledCoins>
-        <FontAwesomeIcon icon={faCoins} />
+        <StyleCoin />
         {value} coins
     </StyledCoins>
 );

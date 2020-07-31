@@ -15,6 +15,7 @@ export default function SelectableHeader(props) {
         bulkSelection,
         hasScroll,
         style,
+        variant,
     } = props;
     const name = `${tableId}-options`;
     const isDisabled = maxRowSelection === 0;
@@ -30,14 +31,14 @@ export default function SelectableHeader(props) {
 
     if (isRadio) {
         return (
-            <StyledWrapper as="th" style={style} scope="col" tabIndex={-1}>
+            <StyledWrapper as="th" style={style} scope="col" tabIndex={-1} variant={variant}>
                 <StyledScrollShadow hasScroll={hasScroll} />
             </StyledWrapper>
         );
     }
 
     return (
-        <th style={style} scope="col" tabIndex={-1}>
+        <StyledWrapper as="th" style={style} scope="col" tabIndex={-1} variant={variant}>
             <StyledCheckboxWrapper style={style}>
                 <PrimitiveCheckbox
                     name={name}
@@ -51,7 +52,7 @@ export default function SelectableHeader(props) {
                 />
             </StyledCheckboxWrapper>
             <StyledScrollShadow hasScroll={hasScroll} />
-        </th>
+        </StyledWrapper>
     );
 }
 
@@ -63,6 +64,7 @@ SelectableHeader.propTypes = {
     bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
     hasScroll: PropTypes.bool,
     style: PropTypes.object,
+    variant: PropTypes.oneOf(['default', 'listview']),
 };
 
 SelectableHeader.defaultProps = {
@@ -72,4 +74,5 @@ SelectableHeader.defaultProps = {
     bulkSelection: 'none',
     hasScroll: false,
     style: undefined,
+    variant: 'default',
 };

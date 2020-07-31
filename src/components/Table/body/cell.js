@@ -58,7 +58,7 @@ export default function Cell(props) {
     };
 
     if (columnType === WITH_ENUMERABLE) {
-        return <EnumerableCell />;
+        return <EnumerableCell variant={variant} />;
     }
 
     if (columnType === 'action') {
@@ -82,6 +82,7 @@ export default function Cell(props) {
                 onSelectRow={onSelectRow}
                 onDeselectRow={onDeselectRow}
                 inputType={inputType}
+                variant={variant}
             />
         );
     }

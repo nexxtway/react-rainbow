@@ -6,7 +6,15 @@ import StyledCellContainer from './styled/cellContainer';
 import StyledCheckboxContainer from './styled/checkboxContainer';
 
 export default function SelectableCell(props) {
-    const { isSelected, isDisabled, tableId, onSelectRow, onDeselectRow, inputType } = props;
+    const {
+        isSelected,
+        isDisabled,
+        tableId,
+        onSelectRow,
+        onDeselectRow,
+        inputType,
+        variant,
+    } = props;
     const name = `${tableId}-options`;
     const isRadio = inputType === 'radio';
 
@@ -36,7 +44,7 @@ export default function SelectableCell(props) {
     };
 
     return (
-        <StyledCellContainer role="gridcell" tabIndex={-1}>
+        <StyledCellContainer role="gridcell" tabIndex={-1} variant={variant}>
             <StyledCheckboxContainer role="presentation" onMouseDown={handleMouseDown}>
                 <Input
                     className="rainbow-table_cell-checkbox"
@@ -62,6 +70,7 @@ SelectableCell.propTypes = {
     onSelectRow: PropTypes.func,
     onDeselectRow: PropTypes.func,
     inputType: PropTypes.string,
+    variant: PropTypes.oneOf(['default', 'listview']),
 };
 
 SelectableCell.defaultProps = {
@@ -70,4 +79,5 @@ SelectableCell.defaultProps = {
     onSelectRow: () => {},
     onDeselectRow: () => {},
     inputType: 'checkbox',
+    variant: 'default',
 };
