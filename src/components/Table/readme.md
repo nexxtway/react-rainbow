@@ -1124,6 +1124,11 @@ const Container = styled.div`
     padding: 0 2rem;
 `;
 
+const StyledHeader = styled.div`
+    text-transform: capitalize;
+    text-align: center;
+`;
+
 const StyledPriority = styled.div`
     text-transform: capitalize;
     color: #ffffff;
@@ -1224,16 +1229,21 @@ function TableListView() {
                     sortedBy={sortedBy}
                 >
                     <Column header="Task" field="task" />
-                    <Column header="Coins" field="coins" component={Coins} defaultWidth={120} />
                     <Column
-                        header="Constributor"
+                        header={<StyledHeader>Coins</StyledHeader>}
+                        field="coins"
+                        component={Coins}
+                        defaultWidth={120}
+                    />
+                    <Column
+                        header={<StyledHeader>Constributor</StyledHeader>}
                         field="constributor"
                         component={Constributor}
                         defaultWidth={180}
                         sortable
                     />
                     <Column
-                        header="Priority"
+                        header={<StyledHeader>Priority</StyledHeader>}
                         field="priority"
                         component={Priority}
                         defaultWidth={200}
