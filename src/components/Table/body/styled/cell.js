@@ -15,6 +15,7 @@ const StyledCell = attachThemeAttrs(styled.th)`
         `
         background-color: ${props.palette.background.main};
         border: none;
+        text-align: center;
         border-top: 1px solid ${props.palette.border.divider};
         border-right: 1px solid ${props.palette.border.divider};
 
@@ -39,6 +40,10 @@ const StyledCell = attachThemeAttrs(styled.th)`
         :last-child * {
             border-bottom-right-radius: 12px; 
             border-top-right-radius: 12px; 
+        }
+
+        :first-child > div {
+            padding-left: 0;
         }
     `}
 

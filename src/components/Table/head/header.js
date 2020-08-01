@@ -106,6 +106,7 @@ export default class Header extends Component {
                         className="rainbow-table_header-container"
                         role="presentation"
                         onClick={this.handleSort}
+                        variant={variant}
                     >
                         <StyledContent
                             title={this.getHeaderContent()}

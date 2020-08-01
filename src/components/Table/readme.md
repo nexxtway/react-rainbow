@@ -1069,11 +1069,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Table, Column, ButtonGroup, ButtonIcon, Avatar } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCog,
-    faEllipsisV,
-    faCoins,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const initialData = [
     {
@@ -1124,15 +1120,13 @@ const Container = styled.div`
     padding: 0 2rem;
 `;
 
-const StyledHeader = styled.div`
-    text-transform: capitalize;
-    text-align: center;
+const StyledTaskHeader = styled.span`
+    text-transform: uppercase;
 `;
 
 const StyledPriority = styled.div`
     text-transform: capitalize;
     color: #ffffff;
-    text-align: center;
     ${props =>
         props.priority === 'hight' &&
         `
@@ -1157,8 +1151,9 @@ const StyledConstributor = styled.div`
     height: 40px;
 `;
 
-const StyledCoins = styled.div`
-    text-align: center;
+const StyledTask = styled.div`
+    text-align: left;
+    padding-left: 15px;
 `;
 
 const StyleCoin = styled(Coin)`
@@ -1167,11 +1162,13 @@ const StyleCoin = styled(Coin)`
     height: 20px;
 `;
 
+const Task = ({ value }) => <StyledTask>{value}</StyledTask>;
+
 const Coins = ({ value }) => (
-    <StyledCoins>
+    <>
         <StyleCoin />
         {value} coins
-    </StyledCoins>
+    </>
 );
 
 const Constributor = () => (
@@ -1183,8 +1180,8 @@ const Constributor = () => (
 const priorityMap = ['low', 'medium', 'hight'];
 const Priority = ({ value }) => {
     const priority = priorityMap[value];
-    return (<StyledPriority priority={priority}>{priority}</StyledPriority>);
-}; 
+    return <StyledPriority priority={priority}>{priority}</StyledPriority>;
+};
 
 function TableListView() {
     const [data, setData] = useState(initialData);
@@ -1211,7 +1208,11 @@ function TableListView() {
         <div className="rainbow-p-bottom_xx-large">
             <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
                 <ButtonGroup className="rainbow-m-right_medium">
-                    <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                    <ButtonIcon
+                        variant="border-filled"
+                        disabled
+                        icon={<FontAwesomeIcon icon={faCog} />}
+                    />
                     <ButtonIcon
                         variant="border-filled"
                         disabled
@@ -1228,22 +1229,21 @@ function TableListView() {
                     sortDirection={sortDirection}
                     sortedBy={sortedBy}
                 >
-                    <Column header="Task" field="task" />
                     <Column
-                        header={<StyledHeader>Coins</StyledHeader>}
-                        field="coins"
-                        component={Coins}
-                        defaultWidth={120}
+                        header={<StyledTaskHeader>Task</StyledTaskHeader>}
+                        field="task"
+                        component={Task}
                     />
+                    <Column header="Coins" field="coins" component={Coins} defaultWidth={120} />
                     <Column
-                        header={<StyledHeader>Constributor</StyledHeader>}
+                        header="Constributor"
                         field="constributor"
                         component={Constributor}
                         defaultWidth={180}
                         sortable
                     />
                     <Column
-                        header={<StyledHeader>Priority</StyledHeader>}
+                        header="Priority"
                         field="priority"
                         component={Priority}
                         defaultWidth={200}
@@ -1255,5 +1255,5 @@ function TableListView() {
     );
 }
 
-<TableListView/>;
+<TableListView />;
 ```
