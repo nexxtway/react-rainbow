@@ -36,7 +36,11 @@ export const StyledParagraph = attachThemeAttrs(styled.p)`
     color: ${props => props.palette.text.main};
 `;
 
-export const StyledCode = attachThemeAttrs(styled.code)`
+export const StyledCode = attachThemeAttrs(
+    styled.code.attrs({
+        className: 'hljs',
+    }),
+)`
     background: ${props => props.palette.background.highlight};
     color: ${props => props.palette.text.main};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
