@@ -65,6 +65,7 @@ class Select extends Component {
             id,
             name,
             hideLabel,
+            tabIndex,
         } = this.props;
 
         return (
@@ -83,6 +84,7 @@ class Select extends Component {
                         onBlur={onBlur}
                         onClick={onClick}
                         value={value}
+                        tabIndex={tabIndex}
                         required={required}
                         disabled={disabled}
                         ref={this.selectRef}
@@ -142,6 +144,8 @@ Select.propTypes = {
     id: PropTypes.string,
     /** The id of the outer element. */
     hideLabel: PropTypes.bool,
+    /** Specifies the tab order of an element (when the tab button is used for navigating). */
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 Select.defaultProps = {
@@ -161,6 +165,7 @@ Select.defaultProps = {
     style: undefined,
     id: undefined,
     hideLabel: false,
+    tabIndex: undefined,
 };
 
 export default withReduxForm(Select);
