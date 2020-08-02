@@ -7,8 +7,10 @@ const StyledStartContainer = styled.span`
     :not(:last-child) {
         margin-right: 0.25rem;
     }
+
     display: ${props => (props.readOnly ? '' : 'inline-block')};
     transition: transform 300ms ease-in-out;
+
     &:hover {
         transform: scale(1.5);
     }
