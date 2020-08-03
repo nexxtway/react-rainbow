@@ -165,9 +165,8 @@ const InternalDropdown = forwardRef((props, reference) => {
 
     const handleChange = useCallback(
         option => {
-            const { name, only } = option;
+            const { icon, name, label, value: optionValue, only } = option;
             if (only) {
-                const { label, icon, value: optionValue } = option;
                 return onChange([
                     {
                         label,
@@ -190,7 +189,12 @@ const InternalDropdown = forwardRef((props, reference) => {
                 }
                 return onChange([option]);
             }
-            return onChange(option);
+            return onChange({
+                label,
+                name,
+                icon,
+                value: optionValue,
+            });
         },
         [multiple, value, onChange],
     );
