@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
-import { UP_KEY, DOWN_KEY, SPACE_KEY, ENTER_KEY, TAB_KEY } from '../../libs/constants';
+import { UP_KEY, DOWN_KEY, SPACE_KEY, ENTER_KEY } from '../../libs/constants';
 import { Provider } from './context';
 import Content from './content';
 import isChildRegistered from './helpers/isChildRegistered';
