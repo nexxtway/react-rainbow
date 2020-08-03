@@ -58,7 +58,6 @@ class OptionItem extends Component {
         const { disabled, privateOnClick, label, name, icon, value, showCheckbox } = this.props;
         if (showCheckbox) {
             event.preventDefault();
-            event.stopPropagation();
         }
         if (disabled) {
             event.preventDefault();
@@ -79,7 +78,6 @@ class OptionItem extends Component {
     handleOnlyClick(event) {
         const { disabled, privateOnClick, label, name, icon, value } = this.props;
         event.preventDefault();
-        event.stopPropagation();
 
         if (disabled) {
             event.preventDefault();

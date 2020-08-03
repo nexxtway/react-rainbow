@@ -104,9 +104,14 @@ const MultiSelect = React.forwardRef((props, ref) => {
     };
 
     const handleKeyDown = event => {
-        if ((event.keyCode === ESCAPE_KEY || event.keyCode === TAB_KEY) && isOpen) {
-            event.preventDefault();
-            closeAndFocusInput();
+        if (isOpen) {
+            if (
+                event.keyCode === ESCAPE_KEY ||
+                (event.keyCode === TAB_KEY && !(showCheckbox && event.target.tagName !== 'BUTTON'))
+            ) {
+                event.preventDefault();
+                closeAndFocusInput();
+            }
         }
         if (event.target !== comboboxRef.current) return;
         if (event.keyCode === ENTER_KEY || event.keyCode === SPACE_KEY) {
@@ -134,7 +139,6 @@ const MultiSelect = React.forwardRef((props, ref) => {
 
     const handleTriggerClick = event => {
         event.preventDefault();
-        event.stopPropagation();
         toggleDropdown();
     };
 

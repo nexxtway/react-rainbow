@@ -228,17 +228,10 @@ const InternalDropdown = forwardRef((props, reference) => {
         return handleChange(rest);
     };
 
-    const handleTabKeyPressed = event => {
-        if (showCheckbox && event.target.tagName !== 'BUTTON') {
-            event.stopPropagation();
-        }
-    };
-
     const keyHandlerMap = {
         [UP_KEY]: handleKeyUpPressed,
         [DOWN_KEY]: handleKeyDownPressed,
         [ENTER_KEY]: handleKeyEnterPressed,
-        [TAB_KEY]: handleTabKeyPressed,
     };
 
     const handleKeyPressed = event => {
