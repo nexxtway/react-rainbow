@@ -12,6 +12,7 @@ describe('<Option />', () => {
     let clickFn;
 
     beforeEach(() => {
+        jest.useFakeTimers();
         optionRegisterFn = jest.spyOn(Option.prototype, 'register');
         optionUnregisterFn = jest.spyOn(Option.prototype, 'unregister');
         hoverFn = jest.fn();
@@ -74,16 +75,18 @@ describe('<Option />', () => {
         component.unmount();
         expect(optionUnregisterFn).toHaveBeenCalled();
     });
-    it('should fire an event with the right data when click the option', () => {
+    it('should fire an event with the right data when click the option', async () => {
         const data = {
             name: 'option1',
             label: 'option 1',
         };
-        const component = shallow(
+        const component = mount(
             <Option label="option 1" name="option1" privateOnClick={clickFn} />,
         );
+        jest.clearAllTimers();
         component.find('li').simulate('mousedown');
-        expect(clickFn).toHaveBeenCalledWith(undefined, data);
+        jest.runAllTimers();
+        expect(clickFn).toHaveBeenCalledWith(expect.any(Object), data);
     });
     it('should not fire an event when click the option but is disabled', () => {
         const component = mount(
