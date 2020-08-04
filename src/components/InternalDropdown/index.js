@@ -269,8 +269,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         setTimeout(() => updateScrollingArrows(), 0);
     };
 
-    const handleTopOptionClick = event => {
-        event.preventDefault();
+    const handleTopOptionClick = () => {
         if (Array.isArray(value)) {
             if (value.length === 0) {
                 return onChange(getAllValues(activeChildren.current));
