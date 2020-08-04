@@ -56,23 +56,19 @@ class OptionItem extends Component {
 
     handleClick(event) {
         const { disabled, privateOnClick, label, name, icon, value, showCheckbox } = this.props;
-        if (showCheckbox) {
-            event.preventDefault();
+        if (showCheckbox && event.target.tagName === 'BUTTON') {
+            return null;
         }
         if (disabled) {
             event.preventDefault();
             return null;
         }
-        return setTimeout(
-            () =>
-                privateOnClick(event, {
-                    label,
-                    name,
-                    icon,
-                    value,
-                }),
-            0,
-        );
+        return privateOnClick(event, {
+            label,
+            name,
+            icon,
+            value,
+        });
     }
 
     handleOnlyClick(event) {
@@ -84,17 +80,13 @@ class OptionItem extends Component {
             return null;
         }
 
-        return setTimeout(
-            () =>
-                privateOnClick(event, {
-                    label,
-                    name,
-                    icon,
-                    value,
-                    only: true,
-                }),
-            0,
-        );
+        return privateOnClick(event, {
+            label,
+            name,
+            icon,
+            value,
+            only: true,
+        });
     }
 
     handleHover(event) {
