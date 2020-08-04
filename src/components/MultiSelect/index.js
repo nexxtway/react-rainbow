@@ -26,7 +26,7 @@ import ErrorText from '../Input/styled/errorText';
 import PlusIcon from './icons/plus';
 import { ENTER_KEY, SPACE_KEY, ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
 import { hasContent, positionResolver } from './helpers';
-import normalizeValue from '../InternalDropdown/helpers/normalizeValue';
+import normalizeValue from './helpers/normalizeValue';
 import Content from './content';
 
 const MultiSelect = React.forwardRef((props, ref) => {
