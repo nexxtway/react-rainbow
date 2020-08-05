@@ -1,19 +1,18 @@
-import normalizeValue from './normalizeValue';
-
 export default function getAllValues(children) {
     if (!Array.isArray(children)) {
         return [];
     }
     const values = children.reduce((accumulator, child) => {
-        const { label: childLabel, name, value: childValue, variant: childVariant } = child;
-        if (childVariant === 'default') {
+        const { icon, label, name, value, variant } = child;
+        if (variant === 'default') {
             accumulator.push({
-                label: childLabel,
+                icon,
+                label,
                 name,
-                value: childValue,
+                value,
             });
         }
         return accumulator;
     }, []);
-    return normalizeValue(values);
+    return values;
 }
