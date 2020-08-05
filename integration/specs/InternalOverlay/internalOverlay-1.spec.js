@@ -1,8 +1,8 @@
 const PageInternalOverlay = require('../../../src/components/InternalOverlay/pageObject');
-const PageInternalOverlayButton = require('../../../src/components/InternalOverlay/pageObject/button');
 
 const BUTTON = '#button-icon-element';
 const OVERLAY = '#overlay-1';
+const CONTAINER = '#overlay-1-container';
 
 describe('InternalOverlay with default position resolver', () => {
     beforeAll(() => {
@@ -15,20 +15,21 @@ describe('InternalOverlay with default position resolver', () => {
     });
 
     it('should exist after one click on trigger and destroy on second click', () => {
-        const button = new PageInternalOverlayButton(BUTTON);
         const internalOverlay = new PageInternalOverlay(OVERLAY);
-        button.click();
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
         expect(internalOverlay.exists()).toBe(true);
-        button.click();
+        triggerButton.click();
         expect(internalOverlay.exists()).toBe(false);
     });
 
     it('should not exists after click outside of element', () => {
-        const button = new PageInternalOverlayButton(BUTTON);
         const internalOverlay = new PageInternalOverlay(OVERLAY);
-        button.click();
+        const internalOverlayContainer = $(CONTAINER);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
         expect(internalOverlay.exists()).toBe(true);
-        $('[data-preview="InternalOverlay"]').click();
+        internalOverlayContainer.click();
         expect(internalOverlay.exists()).toBe(false);
     });
 });
