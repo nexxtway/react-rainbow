@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import useMarkdownToReact from './hooks/useMarkdownToReact';
 
+/**
+ * MarkdownOutput preview markdown text in web browser.
+ * It is based on highlight.js, to customize the code blocks you can use highlight.js themes.
+ * @category Form
+ */
 export default function MarkdownOutput(props) {
     const { id, className, style, value } = props;
     const result = useMarkdownToReact(value);

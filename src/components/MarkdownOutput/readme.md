@@ -13,6 +13,79 @@ const StyledCard = styled(Card)`
     padding: 1rem 2rem 2rem;
 `;
 
+const HighlightTheme = styled.div.attrs(props => props.theme.rainbow)`
+    .hljs {
+        background: ${props => props.palette.background.highlight};
+        color: ${props => props.palette.text.main};
+    }
+
+    .hljs-comment,
+    .hljs-meta {
+        color: #969896;
+    }
+
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-strong,
+    .hljs-emphasis,
+    .hljs-quote {
+        color: #df5000;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-type {
+        color: #d73a49;
+    }
+
+    .hljs-literal,
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-attribute {
+        color: #0086b3;
+    }
+
+    .hljs-section,
+    .hljs-name {
+        color: #63a35c;
+    }
+
+    .hljs-tag {
+        color: #333333;
+    }
+
+    .hljs-title,
+    .hljs-attr,
+    .hljs-selector-id,
+    .hljs-selector-class,
+    .hljs-selector-attr,
+    .hljs-selector-pseudo {
+        color: #6f42c1;
+    }
+
+    .hljs-addition {
+        color: #55a532;
+        background-color: #eaffea;
+    }
+
+    .hljs-deletion {
+        color: #bd2c00;
+        background-color: #ffecec;
+    }
+
+    .hljs-link {
+        text-decoration: underline;
+    }
+
+    .hljs-number {
+        color: #005cc5;
+    }
+
+    .hljs-string {
+        color: #032f62;
+    }
+`;
+
 const ToggleMode = props => {
     const [mode, setMode] = useState(props.mode);
 
@@ -64,8 +137,10 @@ const MarkdownCard = props => {
 <div
     className="rainbow-m-vertical_large rainbow-p-horizontal_large rainbow-m_auto rainbow-flex_wrap"
 >
+    <HighlightTheme>
         <MarkdownCard text={state.text} />
-    </div>
+    </HighlightTheme>
+</div>
 ```
 
 ##### MarkdownOutput code:
@@ -73,6 +148,153 @@ const MarkdownCard = props => {
 ```js
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Card, RadioButtonGroup, Textarea, MarkdownOutput } from 'react-rainbow-components';
+
+initialState = {
+    text: '# Code examples\n ### Standard \n```\nconst data = \'Lorem ipsum....\';\n\nconst doSomething = (param) => {\n};\n\nconst xx = doSomething(data);\n```\n\n ### Javascript \n```js\nconst data = \'Lorem ipsum....\';\n\nconst doSomething = (param) => {\n};\n\nconst xx = doSomething(data);\n```\n\n ### Shell \n```sh\n$ node index.js;\n```\n\n ### Java \n ```java\n String foo = 5;\n```',
+};
+
+const StyledCard = styled(Card)`
+    padding: 1rem 2rem 2rem;
+`;
+
+const HighlightTheme = styled.div.attrs(props => props.theme.rainbow)`
+    .hljs {
+        background: ${props => props.palette.background.highlight};
+        color: ${props => props.palette.text.main};
+    }
+
+    .hljs-comment,
+    .hljs-meta {
+        color: #969896;
+    }
+
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-strong,
+    .hljs-emphasis,
+    .hljs-quote {
+        color: #df5000;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-type {
+        color: #d73a49;
+    }
+
+    .hljs-literal,
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-attribute {
+        color: #0086b3;
+    }
+
+    .hljs-section,
+    .hljs-name {
+        color: #63a35c;
+    }
+
+    .hljs-tag {
+        color: #333333;
+    }
+
+    .hljs-title,
+    .hljs-attr,
+    .hljs-selector-id,
+    .hljs-selector-class,
+    .hljs-selector-attr,
+    .hljs-selector-pseudo {
+        color: #6f42c1;
+    }
+
+    .hljs-addition {
+        color: #55a532;
+        background-color: #eaffea;
+    }
+
+    .hljs-deletion {
+        color: #bd2c00;
+        background-color: #ffecec;
+    }
+
+    .hljs-link {
+        text-decoration: underline;
+    }
+
+    .hljs-number {
+        color: #005cc5;
+    }
+
+    .hljs-string {
+        color: #032f62;
+    }
+`;
+
+const ToggleMode = props => {
+    const [mode, setMode] = useState(props.mode);
+
+    const handleChange = event => {
+        setMode(event.target.value);
+        props.onModeChange(event.target.value);
+    };
+
+    return (
+        <RadioButtonGroup
+            variant="brand"
+            value={mode}
+            options={props.options}
+            onChange={handleChange}
+            size="small"
+        />
+    );
+};
+
+const MarkdownCard = props => {
+    const [mode, setMode] = useState('preview');
+    const [text, setText] = useState(props.text);
+
+    const content = mode === 'edit'
+        ? <Textarea value={text} rows={15} onChange={event => setText(event.target.value)}/>
+        : <MarkdownOutput id="markdown-output-1" value={text} />
+
+    return (
+        <StyledCard
+            actions={
+                <ToggleMode
+                    mode={mode}
+                    options={[{
+                        label: 'Edit',
+                        value: 'edit',
+                    }, {
+                        label: 'Preview',
+                        value: 'preview',
+                    }]}
+                    onModeChange={value => setMode(value)}
+                />
+            }
+        >
+            {content}
+        </StyledCard>
+    );
+};
+
+<div
+    className="rainbow-m-vertical_large rainbow-p-horizontal_large rainbow-m_auto rainbow-flex_wrap"
+>
+    <HighlightTheme>
+        <MarkdownCard text={state.text} />
+    </HighlightTheme>
+</div>
+```
+
+
+##### MarkdownOutput code with Dracula highlight.js theme:
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import 'highlight.js/styles/dracula.css';
 import { Card, RadioButtonGroup, Textarea, MarkdownOutput } from 'react-rainbow-components';
 
 initialState = {
@@ -134,6 +356,6 @@ const MarkdownCard = props => {
 <div
     className="rainbow-m-vertical_large rainbow-p-horizontal_large rainbow-m_auto rainbow-flex_wrap"
 >
-        <MarkdownCard text={state.text} />
-    </div>
+    <MarkdownCard text={state.text} />
+</div>
 ```
