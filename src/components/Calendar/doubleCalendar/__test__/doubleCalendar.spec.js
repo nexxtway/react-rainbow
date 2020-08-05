@@ -109,47 +109,45 @@ describe('DoubleCalendar', () => {
     it('should change right month year when left month year changed', () => {
         const value = new Date('12/24/2019');
         const component = mount(<DoubleCalendar value={value} />);
-        const leftYearSelect = component
-            .find('YearSelect')
+        component
+            .find('select')
             .at(0)
-            .find('select');
-        leftYearSelect.simulate('change', {
-            target: { value: 2020 },
-        });
+            .simulate('change', {
+                target: { value: 2020 },
+            });
         expect(
             component
-                .find('YearSelect')
+                .find('select')
                 .at(0)
-                .prop('currentYear'),
+                .prop('value'),
         ).toBe(2020);
         expect(
             component
-                .find('YearSelect')
+                .find('select')
                 .at(1)
-                .prop('currentYear'),
+                .prop('value'),
         ).toBe(2021);
     });
     it('should change left month year when right month year changed', () => {
         const value = new Date('12/24/2019');
         const component = mount(<DoubleCalendar value={value} />);
         component
-            .find('YearSelect')
-            .at(1)
             .find('select')
+            .at(1)
             .simulate('change', {
                 target: { value: 2023 },
             });
         expect(
             component
-                .find('YearSelect')
+                .find('select')
                 .at(0)
-                .prop('currentYear'),
+                .prop('value'),
         ).toBe(2022);
         expect(
             component
-                .find('YearSelect')
+                .find('select')
                 .at(1)
-                .prop('currentYear'),
+                .prop('value'),
         ).toBe(2023);
     });
 });

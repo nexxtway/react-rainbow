@@ -36,13 +36,18 @@ export const StyledParagraph = attachThemeAttrs(styled.p)`
     color: ${props => props.palette.text.main};
 `;
 
-export const StyledCode = attachThemeAttrs(styled.code)`
+export const StyledCode = attachThemeAttrs(
+    styled.code.attrs({
+        className: 'hljs',
+    }),
+)`
     background: ${props => props.palette.background.highlight};
     color: ${props => props.palette.text.main};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     border-radius: 4px;
     border: 1px solid ${props => props.palette.border.divider};
     padding: 2px 6px;
+    overflow-x: auto;
 
     pre > & {
         display: block;
@@ -52,10 +57,6 @@ export const StyledCode = attachThemeAttrs(styled.code)`
     p > & {
         margin-left: 4px;
         margin-right: 4px;
-    }
-
-    .hljs-emphasis {
-        font-style: italic;
     }
 `;
 
