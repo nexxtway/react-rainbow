@@ -41,7 +41,7 @@ export default class Star extends Component {
         const { value, name, readOnly } = this.props;
 
         return (
-            <StyledStartContainer>
+            <StyledStartContainer readOnly={readOnly}>
                 <StyledStartInput
                     type="radio"
                     id={this.starId}
