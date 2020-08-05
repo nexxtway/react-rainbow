@@ -3,36 +3,48 @@ import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_HEADING_MEDIUM } from '../../../../styles/fontSizes';
 
 export const StyledSection = styled.section`
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 40px 1fr;
+    grid-column-gap: 2rem;
+    grid-row-gap: 0;
     width: 100%;
 
     @media (max-width: 768px) {
+        display: flex;
         flex-direction: column;
     }
 `;
 
-export const StyledCalendarWrapper = styled.div`
-    flex: 1;
+export const StyledControlsContainer = styled.div`
+    display: flex;
+    flex-grow: 1;
+    align-content: start;
+    justify-content: space-between;
+    padding: 0 0 8px 0;
+
+    @media (max-width: 768px) {
+        &:nth-child(1) {
+            order: 1;
+        }
+
+        &:nth-child(2) {
+            order: 3;
+            margin-top: 2rem;
+        }
+    }
 `;
 
 export const StyledCalendar = styled.div`
-    display: flex;
-    flex: 1;
-`;
+    @media (max-width: 768px) {
+        &:nth-child(3) {
+            order: 2;
+        }
 
-export const StyledContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    justify-content: space-between;
-    align-content: start;
-`;
-
-export const StyledDivider = styled.div`
-    display: flex;
-    min-width: 2.5rem;
-    height: 2.5rem;
+        &:nth-child(4) {
+            order: 4;
+        }
+    }
 `;
 
 export const StyledHeaderContainer = styled.div`
