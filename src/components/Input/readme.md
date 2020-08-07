@@ -367,3 +367,27 @@ const inputStyles = {
     />
 </div>
 ```
+
+##### input with variant shaded
+
+```js
+import React from 'react';
+import { Input } from 'react-rainbow-components';
+import logo from './../../../assets/images/rainbow-logo.svg';
+
+const inputStyles = {
+    width: 300,
+};
+<div>
+    <div className="rainbow-flex_column rainbow-align-content_center">
+        <img src={logo}  className="rainbow-p-top_x-large" />
+        <p className="rainbow-p-around_xx-small">react-rainbow components</p>
+    </div>
+    <Input
+        placeholder="Find Something"
+        className="rainbow-m_auto rainbow-p-around_medium"
+        variant="shaded"
+        style={inputStyles}
+    />
+</div>
+```

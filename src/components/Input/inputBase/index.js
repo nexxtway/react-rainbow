@@ -89,6 +89,7 @@ export default class InputBase extends Component {
             isBare,
             isCentered,
             iconPosition,
+            variant,
         } = this.props;
         const isReadOnly = !!(!disabled && readOnly);
 
@@ -141,6 +142,7 @@ export default class InputBase extends Component {
                         iconPosition={iconPosition}
                         icon={icon}
                         error={error}
+                        variant={variant}
                     />
                 </RelativeElement>
                 <RenderIf isTrue={!!bottomHelpText}>
@@ -197,6 +199,7 @@ InputBase.propTypes = {
     onKeyDown: PropTypes.func,
     className: PropTypes.string,
     style: PropTypes.object,
+    variant: PropTypes.oneOf(['default', 'shaded']),
     id: PropTypes.string,
     autoComplete: PropTypes.string,
     hideLabel: PropTypes.bool,
@@ -228,6 +231,7 @@ InputBase.defaultProps = {
     onKeyDown: () => {},
     className: undefined,
     style: undefined,
+    variant: 'default',
     id: undefined,
     autoComplete: 'on',
     hideLabel: false,
