@@ -34,7 +34,6 @@ jobs:
                       else
                           yarn test --ci --maxWorkers=2 
                       fi
-
             - store_test_results:
                   path: test-results/jest-junit-results
 
@@ -61,7 +60,6 @@ jobs:
                       sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
                       sudo apt-get update
                       sudo apt-get -y install google-chrome-stable
-
             - run:
                   command: yarn start
                   background: true
@@ -72,12 +70,10 @@ jobs:
                   name: run integration test
                   command: |
                       yarn test:integration --headless
-
             - run:
                   name: generate report
                   command: |
                       yarn allure generate test-results/wdio-allure-results --clean --output test-results/allure-report
-
             - store_test_results:
                   path: test-results/wdio-junit-results
 
@@ -122,7 +118,6 @@ jobs:
                       echo REACT_APP_RECAPTCHA_APIKEY=$REACT_APP_RECAPTCHA_APIKEY >> .env;
                       echo REACT_APP_CARBON_ADS_SRC=$REACT_APP_CARBON_ADS_SRC >> .env;
                       echo REACT_APP_STRIPE_APIKEY=$REACT_APP_STRIPE_APIKEY >> .env;
-
             - run: yarn install
             - run: yarn deploy:library --token=$FIREBASE_TOKEN
 

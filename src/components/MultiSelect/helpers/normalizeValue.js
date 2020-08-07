@@ -7,20 +7,20 @@ export default function normalizeValue(value) {
             return [];
         }
         return value.map(item => {
-            const { label, name, value: itemValue } = item;
+            const { icon, label, name, value: itemValue } = item;
             return {
+                icon,
                 label,
                 name,
                 value: itemValue,
             };
         });
     }
-    const { label, name, value: itemValue } = value;
-    return [
-        {
-            label,
-            name,
-            value: itemValue,
-        },
-    ];
+    const { icon, label, name, value: itemValue } = value;
+    return {
+        icon,
+        label,
+        name,
+        value: itemValue,
+    };
 }

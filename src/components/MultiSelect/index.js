@@ -17,8 +17,8 @@ import {
     StyledPlaceholder,
     StyledCombobox,
     StyledCountText,
+    StyledDropdown,
 } from './styled';
-import InternalDropdown from '../InternalDropdown';
 import InternalOverlay from '../InternalOverlay';
 import RenderIf from '../RenderIf';
 import HelpText from '../Input/styled/helpText';
@@ -51,13 +51,14 @@ const MultiSelect = React.forwardRef((props, ref) => {
         onFocus,
         onBlur,
         children,
+        showCheckbox,
     } = useReduxForm(props);
 
     const triggerRef = useRef();
+    const dropdownContainerRef = useRef();
     const dropdownRef = useRef();
     const comboboxRef = useRef();
     const inputRef = useRef();
-    const dropdownContainerRef = useRef();
     useImperativeHandle(ref, () => ({
         focus: () => {
             triggerRef.current.focus();
@@ -84,7 +85,9 @@ const MultiSelect = React.forwardRef((props, ref) => {
     };
 
     const handleChange = val => {
-        closeAndFocusInput();
+        if (!showCheckbox) {
+            closeAndFocusInput();
+        }
         return onChange(normalizeValue(val));
     };
 
@@ -101,9 +104,14 @@ const MultiSelect = React.forwardRef((props, ref) => {
     };
 
     const handleKeyDown = event => {
-        if ((event.keyCode === ESCAPE_KEY || event.keyCode === TAB_KEY) && isOpen) {
-            event.preventDefault();
-            closeAndFocusInput();
+        if (isOpen) {
+            if (
+                event.keyCode === ESCAPE_KEY ||
+                (event.keyCode === TAB_KEY && !(showCheckbox && event.target.tagName !== 'BUTTON'))
+            ) {
+                event.preventDefault();
+                closeAndFocusInput();
+            }
         }
         if (event.target !== comboboxRef.current) return;
         if (event.keyCode === ENTER_KEY || event.keyCode === SPACE_KEY) {
@@ -117,6 +125,11 @@ const MultiSelect = React.forwardRef((props, ref) => {
             return;
         }
 
+        if (isOpen) {
+            dropdownRef.current.focus();
+            return;
+        }
+
         if (readOnly) {
             inputRef.current.focus();
             return;
@@ -126,7 +139,6 @@ const MultiSelect = React.forwardRef((props, ref) => {
 
     const handleTriggerClick = event => {
         event.preventDefault();
-        event.stopPropagation();
         toggleDropdown();
     };
 
@@ -157,11 +169,23 @@ const MultiSelect = React.forwardRef((props, ref) => {
 
     useWindowResize(() => setIsOpen(false), isOpen);
 
+    const [chipsBoundingRect, setChipsBoundingRect] = useState();
+    const refCallback = element => {
+        if (element) {
+            const elementRect = JSON.stringify(element.getBoundingClientRect());
+            if (!chipsBoundingRect || chipsBoundingRect !== elementRect) {
+                setChipsBoundingRect(elementRect);
+            }
+        }
+    };
+
     const selectedCount = Array.isArray(value) ? value.length : 1;
     const shouldRenderContent = hasContent(value);
     const shouldRenderCount = !!value && selectedCount > 0 && variant === 'default';
     const shouldRenderButton = !readOnly && !disabled;
     const inputTabIndex = readOnly ? tabIndex : '-1';
+
+    const dropdownWidth = comboboxRef.current ? comboboxRef.current.offsetWidth : 0;
 
     return (
         <StyledContainer id={id} className={className} style={style}>
@@ -196,7 +220,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                     ref={inputRef}
                     readOnly
                 />
-                <StyledChipContainer>
+                <StyledChipContainer ref={refCallback}>
                     <RenderIf isTrue={!shouldRenderContent}>
                         <StyledPlaceholder>{placeholder}</StyledPlaceholder>
                     </RenderIf>
@@ -232,21 +256,23 @@ const MultiSelect = React.forwardRef((props, ref) => {
                     isVisible={isOpen}
                     positionResolver={positionResolver}
                     onOpened={() => dropdownRef.current.focus()}
-                    render={() => (
-                        <div ref={dropdownContainerRef}>
-                            <InternalDropdown
-                                id={dropdownId}
-                                value={value}
-                                onChange={handleChange}
-                                ref={dropdownRef}
-                                multiple
-                            >
-                                {children}
-                            </InternalDropdown>
-                        </div>
-                    )}
-                    triggerElementRef={() => triggerRef.current.buttonRef}
-                />
+                    triggerElementRef={() => comboboxRef}
+                >
+                    <div ref={dropdownContainerRef}>
+                        <StyledDropdown
+                            id={dropdownId}
+                            value={value}
+                            onChange={handleChange}
+                            ref={dropdownRef}
+                            width={dropdownWidth}
+                            placeholder={placeholder}
+                            showCheckbox={showCheckbox}
+                            multiple
+                        >
+                            {children}
+                        </StyledDropdown>
+                    </div>
+                </InternalOverlay>
             </StyledCombobox>
             <RenderIf isTrue={!!bottomHelpText}>
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
