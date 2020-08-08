@@ -65,7 +65,7 @@ const Input = attachThemeAttrs(styled.input)`
     ${props =>
         props.variant === 'shaded' &&
         `
-        box-shadow: ${props.shadows.shadow_10};
+        box-shadow:${props.disabled || props.readOnly ? '' : props.shadows.shadow_10};
         border: 1px solid transparent;
         `}
     ${props =>
