@@ -59,8 +59,8 @@ export default function useKeyNavigation({
                 onNodeSelect({ name, nodePath });
             },
             [SPACE_KEY]: props => {
-                const { name, nodePath } = props;
-                onNodeSelect({ name, nodePath });
+                const { name, nodePath, children } = props;
+                if (children) onNodeExpand({ name, nodePath });
             },
         }),
         [onNodeSelect, onNodeExpand, visibleNodes],
