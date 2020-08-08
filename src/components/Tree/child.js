@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
+import { TreeContext } from './context';
 import TreeChildren from './treeChildren';
 import ExpandCollapseButton from './expandCollapseButton';
 import ItemContainerLi from './styled/itemContainerLi';
@@ -37,7 +38,11 @@ export default function Child(props) {
     const ariaLevelValue = getNodeLevel({ name });
     const ariaExpandedValue = hasChildren ? isExpanded : undefined;
     const ariaSelectedValue = isSelected === true ? isSelected : undefined;
-    const tabIndex = getTabIndex({ selectedNode, isFirstNode, isSelected });
+    const { autoFocus, focusedNode, setFocusedNode, clearFocusedNode, privateKeyDown } = useContext(
+        TreeContext,
+    );
+    const tabIndex = getTabIndex({ name, selectedNode, focusedNode, isFirstNode, isSelected });
+    const itemRef = useRef();
 
     const handleNodeSelect = event => {
         if (shouldSelectNode(event.target, name)) {
@@ -53,18 +58,26 @@ export default function Child(props) {
         onNodeCheck({ name, nodePath });
     };
 
+    useEffect(() => {
+        if (autoFocus && focusedNode === name && itemRef.current) itemRef.current.focus();
+    }, [autoFocus, focusedNode, name]);
+
     return (
         <ItemContainerLi
             id={name}
+            ref={itemRef}
             data-id="node-element-li"
             icon={icon}
             hasChildren={hasChildren}
             onClick={handleNodeSelect}
+            onFocus={event => setFocusedNode(event, name)}
+            onBlur={event => clearFocusedNode(event, name)}
             role="treeitem"
             aria-level={ariaLevelValue}
             aria-expanded={ariaExpandedValue}
             aria-selected={ariaSelectedValue}
             tabIndex={tabIndex}
+            onKeyDown={event => privateKeyDown(event, props)}
         >
             <NodeContainer
                 data-id="node-element"

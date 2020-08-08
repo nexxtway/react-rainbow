@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Provider } from './context';
 import TreeChildren from './treeChildren';
 import TreeContainerUl from './styled/treeContainerUl';
 import getNode from './helpers/getNode';
+import useKeyNavigation from './hooks/useKeyNavigation';
+import useTreeNodesAsPlainList from './hooks/useTreeNodesAsPlainList';
 
 /**
  * A Tree is visualization of a structure hierarchy with nested elements. A branch can be expanded or collapsed or selected. This is a BETA version.
@@ -22,24 +25,49 @@ export default function Tree(props) {
         ariaLabelledBy,
     } = props;
 
+    const visibleNodes = useTreeNodesAsPlainList(data);
+
+    const {
+        autoFocus,
+        focusedNode,
+        setFocusedNode,
+        clearFocusedNode,
+        keyDownHandler,
+    } = useKeyNavigation({
+        visibleNodes,
+        selectedNode,
+        onNodeSelect,
+        onNodeExpand,
+    });
+
     return (
-        <TreeContainerUl
-            className={className}
-            style={style}
-            id={id}
-            role="tree"
-            aria-labelledby={ariaLabelledBy}
-            aria-label={ariaLabel}
+        <Provider
+            value={{
+                autoFocus,
+                focusedNode,
+                setFocusedNode,
+                clearFocusedNode,
+                privateKeyDown: keyDownHandler,
+            }}
         >
-            <TreeChildren
-                data={data}
-                onNodeExpand={onNodeExpand}
-                onNodeCheck={onNodeCheck}
-                nodePath={[]}
-                selectedNode={selectedNode}
-                onNodeSelect={onNodeSelect}
-            />
-        </TreeContainerUl>
+            <TreeContainerUl
+                className={className}
+                style={style}
+                id={id}
+                role="tree"
+                aria-labelledby={ariaLabelledBy}
+                aria-label={ariaLabel}
+            >
+                <TreeChildren
+                    data={data}
+                    onNodeExpand={onNodeExpand}
+                    onNodeCheck={onNodeCheck}
+                    nodePath={[]}
+                    selectedNode={selectedNode}
+                    onNodeSelect={onNodeSelect}
+                />
+            </TreeContainerUl>
+        </Provider>
     );
 }
 
