@@ -23,6 +23,9 @@ import getValueNames from './helpers/getValueNames';
 import isEmptyObject from './helpers/isEmptyObject';
 import EmptyMessage from './emptyMessage';
 import { Dropdown, Ul, Arrow, InputSearch, UlContainer, SearchContainer, Icon } from './styled';
+import PlaceholderOption from './placeholderOption';
+import isChecked from './helpers/isChecked';
+import getAllValues from './helpers/getAllValues';
 
 const sizeMap = {
     medium: 227,
@@ -49,6 +52,8 @@ const InternalDropdown = forwardRef((props, reference) => {
         className,
         style,
         multiple,
+        showCheckbox,
+        placeholder,
     } = props;
     const [showScrollUpArrow, setShowScrollUpArrow] = useState(false);
     const [showScrollDownArrow, setShowScrollDownArrow] = useState(false);
@@ -160,7 +165,18 @@ const InternalDropdown = forwardRef((props, reference) => {
 
     const handleChange = useCallback(
         option => {
-            const { name } = option;
+            const { icon, name, label, value: optionValue, only } = option;
+            if (only) {
+                return onChange([
+                    {
+                        label,
+                        name,
+                        icon,
+                        value: optionValue,
+                    },
+                ]);
+            }
+
             if (multiple) {
                 if (Array.isArray(value)) {
                     if (value.some(v => v.name === name)) {
@@ -173,7 +189,12 @@ const InternalDropdown = forwardRef((props, reference) => {
                 }
                 return onChange([option]);
             }
-            return onChange(option);
+            return onChange({
+                label,
+                name,
+                icon,
+                value: optionValue,
+            });
         },
         [multiple, value, onChange],
     );
@@ -219,7 +240,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         }
         if (preventDefaultKeys[event.keyCode]) event.preventDefault();
         if (keyHandlerMap[event.keyCode]) {
-            keyHandlerMap[event.keyCode]();
+            keyHandlerMap[event.keyCode](event);
         }
     };
 
@@ -248,6 +269,19 @@ const InternalDropdown = forwardRef((props, reference) => {
         setTimeout(() => updateScrollingArrows(), 0);
     };
 
+    const handleTopOptionClick = () => {
+        if (Array.isArray(value)) {
+            if (value.length === 0) {
+                return onChange(getAllValues(activeChildren.current));
+            }
+            return onChange([]);
+        }
+        if (value) {
+            return onChange([]);
+        }
+        return onChange(getAllValues(activeChildren.current));
+    };
+
     const context = useMemo(() => {
         const currentValues = getValueNames(value);
         return {
@@ -259,6 +293,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             currentValues,
             activeChildrenMap,
             multiple,
+            showCheckbox,
         };
     }, [
         value,
@@ -269,7 +304,11 @@ const InternalDropdown = forwardRef((props, reference) => {
         activeChildrenMap,
         handleChange,
         multiple,
+        showCheckbox,
     ]);
+
+    const isPlaceholderOptionChecked = isChecked(value, activeChildren.current);
+    const shouldRenderPlaceholderOption = placeholder && showCheckbox;
 
     return (
         <Dropdown
@@ -305,7 +344,18 @@ const InternalDropdown = forwardRef((props, reference) => {
                     showEmptyMessage={showEmptyMessage}
                 >
                     <Content isLoading={isLoading}>
-                        <Provider value={context}>{children}</Provider>
+                        <Provider value={context}>
+                            <RenderIf isTrue={shouldRenderPlaceholderOption}>
+                                <PlaceholderOption
+                                    name="header"
+                                    label={placeholder}
+                                    onClick={handleTopOptionClick}
+                                    isChecked={isPlaceholderOptionChecked}
+                                    tabIndex="-1"
+                                />
+                            </RenderIf>
+                            {children}
+                        </Provider>
                     </Content>
                 </Ul>
                 <RenderIf isTrue={showEmptyMessage}>
@@ -355,6 +405,10 @@ InternalDropdown.propTypes = {
     enableSearch: PropTypes.bool,
     /** Specifies that multiple items can be selected */
     multiple: PropTypes.bool,
+    /** Show checkbox */
+    showCheckbox: PropTypes.bool,
+    /** The text to show on the header when showCheckbox is true */
+    placeholder: PropTypes.string,
 };
 
 InternalDropdown.defaultProps = {
@@ -367,6 +421,8 @@ InternalDropdown.defaultProps = {
     onChange: () => {},
     enableSearch: false,
     multiple: false,
+    showCheckbox: false,
+    placeholder: undefined,
 };
 
 export default InternalDropdown;

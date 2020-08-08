@@ -9,19 +9,15 @@ const Container = styled.div`
 `;
 
 const ContentMetaResolver = props => {
-    const { component: Content, onResolved } = props;
+    const { component: Content, onResolved, children } = props;
     const ref = useRef(null);
     useEffect(() => {
         const { height, width } = ref.current.getClientRects()[0];
         onResolved({ height, width });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    return createPortal(
-        <Container ref={ref}>
-            <Content />
-        </Container>,
-        document.body,
-    );
+    const content = children || <Content />;
+    return createPortal(<Container ref={ref}>{content}</Container>, document.body);
 };
 
 export default ContentMetaResolver;
