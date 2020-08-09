@@ -67,7 +67,7 @@ export default function useKeyNavigation({
                 if (children) onNodeExpand({ name, nodePath });
             },
         }),
-        [onNodeSelect, onNodeExpand, visibleNodes],
+        [visibleNodes, onNodeExpand, focusedNode, onNodeSelect],
     );
 
     const processPrintableCharacter = useCallback(
@@ -95,15 +95,14 @@ export default function useKeyNavigation({
 
     const keyDownHandler = useCallback(
         (event, childProps) => {
-            const { key, keyCode } = event;
-            if (keyHandlerMap[keyCode]) {
+            const { key, keyCode, target, currentTarget } = event;
+            if (target.id === currentTarget.id) {
                 event.preventDefault();
-                event.stopPropagation();
-                keyHandlerMap[keyCode](childProps);
-            } else if (isPrintableCharacter(key)) {
-                event.preventDefault();
-                event.stopPropagation();
-                processPrintableCharacter(key, childProps);
+                if (keyHandlerMap[keyCode]) {
+                    keyHandlerMap[keyCode](childProps);
+                } else if (isPrintableCharacter(key)) {
+                    processPrintableCharacter(key, childProps);
+                }
             }
         },
         [keyHandlerMap, processPrintableCharacter],
@@ -111,18 +110,20 @@ export default function useKeyNavigation({
 
     const setFocus = useCallback(
         (event, node) => {
-            event.stopPropagation();
-            setFocusedNode(node);
-            setEnableNavKeys(true);
+            if (event.target.id === event.currentTarget.id) {
+                setFocusedNode(node);
+                setEnableNavKeys(true);
+            }
         },
         [setEnableNavKeys],
     );
 
     const clearFocus = useCallback(
         (event, node) => {
-            event.stopPropagation();
-            setEnableNavKeys(false);
-            if (focusedNode === node) setFocusedNode(selectedNode);
+            if (event.target.id === event.currentTarget.id) {
+                setEnableNavKeys(false);
+                if (focusedNode === node) setFocusedNode(selectedNode);
+            }
         },
         [focusedNode, selectedNode],
     );
