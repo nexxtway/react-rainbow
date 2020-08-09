@@ -10,12 +10,15 @@ describe('normalizeValue', () => {
 
     it('should return the right values', () => {
         const values = [
+            { label: 'Label', name: 'Name', value: 'Value', icon: 'Icon', extra: 'value' },
+            [{ label: 'Label', name: 'Name', value: 'Value', icon: 'Icon', extra: 'value' }],
+        ];
+        const expected = [
             { label: 'Label', name: 'Name', value: 'Value', icon: 'Icon' },
             [{ label: 'Label', name: 'Name', value: 'Value', icon: 'Icon' }],
         ];
-        const expected = [{ label: 'Label', name: 'Name', value: 'Value' }];
-        values.forEach(val => {
-            expect(normalizeValue(val)).toEqual(expected);
+        values.forEach((val, index) => {
+            expect(normalizeValue(val)).toEqual(expected[index]);
         });
     });
 });

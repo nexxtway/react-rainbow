@@ -8,7 +8,7 @@ function BasicInternalDropdown() {
     const [value, setValue] = useState();
     return (
         <div className="rainbow-m-around_xx-large">
-            <InternalDropdown value={value} onChange={setValue}>
+            <InternalDropdown id="internal-dropdown-1" value={value} onChange={setValue}>
                 <PicklistOption name="option-1" label="All Buildings" icon={<DashboardIcon />} />
                 <PicklistOption name="option-2" label="New Building" icon={<AddFilledIcon />} />
                 <PicklistOption name="header" label="Your Buildings" variant="header" />
@@ -36,7 +36,7 @@ function InternalDropdownWithSearch() {
     const [value, setValue] = useState();
     return (
         <div className="rainbow-m-around_xx-large">
-            <InternalDropdown value={value} onChange={setValue} enableSearch>
+            <InternalDropdown id="internal-dropdown-3" value={value} onChange={setValue} enableSearch>
                 <PicklistOption name="option-1" label="All Buildings" icon={<DashboardIcon />} />
                 <PicklistOption name="option-2" label="New Building" icon={<AddFilledIcon />} />
                 <PicklistOption name="header" label="Your Buildings" variant="header" />
