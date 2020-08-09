@@ -55,9 +55,9 @@ export default function useKeyNavigation({
                 setFocusedNode(getLastRootNodeName(visibleNodes));
             },
             [ENTER_KEY]: props => {
-                const { name, nodePath, children } = props;
-                if (name === focusedNode) {
-                    if (children) onNodeExpand({ name, nodePath });
+                const { name, nodePath, children, isSelected } = props;
+                if (isSelected && children) {
+                    onNodeExpand({ name, nodePath });
                 } else {
                     onNodeSelect({ name, nodePath });
                 }
