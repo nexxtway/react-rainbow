@@ -4,14 +4,7 @@
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCog,
-    faPencilAlt,
-    faStore,
-    faPlus,
-    faBell,
-    faEllipsisV,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
@@ -81,14 +74,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCog,
-    faPencilAlt,
-    faStore,
-    faPlus,
-    faBell,
-    faEllipsisV,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const badgeStyles = { color: '#1de9b6' };
 const tableContainerStyles = { height: 300 };
@@ -220,20 +206,13 @@ class TableExample extends React.Component {
 <TableExample />;
 ```
 
-##### Table with Selectable Rows
+##### Table with selectable rows
 
 ```js
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCog,
-    faPencilAlt,
-    faStore,
-    faPlus,
-    faBell,
-    faEllipsisV,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const badgeStyles = { color: '#1de9b6' };
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
@@ -348,20 +327,13 @@ class TableExample extends React.Component {
 <TableExample />;
 ```
 
-##### Table with a limited number of Selectable Rows
+##### Table with a limited number of selectable rows
 
 ```js
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCog,
-    faPencilAlt,
-    faStore,
-    faPlus,
-    faBell,
-    faEllipsisV,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
@@ -447,20 +419,13 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 </div>
 ```
 
-##### Table with Selectable Rows by radio buttons
+##### Table with selectable rows by radio buttons
 
 ```js
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCog,
-    faPencilAlt,
-    faStore,
-    faPlus,
-    faBell,
-    faEllipsisV,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
@@ -537,14 +502,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge, MenuItem } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCog,
-    faPencilAlt,
-    faStore,
-    faPlus,
-    faBell,
-    faEllipsisV,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
@@ -625,14 +583,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCog,
-    faPencilAlt,
-    faStore,
-    faPlus,
-    faBell,
-    faEllipsisV,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
@@ -702,14 +653,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCog,
-    faPencilAlt,
-    faStore,
-    faPlus,
-    faBell,
-    faEllipsisV,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const data = [];
 
@@ -743,14 +687,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCog,
-    faPencilAlt,
-    faStore,
-    faPlus,
-    faBell,
-    faEllipsisV,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const tableContainerStyles = { height: 300 };
 
@@ -980,20 +917,13 @@ function TableExample() {
 <TableExample />;
 ```
 
-##### dinamically Table
+##### Dinamically Table
 
 ```js
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCog,
-    faPencilAlt,
-    faStore,
-    faPlus,
-    faBell,
-    faEllipsisV,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
@@ -1062,7 +992,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 </div>
 ```
 
-##### data Table with listview variant
+##### Table with Listview Variant
 
 ```js
 import React, { useState } from 'react';
@@ -1256,4 +1186,88 @@ function TableListView() {
 }
 
 <TableListView />;
+```
+
+##### Table with listview variant, enumerates and selectable rows
+
+```js
+import React from 'react';
+import styled from 'styled-components';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+
+const data = [
+    {
+        name: 'Leandro Torres',
+        company: 'Nexxtway',
+        email: 'leandro@gmail.com',
+        status: 'verified',
+        id: '1234qwerty',
+    },
+    {
+        name: 'Jose Torres',
+        company: 'Google',
+        email: 'jose@gmail.com',
+        status: 'verified',
+        id: '1234asdfgh',
+    },
+    {
+        name: 'Reinier',
+        company: 'Nexxtway',
+        email: 'reinier@gmail.com',
+        status: 'verified',
+        id: '1234zxcvbn',
+    },
+    {
+        name: 'Sara',
+        company: 'Nexxtway',
+        email: 'sara@gmail.com',
+        status: 'verified',
+        id: '5678qwerty',
+    },
+    {
+        name: 'Tahimi',
+        company: 'Nexxtway',
+        email: 'tahimi@gmail.com',
+        status: 'verified',
+        id: '5678asdfgh',
+    },
+];
+
+const Container = styled.div`
+    padding: 0 2rem;
+`;
+
+const badgeStyles = { color: '#1de9b6' };
+
+const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
+
+<div className="rainbow-p-bottom_xx-large">
+    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+        <ButtonGroup className="rainbow-m-right_medium">
+            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+            <ButtonIcon
+                variant="border-filled"
+                disabled
+                icon={<FontAwesomeIcon icon={faEllipsisV} />}
+            />
+        </ButtonGroup>
+    </GlobalHeader>
+    <Container>
+        <Table
+            variant="listview"
+            showCheckboxColumn
+            showRowNumberColumn
+            rowNumberOffset={99}
+            data={data}
+            keyField="id"
+        >
+            <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={StatusBadge} />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </Container>
+</div>
 ```

@@ -85,6 +85,46 @@ const StyledTh = attachThemeAttrs(styled.th)`
                 }
             }
         `};
+
+        ${props =>
+            props.variant === 'listview' &&
+            `
+            :hover {
+                > div, .rainbow-table_header-resize-bar {
+                    background-color: transparent;
+                }
+
+                :first-child * {
+                    border-top-left-radius: 13px; 
+                    border-bottom-left-radius: 13px;
+                }
+
+                :last-child * {
+                    border-bottom-right-radius: 13px; 
+                    border-top-right-radius: 13px; 
+                }
+            }
+
+            :focus {
+        
+                .rainbow-table_header-container {
+                    background-color: transparent;
+                    border-color: transparent;
+                }
+
+                .rainbow-table_header-resize-bar,
+                &:hover .rainbow-table_header-resize-bar {
+                    background-color: transparent;
+                    border-color: transparent;
+                }
+        
+                &:hover .rainbow-table_header-container {
+                    background-color: transparent;
+                    border-color: transparent;
+                }
+            }
+        `}
+
     ${props =>
         props.isSorted &&
         `

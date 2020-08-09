@@ -100,6 +100,7 @@ export default class Header extends Component {
                 scope="col"
                 tabIndex={this.getTabIndex()}
                 aria-label={this.getHeaderContent()}
+                variant={variant}
             >
                 <StyledWrapper style={headerStyles} variant={variant}>
                     <StyledHeaderContainer

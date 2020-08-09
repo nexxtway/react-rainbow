@@ -20,7 +20,7 @@ const StyledRow = attachThemeAttrs(styled.tr)`
     ${props =>
         props.variant === 'listview' &&
         `
-        border-radius: 12px;
+        border-radius: 13px;
         box-shadow: 0 1px 1px 0 ${props.palette.border.divider};
 
         :last-child th, :last-child td{

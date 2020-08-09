@@ -22,14 +22,14 @@ const StyledCell = attachThemeAttrs(styled.th)`
         :first-child {
             border-left: 1px solid ${props.palette.border.divider};
             border-left-style: solid;
-            border-top-left-radius: 12px; 
-            border-bottom-left-radius: 12px;
+            border-top-left-radius: 13px; 
+            border-bottom-left-radius: 13px;
         }
         
         :last-child {
             border-right-style: solid;
-            border-bottom-right-radius: 12px; 
-            border-top-right-radius: 12px; 
+            border-bottom-right-radius: 13px; 
+            border-top-right-radius: 13px; 
         }
 
         :first-child * {
