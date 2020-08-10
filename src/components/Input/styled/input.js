@@ -62,7 +62,12 @@ const Input = attachThemeAttrs(styled.input)`
             border: 1px solid ${props => props.palette.border.disabled};
         }
     }
-
+    ${props =>
+        props.variant === 'shaded' &&
+        `
+        box-shadow:${props.disabled || props.readOnly ? '' : props.shadows.shadow_10};
+        border: 1px solid transparent;
+        `}
     ${props =>
         props.error &&
         `
