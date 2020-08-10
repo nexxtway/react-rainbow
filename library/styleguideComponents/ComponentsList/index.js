@@ -9,7 +9,7 @@ import DesignIcon from './icons/designIcon';
 import CustomWorkIcon from './icons/customWorkIcon';
 import ConsoleIcon from './icons/consoleIcon';
 import isNotComponentPage from './../utils';
-import ContactusForm from './contactusForm';
+import ContactUsForm from './contactusForm';
 import { Icon, StyledButton } from './styled';
 
 const name = window.location.href.split('#/')[1];
@@ -40,11 +40,16 @@ export default class ComponentsList extends Component {
             isVisible: false,
         };
         this.handleOnSelect = this.handleOnSelect.bind(this);
+        this.handleOnClickCustomWorkBtn = this.handleOnClickCustomWorkBtn.bind(this);
         this.itemRef = createRef();
     }
 
     handleOnSelect(e, selectedItem) {
         return this.setState({ selectedItem });
+    }
+
+    handleOnClickCustomWorkBtn() {
+        this.setState({ isVisible: !this.state.isVisible });
     }
 
     render() {
@@ -83,17 +88,18 @@ export default class ComponentsList extends Component {
                         label="Designs"
                         href="/#/Designs"
                     />
-                    <StyledButton
-                        onClick={() => this.setState({ isVisible: !isVisible })}
-                        ref={this.itemRef}
-                    >
+                    <StyledButton onClick={this.handleOnClickCustomWorkBtn} ref={this.itemRef}>
                         <Icon className="rainbow-m-bottom_x-small" as={CustomWorkIcon} />
                         Custom Work
                     </StyledButton>
                     <InternalOverlay
                         isVisible={isVisible}
                         render={() => {
-                            return <ContactusForm />;
+                            return (
+                                <ContactUsForm
+                                    onSuccessMessageSent={this.handleOnClickCustomWorkBtn}
+                                />
+                            );
                         }}
                         triggerElementRef={() => this.itemRef}
                     />

@@ -1,7 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useState } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Field, reduxForm } from 'redux-form';
+import sendMessage from '../../../src/redux/actions/sendMessage';
 import Textarea from '../../../src/components/Textarea';
 import PhoneInput from '../../../src/components/PhoneInput';
 import ReCaptcha from '../../../src/components/ReCaptcha';
@@ -21,31 +24,24 @@ import {
     EmailInput,
 } from './styled';
 
-function ContactusForm(props) {
-    const { handleSubmit } = props;
-    const [phone, setPhone] = useState();
+function ContactUsForm(props) {
+    // eslint-disable-next-line no-shadow
+    const { sendMessage, handleSubmit, reset, onSuccessMessageSent, closeForm } = props;
     const [isLoading, setLoading] = useState(false);
-
+    const RECAPTCHA_APIKEY = process.env.REACT_APP_RECAPTCHA_KEY;
     const onSubmit = async values => {
-        // eslint-disable-next-line no-debugger
-        debugger;
-        // console.log(values);
         setLoading(true);
-        const res = await fetch('https://us-central1-nexxtway.cloudfunctions.net/api/contactus', {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *same-origin, omit
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(values),
-        });
-        if (res.ok) {
-            return alert('OK!!');
-        }
-        return alert('Error!');
+        sendMessage(values);
+        reset();
+        window.grecaptcha.reset();
     };
+
+    useEffect(() => {
+        setLoading(false);
+        if (closeForm === 'Your message has been sent successfully.') {
+            onSuccessMessageSent();
+        }
+    }, [closeForm, onSuccessMessageSent]);
 
     return (
         <Dropdown>
@@ -89,8 +85,6 @@ function ContactusForm(props) {
                         as={PhoneInput}
                         label="Phone Number"
                         placeholder="Enter your phone number"
-                        onChange={setPhone}
-                        value={phone}
                         disabled={isLoading}
                     />
                 </Row>
@@ -120,11 +114,7 @@ function ContactusForm(props) {
                     disabled={isLoading}
                 />
                 <Footer>
-                    <Field
-                        name="recaptcha"
-                        component={ReCaptcha}
-                        siteKey={LIBRARY_RECAPTCHA_APIKEY}
-                    />
+                    <Field name="recaptcha" component={ReCaptcha} siteKey={RECAPTCHA_APIKEY} />
                     <SendButton variant="brand" isLoading={isLoading} type="submit">
                         Send
                         <ArrowRight className="rainbow-m-left_small" />
@@ -146,6 +136,8 @@ const validate = values => {
     }
     if (!email) {
         errors.email = 'Looks like you forgot your email.';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+        errors.email = 'Invalid email.';
     }
     if (!message) {
         errors.message = 'Looks like you forgot leave a message.';
@@ -154,16 +146,44 @@ const validate = values => {
         errors.recaptcha = 'Are you a robot?';
     }
     // eslint-disable-next-line no-debugger
-    debugger;
     return errors;
 };
 
-ContactusForm.propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
+ContactUsForm.propTypes = {
+    closeForm: PropTypes.string,
+    sendMessage: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func,
+    reset: PropTypes.func,
+    onSuccessMessageSent: PropTypes.func,
 };
 
-export default reduxForm({
+ContactUsForm.defaultProps = {
+    closeForm: null,
+    handleSubmit: () => {},
+    reset: () => {},
+    onSuccessMessageSent: () => {},
+};
+
+const mapStateToProps = state => {
+    return { contactUs: state.contactUs, closeForm: state.message.message };
+};
+
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators(
+        {
+            sendMessage,
+        },
+        dispatch,
+    );
+};
+
+const ReduxFormContactUs = reduxForm({
     form: 'contactUs',
     validate,
     touchOnBlur: false,
-})(ContactusForm);
+})(ContactUsForm);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(ReduxFormContactUs);
