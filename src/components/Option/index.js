@@ -9,6 +9,9 @@ import StyledItem from './styled/item';
 import StyledIconContainer from './styled/iconContainer';
 import StyledCheckmarkIcon from './styled/checkmarkIcon';
 import StyledUncheckIcon from './styled/uncheckIcon';
+import StyledInput from './styled/input';
+import RenderIf from '../RenderIf';
+import StyledButton from './styled/button';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -23,6 +26,7 @@ class OptionItem extends Component {
         this.itemRef = React.createRef();
         this.handleClick = this.handleClick.bind(this);
         this.handleHover = this.handleHover.bind(this);
+        this.handleOnlyClick = this.handleOnlyClick.bind(this);
     }
 
     componentDidMount() {
@@ -51,7 +55,10 @@ class OptionItem extends Component {
     }
 
     handleClick(event) {
-        const { disabled, privateOnClick, label, name, icon, value } = this.props;
+        const { disabled, privateOnClick, label, name, icon, value, showCheckbox } = this.props;
+        if (showCheckbox && event.target.tagName === 'BUTTON') {
+            return null;
+        }
         if (disabled) {
             event.preventDefault();
             return null;
@@ -64,6 +71,24 @@ class OptionItem extends Component {
         });
     }
 
+    handleOnlyClick(event) {
+        const { disabled, privateOnClick, label, name, icon, value } = this.props;
+        event.preventDefault();
+
+        if (disabled) {
+            event.preventDefault();
+            return null;
+        }
+
+        return privateOnClick(event, {
+            label,
+            name,
+            icon,
+            value,
+            only: true,
+        });
+    }
+
     handleHover(event) {
         const { privateOnHover, disabled, name } = this.props;
         if (disabled) {
@@ -73,7 +98,7 @@ class OptionItem extends Component {
     }
 
     register() {
-        const { privateRegisterChild, label, name, icon, value } = this.props;
+        const { privateRegisterChild, label, name, icon, value, variant } = this.props;
         return setTimeout(
             () =>
                 privateRegisterChild(this.itemRef.current, {
@@ -81,6 +106,7 @@ class OptionItem extends Component {
                     name,
                     icon,
                     value,
+                    variant,
                 }),
             0,
         );
@@ -95,13 +121,22 @@ class OptionItem extends Component {
     }
 
     renderRightIcon() {
-        const { name, currentValues, icon, iconPosition, activeOptionName, multiple } = this.props;
+        const {
+            name,
+            currentValues,
+            icon,
+            iconPosition,
+            activeOptionName,
+            multiple,
+            showCheckbox,
+        } = this.props;
         const hasRightIcon = !!(icon && iconPosition === 'right');
-        if (currentValues && currentValues.includes(name)) {
-            if (multiple && activeOptionName === name) {
-                return <StyledUncheckIcon />;
-            }
+        if (currentValues && currentValues.includes(name) && !showCheckbox) {
+            if (multiple && activeOptionName === name) return <StyledUncheckIcon />;
             return <StyledCheckmarkIcon />;
+        }
+        if (showCheckbox && activeOptionName === name) {
+            return <StyledButton label="Only" onClick={this.handleOnlyClick} />;
         }
         return (
             <Icon
@@ -127,6 +162,7 @@ class OptionItem extends Component {
             name,
             currentValues,
             activeChildrenMap,
+            showCheckbox,
         } = this.props;
         const isSelected = currentValues && currentValues.includes(name);
         const isActive = activeOptionName === name;
@@ -169,6 +205,10 @@ class OptionItem extends Component {
                         isActive={isActive}
                     >
                         <StyledIconContainer title={title}>
+                            <RenderIf isTrue={showCheckbox}>
+                                <StyledInput type="checkbox" checked={isSelected} tabIndex="-1" />
+                            </RenderIf>
+
                             <Icon
                                 data-id="menu-item-left-icon"
                                 icon={icon}

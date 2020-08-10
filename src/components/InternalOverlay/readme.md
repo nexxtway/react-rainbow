@@ -86,7 +86,7 @@ const Component = props => {
     );
 }
 
-<Container>
+<Container id="overlay-1-container">
     <div className="rainbow-flex rainbow-justify_spread">
         <Component id="overlay-1" buttonId="button-icon-element" />
         <Component />

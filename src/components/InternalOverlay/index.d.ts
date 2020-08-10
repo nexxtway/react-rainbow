@@ -35,6 +35,7 @@ export interface InternalOverlayProps {
     isVisible?: boolean;
     triggerElementRef?: RefObject<HTMLElement> | TriggerElementRefFunction;
     positionResolver?: (opts: PositionResolverOpts) => Position;
+    onOpened?: () => void;
 }
 
 export default function(props: InternalOverlayProps): JSX.Element | null;

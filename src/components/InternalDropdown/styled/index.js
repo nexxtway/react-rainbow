@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 import SearchIcon from '../icons/searchIcon';
+import PrimitiveCheckbox from '../../PrimitiveCheckbox';
 
 export const Dropdown = attachThemeAttrs(styled.div)`
     position: relative;
@@ -150,4 +151,11 @@ export const MessageHighLight = attachThemeAttrs(styled.p)`
     text-align: center;
     color: ${props => props.palette.text.main};
     word-wrap: break-word;
+`;
+
+export const StyledPrimitiveCheckbox = styled(PrimitiveCheckbox)`
+    display: inline;
+    margin-bottom: 0;
+    margin-left: 4px;
+    margin-right: 8px;
 `;
