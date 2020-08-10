@@ -5,9 +5,9 @@ import { useUniqueIdentifier } from '../../../../libs/hooks';
 import Options from './options';
 import { StyledContainer, StyledSelect } from './styled';
 
-export default function YearSelect(props) {
-    const { currentYear, yearsRange, onYearChange } = props;
-    const selectRef = useRef(null);
+const YearSelect = React.forwardRef((props, ref) => {
+    const { currentYear, yearsRange, onYearChange, onClick, onFocus, onBlur, tabIndex } = props;
+    const selectRef = ref || useRef();
     const selectId = useUniqueIdentifier('select');
     const [isEditMode, setEditMode] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
@@ -17,7 +17,7 @@ export default function YearSelect(props) {
             selectRef.current.blur();
             onYearChange(value);
         },
-        [onYearChange],
+        [onYearChange, selectRef],
     );
 
     const handleMouseEnter = useCallback(() => {
@@ -28,8 +28,15 @@ export default function YearSelect(props) {
         if (!isFocused) setEditMode(false);
     }, [isFocused]);
 
-    const handleSelectFocus = useCallback(() => setIsFocused(true), []);
-    const handleSelectBlur = useCallback(() => setIsFocused(false), []);
+    const handleSelectFocus = useCallback(() => {
+        onFocus();
+        setIsFocused(true);
+    }, [onFocus]);
+
+    const handleSelectBlur = useCallback(() => {
+        onBlur();
+        setIsFocused(false);
+    }, [onBlur]);
 
     useEffect(() => {
         setEditMode(isFocused);
@@ -49,24 +56,36 @@ export default function YearSelect(props) {
                 ref={selectRef}
                 value={currentYear}
                 editMode={isEditMode}
+                onClick={onClick}
                 onChange={handleYearChange}
                 onFocus={handleSelectFocus}
                 onBlur={handleSelectBlur}
+                tabIndex={tabIndex}
             >
                 <Options options={yearsRange} />
             </StyledSelect>
         </StyledContainer>
     );
-}
+});
 
 YearSelect.propTypes = {
     currentYear: PropTypes.number,
     yearsRange: PropTypes.arrayOf(PropTypes.object),
     onYearChange: PropTypes.func,
+    onClick: PropTypes.func,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 YearSelect.defaultProps = {
     currentYear: undefined,
     yearsRange: [],
     onYearChange: () => {},
+    onClick: () => {},
+    onFocus: () => {},
+    onBlur: () => {},
+    tabIndex: undefined,
 };
+
+export default YearSelect;

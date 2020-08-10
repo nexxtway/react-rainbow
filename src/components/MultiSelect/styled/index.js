@@ -4,6 +4,7 @@ import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 import Chip from '../../Chip';
 import ButtonIcon from '../../ButtonIcon';
 import { TruncatedText } from '../../Structural';
+import InternalDropdown from '../../InternalDropdown';
 
 export const StyledContainer = styled.div`
     display: flex;
@@ -144,5 +145,13 @@ export const StyledCountText = attachThemeAttrs(styled.span)`
         props.readOnly &&
         `
             margin-right: 0.8rem;
+        `}
+`;
+
+export const StyledDropdown = styled(InternalDropdown)`
+    ${props =>
+        props.showCheckbox &&
+        `
+        width: ${props.width}px;
         `}
 `;
