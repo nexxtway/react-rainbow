@@ -96,6 +96,7 @@ class Textarea extends Component {
             hideLabel,
             name,
             footer,
+            variant,
         } = this.props;
 
         return (
@@ -113,6 +114,7 @@ class Textarea extends Component {
                     error={error}
                     readOnly={readOnly}
                     disabled={disabled}
+                    variant={variant}
                 >
                     <StyledTextarea
                         error={error}
@@ -193,6 +195,9 @@ Textarea.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The variant changes the appearance of the Textarea. Accepted variants include default,
+     * and shaded. This value defaults to default. */
+    variant: PropTypes.oneOf(['default', 'shaded']),
     /** The id of the outer element. */
     id: PropTypes.string,
     /** It is what will be displayed at the bottom of the component. */
@@ -220,6 +225,7 @@ Textarea.defaultProps = {
     onPaste: () => {},
     className: undefined,
     style: undefined,
+    variant: 'default',
     id: undefined,
     hideLabel: false,
     footer: undefined,
