@@ -165,3 +165,23 @@ function TextareaExample(props) {
 
 <TextareaExample maxLength={160} />
 ```
+##### Textarea with variant shaded
+
+```js
+import React from 'react';
+import { Textarea } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+<Textarea
+    id="example-textarea-1"
+    label="Textarea Label"
+    rows={4}
+    placeholder="Placeholder Text"
+    style={containerStyles}
+    variant="shaded"
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+/>;
+```

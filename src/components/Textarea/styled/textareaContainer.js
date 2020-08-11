@@ -15,6 +15,12 @@ const StyledTextareaContainer = attachThemeAttrs(styled.div)`
         border: solid 2px ${props => props.palette.brand.main};
         box-shadow: ${props => props.shadows.brand};
     }
+    ${props =>
+        props.variant === 'shaded' &&
+        `
+        box-shadow:${props.disabled || props.readOnly ? '' : props.shadows.shadow_10};
+        border: 1px solid transparent;
+        `}
 
     ${props =>
         props.error &&
