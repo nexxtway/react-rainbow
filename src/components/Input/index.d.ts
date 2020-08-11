@@ -53,6 +53,7 @@ export interface InputProps extends BaseProps {
     onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
     checked?: boolean;
     id?: string;
+    variant?: 'default' | 'shaded';
     autoComplete?: string;
 }
 
