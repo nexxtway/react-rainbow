@@ -126,4 +126,8 @@ describe('<Option />', () => {
         expect(privateUnregisterChildMockFn).toHaveBeenCalledTimes(1);
         expect(privateUnregisterChildMockFn.mock.calls[0][0]).not.toBeFalsy();
     });
+    it('should render a li with a role="option"', () => {
+        const component = mount(<Option label="option 1" name="option1" />);
+        expect(component.find('li').prop('role')).toBe('option');
+    });
 });

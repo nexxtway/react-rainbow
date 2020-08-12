@@ -173,8 +173,8 @@ class OptionItem extends Component {
                     className={className}
                     style={style}
                     title={title}
-                    role="presentation"
                     onMouseDown={preventDefault}
+                    role="option"
                 >
                     <StyledHeaderLabel>{label}</StyledHeaderLabel>
                 </StyledHeader>
@@ -191,15 +191,14 @@ class OptionItem extends Component {
                     data-selected={isSelected}
                     className={className}
                     style={style}
-                    role="presentation"
+                    role="option"
+                    aria-selected={isActive}
+                    aria-disabled={disabled}
                     onMouseDown={this.handleClick}
                     onMouseEnter={this.handleHover}
                 >
                     <StyledItem
                         id={name}
-                        role="option"
-                        aria-selected={isActive}
-                        aria-disabled={disabled}
                         ref={this.itemRef}
                         isSelected={isSelected}
                         isActive={isActive}

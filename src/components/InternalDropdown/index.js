@@ -313,12 +313,10 @@ const InternalDropdown = forwardRef((props, reference) => {
     return (
         <Dropdown
             id={id}
-            role="listbox"
             isLoading={isLoading}
             className={className}
             style={style}
             onKeyDown={handleKeyPressed}
-            tabIndex="-1"
             ref={containerRef}
         >
             <RenderIf isTrue={enableSearch}>
@@ -337,7 +335,8 @@ const InternalDropdown = forwardRef((props, reference) => {
                     />
                 </RenderIf>
                 <Ul
-                    role="presentation"
+                    role="listbox"
+                    tabIndex="0"
                     onScroll={updateScrollingArrows}
                     ref={menuRef}
                     style={menuContainerStyles}

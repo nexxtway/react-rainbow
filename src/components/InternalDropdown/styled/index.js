@@ -33,6 +33,9 @@ export const Ul = styled.ul`
         `
         display: none;
     `}
+    :focus {
+        outline: none;
+    }
 `;
 
 export const Arrow = attachThemeAttrs(styled.div)`

@@ -187,4 +187,15 @@ describe('InternalDropdown', () => {
         );
         expect(component.find(Spinner).exists()).toBe(true);
     });
+    it('should ul have role="listbox"', () => {
+        const onChangeFn = jest.fn();
+        const component = mount(
+            <InternalDropdown label="Picklist" onChange={onChangeFn}>
+                <Option label="Option 1" name="option1" />
+                <Option label="Option 2" name="option2" />
+                <Option label="Option 3" name="option3" />
+            </InternalDropdown>,
+        );
+        expect(component.find('ul').prop('role')).toBe('listbox');
+    });
 });
