@@ -27,7 +27,7 @@ type InputType =
     | 'checkbox';
 
 export interface InputProps extends BaseProps {
-    value?: string | boolean;
+    value?: string | boolean | number;
     name?: string;
     type?: InputType;
     label?: ReactNode;

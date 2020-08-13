@@ -54,7 +54,7 @@ class Input extends Component {
 
 Input.propTypes = {
     /** Specifies the value of an input element. */
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.number]),
     /** The name of the input. */
     name: PropTypes.string,
     /** The type of the input. This value defaults to text. */
