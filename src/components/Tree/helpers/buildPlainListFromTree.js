@@ -6,7 +6,7 @@ export default function buildPlainListFromTree(tree, parentName, parentPath) {
         const nodeName = getNodeName({ parentName, index });
         const level = getNodeLevel({ name: nodeName });
         const nodePath = parentPath ? [...parentPath, index] : [index];
-        if (node.isExpanded)
+        if (node.isExpanded) {
             return [
                 ...result,
                 {
@@ -19,6 +19,7 @@ export default function buildPlainListFromTree(tree, parentName, parentPath) {
                 },
                 ...buildPlainListFromTree(node.children, nodeName, nodePath),
             ];
+        }
         return [
             ...result,
             {
