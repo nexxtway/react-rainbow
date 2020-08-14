@@ -97,10 +97,11 @@ export default function useKeyNavigation({
         (event, childProps) => {
             const { key, keyCode, target, currentTarget } = event;
             if (target.id === currentTarget.id) {
-                event.preventDefault();
                 if (keyHandlerMap[keyCode]) {
+                    event.preventDefault();
                     keyHandlerMap[keyCode](childProps);
                 } else if (isPrintableCharacter(key)) {
+                    event.preventDefault();
                     processPrintableCharacter(key, childProps);
                 }
             }
