@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
-import { Consumer } from './context';
+import { TreeContext } from './context';
 import TreeChildren from './treeChildren';
 import ExpandCollapseButton from './expandCollapseButton';
 import ItemContainerLi from './styled/itemContainerLi';
@@ -16,7 +16,7 @@ import getNodeLevel from './helpers/getNodeLevel';
 import getTabIndex from './helpers/getTabIndex';
 import shouldSelectNode from './helpers/shouldSelectNode';
 
-function ChildComponent(props) {
+export default function Child(props) {
     const {
         label,
         isExpanded,
@@ -32,12 +32,10 @@ function ChildComponent(props) {
         name,
         selectedNode,
         isFirstNode,
-        autoFocus,
-        focusedNode,
-        setFocusedNode,
-        clearFocusedNode,
-        privateKeyDown,
     } = props;
+    const { autoFocus, focusedNode, setFocusedNode, clearFocusedNode, privateKeyDown } = useContext(
+        TreeContext,
+    );
     const hasChildren = Array.isArray(children);
     const hasCheckbox = typeof isChecked === 'boolean' || isChecked === 'indeterminate';
     const hasIcon = !!icon;
@@ -121,10 +119,6 @@ function ChildComponent(props) {
             </RenderIf>
         </ItemContainerLi>
     );
-}
-
-export default function Child(props) {
-    return <Consumer>{values => <ChildComponent {...values} {...props} />}</Consumer>;
 }
 
 Child.propTypes = {
