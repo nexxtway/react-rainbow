@@ -45,9 +45,9 @@ export default function Tree(props) {
             value={{
                 autoFocus,
                 focusedNode,
-                setFocusedNode,
-                clearFocusedNode,
-                privateKeyDown: keyDownHandler,
+                onPrivateFocusNode: setFocusedNode,
+                onPrivateBlurNode: clearFocusedNode,
+                onPrivateKeyDown: keyDownHandler,
             }}
         >
             <TreeContainerUl

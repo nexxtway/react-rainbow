@@ -33,9 +33,13 @@ export default function Child(props) {
         selectedNode,
         isFirstNode,
     } = props;
-    const { autoFocus, focusedNode, setFocusedNode, clearFocusedNode, privateKeyDown } = useContext(
-        TreeContext,
-    );
+    const {
+        autoFocus,
+        focusedNode,
+        onPrivateFocusNode,
+        onPrivateBlurNode,
+        onPrivateKeyDown,
+    } = useContext(TreeContext);
     const hasChildren = Array.isArray(children);
     const hasCheckbox = typeof isChecked === 'boolean' || isChecked === 'indeterminate';
     const hasIcon = !!icon;
@@ -71,14 +75,14 @@ export default function Child(props) {
             icon={icon}
             hasChildren={hasChildren}
             onClick={handleNodeSelect}
-            onFocus={event => setFocusedNode(event, name)}
-            onBlur={event => clearFocusedNode(event, name)}
+            onFocus={event => onPrivateFocusNode(event, name)}
+            onBlur={event => onPrivateBlurNode(event, name)}
             role="treeitem"
             aria-level={ariaLevelValue}
             aria-expanded={ariaExpandedValue}
             aria-selected={ariaSelectedValue}
             tabIndex={tabIndex}
-            onKeyDown={event => privateKeyDown(event, props)}
+            onKeyDown={event => onPrivateKeyDown(event, props)}
         >
             <NodeContainer
                 data-id="node-element"

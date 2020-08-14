@@ -6,9 +6,9 @@ import { Provider } from '../context';
 const contextValue = {
     autoFocus: undefined,
     focusedNode: undefined,
-    setFocusedNode: undefined,
-    clearFocusedNode: undefined,
-    privateKeyDown: undefined,
+    onPrivateFocusNode: undefined,
+    onPrivateBlurNode: undefined,
+    onPrivateKeyDown: undefined,
 };
 
 describe('<Child/>', () => {
