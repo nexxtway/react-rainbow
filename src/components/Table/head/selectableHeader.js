@@ -39,7 +39,7 @@ export default function SelectableHeader(props) {
 
     return (
         <StyledWrapper as="th" style={style} scope="col" tabIndex={-1} variant={variant}>
-            <StyledCheckboxWrapper style={style}>
+            <StyledCheckboxWrapper style={style} variant={variant}>
                 <PrimitiveCheckbox
                     name={name}
                     label="select all rows"

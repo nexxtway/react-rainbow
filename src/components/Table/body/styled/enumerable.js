@@ -6,6 +6,12 @@ const StyledEnumerable = attachThemeAttrs(styled.span)`
     text-align: center;
     color: ${props => props.palette.text.header};
 
+    ${props =>
+        props.variant === 'listview' &&
+        `
+        color: ${props.palette.text.main};
+    `}
+
     &::after {
         content: counter(rowCounter);
     }

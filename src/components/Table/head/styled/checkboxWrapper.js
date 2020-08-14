@@ -5,6 +5,11 @@ const StyledCheckboxWrapper = styled.div`
     display: flex;
     padding: 10px 15px;
     border: 1px solid transparent;
+    ${props =>
+        props.variant === 'listview' &&
+        `
+        padding: 10px 10px;
+    `}
 `;
 
 export default StyledCheckboxWrapper;

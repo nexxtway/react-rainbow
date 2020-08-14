@@ -94,14 +94,8 @@ const StyledTh = attachThemeAttrs(styled.th)`
                     background-color: transparent;
                 }
 
-                :first-child * {
-                    border-top-left-radius: 13px; 
-                    border-bottom-left-radius: 13px;
-                }
-
-                :last-child * {
-                    border-bottom-right-radius: 13px; 
-                    border-top-right-radius: 13px; 
+                .rainbow-table_header-container {
+                    border-color: transparent;
                 }
             }
 

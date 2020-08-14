@@ -32,18 +32,17 @@ const StyledCell = attachThemeAttrs(styled.th)`
             border-top-right-radius: 13px; 
         }
 
-        :first-child * {
-            border-top-left-radius: 12px; 
-            border-bottom-left-radius: 12px;
-        }
-        
-        :last-child * {
+        :last-child > div {
             border-bottom-right-radius: 12px; 
-            border-top-right-radius: 12px; 
+            border-top-right-radius: 12px;
+            overflow: hidden;
         }
 
         :first-child > div {
             padding-left: 0;
+            border-top-left-radius: 12px; 
+            border-bottom-left-radius: 12px;
+            overflow: hidden;
         }
     `}
 

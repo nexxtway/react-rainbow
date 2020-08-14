@@ -7,9 +7,9 @@ import StyledEnumerable from './styled/enumerable';
 export default function EnumerableCell(props) {
     const { variant } = props;
     return (
-        <StyledCellContainer role="gridcell" tabIndex={-1} variant={variant}>
-            <StyledCellContent>
-                <StyledEnumerable />
+        <StyledCellContainer role="gridcell" tabIndex={-1} variant={variant} hideBorderRight>
+            <StyledCellContent variant={variant}>
+                <StyledEnumerable variant={variant} />
             </StyledCellContent>
         </StyledCellContainer>
     );

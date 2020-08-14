@@ -48,6 +48,7 @@ export default class Table extends Component {
             minColumnWidth,
             maxColumnWidth,
             selectedRows,
+            variant,
         } = props;
 
         this.state = {
@@ -58,6 +59,7 @@ export default class Table extends Component {
                 rowNumberOffset,
                 minColumnWidth,
                 maxColumnWidth,
+                variant,
             }),
             tableWidth: undefined,
             rows: getRows({
@@ -116,6 +118,7 @@ export default class Table extends Component {
             minColumnWidth,
             maxColumnWidth,
             onRowSelection,
+            variant,
         } = this.props;
         const prevColumns = getColumns({
             children: prevChildren,
@@ -124,6 +127,7 @@ export default class Table extends Component {
             rowNumberOffset,
             minColumnWidth: prevMinColumnWidth,
             maxColumnWidth: prevMaxColumnWidth,
+            variant,
         });
         const currentColumns = getColumns({
             children,
@@ -132,6 +136,7 @@ export default class Table extends Component {
             rowNumberOffset,
             minColumnWidth,
             maxColumnWidth,
+            variant,
         });
         const isNotSameMaxRowSelection = prevMaxRowSelection !== maxRowSelection;
         const isNotSameData = data !== prevData;

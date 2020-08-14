@@ -1343,47 +1343,54 @@ function TableListView() {
 ##### Table with listview variant, enumerates and selectable rows
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
+import { Table, Column, ButtonGroup, ButtonIcon, Avatar } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
-const data = [
+const initialData = [
     {
-        name: 'Leandro Torres',
-        company: 'Nexxtway',
-        email: 'leandro@gmail.com',
-        status: 'verified',
+        task: 'fix: keyboard navigation on Tree.',
+        coins: 2,
+        constributor: 'yvmunayev@gmail.com',
+        priority: 2,
         id: '1234qwerty',
     },
     {
-        name: 'Jose Torres',
-        company: 'Google',
-        email: 'jose@gmail.com',
-        status: 'verified',
+        task: 'feat: implement Notification Manager',
+        coins: 4,
+        constributor: 'yvmunayev@gmail.com',
+        priority: 2,
         id: '1234asdfgh',
     },
     {
-        name: 'Reinier',
-        company: 'Nexxtway',
-        email: 'reinier@gmail.com',
-        status: 'verified',
+        task: 'test: InternalDropdown.',
+        coins: 2,
+        constributor: 'yvmunayev@gmail.com',
+        priority: 2,
         id: '1234zxcvbn',
     },
     {
-        name: 'Sara',
-        company: 'Nexxtway',
-        email: 'sara@gmail.com',
-        status: 'verified',
+        task: 'feat: implement MultiSelect.',
+        coins: 8,
+        constributor: 'yvmunayev@gmail.com',
+        priority: 2,
         id: '5678qwerty',
     },
     {
-        name: 'Tahimi',
-        company: 'Nexxtway',
-        email: 'tahimi@gmail.com',
-        status: 'verified',
+        task: 'fix: position resolver on InternalOverlay',
+        coins: 8,
+        constributor: 'yvmunayev@gmail.com',
+        priority: 1,
         id: '5678asdfgh',
+    },
+    {
+        task: 'refactor: ButtonMenu component.',
+        coins: 8,
+        constributor: 'yvmunayev@gmail.com',
+        priority: 0,
+        id: '5278aswegh',
     },
 ];
 
@@ -1391,35 +1398,142 @@ const Container = styled.div`
     padding: 0 2rem;
 `;
 
-const badgeStyles = { color: '#1de9b6' };
+const StyledTaskHeader = styled.span`
+    text-transform: uppercase;
+`;
 
-const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
+const StyledPriority = styled.div`
+    text-transform: capitalize;
+    color: #ffffff;
+    ${props =>
+        props.priority === 'hight' &&
+        `
+            background-color: #fc5e5f;
+        `};
+    ${props =>
+        props.priority === 'medium' &&
+        `
+            background-color: #fc9c44;
+        `};
+    ${props =>
+        props.priority === 'low' &&
+        `
+            background-color: #ffd86a;
+        `};
+`;
 
-<div className="rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-        <ButtonGroup className="rainbow-m-right_medium">
-            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-            <ButtonIcon
-                variant="border-filled"
-                disabled
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-            />
-        </ButtonGroup>
-    </GlobalHeader>
-    <Container>
-        <Table
-            variant="listview"
-            showCheckboxColumn
-            showRowNumberColumn
-            rowNumberOffset={99}
-            data={data}
-            keyField="id"
-        >
-            <Column header="Name" field="name" />
-            <Column header="Status" field="status" component={StatusBadge} />
-            <Column header="Company" field="company" />
-            <Column header="Email" field="email" />
-        </Table>
-    </Container>
-</div>
+const StyledConstributor = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+`;
+
+const StyledTask = styled.div`
+    text-align: left;
+    padding-left: 10px;
+`;
+
+const StyleCoin = styled(Coin)`
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+`;
+
+const Task = ({ value }) => <StyledTask>{value}</StyledTask>;
+
+const Coins = ({ value }) => (
+    <>
+        <StyleCoin />
+        {value} coins
+    </>
+);
+
+const Constributor = () => (
+    <StyledConstributor>
+        <Avatar src="images/user/user3.jpg" variant="circle" size="small" />
+    </StyledConstributor>
+);
+
+const priorityMap = ['low', 'medium', 'hight'];
+const Priority = ({ value }) => {
+    const priority = priorityMap[value];
+    return <StyledPriority priority={priority}>{priority}</StyledPriority>;
+};
+
+function TableListView() {
+    const [data, setData] = useState(initialData);
+    const [sortedBy, setSortedBy] = useState();
+    const [sortDirection, setSortDirection] = useState('asc');
+
+    function handleSort(event, field, nextSortDirection) {
+        const newData = [...data];
+        const key = x => x[field];
+        const reverse = nextSortDirection === 'asc' ? 1 : -1;
+
+        const sortedData = newData.sort((a, b) => {
+            a = key(a);
+            b = key(b);
+            return reverse * ((a > b) - (b > a));
+        });
+
+        setData(sortedData);
+        setSortedBy(field);
+        setSortDirection(nextSortDirection);
+    }
+
+    return (
+        <div className="rainbow-p-bottom_xx-large">
+            <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+                <ButtonGroup className="rainbow-m-right_medium">
+                    <ButtonIcon
+                        variant="border-filled"
+                        disabled
+                        icon={<FontAwesomeIcon icon={faCog} />}
+                    />
+                    <ButtonIcon
+                        variant="border-filled"
+                        disabled
+                        icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                    />
+                </ButtonGroup>
+            </GlobalHeader>
+            <Container>
+                <Table
+                    data={data}
+                    keyField="id"
+                    variant="listview"
+                    onSort={handleSort}
+                    sortDirection={sortDirection}
+                    sortedBy={sortedBy}
+                    showCheckboxColumn
+                    showRowNumberColumn
+                >
+                    <Column
+                        header={<StyledTaskHeader>Task</StyledTaskHeader>}
+                        field="task"
+                        component={Task}
+                    />
+                    <Column header="Coins" field="coins" component={Coins} defaultWidth={120} />
+                    <Column
+                        header="Constributor"
+                        field="constributor"
+                        component={Constributor}
+                        defaultWidth={180}
+                        sortable
+                    />
+                    <Column
+                        header="Priority"
+                        field="priority"
+                        component={Priority}
+                        defaultWidth={200}
+                        sortable
+                    />
+                </Table>
+            </Container>
+        </div>
+    );
+}
+
+<TableListView />;
 ```
