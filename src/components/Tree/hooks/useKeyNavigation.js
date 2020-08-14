@@ -13,7 +13,7 @@ import getNextFocusedNode from '../helpers/getNextFocusedNode';
 import getLastRootNodeName from '../helpers/getLastRootNodeName';
 import isPrintableCharacter from '../helpers/isPrintableCharacter';
 import findNodeByFirstLetter from '../helpers/findNodeByFirstLetter';
-import finExpandableNodesAtLevel from '../helpers/finExpandableNodesAtLevel';
+import findExpandableNodesAtLevel from '../helpers/findExpandableNodesAtLevel';
 
 export default function useKeyNavigation({
     visibleNodes,
@@ -67,7 +67,7 @@ export default function useKeyNavigation({
                 if (children) onNodeExpand({ name, nodePath });
             },
         }),
-        [visibleNodes, onNodeExpand, focusedNode, onNodeSelect],
+        [visibleNodes, onNodeExpand, onNodeSelect],
     );
 
     const processPrintableCharacter = useCallback(
@@ -75,7 +75,7 @@ export default function useKeyNavigation({
             if (char === '*') {
                 const currentNode = visibleNodes.find(node => node.name === focusedNode);
                 if (currentNode) {
-                    const expandableNodes = finExpandableNodesAtLevel(
+                    const expandableNodes = findExpandableNodesAtLevel(
                         visibleNodes,
                         currentNode.level,
                     );
