@@ -1,3 +1,4 @@
 export default function isPrintableCharacter(str) {
-    return str.length === 1 && str.match(/\S/);
+    if (typeof str !== 'string') return false;
+    return str.length === 1 && /\S/.test(str);
 }
