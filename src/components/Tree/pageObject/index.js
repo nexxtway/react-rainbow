@@ -28,6 +28,20 @@ class PageTree {
         }
         return null;
     }
+
+    /**
+     * Returns a new Node page object of the element at specified path.
+     * @method
+     * @param {array} path - Array with 0 base indexes that defines the node path in tree.
+     */
+    getNodeByPath(path) {
+        const nodePath = path.join('.');
+        const node = $(this.rootElement).$(`[data-path="${nodePath}"]`);
+        if (node) {
+            return new PageNodeItem(`${this.rootElement} [data-path="${nodePath}"]`);
+        }
+        return null;
+    }
 }
 
 module.exports = PageTree;

@@ -13,24 +13,31 @@ class PageNodeItem {
     }
 
     /**
-     * Clicks the button icon element.
+     * Clicks the li element.
      * @method
      */
     click() {
-        $(this.rootElement)
-            .$('[data-id="node-element"] button')
-            .click();
+        $(this.rootElement).click();
     }
 
     /**
-     * Returns true when the button icon has focus.
+     * Returns true when the li has focus.
      * @method
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement)
+        const nodeEl = $(this.rootElement);
+        return nodeEl.isExisting() && nodeEl.isFocused();
+    }
+
+    /**
+     * Clicks the button icon element.
+     * @method
+     */
+    clickExpandButton() {
+        $(this.rootElement)
             .$('[data-id="node-element"] button')
-            .isFocused();
+            .click();
     }
 
     /**

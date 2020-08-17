@@ -14,6 +14,7 @@ import ChildrenContainerUl from './styled/childrenContainer';
 import InnerContainer from './styled/innerContainer';
 import getNodeLevel from './helpers/getNodeLevel';
 import getTabIndex from './helpers/getTabIndex';
+import getNodePath from './helpers/getNodePath';
 import shouldSelectNode from './helpers/shouldSelectNode';
 
 export default function Child(props) {
@@ -72,6 +73,7 @@ export default function Child(props) {
             id={name}
             ref={itemRef}
             data-id="node-element-li"
+            data-path={getNodePath(nodePath)}
             icon={icon}
             hasChildren={hasChildren}
             onClick={handleNodeSelect}

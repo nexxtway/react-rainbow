@@ -346,3 +346,123 @@ const data = [
         ariaLabel="tree-icons"
     />
 ```
+
+##### Tree basic
+
+```js
+const data = [
+        {
+            label: 'Fruits',
+            children: [
+                { label: 'Oranges' },
+                { label: 'Pineapple' },
+                {
+                    label: 'Apples',
+                    children: [
+                        { label: 'Macintosh' },
+                        { label: 'Granny Smith' },
+                        { label: 'Fuji' },
+                    ],
+                },
+                { label: 'Bananas' },
+                {
+                    label: 'Pears',
+                    children: [
+                        { label: 'Anjou' },
+                        { label: 'Barlett' },
+                        { label: 'Bosc' },
+                        { label: 'Concorde' },
+                        { label: 'Seckel' },
+                        { label: 'Starkrimson' },
+                    ],
+                },
+            ],
+        },
+        {
+            label: 'Vegetables',
+            isExpanded: true,
+            children: [
+                {
+                    label: 'Podded Vegetables',
+                    children: [
+                        { label: 'Lentil' },
+                        { label: 'Pea' },
+                        { label: 'Peanut' },
+                    ],
+                },
+                {
+                    label: 'Bulb and Stem Vegetables',
+                    children: [
+                        { label: 'Aparagus' },
+                        { label: 'Celery' },
+                        { label: 'Leek' },
+                        { label: 'Onion' },
+                    ],
+                },
+                {
+                    label: 'Root and Tuberous Vegetables',
+                    children: [
+                        { label: 'Carrot' },
+                        { label: 'Ginger' },
+                        { label: 'Parship' },
+                        { label: 'Potato' },
+                    ],
+                },
+            ],
+        },
+        {
+            label: 'Grains',
+            children: [
+                {
+                    label: 'Cereal Grains',
+                    children: [
+                        { label: 'Barley' },
+                        { label: 'Oats' },
+                        { label: 'Rice' },
+                    ],
+                },
+                {
+                    label: 'Pseudocereal Grains',
+                    children: [
+                        { label: 'Amaranth' },
+                        { label: 'Bucketwheat' },
+                        { label: 'Chia' },
+                        { label: 'Quinoa' },
+                    ],
+                },
+                {
+                    label: 'Oilseeds',
+                    children: [
+                        { label: 'India Mustard' },
+                        { label: 'Safflower' },
+                        { label: 'Flax Seed' },
+                        { label: 'Poppy Seed' },
+                    ],
+                },
+            ],
+        },
+    ];
+
+    const initialState = {
+        data,
+        selectedNode: '',
+    };
+
+    const expandNode = ({ nodePath }) => {
+        const child = Tree.getNode(state.data, nodePath);
+        child.isExpanded = !child.isExpanded;
+        setState({ data: state.data });
+    }
+
+    <Tree
+        id="tree-component-9"
+        data={state.data}
+        className="rainbow-m-around_xx-large"
+        onNodeExpand={expandNode}
+        selectedNode={state.selectedNode}
+        onNodeSelect={({ name }) => {
+            setState({ selectedNode: name });
+        }}
+        ariaLabel="tree-basic"
+    />
+```
