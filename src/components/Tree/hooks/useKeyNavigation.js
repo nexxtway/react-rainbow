@@ -10,7 +10,7 @@ import {
     ENTER_KEY,
 } from '../../../libs/constants';
 import getNextFocusedNode from '../helpers/getNextFocusedNode';
-import getLastRootNodeName from '../helpers/getLastRootNodeName';
+import getLastVisibleNodeName from '../helpers/getLastVisibleNodeName';
 import isPrintableCharacter from '../helpers/isPrintableCharacter';
 import findNodeByFirstLetter from '../helpers/findNodeByFirstLetter';
 import findExpandableNodesAtLevel from '../helpers/findExpandableNodesAtLevel';
@@ -52,7 +52,7 @@ export default function useKeyNavigation({
                 if (visibleNodes.length > 0) setFocusedNode('node-1');
             },
             [END_KEY]: () => {
-                setFocusedNode(getLastRootNodeName(visibleNodes));
+                setFocusedNode(getLastVisibleNodeName(visibleNodes));
             },
             [ENTER_KEY]: props => {
                 const { name, nodePath, children, isSelected } = props;
