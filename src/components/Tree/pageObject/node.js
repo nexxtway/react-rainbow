@@ -50,6 +50,15 @@ class PageNodeItem {
             .$('[data-id="node-element-li"]')
             .isDisplayed();
     }
+
+    /**
+     * Returns true when the node is selected, false otherwise.
+     * @method
+     * @returns {bool}
+     */
+    isSelected() {
+        return $(this.rootElement).getAttribute('aria-selected') === 'true';
+    }
 }
 
 module.exports = PageNodeItem;
