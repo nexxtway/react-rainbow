@@ -13,50 +13,50 @@ describe('Tree basic', () => {
         component.waitForExist();
     });
 
-    it('should expand the node when it is collapse and its button icon is clickExpandButtoned', () => {
+    it('should expand the node when it is collapse and its button icon is clicked', () => {
         const tree = new PageTree(TREE);
-        const node = tree.getNode(3);
+        const node = tree.getNode([2]);
         node.clickExpandButton();
         expect(node.isExpanded()).toBe(true);
     });
-    it('should collapse the node when it is expand and its button icon is clickExpandButtoned', () => {
+    it('should collapse the node when it is expand and its button icon is clicked', () => {
         const tree = new PageTree(TREE);
-        const node = tree.getNode(2);
+        const node = tree.getNode([1]);
         node.clickExpandButton();
         expect(node.isExpanded()).toBe(false);
     });
     it('should move focus outside the tree when the first button icon is focused and press tab', () => {
         const tree = new PageTree(TREE);
-        const firstNode = tree.getNode(2);
-        const secondNode = tree.getNode(3);
+        const firstNode = tree.getNode([1]);
+        const secondNode = tree.getNode([2]);
         firstNode.clickExpandButton();
         browser.keys(TAB_KEY);
         expect(secondNode.hasFocus()).toBe(false);
     });
     it('should expand the node when its button icon is focused, press enter and the node was initially expanded', () => {
         const tree = new PageTree(TREE);
-        const node = tree.getNode(2);
+        const node = tree.getNode([1]);
         node.clickExpandButton();
         browser.keys(ENTER_KEY);
         expect(node.isExpanded()).toBe(true);
     });
     it('should collapse the node when its button icon is focused, press enter and the node was initially collapse', () => {
         const tree = new PageTree(TREE);
-        const node = tree.getNode(3);
+        const node = tree.getNode([2]);
         node.clickExpandButton();
         browser.keys(ENTER_KEY);
         expect(node.isExpanded()).toBe(false);
     });
     it('should expand the node when its button icon is focused, press space and the node was initially expanded', () => {
         const tree = new PageTree(TREE);
-        const node = tree.getNode(2);
+        const node = tree.getNode([1]);
         node.clickExpandButton();
         browser.keys(SPACE_KEY);
         expect(node.isExpanded()).toBe(true);
     });
     it('should collapse the node when its button icon is focused, press space and the node was initially collapse', () => {
         const tree = new PageTree(TREE);
-        const node = tree.getNode(3);
+        const node = tree.getNode([2]);
         node.clickExpandButton();
         browser.keys(SPACE_KEY);
         expect(node.isExpanded()).toBe(false);

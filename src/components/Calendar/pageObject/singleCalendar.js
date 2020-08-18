@@ -133,7 +133,7 @@ class PageSingleCalendar {
     }
 
     /**
-     * Returns true when the next month button element has focus.
+     * Returns true when the next month button element is disabled.
      * @method
      * @returns {bool}
      */
@@ -153,7 +153,7 @@ class PageSingleCalendar {
     }
 
     /**
-     * Returns true when the next month button element is disabled.
+     * Returns true when the next month button element has focus.
      * @method
      * @returns {bool}
      */

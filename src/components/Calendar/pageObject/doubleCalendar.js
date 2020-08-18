@@ -169,7 +169,7 @@ class PageDoubleCalendar {
      * @method
      * @returns {bool}
      */
-    isLeftMonthYearSelectFocused() {
+    isLeftYearSelectFocused() {
         const selectEl = $(this.rootElement).$$('select')[0];
         return selectEl.isExisting() && selectEl.isFocused();
     }
@@ -270,7 +270,7 @@ class PageDoubleCalendar {
      * @method
      * @returns {bool}
      */
-    isRightMonthYearSelectFocused() {
+    isRightYearSelectFocused() {
         const selectEl = $(this.rootElement).$$('select')[1];
         return selectEl.isExisting() && selectEl.isFocused();
     }
