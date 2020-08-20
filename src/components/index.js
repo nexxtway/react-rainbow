@@ -59,6 +59,7 @@ export { default as RadioButtonGroup } from './RadioButtonGroup';
 export { default as RadioGroup } from './RadioGroup';
 export { default as Rating } from './Rating';
 export { default as ReCaptcha } from './ReCaptcha';
+export { default as RenderIf } from './RenderIf';
 export { default as Select } from './Select';
 export { default as Sidebar } from './Sidebar';
 export { default as SidebarItem } from './SidebarItem';
