@@ -56,7 +56,6 @@ describe('Tree', () => {
         node.click();
         expect(node.isExpanded()).toBe(true);
         browser.keys(ARROW_LEFT_KEY);
-        browser.keys(ARROW_LEFT_KEY);
         expect(node.isExpanded()).toBe(false);
         browser.keys(ARROW_LEFT_KEY);
         expect(node.isExpanded()).toBe(false);
