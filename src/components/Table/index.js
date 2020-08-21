@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ThemeProvider } from 'styled-components';
 import Body from './body';
 import Head from './head';
 import { getNextSortDirection } from './helpers/sort';
@@ -425,65 +426,62 @@ export default class Table extends Component {
         const maxColWidth = Number(maxColumnWidth) || 5000;
 
         const isEmpty = data.length === 0;
+        const theme = { variant };
 
         if (keyField && typeof keyField === 'string') {
             return (
                 <StyledContainer id={id} className={className} style={style}>
                     <div ref={this.resizeTarget} />
-                    <StyledContainer>
-                        <StyledScrollableX ref={this.tableContainerRef} variant={variant}>
-                            <StyledScrollableY
-                                isEmpty={isEmpty}
-                                isLoading={isLoading}
-                                ref={this.scrollableY}
-                                style={tableStyles}
-                                variant={variant}
-                            >
-                                <StyledTable style={tableStyles} variant={variant}>
-                                    <thead>
-                                        <tr>
-                                            <Head
+                    <ThemeProvider theme={theme}>
+                        <StyledContainer>
+                            <StyledScrollableX ref={this.tableContainerRef}>
+                                <StyledScrollableY
+                                    isEmpty={isEmpty}
+                                    isLoading={isLoading}
+                                    ref={this.scrollableY}
+                                    style={tableStyles}
+                                >
+                                    <StyledTable style={tableStyles}>
+                                        <thead>
+                                            <tr>
+                                                <Head
+                                                    columns={columns}
+                                                    sortedBy={sortedBy}
+                                                    sortDirection={sortDirection}
+                                                    defaultSortDirection={defaultSortDirection}
+                                                    resizeColumnDisabled={resizeColumnDisabled}
+                                                    minColumnWidth={minColWidth}
+                                                    maxColumnWidth={maxColWidth}
+                                                    onSort={this.handleSort}
+                                                    onResize={this.handleResize}
+                                                    onSelectAllRows={this.handleSelectAllRows}
+                                                    onDeselectAllRows={this.handleDeselectAllRows}
+                                                    tableId={this.tableId}
+                                                    maxRowSelection={maxRowSelection}
+                                                    bulkSelection={bulkSelection}
+                                                    hasScroll={this.isScrollActive()}
+                                                />
+                                            </tr>
+                                        </thead>
+                                        <StyledTableBody rowNumberOffset={rowNumberOffset}>
+                                            <Body
+                                                data={normalizeData(data)}
                                                 columns={columns}
-                                                sortedBy={sortedBy}
-                                                sortDirection={sortDirection}
-                                                defaultSortDirection={defaultSortDirection}
-                                                resizeColumnDisabled={resizeColumnDisabled}
-                                                minColumnWidth={minColWidth}
-                                                maxColumnWidth={maxColWidth}
-                                                onSort={this.handleSort}
-                                                onResize={this.handleResize}
-                                                onSelectAllRows={this.handleSelectAllRows}
-                                                onDeselectAllRows={this.handleDeselectAllRows}
+                                                rows={rows}
                                                 tableId={this.tableId}
-                                                maxRowSelection={maxRowSelection}
-                                                bulkSelection={bulkSelection}
-                                                hasScroll={this.isScrollActive()}
-                                                variant={variant}
+                                                isLoading={isLoading}
+                                                emptyIcon={emptyIcon}
+                                                emptyTitle={emptyTitle}
+                                                emptyDescription={emptyDescription}
+                                                onSelectRow={this.handleSelectRow}
+                                                onDeselectRow={this.handleDeselectRow}
                                             />
-                                        </tr>
-                                    </thead>
-                                    <StyledTableBody
-                                        rowNumberOffset={rowNumberOffset}
-                                        variant={variant}
-                                    >
-                                        <Body
-                                            data={normalizeData(data)}
-                                            columns={columns}
-                                            rows={rows}
-                                            tableId={this.tableId}
-                                            isLoading={isLoading}
-                                            emptyIcon={emptyIcon}
-                                            emptyTitle={emptyTitle}
-                                            emptyDescription={emptyDescription}
-                                            onSelectRow={this.handleSelectRow}
-                                            onDeselectRow={this.handleDeselectRow}
-                                            variant={variant}
-                                        />
-                                    </StyledTableBody>
-                                </StyledTable>
-                            </StyledScrollableY>
-                        </StyledScrollableX>
-                    </StyledContainer>
+                                        </StyledTableBody>
+                                    </StyledTable>
+                                </StyledScrollableY>
+                            </StyledScrollableX>
+                        </StyledContainer>
+                    </ThemeProvider>
                 </StyledContainer>
             );
         }

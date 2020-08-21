@@ -13,7 +13,7 @@ const StyledScrollableX = attachThemeAttrs(styled.div)`
     border-top: 1px solid ${props => props.palette.border.divider};
 
     ${props =>
-        props.variant === 'listview' &&
+        props.theme.variant === 'listview' &&
         `
             border-top: none;
             background-color: transparent;

@@ -39,7 +39,6 @@ export default function Row(props) {
                 isFirst={isFirstDataColumn}
                 isSelected={isSelected}
                 columnChildren={children}
-                variant={variant}
             />
         );
     });
@@ -58,7 +57,6 @@ export default function Row(props) {
             tabIndex={-1}
             aria-selected={isSelected}
             isSelected={isSelected}
-            variant={variant}
         >
             {cells}
         </StyledRow>
@@ -69,12 +67,10 @@ Row.propTypes = {
     rowData: PropTypes.object,
     columns: PropTypes.array,
     isSelected: PropTypes.bool,
-    variant: PropTypes.oneOf(['default', 'listview']),
 };
 
 Row.defaultProps = {
     rowData: {},
     columns: [],
     isSelected: false,
-    variant: 'default',
 };

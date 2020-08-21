@@ -87,7 +87,7 @@ const StyledTh = attachThemeAttrs(styled.th)`
         `};
 
         ${props =>
-            props.variant === 'listview' &&
+            props.theme.variant === 'listview' &&
             `
             :hover {
                 > div, .rainbow-table_header-resize-bar {

@@ -10,7 +10,7 @@ const StyledActionCell = attachThemeAttrs(styled.div)`
     box-sizing: border-box;
 
     ${props =>
-        props.variant === 'listview' &&
+        props.theme.variant === 'listview' &&
         `
             background-color: ${props.palette.background.main};
         `};

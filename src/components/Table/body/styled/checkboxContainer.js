@@ -7,7 +7,7 @@ const StyledCheckboxContainer = styled.div`
     border: 1px solid transparent;
     box-sizing: border-box;
     ${props =>
-        props.variant === 'listview' &&
+        props.theme.variant === 'listview' &&
         `
         padding: 0 10px;
     `}

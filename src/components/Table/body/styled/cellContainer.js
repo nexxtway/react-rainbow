@@ -7,7 +7,7 @@ const StyledCellContainer = attachThemeAttrs(styled.td)`
     box-sizing: border-box;
 
     ${props =>
-        props.variant === 'listview' &&
+        props.theme.variant === 'listview' &&
         `
         background-color: ${props.palette.background.main};
         border: none;

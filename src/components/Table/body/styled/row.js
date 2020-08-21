@@ -6,7 +6,7 @@ const StyledRow = attachThemeAttrs(styled.tr)`
     counter-increment: rowCounter;
     box-sizing: border-box;
     ${props =>
-        props.variant === 'default' &&
+        props.theme.variant === 'default' &&
         `
         box-shadow: ${props.shadows.shadow_8};
         transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -18,7 +18,7 @@ const StyledRow = attachThemeAttrs(styled.tr)`
     `}
 
     ${props =>
-        props.variant === 'listview' &&
+        props.theme.variant === 'listview' &&
         `
         border-radius: 13px;
         box-shadow: 0 1px 1px 0 ${props.palette.border.divider};

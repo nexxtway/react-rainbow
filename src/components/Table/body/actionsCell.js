@@ -25,7 +25,7 @@ function MenuItems({ children, rowData }) {
 }
 
 export default function ActionsCell(props) {
-    const { columnChildren, rowsLength, rowIndex, rowData, variant } = props;
+    const { columnChildren, rowsLength, rowIndex, rowData } = props;
 
     if (columnChildren) {
         const getMenuAlignment = () => {
@@ -45,8 +45,8 @@ export default function ActionsCell(props) {
         };
 
         return (
-            <StyledCellContainer role="gridcell" tabIndex={-1} variant={variant}>
-                <StyledActionCell variant={variant}>
+            <StyledCellContainer role="gridcell" tabIndex={-1}>
+                <StyledActionCell>
                     <ButtonMenu
                         tabIndex={-1}
                         icon={<MoreIcon />}
@@ -67,7 +67,6 @@ ActionsCell.propTypes = {
     rowsLength: PropTypes.number,
     rowIndex: PropTypes.number,
     rowData: PropTypes.object,
-    variant: PropTypes.oneOf(['default', 'listview']),
 };
 
 ActionsCell.defaultProps = {
@@ -75,5 +74,4 @@ ActionsCell.defaultProps = {
     rowsLength: undefined,
     rowIndex: undefined,
     rowData: {},
-    variant: 'default',
 };

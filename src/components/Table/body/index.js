@@ -27,7 +27,6 @@ export default class Body extends PureComponent {
             emptyIcon,
             emptyTitle,
             emptyDescription,
-            variant,
         } = this.props;
         const isEmpty = data.length === 0;
         const columnsLength = columns.length;
@@ -67,7 +66,6 @@ export default class Body extends PureComponent {
                     onDeselectRow={(event, isMultiple) =>
                         onDeselectRow(event, isMultiple, rowKeyValue)
                     }
-                    variant={variant}
                 />
             );
         });
@@ -85,7 +83,6 @@ Body.propTypes = {
     emptyTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     emptyDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     isLoading: PropTypes.bool,
-    variant: PropTypes.oneOf(['default', 'listview']),
 };
 
 Body.defaultProps = {
@@ -98,5 +95,4 @@ Body.defaultProps = {
     onSelectRow: () => {},
     onDeselectRow: () => {},
     isLoading: false,
-    variant: 'default',
 };

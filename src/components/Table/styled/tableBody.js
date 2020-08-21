@@ -6,7 +6,7 @@ const StyledTableBody = attachThemeAttrs(styled.tbody)`
     counter-reset: rowCounter ${props => props.rowNumberOffset};
 
     ${props =>
-        props.variant === 'listview' &&
+        props.theme.variant === 'listview' &&
         `
             background-color: transparent;
         `};

@@ -6,7 +6,7 @@ const StyledCheckboxWrapper = styled.div`
     padding: 10px 15px;
     border: 1px solid transparent;
     ${props =>
-        props.variant === 'listview' &&
+        props.theme.variant === 'listview' &&
         `
         padding: 10px 10px;
     `}

@@ -17,7 +17,7 @@ const StyledCellContent = attachThemeAttrs(styled.div)`
     box-sizing: border-box;
 
     ${props =>
-        props.variant === 'listview' &&
+        props.theme.variant === 'listview' &&
         `
             padding: 0;
         `};

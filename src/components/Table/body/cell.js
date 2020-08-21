@@ -47,7 +47,6 @@ export default function Cell(props) {
         onDeselectRow,
         inputType,
         restColumnProps,
-        variant,
     } = props;
 
     const getHeaderLabel = () => {
@@ -58,7 +57,7 @@ export default function Cell(props) {
     };
 
     if (columnType === WITH_ENUMERABLE) {
-        return <EnumerableCell variant={variant} />;
+        return <EnumerableCell />;
     }
 
     if (columnType === 'action') {
@@ -68,7 +67,6 @@ export default function Cell(props) {
                 rowIndex={rowIndex}
                 rowsLength={rowsLength}
                 rowData={rowData}
-                variant={variant}
             />
         );
     }
@@ -82,15 +80,14 @@ export default function Cell(props) {
                 onSelectRow={onSelectRow}
                 onDeselectRow={onDeselectRow}
                 inputType={inputType}
-                variant={variant}
             />
         );
     }
 
     if (isFirst) {
         return (
-            <StyledCell scope="row" tabIndex={-1} data-label={getHeaderLabel()} variant={variant}>
-                <StyledCellContent variant={variant}>
+            <StyledCell scope="row" tabIndex={-1} data-label={getHeaderLabel()}>
+                <StyledCellContent>
                     <CellValue
                         component={component}
                         value={value}
@@ -103,14 +100,8 @@ export default function Cell(props) {
     }
 
     return (
-        <StyledCell
-            as="td"
-            role="gridcell"
-            tabIndex={-1}
-            data-label={getHeaderLabel()}
-            variant={variant}
-        >
-            <StyledCellContent variant={variant}>
+        <StyledCell as="td" role="gridcell" tabIndex={-1} data-label={getHeaderLabel()}>
+            <StyledCellContent>
                 <CellValue
                     component={component}
                     value={value}
@@ -139,7 +130,6 @@ Cell.propTypes = {
     rowIndex: PropTypes.number,
     rowData: PropTypes.object,
     restColumnProps: PropTypes.object.isRequired,
-    variant: PropTypes.oneOf(['default', 'listview']),
 };
 
 Cell.defaultProps = {
@@ -157,5 +147,4 @@ Cell.defaultProps = {
     rowsLength: undefined,
     rowIndex: undefined,
     rowData: {},
-    variant: 'default',
 };

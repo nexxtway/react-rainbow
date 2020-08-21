@@ -11,7 +11,7 @@ const StyledCell = attachThemeAttrs(styled.th)`
     }
 
     ${props =>
-        props.variant === 'listview' &&
+        props.theme.variant === 'listview' &&
         `
         background-color: ${props.palette.background.main};
         border: none;

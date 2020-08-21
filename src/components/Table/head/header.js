@@ -67,7 +67,6 @@ export default class Header extends Component {
             maxRowSelection,
             bulkSelection,
             hasScroll,
-            variant,
         } = this.props;
 
         const headerStyles = {
@@ -86,7 +85,6 @@ export default class Header extends Component {
                     bulkSelection={bulkSelection}
                     hasScroll={hasScroll}
                     style={headerStyles}
-                    variant={variant}
                 />
             );
         }
@@ -100,14 +98,12 @@ export default class Header extends Component {
                 scope="col"
                 tabIndex={this.getTabIndex()}
                 aria-label={this.getHeaderContent()}
-                variant={variant}
             >
-                <StyledWrapper style={headerStyles} variant={variant}>
+                <StyledWrapper style={headerStyles}>
                     <StyledHeaderContainer
                         className="rainbow-table_header-container"
                         role="presentation"
                         onClick={this.handleSort}
-                        variant={variant}
                     >
                         <StyledContent
                             title={this.getHeaderContent()}
@@ -155,7 +151,6 @@ Header.propTypes = {
     maxRowSelection: PropTypes.number,
     bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
     hasScroll: PropTypes.bool,
-    variant: PropTypes.oneOf(['default', 'listview']),
 };
 
 Header.defaultProps = {
@@ -177,5 +172,4 @@ Header.defaultProps = {
     maxRowSelection: undefined,
     bulkSelection: 'none',
     hasScroll: false,
-    variant: 'default',
 };

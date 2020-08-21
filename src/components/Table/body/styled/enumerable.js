@@ -7,7 +7,7 @@ const StyledEnumerable = attachThemeAttrs(styled.span)`
     color: ${props => props.palette.text.header};
 
     ${props =>
-        props.variant === 'listview' &&
+        props.theme.variant === 'listview' &&
         `
         color: ${props.palette.text.main};
     `}

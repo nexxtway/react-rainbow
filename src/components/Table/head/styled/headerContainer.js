@@ -8,7 +8,7 @@ const StyledHeaderContainer = styled.div`
     height: 44px;
     padding: 0 ${PADDING_X_SMALL};
     ${props =>
-        props.variant === 'listview' &&
+        props.theme.variant === 'listview' &&
         `
             justify-content: center;
             text-transform: capitalize;
