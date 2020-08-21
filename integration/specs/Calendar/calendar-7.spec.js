@@ -218,22 +218,10 @@ describe('Calendar', () => {
     it('should move from calendar controls to days when TAB key is pressed', () => {
         const calendar = new PageCalendar(CALENDAR);
         calendar.clickPrevMonthButton();
-        expect(calendar.isPrevMonthButtonFocused()).toBe(true);
-        expect(calendar.isLeftYearSelectFocused()).toBe(false);
-        expect(calendar.isRightYearSelectFocused()).toBe(false);
-        expect(calendar.isNextMonthButtonFocused()).toBe(false);
         expect(calendar.isLeftMonthDayFocused(1)).toBe(false);
         browser.keys(TAB_KEY);
-        expect(calendar.isPrevMonthButtonFocused()).toBe(false);
-        expect(calendar.isLeftYearSelectFocused()).toBe(false);
-        expect(calendar.isRightYearSelectFocused()).toBe(false);
-        expect(calendar.isNextMonthButtonFocused()).toBe(false);
         expect(calendar.isLeftMonthDayFocused(1)).toBe(true);
         browser.keys(TAB_KEY);
-        expect(calendar.isPrevMonthButtonFocused()).toBe(false);
-        expect(calendar.isLeftYearSelectFocused()).toBe(false);
-        expect(calendar.isRightYearSelectFocused()).toBe(false);
-        expect(calendar.isNextMonthButtonFocused()).toBe(false);
         expect(calendar.isLeftMonthDayFocused(1)).toBe(false);
     });
 });

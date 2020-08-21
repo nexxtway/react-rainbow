@@ -209,4 +209,13 @@ describe('Calendar', () => {
         expect(calendar.isNextMonthButtonFocused()).toBe(false);
         expect(calendar.isYearSelectFocused()).toBe(true);
     });
+    it('should move from calendar controls to days when TAB key is pressed', () => {
+        const calendar = new PageCalendar(CALENDAR);
+        calendar.clickPrevMonthButton();
+        expect(calendar.isDayFocused(1)).toBe(false);
+        browser.keys(TAB_KEY);
+        expect(calendar.isDayFocused(1)).toBe(true);
+        browser.keys(TAB_KEY);
+        expect(calendar.isDayFocused(1)).toBe(false);
+    });
 });
