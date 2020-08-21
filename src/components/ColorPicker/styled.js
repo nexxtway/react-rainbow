@@ -7,8 +7,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import Input from '../Input';
 import Slider from './slider';
 
-const StyledCircleColor = css`
-    background-color: ${props => props.$color};
+export const CssCircleColor = css`
     border-radius: 50%;
     border: 1px solid ${props => props.palette.border.divider};
 `;
@@ -17,19 +16,7 @@ export const StyledPreview = attachThemeAttrs(styled.div)`
     width: 50px;
     height: 50px;
     margin: 10px 0;
-    ${StyledCircleColor}
-`;
-
-export const StyledDefaulColor = attachThemeAttrs(styled.div)`
-    width: 40px;
-    height: 40px;
-    margin: 0px 15px 15px 0px
-    flex: 0 0 auto;
-    ${StyledCircleColor}
-
-    :hover {
-        cursor: pointer;
-    }
+    ${CssCircleColor}
 `;
 
 export const StyledFlexContainer = styled.div`
@@ -66,14 +53,6 @@ export const StyledHexColorContainer = styled.div`
 
 export const StyledRgbaColorContainer = styled.div`
     flex: 0 4 auto;
-`;
-
-export const StyledColorsContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    flex: 0 0 auto;
-    margin: 0px -15px;
-    padding: 15px 0px 0px 15px;
 `;
 
 export const StyledLabel = attachThemeAttrs(styled.span)`
@@ -245,7 +224,8 @@ export const StyledInputRange = attachThemeAttrs(styled.input)`
 
     &:focus::-webkit-slider-thumb {
         background-color: #fff;
-        box-shadow: $shadow-outline;
+        border: 1px solid ${props => props.palette.brand.main};
+        box-shadow: ${props => props.shadows.brand};
     }
 
     &:active::-webkit-slider-thumb {
@@ -256,7 +236,8 @@ export const StyledInputRange = attachThemeAttrs(styled.input)`
 
     &:focus::-moz-range-thumb {
         background-color: #fff;
-        box-shadow: $shadow-outline;
+        border: 1px solid ${props => props.palette.brand.main};
+        box-shadow: ${props => props.shadows.brand};
     }
 
     &:active::-moz-range-thumb {

@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledFlexContainer, StyledNumberInput } from './styled';
-import Input from '../Input';
 import { getAlpha } from './helpers';
 import { recomposeColor } from '../../styles/helpers/color';
 
 export default function RgbaColor(props) {
-    const { rgbaColor, onChange } = props;
+    const { rgbaColor, tabIndex, onChange } = props;
     const [r, g, b] = rgbaColor.values;
     const a = getAlpha(rgbaColor);
 
@@ -39,24 +38,28 @@ export default function RgbaColor(props) {
                 value={r}
                 bottomHelpText="R"
                 onChange={event => handleChange(0, event)}
+                tabIndex={tabIndex}
             />
             <StyledNumberInput
                 type="number"
                 value={g}
                 bottomHelpText="G"
                 onChange={event => handleChange(1, event)}
+                tabIndex={tabIndex}
             />
             <StyledNumberInput
                 type="number"
                 value={b}
                 bottomHelpText="B"
                 onChange={event => handleChange(2, event)}
+                tabIndex={tabIndex}
             />
             <StyledNumberInput
                 type="number"
                 value={a}
                 bottomHelpText="ALPHA"
                 onChange={handleAlphaChange}
+                tabIndex={tabIndex}
             />
         </StyledFlexContainer>
     );
@@ -64,10 +67,12 @@ export default function RgbaColor(props) {
 
 RgbaColor.propTypes = {
     rgbaColor: PropTypes.object,
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onChange: PropTypes.func,
 };
 
 RgbaColor.defaultProps = {
     rgbaColor: '',
+    tabIndex: undefined,
     onChange: () => {},
 };

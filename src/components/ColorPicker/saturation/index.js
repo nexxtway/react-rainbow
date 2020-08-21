@@ -1,13 +1,25 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { UP_KEY, DOWN_KEY, RIGHT_KEY, LEFT_KEY } from '../../../../libs/constants';
 import { hsvToRgb, rgbToRgba } from '../../../styles/helpers/color';
-import { StyledColor, StyledWhite, StyledBlack, StyledPointer, StyledCircle } from './styled';
+import { StyledColor, StyledPointer, StyledCircle } from './styled';
 
-export default function Saturation(props) {
-    const { rgbaColor, hsvColor, onChange } = props;
-    const hslColor = `hsl(${hsvColor.values[0]},100%, 50%)`;
+const Saturation = React.forwardRef((props, ref) => {
+    const { rgbaColor, hsvColor, tabIndex, hue, onChange } = props;
+    const hslColor = `hsl(${hue},100%, 50%)`;
     const alpha = rgbaColor.values[3];
     const containerRef = useRef();
+
+    const change = ({ saturation, bright }) => {
+        if (saturation) {
+            hsvColor.values[1] = saturation;
+        }
+        if (bright) {
+            hsvColor.values[2] = bright;
+        }
+        const color = rgbToRgba(hsvToRgb(hsvColor), alpha);
+        onChange(color);
+    };
 
     const handleChange = event => {
         const rect = containerRef.current.getBoundingClientRect();
@@ -20,10 +32,7 @@ export default function Saturation(props) {
         const saturation = Math.round((left / width) * 100);
         const bright = Math.round((1 - top / height) * 100);
 
-        hsvColor.values[1] = saturation;
-        hsvColor.values[2] = bright;
-        const color = rgbToRgba(hsvToRgb(hsvColor), alpha);
-        onChange(color);
+        change({ saturation, bright });
     };
 
     const unbindEventListeners = () => {
@@ -37,38 +46,75 @@ export default function Saturation(props) {
         window.addEventListener('mouseup', unbindEventListeners);
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => unbindEventListeners, []);
 
-    const top = 100 - hsvColor.values[2];
-    const left = hsvColor.values[1];
+    const keyHandlerMap = {
+        [UP_KEY]: () => {
+            const bright = Math.min(100, hsvColor.values[2] + 1);
+            change({ bright });
+        },
+        [DOWN_KEY]: () => {
+            const bright = Math.max(0, hsvColor.values[2] - 1);
+            change({ bright });
+        },
+        [LEFT_KEY]: () => {
+            const saturation = Math.max(0, hsvColor.values[1] - 1);
+            change({ saturation });
+        },
+        [RIGHT_KEY]: () => {
+            const saturation = Math.min(100, hsvColor.values[1] + 1);
+            change({ saturation });
+        },
+    };
+
+    const handleKeyDown = event => {
+        const { keyCode } = event;
+        if (keyHandlerMap[keyCode]) {
+            event.preventDefault();
+            event.stopPropagation();
+            keyHandlerMap[keyCode]();
+        }
+    };
+
+    const handleClick = () => {
+        ref.current.focus();
+    };
+
+    const styleColor = { background: hslColor };
+    const stylePointer = { top: `${100 - hsvColor.values[2]}%`, left: `${hsvColor.values[1]}%` };
 
     return (
         <StyledColor
             ref={containerRef}
-            hslColor={hslColor}
+            style={styleColor}
             onMouseDown={handleMouseDown}
             onTouchMove={handleChange}
             onTouchStart={handleChange}
+            onKeyDown={handleKeyDown}
+            onClick={handleClick}
         >
-            <StyledWhite>
-                <StyledBlack>
-                    <StyledPointer $top={top} $left={left}>
-                        <StyledCircle />
-                    </StyledPointer>
-                </StyledBlack>
-            </StyledWhite>
+            <StyledPointer style={stylePointer}>
+                <StyledCircle ref={ref} type="button" tabIndex={tabIndex} />
+            </StyledPointer>
         </StyledColor>
     );
-}
+});
 
 Saturation.propTypes = {
-    rgbaColor: PropTypes.object,
-    hsvColor: PropTypes.object,
+    rgbaColor: PropTypes.object.isRequired,
+    hsvColor: PropTypes.object.isRequired,
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    hue: PropTypes.number.isRequired,
     onChange: PropTypes.func,
 };
 
 Saturation.defaultProps = {
     rgbaColor: undefined,
     hsvColor: undefined,
+    tabIndex: undefined,
+    hue: undefined,
     onChange: () => {},
 };
+
+export default Saturation;

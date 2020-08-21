@@ -1,39 +1,39 @@
-import styled, { css } from 'styled-components';
-
-const StyledAbsolute = css`
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-`;
+import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 export const StyledColor = styled.div`
-    ${StyledAbsolute}
-    background: ${props => props.hslColor};
-`;
+    position: relative;
+    height: 100%;
 
-export const StyledWhite = styled.div`
-    ${StyledAbsolute}
-    background: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0));
-`;
-
-export const StyledBlack = styled.div`
-    ${StyledAbsolute}
-    background: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(0deg, #000, rgba(0, 0, 0, 0.9) 1%, transparent 99%),
+            linear-gradient(90deg, #fff 1%, hsla(0, 0%, 100%, 0));
+    }
 `;
 
 export const StyledPointer = styled.div`
     position: absolute;
-    top: ${props => props.$top}%;
-    left: ${props => props.$left}%;
-    cursor: default;
 `;
 
-export const StyledCircle = styled.div`
+export const StyledCircle = attachThemeAttrs(styled.button)`
     width: 12px;
     height: 12px;
     border-radius: 6px;
     box-shadow: rgb(255, 255, 255) 0px 0px 0px 1px inset;
     transform: translate(-6px, -6px);
+    padding: 0;
+    border: 1px solid ${props => props.palette.border.divider};
+
+    &:focus,
+    &:active {
+        outline: 0;
+        border: 1px solid ${props => props.palette.brand.main};
+        box-shadow: ${props => props.shadows.brand};
+    }
 `;
