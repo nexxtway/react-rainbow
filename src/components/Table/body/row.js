@@ -6,7 +6,7 @@ import LoadingCells from './loadingCells';
 import StyledRow from './styled/row';
 
 export default function Row(props) {
-    const { rowData, columns, isSelected, variant, ...rest } = props;
+    const { rowData, columns, isSelected, ...rest } = props;
 
     const cells = columns.map((column, index) => {
         const {
