@@ -46,9 +46,9 @@ class PageNodeItem {
      * @returns {bool}
      */
     isExpanded() {
-        return $(this.rootElement)
-            .$('[data-id="node-element-li"]')
-            .isDisplayed();
+        const childEl = $(this.rootElement).$('[data-id="node-element-li"]');
+        console.log(childEl);
+        return childEl.isExisting() && childEl.isDisplayed();
     }
 
     /**

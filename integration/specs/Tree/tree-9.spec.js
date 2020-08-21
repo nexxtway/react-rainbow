@@ -59,6 +59,7 @@ describe('Tree', () => {
         browser.keys(ARROW_LEFT_KEY);
         expect(node.isExpanded()).toBe(false);
         browser.keys(ARROW_LEFT_KEY);
+        browser.keys(ARROW_LEFT_KEY);
         expect(node.isExpanded()).toBe(false);
     });
     it('should focus parent node when node is child and press ARROW LEFT key', () => {
