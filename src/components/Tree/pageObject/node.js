@@ -47,7 +47,6 @@ class PageNodeItem {
      */
     isExpanded() {
         const childEl = $(this.rootElement).$('[data-id="node-element-li"]');
-        console.log(childEl);
         return childEl.isExisting() && childEl.isDisplayed();
     }
 
