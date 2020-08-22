@@ -1,7 +1,7 @@
 ##### RenderIf base use case
 
 ```js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { RadioButtonGroup, Card, Avatar, ButtonIcon, RenderIf } from 'react-rainbow-components';
 import styled from 'styled-components';
 
@@ -85,6 +85,20 @@ const options = [{ value: 'true', label: 'True' }, { value: 'false', label: 'Fal
 function RenderIfExample() {
     const [showNotification, setShowNotification] = useState('false');
     const [isVisible, setIsVisible] = useState(false);
+    const [showArrow, setShowArrow] = useState(false);
+    const ref = useRef(null);
+
+    const handleOnChange = event => {
+        setShowNotification(event.target.value);
+    };
+
+    const resizeListener = () => {
+        if (ref.current.offsetWidth > 860) {
+            setShowArrow(true);
+        } else {
+            setShowArrow(false);
+        }
+    };
 
     useEffect(() => {
         if (showNotification === 'true') {
@@ -92,14 +106,15 @@ function RenderIfExample() {
         } else {
             setIsVisible(false);
         }
+        resizeListener();
+        window.addEventListener('resize', resizeListener);
+        return () => {
+            window.removeEventListener('resize', resizeListener);
+        }
     }, [showNotification]);
 
-    const handleOnChange = event => {
-        setShowNotification(event.target.value);
-    };
-
     return (
-        <StyledContainer className="rainbow-p-top_x-large">
+        <StyledContainer className="rainbow-p-top_x-large" ref={ref}>
             <StyledHeaderContainer className="rainbow-align-content_space-between">
                 <StyledHeaderText>Show Notification?</StyledHeaderText>
                 <RadioButtonGroup
@@ -136,9 +151,11 @@ function RenderIfExample() {
                         switch to true.
                     </StyledMessageContent>
                 </StyledMessage>
-                <StyledImageContainer>
-                    <img src="images/designsImages/arrow.svg" alt="dashed lines arrow" />
-                </StyledImageContainer>
+                <RenderIf isTrue={showArrow}>
+                    <StyledImageContainer>
+                        <img src="images/designsImages/arrow.svg" alt="dashed lines arrow" />
+                    </StyledImageContainer>
+                </RenderIf>
             </RenderIf>
         </StyledContainer>
     );
