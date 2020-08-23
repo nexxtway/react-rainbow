@@ -2,7 +2,7 @@
 
 ```js
 import React, { useState, useEffect, useRef } from 'react';
-import { RadioButtonGroup, Card, Avatar, ButtonIcon, RenderIf } from 'react-rainbow-components';
+import { RadioButtonGroup, Notification, RenderIf } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div`
@@ -26,26 +26,19 @@ const StyledHeaderText = styled.div.attrs(props => {
     font-size: 18px;
 `;
 
-const StyledCard = styled(Card)`
-    width: 320px;
-    height: 105px;
-`;
-
-const StyledCardTitle = styled.div.attrs(props => {
+const StyledNotificationTitle = styled.div.attrs(props => {
     return props.theme.rainbow.palette;
 })`
     color: ${props => props.text.main};
     font-family: Lato;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
 `;
 
-const StyledCardContent = styled.div`
+const StyledNotificationContent = styled.div`
     font-family: Lato;
     font-size: 14px;
     line-height: 1.29;
-    padding-left: 3.25rem;
-    padding-right: 1.5rem;
 `;
 
 const StyledMessage = styled.div`
@@ -62,7 +55,7 @@ const StyledMessageTitle = styled.div.attrs(props => {
     color: ${props => props.text.main};
     font-family: Lato;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
 `;
 
 const StyledMessageContent = styled.div`
@@ -110,7 +103,7 @@ function RenderIfExample() {
         window.addEventListener('resize', resizeListener);
         return () => {
             window.removeEventListener('resize', resizeListener);
-        }
+        };
     }, [showNotification]);
 
     return (
@@ -126,21 +119,17 @@ function RenderIfExample() {
             </StyledHeaderContainer>
             <RenderIf isTrue={isVisible}>
                 <div className="rainbow-m-top_x-large">
-                    <StyledCard
-                        icon={
-                            <Avatar
-                                icon={<CheckmarkIcon />}
-                                size="small"
-                                className="rainbow-background-color_success"
-                            />
+                    <Notification
+                        title={
+                            <StyledNotificationTitle>Success Notification.</StyledNotificationTitle>
                         }
-                        title={<StyledCardTitle>Success Notification.</StyledCardTitle>}
-                        actions={<ButtonIcon icon={<CloseIcon />} size="small" />}
-                    >
-                        <StyledCardContent className="rainbow-color_gray-4">
-                            One of our team members will contact you shortly.
-                        </StyledCardContent>
-                    </StyledCard>
+                        description={
+                            <StyledNotificationContent className="rainbow-m-top_x-small rainbow-color_gray-4">
+                                One of our team members will contact you shortly.
+                            </StyledNotificationContent>
+                        }
+                        icon="success"
+                    />
                 </div>
             </RenderIf>
             <RenderIf isTrue={!isVisible}>
