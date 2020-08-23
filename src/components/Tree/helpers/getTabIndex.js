@@ -1,8 +1,9 @@
-const getTabIndex = ({ selectedNode, isSelected, isFirstNode }) => {
-    if (isSelected) {
-        return 0;
-    }
-    if (!selectedNode && isFirstNode) {
+const getTabIndex = ({ name, selectedNode, isSelected, isFirstNode, focusedNode }) => {
+    if (
+        (focusedNode && name === focusedNode) ||
+        (isSelected && !focusedNode) ||
+        (isFirstNode && !selectedNode && !focusedNode)
+    ) {
         return 0;
     }
     return -1;

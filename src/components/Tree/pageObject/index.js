@@ -15,16 +15,15 @@ class PageTree {
     }
 
     /**
-     * Returns a new Node page object of the element in item position.
+     * Returns a new Node page object of the element at specified path.
      * @method
-     * @param {number} itemPosition - The base 0 index of the Node.
+     * @param {array} path - Array with 0 base indexes that defines the node path in tree.
      */
-    getNode(itemPosition) {
-        const items = $(this.rootElement).$$('[data-id="node-element-li"]');
-        if (items[itemPosition]) {
-            return new PageNodeItem(
-                `${this.rootElement} [data-id="node-element-li"]:nth-child(${itemPosition + 1})`,
-            );
+    getNode(path) {
+        const nodePath = path.join('.');
+        const node = $(this.rootElement).$(`[data-path="${nodePath}"]`);
+        if (node) {
+            return new PageNodeItem(`${this.rootElement} [data-path="${nodePath}"]`);
         }
         return null;
     }

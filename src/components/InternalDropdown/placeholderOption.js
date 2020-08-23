@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledHeader from '../Option/styled/header';
 import StyledHeaderLabel from '../Option/styled/headerLabel';
-import { StyledPrimitiveCheckbox } from './styled';
+import { StyledPrimitiveCheckbox, StyledTopHeader } from './styled';
 
 function PlaceholderOption(props) {
     const { label, title, isChecked, onClick, ...rest } = props;
 
     return (
-        <StyledHeader title={title} role="presentation" onMouseDown={onClick}>
+        <StyledTopHeader title={title} role="presentation" onMouseDown={onClick}>
             <StyledPrimitiveCheckbox type="checkbox" label="" checked={isChecked} {...rest} />
             <StyledHeaderLabel>{label}</StyledHeaderLabel>
-        </StyledHeader>
+        </StyledTopHeader>
     );
 }
 
