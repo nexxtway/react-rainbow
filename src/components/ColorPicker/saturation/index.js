@@ -1,23 +1,20 @@
-import React, { useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useRef, useEffect, useContext, useState } from 'react';
 import { UP_KEY, DOWN_KEY, RIGHT_KEY, LEFT_KEY } from '../../../../libs/constants';
 import { hsvToRgb, rgbToRgba } from '../../../styles/helpers/color';
-import { StyledColor, StyledPointer, StyledCircle } from './styled';
+import { StyledColor, StyledCircle } from './styled';
+import { ColorPickerContext } from '../context';
 
-const Saturation = React.forwardRef((props, ref) => {
-    const { rgbaColor, hsvColor, tabIndex, hue, onChange } = props;
-    const hslColor = `hsl(${hue},100%, 50%)`;
-    const alpha = rgbaColor.values[3];
+const Saturation = React.forwardRef((_props, ref) => {
+    const { h, s, v, a, tabIndex, onChange } = useContext(ColorPickerContext);
     const containerRef = useRef();
+    const [saturation, setSaturation] = useState(s);
+    const [bright, setBright] = useState(v);
 
-    const change = ({ saturation, bright }) => {
-        if (saturation) {
-            hsvColor.values[1] = saturation;
-        }
-        if (bright) {
-            hsvColor.values[2] = bright;
-        }
-        const color = rgbToRgba(hsvToRgb(hsvColor), alpha);
+    const change = values => {
+        const newSaturation = values.saturation || saturation;
+        const newBright = values.bright || bright;
+        const newHsv = `hsv(${h}, ${newSaturation}, ${newBright})`;
+        const color = rgbToRgba(hsvToRgb(newHsv), a);
         onChange(color);
     };
 
@@ -29,10 +26,12 @@ const Saturation = React.forwardRef((props, ref) => {
         const left = Math.min(Math.max(0, x - (rect.left + window.pageXOffset)), width);
         const top = Math.min(Math.max(0, y - (rect.top + window.pageYOffset)), height);
 
-        const saturation = Math.round((left / width) * 100);
-        const bright = Math.round((1 - top / height) * 100);
+        const newSaturation = Math.round((left / width) * 100);
+        const newBright = Math.round((1 - top / height) * 100);
 
-        change({ saturation, bright });
+        setSaturation(newSaturation);
+        setBright(newBright);
+        change({ saturation: newSaturation, bright: newBright });
     };
 
     const unbindEventListeners = () => {
@@ -51,20 +50,24 @@ const Saturation = React.forwardRef((props, ref) => {
 
     const keyHandlerMap = {
         [UP_KEY]: () => {
-            const bright = Math.min(100, hsvColor.values[2] + 1);
-            change({ bright });
+            const newBright = Math.min(100, bright + 1);
+            setBright(newBright);
+            change({ bright: newBright });
         },
         [DOWN_KEY]: () => {
-            const bright = Math.max(0, hsvColor.values[2] - 1);
-            change({ bright });
+            const newBright = Math.max(0, bright - 1);
+            setBright(newBright);
+            change({ bright: newBright });
         },
         [LEFT_KEY]: () => {
-            const saturation = Math.max(0, hsvColor.values[1] - 1);
-            change({ saturation });
+            const newSaturation = Math.max(0, saturation - 1);
+            setSaturation(newSaturation);
+            change({ saturation: newSaturation });
         },
         [RIGHT_KEY]: () => {
-            const saturation = Math.min(100, hsvColor.values[1] + 1);
-            change({ saturation });
+            const newSaturation = Math.min(100, saturation + 1);
+            setSaturation(newSaturation);
+            change({ saturation: newSaturation });
         },
     };
 
@@ -81,8 +84,24 @@ const Saturation = React.forwardRef((props, ref) => {
         ref.current.focus();
     };
 
-    const styleColor = { background: hslColor };
-    const stylePointer = { top: `${100 - hsvColor.values[2]}%`, left: `${hsvColor.values[1]}%` };
+    const isFocusedRef = useRef(false);
+    const handleFocus = () => {
+        isFocusedRef.current = true;
+    };
+    const handleBlur = () => {
+        isFocusedRef.current = false;
+    };
+
+    useEffect(() => {
+        if (!isFocusedRef.current) {
+            setSaturation(s);
+            setBright(v);
+        }
+    }, [s, v]);
+
+    const hsl = `hsl(${h},100%, 50%)`;
+    const styleColor = { background: hsl };
+    const stylePointer = { top: `${100 - bright}%`, left: `${saturation}%` };
 
     return (
         <StyledColor
@@ -94,27 +113,16 @@ const Saturation = React.forwardRef((props, ref) => {
             onKeyDown={handleKeyDown}
             onClick={handleClick}
         >
-            <StyledPointer style={stylePointer}>
-                <StyledCircle ref={ref} type="button" tabIndex={tabIndex} />
-            </StyledPointer>
+            <StyledCircle
+                ref={ref}
+                type="button"
+                tabIndex={tabIndex}
+                style={stylePointer}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+            />
         </StyledColor>
     );
 });
-
-Saturation.propTypes = {
-    rgbaColor: PropTypes.object.isRequired,
-    hsvColor: PropTypes.object.isRequired,
-    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    hue: PropTypes.number.isRequired,
-    onChange: PropTypes.func,
-};
-
-Saturation.defaultProps = {
-    rgbaColor: undefined,
-    hsvColor: undefined,
-    tabIndex: undefined,
-    hue: undefined,
-    onChange: () => {},
-};
 
 export default Saturation;

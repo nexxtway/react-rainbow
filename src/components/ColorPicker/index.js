@@ -1,15 +1,16 @@
+/* eslint-disable import/no-unresolved */
 import React, { useState, useEffect, useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
-import RenderIf from '../RenderIf';
+import { Provider } from './context';
 import Saturation from './saturation';
 import RgbaColor from './rgbaColor';
 import HexColor from './hexColor';
 import Alpha from './alpha';
 import Hue from './hue';
 import DefaultColors from './defaultColors';
+import Preview from './preview';
 import {
     StyledContainer,
-    StyledPreview,
     StyledFlexContainer,
     StyledLabel,
     StyledSaturationContainer,
@@ -24,21 +25,16 @@ import useNormalizeColors from './hooks/useNormalizeColors';
 const ColorPicker = React.forwardRef((props, ref) => {
     const {
         id,
-        color: colorProp,
+        value,
         colors: colorsProp,
-        title,
-        titleColors,
         tabIndex,
+        onClick,
         onChange,
+        onFocus,
+        onBlur,
         className,
         style,
     } = props;
-    const [hue, setHue] = useState(0);
-
-    const color = normalizeColor(colorProp);
-    const rgbaColor = decomposeColor(color);
-    const hsvColor = decomposeColor(rgbToHsv(color));
-    const alpha = rgbaColor.values[3];
 
     const firstRef = useRef();
     const lastRef = useRef();
@@ -55,62 +51,61 @@ const ColorPicker = React.forwardRef((props, ref) => {
         },
     }));
 
-    useEffect(() => {
-        if (!isAchromatic(rgbaColor)) {
-            setHue(hsvColor.values[0]);
-        }
-    }, [hsvColor.values, rgbaColor]);
+    const [hue, setHue] = useState(0);
+
+    const color = normalizeColor(value);
+    const rgba = decomposeColor(color);
+    const [r, g, b, a] = rgba.values;
+    const [h, s, v] = decomposeColor(rgbToHsv(color)).values;
 
     const colors = useNormalizeColors(colorsProp);
-    const hasColors = colors.length > 0;
-    const styleColor = { backgroundColor: color };
+    const context = {
+        r,
+        g,
+        b,
+        a,
+        h: hue,
+        s,
+        v,
+        colors,
+        tabIndex,
+        onClick,
+        onChange,
+        onFocus,
+        onBlur,
+        setHue,
+    };
+
+    useEffect(() => {
+        if (!isAchromatic(rgba)) {
+            setHue(h);
+        }
+    }, [h, rgba]);
 
     return (
         <StyledContainer className={className} style={style} id={id}>
-            <StyledLabel>{title}</StyledLabel>
-            <StyledSaturationContainer>
-                <Saturation
-                    ref={firstRef}
-                    rgbaColor={rgbaColor}
-                    hsvColor={hsvColor}
-                    hue={hue}
-                    onChange={onChange}
-                    tabIndex={tabIndex}
-                />
-            </StyledSaturationContainer>
-            <StyledFlexContainer>
-                <StyledSlidersContainer>
-                    <Hue
-                        hsvColor={hsvColor}
-                        alpha={alpha}
-                        hue={hue}
-                        setHue={setHue}
-                        onChange={onChange}
-                        tabIndex={tabIndex}
-                    />
-                    <Alpha rgbaColor={rgbaColor} onChange={onChange} tabIndex={tabIndex} />
-                </StyledSlidersContainer>
-                <StyledPreview style={styleColor} />
-            </StyledFlexContainer>
-
-            <StyledFlexContainer>
-                <StyledHexColorContainer>
-                    <HexColor rgbaColor={rgbaColor} onChange={onChange} tabIndex={tabIndex} />
-                </StyledHexColorContainer>
-                <StyledRgbaColorContainer>
-                    <RgbaColor rgbaColor={rgbaColor} onChange={onChange} tabIndex={tabIndex} />
-                </StyledRgbaColorContainer>
-            </StyledFlexContainer>
-            <RenderIf isTrue={hasColors}>
-                <DefaultColors
-                    ref={lastRef}
-                    colors={colors}
-                    rgbaColor={rgbaColor}
-                    title={titleColors}
-                    onChange={onChange}
-                    tabIndex={tabIndex}
-                />
-            </RenderIf>
+            <Provider value={context}>
+                <StyledLabel>Color Picker</StyledLabel>
+                <StyledSaturationContainer>
+                    <Saturation ref={firstRef} />
+                </StyledSaturationContainer>
+                <StyledFlexContainer>
+                    <StyledSlidersContainer>
+                        <Hue />
+                        <Alpha />
+                    </StyledSlidersContainer>
+                    <Preview />
+                </StyledFlexContainer>
+                <StyledFlexContainer>
+                    <StyledHexColorContainer>
+                        <HexColor />
+                    </StyledHexColorContainer>
+                    <StyledRgbaColorContainer>
+                        <RgbaColor />
+                    </StyledRgbaColorContainer>
+                </StyledFlexContainer>
+                <DefaultColors ref={lastRef} />
+            </Provider>
         </StyledContainer>
     );
 });
@@ -119,17 +114,19 @@ ColorPicker.propTypes = {
     /** The id of the outer element. */
     id: PropTypes.string,
     /** Specifies the color of ColorPicker. */
-    color: PropTypes.string,
+    value: PropTypes.string,
     /** Specifies the default colors to choice. */
     colors: PropTypes.array,
-    /** Text title for the Color Picker. */
-    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** Text title for the Default Colors section. */
-    titleColors: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** The action triggered when the element is clicked. */
+    onClick: PropTypes.func,
     /** The action triggered when the value changes. */
     onChange: PropTypes.func,
+    /** The action triggered when the element receives the focus. */
+    onFocus: PropTypes.func,
+    /** The action triggered when the element releases focus. */
+    onBlur: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -138,7 +135,7 @@ ColorPicker.propTypes = {
 
 ColorPicker.defaultProps = {
     id: undefined,
-    color: '#000000',
+    value: '#000000',
     colors: [
         '#e3aaec',
         '#c3dbf7',
@@ -169,10 +166,11 @@ ColorPicker.defaultProps = {
         '#b67e12',
         '#b75d0c',
     ],
-    title: 'Color Picker',
-    titleColors: 'Defualt',
     tabIndex: undefined,
+    onClick: () => {},
     onChange: () => {},
+    onFocus: () => {},
+    onBlur: () => {},
     className: undefined,
     style: undefined,
 };

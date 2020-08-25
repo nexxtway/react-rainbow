@@ -1,23 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { ColorPickerContext } from '../context';
 import { StyledContainer, StyledColors } from './styled';
-import { StyledLabel } from '../styled';
-import { colorToRgba, recomposeColor } from '../../../styles/helpers/color';
+import { colorToRgba } from '../../../styles/helpers/color';
+import { useUniqueIdentifier } from '../../../libs/hooks';
 import Color from './color';
+import RenderIf from '../../RenderIf';
 
-const DefaultColors = React.forwardRef((props, ref) => {
-    const { colors, rgbaColor: rgbaColorProps, title, tabIndex: tabIndexProp, onChange } = props;
-    const rgbaColor = recomposeColor(rgbaColorProps);
+const DefaultColors = React.forwardRef((_props, ref) => {
+    const { colors, r, g, b, a, tabIndex: tabIndexProp, onChange } = useContext(ColorPickerContext);
+    const rgba = `rgba(${r}, ${g}, ${b}, ${a})`;
+    const name = useUniqueIdentifier('color-picker-default');
 
     const listColors = colors.map((color, index) => {
         const tabIndex = index === 0 ? tabIndexProp : -1;
-        const isSelected = colorToRgba(color) === rgbaColor;
+        const isSelected = colorToRgba(color) === rgba;
         const isFirstInput = index === 0;
         const inputRef = isFirstInput ? ref : undefined;
         return (
             <Color
                 key={color}
                 color={color}
+                name={name}
                 isChecked={isSelected}
                 onChange={onChange}
                 ref={inputRef}
@@ -26,28 +29,15 @@ const DefaultColors = React.forwardRef((props, ref) => {
         );
     });
 
+    const hasColors = colors.length > 0;
+
     return (
-        <StyledContainer>
-            <StyledLabel>{title}</StyledLabel>
-            <StyledColors>{listColors}</StyledColors>
-        </StyledContainer>
+        <RenderIf isTrue={hasColors}>
+            <StyledContainer>
+                <StyledColors>{listColors}</StyledColors>
+            </StyledContainer>
+        </RenderIf>
     );
 });
-
-DefaultColors.propTypes = {
-    colors: PropTypes.array.isRequired,
-    rgbaColor: PropTypes.object.isRequired,
-    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    onChange: PropTypes.func,
-};
-
-DefaultColors.defaultProps = {
-    colors: [],
-    rgbaColor: undefined,
-    title: 'Default Colors',
-    tabIndex: undefined,
-    onChange: () => {},
-};
 
 export default DefaultColors;

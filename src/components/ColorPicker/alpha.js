@@ -1,22 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import { StyledAlphaSlider } from './styled';
-import { recomposeColor } from '../../styles/helpers/color';
-import { getAlpha } from './helpers';
+import { ColorPickerContext } from './context';
 
-export default function Alpha(props) {
-    const { rgbaColor, tabIndex, onChange } = props;
-    const a = getAlpha(rgbaColor);
+export default function Alpha() {
+    const { r, g, b, a, tabIndex, onChange } = useContext(ColorPickerContext);
 
     const handleChange = event => {
         const alpha = parseInt(event.target.value, 10);
-        rgbaColor.values[3] = alpha / 100;
-        onChange(recomposeColor(rgbaColor));
+        const rgba = `rgba(${r}, ${g}, ${b}, ${alpha / 100})`;
+        onChange(rgba);
     };
+
+    const value = Math.round(a * 100);
 
     return (
         <StyledAlphaSlider
-            value={a}
+            value={value}
             min={0}
             max={100}
             onChange={handleChange}
@@ -24,15 +23,3 @@ export default function Alpha(props) {
         />
     );
 }
-
-Alpha.propTypes = {
-    rgbaColor: PropTypes.object,
-    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    onChange: PropTypes.func,
-};
-
-Alpha.defaultProps = {
-    rgbaColor: '',
-    tabIndex: undefined,
-    onChange: () => {},
-};

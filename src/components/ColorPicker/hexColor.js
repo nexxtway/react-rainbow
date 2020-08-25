@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect, useContext } from 'react';
 import Input from '../Input';
 import { StyledHexColorIcon } from './styled';
 import { hexToRgba, rgbaToHex } from '../../styles/helpers/color';
+import { ColorPickerContext } from './context';
 
-export default function HexColor(props) {
-    const { rgbaColor, tabIndex, onChange } = props;
-    const [color, setColor] = useState();
+export default function HexColor() {
+    const { r, g, b, a, tabIndex, onChange } = useContext(ColorPickerContext);
+    const rgba = `rgba(${r}, ${g}, ${b}, ${a})`;
+    const [color, setColor] = useState(rgbaToHex(rgba).substr(1));
     const [isFocused, setIsFocused] = useState(false);
 
     useEffect(() => {
         if (!isFocused) {
-            const hexColor = rgbaToHex(rgbaColor);
+            const hexColor = rgbaToHex(rgba);
             setColor(hexColor.substr(1));
         }
-    }, [isFocused, rgbaColor]);
+    }, [isFocused, rgba]);
 
     useEffect(() => {
         const hex = `#${color}`;
@@ -26,7 +27,7 @@ export default function HexColor(props) {
 
     const handleBlur = () => {
         setIsFocused(false);
-        const hexColor = rgbaToHex(rgbaColor);
+        const hexColor = rgbaToHex(rgba);
         setColor(hexColor.substr(1));
     };
 
@@ -42,15 +43,3 @@ export default function HexColor(props) {
         />
     );
 }
-
-HexColor.propTypes = {
-    rgbaColor: PropTypes.object,
-    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    onChange: PropTypes.func,
-};
-
-HexColor.defaultProps = {
-    rgbaColor: '',
-    tabIndex: undefined,
-    onChange: () => {},
-};

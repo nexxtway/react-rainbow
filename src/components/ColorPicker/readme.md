@@ -19,7 +19,7 @@ const StyledCard = styled(Card)`
 
 const ColorPickerExample = () => {
     const [color, setColor] = useState();
-    return <ColorPicker color={color} onChange={setColor}/>;
+    return <ColorPicker value={color} onChange={setColor}/>;
 }
 
 <Container>

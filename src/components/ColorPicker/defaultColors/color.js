@@ -6,7 +6,7 @@ import { useUniqueIdentifier } from '../../../libs/hooks';
 import { colorToRgba } from '../../../styles/helpers/color';
 
 const Color = React.forwardRef((props, ref) => {
-    const { color, tabIndex, isChecked, onChange } = props;
+    const { color, name, tabIndex, isChecked, onChange } = props;
     const colorId = useUniqueIdentifier('color-picker-default');
 
     const handleChange = () => {
@@ -24,6 +24,7 @@ const Color = React.forwardRef((props, ref) => {
                 as="input"
                 name={name}
                 checked={isChecked}
+                value={color}
                 type="radio"
                 onChange={handleChange}
                 ref={ref}
@@ -38,6 +39,7 @@ const Color = React.forwardRef((props, ref) => {
 
 Color.propTypes = {
     color: PropTypes.string.isRequired,
+    name: PropTypes.string,
     isChecked: PropTypes.bool,
     onChange: PropTypes.func,
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -45,6 +47,7 @@ Color.propTypes = {
 
 Color.defaultProps = {
     color: undefined,
+    name: '',
     isChecked: false,
     onChange: () => {},
     tapIndex: undefined,

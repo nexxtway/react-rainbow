@@ -73,12 +73,14 @@ export const StyledHexColorIcon = attachThemeAttrs(styled.span)`
 
 export const StyledNumberInput = styled(Input)`
     margin-left: 5px;
+
     input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
+        appearance: none;
         margin: 0;
     }
+
     input::-webkit-outer-spin-button {
-        -webkit-appearance: none;
+        appearance: none;
         margin: 0;
     }
 `;

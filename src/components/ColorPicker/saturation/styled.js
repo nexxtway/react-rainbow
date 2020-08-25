@@ -4,9 +4,11 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 export const StyledColor = styled.div`
     position: relative;
     height: 100%;
+    overflow: hidden;
 
-    &:before {
+    &::before {
         content: '';
+        overflow: hidden;
         position: absolute;
         top: 0;
         right: 0;
@@ -19,15 +21,19 @@ export const StyledColor = styled.div`
 
 export const StyledPointer = styled.div`
     position: absolute;
+    width: 0;
+    height: 0;
 `;
 
 export const StyledCircle = attachThemeAttrs(styled.button)`
+    position: absolute;
     width: 12px;
     height: 12px;
     border-radius: 6px;
     box-shadow: rgb(255, 255, 255) 0px 0px 0px 1px inset;
     transform: translate(-6px, -6px);
     padding: 0;
+    margin: 0;
     border: 1px solid ${props => props.palette.border.divider};
 
     &:focus,
