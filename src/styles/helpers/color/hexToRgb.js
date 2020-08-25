@@ -1,6 +1,6 @@
 import isHexColor from './isHexColor';
 
-export default function hexToRgba(color, alpha = 1) {
+export default function hexToRgb(color) {
     if (isHexColor(color)) {
         const hexColor = color.substr(1);
         const re = new RegExp(`.{1,${hexColor.length / 3}}`, 'g');
@@ -14,7 +14,7 @@ export default function hexToRgba(color, alpha = 1) {
                 return n;
             });
 
-            return `rgba(${colors.map(n => parseInt(n, 16)).join(', ')}, ${alpha})`;
+            return `rgb(${colors.map(n => parseInt(n, 16)).join(', ')})`;
         }
     }
     return '';
