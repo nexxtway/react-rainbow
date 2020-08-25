@@ -23,6 +23,7 @@ export default function getColumns(params) {
         rowNumberOffset,
         minColumnWidth,
         maxColumnWidth,
+        variant,
     } = params;
 
     const configColumns = [];
@@ -31,15 +32,22 @@ export default function getColumns(params) {
         configColumns.push({
             type: WITH_ENUMERABLE,
             rowNumberOffset,
-            width: getEnumerableWidth(rowNumberOffset),
+            width: getEnumerableWidth(rowNumberOffset, variant),
         });
     }
 
     if (showCheckboxColumn) {
-        configColumns.push({
-            type: SELECTABLE_CHECKBOX,
-            width: 52,
-        });
+        if (variant === 'listview') {
+            configColumns.unshift({
+                type: SELECTABLE_CHECKBOX,
+                width: 42,
+            });
+        } else {
+            configColumns.push({
+                type: SELECTABLE_CHECKBOX,
+                width: 52,
+            });
+        }
     }
 
     const columnsData = React.Children.map(

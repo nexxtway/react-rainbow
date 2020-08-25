@@ -141,6 +141,36 @@ class PageSingleCalendar {
         const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[1];
         return !buttonEl.isEnabled();
     }
+
+    /**
+     * Returns true when the previous month button element has focus.
+     * @method
+     * @returns {bool}
+     */
+    isPrevMonthButtonFocused() {
+        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[0];
+        return buttonEl.isExisting() && buttonEl.isFocused();
+    }
+
+    /**
+     * Returns true when the next month button element has focus.
+     * @method
+     * @returns {bool}
+     */
+    isNextMonthButtonFocused() {
+        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[1];
+        return buttonEl.isExisting() && buttonEl.isFocused();
+    }
+
+    /**
+     * Returns true when the year select element has focus.
+     * @method
+     * @returns {bool}
+     */
+    isYearSelectFocused() {
+        const selectEl = $(this.rootElement).$('select');
+        return selectEl.isExisting() && selectEl.isFocused();
+    }
 }
 
 module.exports = PageSingleCalendar;

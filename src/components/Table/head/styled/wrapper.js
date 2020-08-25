@@ -8,6 +8,12 @@ const StyledWrapper = attachThemeAttrs(styled.div)`
     height: 44px;
     background-color: ${props => props.palette.background.highlight};
     box-sizing: border-box;
+
+    ${props =>
+        props.theme.variant === 'listview' &&
+        `
+            background-color: transparent;
+        `};
 `;
 
 export default StyledWrapper;

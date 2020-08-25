@@ -186,4 +186,36 @@ describe('Calendar', () => {
         browser.keys(TAB_KEY);
         expect(calendar.isDayFocused(1)).toBe(true);
     });
+    it('should navigate on the header when using ARROW keys', () => {
+        const calendar = new PageCalendar(CALENDAR);
+        calendar.clickPrevMonthButton();
+        expect(calendar.isPrevMonthButtonFocused()).toBe(true);
+        expect(calendar.isNextMonthButtonFocused()).toBe(false);
+        expect(calendar.isYearSelectFocused()).toBe(false);
+        browser.keys(ARROW_LEFT_KEY);
+        expect(calendar.isPrevMonthButtonFocused()).toBe(true);
+        expect(calendar.isNextMonthButtonFocused()).toBe(false);
+        expect(calendar.isYearSelectFocused()).toBe(false);
+        browser.keys(ARROW_RIGHT_KEY);
+        expect(calendar.isPrevMonthButtonFocused()).toBe(false);
+        expect(calendar.isNextMonthButtonFocused()).toBe(true);
+        expect(calendar.isYearSelectFocused()).toBe(false);
+        browser.keys(ARROW_RIGHT_KEY);
+        expect(calendar.isPrevMonthButtonFocused()).toBe(false);
+        expect(calendar.isNextMonthButtonFocused()).toBe(false);
+        expect(calendar.isYearSelectFocused()).toBe(true);
+        browser.keys(ARROW_RIGHT_KEY);
+        expect(calendar.isPrevMonthButtonFocused()).toBe(false);
+        expect(calendar.isNextMonthButtonFocused()).toBe(false);
+        expect(calendar.isYearSelectFocused()).toBe(true);
+    });
+    it('should move from calendar controls to days when TAB key is pressed', () => {
+        const calendar = new PageCalendar(CALENDAR);
+        calendar.clickPrevMonthButton();
+        expect(calendar.isDayFocused(1)).toBe(false);
+        browser.keys(TAB_KEY);
+        expect(calendar.isDayFocused(1)).toBe(true);
+        browser.keys(TAB_KEY);
+        expect(calendar.isDayFocused(1)).toBe(false);
+    });
 });

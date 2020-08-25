@@ -54,6 +54,26 @@ class PageDoubleCalendar {
     }
 
     /**
+     * Returns true when the previous month button element has focus.
+     * @method
+     * @returns {bool}
+     */
+    isPrevMonthButtonFocused() {
+        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[0];
+        return buttonEl.isExisting() && buttonEl.isFocused();
+    }
+
+    /**
+     * Returns true when the next month button element is disabled.
+     * @method
+     * @returns {bool}
+     */
+    isNextMonthButtonFocused() {
+        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[1];
+        return buttonEl.isExisting() && buttonEl.isFocused();
+    }
+
+    /**
      * Clicks the select year element on the left month.
      * @method
      */
@@ -145,6 +165,16 @@ class PageDoubleCalendar {
     }
 
     /**
+     * Returns true when the year select element in left month has focus.
+     * @method
+     * @returns {bool}
+     */
+    isLeftYearSelectFocused() {
+        const selectEl = $(this.rootElement).$$('select')[0];
+        return selectEl.isExisting() && selectEl.isFocused();
+    }
+
+    /**
      * Clicks the select year element on the right month.
      * @method
      */
@@ -233,6 +263,16 @@ class PageDoubleCalendar {
             .$$('table[role=grid')[1]
             .$(`button=${day}`);
         return buttonEl.isExisting() && buttonEl.getAttribute('data-selected') === 'true';
+    }
+
+    /**
+     * Returns true when the year select element in right month has focus.
+     * @method
+     * @returns {bool}
+     */
+    isRightYearSelectFocused() {
+        const selectEl = $(this.rootElement).$$('select')[1];
+        return selectEl.isExisting() && selectEl.isFocused();
     }
 }
 
