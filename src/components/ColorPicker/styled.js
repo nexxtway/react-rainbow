@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import { PADDING_SMALL, PADDING_XX_SMALL } from '../../../styles/paddings';
-import { BORDER_RADIUS_3, BORDER_RADIUS_2 } from '../../../styles/borderRadius';
+import { FONT_SIZE_TEXT_MEDIUM } from '../../styles/fontSizes';
+import { PADDING_SMALL, PADDING_XX_SMALL } from '../../styles/paddings';
+import { BORDER_RADIUS_3, BORDER_RADIUS_2 } from '../../styles/borderRadius';
 import { COLOR_GRAY_1 } from '../../styles/colors';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import attachThemeAttrs from '../../styles/helpers/attachThemeAttrs';
 import Input from '../Input';
 import Slider from './slider';
 

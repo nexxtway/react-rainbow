@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useContext, useState } from 'react';
-import { UP_KEY, DOWN_KEY, RIGHT_KEY, LEFT_KEY } from '../../../../libs/constants';
+import { UP_KEY, DOWN_KEY, RIGHT_KEY, LEFT_KEY } from '../../../libs/constants';
 import { hsvToRgb, rgbToRgba } from '../../../styles/helpers/color';
 import { StyledColor, StyledCircle } from './styled';
 import { ColorPickerContext } from '../context';

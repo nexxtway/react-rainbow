@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import isValidColor from '../../../../styles/helpers/color/isValidColor';
+import isValidColor from '../../../styles/helpers/color/isValidColor';
 
 export default function useNormalizeColors(colors) {
     return useMemo(() => {
