@@ -310,7 +310,7 @@ PrimitiveMenu.propTypes = {
     /** The id of the outer element. */
     id: PropTypes.string,
     /** The trigger element. */
-    trigger: PropTypes.func.isRequired,
+    trigger: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
 };
 
 PrimitiveMenu.defaultProps = {

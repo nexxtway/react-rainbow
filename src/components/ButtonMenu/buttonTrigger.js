@@ -1,27 +1,31 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '../Button';
+import ButtonIcon from './../ButtonIcon';
 import RenderIf from '../RenderIf';
 import LeftIcon from './styled/styledLeftIcon';
 import RightIcon from './styled/styledRightIcon';
 
-export default function ButtonTrigger(props) {
+const ButtonTrigger = React.forwardRef((props, ref) => {
     const { label, icon, iconPosition, ...rest } = props;
     const hasLeftIcon = icon && iconPosition !== 'right';
     const hasRightIcon = icon && iconPosition === 'right';
 
-    return (
-        <Button {...rest}>
-            <RenderIf isTrue={hasLeftIcon}>
-                <LeftIcon>{icon}</LeftIcon>
-            </RenderIf>
-            {label}
-            <RenderIf isTrue={hasRightIcon}>
-                <RightIcon>{icon}</RightIcon>
-            </RenderIf>
-        </Button>
-    );
-}
+    if (label) {
+        return (
+            <Button {...rest} ref={ref}>
+                <RenderIf isTrue={hasLeftIcon}>
+                    <LeftIcon>{icon}</LeftIcon>
+                </RenderIf>
+                {label}
+                <RenderIf isTrue={hasRightIcon}>
+                    <RightIcon>{icon}</RightIcon>
+                </RenderIf>
+            </Button>
+        );
+    }
+    return <ButtonIcon {...rest} icon={icon} ref={ref} />;
+});
 
 ButtonTrigger.propTypes = {
     /** The text to be displayed inside the button. */
@@ -39,3 +43,5 @@ ButtonTrigger.defaultProps = {
     icon: null,
     iconPosition: 'left',
 };
+
+export default ButtonTrigger;
