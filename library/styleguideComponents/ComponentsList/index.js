@@ -6,11 +6,9 @@ import Application from '../../../src/components/Application';
 import ExperiencesIcon from './icons/experiencesIcon';
 import PuzzleIcon from './icons/puzzleIcon';
 import DesignIcon from './icons/designIcon';
-import CustomWorkIcon from './icons/customWorkIcon';
 import ConsoleIcon from './icons/consoleIcon';
 import isNotComponentPage from './../utils';
-import ContactUsForm from './contactusForm';
-import { Icon, StyledButton } from './styled';
+import { Icon } from './styled';
 
 const name = window.location.href.split('#/')[1];
 const pageName = name && name.split('/')[0];
@@ -87,21 +85,6 @@ export default class ComponentsList extends Component {
                         name="Designs"
                         label="Designs"
                         href="/#/Designs"
-                    />
-                    <StyledButton onClick={this.handleOnClickCustomWorkBtn} ref={this.itemRef}>
-                        <Icon className="rainbow-m-bottom_x-small" as={CustomWorkIcon} />
-                        Custom Work
-                    </StyledButton>
-                    <InternalOverlay
-                        isVisible={isVisible}
-                        render={() => {
-                            return (
-                                <ContactUsForm
-                                    onSuccessMessageSent={this.handleOnClickCustomWorkBtn}
-                                />
-                            );
-                        }}
-                        triggerElementRef={() => this.itemRef}
                     />
                 </Sidebar>
             </Application>
