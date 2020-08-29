@@ -1,110 +1,32 @@
 /* eslint-disable import/no-unresolved */
-import React, { useState, useEffect, useRef, useImperativeHandle } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from './context';
-import Saturation from './saturation';
-import RgbaColor from './rgbaColor';
-import HexColor from './hexColor';
-import Alpha from './alpha';
-import Hue from './hue';
-import DefaultColors from './defaultColors';
-import Preview from './preview';
-import {
-    StyledContainer,
-    StyledFlexContainer,
-    StyledLabel,
-    StyledSaturationContainer,
-    StyledSlidersContainer,
-    StyledHexColorContainer,
-    StyledRgbaColorContainer,
-} from './styled';
-import { rgbToHsv, decomposeColor } from '../../styles/helpers/color';
-import { normalizeColor, isAchromatic } from './helpers';
+import { StyledContainer } from './styled';
+import normalizeColor from './helpers/normalizeColor';
 import useNormalizeColors from './hooks/useNormalizeColors';
+import { Default, ColorsFixed } from './variants';
+
+const variantMap = { default: Default, 'colors-fixed': ColorsFixed };
 
 const ColorPicker = React.forwardRef((props, ref) => {
-    const {
-        id,
-        value,
-        colors: colorsProp,
-        tabIndex,
-        onClick,
-        onChange,
-        onFocus,
-        onBlur,
-        className,
-        style,
-    } = props;
-
-    const firstRef = useRef();
-    const lastRef = useRef();
-
-    useImperativeHandle(ref, () => ({
-        focus: () => {
-            firstRef.current.focus();
-        },
-        click: () => {
-            firstRef.current.click();
-        },
-        blur: () => {
-            lastRef.current.blur();
-        },
-    }));
-
-    const [hue, setHue] = useState(0);
+    const { id, value, defaultColors, variant, tabIndex, onChange, className, style } = props;
 
     const color = normalizeColor(value);
-    const rgba = decomposeColor(color);
-    const [r, g, b, a] = rgba.values;
-    const [h, s, v] = decomposeColor(rgbToHsv(color)).values;
-
-    const colors = useNormalizeColors(colorsProp);
+    const colors = useNormalizeColors({ defaultColors, variant });
     const context = {
-        r,
-        g,
-        b,
-        a,
-        h: hue,
-        s,
-        v,
+        ...color,
         colors,
         tabIndex,
-        onClick,
         onChange,
-        onFocus,
-        onBlur,
-        setHue,
     };
 
-    useEffect(() => {
-        if (!isAchromatic(rgba)) {
-            setHue(h);
-        }
-    }, [h, rgba]);
+    const Variant = variantMap[variant] || Default;
 
     return (
         <StyledContainer className={className} style={style} id={id}>
             <Provider value={context}>
-                <StyledLabel>Color Picker</StyledLabel>
-                <StyledSaturationContainer>
-                    <Saturation ref={firstRef} />
-                </StyledSaturationContainer>
-                <StyledFlexContainer>
-                    <StyledSlidersContainer>
-                        <Hue />
-                        <Alpha />
-                    </StyledSlidersContainer>
-                    <Preview />
-                </StyledFlexContainer>
-                <StyledFlexContainer>
-                    <StyledHexColorContainer>
-                        <HexColor />
-                    </StyledHexColorContainer>
-                    <StyledRgbaColorContainer>
-                        <RgbaColor />
-                    </StyledRgbaColorContainer>
-                </StyledFlexContainer>
-                <DefaultColors ref={lastRef} />
+                <Variant ref={ref} />
             </Provider>
         </StyledContainer>
     );
@@ -114,19 +36,19 @@ ColorPicker.propTypes = {
     /** The id of the outer element. */
     id: PropTypes.string,
     /** Specifies the color of ColorPicker. */
-    value: PropTypes.string,
+    value: PropTypes.shape({
+        hex: PropTypes.string,
+        rgba: PropTypes.arrayOf(PropTypes.number),
+        hsv: PropTypes.arrayOf(PropTypes.number),
+    }),
     /** Specifies the default colors to choice. */
-    colors: PropTypes.array,
+    defaultColors: PropTypes.array,
+    /** The variant changes the appearance of the Chip. Accepted variants include default, color-fixed */
+    variant: PropTypes.oneOf(['default', 'colors-fixed']),
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    /** The action triggered when the element is clicked. */
-    onClick: PropTypes.func,
     /** The action triggered when the value changes. */
     onChange: PropTypes.func,
-    /** The action triggered when the element receives the focus. */
-    onFocus: PropTypes.func,
-    /** The action triggered when the element releases focus. */
-    onBlur: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -135,8 +57,8 @@ ColorPicker.propTypes = {
 
 ColorPicker.defaultProps = {
     id: undefined,
-    value: '#000000',
-    colors: [
+    value: { hex: '#000000' },
+    defaultColors: [
         '#e3aaec',
         '#c3dbf7',
         '#9fd6ff',
@@ -166,11 +88,9 @@ ColorPicker.defaultProps = {
         '#b67e12',
         '#b75d0c',
     ],
+    variant: 'default',
     tabIndex: undefined,
-    onClick: () => {},
     onChange: () => {},
-    onFocus: () => {},
-    onBlur: () => {},
     className: undefined,
     style: undefined,
 };

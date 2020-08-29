@@ -17,3 +17,4 @@ export { default as colorToRgba } from './colorToRgba';
 export { default as rgbaToHex } from './rgbaToHex';
 export { default as rgbToHsv } from './rgbToHsv';
 export { default as hsvToRgb } from './hsvToRgb';
+export { default as isHsvColor } from './isHsvColor';
