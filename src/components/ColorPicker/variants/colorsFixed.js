@@ -1,5 +1,5 @@
 import React, { useRef, useImperativeHandle } from 'react';
-import { DefaultColors } from '../components';
+import { DefaultColors } from '../commons';
 
 const ColorsFixed = React.forwardRef((_props, ref) => {
     const colorsRef = useRef();

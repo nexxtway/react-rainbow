@@ -7,7 +7,7 @@ import {
     StyledHexColorContainer,
     StyledRgbaColorContainer,
 } from './styled';
-import { Saturation, Hue, Alpha, Preview, HexColor, RgbaColor, DefaultColors } from '../components';
+import { Saturation, Hue, Alpha, Preview, HexColor, RgbaColor, DefaultColors } from '../commons';
 import RenderIf from '../../RenderIf';
 
 const Default = React.forwardRef((_props, ref) => {
