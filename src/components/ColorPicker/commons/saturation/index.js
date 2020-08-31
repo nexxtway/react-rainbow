@@ -9,6 +9,7 @@ import {
 } from '../../../../styles/helpers/color';
 import { StyledColor, StyledCircle } from './styled';
 import { ColorPickerContext } from '../../context';
+import { calculateSaturation, calculateBright } from './helpers';
 
 const Saturation = React.forwardRef((_props, ref) => {
     const { rgba, hsv, tabIndex, onChange } = useContext(ColorPickerContext);
@@ -34,14 +35,8 @@ const Saturation = React.forwardRef((_props, ref) => {
 
     const handleChange = event => {
         const rect = containerRef.current.getBoundingClientRect();
-        const { width, height } = rect;
-        const x = typeof event.pageX === 'number' ? event.pageX : event.touches[0].pageX;
-        const y = typeof event.pageY === 'number' ? event.pageY : event.touches[0].pageY;
-        const left = Math.min(Math.max(0, x - (rect.left + window.pageXOffset)), width);
-        const top = Math.min(Math.max(0, y - (rect.top + window.pageYOffset)), height);
-
-        const saturation = Math.round((left / width) * 100);
-        const bright = Math.round((1 - top / height) * 100);
+        const saturation = calculateSaturation(event, rect);
+        const bright = calculateBright(event, rect);
 
         change({ saturation, bright });
     };
@@ -83,7 +78,6 @@ const Saturation = React.forwardRef((_props, ref) => {
         const { keyCode } = event;
         if (keyHandlerMap[keyCode]) {
             event.preventDefault();
-            event.stopPropagation();
             keyHandlerMap[keyCode]();
         }
     };

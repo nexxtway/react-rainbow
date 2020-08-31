@@ -13,17 +13,18 @@ import {
 
 const Color = React.forwardRef((props, ref) => {
     const { color, name, tabIndex, isChecked, onChange } = props;
+    const rgba = colorToRgba(color);
+    if (!isValidColor(rgba)) {
+        return null;
+    }
     const colorId = useUniqueIdentifier('color-picker-default');
 
     const handleChange = () => {
-        const rgba = colorToRgba(color);
-        if (isValidColor(rgba)) {
-            onChange({
-                hex: rgbaToHex(rgba),
-                rgba: decomposeColor(rgba).values,
-                hsv: decomposeColor(rgbToHsv(rgba)).values,
-            });
-        }
+        onChange({
+            hex: `#${rgbaToHex(rgba)}`,
+            rgba: decomposeColor(rgba).values,
+            hsv: decomposeColor(rgbToHsv(rgba)).values,
+        });
     };
 
     const style = { backgroundColor: color };
@@ -60,7 +61,6 @@ Color.defaultProps = {
     name: '',
     isChecked: false,
     onChange: () => {},
-    tapIndex: undefined,
 };
 
 export default Color;

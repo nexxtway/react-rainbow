@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { StyledHexColorIcon, StyledHexInput } from './styled';
-import { hexToRgba, rgbToHsv, isValidColor } from '../../../../styles/helpers/color';
+import {
+    hexToRgba,
+    rgbToHsv,
+    isValidColor,
+    decomposeColor,
+} from '../../../../styles/helpers/color';
 import { ColorPickerContext } from '../../context';
 
-export default function HexColor() {
+export default function Hex() {
     const { hex, tabIndex, onChange } = useContext(ColorPickerContext);
     const [color, setColor] = useState(hex.substr(1));
     const [isFocused, setIsFocused] = useState(false);
@@ -21,8 +26,8 @@ export default function HexColor() {
         if (isValidColor(rgba)) {
             onChange({
                 hex: newHex,
-                rgba: rgba.values,
-                hsv: rgbToHsv(rgba).values,
+                rgba: decomposeColor(rgba).values,
+                hsv: decomposeColor(rgbToHsv(rgba)).values,
             });
         }
     };

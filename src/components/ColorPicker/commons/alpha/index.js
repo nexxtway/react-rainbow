@@ -7,7 +7,7 @@ export default function Alpha() {
 
     const handleChange = event => {
         const value = parseInt(event.target.value, 10);
-        rgba[3] = isNaN(value) ? 0 : Math.max(0, Math.min(value, 100)) / 100;
+        rgba[3] = isNaN(value) ? 1 : Math.max(0, Math.min(value, 100)) / 100;
 
         onChange({
             hex,

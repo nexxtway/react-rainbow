@@ -7,7 +7,7 @@ import {
     StyledHexColorContainer,
     StyledRgbaColorContainer,
 } from './styled';
-import { Saturation, Hue, Alpha, Preview, HexColor, RgbaColor, DefaultColors } from '../commons';
+import { Saturation, Hue, Alpha, Preview, Hex, Rgba, DefaultColors } from '../commons';
 import RenderIf from '../../RenderIf';
 
 const Default = React.forwardRef((_props, ref) => {
@@ -43,14 +43,14 @@ const Default = React.forwardRef((_props, ref) => {
             </StyledFlexContainer>
             <StyledFlexContainer>
                 <StyledHexColorContainer>
-                    <HexColor />
+                    <Hex />
                 </StyledHexColorContainer>
                 <StyledRgbaColorContainer>
                     <RenderIf isTrue={hasColors}>
-                        <RgbaColor />
+                        <Rgba />
                     </RenderIf>
                     <RenderIf isTrue={!hasColors}>
-                        <RgbaColor ref={lastRef} />
+                        <Rgba ref={lastRef} />
                     </RenderIf>
                 </StyledRgbaColorContainer>
             </StyledFlexContainer>
