@@ -3,6 +3,7 @@ import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 export const StyledColor = styled.div`
     position: relative;
+    min-height: 160px;
     height: 100%;
     overflow: hidden;
 
