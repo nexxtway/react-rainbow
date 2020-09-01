@@ -186,4 +186,42 @@ describe('Calendar', () => {
         expect(calendar.getRightSelectedMonth()).toBe('January');
         expect(calendar.getRightMonthSelectedYear()).toBe('2021');
     });
+    it('should navigate on the header when using arrow keys', () => {
+        const calendar = new PageCalendar(CALENDAR);
+        calendar.clickPrevMonthButton();
+        expect(calendar.isPrevMonthButtonFocused()).toBe(true);
+        expect(calendar.isLeftYearSelectFocused()).toBe(false);
+        expect(calendar.isRightYearSelectFocused()).toBe(false);
+        expect(calendar.isNextMonthButtonFocused()).toBe(false);
+        browser.keys(ARROW_LEFT_KEY);
+        expect(calendar.isPrevMonthButtonFocused()).toBe(true);
+        expect(calendar.isLeftYearSelectFocused()).toBe(false);
+        expect(calendar.isRightYearSelectFocused()).toBe(false);
+        expect(calendar.isNextMonthButtonFocused()).toBe(false);
+        browser.keys(ARROW_RIGHT_KEY);
+        expect(calendar.isPrevMonthButtonFocused()).toBe(false);
+        expect(calendar.isLeftYearSelectFocused()).toBe(true);
+        expect(calendar.isRightYearSelectFocused()).toBe(false);
+        expect(calendar.isNextMonthButtonFocused()).toBe(false);
+        browser.keys(ARROW_RIGHT_KEY);
+        expect(calendar.isPrevMonthButtonFocused()).toBe(false);
+        expect(calendar.isLeftYearSelectFocused()).toBe(false);
+        expect(calendar.isRightYearSelectFocused()).toBe(true);
+        expect(calendar.isNextMonthButtonFocused()).toBe(false);
+        browser.keys(ARROW_RIGHT_KEY);
+        expect(calendar.isPrevMonthButtonFocused()).toBe(false);
+        expect(calendar.isLeftYearSelectFocused()).toBe(false);
+        expect(calendar.isRightYearSelectFocused()).toBe(false);
+        expect(calendar.isNextMonthButtonFocused()).toBe(true);
+    });
+
+    it('should move from calendar controls to days when TAB key is pressed', () => {
+        const calendar = new PageCalendar(CALENDAR);
+        calendar.clickPrevMonthButton();
+        expect(calendar.isLeftMonthDayFocused(1)).toBe(false);
+        browser.keys(TAB_KEY);
+        expect(calendar.isLeftMonthDayFocused(1)).toBe(true);
+        browser.keys(TAB_KEY);
+        expect(calendar.isLeftMonthDayFocused(1)).toBe(false);
+    });
 });

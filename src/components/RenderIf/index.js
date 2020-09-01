@@ -9,7 +9,9 @@ export default function RenderIf({ isTrue, children }) {
 }
 
 RenderIf.propTypes = {
+    /** Indicates whether the component content is showed or not. If is set to true, then is showed the component content. */
     isTrue: PropTypes.bool,
+    /** The content of the component. */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
 };
 

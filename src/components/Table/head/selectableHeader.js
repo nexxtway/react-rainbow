@@ -37,7 +37,7 @@ export default function SelectableHeader(props) {
     }
 
     return (
-        <th style={style} scope="col" tabIndex={-1}>
+        <StyledWrapper as="th" style={style} scope="col" tabIndex={-1}>
             <StyledCheckboxWrapper style={style}>
                 <PrimitiveCheckbox
                     name={name}
@@ -51,7 +51,7 @@ export default function SelectableHeader(props) {
                 />
             </StyledCheckboxWrapper>
             <StyledScrollShadow hasScroll={hasScroll} />
-        </th>
+        </StyledWrapper>
     );
 }
 

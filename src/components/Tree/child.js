@@ -1,6 +1,8 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import React, { useRef, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
+import { TreeContext } from './context';
 import TreeChildren from './treeChildren';
 import ExpandCollapseButton from './expandCollapseButton';
 import ItemContainerLi from './styled/itemContainerLi';
@@ -12,6 +14,7 @@ import ChildrenContainerUl from './styled/childrenContainer';
 import InnerContainer from './styled/innerContainer';
 import getNodeLevel from './helpers/getNodeLevel';
 import getTabIndex from './helpers/getTabIndex';
+import getNodePath from './helpers/getNodePath';
 import shouldSelectNode from './helpers/shouldSelectNode';
 
 export default function Child(props) {
@@ -31,13 +34,21 @@ export default function Child(props) {
         selectedNode,
         isFirstNode,
     } = props;
+    const {
+        autoFocus,
+        focusedNode,
+        onPrivateFocusNode,
+        onPrivateBlurNode,
+        onPrivateKeyDown,
+    } = useContext(TreeContext);
     const hasChildren = Array.isArray(children);
     const hasCheckbox = typeof isChecked === 'boolean' || isChecked === 'indeterminate';
     const hasIcon = !!icon;
     const ariaLevelValue = getNodeLevel({ name });
     const ariaExpandedValue = hasChildren ? isExpanded : undefined;
     const ariaSelectedValue = isSelected === true ? isSelected : undefined;
-    const tabIndex = getTabIndex({ selectedNode, isFirstNode, isSelected });
+    const tabIndex = getTabIndex({ name, selectedNode, focusedNode, isFirstNode, isSelected });
+    const itemRef = useRef();
 
     const handleNodeSelect = event => {
         if (shouldSelectNode(event.target, name)) {
@@ -53,18 +64,27 @@ export default function Child(props) {
         onNodeCheck({ name, nodePath });
     };
 
+    useEffect(() => {
+        if (autoFocus && focusedNode === name && itemRef.current) itemRef.current.focus();
+    }, [autoFocus, focusedNode, name]);
+
     return (
         <ItemContainerLi
             id={name}
+            ref={itemRef}
             data-id="node-element-li"
+            data-path={getNodePath(nodePath)}
             icon={icon}
             hasChildren={hasChildren}
             onClick={handleNodeSelect}
+            onFocus={event => onPrivateFocusNode(event, name)}
+            onBlur={event => onPrivateBlurNode(event, name)}
             role="treeitem"
             aria-level={ariaLevelValue}
             aria-expanded={ariaExpandedValue}
             aria-selected={ariaSelectedValue}
             tabIndex={tabIndex}
+            onKeyDown={event => onPrivateKeyDown(event, props)}
         >
             <NodeContainer
                 data-id="node-element"
