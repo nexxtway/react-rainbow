@@ -7,7 +7,6 @@ import { uniqueId } from '../../libs/utils';
 import OutsideClick from '../../libs/outsideClick';
 import Label from '../Input/label';
 import getNormalizeValue from './helpers/getNormalizeValue';
-import getSelectedOptionName from './helpers/getSelectedOptionName';
 import shouldOpenMenu from './helpers/shouldOpenMenu';
 import StyledInput from './styled/input';
 import StyledContainer from './styled/container';
