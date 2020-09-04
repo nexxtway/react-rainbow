@@ -257,7 +257,6 @@ class Picklist extends Component {
                         aria-describedby={errorMessageId}
                         autoComplete="off"
                         ref={this.triggerRef}
-                        aria-activedescendant={this.getAriaActivedescendant()}
                         icon={icon}
                         iconPosition="left"
                         variant={variant}
