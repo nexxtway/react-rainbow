@@ -17,6 +17,12 @@ const StyledScrollableY = attachThemeAttrs(styled.div)`
             align-content: center;
             align-items: center;
         `};
+    ${props =>
+        props.theme.variant === 'listview' &&
+        `
+            border-top: none;
+            background-color: transparent;
+        `};
 `;
 
 export default StyledScrollableY;

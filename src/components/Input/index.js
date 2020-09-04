@@ -127,6 +127,9 @@ Input.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The variant changes the appearance of the Input. Accepted variants include default,
+     * and shaded. This value defaults to default. */
+    variant: PropTypes.oneOf(['default', 'shaded']),
     /** The id of the outer element. */
     id: PropTypes.string,
     /** A string indicating the type of autocomplete functionality.
@@ -166,6 +169,7 @@ Input.defaultProps = {
     checked: undefined,
     className: undefined,
     style: undefined,
+    variant: 'default',
     id: undefined,
     autoComplete: 'on',
     label: undefined,

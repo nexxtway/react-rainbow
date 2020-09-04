@@ -30,6 +30,7 @@ export interface TextareaProps extends BaseProps {
     onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void;
     onPaste?: (event: ClipboardEvent<HTMLTextAreaElement>) => void;
     id?: string;
+    variant?: 'default' | 'shaded';
 }
 
 declare const Textarea: ComponentType<TextareaProps>;

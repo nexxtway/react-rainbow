@@ -85,6 +85,40 @@ const StyledTh = attachThemeAttrs(styled.th)`
                 }
             }
         `};
+
+        ${props =>
+            props.theme.variant === 'listview' &&
+            `
+            :hover {
+                > div, .rainbow-table_header-resize-bar {
+                    background-color: transparent;
+                }
+
+                .rainbow-table_header-container {
+                    border-color: transparent;
+                }
+            }
+
+            :focus {
+        
+                .rainbow-table_header-container {
+                    background-color: transparent;
+                    border-color: transparent;
+                }
+
+                .rainbow-table_header-resize-bar,
+                &:hover .rainbow-table_header-resize-bar {
+                    background-color: transparent;
+                    border-color: transparent;
+                }
+        
+                &:hover .rainbow-table_header-container {
+                    background-color: transparent;
+                    border-color: transparent;
+                }
+            }
+        `}
+
     ${props =>
         props.isSorted &&
         `

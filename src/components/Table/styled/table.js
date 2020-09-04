@@ -8,6 +8,12 @@ const StyledTable = attachThemeAttrs(styled.table)`
     border-spacing: 0;
     width: 100%;
     box-sizing: border-box;
+
+    ${props =>
+        props.theme.variant === 'listview' &&
+        `
+            background-color: transparent;
+        `};
 `;
 
 export default StyledTable;
