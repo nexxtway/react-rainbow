@@ -85,11 +85,6 @@ class Picklist extends Component {
         return undefined;
     }
 
-    getAriaActivedescendant() {
-        const { value } = this.props;
-        return getSelectedOptionName(value);
-    }
-
     handleKeyPressed(event) {
         const { isOpen } = this.state;
         const { readOnly } = this.props;

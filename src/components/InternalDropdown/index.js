@@ -200,7 +200,6 @@ const InternalDropdown = forwardRef((props, reference) => {
     );
 
     const handleKeyUpPressed = () => {
-        console.log('handleKeyUpPressed');
         const nextActiveIndex =
             (activeChildren.current.length + activeOptionIndex - 1) % activeChildren.current.length;
 
@@ -211,7 +210,6 @@ const InternalDropdown = forwardRef((props, reference) => {
                 scrollToOption(nextActiveIndex);
             }
             setActiveOptionIndex(nextActiveIndex);
-            console.log('KEY PRESSED', activeChildren.current[nextActiveIndex].name);
             setActiveOptionName(activeChildren.current[nextActiveIndex].name);
         }
     };
