@@ -159,7 +159,7 @@ export default class InputBase extends Component {
 }
 
 InputBase.propTypes = {
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     name: PropTypes.string,
     type: PropTypes.oneOf([
         'text',
