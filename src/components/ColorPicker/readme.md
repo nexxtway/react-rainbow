@@ -56,12 +56,11 @@ const Container = styled.div`
 `;
 
 const StyledCard = styled(Card)`
-    padding: 10px;
+    padding: 20px;
 `;
 
 const StyledContent = styled.div`
     width: 19rem;
-    height: 16rem;
 `;
 
 const StyledLabel = styled.span`
