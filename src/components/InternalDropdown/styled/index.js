@@ -156,7 +156,6 @@ export const MessageHighLight = attachThemeAttrs(styled.p)`
 
 export const StyledPrimitiveCheckbox = styled(PrimitiveCheckbox)`
     display: inline;
-    margin-bottom: 0;
     margin-left: 4px;
     margin-right: 8px;
 `;
@@ -164,6 +163,7 @@ export const StyledPrimitiveCheckbox = styled(PrimitiveCheckbox)`
 export const StyledTopHeader = attachThemeAttrs(styled(StyledHeader))`
     position: sticky;
     top: 0;
+    border-bottom: 1px solid ${props => props.palette.border.divider};
     background: ${props => props.palette.background.main};
     z-index: 1;
 `;
