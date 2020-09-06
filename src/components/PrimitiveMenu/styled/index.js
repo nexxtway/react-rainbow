@@ -85,6 +85,7 @@ export const StyledDropdown = attachThemeAttrs(styled.div)`
         `
             top: auto;
             bottom: 100%;
+            left: -50%;
         `};
     ${props =>
         props.menuAlignment === 'bottom-right' &&
@@ -102,5 +103,5 @@ export const StyledDropdown = attachThemeAttrs(styled.div)`
             bottom: 100%;
             left: 0;
             transform: translateX(0);
-        `};
+        `};        
 `;

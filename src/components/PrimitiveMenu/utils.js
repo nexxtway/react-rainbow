@@ -14,8 +14,12 @@ export function insertChildOrderly(childrenRefs, childRef, nodes) {
     return sortedChildren;
 }
 
-export function findItemByKey(key, childrenRefs) {
-    return childrenRefs.find(child => child.innerText[0].toLowerCase() === key.toLowerCase());
+export function findItemByKey(key, childrenRefs, fromIndex) {
+    const head = childrenRefs.slice(0, fromIndex);
+    const tail = childrenRefs.slice(fromIndex + 1);
+    return [...tail, ...head].find(
+        child => child.innerText.toLowerCase().indexOf(key.toLowerCase()) === 0,
+    );
 }
 
 export function findItemIndex(childrenRefs, item) {
@@ -27,4 +31,49 @@ export function getChildMenuItemNodes(ref) {
         return ref.querySelectorAll('[role="menuitem"]');
     }
     return [];
+}
+
+export function resolvePosition(options, alignment) {
+    const {
+        trigger: { leftUpAnchor, leftBottomAnchor, rightUpAnchor, rightBottomAnchor, width },
+    } = options;
+    if (alignment === 'right') {
+        return {
+            left: rightBottomAnchor.x,
+            top: rightBottomAnchor.y,
+        };
+    }
+    if (alignment === 'bottom') {
+        return {
+            left: leftUpAnchor.x + width / 2,
+            top: leftUpAnchor.y,
+        };
+    }
+    if (alignment === 'center') {
+        return {
+            left: leftBottomAnchor.x + width / 2,
+            top: leftBottomAnchor.y,
+        };
+    }
+    if (alignment === 'bottom-right') {
+        return {
+            left: rightUpAnchor.x,
+            top: leftUpAnchor.y,
+        };
+    }
+    if (alignment === 'bottom-left') {
+        return {
+            left: leftUpAnchor.x,
+            top: leftUpAnchor.y,
+        };
+    }
+    return {
+        left: leftBottomAnchor.x,
+        top: leftBottomAnchor.y,
+    };
+}
+
+export function isPrintableCharacter(str) {
+    if (typeof str !== 'string') return false;
+    return str.length === 1 && /\S/.test(str);
 }

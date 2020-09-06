@@ -1,3 +1,4 @@
 import React from 'react';
 
-export const { Provider, Consumer } = React.createContext();
+export const PrimitiveMenuContext = React.createContext();
+export const { Provider, Consumer } = PrimitiveMenuContext;
