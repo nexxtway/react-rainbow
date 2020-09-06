@@ -42,14 +42,22 @@ const Saturation = React.forwardRef((_props, ref) => {
     };
 
     const unbindEventListeners = () => {
-        window.removeEventListener('mousemove', handleChange);
-        window.removeEventListener('mouseup', unbindEventListeners);
+        containerRef.current.removeEventListener('mousemove', handleChange);
+        containerRef.current.removeEventListener('mouseup', unbindEventListeners);
+        // eslint-disable-next-line no-use-before-define
+        containerRef.current.removeEventListener('mouseleave', handleMouseLeave);
+    };
+
+    const handleMouseLeave = event => {
+        handleChange(event);
+        unbindEventListeners();
     };
 
     const handleMouseDown = event => {
         handleChange(event);
-        window.addEventListener('mousemove', handleChange);
-        window.addEventListener('mouseup', unbindEventListeners);
+        containerRef.current.addEventListener('mousemove', handleChange);
+        containerRef.current.addEventListener('mouseleave', handleMouseLeave);
+        containerRef.current.addEventListener('mouseup', unbindEventListeners);
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
