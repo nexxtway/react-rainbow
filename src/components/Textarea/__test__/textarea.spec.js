@@ -56,4 +56,15 @@ describe('<Textarea/>', () => {
             inputId: expect.any(String),
         });
     });
+    it('should have a inside div with id="headerTest"', () => {
+        const component = mount(<Textarea header={<div id="headerTest" />} />);
+        const div = component.find('div[id="headerTest"]');
+        expect(div.exists()).toBeTruthy();
+    });
+
+    it('should have a inside div with id="footerTest"', () => {
+        const component = mount(<Textarea footer={<div id="footerTest" />} />);
+        const div = component.find('div[id="footerTest"]');
+        expect(div.exists()).toBeTruthy();
+    });
 });

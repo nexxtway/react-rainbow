@@ -3,6 +3,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 import SearchIcon from '../icons/searchIcon';
 import PrimitiveCheckbox from '../../PrimitiveCheckbox';
+import StyledHeader from '../../Option/styled/header';
 
 export const Dropdown = attachThemeAttrs(styled.div)`
     position: relative;
@@ -155,7 +156,14 @@ export const MessageHighLight = attachThemeAttrs(styled.p)`
 
 export const StyledPrimitiveCheckbox = styled(PrimitiveCheckbox)`
     display: inline;
-    margin-bottom: 0;
     margin-left: 4px;
     margin-right: 8px;
+`;
+
+export const StyledTopHeader = attachThemeAttrs(styled(StyledHeader))`
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid ${props => props.palette.border.divider};
+    background: ${props => props.palette.background.main};
+    z-index: 1;
 `;
