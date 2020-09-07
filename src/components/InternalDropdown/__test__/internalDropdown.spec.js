@@ -187,4 +187,18 @@ describe('InternalDropdown', () => {
         );
         expect(component.find(Spinner).exists()).toBe(true);
     });
+
+    it('should div with role="listbox" have aria-activedescendant = to id to option on focus', () => {
+        const component = mount(
+            <InternalDropdown label="Picklist">
+                <Option label="Option 1" name="option1" />
+                <Option label="Option 2" name="option2" />
+                <Option label="Option 3" name="option3" />
+            </InternalDropdown>,
+        );
+        const divOption = component.find('li').at(1);
+        divOption.simulate('mouseenter');
+        const divListbox = component.find('div[role="listbox"]');
+        expect(divListbox.prop('aria-activedescendant')).toBe('option2');
+    });
 });
