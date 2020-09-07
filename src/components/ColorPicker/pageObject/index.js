@@ -22,6 +22,15 @@ class PageColorPicker {
     }
 
     /**
+     * Return the hue input element for index.
+     * @method
+     * @returns {object}
+     */
+    getHueInput() {
+        return $(this.rootElement).$('input[type=range]');
+    }
+
+    /**
      * Return the hex input element.
      * @method
      * @returns {object}
@@ -31,7 +40,7 @@ class PageColorPicker {
     }
 
     /**
-     * Returns the rgba input element for index.
+     * Return the rgba input element for index.
      * @method
      * @param {number} index
      * @returns {object}
@@ -41,7 +50,7 @@ class PageColorPicker {
     }
 
     /**
-     * Returns the default colors input element.
+     * Return the default colors input element.
      * @method
      * @returns {object}
      */
@@ -50,7 +59,7 @@ class PageColorPicker {
     }
 
     /**
-     * Returns the default colors input element.
+     * Returns the default colors label element.
      * @method
      * @returns {object}
      */
@@ -93,7 +102,7 @@ class PageColorPicker {
      * @returns {bool}
      */
     isHueFocused() {
-        const rangeEl = $(this.rootElement).$('input[type=range]');
+        const rangeEl = this.getHueInput();
         return rangeEl.isExisting() && rangeEl.isFocused();
     }
 

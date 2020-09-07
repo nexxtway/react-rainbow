@@ -5,6 +5,7 @@ const {
     ARROW_LEFT_KEY,
     ARROW_DOWN_KEY,
     ARROW_RIGHT_KEY,
+    ALT_KEY,
 } = require('../../constants');
 
 const COLORPICKER = '#picker-color-1';
@@ -64,13 +65,12 @@ describe('ColorPicker default variant', () => {
     it('should change color when hue component is focused an arrow key is pressed', () => {
         const colorPicker = new PageColorPicker(COLORPICKER);
         colorPicker.getDefaultColorsLabel().click();
-        expect(colorPicker.getColor()).toBe('e3aaec');
-        colorPicker.getSaturationPointer().click();
-        browser.keys(TAB_KEY);
+        colorPicker.getHueInput().click();
+        expect(colorPicker.getColor()).toBe('abedec');
         browser.keys(ARROW_LEFT_KEY);
-        expect(colorPicker.getColor()).toBe('e3abed');
+        expect(colorPicker.getColor()).toBe('abedeb');
         browser.keys(ARROW_RIGHT_KEY);
-        expect(colorPicker.getColor()).toBe('e4abed');
+        expect(colorPicker.getColor()).toBe('abedec');
     });
 
     it('should change color when alpha component is focused an arrow key is pressed', () => {
