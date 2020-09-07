@@ -14,3 +14,7 @@ export { default as isValidColor } from './isValidColor';
 export { default as getBrightness } from './getBrightness';
 export { default as isDark } from './isDark';
 export { default as colorToRgba } from './colorToRgba';
+export { default as rgbaToHex } from './rgbaToHex';
+export { default as rgbToHsv } from './rgbToHsv';
+export { default as hsvToRgb } from './hsvToRgb';
+export { default as isHsvColor } from './isHsvColor';
