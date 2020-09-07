@@ -118,6 +118,79 @@ const containerStyles = {
 />;
 ```
 
+##### Textarea with header
+
+```js
+import React, { useState } from 'react';
+import { Textarea, Chip } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faImage } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+
+const StyledHeader = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})
+`
+    font-size: 12px;
+    color: ${props => props.text.header};
+    text-align: center;
+    border-radius: 0.875rem 0.875rem 0 0;
+    margin: 16px 16px 0 16px;
+`;
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+const chipStyles = {
+    width:'100%'
+}
+
+const Icon = styled.span.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    ${props =>
+        `
+            color: ${props.brand.main};
+        `};
+`;
+
+function TextareaExample(props) {
+    const [count, setCount] = useState(0);
+    const {maxLength} = props;
+    
+    return (
+        <Textarea
+            label="Textarea Label"
+            rows={4}
+            onChange={(event) => setCount(event.target.value.length)}
+            maxLength={maxLength}
+            placeholder="Type something . . ."
+            style={containerStyles}
+            header={
+                <StyledHeader>
+                    <Chip
+                        onDelete={() => alert('Delete Chip!')}
+                        style={chipStyles}
+                        label={
+                            <Icon variant="outline-brand">
+                                <FontAwesomeIcon
+                                    icon={faImage}
+                                    className="rainbow-m-right_xx-small"
+                                />{' '}
+                                marketing_1.png
+                            </Icon>
+                        }
+                    />
+                </StyledHeader>}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        />
+    );
+}
+
+<TextareaExample maxLength={160} />
+```
+
 ##### Textarea with footer
 
 ```js
@@ -132,7 +205,6 @@ const StyledFooter = styled.div.attrs(props => {
     font-size: 12px;
     color: ${props => props.text.header};
     text-align: right;
-    padding: 10px;
     border-radius: 0 0 0.875rem 0.875rem;
     background-color: #F6F7F9;
     padding: 16px;
