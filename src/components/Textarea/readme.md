@@ -142,6 +142,10 @@ const containerStyles = {
     maxWidth: 700,
 };
 
+const chipStyles = {
+    width:'100%'
+}
+
 const Icon = styled.span.attrs(props => {
     return props.theme.rainbow.palette;
 })`
@@ -153,7 +157,7 @@ const Icon = styled.span.attrs(props => {
 
 function TextareaExample(props) {
     const [count, setCount] = useState(0);
-    const maxLength = props.maxLength;
+    const {maxLength} = props;
     
     return (
         <Textarea
@@ -167,7 +171,7 @@ function TextareaExample(props) {
                 <StyledHeader>
                     <Chip
                         onDelete={() => alert('Delete Chip!')}
-                        style={{width:'100%'}}
+                        style={chipStyles}
                         label={
                             <Icon variant="outline-brand">
                                 <FontAwesomeIcon
