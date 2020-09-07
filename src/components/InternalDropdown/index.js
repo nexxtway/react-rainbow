@@ -314,6 +314,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         <Dropdown
             id={id}
             role="listbox"
+            aria-activedescendant={activeOptionName}
             isLoading={isLoading}
             className={className}
             style={style}
