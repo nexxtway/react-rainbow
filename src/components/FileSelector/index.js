@@ -207,7 +207,7 @@ FileSelector.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The icon displayed for the FileSelector. In case of not being specified, another icon will be shown by default. */
+    /** The icon shown in the FileSelector. In case of not being specified, a cloud icon will be shown by default. */
     icon: PropTypes.node,
     /** Shows the help message below the input. */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
