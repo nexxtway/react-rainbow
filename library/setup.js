@@ -71,6 +71,7 @@ import HomeFilledIcon from './exampleComponents/Icons/homeFilled';
 import ExportBorderIcon from './exampleComponents/Icons/exportBorder';
 import ExportFilledIcon from './exampleComponents/Icons/exportFilled';
 import ArrowDownIcon from './exampleComponents/Icons/arrowDown';
+import PictureIcon from './exampleComponents/Icons/picture';
 import Coin from './exampleComponents/Icons/coin';
 
 global.GlobalHeader = GlobalHeader;
@@ -149,4 +150,5 @@ global.HomeFilledIcon = HomeFilledIcon;
 global.ExportBorderIcon = ExportBorderIcon;
 global.ExportFilledIcon = ExportFilledIcon;
 global.ArrowDownIcon = ArrowDownIcon;
+global.PictureIcon = PictureIcon;
 global.Coin = Coin;

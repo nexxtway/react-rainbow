@@ -26,6 +26,7 @@ const FileSelector = React.forwardRef((props, ref) => {
         name,
         label,
         error,
+        icon,
         bottomHelpText,
         placeholder,
         tabIndex,
@@ -114,7 +115,7 @@ const FileSelector = React.forwardRef((props, ref) => {
         onBlur(event);
     };
 
-    const icon = getIcon(files, error, isDragOver);
+    const currentIcon = getIcon(files, error, icon, isDragOver);
     const text = getText(files, placeholder);
 
     const isFileSelected = files && files.length > 0;
@@ -165,7 +166,7 @@ const FileSelector = React.forwardRef((props, ref) => {
                         error={error}
                         disabled={disabled}
                     >
-                        {icon}
+                        {currentIcon}
                     </StyledIconContainer>
                     <TruncatedText>{text}</TruncatedText>
                     <RenderIf isTrue={shouldRenderCancel}>
@@ -206,6 +207,8 @@ FileSelector.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** The icon displayed for the FileSelector. In case of not being specified, another icon will be shown by default. */
+    icon: PropTypes.node,
     /** Shows the help message below the input. */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
@@ -240,6 +243,7 @@ FileSelector.defaultProps = {
     name: undefined,
     label: undefined,
     error: undefined,
+    icon: undefined,
     bottomHelpText: undefined,
     placeholder: 'Drag & Drop or Click to Browse',
     tabIndex: undefined,
