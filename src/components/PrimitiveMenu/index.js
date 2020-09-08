@@ -96,13 +96,11 @@ const PrimitiveMenu = React.forwardRef((props, ref) => {
                     menuSize={menuSize}
                     menuAlignment={menuAlignment}
                     isLoading={isLoading}
-                    isOpen={isOpen}
                 >
                     <MenuContent
-                        aria-label={ariaLabel}
+                        ariaLabel={ariaLabel}
                         onRequestClose={closeMenu}
                         isLoading={isLoading}
-                        isOpen={isOpen}
                     >
                         {children}
                     </MenuContent>

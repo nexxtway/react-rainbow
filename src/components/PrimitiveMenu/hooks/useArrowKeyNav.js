@@ -2,7 +2,7 @@ import { useState, useMemo, useCallback } from 'react';
 import { UP_KEY, DOWN_KEY, ENTER_KEY } from '../../../libs/constants';
 import { findItemIndex, isPrintableCharacter, findItemByKey } from '../utils';
 
-export default function useArrowKeyNav({ childrenRefs, isOpen, isLoading }) {
+export default function useArrowKeyNav({ childrenRefs, isLoading }) {
     const [focusedChildIndex, setFocusedChildIndex] = useState(null);
 
     const focusChild = useCallback(
@@ -26,29 +26,27 @@ export default function useArrowKeyNav({ childrenRefs, isOpen, isLoading }) {
 
     const clearFocusedChild = useCallback(() => setFocusedChildIndex(null), [setFocusedChildIndex]);
 
-    const keyHandlerMap = useMemo(() => {
-        if (isOpen)
-            return {
-                [UP_KEY]: () => {
-                    if (focusedChildIndex > 0) {
-                        setFocusedChildIndex(focusedChildIndex - 1);
-                    }
-                },
-                [DOWN_KEY]: () => {
-                    if (focusedChildIndex < childrenRefs.length - 1) {
-                        setFocusedChildIndex(focusedChildIndex + 1);
-                    }
-                },
-                [ENTER_KEY]: () => {
-                    const isValidIndex = focusedChildIndex >= 0;
-                    if (isValidIndex) {
-                        childrenRefs[focusedChildIndex].click();
-                    }
-                },
-            };
-
-        return [];
-    }, [childrenRefs, focusedChildIndex, isOpen]);
+    const keyHandlerMap = useMemo(
+        () => ({
+            [UP_KEY]: () => {
+                if (focusedChildIndex > 0) {
+                    setFocusedChildIndex(focusedChildIndex - 1);
+                }
+            },
+            [DOWN_KEY]: () => {
+                if (focusedChildIndex < childrenRefs.length - 1) {
+                    setFocusedChildIndex(focusedChildIndex + 1);
+                }
+            },
+            [ENTER_KEY]: () => {
+                const isValidIndex = focusedChildIndex >= 0;
+                if (isValidIndex) {
+                    childrenRefs[focusedChildIndex].click();
+                }
+            },
+        }),
+        [childrenRefs, focusedChildIndex],
+    );
 
     const processPrintableCharacter = useCallback(
         char => {

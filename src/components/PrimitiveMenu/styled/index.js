@@ -35,21 +35,14 @@ export const StyledDropdown = attachThemeAttrs(styled.div)`
     background: ${props => props.palette.background.main};
     box-shadow: ${props => props.shadows.shadow_2};
     transform: translateX(-50%);
-    display: none;
-    opacity: 0;
+    display: block;
+    opacity: 1;
     transition: opacity 0.1s linear, visibility 0.1s linear;
-    visibility: hidden;
+    visibility: visible;
     overflow-y: auto;
     overflow-x: hidden;
     top: 100%;
-    ${props =>
-        props.isOpen &&
-        `
-            display: block;
-            opacity: 1;
-            transition: opacity 0.1s linear, visibility 0.1s linear;
-            visibility: visible;
-        `};
+
     ${props =>
         props.isLoading &&
         `

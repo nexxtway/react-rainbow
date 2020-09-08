@@ -9,7 +9,7 @@ import Spinner from './../Spinner';
 import { StyledContent } from './styled';
 
 export default function MenuContent(props) {
-    const { children, isLoading, ariaLabel, onRequestClose, isOpen } = props;
+    const { children, isLoading, ariaLabel, onRequestClose } = props;
     const childrenRefs = useRef([]);
     const containerRef = useRef();
     const [childCount, setChildCount] = useState(0);
@@ -21,7 +21,6 @@ export default function MenuContent(props) {
         focusChild,
     } = useArrowKeyNav({
         childrenRefs: childrenRefs.current,
-        isOpen,
         isLoading,
     });
 
@@ -51,10 +50,10 @@ export default function MenuContent(props) {
     }, []);
 
     useEffect(() => {
-        if (isOpen && !isLoading && childCount > 0) {
+        if (!isLoading && childCount > 0) {
             focusChild(focusedChildIndex || 0);
         }
-    }, [isOpen, isLoading, childCount, focusChild, focusedChildIndex]);
+    }, [isLoading, childCount, focusChild, focusedChildIndex]);
 
     if (isLoading) {
         return <Spinner assistiveText="loading menu" isVisible size="small" />;
