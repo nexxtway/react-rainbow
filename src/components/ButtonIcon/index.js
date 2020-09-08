@@ -14,6 +14,14 @@ export default class ButtonIcon extends Component {
     }
 
     /**
+     * returns the ref to the DOM element.
+     * @public
+     */
+    getElRef() {
+        return this.buttonRef;
+    }
+
+    /**
      * Sets focus on the element.
      * @public
      */

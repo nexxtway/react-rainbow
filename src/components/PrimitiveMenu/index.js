@@ -28,7 +28,7 @@ const PrimitiveMenu = React.forwardRef((props, ref) => {
     useOutsideClick(
         dropdownRef,
         event => {
-            if (event.target === triggerRef.current.buttonRef.current) {
+            if (event.target === triggerRef.current.getElRef().current) {
                 return null;
             }
             return closeMenu();
@@ -88,7 +88,7 @@ const PrimitiveMenu = React.forwardRef((props, ref) => {
             <InternalOverlay
                 isVisible={isOpen}
                 positionResolver={positionResolver}
-                triggerElementRef={() => triggerRef.current.buttonRef}
+                triggerElementRef={() => triggerRef.current.getElRef()}
             >
                 <StyledDropdown
                     data-id="primitive-menu_dropdown"
