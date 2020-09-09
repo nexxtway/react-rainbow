@@ -22,9 +22,9 @@ const Container = styled.div`
 const resolveElement = ref => {
     if (typeof ref === 'function') {
         const ret = ref();
-        return ret && ret.current;
+        return ret;
     }
-    return ref && ref.current;
+    return ref;
 };
 
 const resolveTriggerMeta = ref => {

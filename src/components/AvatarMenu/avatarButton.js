@@ -13,8 +13,8 @@ export default class AvatarButton extends Component {
      * returns the reft to the DOM element.
      * @public
      */
-    getElRef() {
-        return this.avatarButtonRef;
+    get htmlElementRef() {
+        return this.avatarButtonRef.current;
     }
 
     /**
