@@ -12,12 +12,8 @@ export default class Button extends Component {
         this.buttonRef = React.createRef();
     }
 
-    /**
-     * returns the ref to the DOM element.
-     * @public
-     */
-    getElRef() {
-        return this.buttonRef;
+    get htmlElementRef() {
+        return this.buttonRef.current;
     }
 
     isDisabled() {
