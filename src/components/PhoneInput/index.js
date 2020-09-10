@@ -9,8 +9,6 @@ import ErrorText from '../Input/styled/errorText';
 import {
     StyledInputContainer,
     StyledInput,
-    StyledIndicator,
-    StyledTrigger,
     StyledFlagContainer,
     StyledCountryCode,
     StyledIconContainer,
@@ -25,6 +23,7 @@ import {
     useHandleCountryChange,
 } from './hooks';
 import CountriesDropdown from './countriesDropdown';
+import VariantRenderIf from './variantRenderIf';
 
 /**
  * phone input are used for freeform data entry.
@@ -140,22 +139,18 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 <RenderIf isTrue={readOnly && !disabled}>
                     <StyledFlagContainer readOnly>{flagIcon}</StyledFlagContainer>
                 </RenderIf>
-                <RenderIf isTrue={!readOnly || disabled}>
-                    <StyledTrigger
-                        ref={triggerRef}
-                        onClick={handleClick}
-                        onFocus={event => handleFocus(event, 0)}
-                        onBlur={handleBlur}
-                        tabIndex={tabIndex}
-                        disabled={disabled}
-                    >
-                        <StyledFlagContainer disabled={disabled}>
-                            {flagIcon}
-                            <StyledIndicator error={error} disabled={disabled} />
-                        </StyledFlagContainer>
-                    </StyledTrigger>
-                </RenderIf>
-
+                <VariantRenderIf
+                    isTrue
+                    ref={triggerRef}
+                    onClick={handleClick}
+                    onFocus={event => handleFocus(event, 0)}
+                    onBlur={handleBlur}
+                    tabIndex={tabIndex}
+                    disabled={disabled}
+                    error={error}
+                    countries={countriesProps}
+                    flagIcon={flagIcon}
+                />
                 <StyledCountryCode>{formattedCountryCode}</StyledCountryCode>
                 <StyledInput
                     id={inputId}
