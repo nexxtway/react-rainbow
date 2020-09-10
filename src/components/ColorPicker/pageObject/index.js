@@ -1,5 +1,5 @@
 /**
- * PageWeekDayPicker page object class.
+ * PageColorPicker page object class.
  * @class
  */
 class PageColorPicker {
@@ -22,12 +22,28 @@ class PageColorPicker {
     }
 
     /**
-     * Return the hue input element for index.
+     * Triggers a click over the saturation pointer button element.
+     * @method
+     */
+    clickSaturation() {
+        this.getSaturationPointer().click();
+    }
+
+    /**
+     * Return the hue input element.
      * @method
      * @returns {object}
      */
     getHueInput() {
         return $(this.rootElement).$('input[type=range]');
+    }
+
+    /**
+     * Triggers a click over the hue input element.
+     * @method
+     */
+    clickHue() {
+        this.getHueInput().click();
     }
 
     /**
@@ -66,6 +82,14 @@ class PageColorPicker {
     getDefaultColorsLabel() {
         const id = this.getDefaultColorsInput().getAttribute('id');
         return $(this.rootElement).$(`label[for="${id}"]`);
+    }
+
+    /**
+     * Triggers a click over the default colors label element.
+     * @method
+     */
+    clickDefaultColors() {
+        this.getDefaultColorsLabel().click();
     }
 
     /**

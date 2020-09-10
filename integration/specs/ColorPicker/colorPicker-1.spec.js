@@ -5,7 +5,6 @@ const {
     ARROW_LEFT_KEY,
     ARROW_DOWN_KEY,
     ARROW_RIGHT_KEY,
-    ALT_KEY,
 } = require('../../constants');
 
 const COLORPICKER = '#picker-color-1';
@@ -19,9 +18,9 @@ describe('ColorPicker default variant', () => {
         const component = $(COLORPICKER);
         component.waitForExist();
     });
-    it('should focus the right common component when an tap key is pressed', () => {
+    it('should focus the right common component when an tab key is pressed', () => {
         const colorPicker = new PageColorPicker(COLORPICKER);
-        colorPicker.getSaturationPointer().click();
+        colorPicker.clickSaturation();
         expect(colorPicker.isSaturationFocused()).toBe(true);
         browser.keys(TAB_KEY);
         expect(colorPicker.isHueFocused()).toBe(true);
@@ -39,9 +38,9 @@ describe('ColorPicker default variant', () => {
 
     it('should change color when saturation component is focused an arrow key is pressed', () => {
         const colorPicker = new PageColorPicker(COLORPICKER);
-        colorPicker.getDefaultColorsLabel().click();
+        colorPicker.clickDefaultColors();
         expect(colorPicker.getColor()).toBe('e3aaec');
-        colorPicker.getSaturationPointer().click();
+        colorPicker.clickSaturation();
         browser.keys(ARROW_UP_KEY);
         expect(colorPicker.getColor()).toBe('e7adf0');
         browser.keys(ARROW_LEFT_KEY);
@@ -54,7 +53,7 @@ describe('ColorPicker default variant', () => {
 
     it('should focus the right color in default colors component when an arrow key is pressed', () => {
         const colorPicker = new PageColorPicker(COLORPICKER);
-        colorPicker.getDefaultColorsLabel().click();
+        colorPicker.clickDefaultColors();
         expect(colorPicker.getColor()).toBe('e3aaec');
         browser.keys(ARROW_RIGHT_KEY);
         expect(colorPicker.getColor()).toBe('c3dbf7');
@@ -64,8 +63,8 @@ describe('ColorPicker default variant', () => {
 
     it('should change color when hue component is focused an arrow key is pressed', () => {
         const colorPicker = new PageColorPicker(COLORPICKER);
-        colorPicker.getDefaultColorsLabel().click();
-        colorPicker.getHueInput().click();
+        colorPicker.clickDefaultColors();
+        colorPicker.clickHue();
         expect(colorPicker.getColor()).toBe('abedec');
         browser.keys(ARROW_LEFT_KEY);
         expect(colorPicker.getColor()).toBe('abedeb');
@@ -75,7 +74,7 @@ describe('ColorPicker default variant', () => {
 
     it('should change color when alpha component is focused an arrow key is pressed', () => {
         const colorPicker = new PageColorPicker(COLORPICKER);
-        colorPicker.getSaturationPointer().click();
+        colorPicker.clickSaturation();
         browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);
         browser.keys(ARROW_LEFT_KEY);
