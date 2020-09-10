@@ -7,7 +7,6 @@ import { uniqueId } from '../../libs/utils';
 import OutsideClick from '../../libs/outsideClick';
 import Label from '../Input/label';
 import getNormalizeValue from './helpers/getNormalizeValue';
-import getSelectedOptionName from './helpers/getSelectedOptionName';
 import shouldOpenMenu from './helpers/shouldOpenMenu';
 import StyledInput from './styled/input';
 import StyledContainer from './styled/container';
@@ -83,11 +82,6 @@ class Picklist extends Component {
             return this.errorMessageId;
         }
         return undefined;
-    }
-
-    getAriaActivedescendant() {
-        const { value } = this.props;
-        return getSelectedOptionName(value);
     }
 
     handleKeyPressed(event) {
@@ -257,7 +251,6 @@ class Picklist extends Component {
                         aria-describedby={errorMessageId}
                         autoComplete="off"
                         ref={this.triggerRef}
-                        aria-activedescendant={this.getAriaActivedescendant()}
                         icon={icon}
                         iconPosition="left"
                         variant={variant}

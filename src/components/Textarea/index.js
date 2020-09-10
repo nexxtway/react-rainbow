@@ -95,6 +95,7 @@ class Textarea extends Component {
             id,
             hideLabel,
             name,
+            header,
             footer,
             variant,
         } = this.props;
@@ -110,12 +111,12 @@ class Textarea extends Component {
                     id={this.getInlineTextLabelId()}
                 />
                 <StyledTextareaContainer
-                    footer={footer}
                     error={error}
                     readOnly={readOnly}
                     disabled={disabled}
                     variant={variant}
                 >
+                    <RenderIf isTrue={!!header}>{header}</RenderIf>
                     <StyledTextarea
                         error={error}
                         id={this.textareaId}
@@ -136,7 +137,6 @@ class Textarea extends Component {
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.textareaRef}
-                        footer={footer}
                     />
                     <RenderIf isTrue={!!footer}>{footer}</RenderIf>
                 </StyledTextareaContainer>
@@ -200,6 +200,8 @@ Textarea.propTypes = {
     variant: PropTypes.oneOf(['default', 'shaded']),
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** It is what will be displayed at the top of the component. */
+    header: PropTypes.node,
     /** It is what will be displayed at the bottom of the component. */
     footer: PropTypes.node,
 };
@@ -228,6 +230,7 @@ Textarea.defaultProps = {
     variant: 'default',
     id: undefined,
     hideLabel: false,
+    header: undefined,
     footer: undefined,
 };
 
