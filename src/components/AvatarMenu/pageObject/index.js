@@ -1,6 +1,4 @@
-/* eslint-disable class-methods-use-this */
 const PagePrimitiveMenu = require('../../PrimitiveMenu/pageObject');
-// const PageMenuItem = require('../../MenuItem/pageObject');
 
 /**
  * AvatarMenu page object class.
