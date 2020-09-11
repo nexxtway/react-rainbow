@@ -14,7 +14,7 @@ export default class AvatarButton extends Component {
      * @public
      */
     get htmlElementRef() {
-        return this.avatarButtonRef.current;
+        return this.avatarButtonRef;
     }
 
     /**

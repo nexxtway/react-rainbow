@@ -18,7 +18,7 @@ export default class ButtonIcon extends Component {
      * @public
      */
     get htmlElementRef() {
-        return this.buttonRef.current;
+        return this.buttonRef;
     }
 
     /**
