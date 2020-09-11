@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import ContentMetaResolver from './ContentMetaResolver';
 import defaultPositionResolver from './helpers/defaultPositionResolver';
-import { disableBodyScroll, enableBodyScroll } from '../../libs/scrollController';
+import { useScrollLock } from '../../libs/hooks';
 
 const Container = styled.div`
     position: fixed;
@@ -92,15 +92,15 @@ const InternalOverlay = props => {
         children,
     } = props;
     const [contentMeta, updateContentMeta] = useState(false);
+
     useEffect(() => {
         if (isVisible && contentMeta) {
             onOpened();
-            disableBodyScroll(undefined, { reserveScrollBarGap: true });
         }
-        return () => {
-            enableBodyScroll();
-        };
     }, [isVisible, contentMeta, onOpened]);
+
+    useScrollLock(isVisible && contentMeta);
+
     if (isVisible) {
         const content = children || <ContentComponent />;
         if (contentMeta) {

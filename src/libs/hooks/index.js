@@ -6,4 +6,5 @@ export { default as useReduxForm } from './useReduxForm';
 export { default as useUniqueIdentifier } from './useUniqueIdentifier';
 export { default as useDisclosure } from './useDisclosure';
 export { default as useWindowResize } from './useWindowResize';
+export { default as useScrollLock } from './useScrollLock';
 export { useOutsideClick } from '@rainbow-modules/hooks';

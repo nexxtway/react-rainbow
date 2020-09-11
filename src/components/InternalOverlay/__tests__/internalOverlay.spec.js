@@ -1,13 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import InternalOverlay from '..';
-import * as scroll from '../../../libs/scrollController';
 import * as resolver from '../ContentMetaResolver';
-
-const mockDisableScroll = jest.fn();
-const mockEnableScroll = jest.fn();
-scroll.disableBodyScroll = mockDisableScroll;
-scroll.enableBodyScroll = mockEnableScroll;
 
 describe('<InternalOverlay />', () => {
     beforeEach(() => {
@@ -25,9 +19,6 @@ describe('<InternalOverlay />', () => {
                 },
             ];
         });
-
-        mockDisableScroll.mockReset();
-        mockEnableScroll.mockReset();
     });
 
     it('should render if isVisible is true', () => {
@@ -46,32 +37,6 @@ describe('<InternalOverlay />', () => {
             <InternalOverlay render={() => <div id="test-id" />} triggerElementRef={{}} />,
         );
         expect(component.find('[id="test-id"]').exists()).toBe(false);
-    });
-
-    it('should disable scroll when isVisible is true', () => {
-        const component = mount(
-            <InternalOverlay render={() => <div id="test-id" />} triggerElementRef={{}} />,
-        );
-        component.setProps({
-            isVisible: true,
-        });
-        component.setProps({});
-        expect(mockDisableScroll).toHaveBeenCalledTimes(1);
-    });
-
-    it('should enable scroll when isVisible is false', () => {
-        const component = mount(
-            <InternalOverlay
-                render={() => <div id="test-id" />}
-                triggerElementRef={{}}
-                isVisible
-            />,
-        );
-        mockEnableScroll.mockClear();
-        component.setProps({
-            isVisible: false,
-        });
-        expect(mockEnableScroll).toHaveBeenCalledTimes(1);
     });
 
     it('should resolve content meta', () => {

@@ -2,12 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
-import {
-    disableBodyScroll,
-    enableBodyScroll,
-    clearAllBodyScrollLocks,
-} from '../../libs/scrollController';
-import CounterManager from '../../libs/counterManager';
 import manageTab from '../../libs/manageTab';
 import RenderIf from '../RenderIf';
 import StyledBackDrop from './styled/backDrop';
@@ -18,7 +12,7 @@ import StyledDivider from './styled/divider';
 import StyledFooter from './styled/footer';
 import Header from './header';
 import CloseIcon from './closeIcon';
-import { useUniqueIdentifier } from '../../libs/hooks';
+import { useUniqueIdentifier, useScrollLock } from '../../libs/hooks';
 import getSlideFrom from './helpers/getSlideFrom';
 
 const DrawerState = {
@@ -57,22 +51,14 @@ export default function Drawer(props) {
     );
 
     useEffect(() => {
-        const contentElement = contentRef.current;
         if (isOpen) {
-            CounterManager.increment();
-            disableBodyScroll(contentElement);
             triggerRef.current = document.activeElement;
             setDrawerState(DrawerState.OPENING);
         }
 
         return () => {
             if (isOpen) {
-                CounterManager.decrement();
                 if (triggerRef.current) triggerRef.current.focus();
-                if (!CounterManager.hasModalsOpen()) {
-                    enableBodyScroll(contentElement);
-                }
-                clearAllBodyScrollLocks();
                 setDrawerState(DrawerState.CLOSING);
             }
         };
@@ -84,6 +70,8 @@ export default function Drawer(props) {
             onOpened();
         }
     }, [drawerState, isOpen, onOpened]);
+
+    useScrollLock(isOpen);
 
     const onSlideEnd = () => {
         if (drawerState === DrawerState.OPENING) {

@@ -1,36 +1,17 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { TAB_KEY } from '../../../libs/constants';
-import CounterManager from '../../../libs/counterManager';
 import manageTab from '../../../libs/manageTab';
-import {
-    disableBodyScroll,
-    enableBodyScroll,
-    clearAllBodyScrollLocks,
-} from '../../../libs/scrollController';
 import Drawer from '../';
 import StyledFooter from '../styled/footer';
 import StyledContent from '../styled/content';
 import StyledCloseButton from '../styled/closeButton';
 
-jest.mock('../../../libs/counterManager', () => ({
-    increment: jest.fn(),
-    decrement: jest.fn(),
-    hasModalsOpen: jest.fn(() => false),
-}));
 jest.mock('../../../libs/manageTab', () => jest.fn());
-jest.mock('../../../libs/scrollController', () => ({
-    disableBodyScroll: jest.fn(),
-    enableBodyScroll: jest.fn(),
-    clearAllBodyScrollLocks: jest.fn(),
-}));
 
 describe('<Drawer />', () => {
     beforeEach(() => {
         manageTab.mockReset();
-        disableBodyScroll.mockReset();
-        enableBodyScroll.mockReset();
-        clearAllBodyScrollLocks.mockReset();
     });
 
     afterEach(() => {
@@ -141,49 +122,6 @@ describe('<Drawer />', () => {
         );
         component.find('div[role="presentation"]').simulate('keyDown', { keyCode: 27 });
         expect(closeMockFn).toHaveBeenCalledTimes(1);
-    });
-    it('should call disableBodyScroll when open the drawer', () => {
-        mount(
-            <Drawer isOpen>
-                <p />
-            </Drawer>,
-        );
-        expect(disableBodyScroll).toHaveBeenCalledWith(expect.any(Node));
-    });
-    it('should call enableBodyScroll when drawer is closed', async done => {
-        expect.assertions(1);
-        const component = mount(
-            <Drawer isOpen>
-                <p />
-            </Drawer>,
-        );
-        component.setProps({
-            isOpen: false,
-        });
-        setTimeout(() => {
-            expect(enableBodyScroll).toHaveBeenCalledWith(expect.any(Node));
-            done();
-        }, 300);
-    });
-    it('should call CounterManager.decrement when the component unmount and it is open', () => {
-        CounterManager.decrement.mockReset();
-        const component = mount(
-            <Drawer isOpen>
-                <p />
-            </Drawer>,
-        );
-        component.unmount();
-        expect(CounterManager.decrement).toHaveBeenCalledTimes(1);
-    });
-    it('should not call CounterManager.decrement when the component unmount and it is not open', () => {
-        CounterManager.decrement.mockReset();
-        const component = mount(
-            <Drawer isOpen={false}>
-                <p />
-            </Drawer>,
-        );
-        component.unmount();
-        expect(CounterManager.decrement).not.toHaveBeenCalled();
     });
     it('should render the close button by default', () => {
         const component = mount(
