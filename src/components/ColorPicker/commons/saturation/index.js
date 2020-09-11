@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext } from 'react';
+import React, { useRef, useContext } from 'react';
 import { UP_KEY, DOWN_KEY, RIGHT_KEY, LEFT_KEY } from '../../../../libs/constants';
 import {
     hsvToRgb,
@@ -14,6 +14,7 @@ import { calculateSaturation, calculateBright } from './helpers';
 const Saturation = React.forwardRef((_props, ref) => {
     const { rgba, hsv, tabIndex, onChange } = useContext(ColorPickerContext);
     const containerRef = useRef();
+    const isMouseDown = useRef(false);
     const [h, s, v] = hsv;
     const a = rgba[3];
 
@@ -41,19 +42,27 @@ const Saturation = React.forwardRef((_props, ref) => {
         change({ saturation, bright });
     };
 
-    const unbindEventListeners = () => {
-        window.removeEventListener('mousemove', handleChange);
-        window.removeEventListener('mouseup', unbindEventListeners);
-    };
-
     const handleMouseDown = event => {
         handleChange(event);
-        window.addEventListener('mousemove', handleChange);
-        window.addEventListener('mouseup', unbindEventListeners);
+        isMouseDown.current = true;
     };
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => unbindEventListeners, []);
+    const handleMouseMove = event => {
+        if (isMouseDown.current) {
+            handleChange(event);
+        }
+    };
+
+    const handleMouseUp = () => {
+        isMouseDown.current = false;
+    };
+
+    const handleMouseLeave = event => {
+        if (isMouseDown.current) {
+            handleChange(event);
+            isMouseDown.current = false;
+        }
+    };
 
     const keyHandlerMap = {
         [UP_KEY]: () => {
@@ -94,10 +103,13 @@ const Saturation = React.forwardRef((_props, ref) => {
         <StyledColor
             ref={containerRef}
             style={styleColor}
-            onMouseDown={handleMouseDown}
             onTouchMove={handleChange}
             onTouchStart={handleChange}
             onKeyDown={handleKeyDown}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
             onClick={handleClick}
         >
             <StyledCircle ref={ref} type="button" tabIndex={tabIndex} style={stylePointer} />
