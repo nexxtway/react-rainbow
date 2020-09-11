@@ -29,14 +29,14 @@ export default function useArrowKeyNav({ childrenRefs, isLoading }) {
     const keyHandlerMap = useMemo(
         () => ({
             [UP_KEY]: () => {
-                if (focusedChildIndex > 0) {
-                    setFocusedChildIndex(focusedChildIndex - 1);
-                }
+                const nextFocusedChildIndex =
+                    focusedChildIndex > 0 ? focusedChildIndex - 1 : childrenRefs.length - 1;
+                setFocusedChildIndex(nextFocusedChildIndex);
             },
             [DOWN_KEY]: () => {
-                if (focusedChildIndex < childrenRefs.length - 1) {
-                    setFocusedChildIndex(focusedChildIndex + 1);
-                }
+                const nextFocusedChildIndex =
+                    focusedChildIndex < childrenRefs.length - 1 ? focusedChildIndex + 1 : 0;
+                setFocusedChildIndex(nextFocusedChildIndex);
             },
             [ENTER_KEY]: () => {
                 const isValidIndex = focusedChildIndex >= 0;
