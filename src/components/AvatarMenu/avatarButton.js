@@ -10,7 +10,7 @@ export default class AvatarButton extends Component {
     }
 
     /**
-     * returns the reft to the DOM element.
+     * Returns the ref of the HTML button element.
      * @public
      */
     get htmlElementRef() {
