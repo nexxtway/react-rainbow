@@ -13,7 +13,7 @@ export default class Button extends Component {
     }
 
     get htmlElementRef() {
-        return this.buttonRef.current;
+        return this.buttonRef;
     }
 
     isDisabled() {
