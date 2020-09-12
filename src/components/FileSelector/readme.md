@@ -294,6 +294,7 @@ function FileSelectorExample(props) {
 ```js
 import React, { useState } from 'react';
 import { FileSelector } from 'react-rainbow-components';
+import { Picture } from '@rainbow-modules/icons'
 
 const containerStyles = {
     maxWidth: 300,
@@ -312,7 +313,7 @@ function FileSelectorExample(props) {
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 style={containerStyles}
                 label="File selector"
-                icon={<PictureIcon />}
+                uploadIcon={<Picture />}
                 placeholder="Drag & Drop or Click to Browse"
                 bottomHelpText="Select only one file"
                 variant="multiline"

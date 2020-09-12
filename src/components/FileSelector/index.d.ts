@@ -6,7 +6,7 @@ export interface FileSelectorProps extends BaseProps {
     name?: string;
     label?: ReactNode;
     error?: ReactNode;
-    icon?: ReactNode;
+    uploadIcon?: ReactNode;
     bottomHelpText?: ReactNode;
     placeholder?: string;
     tabIndex?: string | number;
@@ -16,6 +16,7 @@ export interface FileSelectorProps extends BaseProps {
     variant?: 'inline' | 'multiline';
     hideLabel?: boolean;
     accept?: string;
+    value?: object;
     onChange?: (value: FileList) => void;
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
