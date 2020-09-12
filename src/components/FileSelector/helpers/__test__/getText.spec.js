@@ -29,4 +29,13 @@ describe('getText', () => {
         ];
         expect(getText(files, '')).toBe('2 files');
     });
+
+    it('should return placeholder', () => {
+        const files = [
+            {
+                name: 'filename.jpg',
+            },
+        ];
+        expect(getText(files, 'Drag & Drop', null)).toBe('Drag & Drop');
+    });
 });
