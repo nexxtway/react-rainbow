@@ -409,6 +409,7 @@ export default class Table extends Component {
             emptyTitle,
             emptyDescription,
             keyField,
+            hideTableHeader,
         } = this.props;
         const { columns, tableWidth, rows, bulkSelection } = this.state;
         const tableStyles = {
@@ -451,6 +452,7 @@ export default class Table extends Component {
                                                 maxRowSelection={maxRowSelection}
                                                 bulkSelection={bulkSelection}
                                                 hasScroll={this.isScrollActive()}
+                                                hideTableHeader={hideTableHeader}
                                             />
                                         </tr>
                                     </thead>
@@ -536,6 +538,8 @@ Table.propTypes = {
     emptyDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** Shows or hides the header column. The default is false */
+    hideTableHeader: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -567,6 +571,7 @@ Table.defaultProps = {
     emptyTitle: 'It’s empty here',
     emptyDescription: 'Our robots did not find any match...',
     id: undefined,
+    hideTableHeader: false,
     className: undefined,
     style: undefined,
     children: undefined,

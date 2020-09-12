@@ -18,6 +18,7 @@ export interface TableProps extends BaseProps {
     selectedRows?: [];
     keyField: string;
     isLoading?: boolean;
+    hideTableHeader?: boolean;
     emptyIcon?: ReactNode;
     emptyTitle?: ReactNode;
     emptyDescription?: ReactNode;
