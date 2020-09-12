@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { Picture } from '@rainbow-modules/icons';
 import Icon from '../icon';
 import { ErrorIcon, FileIcon, FilesIcon, UploadIcon } from '../icons';
 
@@ -15,8 +16,32 @@ describe('<Icon />', () => {
         isDragOver = false;
         value = undefined;
     });
+    it('should render a Picture when value is null', () => {
+        value = null;
+        const component = mount(
+            <Icon
+                files={files}
+                error={error}
+                isDragOver={isDragOver}
+                value={value}
+                uploadIcon={<Picture />}
+            />,
+        );
 
-    it('should render an UploadIcon with value', () => {
+        const IconUpload = component.find(Picture);
+        expect(IconUpload.exists()).toBe(true);
+    });
+
+    it('should render a Picture', () => {
+        const component = mount(
+            <Icon files={files} error={error} isDragOver={isDragOver} uploadIcon={<Picture />} />,
+        );
+
+        const IconUpload = component.find(Picture);
+        expect(IconUpload.exists()).toBe(true);
+    });
+
+    it('should render an UploadIcon when value is null', () => {
         value = null;
         const component = mount(
             <Icon files={files} error={error} isDragOver={isDragOver} value={value} />,
@@ -25,7 +50,7 @@ describe('<Icon />', () => {
         expect(IconUpload.exists()).toBe(true);
     });
 
-    it('should render an UploadIcon with isDragOver', () => {
+    it('should render an UploadIcon when isDragOver is true', () => {
         isDragOver = true;
         const component = mount(
             <Icon files={files} error={error} isDragOver={isDragOver} value={value} />,
@@ -43,7 +68,7 @@ describe('<Icon />', () => {
         expect(IconUpload.exists()).toBe(true);
     });
 
-    it('should render an FileIcon', () => {
+    it('should render a FileIcon', () => {
         files = [
             {
                 name: 'filename.jpg',
@@ -56,7 +81,7 @@ describe('<Icon />', () => {
         expect(IconUpload.exists()).toBe(true);
     });
 
-    it('should render an FilesIcon', () => {
+    it('should render a FilesIcon', () => {
         files = [
             {
                 name: 'filename1.jpg',

@@ -26,6 +26,7 @@ const FileSelector = React.forwardRef((props, ref) => {
         name,
         label,
         error,
+        uploadIcon,
         bottomHelpText,
         placeholder,
         tabIndex,
@@ -165,7 +166,13 @@ const FileSelector = React.forwardRef((props, ref) => {
                         error={error}
                         disabled={disabled}
                     >
-                        <Icon files={files} error={error} isDragOver={isDragOver} value={value} />
+                        <Icon
+                            files={files}
+                            error={error}
+                            isDragOver={isDragOver}
+                            value={value}
+                            uploadIcon={uploadIcon}
+                        />
                     </StyledIconContainer>
                     <TruncatedText>{text}</TruncatedText>
                     <RenderIf isTrue={shouldRenderCancel}>
@@ -206,6 +213,8 @@ FileSelector.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** The icon shown in the FileSelector. In case of not being specified, a cloud icon will be shown by default. */
+    uploadIcon: PropTypes.node,
     /** Shows the help message below the input. */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
@@ -242,6 +251,7 @@ FileSelector.defaultProps = {
     name: undefined,
     label: undefined,
     error: undefined,
+    uploadIcon: undefined,
     bottomHelpText: undefined,
     placeholder: 'Drag & Drop or Click to Browse',
     tabIndex: undefined,
