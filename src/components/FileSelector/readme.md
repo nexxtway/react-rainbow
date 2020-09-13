@@ -289,6 +289,44 @@ function FileSelectorExample(props) {
 <FileSelectorExample />
 ```
 
+##### FileSelector multiline that does not change the icon either the text
+
+```js
+import React, { useState } from 'react';
+import { FileSelector } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+
+const containerStyles = {
+    maxWidth: 300,
+};
+
+function FileSelectorExample(props) {
+    const [files, setFiles] = useState([]);
+
+    const handleChange = files => {
+        setFiles(files);
+    }
+
+    return (
+        <div>
+            <FileSelector
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                style={containerStyles}
+                label="File selector"
+                placeholder="Drag & Drop or Click to Browse"
+                bottomHelpText="Select only one file"
+                variant="multiline"
+                onChange={handleChange}
+                value={null}
+            />
+        </div>
+    );
+}
+
+<FileSelectorExample />
+```
+
 ##### FileSelector multiline with custom icon
 
 ```js

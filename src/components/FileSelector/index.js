@@ -240,7 +240,7 @@ FileSelector.propTypes = {
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
-    /** An object to do not let change the icon and text information  */
+    /** A null value that prevents the icon from changing after a file is loaded  */
     value: PropTypes.object,
 };
 

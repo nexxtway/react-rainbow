@@ -20,7 +20,7 @@ export default function Icon({ files, error, isDragOver, value, uploadIcon }) {
 }
 Icon.propTypes = {
     files: PropTypes.array,
-    error: PropTypes.string,
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     isDragOver: PropTypes.bool,
     value: PropTypes.object,
     uploadIcon: PropTypes.node,
