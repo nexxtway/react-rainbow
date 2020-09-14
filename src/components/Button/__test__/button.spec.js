@@ -79,4 +79,10 @@ describe('<Button/>', () => {
         const component = mount(<Button label="OK">Test</Button>);
         expect(component.text()).toBe('Test');
     });
+    it('should return the html button element when access the htmlElementRef getter', () => {
+        const component = mount(<Button label="OK" />);
+        expect(component.instance().htmlElementRef).toEqual({
+            current: expect.any(HTMLButtonElement),
+        });
+    });
 });

@@ -1276,6 +1276,11 @@
   resolved "https://registry.yarnpkg.com/@rainbow-modules/hooks/-/hooks-0.1.2.tgz#b7803d73ed4e775db9a93398aef3512dfb91b107"
   integrity sha512-bHpwYOJ7XeHfxAAxlad7KvHF2z7SLx1GQLXArnigCloOnfstsagbVgqpoWbs1fp4t8NoNpfa+MifsNwhnL+Vjw==
 
+"@rainbow-modules/icons@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@rainbow-modules/icons/-/icons-0.1.5.tgz#6803d8c87da2df3911aee5ff1829676ca5de0d5b"
+  integrity sha512-nCA7mkELx7gZIuaVwCS/RYsVu78YGBJKgCsHHerqmr032dqqxRBslrF8RIwg0gPssGvfKYl6j5nmPffbUN8pjA==
+
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"

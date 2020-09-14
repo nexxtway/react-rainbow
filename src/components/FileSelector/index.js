@@ -15,7 +15,7 @@ import {
 } from './styled';
 import { CancelIcon } from './icons';
 import { useUniqueIdentifier, useErrorMessageId, useLabelId, useReduxForm } from '../../libs/hooks';
-import getIcon from './helpers/getIcon';
+import Icon from './icon';
 import getText from './helpers/getText';
 
 const FileSelector = React.forwardRef((props, ref) => {
@@ -26,6 +26,7 @@ const FileSelector = React.forwardRef((props, ref) => {
         name,
         label,
         error,
+        uploadIcon,
         bottomHelpText,
         placeholder,
         tabIndex,
@@ -38,6 +39,7 @@ const FileSelector = React.forwardRef((props, ref) => {
         onChange,
         onFocus,
         onBlur,
+        value,
     } = useReduxForm(props);
 
     const [isDragOver, setIsDragOver] = useState(false);
@@ -114,12 +116,11 @@ const FileSelector = React.forwardRef((props, ref) => {
         onBlur(event);
     };
 
-    const icon = getIcon(files, error, isDragOver);
-    const text = getText(files, placeholder);
+    const text = getText(files, placeholder, value);
 
     const isFileSelected = files && files.length > 0;
     const isSingleFile = files && files.length === 1;
-    const shouldRenderCancel = isFileSelected && !isDragOver;
+    const shouldRenderCancel = isFileSelected && !isDragOver && value !== null;
 
     return (
         <StyledContainer id={id} className={className} style={style}>
@@ -165,7 +166,13 @@ const FileSelector = React.forwardRef((props, ref) => {
                         error={error}
                         disabled={disabled}
                     >
-                        {icon}
+                        <Icon
+                            files={files}
+                            error={error}
+                            isDragOver={isDragOver}
+                            value={value}
+                            uploadIcon={uploadIcon}
+                        />
                     </StyledIconContainer>
                     <TruncatedText>{text}</TruncatedText>
                     <RenderIf isTrue={shouldRenderCancel}>
@@ -206,6 +213,8 @@ FileSelector.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** The icon shown in the FileSelector. In case of not being specified, a cloud icon will be shown by default. */
+    uploadIcon: PropTypes.node,
     /** Shows the help message below the input. */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
@@ -231,6 +240,8 @@ FileSelector.propTypes = {
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
+    /** A null value that prevents the icon from changing after a file is loaded  */
+    value: PropTypes.object,
 };
 
 FileSelector.defaultProps = {
@@ -240,6 +251,7 @@ FileSelector.defaultProps = {
     name: undefined,
     label: undefined,
     error: undefined,
+    uploadIcon: undefined,
     bottomHelpText: undefined,
     placeholder: 'Drag & Drop or Click to Browse',
     tabIndex: undefined,
@@ -249,6 +261,7 @@ FileSelector.defaultProps = {
     variant: 'inline',
     hideLabel: false,
     accept: undefined,
+    value: undefined,
     onChange: () => {},
     onFocus: () => {},
     onBlur: () => {},
