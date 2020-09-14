@@ -59,7 +59,7 @@ describe('<FileSelector />', () => {
     });
 
     it('should render the right icon when it is passed', () => {
-        const component = mount(<FileSelector icon={<FontAwesomeIcon icon={faUser} />} />);
+        const component = mount(<FileSelector uploadIcon={<FontAwesomeIcon icon={faUser} />} />);
         expect(component.find(FontAwesomeIcon).prop('icon')).toBe(faUser);
     });
 
