@@ -28,7 +28,7 @@ const PrimitiveMenu = React.forwardRef((props, ref) => {
     useOutsideClick(
         dropdownRef,
         event => {
-            if (event.target === triggerRef.current.htmlElementRef.current) {
+            if (triggerRef.current.htmlElementRef.current.contains(event.target)) {
                 return null;
             }
             return closeMenu();
