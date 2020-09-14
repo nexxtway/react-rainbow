@@ -1,22 +1,16 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component, createRef } from 'react';
 import Sidebar from '../../../src/components/Sidebar';
 import SidebarItem from '../../../src/components/SidebarItem';
 import Application from '../../../src/components/Application';
 import ExperiencesIcon from './icons/experiencesIcon';
 import PuzzleIcon from './icons/puzzleIcon';
-import StartupIcon from './icons/startupIcon';
 import DesignIcon from './icons/designIcon';
 import ConsoleIcon from './icons/consoleIcon';
 import isNotComponentPage from './../utils';
+import { Icon } from './styled';
 
 const name = window.location.href.split('#/')[1];
 const pageName = name && name.split('/')[0];
-
-const Icon = styled(StartupIcon)`
-    width: 26px;
-    height: 26px;
-`;
 
 function resolveCurrentUrl() {
     if (isNotComponentPage(pageName)) {
@@ -40,16 +34,23 @@ export default class ComponentsList extends Component {
         super(props);
         this.state = {
             selectedItem: resolveCurrentUrl(),
+            isVisible: false,
         };
         this.handleOnSelect = this.handleOnSelect.bind(this);
+        this.handleOnClickCustomWorkBtn = this.handleOnClickCustomWorkBtn.bind(this);
+        this.itemRef = createRef();
     }
 
     handleOnSelect(e, selectedItem) {
         return this.setState({ selectedItem });
     }
 
+    handleOnClickCustomWorkBtn() {
+        this.setState({ isVisible: !this.state.isVisible });
+    }
+
     render() {
-        const { selectedItem } = this.state;
+        const { selectedItem, isVisible } = this.state;
 
         return (
             <Application theme={theme}>
