@@ -5,7 +5,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledTrigger = attachThemeAttrs(styled.button)`
     flex: 0 0 auto;
-    padding-left: .4rem;
+    padding-left: 4px;
     padding-right: 0;
     border: none;
     background: transparent;

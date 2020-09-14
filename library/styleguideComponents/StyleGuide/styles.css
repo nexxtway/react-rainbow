@@ -8,10 +8,14 @@
     height: calc(100vh - 68px);
     position: fixed;
     z-index: 3000;
+    overflow-y: scroll;
     margin-top: 68px;
-    padding-top: 24px;
+    padding-top: 12px;
     border-right: 1px solid #f4f6f9;
     transition: transform 230ms linear, opacity 230ms linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .react-rainbow-styleguide_twitter-link {
@@ -23,9 +27,9 @@
     align-items: center;
     justify-content: center;
     transition: all 0.05s ease;
-    position: absolute;
-    bottom: 24px;
-    left: 34px;
+    flex-shrink: 0;
+    margin: 16px 0;
+    align-self: center;
 }
 
 .react-rainbow-styleguide_twitter-link:hover,
@@ -36,7 +40,6 @@
     border-radius: 36px;
     height: 36px;
     width: 36px;
-    left: 24px;
 }
 
 .react-rainbow-main-content {

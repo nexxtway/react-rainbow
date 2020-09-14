@@ -49,6 +49,11 @@
     font-weight: 500;
     color: #061c3f;
     width: 260px;
+    border: none;
+}
+
+.react-rainbow-designs_card footer {
+    border-top: 1px solid rgba(164, 167, 181, 0.25);
 }
 
 .react-rainbow-designs_card-image {

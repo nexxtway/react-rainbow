@@ -4,7 +4,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 const StyledFlagContainer = attachThemeAttrs(styled.div)`
     display: flex;
     padding-right: 12px;
-    border-right: 1px solid ${props => props.palette.text.header};
+    border-right: 1px solid ${props => props.palette.border.divider};
     ${props =>
         props.readOnly &&
         `
