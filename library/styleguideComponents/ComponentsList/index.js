@@ -1,6 +1,5 @@
 import React, { Component, createRef } from 'react';
 import Sidebar from '../../../src/components/Sidebar';
-import InternalOverlay from '../../../src/components/InternalOverlay';
 import SidebarItem from '../../../src/components/SidebarItem';
 import Application from '../../../src/components/Application';
 import ExperiencesIcon from './icons/experiencesIcon';

@@ -15,8 +15,6 @@ import ChatIcon from '../../exampleComponents/Icons/chat';
 import TwitterIcon from '../../exampleComponents/Icons/twitter';
 import Ribbon from '../RibbonRenderer';
 import BarsIcon from './barsIcon';
-import store from '../../../src/redux/store';
-import Message from '../Message';
 import './styles.css';
 
 // analytics
@@ -95,55 +93,52 @@ class StyleGuide extends React.Component {
         const components = toc.props.sections[1].components;
 
         return (
-            <Provider store={store}>
-                <>
-                    <Message />
-                    <div className="react-rainbow-styleguide-container rainbow-position-align_start">
-                        <ProjectSelector />
-                        <Ribbon />
-                        <aside className={this.getSideBarClassNames()}>
-                            {toc}
-                            <a
-                                href="https://twitter.com/ReactRainbow"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="react-rainbow-styleguide_twitter-link"
-                            >
-                                <TwitterIcon style={twitterIconStyle} />
-                            </a>
-                        </aside>
-                        <div
-                            className={this.getBackdropClassNames()}
-                            role="presentation"
-                            onClick={this.toggleSidebar}
-                        />
-                        <main className="react-rainbow-main-content">
-                            <RenderIf isTrue={window.location.hash !== '#/Components'}>
-                                {children}
-                            </RenderIf>
-                            <RenderIf isTrue={window.location.hash === '#/Components'}>
-                                <ComponentsPage components={components} />
-                            </RenderIf>
-                        </main>
-                        <ButtonIcon
-                            className="react-rainbow-styleguide_hamburger-button"
-                            icon={<BarsIcon />}
-                            size="large"
-                            onClick={this.toggleSidebar}
-                        />
-                        <StyleButtonIcon
-                            className="react-rainbow-styleguide-open-chat-button"
-                            shaded
-                            variant="brand"
-                            size="large"
-                            icon={<ChatIcon />}
-                        />
-                        <GitterChat
-                            room="react-rainbow-components/community"
-                            activationElement=".react-rainbow-styleguide-open-chat-button"
-                        />
-                    </div>
-                </>
+            <Provider>
+                <div className="react-rainbow-styleguide-container rainbow-position-align_start">
+                    <ProjectSelector />
+                    <Ribbon />
+                    <aside className={this.getSideBarClassNames()}>
+                        {toc}
+                        <a
+                            href="https://twitter.com/ReactRainbow"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="react-rainbow-styleguide_twitter-link"
+                        >
+                            <TwitterIcon style={twitterIconStyle} />
+                        </a>
+                    </aside>
+                    <div
+                        className={this.getBackdropClassNames()}
+                        role="presentation"
+                        onClick={this.toggleSidebar}
+                    />
+                    <main className="react-rainbow-main-content">
+                        <RenderIf isTrue={window.location.hash !== '#/Components'}>
+                            {children}
+                        </RenderIf>
+                        <RenderIf isTrue={window.location.hash === '#/Components'}>
+                            <ComponentsPage components={components} />
+                        </RenderIf>
+                    </main>
+                    <ButtonIcon
+                        className="react-rainbow-styleguide_hamburger-button"
+                        icon={<BarsIcon />}
+                        size="large"
+                        onClick={this.toggleSidebar}
+                    />
+                    <StyleButtonIcon
+                        className="react-rainbow-styleguide-open-chat-button"
+                        shaded
+                        variant="brand"
+                        size="large"
+                        icon={<ChatIcon />}
+                    />
+                    <GitterChat
+                        room="react-rainbow-components/community"
+                        activationElement=".react-rainbow-styleguide-open-chat-button"
+                    />
+                </div>
             </Provider>
         );
     }
