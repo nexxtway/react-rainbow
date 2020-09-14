@@ -2,7 +2,6 @@ const PageButtonMenu = require('../../../src/components/ButtonMenu/pageObject');
 const { ARROW_DOWN_KEY } = require('../../constants');
 
 const BUTTONMENU = '#button-menu-17';
-const SHOW_CODE_BUTTON = 'button=Show Code';
 
 const addMenuItem = () => $('#button-icon_add-new-menu-item').click();
 
@@ -14,7 +13,6 @@ describe('ButtonMenu with MenuItems changed dynamically', () => {
         browser.refresh();
         const component = $(BUTTONMENU);
         component.waitForExist();
-        $(SHOW_CODE_BUTTON).moveTo();
     });
     it('should select the new option with keyboard after it is added dynamically', () => {
         const buttonMenu = new PageButtonMenu(BUTTONMENU);

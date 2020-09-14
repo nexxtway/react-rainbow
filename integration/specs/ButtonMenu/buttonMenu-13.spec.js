@@ -2,7 +2,6 @@ const PageButtonMenu = require('../../../src/components/ButtonMenu/pageObject');
 const { ARROW_DOWN_KEY, ARROW_UP_KEY } = require('../../constants');
 
 const MENU_BTN = '#button-menu-disabled-items';
-const SHOW_CODE_BUTTON = 'button=Show Code';
 
 describe('ButtonMenu when the second and last items are disabled', () => {
     beforeAll(() => {
@@ -12,7 +11,6 @@ describe('ButtonMenu when the second and last items are disabled', () => {
         browser.refresh();
         const component = $(MENU_BTN);
         component.waitForExist();
-        $(SHOW_CODE_BUTTON).moveTo();
     });
 
     it('should move to the first item when last focusable item is active and press arrow down', () => {

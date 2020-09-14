@@ -3,7 +3,6 @@ const { ESCAPE_KEY, ARROW_DOWN_KEY, ARROW_UP_KEY, TAB_KEY } = require('../../con
 
 const MENU_BTN = '#button-menu';
 const REACT_LOGO = 'img[alt="rainbow logo"]';
-const SHOW_CODE_BUTTON = 'button=Show Code';
 
 describe('ButtonMenu with subheaders example', () => {
     beforeAll(() => {
@@ -13,7 +12,6 @@ describe('ButtonMenu with subheaders example', () => {
         browser.refresh();
         const component = $(MENU_BTN);
         component.waitForExist();
-        $(SHOW_CODE_BUTTON).moveTo();
     });
 
     it('should open the menu when click on the button', () => {
