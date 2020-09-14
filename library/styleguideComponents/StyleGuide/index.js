@@ -1,7 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import classnames from 'classnames';
 import Application from './../../../src/components/Application';
 import ReactGA from '.././../ga';
@@ -14,7 +14,6 @@ import ChatIcon from '../../exampleComponents/Icons/chat';
 import TwitterIcon from '../../exampleComponents/Icons/twitter';
 import Ribbon from '../RibbonRenderer';
 import BarsIcon from './barsIcon';
-
 import './styles.css';
 
 // analytics

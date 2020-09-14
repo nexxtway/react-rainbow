@@ -15,9 +15,9 @@ const IconContainer = attachThemeAttrs(styled.span)`
     justify-content: center;
 
     svg {
-        width: 16px !important;
-        height: 16px !important;
-        font-size: 16px !important;
+        width: 17px !important;
+        height: 17px !important;
+        font-size: 17px !important;
     }
 
     :not(button) {
