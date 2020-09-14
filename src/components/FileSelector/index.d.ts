@@ -6,7 +6,7 @@ export interface FileSelectorProps extends BaseProps {
     name?: string;
     label?: ReactNode;
     error?: ReactNode;
-    icon?: ReactNode;
+    uploadIcon?: ReactNode;
     bottomHelpText?: ReactNode;
     placeholder?: string;
     tabIndex?: string | number;

@@ -32,6 +32,7 @@
     },
     "dependencies": {
         "@rainbow-modules/hooks": "^0.1.2",
+        "@rainbow-modules/icons": "^0.1.5",
         "autosize": "^4.0.2",
         "chart.js": "2.7.3",
         "clipboard-copy": "^2.0.0",

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ErrorIcon, FileIcon, FilesIcon, UploadIcon } from '../icons';
 
-export default function getIcon(files, error, icon, isDragOver) {
+export default function getIcon(files, error, uploadIcon, isDragOver) {
     if (!isDragOver) {
         if (error) {
             return <ErrorIcon />;
@@ -13,8 +13,8 @@ export default function getIcon(files, error, icon, isDragOver) {
             return <FilesIcon />;
         }
     }
-    if (icon) {
-        return icon;
+    if (uploadIcon) {
+        return uploadIcon;
     }
     return <UploadIcon />;
 }
