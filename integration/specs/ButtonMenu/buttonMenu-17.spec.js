@@ -25,14 +25,16 @@ describe('ButtonMenu with MenuItems changed dynamically', () => {
     });
     it('should select the second option with keyboard after it is added and remove dynamically a new element', () => {
         const buttonMenu = new PageButtonMenu(BUTTONMENU);
+        let secondItemMenu;
         addMenuItem();
         buttonMenu.click();
         browser.keys(ARROW_DOWN_KEY);
-        const secondItemMenu = buttonMenu.getItem(1);
+        secondItemMenu = buttonMenu.getItem(1);
         expect(secondItemMenu.hasFocus()).toBe(true);
         expect(secondItemMenu.getLabelText()).toBe('Menu Item New');
         addMenuItem();
         buttonMenu.click();
+        secondItemMenu = buttonMenu.getItem(1);
         browser.keys(ARROW_DOWN_KEY);
         expect(secondItemMenu.hasFocus()).toBe(true);
         expect(secondItemMenu.getLabelText()).toBe('Menu Item Two');
