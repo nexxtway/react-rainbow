@@ -19,10 +19,6 @@ export const StyledContent = styled.ul`
 `;
 
 export const StyledDropdown = attachThemeAttrs(styled.div)`
-    position: absolute;
-    z-index: 2000;
-    left: 50%;
-    float: left;
     min-width: 6rem;
     max-width: 20rem;
     max-height: 372px;
@@ -34,7 +30,6 @@ export const StyledDropdown = attachThemeAttrs(styled.div)`
     font-size: 0.75rem;
     background: ${props => props.palette.background.main};
     box-shadow: ${props => props.shadows.shadow_2};
-    transform: translateX(-50%);
     display: block;
     opacity: 1;
     transition: opacity 0.1s linear, visibility 0.1s linear;
@@ -59,42 +54,5 @@ export const StyledDropdown = attachThemeAttrs(styled.div)`
         `
             min-width: 25rem;
             max-width: 512px;
-        `};
-    ${props =>
-        props.menuAlignment === 'left' &&
-        `
-            left: 0;
-            transform: translateX(0);
-        `};
-    ${props =>
-        props.menuAlignment === 'right' &&
-        `
-            left: auto;
-            right: 0;
-            transform: translateX(0);
-        `};
-    ${props =>
-        props.menuAlignment === 'bottom' &&
-        `
-            top: auto;
-            bottom: 100%;
-            left: -50%;
-        `};
-    ${props =>
-        props.menuAlignment === 'bottom-right' &&
-        `
-            top: auto;
-            bottom: 100%;
-            left: auto;
-            right: 0;
-            transform: translateX(0);
-        `};
-    ${props =>
-        props.menuAlignment === 'bottom-left' &&
-        `
-            top: auto;
-            bottom: 100%;
-            left: 0;
-            transform: translateX(0);
-        `};        
+        `};    
 `;
