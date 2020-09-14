@@ -1,7 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 import FileSelector from '../';
 import ErrorText from '../../Input/styled/errorText';
 import HelpText from '../../Input/styled/helpText';
@@ -56,11 +54,6 @@ describe('<FileSelector />', () => {
     it('should render HelpText when bottomHelpText is passed', () => {
         const component = mount(<FileSelector bottomHelpText="help text" />);
         expect(component.find(HelpText).exists()).toBe(true);
-    });
-
-    it('should render the right icon when it is passed', () => {
-        const component = mount(<FileSelector icon={<FontAwesomeIcon icon={faUser} />} />);
-        expect(component.find(FontAwesomeIcon).prop('icon')).toBe(faUser);
     });
 
     it('should fire change event when a file is picked', () => {
