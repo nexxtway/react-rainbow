@@ -4,35 +4,31 @@ import PropTypes from 'prop-types';
 import { StyledTrigger, StyledFlagContainer, StyledIndicator } from './styled';
 
 export default function VariantRenderIf(props) {
-    const { isTrue, ref, onClick, onBlur, tabIndex, disabled, error, countries, flagIcon } = props;
+    const { ref, onClick, onBlur, tabIndex, disabled, error, countries, flagIcon } = props;
 
-    if (typeof countries === 'string') {
+    if (countries.length === 1) {
         return (
             <StyledTrigger ref={ref} tabIndex={tabIndex} disabled={disabled}>
                 <StyledFlagContainer disabled={disabled}>{flagIcon}</StyledFlagContainer>
             </StyledTrigger>
         );
     }
-    if (isTrue) {
-        return (
-            <StyledTrigger
-                ref={ref}
-                onClick={onClick}
-                onBlur={onBlur}
-                tabIndex={tabIndex}
-                disabled={disabled}
-            >
-                <StyledFlagContainer disabled={disabled}>
-                    {flagIcon}
-                    <StyledIndicator error={error} disabled={disabled} />
-                </StyledFlagContainer>
-            </StyledTrigger>
-        );
-    }
-    return null;
+    return (
+        <StyledTrigger
+            ref={ref}
+            onClick={onClick}
+            onBlur={onBlur}
+            tabIndex={tabIndex}
+            disabled={disabled}
+        >
+            <StyledFlagContainer disabled={disabled}>
+                {flagIcon}
+                <StyledIndicator error={error} disabled={disabled} />
+            </StyledFlagContainer>
+        </StyledTrigger>
+    );
 }
 VariantRenderIf.propTypes = {
-    isTrue: PropTypes.bool,
     onClick: PropTypes.func,
     disabled: PropTypes.bool,
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),

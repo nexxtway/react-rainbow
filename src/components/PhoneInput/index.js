@@ -9,6 +9,8 @@ import ErrorText from '../Input/styled/errorText';
 import {
     StyledInputContainer,
     StyledInput,
+    StyledIndicator,
+    StyledTrigger,
     StyledFlagContainer,
     StyledCountryCode,
     StyledIconContainer,
@@ -23,7 +25,6 @@ import {
     useHandleCountryChange,
 } from './hooks';
 import CountriesDropdown from './countriesDropdown';
-import VariantRenderIf from './variantRenderIf';
 
 /**
  * phone input are used for freeform data entry.
@@ -118,6 +119,10 @@ const PhoneInput = React.forwardRef((props, ref) => {
     const isFocus = focusIndex > -1;
     const formattedCountryCode = `(${countryCode})`;
 
+    const isReadOnly = readOnly && !disabled;
+    const hasTrigger = !isReadOnly && countries.length > 1;
+    const isOnlyCountry = !isReadOnly && countries.length === 1;
+
     return (
         <StyledContainer id={id} ref={containerRef} className={className} style={style}>
             <Label
@@ -136,21 +141,35 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 error={error}
                 isFocus={isFocus}
             >
-                <RenderIf isTrue={readOnly && !disabled}>
+                <RenderIf isTrue={isReadOnly}>
                     <StyledFlagContainer readOnly>{flagIcon}</StyledFlagContainer>
                 </RenderIf>
-                <VariantRenderIf
-                    isTrue
-                    ref={triggerRef}
-                    onClick={handleClick}
-                    onFocus={event => handleFocus(event, 0)}
-                    onBlur={handleBlur}
-                    tabIndex={tabIndex}
-                    disabled={disabled}
-                    error={error}
-                    countries={countriesProps}
-                    flagIcon={flagIcon}
-                />
+                <RenderIf isTrue={hasTrigger}>
+                    <StyledTrigger
+                        ref={triggerRef}
+                        onClick={handleClick}
+                        onFocus={event => handleFocus(event, 0)}
+                        onBlur={handleBlur}
+                        tabIndex={tabIndex}
+                        disabled={disabled}
+                    >
+                        <StyledFlagContainer disabled={disabled}>
+                            {flagIcon}
+                            <StyledIndicator error={error} disabled={disabled} />
+                        </StyledFlagContainer>
+                    </StyledTrigger>
+                </RenderIf>
+                <RenderIf isTrue={isOnlyCountry}>
+                    <StyledTrigger
+                        ref={triggerRef}
+                        onFocus={event => handleFocus(event, 0)}
+                        onBlur={handleBlur}
+                        tabIndex={tabIndex}
+                        disabled={disabled}
+                    >
+                        <StyledFlagContainer disabled={disabled}>{flagIcon}</StyledFlagContainer>
+                    </StyledTrigger>
+                </RenderIf>
                 <StyledCountryCode>{formattedCountryCode}</StyledCountryCode>
                 <StyledInput
                     id={inputId}
