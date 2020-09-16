@@ -6,7 +6,7 @@ import {
     FocusEvent,
     KeyboardEvent,
 } from 'react';
-import { BaseProps, IconPosition } from '../types';
+import { BaseProps, IconPosition, labelAlignment } from '../types';
 
 type InputType =
     | 'text'
@@ -31,6 +31,7 @@ export interface InputProps extends BaseProps {
     name?: string;
     type?: InputType;
     label?: ReactNode;
+    labelAlignment: labelAlignment;
     hideLabel?: boolean;
     placeholder?: string;
     icon?: ReactNode;

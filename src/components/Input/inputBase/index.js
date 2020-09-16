@@ -87,6 +87,7 @@ export default class InputBase extends Component {
             id,
             autoComplete,
             name,
+            labelAlignment,
             hideLabel,
             isBare,
             isCentered,
@@ -99,6 +100,7 @@ export default class InputBase extends Component {
             <StyledContainer id={id} className={className} style={style}>
                 <Label
                     label={label}
+                    labelAlignment={labelAlignment}
                     hideLabel={hideLabel}
                     required={required}
                     inputId={this.inputId}
@@ -208,6 +210,7 @@ InputBase.propTypes = {
     variant: PropTypes.oneOf(['default', 'shaded']),
     id: PropTypes.string,
     autoComplete: PropTypes.string,
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     hideLabel: PropTypes.bool,
 };
 
@@ -242,5 +245,6 @@ InputBase.defaultProps = {
     variant: 'default',
     id: undefined,
     autoComplete: 'on',
+    labelAlignment: 'center',
     hideLabel: false,
 };
