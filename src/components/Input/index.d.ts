@@ -35,6 +35,8 @@ export interface InputProps extends BaseProps {
     placeholder?: string;
     icon?: ReactNode;
     iconPosition?: IconPosition;
+    max?: number | string;
+    min?: number | string;
     maxLength?: number;
     minLength?: number;
     bottomHelpText?: ReactNode;
