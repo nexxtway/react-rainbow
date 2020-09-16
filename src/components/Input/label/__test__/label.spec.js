@@ -27,10 +27,6 @@ describe('<InputBaseLabel/>', () => {
             expect(component.find(LabelText).exists()).toBe(true);
             expect(component.find(HiddenElement).exists()).toBe(false);
         });
-        it('should set the labelAlignment prop passed in the LabelText component', () => {
-            const component = mount(<Label label="Input Label" labelAlignment="left" />);
-            expect(component.find(LabelText).prop('labelAlignment')).toBe('left');
-        });
     });
     describe('with hideLabel', () => {
         it('should set the inputId passed as the htmlFor prop in the label element', () => {

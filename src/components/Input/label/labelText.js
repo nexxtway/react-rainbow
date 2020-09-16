@@ -14,18 +14,6 @@ const Label = attachThemeAttrs(styled.label)`
         margin: 0;
     }
 
-    ${props =>
-        props.labelAlignment === 'left' &&
-        `
-            align-self: flex-start;
-            margin-left: 1rem;
-        `};
-    ${props =>
-        props.labelAlignment === 'right' &&
-        `
-            align-self: flex-end;
-            margin-right: 1rem;
-        `};
     ${props => props.readOnly && 'align-self: flex-start;'};
 `;
 
