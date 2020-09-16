@@ -29,7 +29,7 @@ class PagePrimitiveMenu {
      * @returns {bool}
      */
     isDropdownOpen() {
-        return $(this.dropdownElement).isExisting();
+        return $(this.dropdownElement).isExisting() && $(this.dropdownElement).isDisplayed();
     }
 
     /**
