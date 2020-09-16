@@ -76,6 +76,8 @@ export default class InputBase extends Component {
             onClick,
             onKeyDown,
             type,
+            max,
+            min,
             maxLength,
             minLength,
             pattern,
@@ -130,6 +132,8 @@ export default class InputBase extends Component {
                         disabled={disabled}
                         readOnly={readOnly}
                         required={required}
+                        max={max}
+                        min={min}
                         maxLength={maxLength}
                         minLength={minLength}
                         pattern={pattern}
@@ -181,6 +185,8 @@ InputBase.propTypes = {
     placeholder: PropTypes.string,
     icon: PropTypes.node,
     iconPosition: PropTypes.oneOf(['left', 'right']),
+    max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     maxLength: PropTypes.number,
     minLength: PropTypes.number,
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -213,6 +219,8 @@ InputBase.defaultProps = {
     placeholder: undefined,
     icon: undefined,
     iconPosition: 'left',
+    max: undefined,
+    min: undefined,
     maxLength: undefined,
     minLength: undefined,
     bottomHelpText: null,
