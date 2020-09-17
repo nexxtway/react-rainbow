@@ -10,7 +10,7 @@
 
 .react-rainbow-components-page_title {
     text-align: center;
-    margin: 1.25rem 0 1rem 0;
+    margin: 1.25rem 0.5rem 1rem 0.5rem;
     font-family: Lato;
     font-size: 2rem;
     font-weight: 300;
@@ -19,7 +19,33 @@
 }
 
 .react-rainbow-components-page_search {
-    width: 50%;
+    width: 45%;
+}
+
+.react-rainbow-components-page_search input {
+    border: 1px solid white;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 4px;
+    height: 56px;
+    padding-left: 56px;
+    font-size: 20px;
+}
+
+.react-rainbow-components-page_search input:active,
+.react-rainbow-components-page_search input:focus, {
+    padding-left: 55px;
+}
+
+.react-rainbow-components-page_search input::placeholder {
+    font-size: 20px;
+}
+
+.react-rainbow-components-page_search span {
+    left: 20px;
+}
+
+.react-rainbow-components-page_search span > svg {
+    height: 20px !important;
+    width: 20px !important;
 }
 
 .react-rainbow-components-page_carbon-ads {
@@ -67,6 +93,11 @@
     font-weight: 500;
     text-align: center;
     color: #061c3f;
+    border: none;
+}
+
+.react-rainbow-components-page_card footer {
+    border-top: 1px solid rgba(164, 167, 181, 0.25);
 }
 
 .react-rainbow-components-page_card-image {

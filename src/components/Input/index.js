@@ -87,6 +87,10 @@ Input.propTypes = {
     /** Describes the position of the icon with respect to body. Options include left and right.
      * This value defaults to left. */
     iconPosition: PropTypes.oneOf(['left', 'right']),
+    /** Specifies the minimum value allowed in the field. */
+    max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** Specifies the maximum value allowed in the field. */
+    min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The maximum number of characters allowed in the field. */
     maxLength: PropTypes.number,
     /** The minimum number of characters allowed in the field. */
@@ -150,6 +154,8 @@ Input.defaultProps = {
     placeholder: null,
     icon: undefined,
     iconPosition: 'left',
+    max: undefined,
+    min: undefined,
     maxLength: undefined,
     minLength: undefined,
     bottomHelpText: null,
