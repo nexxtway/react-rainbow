@@ -8,7 +8,7 @@ const containerStyles = {
     maxWidth: 300,
 };
 
-function FileSelectorExample(props) {
+function FileSelectorExample() {
     const [files, setFiles] = useState([]);
 
     const handleChange = files => {
@@ -42,7 +42,7 @@ const containerStyles = {
     maxWidth: 300,
 };
 
-function FileSelectorExample(props) {
+function FileSelectorExample() {
     const [files, setFiles] = useState([]);
 
     const handleChange = files => {
@@ -76,7 +76,7 @@ const containerStyles = {
     maxWidth: 300,
 };
 
-function FileSelectorExample(props) {
+function FileSelectorExample() {
     const [files, setFiles] = useState([]);
 
     const handleChange = files => {
@@ -109,7 +109,7 @@ const containerStyles = {
     maxWidth: 300,
 };
 
-function FileSelectorExample(props) {
+function FileSelectorExample() {
     const [files, setFiles] = useState([]);
 
     const handleChange = files => {
@@ -142,7 +142,7 @@ const containerStyles = {
     maxWidth: 300,
 };
 
-function FileSelectorExample(props) {
+function FileSelectorExample() {
     const [files, setFiles] = useState([]);
 
     const handleChange = files => {
@@ -177,7 +177,7 @@ const containerStyles = {
     maxWidth: 300,
 };
 
-function FileSelectorExample(props) {
+function FileSelectorExample() {
     const [files, setFiles] = useState([]);
 
     const handleChange = files => {
@@ -212,7 +212,7 @@ const containerStyles = {
     maxWidth: 300,
 };
 
-function FileSelectorExample(props) {
+function FileSelectorExample() {
     const [files, setFiles] = useState([]);
 
     const handleChange = files => {
@@ -246,7 +246,7 @@ const containerStyles = {
     maxWidth: 300,
 };
 
-function FileSelectorExample(props) {
+function FileSelectorExample() {
     const [files, setFiles] = useState([]);
 
     const handleChange = files => {
@@ -280,7 +280,7 @@ const containerStyles = {
     maxWidth: 300,
 };
 
-function FileSelectorExample(props) {
+function FileSelectorExample() {
     const [files, setFiles] = useState([]);
 
     const handleChange = files => {
@@ -317,7 +317,7 @@ const containerStyles = {
     maxWidth: 300,
 };
 
-function FileSelectorExample(props) {
+function FileSelectorExample() {
     const [files, setFiles] = useState([]);
 
     const handleChange = files => {
