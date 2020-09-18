@@ -136,9 +136,7 @@ const StyledText = styled.div.attrs(props => {
 
 <div className="rainbow-p-vertical_x-large rainbow-p-left_xx-large rainbow-flex rainbow-flex_column">
     <div className="rainbow-m-horizontal_large rainbow-m-vertical_xx-small">
-        <StyledTitle>
-            Profile
-        </StyledTitle>
+        <StyledTitle>Profile</StyledTitle>
     </div>
     <div className="rainbow-m-horizontal_large rainbow-m-vertical_xx-small rainbow-flex rainbow-inline-flex">
         <Avatar
@@ -149,20 +147,12 @@ const StyledText = styled.div.attrs(props => {
         />
         <div className="rainbow-m-left_large rainbow-flex rainbow-flex_column rainbow-justify_spread">
             <div className="rainbow-flex rainbow-flex_column">
-                <StyledLabel className="rainbow-color_gray-4">
-                    Name
-                </StyledLabel>
-                <StyledText>
-                    Jane Doe
-                </StyledText>
+                <StyledLabel className="rainbow-color_gray-4">Name</StyledLabel>
+                <StyledText>Jane Doe</StyledText>
             </div>
             <div className="rainbow-flex rainbow-flex_column">
-                <StyledLabel className="rainbow-color_gray-4">
-                    Company
-                </StyledLabel>
-                <StyledText>
-                    Nexxtway
-                </StyledText>
+                <StyledLabel className="rainbow-color_gray-4">Company</StyledLabel>
+                <StyledText>Nexxtway</StyledText>
             </div>
         </div>
     </div>
