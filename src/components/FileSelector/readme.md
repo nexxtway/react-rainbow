@@ -3,8 +3,6 @@
 ```js
 import React, { useState } from 'react';
 import { FileSelector } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 300,
@@ -39,8 +37,6 @@ function FileSelectorExample(props) {
 ```js
 import React, { useState } from 'react';
 import { FileSelector } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 300,
@@ -70,14 +66,11 @@ function FileSelectorExample(props) {
 <FileSelectorExample />
 ```
 
-
 ##### FileSelector inline disabled
 
 ```js
 import React, { useState } from 'react';
 import { FileSelector } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 300,
@@ -106,14 +99,11 @@ function FileSelectorExample(props) {
 <FileSelectorExample />
 ```
 
-
 ##### FileSelector inline with error
 
 ```js
 import React, { useState } from 'react';
 import { FileSelector } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 300,
@@ -147,8 +137,6 @@ function FileSelectorExample(props) {
 ```js
 import React, { useState } from 'react';
 import { FileSelector } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 300,
@@ -184,8 +172,6 @@ function FileSelectorExample(props) {
 ```js
 import React, { useState } from 'react';
 import { FileSelector } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 300,
@@ -221,8 +207,6 @@ function FileSelectorExample(props) {
 ```js
 import React, { useState } from 'react';
 import { FileSelector } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 300,
@@ -252,14 +236,11 @@ function FileSelectorExample(props) {
 <FileSelectorExample />
 ```
 
-
 ##### FileSelector multiline with error
 
 ```js
 import React, { useState } from 'react';
 import { FileSelector } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 300,
@@ -294,8 +275,6 @@ function FileSelectorExample(props) {
 ```js
 import React, { useState } from 'react';
 import { FileSelector } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 300,
