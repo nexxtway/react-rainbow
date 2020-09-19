@@ -35,7 +35,6 @@
         "autosize": "^4.0.2",
         "chart.js": "2.7.3",
         "clipboard-copy": "^2.0.0",
-        "core-js": "^3.6.5",
         "prop-types": "^15.6.2",
         "react-async-script-loader": "^0.3.0",
         "rehype-highlight": "^4.0.0",
