@@ -272,3 +272,38 @@ const CheckBoxGroupProfile = () => {
 
 <CheckBoxGroupProfile />
 ```
+
+##### Checkbox Group horizontal
+
+```js
+import React, { useState } from 'react';
+import { CheckboxGroup } from 'react-rainbow-components';
+
+const options = [
+    { value: 'checkboxOne', label: 'Checkbox One', disabled: false },
+    { value: 'checkboxTwo', label: 'Checkbox Two', disabled: false },
+    { value: 'checkboxThree', label: 'Checkbox Three', disabled: false },
+];
+
+const CheckboxGroupTry = () => {
+    const [values, setValues] = useState([]);
+    
+    const handleOnChange = values => {
+        setValues(values);
+    }
+
+    return (
+        <CheckboxGroup
+            id="checkbox-group-1"
+            options={options}
+            value={values}
+            onChange={handleOnChange}
+            label="Checkbox Group Label"
+            orientation="horizontal"
+        />
+    );
+}
+<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+    <CheckboxGroupTry />
+</div>;
+```

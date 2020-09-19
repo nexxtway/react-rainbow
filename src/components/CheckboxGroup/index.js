@@ -7,7 +7,7 @@ import RequiredAsterisk from '../RequiredAsterisk';
 import CheckboxList from './checkboxList';
 import StyledFieldset from './styled/fieldset';
 import StyledLegend from './styled/legend';
-import StyledContantContainer from './styled/contentContainer';
+import StyledContentContainer from './styled/contentContainer';
 import StyledTextError from '../Input/styled/errorText';
 
 /**
@@ -51,7 +51,7 @@ class CheckboxGroup extends Component {
     }
 
     render() {
-        const { id, options, required, label, error, style, className } = this.props;
+        const { id, options, required, label, error, style, className, orientation } = this.props;
         return (
             <StyledFieldset id={id} className={className} style={style}>
                 <RenderIf isTrue={!!label}>
@@ -60,7 +60,7 @@ class CheckboxGroup extends Component {
                         {label}
                     </StyledLegend>
                 </RenderIf>
-                <StyledContantContainer>
+                <StyledContentContainer orientation={orientation}>
                     <CheckboxList
                         values={this.getValue()}
                         options={options}
@@ -69,7 +69,7 @@ class CheckboxGroup extends Component {
                         describedBy={this.getErrorMessageId()}
                         error={error}
                     />
-                </StyledContantContainer>
+                </StyledContentContainer>
                 <RenderIf isTrue={!!error}>
                     <StyledTextError id={this.getErrorMessageId()}>{error}</StyledTextError>
                 </RenderIf>
@@ -106,6 +106,8 @@ CheckboxGroup.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** The orientation of the element. */
+    orientation: PropTypes.oneOf(['vertical', 'horizontal']),
 };
 
 CheckboxGroup.defaultProps = {
@@ -119,6 +121,7 @@ CheckboxGroup.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    orientation: 'vertical',
 };
 
 export default withReduxForm(CheckboxGroup);
