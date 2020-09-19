@@ -172,7 +172,7 @@ class ErrorRadioGroup extends React.Component {
 ##### radio group horizontal
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import { RadioGroup } from 'react-rainbow-components';
 
 const options = [
@@ -181,31 +181,23 @@ const options = [
     { value: 'radioThree', label: 'Radio Three' },
 ];
 
-class SimpleRadioGroup extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: undefined,
-        };
-        this.handleOnChange = this.handleOnChange.bind(this);
+const SimpleRadioGroup = () => {
+    const [value, setValue] = useState('anonymous');
+    
+    const handleOnChange = event => {
+        setValue(event.target.value);
     }
 
-    handleOnChange(event) {
-        return this.setState({ value: event.target.value });
-    }
-
-    render() {
-        return (
-            <RadioGroup
-                id="radio-group-component-1"
-                options={options}
-                value={this.state.value}
-                onChange={this.handleOnChange}
-                label="Radio Group Label"
-                orientation="horizontal"
-            />
-        );
-    }
+    return (
+        <RadioGroup
+            id="radio-group-component-1"
+            options={options}
+            value={value}
+            onChange={handleOnChange}
+            label="Radio Group Label"
+            orientation="horizontal"
+        />
+    );
 }
 
 <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
