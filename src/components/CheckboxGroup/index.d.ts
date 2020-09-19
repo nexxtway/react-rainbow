@@ -16,6 +16,7 @@ export interface CheckboxGroupProps extends BaseProps {
     error?: ReactNode;
     onChange?: (values: string[]) => void;
     id?: string;
+    orientation?: 'vertical' | 'horizontal';
 }
 
 declare const CheckboxGroup: ComponentType<CheckboxGroupProps>;

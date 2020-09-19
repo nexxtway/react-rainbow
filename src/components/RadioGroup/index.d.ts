@@ -10,6 +10,7 @@ export interface RadioGroupProps extends BaseProps {
     options?: RadioOption[];
     error?: ReactNode;
     id?: string;
+    orientation?: 'vertical' | 'horizontal';
 }
 
 declare const RadioGroup: ComponentType<RadioGroupProps>;
