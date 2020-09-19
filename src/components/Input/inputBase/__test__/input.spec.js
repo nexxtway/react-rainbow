@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import InputBase from '../';
+import StyledLabelContainer from '../../styled/labelContainer';
 import StyledError from '../../styled/errorText';
 
 describe('<InputBase/>', () => {
@@ -66,6 +67,10 @@ describe('<InputBase/>', () => {
         const component = mount(<InputBase bottomHelpText="Help text" />);
         expect(component.find('Label').prop('id')).toMatch(/inline-text-label/);
         expect(component.find('input').prop('aria-labelledby')).toMatch(/inline-text-label/);
+    });
+    it('should set the labelAlignment prop passed in the StyledLabelContainer element', () => {
+        const component = mount(<InputBase labelAlignment="left" />);
+        expect(component.find(StyledLabelContainer).prop('labelAlignment')).toBe('left');
     });
     it('should pass a generated id to the Error element and set the same id to the aria-describedby for the input when a error is passed', () => {
         const component = mount(<InputBase error="error message" />);
