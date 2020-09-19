@@ -40,6 +40,7 @@ class RadioGroup extends Component {
             options,
             value,
             id,
+            orientation,
         } = this.props;
 
         return (
@@ -50,7 +51,7 @@ class RadioGroup extends Component {
                         {label}
                     </StyledLegend>
                 </RenderIf>
-                <StyledContentContainer>
+                <StyledContentContainer orientation={orientation}>
                     <RadioItmes
                         value={value}
                         onChange={onChange}
@@ -95,6 +96,8 @@ RadioGroup.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** The orientation of the element. */
+    orientation: PropTypes.oneOf(['vertical', 'horizontal']),
 };
 
 RadioGroup.defaultProps = {
@@ -108,6 +111,7 @@ RadioGroup.defaultProps = {
     options: [],
     error: null,
     id: undefined,
+    orientation: 'vertical',
 };
 
 export default withReduxForm(RadioGroup);
