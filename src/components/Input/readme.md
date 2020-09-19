@@ -424,3 +424,40 @@ const inputStyles = {
     />
 </div>
 ```
+
+##### input with aligned label
+
+```js
+import React from 'react';
+import { Input } from 'react-rainbow-components';
+
+const inputStyles = {
+    width: 300,
+};
+
+<div className="rainbow-align-content_center rainbow-p-vertical_x-large rainbow-flex_wrap">
+    <Input
+        className="rainbow-p-around_medium"
+        style={inputStyles}
+        label="Input Label"
+        labelAlignment="left"
+        bottomHelpText="Label on the left"
+        placeholder="Placeholder text"
+    />
+    <Input
+        className="rainbow-p-around_medium"
+        style={inputStyles}
+        label="Input Label"
+        bottomHelpText="Label centered"
+        placeholder="Placeholder text"
+    />
+    <Input
+        className="rainbow-p-around_medium"
+        style={inputStyles}
+        label="Input Label"
+        labelAlignment="right"
+        bottomHelpText="Label on the right"
+        placeholder="Placeholder text"
+    />
+</div>
+```
