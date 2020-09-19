@@ -6,7 +6,6 @@ const StyledContentContainer = styled.div`
     flex-direction: ${({ orientation }) => (orientation === 'vertical' ? 'column' : 'row')};
     align-items: flex-start;
     justify-content: flex-start;
-
     ${({ orientation }) =>
         orientation === 'horizontal' &&
         css`
