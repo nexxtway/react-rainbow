@@ -30,7 +30,7 @@ describe('<CheckboxGroup />', () => {
         );
     });
 
-    it('renders correctly in vertical orientation (implicit)', () => {
+    it('renders correctly in vertical orientation (explicit)', () => {
         const options = [{ value: 'admin', label: 'Admin' }, { value: 'user', label: 'User' }];
 
         const component = mount(<CheckboxGroup options={options} orientation="vertical" />);
@@ -41,7 +41,7 @@ describe('<CheckboxGroup />', () => {
         );
     });
 
-    it('renders correctly in horizontal orientation (implicit)', () => {
+    it('renders correctly in horizontal orientation (explicit)', () => {
         const options = [{ value: 'admin', label: 'Admin' }, { value: 'user', label: 'User' }];
 
         const component = mount(<CheckboxGroup options={options} orientation="horizontal" />);
