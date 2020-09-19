@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import RadioGroup from '../../RadioGroup';
+import RadioGroup from '../index';
 
 describe('<RadioGroup />', () => {
     it('renders correctly in vertical orientation (default)', () => {
