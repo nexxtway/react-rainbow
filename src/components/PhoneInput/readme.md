@@ -52,7 +52,7 @@ const Form = () => {
             placeholder="Enter your phone number"
             onChange={setPhone}
             value={phone}
-            countries={[]}
+            countries={['ca']}
             
             
         />
