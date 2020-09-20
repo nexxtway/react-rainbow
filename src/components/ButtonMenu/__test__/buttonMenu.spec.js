@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import ButtonMenu from './../';
+import ButtonTrigger from '../buttonTrigger';
 
 describe('<ButtonMenu/>', () => {
     it('should pass the icon passed to the ButtonIcon', () => {
@@ -67,13 +68,13 @@ describe('<ButtonMenu/>', () => {
         );
         expect(component.find('ButtonIcon').exists()).toBe(true);
     });
-    it('should render a ButtonTrigger when label is passed', () => {
+    it('should render a Button when label is passed', () => {
         const component = mount(
             <ButtonMenu label="Menu" buttonVariant="base">
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonTrigger').exists()).toBe(true);
+        expect(component.find('Button').exists()).toBe(true);
     });
     it('should pass the right icon, label and iconPosition to ButtonTrigger', () => {
         const component = mount(
@@ -81,7 +82,7 @@ describe('<ButtonMenu/>', () => {
                 <span />
             </ButtonMenu>,
         );
-        const trigger = component.find('ButtonTrigger');
+        const trigger = component.find(ButtonTrigger);
         expect(trigger.prop('icon')).toEqual(<svg />);
         expect(trigger.prop('label')).toEqual('Menu');
         expect(trigger.prop('iconPosition')).toEqual('right');
