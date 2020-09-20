@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react';
+import { ReactTypeformEmbed } from 'react-typeform-embed';
 import Sidebar from '../../../src/components/Sidebar';
 import SidebarItem from '../../../src/components/SidebarItem';
 import Application from '../../../src/components/Application';
@@ -6,6 +7,7 @@ import ExperiencesIcon from './icons/experiencesIcon';
 import PuzzleIcon from './icons/puzzleIcon';
 import DesignIcon from './icons/designIcon';
 import ConsoleIcon from './icons/consoleIcon';
+import CustomWorkIcon from './icons/customWorkIcon';
 import isNotComponentPage from './../utils';
 import { Icon } from './styled';
 
@@ -38,7 +40,9 @@ export default class ComponentsList extends Component {
         };
         this.handleOnSelect = this.handleOnSelect.bind(this);
         this.handleOnClickCustomWorkBtn = this.handleOnClickCustomWorkBtn.bind(this);
+        this.openCustomWorkForm = this.openCustomWorkForm.bind(this);
         this.itemRef = createRef();
+        this.customWorkForm = createRef();
     }
 
     handleOnSelect(e, selectedItem) {
@@ -49,11 +53,19 @@ export default class ComponentsList extends Component {
         this.setState({ isVisible: !this.state.isVisible });
     }
 
-    render() {
-        const { selectedItem, isVisible } = this.state;
+    openCustomWorkForm() {
+        this.customWorkForm.current.typeform.open();
+    }
 
+    render() {
+        const { selectedItem } = this.state;
         return (
             <Application theme={theme}>
+                <ReactTypeformEmbed
+                    url="https://form.typeform.com/to/C3CgWMil"
+                    ref={this.customWorkForm}
+                    popup
+                />
                 <Sidebar selectedItem={selectedItem} onSelect={this.handleOnSelect}>
                     <SidebarItem
                         icon={<Icon />}
@@ -84,6 +96,12 @@ export default class ComponentsList extends Component {
                         name="Designs"
                         label="Designs"
                         href="/#/Designs"
+                    />
+                    <SidebarItem
+                        icon={<Icon as={CustomWorkIcon} />}
+                        name="Custom Work"
+                        label="Custom Work"
+                        onClick={this.openCustomWorkForm}
                     />
                 </Sidebar>
             </Application>
