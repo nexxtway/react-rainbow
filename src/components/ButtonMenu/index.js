@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonIcon from './../ButtonIcon';
 import PrimitiveMenu from '../PrimitiveMenu';
 import ButtonTrigger from './buttonTrigger';
 
@@ -26,8 +25,6 @@ export default function ButtonMenu(props) {
         ...rest
     } = props;
 
-    const trigger = label ? ButtonTrigger : ButtonIcon;
-
     return (
         <PrimitiveMenu
             {...rest}
@@ -44,7 +41,7 @@ export default function ButtonMenu(props) {
             onClick={onClick}
             onFocus={onFocus}
             onBlur={onBlur}
-            trigger={trigger}
+            trigger={ButtonTrigger}
         >
             {children}
         </PrimitiveMenu>

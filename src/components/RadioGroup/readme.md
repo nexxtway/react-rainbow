@@ -168,3 +168,39 @@ class ErrorRadioGroup extends React.Component {
     <ErrorRadioGroup />
 </div>
 ```
+
+##### radio group horizontal
+
+```js
+import React, { useState } from 'react';
+import { RadioGroup } from 'react-rainbow-components';
+
+const options = [
+    { value: 'radioOne', label: 'Radio One' },
+    { value: 'radioTwo', label: 'Radio Two' },
+    { value: 'radioThree', label: 'Radio Three' },
+];
+
+const SimpleRadioGroup = () => {
+    const [value, setValue] = useState('anonymous');
+    
+    const handleOnChange = event => {
+        setValue(event.target.value);
+    }
+
+    return (
+        <RadioGroup
+            id="radio-group-component-1"
+            options={options}
+            value={value}
+            onChange={handleOnChange}
+            label="Radio Group Label"
+            orientation="horizontal"
+        />
+    );
+}
+
+<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+    <SimpleRadioGroup />
+</div>
+```
