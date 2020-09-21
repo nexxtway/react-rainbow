@@ -119,6 +119,10 @@ const PhoneInput = React.forwardRef((props, ref) => {
     const isFocus = focusIndex > -1;
     const formattedCountryCode = `(${countryCode})`;
 
+    const isReadOnly = readOnly && !disabled;
+    const hasTrigger = !isReadOnly && countries.length > 1;
+    const isOnlyCountry = !isReadOnly && countries.length === 1;
+
     return (
         <StyledContainer id={id} ref={containerRef} className={className} style={style}>
             <Label
@@ -137,10 +141,10 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 error={error}
                 isFocus={isFocus}
             >
-                <RenderIf isTrue={readOnly && !disabled}>
+                <RenderIf isTrue={isReadOnly}>
                     <StyledFlagContainer readOnly>{flagIcon}</StyledFlagContainer>
                 </RenderIf>
-                <RenderIf isTrue={!readOnly || disabled}>
+                <RenderIf isTrue={hasTrigger}>
                     <StyledTrigger
                         ref={triggerRef}
                         onClick={handleClick}
@@ -155,7 +159,17 @@ const PhoneInput = React.forwardRef((props, ref) => {
                         </StyledFlagContainer>
                     </StyledTrigger>
                 </RenderIf>
-
+                <RenderIf isTrue={isOnlyCountry}>
+                    <StyledTrigger
+                        ref={triggerRef}
+                        onFocus={event => handleFocus(event, 0)}
+                        onBlur={handleBlur}
+                        tabIndex={tabIndex}
+                        disabled={disabled}
+                    >
+                        <StyledFlagContainer disabled={disabled}>{flagIcon}</StyledFlagContainer>
+                    </StyledTrigger>
+                </RenderIf>
                 <StyledCountryCode>{formattedCountryCode}</StyledCountryCode>
                 <StyledInput
                     id={inputId}
