@@ -53,8 +53,6 @@ const Form = () => {
             onChange={setPhone}
             value={phone}
             countries={['ca']}
-            
-            
         />
     );
 };
