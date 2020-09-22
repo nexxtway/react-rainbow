@@ -55,7 +55,7 @@ function Item(props) {
             isSelected={isSelected}
             data-id="vertical-item"
         >
-            <RenderIf isTrue={!!href}>
+            <RenderIf isTrue={href}>
                 <StyledAnchor
                     data-id="vertical-item-clickable-element"
                     className="rainbow-vertical-item_action"
@@ -82,7 +82,7 @@ function Item(props) {
                     <ItemContent label={label} notification={notification} />
                 </StyledButton>
             </RenderIf>
-            <RenderIf isTrue={!!icon}>
+            <RenderIf isTrue={icon}>
                 <StyledIcon>{icon}</StyledIcon>
             </RenderIf>
         </StyledLi>

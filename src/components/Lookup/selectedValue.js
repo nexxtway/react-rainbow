@@ -111,7 +111,7 @@ export default class SelectedValue extends Component {
 
         return (
             <StyledSelectedValueContainer readOnly={readOnly}>
-                <RenderIf isTrue={!!icon}>
+                <RenderIf isTrue={icon}>
                     <StyledSelectedValueIcon readOnly={readOnly}>{icon}</StyledSelectedValueIcon>
                 </RenderIf>
 

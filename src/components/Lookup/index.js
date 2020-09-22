@@ -447,7 +447,7 @@ class Lookup extends Component {
                     readOnly={readOnly}
                 />
 
-                <RenderIf isTrue={!!currentValue}>
+                <RenderIf isTrue={currentValue}>
                     <SelectedValue
                         id={this.inputId}
                         name={name}
@@ -537,7 +537,7 @@ class Lookup extends Component {
                         </RenderIf>
                     </StyledInputContainer>
                 </RenderIf>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <StyledTextError id={errorMessageId}>{error}</StyledTextError>
                 </RenderIf>
             </StyledContainer>

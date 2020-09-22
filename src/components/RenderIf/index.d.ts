@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface RenderIfProps {
-    isTrue?: boolean;
+    isTrue?: any;
     children?: ReactNode;
 }
 

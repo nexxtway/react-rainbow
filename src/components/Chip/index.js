@@ -15,7 +15,7 @@ export default function Chip(props) {
     return (
         <StyledContainer className={className} style={style} variant={variant} title={title}>
             <TruncatedText>{label}</TruncatedText>
-            <RenderIf isTrue={!!onDelete}>
+            <RenderIf isTrue={onDelete}>
                 <StyledButtonIcon
                     variant={variant}
                     icon={<CloseIcon />}

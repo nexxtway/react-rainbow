@@ -123,10 +123,10 @@ class AccordionItem extends Component {
                 <section>
                     <StyledSummary data-id="accordion-section-summary">
                         <StyledHeading disabled={disabled}>
-                            <RenderIf isTrue={!!icon}>
+                            <RenderIf isTrue={icon}>
                                 <StyledIcon>{icon}</StyledIcon>
                             </RenderIf>
-                            <RenderIf isTrue={!!label}>
+                            <RenderIf isTrue={label}>
                                 <span title="Accordion Label">{label}</span>
                             </RenderIf>
                         </StyledHeading>

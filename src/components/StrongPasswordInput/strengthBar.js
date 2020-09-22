@@ -14,7 +14,7 @@ export default function StrengthBar(props) {
     return (
         <StyledStrenghtBar>
             <StyledStateBar passwordState={passwordState} />
-            <RenderIf isTrue={!!label}>
+            <RenderIf isTrue={label}>
                 <StyledStateLabel passwordState={passwordState}>{label}</StyledStateLabel>
             </RenderIf>
         </StyledStrenghtBar>

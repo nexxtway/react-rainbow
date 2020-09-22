@@ -8,7 +8,7 @@ export default function ItemContent({ label, notification }) {
     return (
         <Fragment>
             <StyledLabel>{label}</StyledLabel>
-            <RenderIf isTrue={!!notification}>
+            <RenderIf isTrue={notification}>
                 <StyledNotification>{notification}</StyledNotification>
             </RenderIf>
         </Fragment>

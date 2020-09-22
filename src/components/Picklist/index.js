@@ -208,7 +208,7 @@ class Picklist extends Component {
                 ref={this.containerRef}
                 readOnly={readOnly}
             >
-                <RenderIf isTrue={!!pickListLabel}>
+                <RenderIf isTrue={pickListLabel}>
                     <Label
                         label={pickListLabel}
                         hideLabel={hideLabel}
@@ -226,7 +226,7 @@ class Picklist extends Component {
                     // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
                     role="combobox"
                 >
-                    <RenderIf isTrue={!!icon}>
+                    <RenderIf isTrue={icon}>
                         <StyledIcon error={error}>{icon}</StyledIcon>
                     </RenderIf>
                     <RenderIf isTrue={!readOnly}>
@@ -274,7 +274,7 @@ class Picklist extends Component {
                         triggerElementRef={() => this.triggerRef}
                     />
                 </StyledInnerContainer>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <StyledError id={errorMessageId}>{error}</StyledError>
                 </RenderIf>
             </StyledContainer>
