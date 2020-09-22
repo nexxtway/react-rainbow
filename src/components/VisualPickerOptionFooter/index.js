@@ -15,10 +15,10 @@ export default function VisualPickerOptionFooter(props) {
 
     return (
         <StyledContainer className={className} style={style}>
-            <RenderIf isTrue={!!label}>
+            <RenderIf isTrue={label}>
                 <StyledLabel>{label}</StyledLabel>
             </RenderIf>
-            <RenderIf isTrue={!!description}>
+            <RenderIf isTrue={description}>
                 <StyledDescription>{description}</StyledDescription>
             </RenderIf>
         </StyledContainer>

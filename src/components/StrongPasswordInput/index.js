@@ -75,7 +75,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
             />
 
             <RelativeElement>
-                <RenderIf isTrue={!!icon}>
+                <RenderIf isTrue={icon}>
                     <StyledIconContainer
                         iconPosition={iconPosition}
                         readOnly={readOnly}
@@ -112,10 +112,10 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
                 />
             </RelativeElement>
             <StrengthBar passwordState={passwordState} passwordStateLabels={passwordStateLabels} />
-            <RenderIf isTrue={!!bottomHelpText}>
+            <RenderIf isTrue={bottomHelpText}>
                 <StyledHelpText alignSelf="center">{bottomHelpText}</StyledHelpText>
             </RenderIf>
-            <RenderIf isTrue={!!error}>
+            <RenderIf isTrue={error}>
                 <ErrorText alignSelf="center" id={errorMessageId}>
                     {error}
                 </ErrorText>

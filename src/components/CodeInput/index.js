@@ -77,7 +77,7 @@ const CodeInput = React.forwardRef((props, ref) => {
 
     return (
         <StyledFieldset className={className} style={style} id={id}>
-            <RenderIf isTrue={!!label}>
+            <RenderIf isTrue={label}>
                 <StyledLabel>
                     <RequiredAsterisk required={required} />
                     {label}
@@ -99,10 +99,10 @@ const CodeInput = React.forwardRef((props, ref) => {
                 focusedIndex={focusedIndex}
                 ref={inputRef}
             />
-            <RenderIf isTrue={!!bottomHelpText}>
+            <RenderIf isTrue={bottomHelpText}>
                 <StyledHelpText>{bottomHelpText}</StyledHelpText>
             </RenderIf>
-            <RenderIf isTrue={!!error}>
+            <RenderIf isTrue={error}>
                 <StyledErrorMessage>{error}</StyledErrorMessage>
             </RenderIf>
         </StyledFieldset>

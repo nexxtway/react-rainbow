@@ -8,7 +8,8 @@
         "import",
         "webdriverio",
         "react-hooks",
-        "prettier"
+        "prettier",
+        "rainbow"
     ],
     "rules": {
         "react-hooks/rules-of-hooks": "error",
@@ -22,7 +23,8 @@
         "no-mixed-operators": "off",
         "arrow-parens": ["error", "as-needed"],
         "linebreak-style": 0,
-        "react/default-props-match-prop-types": ["error", { "allowRequiredDefaults": true }]
+        "react/default-props-match-prop-types": ["error", { "allowRequiredDefaults": true }],
+        "rainbow/no-double-negation-renderif": 2
     },
     "env": {
         "es6": true,

@@ -94,10 +94,10 @@ const StripeCardInput = React.forwardRef((props, ref) => {
                 required={required}
             />
             <StyledCardInput ref={cardRef} id={stripeCardInputId} disabled={disabled} />
-            <RenderIf isTrue={!!bottomHelpText}>
+            <RenderIf isTrue={bottomHelpText}>
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
             </RenderIf>
-            <RenderIf isTrue={!!error}>
+            <RenderIf isTrue={error}>
                 <ErrorText id={errorMessageId} alignSelf="center">
                     {error}
                 </ErrorText>

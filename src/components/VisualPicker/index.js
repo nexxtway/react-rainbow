@@ -69,7 +69,7 @@ class VisualPicker extends Component {
 
         return (
             <StyledContainer id={id} className={className} style={style}>
-                <RenderIf isTrue={!!label}>
+                <RenderIf isTrue={label}>
                     <StyledLabel>
                         <RequiredAsterisk required={required} />
                         {label}
@@ -78,7 +78,7 @@ class VisualPicker extends Component {
                 <StyledOptionsContainer>
                     <Provider value={context}>{children}</Provider>
                 </StyledOptionsContainer>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <StyledError id={this.getErrorMessageId()}>{error}</StyledError>
                 </RenderIf>
             </StyledContainer>

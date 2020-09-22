@@ -97,7 +97,7 @@ export default class MapComponent extends Component {
                 />
 
                 <StyledCoordinatesContainer>
-                    <RenderIf isTrue={!!header}>
+                    <RenderIf isTrue={header}>
                         <Header text={header} />
                     </RenderIf>
                     <ul>

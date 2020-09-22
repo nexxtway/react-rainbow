@@ -193,7 +193,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     error={error}
                     isFocus={isFocus}
                 />
-                <RenderIf isTrue={!!icon}>
+                <RenderIf isTrue={icon}>
                     <StyledIconContainer error={error}>{icon}</StyledIconContainer>
                 </RenderIf>
                 <CountriesDropdown
@@ -207,10 +207,10 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     onCountryChange={handleCountryChange}
                 />
             </StyledInputContainer>
-            <RenderIf isTrue={!!bottomHelpText}>
+            <RenderIf isTrue={bottomHelpText}>
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
             </RenderIf>
-            <RenderIf isTrue={!!error}>
+            <RenderIf isTrue={error}>
                 <ErrorText alignSelf="center" id={errorMessageId}>
                     {error}
                 </ErrorText>

@@ -30,7 +30,7 @@ export default function DatePickerModal(props) {
             isOpen={isOpen}
             onRequestClose={onRequestClose}
         >
-            <RenderIf isTrue={!!title}>
+            <RenderIf isTrue={title}>
                 <Header variant={variant}>
                     <HeaderTitle>{title}</HeaderTitle>
                 </Header>
