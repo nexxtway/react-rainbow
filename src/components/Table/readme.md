@@ -577,6 +577,114 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 </div>
 ```
 
+##### Table with dynamic row actions
+
+```js
+import React from 'react';
+import { Table, Column, ButtonMenu, ButtonGroup, ButtonIcon, Badge, MenuItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+
+const data = [
+    {
+        name: 'Leandro Torres',
+        company: 'nexxtway',
+        email: 'leandro@gmail.com',
+        status: 'verified',
+        id: '1234qwerty',
+    },
+    {
+        name: 'Jose Torres',
+        company: 'Google',
+        email: 'jose@gmail.com',
+        status: 'pending',
+        id: '1234asdfgh',
+    },
+    {
+        name: 'Reinier',
+        company: 'Nexxtway',
+        email: 'reinier@gmail.com',
+        status: 'verified',
+        id: '1234zxcvbn',
+    },
+    {
+        name: 'Sara',
+        company: 'Nexxtway',
+        email: 'sara@gmail.com',
+        status: 'verified',
+        id: '5678qwerty',
+    },
+    {
+        name: 'Tahimi',
+        company: 'nexxtway',
+        email: 'tahimi@gmail.com',
+        status: 'verified',
+        id: '5678asdfgh',
+    },
+    {
+        name: 'Carlos',
+        company: 'Oracle',
+        email: 'carlos@gmail.com',
+        status: 'pending',
+        id: '5678zxcvbn',
+    },
+];
+
+const StatusBadge = ({ value }) => {
+    if (value === 'verified') {
+        return <Badge label={value} variant="outline-brand" />;
+    }
+    return <Badge label={value} variant="lightest" />;
+};
+
+const MenuAction = ({value,name}) => {
+    if(value === 'verified'){
+        return  <MenuItem label="Delete" />
+    }
+    return (
+        <>
+            <MenuItem label="Delete" onClick={() => console.log(`Delete ${name}`)}/>
+            <MenuItem label="Edit" onClick={() => console.log(`Edit ${name}`)}/>
+        </>
+    );
+};
+
+const ButtonAction = (props) => {
+    const {value, row:{name}}=props;
+    return (
+        <ButtonMenu
+            id="button-menu-2"
+            menuAlignment="right"
+            menuSize="x-small"
+            icon={<FontAwesomeIcon icon={faEllipsisV} />}
+        >
+            <MenuAction value={value} name={name}/>   
+        </ButtonMenu>
+    );
+
+}
+
+<div className="rainbow-p-bottom_xx-large">
+    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+        <ButtonGroup className="rainbow-m-right_medium">
+            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+            <ButtonIcon
+                variant="border-filled"
+                disabled
+                icon={<FontAwesomeIcon icon={faEllipsisV} />}
+            />
+        </ButtonGroup>
+    </GlobalHeader>
+    <Table keyField="id" data={data}>
+        <Column header="Name" field="name" />
+        <Column header="Status" field="status" component={StatusBadge} />
+        <Column header="Company" field="company" />
+        <Column header="Email" field="email" />
+        <Column field="status" component={ButtonAction}/>
+    </Table>
+</div>
+```
+
 ##### Table with enumerates row
 
 ```js
