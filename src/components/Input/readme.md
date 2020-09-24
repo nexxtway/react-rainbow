@@ -17,7 +17,7 @@ const containerStyles = {
 />;
 ```
 
-##### input base with an initial value set
+##### input base with a value controlled through a state and an initial value set by default
 
 ```js
 import React, { useState } from 'react';
