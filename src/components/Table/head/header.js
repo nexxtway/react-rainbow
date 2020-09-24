@@ -67,6 +67,7 @@ export default class Header extends Component {
             maxRowSelection,
             bulkSelection,
             hasScroll,
+            variant,
         } = this.props;
 
         const headerStyles = {
@@ -74,6 +75,8 @@ export default class Header extends Component {
         };
 
         const isResizable = this.isResizable();
+
+        const isListView = variant === 'listview';
 
         if (type === SELECTABLE_CHECKBOX) {
             return (
@@ -84,6 +87,7 @@ export default class Header extends Component {
                     maxRowSelection={maxRowSelection}
                     bulkSelection={bulkSelection}
                     hasScroll={hasScroll}
+                    isListView={isListView}
                     style={headerStyles}
                 />
             );
@@ -123,7 +127,9 @@ export default class Header extends Component {
                         onResize={this.handleResize}
                         headerWidth={computedWidth}
                     />
-                    <StyledScrollShadow hasScroll={hasScroll} />
+                    <RenderIf isTrue={!isListView}>
+                        <StyledScrollShadow hasScroll={hasScroll} />
+                    </RenderIf>
                 </StyledWrapper>
             </StyledTh>
         );
@@ -151,6 +157,7 @@ Header.propTypes = {
     maxRowSelection: PropTypes.number,
     bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
     hasScroll: PropTypes.bool,
+    variant: PropTypes.oneOf(['default', 'listview']),
 };
 
 Header.defaultProps = {
@@ -172,4 +179,5 @@ Header.defaultProps = {
     maxRowSelection: undefined,
     bulkSelection: 'none',
     hasScroll: false,
+    variant: 'default',
 };
