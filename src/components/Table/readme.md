@@ -5,44 +5,7 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-
-const data = [
-    {
-        name: 'Leandro Torres',
-        company: 'Nexxtway',
-        email: 'leandro@gmail.com',
-        status: 'verified',
-        id: '1234qwerty',
-    },
-    {
-        name: 'Jose Torres',
-        company: 'Google',
-        email: 'jose@gmail.com',
-        status: 'verified',
-        id: '1234asdfgh',
-    },
-    {
-        name: 'Reinier',
-        company: 'Nexxtway',
-        email: 'reinier@gmail.com',
-        status: 'verified',
-        id: '1234zxcvbn',
-    },
-    {
-        name: 'Sara',
-        company: 'Nexxtway',
-        email: 'sara@gmail.com',
-        status: 'verified',
-        id: '5678qwerty',
-    },
-    {
-        name: 'Tahimi',
-        company: 'Nexxtway',
-        email: 'tahimi@gmail.com',
-        status: 'verified',
-        id: '5678asdfgh',
-    },
-];
+import { data } from './exampleData.js'
 
 const badgeStyles = { color: '#1de9b6' };
 
@@ -75,6 +38,7 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { data } from './exampleData.js'
 
 const badgeStyles = { color: '#1de9b6' };
 const tableContainerStyles = { height: 300 };
@@ -87,64 +51,7 @@ class TableExample extends React.Component {
         this.state = {
             sortedBy: undefined,
             sortDirection: 'asc',
-            data: [
-                {
-                    name: 'Leandro Torres',
-                    company: 'Nexxtway',
-                    email: 'leandro@gmail.com',
-                    status: 'verified',
-                    id: '1234qwerty',
-                },
-                {
-                    name: 'Reinier',
-                    company: 'Nexxtway',
-                    email: 'reinier@gmail.com',
-                    status: 'verified',
-                    id: '1234asdfgh',
-                },
-                {
-                    name: 'Jose Torres',
-                    company: 'Google',
-                    email: 'jose@gmail.com',
-                    status: 'verified',
-                    id: '1234zxcvbn',
-                },
-                {
-                    name: 'Sara',
-                    company: 'Nexxtway',
-                    email: 'sara@gmail.com',
-                    status: 'verified',
-                    id: '5678qwerty',
-                },
-                {
-                    name: 'Tahimi',
-                    company: 'Nexxtway',
-                    email: 'tahimi@gmail.com',
-                    status: 'verified',
-                    id: '5678asdfgh',
-                },
-                {
-                    name: 'Alejandro',
-                    company: 'Google',
-                    email: 'alejandro@gmail.com',
-                    status: 'verified',
-                    id: '5678zxcvbn',
-                },
-                {
-                    name: 'Carlos',
-                    company: 'Oracle',
-                    email: 'carlos@gmail.com',
-                    status: 'verified',
-                    id: '9012qwerty',
-                },
-                {
-                    name: 'Luis',
-                    company: 'Google',
-                    email: 'luis@gmail.com',
-                    status: 'verified',
-                    id: '9012asdfgh',
-                },
-            ],
+            data: data,
         };
         this.handleOnSort = this.handleOnSort.bind(this);
     }
@@ -213,60 +120,11 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { data } from './exampleData.js'
 
 const badgeStyles = { color: '#1de9b6' };
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
-const data = [
-    {
-        name: 'Leandro Torres',
-        company: 'nexxtway',
-        email: 'leandro@gmail.com',
-        status: 'verified',
-        id: '1234qwerty',
-    },
-    {
-        name: 'Jose Torres',
-        company: 'Google',
-        email: 'jose@gmail.com',
-        status: 'verified',
-        id: '1234asdfgh',
-    },
-    {
-        name: 'Reinier',
-        company: 'Nexxtway',
-        email: 'reinier@gmail.com',
-        status: 'verified',
-        id: '1234zxcvbn',
-    },
-    {
-        name: 'Sara',
-        company: 'Nexxtway',
-        email: 'sara@gmail.com',
-        status: 'verified',
-        id: '5678qwerty',
-    },
-    {
-        name: 'Tahimi',
-        company: 'nexxtway',
-        email: 'tahimi@gmail.com',
-        status: 'verified',
-        id: '5678asdfgh',
-    },
-    {
-        name: 'Leo',
-        company: 'nexxtway',
-        email: 'leo@gmail.com',
-        status: 'verified',
-        id: '5678zxcvbn',
-    },
-    {
-        name: 'Tahimi Leon',
-        company: 'nexxtway',
-        email: 'leon@nexxtway.com',
-        status: 'verified',
-        id: '9012qwerty',
-    },
-];
+
 
 class TableExample extends React.Component {
     constructor(props) {
@@ -334,58 +192,7 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-
-const data = [
-    {
-        name: 'Leandro Torres',
-        company: 'nexxtway',
-        email: 'leandro@gmail.com',
-        status: 'verified',
-        id: '1234qwerty',
-    },
-    {
-        name: 'Jose Torres',
-        company: 'Google',
-        email: 'jose@gmail.com',
-        status: 'verified',
-        id: '1234asdfgh',
-    },
-    {
-        name: 'Reinier',
-        company: 'Nexxtway',
-        email: 'reinier@gmail.com',
-        status: 'verified',
-        id: '1234zxcvbn',
-    },
-    {
-        name: 'Sara',
-        company: 'Nexxtway',
-        email: 'sara@gmail.com',
-        status: 'verified',
-        id: '5678qwerty',
-    },
-    {
-        name: 'Tahimi',
-        company: 'nexxtway',
-        email: 'tahimi@gmail.com',
-        status: 'verified',
-        id: '5678asdfgh',
-    },
-    {
-        name: 'Leo',
-        company: 'nexxtway',
-        email: 'leo@gmail.com',
-        status: 'verified',
-        id: '5678zxcvbn',
-    },
-    {
-        name: 'Tahimi Leon',
-        company: 'nexxtway',
-        email: 'leon@nexxtway.com',
-        status: 'verified',
-        id: '9012qwerty',
-    },
-];
+import { data } from './exampleData.js'
 
 const badgeStyles = { color: '#1de9b6' };
 
@@ -426,44 +233,7 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-
-const data = [
-    {
-        name: 'Leandro Torres',
-        company: 'nexxtway',
-        email: 'leandro@gmail.com',
-        status: 'verified',
-        id: '1234qwerty',
-    },
-    {
-        name: 'Jose Torres',
-        company: 'Google',
-        email: 'jose@gmail.com',
-        status: 'verified',
-        id: '1234asdfgh',
-    },
-    {
-        name: 'Reinier',
-        company: 'Nexxtway',
-        email: 'reinier@gmail.com',
-        status: 'verified',
-        id: '1234zxcvbn',
-    },
-    {
-        name: 'Sara',
-        company: 'Nexxtway',
-        email: 'sara@gmail.com',
-        status: 'verified',
-        id: '5678qwerty',
-    },
-    {
-        name: 'Tahimi',
-        company: 'nexxtway',
-        email: 'tahimi@gmail.com',
-        status: 'verified',
-        id: '5678asdfgh',
-    },
-];
+import { data } from './exampleData.js'
 
 const badgeStyles = { color: '#1de9b6' };
 
@@ -503,51 +273,8 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge, MenuItem } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { data } from './exampleData.js'
 
-const data = [
-    {
-        name: 'Leandro Torres',
-        company: 'nexxtway',
-        email: 'leandro@gmail.com',
-        status: 'verified',
-        id: '1234qwerty',
-    },
-    {
-        name: 'Jose Torres',
-        company: 'Google',
-        email: 'jose@gmail.com',
-        status: 'verified',
-        id: '1234asdfgh',
-    },
-    {
-        name: 'Reinier',
-        company: 'Nexxtway',
-        email: 'reinier@gmail.com',
-        status: 'verified',
-        id: '1234zxcvbn',
-    },
-    {
-        name: 'Sara',
-        company: 'Nexxtway',
-        email: 'sara@gmail.com',
-        status: 'verified',
-        id: '5678qwerty',
-    },
-    {
-        name: 'Tahimi',
-        company: 'nexxtway',
-        email: 'tahimi@gmail.com',
-        status: 'verified',
-        id: '5678asdfgh',
-    },
-    {
-        name: 'Carlos',
-        company: 'Oracle',
-        email: 'carlos@gmail.com',
-        status: 'verified',
-        id: '5678zxcvbn',
-    },
-];
 
 const badgeStyles = { color: '#1de9b6' };
 
@@ -584,51 +311,8 @@ import React from 'react';
 import { Table, Column, ButtonMenu, ButtonGroup, ButtonIcon, Badge, MenuItem } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { dynamicActionData } from './exampleData.js'
 
-const data = [
-    {
-        name: 'Leandro Torres',
-        company: 'nexxtway',
-        email: 'leandro@gmail.com',
-        status: 'verified',
-        id: '1234qwerty',
-    },
-    {
-        name: 'Jose Torres',
-        company: 'Google',
-        email: 'jose@gmail.com',
-        status: 'pending',
-        id: '1234asdfgh',
-    },
-    {
-        name: 'Reinier',
-        company: 'Nexxtway',
-        email: 'reinier@gmail.com',
-        status: 'verified',
-        id: '1234zxcvbn',
-    },
-    {
-        name: 'Sara',
-        company: 'Nexxtway',
-        email: 'sara@gmail.com',
-        status: 'verified',
-        id: '5678qwerty',
-    },
-    {
-        name: 'Tahimi',
-        company: 'nexxtway',
-        email: 'tahimi@gmail.com',
-        status: 'verified',
-        id: '5678asdfgh',
-    },
-    {
-        name: 'Carlos',
-        company: 'Oracle',
-        email: 'carlos@gmail.com',
-        status: 'pending',
-        id: '5678zxcvbn',
-    },
-];
 
 const StatusBadge = ({ value }) => {
     if (value === 'verified') {
@@ -657,6 +341,7 @@ const ButtonAction = (props) => {
             menuAlignment="right"
             menuSize="x-small"
             icon={<FontAwesomeIcon icon={faEllipsisV} />}
+            buttonVariant="base"
         >
             <MenuAction value={value} name={name}/>   
         </ButtonMenu>
@@ -675,12 +360,12 @@ const ButtonAction = (props) => {
             />
         </ButtonGroup>
     </GlobalHeader>
-    <Table keyField="id" data={data}>
+    <Table keyField="id" data={dynamicActionData}>
         <Column header="Name" field="name" />
         <Column header="Status" field="status" component={StatusBadge} />
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
-        <Column field="status" component={ButtonAction}/>
+        <Column field="status" component={ButtonAction} width={60}/>
     </Table>
 </div>
 ```
@@ -692,44 +377,8 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { data } from './exampleData.js'
 
-const data = [
-    {
-        name: 'Leandro Torres',
-        company: 'Nexxtway',
-        email: 'leandro@gmail.com',
-        status: 'verified',
-        id: '1234qwerty',
-    },
-    {
-        name: 'Jose Torres',
-        company: 'Google',
-        email: 'jose@gmail.com',
-        status: 'verified',
-        id: '1234asdfgh',
-    },
-    {
-        name: 'Reinier',
-        company: 'Nexxtway',
-        email: 'reinier@gmail.com',
-        status: 'verified',
-        id: '1234zxcvbn',
-    },
-    {
-        name: 'Sara',
-        company: 'Nexxtway',
-        email: 'sara@gmail.com',
-        status: 'verified',
-        id: '5678qwerty',
-    },
-    {
-        name: 'Tahimi',
-        company: 'Nexxtway',
-        email: 'tahimi@gmail.com',
-        status: 'verified',
-        id: '5678asdfgh',
-    },
-];
 
 const badgeStyles = { color: '#1de9b6' };
 
@@ -834,6 +483,7 @@ import {
 } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { initialData } from './exampleData.js'
 
 const tableContainerStyles = { height: 300 };
 
@@ -844,88 +494,7 @@ const StatusBadge = ({ value }) => {
     return <Badge label={value} variant="lightest" />;
 };
 
-const initialData = [
-    {
-        name: 'Leandro Torres',
-        company: 'nexxtway',
-        email: 'leandro@gmail.com',
-        status: 'verified',
-        id: '1234qwerty',
-        link: '#',
-    },
-    {
-        name: 'Jose Torres',
-        company: 'Google',
-        email: 'jose@gmail.com',
-        status: 'pending',
-        id: '1234asdfgh',
-        link: '#',
-    },
-    {
-        name: 'Reinier',
-        company: 'nexxtway',
-        email: 'reinier@gmail.com',
-        status: 'verified',
-        id: '1234zxcvbn',
-        link: '#',
-    },
-    {
-        name: 'Sara',
-        company: 'nexxtway',
-        email: 'sara@gmail.com',
-        status: 'verified',
-        id: '5678qwerty',
-        link: '#',
-    },
-    {
-        name: 'Tahimi',
-        company: 'nexxtway',
-        email: 'tahimi@gmail.com',
-        status: 'verified',
-        id: '5678asdfgh',
-        link: '#',
-    },
-    {
-        name: 'Leo',
-        company: 'nexxtway',
-        email: 'leo@gmail.com',
-        status: 'verified',
-        id: '5678zxcvbn',
-        link: '#',
-    },
-    {
-        name: 'Tahimi Leon',
-        company: 'nexxtway',
-        email: 'leon@nexxtway.com',
-        status: 'verified',
-        id: '9012qwerty',
-        link: '#',
-    },
-    {
-        name: 'Alejandro',
-        company: 'Google',
-        email: 'alejandro@gmail.com',
-        status: 'verified',
-        id: '5678zdfgdf',
-        link: '#',
-    },
-    {
-        name: 'Carlos',
-        company: 'Oracle',
-        email: 'carlos@gmail.com',
-        status: 'verified',
-        id: '3434fgfgdf',
-        link: '#',
-    },
-    {
-        name: 'Luis',
-        company: 'Google',
-        email: 'luis@gmail.com',
-        status: 'verified',
-        id: '9012asdfgh',
-        link: '#',
-    },
-];
+
 
 const Title = styled.h1.attrs(props => props.theme.rainbow)`
     font-family: 'Lato Light';
@@ -1033,69 +602,8 @@ import styled from 'styled-components';
 import { Table, Column, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV, faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { customActionsInitialData } from './exampleData.js'
 
-const initialData = [
-    {
-        name: 'Leandro Torres',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-        id: '1234qwerty',
-    },
-    {
-        name: 'Jose Torres',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-        id: '1234asdfgh',
-    },
-    {
-        name: 'Reinier',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-        id: '1234zxcvbn',
-    },
-    {
-        name: 'Sara',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-        id: '5678qwerty',
-    },
-    {
-        name: 'Tahimi',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-        id: '5678asdfgh',
-    },
-    {
-        name: 'Leo',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-        id: '5678zxcvbn',
-    },
-    {
-        name: 'Tahimi Leon',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-        id: '9012qwerty',
-    },
-    {
-        name: 'Alejandro',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-        id: '5678zdfgdf',
-    },
-    {
-        name: 'Carlos',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-        id: '3434fgfgdf',
-    },
-    {
-        name: 'Luis',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-        id: '9012asdfgh',
-    },
-];
 const Title = styled.h1.attrs(props => props.theme.rainbow)`
     font-family: 'Lato Light';
     font-size: 25px;
@@ -1130,7 +638,7 @@ const WrapDescription = styled.p`
 `;
 
 function TableCustomAction() {
-    const [data, setData] = useState(initialData);
+    const [data, setData] = useState(customActionsInitialData);
 
     function handleDeleteElement(id) {
         const newData = data.filter(e => e.id !== id);
@@ -1184,44 +692,9 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { data } from './exampleData.js'
 
-const data = [
-    {
-        name: 'Leandro Torres',
-        company: 'Nexxtway',
-        email: 'leandro@gmail.com',
-        status: 'verified',
-        id: '1234qwerty',
-    },
-    {
-        name: 'Jose Torres',
-        company: 'Google',
-        email: 'jose@gmail.com',
-        status: 'verified',
-        id: '1234asdfgh',
-    },
-    {
-        name: 'Reinier',
-        company: 'Nexxtway',
-        email: 'reinier@gmail.com',
-        status: 'verified',
-        id: '1234zxcvbn',
-    },
-    {
-        name: 'Sara',
-        company: 'Nexxtway',
-        email: 'sara@gmail.com',
-        status: 'verified',
-        id: '5678qwerty',
-    },
-    {
-        name: 'Tahimi',
-        company: 'Nexxtway',
-        email: 'tahimi@gmail.com',
-        status: 'verified',
-        id: '5678asdfgh',
-    },
-];
+
 
 const columnsNames = ['name', 'status', 'company', 'email'];
 
@@ -1260,51 +733,9 @@ import styled from 'styled-components';
 import { Table, Column, ButtonGroup, ButtonIcon, Avatar } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { listviewInitialData } from './exampleData.js'
 
-const initialData = [
-    {
-        task: 'fix: keyboard navigation on Tree.',
-        coins: 2,
-        constributor: 'yvmunayev@gmail.com',
-        priority: 2,
-        id: '1234qwerty',
-    },
-    {
-        task: 'feat: implement Notification Manager',
-        coins: 4,
-        constributor: 'yvmunayev@gmail.com',
-        priority: 2,
-        id: '1234asdfgh',
-    },
-    {
-        task: 'test: InternalDropdown.',
-        coins: 2,
-        constributor: 'yvmunayev@gmail.com',
-        priority: 2,
-        id: '1234zxcvbn',
-    },
-    {
-        task: 'feat: implement MultiSelect.',
-        coins: 8,
-        constributor: 'yvmunayev@gmail.com',
-        priority: 2,
-        id: '5678qwerty',
-    },
-    {
-        task: 'fix: position resolver on InternalOverlay',
-        coins: 8,
-        constributor: 'yvmunayev@gmail.com',
-        priority: 1,
-        id: '5678asdfgh',
-    },
-    {
-        task: 'refactor: ButtonMenu component.',
-        coins: 8,
-        constributor: 'yvmunayev@gmail.com',
-        priority: 0,
-        id: '5278aswegh',
-    },
-];
+
 
 const Container = styled.div`
     padding: 0 2rem;
@@ -1374,7 +805,7 @@ const Priority = ({ value }) => {
 };
 
 function TableListView() {
-    const [data, setData] = useState(initialData);
+    const [data, setData] = useState(listviewInitialData);
     const [sortedBy, setSortedBy] = useState();
     const [sortDirection, setSortDirection] = useState('asc');
 
@@ -1456,51 +887,8 @@ import styled from 'styled-components';
 import { Table, Column, ButtonGroup, ButtonIcon, Avatar } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { listviewInitialData } from './exampleData.js'
 
-const initialData = [
-    {
-        task: 'fix: keyboard navigation on Tree.',
-        coins: 2,
-        constributor: 'yvmunayev@gmail.com',
-        priority: 2,
-        id: '1234qwerty',
-    },
-    {
-        task: 'feat: implement Notification Manager',
-        coins: 4,
-        constributor: 'yvmunayev@gmail.com',
-        priority: 2,
-        id: '1234asdfgh',
-    },
-    {
-        task: 'test: InternalDropdown.',
-        coins: 2,
-        constributor: 'yvmunayev@gmail.com',
-        priority: 2,
-        id: '1234zxcvbn',
-    },
-    {
-        task: 'feat: implement MultiSelect.',
-        coins: 8,
-        constributor: 'yvmunayev@gmail.com',
-        priority: 2,
-        id: '5678qwerty',
-    },
-    {
-        task: 'fix: position resolver on InternalOverlay',
-        coins: 8,
-        constributor: 'yvmunayev@gmail.com',
-        priority: 1,
-        id: '5678asdfgh',
-    },
-    {
-        task: 'refactor: ButtonMenu component.',
-        coins: 8,
-        constributor: 'yvmunayev@gmail.com',
-        priority: 0,
-        id: '5278aswegh',
-    },
-];
 
 const Container = styled.div`
     padding: 0 2rem;
@@ -1570,7 +958,7 @@ const Priority = ({ value }) => {
 };
 
 function TableListView() {
-    const [data, setData] = useState(initialData);
+    const [data, setData] = useState(listviewInitialData);
     const [sortedBy, setSortedBy] = useState();
     const [sortDirection, setSortDirection] = useState('asc');
 
