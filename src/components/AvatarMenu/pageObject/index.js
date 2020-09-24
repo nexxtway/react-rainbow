@@ -1,11 +1,11 @@
-const PageMenuItem = require('../../MenuItem/pageObject');
+const PagePrimitiveMenu = require('../../PrimitiveMenu/pageObject');
 
 /**
  * AvatarMenu page object class.
  * @class
  * @tutorial avatarMenu
  */
-class PageButtonMenu {
+class PageAvatarMenu {
     /**
      * Create a new AvatarMenu page object.
      * @constructor
@@ -13,6 +13,9 @@ class PageButtonMenu {
      */
     constructor(rootElement) {
         this.rootElement = rootElement;
+        this.primitiveMenu = new PagePrimitiveMenu(
+            `${rootElement} button[data-id="avatar-menu-button"]`,
+        );
     }
 
     /**
@@ -21,17 +24,7 @@ class PageButtonMenu {
      * @param {number} itemPosition - The base 0 index of the MenuItem.
      */
     getItem(itemPosition) {
-        const menuItems = $(this.rootElement).$$('li[role="menuitem"]');
-        const buttonMenuItems = $(this.rootElement).$$('ul > *');
-        if (menuItems[itemPosition]) {
-            const indexPosition = buttonMenuItems.findIndex(
-                element => element.ELEMENT === menuItems[itemPosition].ELEMENT,
-            );
-            return new PageMenuItem(
-                `${this.rootElement} li[role="menuitem"]:nth-child(${indexPosition + 1})`,
-            );
-        }
-        return null;
+        return this.primitiveMenu.getItem(itemPosition);
     }
 
     /**
@@ -39,9 +32,7 @@ class PageButtonMenu {
      * @method
      */
     click() {
-        $(this.rootElement)
-            .$('button[data-id="avatar-menu-button"]')
-            .click();
+        this.primitiveMenu.clickTrigger();
     }
 
     /**
@@ -50,9 +41,7 @@ class PageButtonMenu {
      * @returns {bool}
      */
     isOpen() {
-        return $(this.rootElement)
-            .$('div[data-id="primitive-menu_dropdown"]')
-            .isDisplayed();
+        return this.primitiveMenu.isDropdownOpen();
     }
 
     /**
@@ -61,10 +50,8 @@ class PageButtonMenu {
      * @returns {bool}
      */
     hasFocusButton() {
-        return $(this.rootElement)
-            .$('button')
-            .isFocused();
+        return this.primitiveMenu.hasFocusTrigger();
     }
 }
 
-module.exports = PageButtonMenu;
+module.exports = PageAvatarMenu;

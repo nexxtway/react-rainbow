@@ -54,7 +54,7 @@ class CheckboxGroup extends Component {
         const { id, options, required, label, error, style, className, orientation } = this.props;
         return (
             <StyledFieldset id={id} className={className} style={style}>
-                <RenderIf isTrue={!!label}>
+                <RenderIf isTrue={label}>
                     <StyledLegend>
                         <RequiredAsterisk required={required} />
                         {label}
@@ -70,7 +70,7 @@ class CheckboxGroup extends Component {
                         error={error}
                     />
                 </StyledContentContainer>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <StyledTextError id={this.getErrorMessageId()}>{error}</StyledTextError>
                 </RenderIf>
             </StyledFieldset>

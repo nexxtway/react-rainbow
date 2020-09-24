@@ -10,6 +10,14 @@ export default class AvatarButton extends Component {
     }
 
     /**
+     * Returns the ref of the HTML button element.
+     * @public
+     */
+    get htmlElementRef() {
+        return this.avatarButtonRef;
+    }
+
+    /**
      * Sets focus on the element.
      * @public
      */

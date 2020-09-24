@@ -85,19 +85,19 @@ export default class ComponentsPage extends Component {
         } = this.getComponentsByCategory();
         return (
             <div className="react-rainbow-components-page_cards-container">
-                <RenderIf isTrue={!!layouts.length}>
+                <RenderIf isTrue={layouts.length}>
                     <h1 className="react-rainbow-components-page_category-title">
                         Layout Components ({layouts.length})
                     </h1>
                 </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">{layouts}</div>
-                <RenderIf isTrue={!!forms.length}>
+                <RenderIf isTrue={forms.length}>
                     <h1 className="react-rainbow-components-page_category-title">
                         Forms ({forms.length})
                     </h1>
                 </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">{forms}</div>
-                <RenderIf isTrue={!!miscellaneous.length}>
+                <RenderIf isTrue={miscellaneous.length}>
                     <h1 className="react-rainbow-components-page_category-title">
                         Miscellaneous ({miscellaneous.length})
                     </h1>
@@ -105,7 +105,7 @@ export default class ComponentsPage extends Component {
                 <div className="react-rainbow-components-page_card-group-container">
                     {miscellaneous}
                 </div>
-                <RenderIf isTrue={!!dataViews.length}>
+                <RenderIf isTrue={dataViews.length}>
                     <h1 className="react-rainbow-components-page_category-title">
                         Data View ({dataViews.length})
                     </h1>
@@ -113,7 +113,7 @@ export default class ComponentsPage extends Component {
                 <div className="react-rainbow-components-page_card-group-container">
                     {dataViews}
                 </div>
-                <RenderIf isTrue={!!experiences.length}>
+                <RenderIf isTrue={experiences.length}>
                     <h1 className="react-rainbow-components-page_category-title">
                         Experiences ({experiences.length})
                     </h1>
@@ -121,7 +121,7 @@ export default class ComponentsPage extends Component {
                 <div className="react-rainbow-components-page_card-group-container">
                     {experiences}
                 </div>
-                <RenderIf isTrue={!!internal.length}>
+                <RenderIf isTrue={internal.length}>
                     <h1 className="react-rainbow-components-page_category-title">
                         Internal ({internal.length})
                     </h1>

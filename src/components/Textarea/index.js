@@ -116,7 +116,7 @@ class Textarea extends Component {
                     disabled={disabled}
                     variant={variant}
                 >
-                    <RenderIf isTrue={!!header}>{header}</RenderIf>
+                    <RenderIf isTrue={header}>{header}</RenderIf>
                     <StyledTextarea
                         error={error}
                         id={this.textareaId}
@@ -138,12 +138,12 @@ class Textarea extends Component {
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.textareaRef}
                     />
-                    <RenderIf isTrue={!!footer}>{footer}</RenderIf>
+                    <RenderIf isTrue={footer}>{footer}</RenderIf>
                 </StyledTextareaContainer>
-                <RenderIf isTrue={!!bottomHelpText}>
+                <RenderIf isTrue={bottomHelpText}>
                     <StyledBottomHelp>{bottomHelpText}</StyledBottomHelp>
                 </RenderIf>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <StyledError id={this.getErrorMessageId()}>{error}</StyledError>
                 </RenderIf>
             </StyledContainer>

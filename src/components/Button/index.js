@@ -12,6 +12,10 @@ export default class Button extends Component {
         this.buttonRef = React.createRef();
     }
 
+    /**
+     * Returns the ref of the HTML button element.
+     * @public
+     */
     get htmlElementRef() {
         return this.buttonRef;
     }

@@ -110,7 +110,7 @@ export default class InputBase extends Component {
                     />
                 </StyledLabelContainer>
                 <RelativeElement>
-                    <RenderIf isTrue={!!icon}>
+                    <RenderIf isTrue={icon}>
                         <StyledIconContainer
                             iconPosition={iconPosition}
                             readOnly={readOnly}
@@ -152,10 +152,10 @@ export default class InputBase extends Component {
                         variant={variant}
                     />
                 </RelativeElement>
-                <RenderIf isTrue={!!bottomHelpText}>
+                <RenderIf isTrue={bottomHelpText}>
                     <HelpText alignSelf="center">{bottomHelpText}</HelpText>
                 </RenderIf>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <ErrorText alignSelf="center" id={this.getErrorMessageId()}>
                         {error}
                     </ErrorText>

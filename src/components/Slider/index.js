@@ -95,7 +95,7 @@ export default class Slider extends Component {
 
                     <StyledValue aria-hidden>{value}</StyledValue>
                 </StyledSlider>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <ErrorText id={this.errorMessageId}>{error}</ErrorText>
                 </RenderIf>
             </StyledContainer>

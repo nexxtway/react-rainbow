@@ -92,10 +92,10 @@ class Select extends Component {
                         <Options options={options} />
                     </StyledSelect>
                 </StyledInnerContainer>
-                <RenderIf isTrue={!!bottomHelpText}>
+                <RenderIf isTrue={bottomHelpText}>
                     <HelpText>{bottomHelpText}</HelpText>
                 </RenderIf>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <ErrorText>{error}</ErrorText>
                 </RenderIf>
             </StyledContainer>
