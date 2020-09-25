@@ -29,4 +29,42 @@ describe('Select component', () => {
         const component = mount(<Select label="Select Label" required />);
         expect(component.find('RequiredAsterisk').prop('required')).toBe(true);
     });
+    it('should set "left" to labelAlignment prop passed in the Label component', () => {
+        const component = mount(<Select label="Select Label" required labelAlignment="left" />);
+        expect(component.find('SelectStyledLabel').prop('labelAlignment')).toBe('left');
+    });
+    it('should set "right" to labelAlignment prop passed in the Label component', () => {
+        const component = mount(<Select label="Select Label" required labelAlignment="right" />);
+        expect(component.find('SelectStyledLabel').prop('labelAlignment')).toBe('right');
+    });
+    it('should set "center" to labelAlignment if prop not passed (default) in the Label component', () => {
+        const component = mount(<Select label="Select Label" required />);
+        expect(component.find('SelectStyledLabel').prop('labelAlignment')).toBe('center');
+    });
+    it('renders correctly with label left aligned', () => {
+        const component = mount(<Select label="Select Label" required labelAlignment="left" />);
+        const elem = component.find('SelectStyledLabel');
+
+        expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('align-self')).toBe(
+            'flex-start',
+        );
+    });
+    it('renders correctly with label right aligned', () => {
+        const component = mount(<Select label="Select Label" required labelAlignment="right" />);
+        const elem = component.find('SelectStyledLabel');
+
+        expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('align-self')).toBe('flex-end');
+    });
+    it('renders correctly with label centered (default)', () => {
+        const component = mount(<Select label="Select Label" required />);
+        const elem = component.find('SelectStyledLabel');
+
+        expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('align-self')).toBe('center');
+    });
+    it('renders correctly with label centered by passing prop (explicit)', () => {
+        const component = mount(<Select label="Select Label" required labelAlignment="center" />);
+        const elem = component.find('SelectStyledLabel');
+
+        expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('align-self')).toBe('center');
+    });
 });
