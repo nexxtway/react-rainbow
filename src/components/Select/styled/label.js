@@ -15,7 +15,7 @@ const StyledLabel = attachThemeAttrs(styled.label)`
     line-height: 1.5;
     margin-right: ${MARGIN_SMALL};
     margin-bottom: ${MARGIN_XX_SMALL};
-    align-self: ${props => LABEL_ALIGNMENT_MAPPING[props.labelAlignment]};
+    align-self: ${props => LABEL_ALIGNMENT_MAPPING[props.labelAlignment] || 'center'};
     box-sizing: border-box;
 
     &:empty {

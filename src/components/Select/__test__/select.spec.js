@@ -41,30 +41,4 @@ describe('Select component', () => {
         const component = mount(<Select label="Select Label" required />);
         expect(component.find('SelectStyledLabel').prop('labelAlignment')).toBe('center');
     });
-    it('renders correctly with label aligned left', () => {
-        const component = mount(<Select label="Select Label" required labelAlignment="left" />);
-        const elem = component.find('SelectStyledLabel');
-
-        expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('align-self')).toBe(
-            'flex-start',
-        );
-    });
-    it('renders correctly with label aligned right', () => {
-        const component = mount(<Select label="Select Label" required labelAlignment="right" />);
-        const elem = component.find('SelectStyledLabel');
-
-        expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('align-self')).toBe('flex-end');
-    });
-    it('renders correctly with label centered (default)', () => {
-        const component = mount(<Select label="Select Label" required />);
-        const elem = component.find('SelectStyledLabel');
-
-        expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('align-self')).toBe('center');
-    });
-    it('renders correctly with label centered by passing prop (explicit)', () => {
-        const component = mount(<Select label="Select Label" required labelAlignment="center" />);
-        const elem = component.find('SelectStyledLabel');
-
-        expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('align-self')).toBe('center');
-    });
 });
