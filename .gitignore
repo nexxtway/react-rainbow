@@ -28,7 +28,6 @@ styles
 !/src/libs
 !/src/propTypes
 !/src/styles
-styleguide
 errorShots
 allure-results
 test-results
