@@ -41,7 +41,7 @@ describe('Select component', () => {
         const component = mount(<Select label="Select Label" required />);
         expect(component.find('SelectStyledLabel').prop('labelAlignment')).toBe('center');
     });
-    it('renders correctly with label left aligned', () => {
+    it('renders correctly with label aligned left', () => {
         const component = mount(<Select label="Select Label" required labelAlignment="left" />);
         const elem = component.find('SelectStyledLabel');
 
@@ -49,7 +49,7 @@ describe('Select component', () => {
             'flex-start',
         );
     });
-    it('renders correctly with label right aligned', () => {
+    it('renders correctly with label aligned right', () => {
         const component = mount(<Select label="Select Label" required labelAlignment="right" />);
         const elem = component.find('SelectStyledLabel');
 
