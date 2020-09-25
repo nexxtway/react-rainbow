@@ -31,7 +31,7 @@ export interface InputProps extends BaseProps {
     name?: string;
     type?: InputType;
     label?: ReactNode;
-    labelAlignment: labelAlignment;
+    labelAlignment?: labelAlignment;
     hideLabel?: boolean;
     placeholder?: string;
     icon?: ReactNode;
