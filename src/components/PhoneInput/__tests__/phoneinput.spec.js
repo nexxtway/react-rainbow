@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import PhoneInput from '../';
+import { StyledTrigger } from '../styled';
 
 describe('<PhoneInput />', () => {
     it('should accept only numbers.', () => {
@@ -18,5 +19,17 @@ describe('<PhoneInput />', () => {
                 phone: '0987256983',
             }),
         );
+    });
+
+    it('should render the dropdown option when an empty array is passed in countries prop', () => {
+        const countries = [];
+        const wrapper = mount(<PhoneInput countries={countries} />);
+        expect(wrapper.find(StyledTrigger).prop('onClick')).toBeDefined();
+    });
+
+    it('should not render the dropdown option when only one country is passed', () => {
+        const countries = ['mx'];
+        const wrapper = mount(<PhoneInput countries={countries} />);
+        expect(wrapper.find(StyledTrigger).prop('onClick')).toBe(undefined);
     });
 });
