@@ -1,5 +1,5 @@
-##### HighlightedText base
-
+# HighlightedText base
+##### This example shows the style that is applied by default to the component.
 ```js
 import React, { useState } from 'react';
 import {  HighlightedText } from 'react-rainbow-components';
@@ -31,7 +31,8 @@ const parts = [
 
 ```
 
-##### HighlightedText with custom styles
+# HighlightedText with custom styles
+##### This example shows the component when custom styles are applied to it.
 
 ```js
 import React, { useState } from 'react';
@@ -62,24 +63,15 @@ const parts = [
 ];
 
 const TextContainer = styled.span`
-    color: grey;
+    color: gray;
 `;
-
-const textComponent = ({children}) => {
-    return <TextContainer>{children}</TextContainer>
-}
 
 const HitContainer = styled.span`
     background-color:  #00a3dc;
     color: #fff;
 `;
 
-const hitComponent = ({children}) => {
-    return <HitContainer>{children}</HitContainer>
-}
-
-
-<HighlightedText parts={parts} style={style} TextComponent={textComponent} HitComponent={hitComponent}/>
+<HighlightedText parts={parts} style={style} textComponent={TextContainer} hitComponent={HitContainer}/>
 
 ```
 

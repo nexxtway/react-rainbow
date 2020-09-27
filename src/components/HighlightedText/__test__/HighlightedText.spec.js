@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import styled from 'styled-components';
 import HighlightedText from '../';
@@ -46,22 +45,15 @@ describe('<HighlightedText />', () => {
             color: grey;
         `;
 
-        const textComponent = ({ children }) => {
-            return <TextContainer>{children}</TextContainer>;
-        };
-
         const HitContainer = styled.p`
             color: #fff;
         `;
 
-        const hitComponent = ({ children }) => {
-            return <HitContainer>{children}</HitContainer>;
-        };
         const component = mount(
             <HighlightedText
                 parts={parts}
-                TextComponent={textComponent}
-                HitComponent={hitComponent}
+                textComponent={TextContainer}
+                hitComponent={HitContainer}
             />,
         );
         const container = component.find('p');
@@ -83,21 +75,5 @@ describe('<HighlightedText />', () => {
                 .html()
                 .includes('Honeycrisp'),
         ).toBe(true);
-
-        textComponent.propTypes = {
-            children: PropTypes.node,
-        };
-
-        hitComponent.propTypes = {
-            children: PropTypes.node,
-        };
-
-        textComponent.defaultProps = {
-            children: undefined,
-        };
-
-        hitComponent.defaultProps = {
-            children: undefined,
-        };
     });
 });
