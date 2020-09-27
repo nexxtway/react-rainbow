@@ -17,33 +17,6 @@ const containerStyles = {
 />;
 ```
 
-##### input base with a value controlled through a state and an initial value set by default
-
-```js
-import React, { useState } from 'react';
-import { Input } from 'react-rainbow-components';
-
-const [ value, setValue ] = useState('John Doe');
-
-const handleChange = (e) => {
-    setValue(e.target.value)
-}
-
-const containerStyles = {
-    maxWidth: 700,
-};
-
-<Input
-    id="input-component-1"
-    label="Input Label"
-    placeholder="Placeholder text"
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-    value={value}
-    onChange={handleChange}
-/>
-```
-
 ##### type of the inputs
 
 ```js
@@ -487,4 +460,30 @@ const inputStyles = {
         placeholder="Placeholder text"
     />
 </div>
+```
+# Input with a set value
+##### This example shows an input base with a value controlled through a state and an initial value set by default.
+
+```js
+import React, { useState } from 'react';
+import { Input } from 'react-rainbow-components';
+
+const [ value, setValue ] = useState('John Doe');
+
+const handleChange = (e) => {
+    setValue(e.target.value)
+}
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+<Input
+    label="Input Label"
+    placeholder="Placeholder text"
+    style={containerStyles}
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    value={value}
+    onChange={handleChange}
+/>
 ```
