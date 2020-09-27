@@ -1,22 +1,22 @@
-export const data = [
+export const DataTable = [
     {
         name: 'Leandro Torres',
-        company: 'Nexxtway',
+        company: 'nexxtway',
         email: 'leandro@gmail.com',
         status: 'verified',
         id: '1234qwerty',
     },
     {
-        name: 'Reinier',
-        company: 'Nexxtway',
-        email: 'reinier@gmail.com',
+        name: 'Jose Torres',
+        company: 'Google',
+        email: 'jose@gmail.com',
         status: 'verified',
         id: '1234asdfgh',
     },
     {
-        name: 'Jose Torres',
-        company: 'Google',
-        email: 'jose@gmail.com',
+        name: 'Reinier',
+        company: 'Nexxtway',
+        email: 'reinier@gmail.com',
         status: 'verified',
         id: '1234zxcvbn',
     },
@@ -29,22 +29,22 @@ export const data = [
     },
     {
         name: 'Tahimi',
-        company: 'Nexxtway',
+        company: 'nexxtway',
         email: 'tahimi@gmail.com',
         status: 'verified',
         id: '5678asdfgh',
     },
     {
-        name: 'Alejandro',
-        company: 'Google',
-        email: 'alejandro@gmail.com',
+        name: 'Carlos',
+        company: 'Oracle',
+        email: 'carlos@gmail.com',
         status: 'verified',
         id: '5678zxcvbn',
     },
     {
-        name: 'Carlos',
+        name: 'Andy',
         company: 'Oracle',
-        email: 'carlos@gmail.com',
+        email: 'andy@gmail.com',
         status: 'verified',
         id: '9012qwerty',
     },
@@ -57,52 +57,7 @@ export const data = [
     },
 ];
 
-export const dynamicActionData = [
-    {
-        name: 'Leandro Torres',
-        company: 'nexxtway',
-        email: 'leandro@gmail.com',
-        status: 'verified',
-        id: '1234qwerty',
-    },
-    {
-        name: 'Jose Torres',
-        company: 'Google',
-        email: 'jose@gmail.com',
-        status: 'pending',
-        id: '1234asdfgh',
-    },
-    {
-        name: 'Reinier',
-        company: 'Nexxtway',
-        email: 'reinier@gmail.com',
-        status: 'verified',
-        id: '1234zxcvbn',
-    },
-    {
-        name: 'Sara',
-        company: 'Nexxtway',
-        email: 'sara@gmail.com',
-        status: 'verified',
-        id: '5678qwerty',
-    },
-    {
-        name: 'Tahimi',
-        company: 'nexxtway',
-        email: 'tahimi@gmail.com',
-        status: 'verified',
-        id: '5678asdfgh',
-    },
-    {
-        name: 'Carlos',
-        company: 'Oracle',
-        email: 'carlos@gmail.com',
-        status: 'pending',
-        id: '5678zxcvbn',
-    },
-];
-
-export const initialData = [
+export const DynamicDataTable = [
     {
         name: 'Leandro Torres',
         company: 'nexxtway',
@@ -131,7 +86,7 @@ export const initialData = [
         name: 'Sara',
         company: 'nexxtway',
         email: 'sara@gmail.com',
-        status: 'verified',
+        status: 'pending',
         id: '5678qwerty',
         link: '#',
     },
@@ -163,7 +118,7 @@ export const initialData = [
         name: 'Alejandro',
         company: 'Google',
         email: 'alejandro@gmail.com',
-        status: 'verified',
+        status: 'pending',
         id: '5678zdfgdf',
         link: '#',
     },
@@ -185,7 +140,7 @@ export const initialData = [
     },
 ];
 
-export const customActionsInitialData = [
+export const ActionsDataTable = [
     {
         name: 'Leandro Torres',
         description:
@@ -248,7 +203,7 @@ export const customActionsInitialData = [
     },
 ];
 
-export const listviewInitialData = [
+export const ListviewDataTable = [
     {
         task: 'fix: keyboard navigation on Tree.',
         coins: 2,

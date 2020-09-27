@@ -5,7 +5,6 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { data } from './exampleData.js'
 
 const badgeStyles = { color: '#1de9b6' };
 
@@ -22,7 +21,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
             />
         </ButtonGroup>
     </GlobalHeader>
-    <Table data={data} keyField="id">
+    <Table data={DataTable} keyField="id">
         <Column header="Name" field="name" />
         <Column header="Status" field="status" component={StatusBadge} />
         <Column header="Company" field="company" />
@@ -38,7 +37,7 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { data } from './exampleData.js'
+
 
 const badgeStyles = { color: '#1de9b6' };
 const tableContainerStyles = { height: 300 };
@@ -51,7 +50,7 @@ class TableExample extends React.Component {
         this.state = {
             sortedBy: undefined,
             sortDirection: 'asc',
-            data: data,
+            data: DataTable,
         };
         this.handleOnSort = this.handleOnSort.bind(this);
     }
@@ -120,7 +119,6 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { data } from './exampleData.js'
 
 const badgeStyles = { color: '#1de9b6' };
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
@@ -140,7 +138,7 @@ class TableExample extends React.Component {
             () =>
                 this.setState({
                     isLoading: false,
-                    data,
+                    data:DataTable,
                 }),
             2000,
         );
@@ -192,7 +190,6 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { data } from './exampleData.js'
 
 const badgeStyles = { color: '#1de9b6' };
 
@@ -213,7 +210,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         id="table-7"
         keyField="id"
         showCheckboxColumn
-        data={data}
+        data={DataTable}
         maxRowSelection={4}
         selectedRows={['1234qwerty', '1234zxcvbn']}
         onRowSelection={data => console.log(data)}
@@ -233,7 +230,6 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { data } from './exampleData.js'
 
 const badgeStyles = { color: '#1de9b6' };
 
@@ -254,7 +250,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         id="table-9"
         keyField="id"
         showCheckboxColumn
-        data={data}
+        data={DataTable}
         maxRowSelection={1}
         onRowSelection={data => console.log(data)}
     >
@@ -273,7 +269,6 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge, MenuItem } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { data } from './exampleData.js'
 
 
 const badgeStyles = { color: '#1de9b6' };
@@ -291,7 +286,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
             />
         </ButtonGroup>
     </GlobalHeader>
-    <Table keyField="id" data={data}>
+    <Table keyField="id" data={DataTable}>
         <Column header="Name" field="name" />
         <Column header="Status" field="status" component={StatusBadge} />
         <Column header="Company" field="company" />
@@ -311,7 +306,6 @@ import React from 'react';
 import { Table, Column, ButtonMenu, ButtonGroup, ButtonIcon, Badge, MenuItem } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { dynamicActionData } from './exampleData.js'
 
 
 const StatusBadge = ({ value }) => {
@@ -360,7 +354,7 @@ const ButtonAction = (props) => {
             />
         </ButtonGroup>
     </GlobalHeader>
-    <Table keyField="id" data={dynamicActionData}>
+    <Table keyField="id" data={DynamicDataTable}>
         <Column header="Name" field="name" />
         <Column header="Status" field="status" component={StatusBadge} />
         <Column header="Company" field="company" />
@@ -377,7 +371,6 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { data } from './exampleData.js'
 
 
 const badgeStyles = { color: '#1de9b6' };
@@ -395,7 +388,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
             />
         </ButtonGroup>
     </GlobalHeader>
-    <Table showCheckboxColumn showRowNumberColumn rowNumberOffset={99} data={data} keyField="id">
+    <Table showCheckboxColumn showRowNumberColumn rowNumberOffset={99} data={DataTable} keyField="id">
         <Column header="Name" field="name" />
         <Column header="Status" field="status" component={StatusBadge} />
         <Column header="Company" field="company" />
@@ -483,7 +476,6 @@ import {
 } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { initialData } from './exampleData.js'
 
 const tableContainerStyles = { height: 300 };
 
@@ -522,7 +514,7 @@ const StyledLink = styled.a.attrs(props => props.theme.rainbow)`
 const ProfileLink = ({ value, row }) => <StyledLink href={row.link}>{value}</StyledLink>;
 
 function TableExample() {
-    const [data, setData] = useState(initialData);
+    const [data, setData] = useState(DynamicDataTable);
     const [sortedBy, setSortedBy] = useState();
     const [sortDirection, setSortDirection] = useState('asc');
     const [selection, setSelection] = useState([]);
@@ -602,7 +594,6 @@ import styled from 'styled-components';
 import { Table, Column, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV, faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { customActionsInitialData } from './exampleData.js'
 
 const Title = styled.h1.attrs(props => props.theme.rainbow)`
     font-family: 'Lato Light';
@@ -638,7 +629,7 @@ const WrapDescription = styled.p`
 `;
 
 function TableCustomAction() {
-    const [data, setData] = useState(customActionsInitialData);
+    const [data, setData] = useState(ActionsDataTable);
 
     function handleDeleteElement(id) {
         const newData = data.filter(e => e.id !== id);
@@ -692,8 +683,6 @@ import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { data } from './exampleData.js'
-
 
 
 const columnsNames = ['name', 'status', 'company', 'email'];
@@ -713,7 +702,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
             />
         </ButtonGroup>
     </GlobalHeader>
-    <Table data={data} keyField="id">
+    <Table data={DataTable} keyField="id">
         {columnsNames.map(item => {
             if (item === 'status') {
                 return <Column header={item} field={item} component={StatusBadge} />;
@@ -733,8 +722,6 @@ import styled from 'styled-components';
 import { Table, Column, ButtonGroup, ButtonIcon, Avatar } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { listviewInitialData } from './exampleData.js'
-
 
 
 const Container = styled.div`
@@ -805,7 +792,7 @@ const Priority = ({ value }) => {
 };
 
 function TableListView() {
-    const [data, setData] = useState(listviewInitialData);
+    const [data, setData] = useState(ListviewDataTable);
     const [sortedBy, setSortedBy] = useState();
     const [sortDirection, setSortDirection] = useState('asc');
 
@@ -887,7 +874,6 @@ import styled from 'styled-components';
 import { Table, Column, ButtonGroup, ButtonIcon, Avatar } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { listviewInitialData } from './exampleData.js'
 
 
 const Container = styled.div`
@@ -958,7 +944,7 @@ const Priority = ({ value }) => {
 };
 
 function TableListView() {
-    const [data, setData] = useState(listviewInitialData);
+    const [data, setData] = useState(ListviewDataTable);
     const [sortedBy, setSortedBy] = useState();
     const [sortDirection, setSortDirection] = useState('asc');
 
