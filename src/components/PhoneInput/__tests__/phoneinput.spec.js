@@ -40,7 +40,7 @@ describe('<PhoneInput />', () => {
     });
 
     it('should render the dropdown option when an array containing invalid country code is passed', () => {
-        const countries = [/^w{2}$/];
+        const countries = [!(/^w{2}$/)];
         const wrapper = mount(<PhoneInput countries={countries} />);
         expect(wrapper.find(StyledTrigger).prop('onClick')).toBeDefined;
     });
