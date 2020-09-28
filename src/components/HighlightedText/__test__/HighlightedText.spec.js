@@ -18,7 +18,7 @@ describe('<HighlightedText />', () => {
             type: 'text',
         },
     ];
-    it('should return 3 <span> with theirs respective values because the default wrapp ers are span', () => {
+    it('should return 3 <span> with theirs respective values because the default wrapper is a span', () => {
         const component = mount(<HighlightedText parts={parts} />);
         const container = component.find('span');
         expect(
@@ -40,12 +40,12 @@ describe('<HighlightedText />', () => {
                 .includes('Honeycrisp'),
         ).toBe(true);
     });
-    it('should return 3 <p> with theirs respective values because the custom wrappers are p', () => {
-        const TextContainer = styled.p`
+    it('should return 3 custom <span> with theirs respective values because the custom wrapper is a span', () => {
+        const TextContainer = styled.span`
             color: grey;
         `;
 
-        const HitContainer = styled.p`
+        const HitContainer = styled.span`
             color: #fff;
         `;
 
@@ -56,7 +56,7 @@ describe('<HighlightedText />', () => {
                 hitComponent={HitContainer}
             />,
         );
-        const container = component.find('p');
+        const container = component.find('span');
         expect(
             container
                 .at(0)
@@ -75,5 +75,30 @@ describe('<HighlightedText />', () => {
                 .html()
                 .includes('Honeycrisp'),
         ).toBe(true);
+    });
+
+    it('should return a custom <span> with id="hitText" in the container at(1) which corresponds to the text that has a type hit', () => {
+        const TextContainer = styled.span`
+            color: grey;
+        `;
+
+        const HitContainer = styled.span`
+            color: #fff;
+        `;
+
+        // eslint-disable-next-line react/prop-types
+        const hitComponent = ({ children }) => {
+            return <HitContainer id="hitText">{children}</HitContainer>;
+        };
+
+        const component = mount(
+            <HighlightedText
+                parts={parts}
+                textComponent={TextContainer}
+                hitComponent={hitComponent}
+            />,
+        );
+        const container = component.find('span');
+        expect(container.at(1).prop('id')).toBe('hitText');
     });
 });

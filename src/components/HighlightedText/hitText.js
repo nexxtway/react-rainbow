@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function hitText({ parts, hitComponent: HitComponent, textComponent: TextComponent }) {
+export default function HitText({
+    parts,
+    hitComponent: HitComponent,
+    textComponent: TextComponent,
+}) {
     return parts.map((part, index) => {
         const key = `part-${index}`;
         if (part.type === 'hit') {
@@ -11,9 +15,7 @@ function hitText({ parts, hitComponent: HitComponent, textComponent: TextCompone
     });
 }
 
-export default hitText;
-
-hitText.propTypes = {
+HitText.propTypes = {
     parts: PropTypes.arrayOf(
         PropTypes.exact({
             value: PropTypes.string,
@@ -24,7 +26,7 @@ hitText.propTypes = {
     textComponent: PropTypes.elementType,
 };
 
-hitText.defaultProps = {
+HitText.defaultProps = {
     parts: undefined,
     hitComponent: undefined,
     textComponent: undefined,

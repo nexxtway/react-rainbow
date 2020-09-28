@@ -37,6 +37,7 @@ export { default as FileSelector } from './FileSelector';
 export { default as GMap } from './GMap';
 export { default as GoogleAddressLookup } from './GoogleAddressLookup';
 export { default as HelpText } from './HelpText';
+export { default as HighlightedText } from './HighlightedText';
 export { default as ImportRecordsFlow } from './ImportRecordsFlow';
 export { default as Input } from './Input';
 export { default as Lookup } from './Lookup';

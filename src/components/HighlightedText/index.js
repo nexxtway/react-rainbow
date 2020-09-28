@@ -9,15 +9,17 @@ import { DefaultHitContainer, DefaultTextContainer } from './styled/index';
 
 function HighlightedText(props) {
     const { style, className, parts, hitComponent, textComponent } = props;
+    const finalHitContainer = hitComponent || DefaultHitContainer;
+    const finalTextContainer = textComponent || DefaultTextContainer;
 
     return (
-        <div className={className} style={style}>
+        <p className={className} style={style}>
             <HitText
                 parts={parts}
-                hitComponent={hitComponent || DefaultHitContainer}
-                textComponent={textComponent || DefaultTextContainer}
+                hitComponent={finalHitContainer}
+                textComponent={finalTextContainer}
             />
-        </div>
+        </p>
     );
 }
 

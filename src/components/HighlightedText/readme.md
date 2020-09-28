@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import {  HighlightedText } from 'react-rainbow-components';
 
 const style = {
-    fontSize:"16px",
     maxWidth:"700px",
     textAlign:"center",
     padding:"20px",
@@ -40,11 +39,10 @@ import styled from 'styled-components';
 import {  HighlightedText } from 'react-rainbow-components';
 
 const style = {
-    fontSize:"16px",
-    maxWidth:"700px",
-    textAlign:"center",
-    padding:"20px",
-    margin:"auto",
+    maxWidth: '700px',
+    textAlign: 'center',
+    padding: '20px',
+    margin: 'auto',
 };
 
 const parts = [
@@ -64,11 +62,13 @@ const parts = [
 
 const TextContainer = styled.span`
     color: gray;
+    font-size: 1rem;
 `;
 
 const HitContainer = styled.span`
     background-color:  #00a3dc;
     color: #fff;
+    font-size: 1rem;
 `;
 
 <HighlightedText parts={parts} style={style} textComponent={TextContainer} hitComponent={HitContainer}/>
