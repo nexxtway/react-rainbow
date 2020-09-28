@@ -1,8 +1,9 @@
-import { ReactNode, CSSProperties } from 'react';
+import { ReactNode, CSSProperties, Ref } from 'react';
 
 export interface BaseProps {
     className?: string;
     style?: CSSProperties;
+    ref?: Ref<any>;
 }
 
 export type AvatarSize = 'x-small' | 'small' | 'medium' | 'large';

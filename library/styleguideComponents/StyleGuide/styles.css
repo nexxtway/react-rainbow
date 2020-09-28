@@ -21,6 +21,7 @@
 .react-rainbow-styleguide_twitter-link {
     height: 32px;
     width: 32px;
+    position: relative;
     border-radius: 32px;
     background-color: #d7dae8;
     display: flex;
