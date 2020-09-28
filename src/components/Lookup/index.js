@@ -417,6 +417,7 @@ class Lookup extends Component {
             required,
             id,
             name,
+            labelAlignment,
             hideLabel,
             isLoading,
             icon,
@@ -441,6 +442,7 @@ class Lookup extends Component {
             >
                 <Label
                     label={label}
+                    labelAlignment={labelAlignment}
                     hideLabel={hideLabel}
                     required={required}
                     inputId={this.inputId}
@@ -548,6 +550,9 @@ class Lookup extends Component {
 Lookup.propTypes = {
     /** Text label for the Lookup. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the Lookup label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     /** A boolean to hide the Lookup label. */
     hideLabel: PropTypes.bool,
     /** Specifies the selected value of the Lookup. */
@@ -633,6 +638,7 @@ Lookup.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
     isLoading: false,
     options: undefined,

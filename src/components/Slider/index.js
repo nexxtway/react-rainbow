@@ -70,11 +70,17 @@ export default class Slider extends Component {
             onFocus,
             style,
             className,
+            labelAlignment,
             hideLabel,
         } = this.props;
         return (
             <StyledContainer className={className} style={style}>
-                <Label label={label} hideLabel={hideLabel} inputId={this.sliderId} />
+                <Label
+                    label={label}
+                    hideLabel={hideLabel}
+                    labelAlignment={labelAlignment}
+                    inputId={this.sliderId}
+                />
                 <StyledSlider>
                     <StyledInputRange
                         id={this.sliderId}
@@ -107,7 +113,10 @@ Slider.propTypes = {
     /** The text label for the slider. Provide your own label to describe the slider.
      * Otherwise, no label is displayed. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** A boolean to hide the slider label */
+    /** Describes the position of the Slider label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the Slider label */
     hideLabel: PropTypes.bool,
     /** The numerical value of the slider. This value defaults to 0. */
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -153,5 +162,6 @@ Slider.defaultProps = {
     onBlur: () => {},
     className: undefined,
     style: null,
+    labelAlignment: 'center',
     hideLabel: false,
 };

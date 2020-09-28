@@ -1,5 +1,5 @@
 import { ReactNode, MouseEvent } from 'react';
-import { BaseProps, LookupValue } from '../types';
+import { BaseProps, LookupValue, LabelAlignment } from '../types';
 
 interface MatchedSubstringsShape {
     length?: number;
@@ -107,6 +107,7 @@ interface SearchOptionsShape {
 export interface GoogleAddressLookupProps extends BaseProps {
     apiKey: string;
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     value?: string | PredictionShape | PlaceDetailsShape;
     name?: string;
