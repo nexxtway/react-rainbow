@@ -33,12 +33,12 @@ export default class MenuItem extends Component {
                     role="option"
                     ref={this.itemRef}
                 >
-                    <RenderIf isTrue={!!icon}>
+                    <RenderIf isTrue={icon}>
                         <StyledIcon>{icon}</StyledIcon>
                     </RenderIf>
                     <StyledContent>
                         {label}
-                        <RenderIf isTrue={!!description}>
+                        <RenderIf isTrue={description}>
                             <StyledDescription>{description}</StyledDescription>
                         </RenderIf>
                     </StyledContent>

@@ -97,10 +97,10 @@ export default class InputRadio extends Component {
                     label={label}
                     hideLabel={hideLabel}
                 />
-                <RenderIf isTrue={!!bottomHelpText}>
+                <RenderIf isTrue={bottomHelpText}>
                     <HelpText alignSelf="flex-start">{bottomHelpText}</HelpText>
                 </RenderIf>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <ErrorText alignSelf="flex-start" id={errorMessageId}>
                         {error}
                     </ErrorText>

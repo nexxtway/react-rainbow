@@ -15,7 +15,7 @@ export default function Breadcrumb(props) {
 
     return (
         <StyledLi className={className} style={style}>
-            <RenderIf isTrue={!!href}>
+            <RenderIf isTrue={href}>
                 <StyledAnchor disabled={disabled} href={href} aria-disabled={!!disabled}>
                     {label}
                 </StyledAnchor>

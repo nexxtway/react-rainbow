@@ -170,7 +170,7 @@ export default class Modal extends Component {
                             {children}
                         </StyledContent>
 
-                        <RenderIf isTrue={!!footer}>
+                        <RenderIf isTrue={footer}>
                             <StyledFooter>{footer}</StyledFooter>
                         </RenderIf>
                     </StyledModalContainer>

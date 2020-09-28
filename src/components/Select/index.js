@@ -66,11 +66,16 @@ class Select extends Component {
             name,
             hideLabel,
             tabIndex,
+            labelAlignment,
         } = this.props;
 
         return (
             <StyledContainer className={className} style={style} id={id}>
-                <StyledLabel hideLabel={hideLabel} htmlFor={this.selectId}>
+                <StyledLabel
+                    hideLabel={hideLabel}
+                    htmlFor={this.selectId}
+                    labelAlignment={labelAlignment}
+                >
                     <RequiredAsterisk required={required} />
                     {label}
                 </StyledLabel>
@@ -92,10 +97,10 @@ class Select extends Component {
                         <Options options={options} />
                     </StyledSelect>
                 </StyledInnerContainer>
-                <RenderIf isTrue={!!bottomHelpText}>
+                <RenderIf isTrue={bottomHelpText}>
                     <HelpText>{bottomHelpText}</HelpText>
                 </RenderIf>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <ErrorText>{error}</ErrorText>
                 </RenderIf>
             </StyledContainer>
@@ -146,6 +151,8 @@ Select.propTypes = {
     hideLabel: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** Specifies the label alignment. */
+    labelAlignment: PropTypes.oneOf(['center', 'left', 'right']),
 };
 
 Select.defaultProps = {
@@ -166,6 +173,7 @@ Select.defaultProps = {
     id: undefined,
     hideLabel: false,
     tabIndex: undefined,
+    labelAlignment: 'center',
 };
 
 export default withReduxForm(Select);

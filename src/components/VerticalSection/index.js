@@ -22,7 +22,7 @@ class VerticalSection extends Component {
 
         return (
             <StyledContainer className={className} style={style}>
-                <RenderIf isTrue={!!label}>
+                <RenderIf isTrue={label}>
                     <StyledTitle id={this.entityHeaderId}>{label}</StyledTitle>
                 </RenderIf>
                 <Provider value={this.entityHeaderId}>

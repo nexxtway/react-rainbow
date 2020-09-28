@@ -77,7 +77,7 @@ class ButtonGroupPicker extends Component {
 
         return (
             <StyledContainer id={id} className={className} style={style}>
-                <RenderIf isTrue={!!label}>
+                <RenderIf isTrue={label}>
                     <StyledLegend>
                         <RequiredAsterisk required={required} />
                         {label}
@@ -86,10 +86,10 @@ class ButtonGroupPicker extends Component {
                 <StyledButtonGroup>
                     <Provider value={context}>{children}</Provider>
                 </StyledButtonGroup>
-                <RenderIf isTrue={!!bottomHelpText}>
+                <RenderIf isTrue={bottomHelpText}>
                     <StyledHelpText>{bottomHelpText}</StyledHelpText>
                 </RenderIf>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <StyledErrorText id={this.getErrorMessageId()}>{error}</StyledErrorText>
                 </RenderIf>
             </StyledContainer>

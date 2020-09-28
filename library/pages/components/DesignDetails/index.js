@@ -92,7 +92,7 @@ export default function DesignDetails(props) {
                 </article>
             </section>
             <section>
-                <RenderIf isTrue={!!(category && getCategoryPages(category).length > 1)}>
+                <RenderIf isTrue={category && getCategoryPages(category).length > 1}>
                     <h2 className="react-rainbow-design-detail_subtitle rainbow-align-content_center">
                         More like this
                     </h2>
