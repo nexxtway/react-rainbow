@@ -32,4 +32,16 @@ describe('<PhoneInput />', () => {
         const wrapper = mount(<PhoneInput countries={countries} />);
         expect(wrapper.find(StyledTrigger).prop('onClick')).toBe(undefined);
     });
+
+    it('should render the dropdown option when an array containing empty string is passed', () => {
+        const countries = [''];
+        const wrapper = mount(<PhoneInput countries={countries} />);
+        expect(wrapper.find(StyledTrigger).prop('onClick')).toBeDefined;
+    });
+
+    it('should render the dropdown option when an array containing invalid country code is passed', () => {
+        const countries = [/^w{2}$/];
+        const wrapper = mount(<PhoneInput countries={countries} />);
+        expect(wrapper.find(StyledTrigger).prop('onClick')).toBeDefined;
+    });
 });
