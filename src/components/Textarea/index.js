@@ -22,6 +22,10 @@ class Textarea extends Component {
         this.textareaId = uniqueId('textarea');
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
+        this.updateFocus = this.updateFocus.bind(this);
+        this.state = {
+            isFocused: false,
+        };
     }
 
     componentDidMount() {
@@ -72,6 +76,13 @@ class Textarea extends Component {
         this.textareaRef.current.blur();
     }
 
+    updateFocus(isFocused, handler) {
+        return (...args) => {
+            this.setState({ isFocused });
+            handler(...args);
+        };
+    }
+
     render() {
         const {
             style,
@@ -95,6 +106,7 @@ class Textarea extends Component {
             id,
             hideLabel,
             name,
+            header,
             footer,
             variant,
         } = this.props;
@@ -110,12 +122,13 @@ class Textarea extends Component {
                     id={this.getInlineTextLabelId()}
                 />
                 <StyledTextareaContainer
-                    footer={footer}
                     error={error}
                     readOnly={readOnly}
                     disabled={disabled}
                     variant={variant}
+                    isFocused={this.state.isFocused}
                 >
+                    <RenderIf isTrue={header}>{header}</RenderIf>
                     <StyledTextarea
                         error={error}
                         id={this.textareaId}
@@ -127,8 +140,8 @@ class Textarea extends Component {
                         minLength={minLength}
                         onChange={onChange}
                         onClick={onClick}
-                        onFocus={onFocus}
-                        onBlur={onBlur}
+                        onFocus={this.updateFocus(true, onFocus)}
+                        onBlur={this.updateFocus(false, onBlur)}
                         onPaste={onPaste}
                         readOnly={readOnly}
                         rows={rows}
@@ -136,14 +149,13 @@ class Textarea extends Component {
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.textareaRef}
-                        footer={footer}
                     />
-                    <RenderIf isTrue={!!footer}>{footer}</RenderIf>
+                    <RenderIf isTrue={footer}>{footer}</RenderIf>
                 </StyledTextareaContainer>
-                <RenderIf isTrue={!!bottomHelpText}>
+                <RenderIf isTrue={bottomHelpText}>
                     <StyledBottomHelp>{bottomHelpText}</StyledBottomHelp>
                 </RenderIf>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <StyledError id={this.getErrorMessageId()}>{error}</StyledError>
                 </RenderIf>
             </StyledContainer>
@@ -200,6 +212,8 @@ Textarea.propTypes = {
     variant: PropTypes.oneOf(['default', 'shaded']),
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** It is what will be displayed at the top of the component. */
+    header: PropTypes.node,
     /** It is what will be displayed at the bottom of the component. */
     footer: PropTypes.node,
 };
@@ -228,6 +242,7 @@ Textarea.defaultProps = {
     variant: 'default',
     id: undefined,
     hideLabel: false,
+    header: undefined,
     footer: undefined,
 };
 

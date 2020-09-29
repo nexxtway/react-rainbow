@@ -28,7 +28,7 @@ const StyledLabel = styled.span`
 
 const ColorPickerExample = () => {
     const [color, setColor] = useState();
-    return <ColorPicker value={color} onChange={setColor}/>;
+    return <ColorPicker id="picker-color-1" value={color} onChange={setColor}/>;
 }
 
 <Container>
@@ -56,7 +56,7 @@ const Container = styled.div`
 `;
 
 const StyledCard = styled(Card)`
-    padding: 20px;
+    padding: 10px;
 `;
 
 const StyledContent = styled.div`

@@ -6,6 +6,22 @@ import ActionsCell from '../actionsCell';
 const columnChildren = [<MenuItem />, <MenuItem />];
 
 describe('<ActionsCell />', () => {
+    beforeEach(() => {
+        Element.prototype.getClientRects = jest.fn(() => {
+            return [
+                {
+                    bottom: 0,
+                    height: 0,
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    width: 0,
+                    x: 0,
+                    y: 0,
+                },
+            ];
+        });
+    });
     it('should not render anything when columnChildren is not passed', () => {
         const component = mount(<ActionsCell />);
         expect(component.children().length).toBe(0);
@@ -14,6 +30,7 @@ describe('<ActionsCell />', () => {
         const component = mount(
             <ActionsCell columnChildren={columnChildren} rowsLength={3} rowIndex={1} />,
         );
+        component.find('ButtonIcon').simulate('click');
         expect(component.find(MenuItem).length).toBe(2);
     });
     it('should render only one menu item', () => {
@@ -21,6 +38,7 @@ describe('<ActionsCell />', () => {
         const component = mount(
             <ActionsCell columnChildren={singleColumnChild} rowsLength={3} rowIndex={1} />,
         );
+        component.find('ButtonIcon').simulate('click');
         expect(component.find(MenuItem).length).toBe(1);
     });
     it('should set the menuAlignment to "right" in ButtonMenu component', () => {
@@ -65,6 +83,7 @@ describe('<ActionsCell />', () => {
                 rowData={rowData}
             />,
         );
+        component.find('ButtonIcon').simulate('click');
         component
             .find(MenuItem)
             .at(0)

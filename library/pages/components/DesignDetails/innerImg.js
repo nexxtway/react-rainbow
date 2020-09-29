@@ -30,18 +30,35 @@ export default class InnerImg extends Component {
             <div
                 className="react-rainbow-design-detail_inner-img"
                 onMouseEnter={this.handleMouseEnter}
-                onMouseLeave={this.handleMouseLeave}>
-
-                <RenderIf isTrue={!!(isVisible && liveUrl)}>
-                    <a className="react-rainbow-design-detail_img-icon" href={liveUrl} target="_blank" rel="noopener noreferrer">
+                onMouseLeave={this.handleMouseLeave}
+            >
+                <RenderIf isTrue={isVisible && liveUrl}>
+                    <a
+                        className="react-rainbow-design-detail_img-icon"
+                        href={liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <img src={LiveIcon} alt="live icon" />
                     </a>
-                    <a className="react-rainbow-design-detail_img-icon" href={previewUrl} target="_blank" rel="noopener noreferrer">
+                    <a
+                        className="react-rainbow-design-detail_img-icon"
+                        href={previewUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <img src={PreviewIcon} alt="preview icon" />
                     </a>
                 </RenderIf>
-                <RenderIf isTrue={!!(isVisible && !liveUrl)}>
-                    <a className="react-rainbow-design-detail_preview-link" href={previewUrl} target="_blank" rel="noopener noreferrer">Preview</a>
+                <RenderIf isTrue={isVisible && !liveUrl}>
+                    <a
+                        className="react-rainbow-design-detail_preview-link"
+                        href={previewUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Preview
+                    </a>
                 </RenderIf>
             </div>
         );

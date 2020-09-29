@@ -13,6 +13,7 @@ const variantMap = {
     inverse: 'inverse',
     'outline-brand': 'brand',
     'border-inverse': 'inverse',
+    'border-filled': 'base',
 };
 
 export default function Content({ label, children, variant, isLoading }) {
@@ -39,6 +40,7 @@ Content.propTypes = {
         'success',
         'inverse',
         'border-inverse',
+        'border-filled',
     ]),
     isLoading: PropTypes.bool,
 };

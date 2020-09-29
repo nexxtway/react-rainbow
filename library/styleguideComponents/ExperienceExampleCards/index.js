@@ -36,7 +36,7 @@ export default function ExperienceExampleCards({ results }) {
                     </div>
                 </Card>
             </a>
-            <RenderIf isTrue={!!data['github-url'].url}>
+            <RenderIf isTrue={data['github-url'].url}>
                 <a
                     className="react-rainbow-experience-example-cards_github-link"
                     href={data['github-url'].url}

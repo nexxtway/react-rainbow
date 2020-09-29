@@ -9,7 +9,7 @@ export default function ItemContent(props) {
     return (
         <Fragment>
             <StyledIcon>{icon}</StyledIcon>
-            <RenderIf isTrue={!!label}>
+            <RenderIf isTrue={label}>
                 <StyledLabel isSelected={isSelected}>{label}</StyledLabel>
             </RenderIf>
         </Fragment>

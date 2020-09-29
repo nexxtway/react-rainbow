@@ -137,7 +137,7 @@ export default function Drawer(props) {
                     <StyledContent id={contentId} ref={contentRef}>
                         {children}
                     </StyledContent>
-                    <RenderIf isTrue={!!footer}>
+                    <RenderIf isTrue={footer}>
                         <StyledDivider />
                         <StyledFooter>{footer}</StyledFooter>
                     </RenderIf>

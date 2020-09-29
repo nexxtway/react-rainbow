@@ -34,7 +34,7 @@ export default class ReCaptchaComponent extends Component {
         return (
             <StyledContainer className={className} style={style}>
                 <div id={this.recaptchaID} />
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <ErrorText>{error}</ErrorText>
                 </RenderIf>
             </StyledContainer>

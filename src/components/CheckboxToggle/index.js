@@ -82,7 +82,7 @@ class CheckboxToggle extends Component {
                 >
                     <span className="rainbow-checkbox-toggle_faux" />
                 </span>
-                <RenderIf isTrue={!!label}>
+                <RenderIf isTrue={label}>
                     <StyledLabel>{label}</StyledLabel>
                 </RenderIf>
             </StyledLabelContainer>

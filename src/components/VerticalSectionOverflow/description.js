@@ -5,7 +5,7 @@ import StyledDescription from './styled/description';
 
 export default function Description({ description, isExpanded }) {
     return (
-        <RenderIf isTrue={!!description}>
+        <RenderIf isTrue={description}>
             <StyledDescription isExpanded={isExpanded}>{description}</StyledDescription>
         </RenderIf>
     );
