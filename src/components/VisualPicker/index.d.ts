@@ -1,4 +1,4 @@
-import { ReactNode, ComponentType } from 'react';
+import { ReactNode } from 'react';
 import { BaseProps, VisualPickerSize } from '../types';
 
 type Value = string[] | string;
@@ -16,5 +16,4 @@ export interface VisualPickerProps extends BaseProps {
     size?: VisualPickerSize;
 }
 
-declare const VisualPicker: React.ComponentType<VisualPickerProps>;
-export default VisualPicker;
+export default function(props: VisualPickerProps): JSX.Element | null;

@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
-import StyledContainer from './styled/container';
-import StyledLabel from './styled/label';
-import StyledDescription from './styled/description';
+import { StyledContainer, StyledLabel, StyledDescription } from './styled';
 
 /**
  * A VisualPickerOptionFooter.

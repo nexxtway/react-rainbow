@@ -1,89 +1,62 @@
-import React, { Component } from 'react';
+/* eslint-disable react/no-unused-prop-types */
+import React from 'react';
 import PropTypes from 'prop-types';
-import withReduxForm from './../../libs/hocs/withReduxForm';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
-import { uniqueId } from './../../libs/utils';
-import { Provider } from './context';
-import StyledContainer from './styled/container';
-import StyledLabel from './styled/label';
-import StyledOptionsContainer from './styled/optionsContainer';
+import { StyledContainer, StyledLabel, StyledOptionsContainer } from './styled';
 import StyledError from '../Input/styled/errorText';
+import { useUniqueIdentifier, useErrorMessageId, useReduxForm } from '../../libs/hooks';
+import InternalUniversalPicker from '../InternalUniversalPicker';
 
 /**
  * A VisualPicker can be either radio buttons, checkboxes, or links that are visually enhanced.
  * @category Form
  */
-class VisualPicker extends Component {
-    constructor(props) {
-        super(props);
-        this.errorId = uniqueId('error-message');
-        this.groupNameId = props.name || uniqueId('visual-picker');
-        this.handleChange = this.handleChange.bind(this);
-    }
+export default function VisualPicker(props) {
+    const {
+        name,
+        style,
+        label,
+        required,
+        error,
+        id,
+        children,
+        value,
+        multiple,
+        className,
+        size,
+        onChange,
+    } = useReduxForm(props);
 
-    getErrorMessageId() {
-        const { error } = this.props;
-        if (error) {
-            return this.errorId;
-        }
-        return undefined;
-    }
+    const nameUnique = useUniqueIdentifier('visual-picker');
+    const groupName = name || nameUnique;
+    const errorMessageId = useErrorMessageId(error);
 
-    handleChange(optionName, isChecked) {
-        const { onChange, multiple, value } = this.props;
-        let currentValue = optionName;
-        if (multiple) {
-            if (!Array.isArray(value)) {
-                currentValue = isChecked ? [optionName] : [];
-            } else {
-                currentValue = isChecked
-                    ? [...value, optionName]
-                    : value.filter(item => item !== optionName);
-            }
-        }
-        onChange(currentValue);
-    }
-
-    render() {
-        const {
-            style,
-            label,
-            required,
-            error,
-            id,
-            children,
-            value,
-            multiple,
-            className,
-            size,
-        } = this.props;
-        const context = {
-            ariaDescribedby: this.getErrorMessageId(),
-            groupName: this.groupNameId,
-            privateOnChange: this.handleChange,
-            value,
-            multiple,
-            size,
-        };
-
-        return (
-            <StyledContainer id={id} className={className} style={style}>
-                <RenderIf isTrue={label}>
-                    <StyledLabel>
-                        <RequiredAsterisk required={required} />
-                        {label}
-                    </StyledLabel>
-                </RenderIf>
-                <StyledOptionsContainer>
-                    <Provider value={context}>{children}</Provider>
-                </StyledOptionsContainer>
-                <RenderIf isTrue={error}>
-                    <StyledError id={this.getErrorMessageId()}>{error}</StyledError>
-                </RenderIf>
-            </StyledContainer>
-        );
-    }
+    return (
+        <StyledContainer id={id} className={className} style={style}>
+            <RenderIf isTrue={label}>
+                <StyledLabel>
+                    <RequiredAsterisk required={required} />
+                    {label}
+                </StyledLabel>
+            </RenderIf>
+            <StyledOptionsContainer>
+                <InternalUniversalPicker
+                    value={value}
+                    onChange={onChange}
+                    multiple={multiple}
+                    ariaDescribedby={errorMessageId}
+                    groupName={groupName}
+                    size={size}
+                >
+                    {children}
+                </InternalUniversalPicker>
+            </StyledOptionsContainer>
+            <RenderIf isTrue={error}>
+                <StyledError id={errorMessageId}>{error}</StyledError>
+            </RenderIf>
+        </StyledContainer>
+    );
 }
 
 VisualPicker.propTypes = {
@@ -131,5 +104,3 @@ VisualPicker.defaultProps = {
     children: [],
     multiple: false,
 };
-
-export default withReduxForm(VisualPicker);
