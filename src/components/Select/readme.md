@@ -169,3 +169,55 @@ const options = [
     className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
 />;
 ```
+
+##### select with left align label
+
+```js
+import React from 'react';
+import { Select } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+const options = [
+    { value: 'option 1', label: 'Option with help 1' },
+    { value: 'option 2', label: 'Option with help 2' },
+    { value: 'option 3', label: 'Option with help 3' },
+];
+
+<Select
+    label="Select Label"
+    bottomHelpText="ex: here goes the help"
+    options={options}
+    style={containerStyles}
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    labelAlignment="left"
+/>;
+```
+
+##### select with right align label
+
+```js
+import React from 'react';
+import { Select } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+const options = [
+    { value: 'option 1', label: 'Option with help 1' },
+    { value: 'option 2', label: 'Option with help 2' },
+    { value: 'option 3', label: 'Option with help 3' },
+];
+
+<Select
+    label="Select Label"
+    bottomHelpText="ex: here goes the help"
+    options={options}
+    style={containerStyles}
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    labelAlignment="right"
+/>;
+```
