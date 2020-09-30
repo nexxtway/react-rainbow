@@ -35,7 +35,7 @@ const TimePicker = (props) => {
         onChange,
         hour24,
     } = props;
-    const  [isOpen, setIsOpen]= useState(false);
+    const [isOpen, setIsOpen]= useState(false);
     const [value, setValue] = useState(hour24 ? value : get12HourTime(value));
     const inputRef = React.createRef();
     const timeSelectRef = React.createRef();
@@ -46,6 +46,7 @@ const TimePicker = (props) => {
             updateValue();
         }
     });
+    
    const getTriggerInputValue = () => {
         return getInputValue(value, placeholder, hour24);
     }
@@ -111,7 +112,6 @@ const TimePicker = (props) => {
     function blur() {
         inputRef.current.blur();
     }
-
 
         return (
             <StyledContainer id={id} className={className} style={style}>
