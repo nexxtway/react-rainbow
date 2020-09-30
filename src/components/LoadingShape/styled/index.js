@@ -84,7 +84,7 @@ const StyledLoadingShape = attachThemeAttrs(styled.div)`
     ${props =>
         (props.shape === 'rect' || props.shape === 'rounded-rect') &&
         `
-        min-height: 20px;
+        min-height: 12px;
         min-width: 92px;
         height: 100%;
         `}
