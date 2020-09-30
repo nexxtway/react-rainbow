@@ -93,7 +93,7 @@ const TimePicker = (props) => {
      * Sets focus on the element.
      * @public
      */
-    function focus() {
+    const focus() {
         inputRef.current.focus();
     }
 
@@ -101,7 +101,7 @@ const TimePicker = (props) => {
      * Sets click on the element.
      * @public
      */
-    function click() {
+    const click() {
         inputRef.current.click();
     }
 
@@ -109,7 +109,7 @@ const TimePicker = (props) => {
      * Sets blur on the element.
      * @public
      */
-    function blur() {
+    const blur() {
         inputRef.current.blur();
     }
 
