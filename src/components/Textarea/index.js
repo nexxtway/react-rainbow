@@ -8,6 +8,7 @@ import Label from './../Input/label';
 import StyledContainer from './styled/container';
 import StyledTextareaContainer from './styled/textareaContainer';
 import StyledTextarea from './styled/textarea';
+import StyledLabelContainer from './styled/labelContainer';
 import StyledBottomHelp from '../Input/styled/helpText';
 import StyledError from '../Input/styled/errorText';
 
@@ -104,6 +105,7 @@ class Textarea extends Component {
             required,
             rows,
             id,
+            labelAlignment,
             hideLabel,
             name,
             header,
@@ -113,14 +115,16 @@ class Textarea extends Component {
 
         return (
             <StyledContainer className={className} style={style} id={id}>
-                <Label
-                    label={label}
-                    hideLabel={hideLabel}
-                    required={required}
-                    inputId={this.textareaId}
-                    readOnly={readOnly}
-                    id={this.getInlineTextLabelId()}
-                />
+                <StyledLabelContainer labelAlignment={labelAlignment} readOnly={readOnly}>
+                    <Label
+                        label={label}
+                        hideLabel={hideLabel}
+                        required={required}
+                        inputId={this.textareaId}
+                        readOnly={readOnly}
+                        id={this.getInlineTextLabelId()}
+                    />
+                </StyledLabelContainer>
                 <StyledTextareaContainer
                     error={error}
                     readOnly={readOnly}
@@ -166,6 +170,9 @@ class Textarea extends Component {
 Textarea.propTypes = {
     /** Text that describes the desired textarea input. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the textarea label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     /** A boolean to hide the textarea label */
     hideLabel: PropTypes.bool,
     /** The name of the textarea */
@@ -241,6 +248,7 @@ Textarea.defaultProps = {
     style: undefined,
     variant: 'default',
     id: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
     header: undefined,
     footer: undefined,
