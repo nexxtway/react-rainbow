@@ -23,6 +23,10 @@ class Textarea extends Component {
         this.textareaId = uniqueId('textarea');
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
+        this.updateFocus = this.updateFocus.bind(this);
+        this.state = {
+            isFocused: false,
+        };
     }
 
     componentDidMount() {
@@ -73,6 +77,13 @@ class Textarea extends Component {
         this.textareaRef.current.blur();
     }
 
+    updateFocus(isFocused, handler) {
+        return (...args) => {
+            this.setState({ isFocused });
+            handler(...args);
+        };
+    }
+
     render() {
         const {
             style,
@@ -119,6 +130,7 @@ class Textarea extends Component {
                     readOnly={readOnly}
                     disabled={disabled}
                     variant={variant}
+                    isFocused={this.state.isFocused}
                 >
                     <RenderIf isTrue={header}>{header}</RenderIf>
                     <StyledTextarea
@@ -132,8 +144,8 @@ class Textarea extends Component {
                         minLength={minLength}
                         onChange={onChange}
                         onClick={onClick}
-                        onFocus={onFocus}
-                        onBlur={onBlur}
+                        onFocus={this.updateFocus(true, onFocus)}
+                        onBlur={this.updateFocus(false, onBlur)}
                         onPaste={onPaste}
                         readOnly={readOnly}
                         rows={rows}
