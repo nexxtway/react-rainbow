@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { uniqueId } from './../../libs/utils';
 import RenderIf from '../RenderIf';
-import Label from '../Input/label/index';
 import StyledContainer from './styled/container';
+import StyledLabel from './styled/label';
 import StyledSlider from './styled/slider';
 import StyledInputRange from './styled/inputRange';
 import StyledValue from './styled/value';
@@ -75,12 +75,15 @@ export default class Slider extends Component {
         } = this.props;
         return (
             <StyledContainer className={className} style={style}>
-                <Label
-                    label={label}
-                    hideLabel={hideLabel}
-                    labelAlignment={labelAlignment}
-                    inputId={this.sliderId}
-                />
+                <RenderIf isTrue={label}>
+                    <StyledLabel
+                        hideLabel={hideLabel}
+                        labelAlignment={labelAlignment}
+                        htmlFor={this.sliderId}
+                    >
+                        {label}
+                    </StyledLabel>
+                </RenderIf>
                 <StyledSlider>
                     <StyledInputRange
                         id={this.sliderId}
@@ -98,7 +101,6 @@ export default class Slider extends Component {
                         onFocus={onFocus}
                         ref={this.sliderRef}
                     />
-
                     <StyledValue aria-hidden>{value}</StyledValue>
                 </StyledSlider>
                 <RenderIf isTrue={error}>
