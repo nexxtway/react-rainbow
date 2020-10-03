@@ -7,6 +7,10 @@ import useFormatDate from './hooks/useFormatDate';
 import DatePickerModal from '../DatePickerModal';
 import { StyledContainer, StyledInput } from './styled';
 
+/**
+ * The DatePicker is used to select a specific day or a range of days on a calendar.
+ * @category Form
+ */
 const DatePicker = React.forwardRef((props, ref) => {
     const {
         value,
