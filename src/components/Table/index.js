@@ -28,6 +28,7 @@ import StyledScrollableX from './styled/scrollableX';
 import StyledScrollableY from './styled/scrollableY';
 import StyledTable from './styled/table';
 import StyledTableBody from './styled/tableBody';
+import RenderIf from '../RenderIf';
 
 /**
  * Data tables display information in a way that’s easy to scan,
@@ -426,7 +427,10 @@ export default class Table extends Component {
                 <StyledContainer id={id} className={className} style={style}>
                     <div ref={this.resizeTarget} />
                     <StyledContainer>
-                        <StyledScrollableX ref={this.tableContainerRef}>
+                        <StyledScrollableX
+                            ref={this.tableContainerRef}
+                            hideTableHeader={hideTableHeader}
+                        >
                             <StyledScrollableY
                                 isEmpty={isEmpty}
                                 isLoading={isLoading}
@@ -434,28 +438,29 @@ export default class Table extends Component {
                                 style={tableStyles}
                             >
                                 <StyledTable style={tableStyles}>
-                                    <thead>
-                                        <tr>
-                                            <Head
-                                                columns={columns}
-                                                sortedBy={sortedBy}
-                                                sortDirection={sortDirection}
-                                                defaultSortDirection={defaultSortDirection}
-                                                resizeColumnDisabled={resizeColumnDisabled}
-                                                minColumnWidth={minColWidth}
-                                                maxColumnWidth={maxColWidth}
-                                                onSort={this.handleSort}
-                                                onResize={this.handleResize}
-                                                onSelectAllRows={this.handleSelectAllRows}
-                                                onDeselectAllRows={this.handleDeselectAllRows}
-                                                tableId={this.tableId}
-                                                maxRowSelection={maxRowSelection}
-                                                bulkSelection={bulkSelection}
-                                                hasScroll={this.isScrollActive()}
-                                                hideTableHeader={hideTableHeader}
-                                            />
-                                        </tr>
-                                    </thead>
+                                    <RenderIf isTrue={!hideTableHeader}>
+                                        <thead>
+                                            <tr>
+                                                <Head
+                                                    columns={columns}
+                                                    sortedBy={sortedBy}
+                                                    sortDirection={sortDirection}
+                                                    defaultSortDirection={defaultSortDirection}
+                                                    resizeColumnDisabled={resizeColumnDisabled}
+                                                    minColumnWidth={minColWidth}
+                                                    maxColumnWidth={maxColWidth}
+                                                    onSort={this.handleSort}
+                                                    onResize={this.handleResize}
+                                                    onSelectAllRows={this.handleSelectAllRows}
+                                                    onDeselectAllRows={this.handleDeselectAllRows}
+                                                    tableId={this.tableId}
+                                                    maxRowSelection={maxRowSelection}
+                                                    bulkSelection={bulkSelection}
+                                                    hasScroll={this.isScrollActive()}
+                                                />
+                                            </tr>
+                                        </thead>
+                                    </RenderIf>
                                     <StyledTableBody rowNumberOffset={rowNumberOffset}>
                                         <Body
                                             data={normalizeData(data)}

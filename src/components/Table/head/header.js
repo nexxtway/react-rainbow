@@ -67,7 +67,6 @@ export default class Header extends Component {
             maxRowSelection,
             bulkSelection,
             hasScroll,
-            hideTableHeader,
         } = this.props;
 
         const headerStyles = {
@@ -104,7 +103,6 @@ export default class Header extends Component {
                     <StyledHeaderContainer
                         className="rainbow-table_header-container"
                         role="presentation"
-                        hideTableHeader={hideTableHeader}
                         onClick={this.handleSort}
                     >
                         <StyledContent
@@ -153,7 +151,6 @@ Header.propTypes = {
     maxRowSelection: PropTypes.number,
     bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
     hasScroll: PropTypes.bool,
-    hideTableHeader: PropTypes.bool,
 };
 
 Header.defaultProps = {
@@ -175,5 +172,4 @@ Header.defaultProps = {
     maxRowSelection: undefined,
     bulkSelection: 'none',
     hasScroll: false,
-    hideTableHeader: false,
 };
