@@ -25,16 +25,6 @@ export default function RibbonRenderer() {
                         Star
                     </GitHubButton>
                 </StyledGitHubContianer>
-                <StyledGitHubContianer>
-                    <GitHubButton
-                        href="https://github.com/nexxtway"
-                        data-size="large"
-                        data-show-count="true"
-                        aria-label="Follow @nexxtway on GitHub"
-                    >
-                        Follow
-                    </GitHubButton>
-                </StyledGitHubContianer>
                 <StyledGithubLink
                     href="https://github.com/nexxtway/react-rainbow"
                     target="_blank"

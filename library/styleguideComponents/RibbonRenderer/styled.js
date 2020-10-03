@@ -32,7 +32,7 @@ export const StyledContainer = styled.div`
 
 export const StyledGitHubContianer = styled.div`
     padding-top: 7px;
-    margin-right: 10px;
+    margin-right: 16px;
 
     @media (max-width: 600px) {
         display: none;
