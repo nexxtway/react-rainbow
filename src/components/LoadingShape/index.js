@@ -8,6 +8,10 @@ import {
     StyledAvatarIcon,
 } from './styled';
 
+/**
+ * LoadingShape can be used to display a placeholder where content
+ * is being loaded asynchronously.
+ */
 const LoadingShape = props => {
     const { className, style, shape, variant } = props;
     const shapeRef = useRef();
