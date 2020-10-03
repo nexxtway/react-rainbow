@@ -460,6 +460,7 @@ export default class Table extends Component {
                                                     maxRowSelection={maxRowSelection}
                                                     bulkSelection={bulkSelection}
                                                     hasScroll={this.isScrollActive()}
+                                                    variant={variant}
                                                 />
                                             </tr>
                                         </thead>
