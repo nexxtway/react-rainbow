@@ -121,7 +121,7 @@ class RadioButtonGroup extends Component {
 
         return (
             <StyledContainer id={id} className={className} style={style}>
-                <RenderIf isTrue={!!label}>
+                <RenderIf isTrue={label}>
                     <StyledLabel variant={variant}>
                         <RequiredAsterisk required={required} />
                         {label}
@@ -146,7 +146,7 @@ class RadioButtonGroup extends Component {
                         size={size}
                     />
                 </StyledButtonItemsContainer>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <StyledErrorText id={this.getErrorMessageId()}>{error}</StyledErrorText>
                 </RenderIf>
             </StyledContainer>

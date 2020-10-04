@@ -5,7 +5,7 @@ import StyledEnumerable from './styled/enumerable';
 
 export default function EnumerableCell() {
     return (
-        <StyledCellContainer role="gridcell" tabIndex={-1}>
+        <StyledCellContainer role="gridcell" tabIndex={-1} hideBorderRight>
             <StyledCellContent>
                 <StyledEnumerable />
             </StyledCellContent>

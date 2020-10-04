@@ -22,6 +22,7 @@ export interface TableProps extends BaseProps {
     emptyIcon?: ReactNode;
     emptyTitle?: ReactNode;
     emptyDescription?: ReactNode;
+    variant?: 'default' | 'listview';
     id?: string;
     children?: ReactNode;
 }

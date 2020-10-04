@@ -13,11 +13,18 @@ const StyledScrollableX = attachThemeAttrs(styled.div)`
     border-top: 1px solid ${props => props.palette.border.divider};
 
     ${props =>
-        props.hideTableHeader &&
+        props.theme.hideTableHeader &&
         `
-        padding-top: 0;
+        padding-top: none;
         border-top: none;
-    `}
+    `};
+
+    ${props =>
+        props.theme.variant === 'listview' &&
+        `
+            border-top: none;
+            background-color: transparent;
+    `};
 `;
 
 export default StyledScrollableX;

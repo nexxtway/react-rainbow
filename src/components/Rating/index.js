@@ -48,7 +48,7 @@ export default class Rating extends Component {
                 className={className}
                 style={style}
             >
-                <RenderIf isTrue={!!label}>
+                <RenderIf isTrue={label}>
                     <StyledLabel>{label}</StyledLabel>
                 </RenderIf>
                 <RatingItems

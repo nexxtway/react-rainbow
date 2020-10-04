@@ -7,6 +7,12 @@ const StyledHeaderContainer = styled.div`
     align-items: center;
     height: 44px;
     padding: 0 ${PADDING_X_SMALL};
+    ${props =>
+        props.theme.variant === 'listview' &&
+        `
+            justify-content: center;
+            text-transform: capitalize;
+        `};
 `;
 
 export default StyledHeaderContainer;

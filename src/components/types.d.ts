@@ -1,8 +1,9 @@
-import { ReactNode, CSSProperties } from 'react';
+import { ReactNode, CSSProperties, Ref } from 'react';
 
 export interface BaseProps {
     className?: string;
     style?: CSSProperties;
+    ref?: Ref<any>;
 }
 
 export type AvatarSize = 'x-small' | 'small' | 'medium' | 'large';
@@ -19,8 +20,8 @@ export type ButtonIconVariant =
     | 'border-inverse'
     | 'inverse';
 export type VisualPickerSize = 'small' | 'medium' | 'large';
-
 export type IconPosition = 'left' | 'right';
+export type labelAlignment = 'left' | 'center' | 'right';
 
 export interface LookupValue {
     label?: string;

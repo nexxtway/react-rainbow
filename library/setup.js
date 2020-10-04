@@ -31,6 +31,12 @@ import SettingsIcon from './exampleComponents/Icons/settings';
 import CompanyIcon from './exampleComponents/Icons/company';
 import AdvancedSettingsIcon from './exampleComponents/Icons/advancedSettings';
 import Users from './data/users';
+import {
+    DataTable,
+    DynamicDataTable,
+    ActionsDataTable,
+    ListviewDataTable,
+} from './data/dataTableExamples';
 import GitHubIcon from './exampleComponents/Icons/gitHub';
 import LinkedinIcon from './exampleComponents/Icons/linkedin';
 import TrashIcon from './exampleComponents/Icons/trash';
@@ -71,6 +77,8 @@ import HomeFilledIcon from './exampleComponents/Icons/homeFilled';
 import ExportBorderIcon from './exampleComponents/Icons/exportBorder';
 import ExportFilledIcon from './exampleComponents/Icons/exportFilled';
 import ArrowDownIcon from './exampleComponents/Icons/arrowDown';
+import PictureIcon from './exampleComponents/Icons/picture';
+import Coin from './exampleComponents/Icons/coin';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -108,6 +116,10 @@ global.SettingsIcon = SettingsIcon;
 global.CompanyIcon = CompanyIcon;
 global.AdvancedSettingsIcon = AdvancedSettingsIcon;
 global.Users = Users;
+global.DataTable = DataTable;
+global.DynamicDataTable = DynamicDataTable;
+global.ActionsDataTable = ActionsDataTable;
+global.ListviewDataTable = ListviewDataTable;
 global.GitHubIcon = GitHubIcon;
 global.LinkedinIcon = LinkedinIcon;
 global.TrashIcon = TrashIcon;
@@ -148,3 +160,5 @@ global.HomeFilledIcon = HomeFilledIcon;
 global.ExportBorderIcon = ExportBorderIcon;
 global.ExportFilledIcon = ExportFilledIcon;
 global.ArrowDownIcon = ArrowDownIcon;
+global.PictureIcon = PictureIcon;
+global.Coin = Coin;

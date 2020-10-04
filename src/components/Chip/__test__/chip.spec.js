@@ -15,7 +15,7 @@ describe('<Chip/>', () => {
     });
     it('should set isTrue in RenderIf to true when onDelete is passed', () => {
         const component = mount(<Chip onDelete={() => {}} />);
-        expect(component.find('RenderIf').prop('isTrue')).toBe(true);
+        expect(component.find('RenderIf').prop('isTrue')).toBeTruthy();
     });
     it(' should set isTrue in RenderIf to false when onDelete is not passed', () => {
         const component = mount(<Chip label="testing Chip" />);

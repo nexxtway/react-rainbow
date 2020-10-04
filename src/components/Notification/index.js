@@ -18,14 +18,14 @@ export default function Notification(props) {
     return (
         <StyledContainer className={className} style={style}>
             <StyledAnchor>
-                <RenderIf isTrue={!!icon}>
+                <RenderIf isTrue={icon}>
                     <Icon icon={icon} />
                 </RenderIf>
                 <span>
-                    <RenderIf isTrue={!!title}>
+                    <RenderIf isTrue={title}>
                         <Title text={title} />
                     </RenderIf>
-                    <RenderIf isTrue={!!description}>
+                    <RenderIf isTrue={description}>
                         <Description text={description} />
                     </RenderIf>
                 </span>

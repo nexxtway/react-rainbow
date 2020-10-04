@@ -274,10 +274,10 @@ const MultiSelect = React.forwardRef((props, ref) => {
                     </div>
                 </InternalOverlay>
             </StyledCombobox>
-            <RenderIf isTrue={!!bottomHelpText}>
+            <RenderIf isTrue={bottomHelpText}>
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
             </RenderIf>
-            <RenderIf isTrue={!!error}>
+            <RenderIf isTrue={error}>
                 <ErrorText alignSelf="center" id={errorMessageId}>
                     {error}
                 </ErrorText>

@@ -45,7 +45,7 @@ function SidebarItem(props) {
             className={className}
             style={style}
         >
-            <RenderIf isTrue={!!href}>
+            <RenderIf isTrue={href}>
                 <StyledAnchorContent
                     data-id="sidebar-item-clickable-element"
                     href={href}

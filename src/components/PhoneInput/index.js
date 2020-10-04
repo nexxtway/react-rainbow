@@ -119,6 +119,10 @@ const PhoneInput = React.forwardRef((props, ref) => {
     const isFocus = focusIndex > -1;
     const formattedCountryCode = `(${countryCode})`;
 
+    const isReadOnly = readOnly && !disabled;
+    const hasTrigger = !isReadOnly && countries.length > 1;
+    const isOnlyCountry = !isReadOnly && countries.length === 1;
+
     return (
         <StyledContainer id={id} ref={containerRef} className={className} style={style}>
             <Label
@@ -137,10 +141,10 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 error={error}
                 isFocus={isFocus}
             >
-                <RenderIf isTrue={readOnly && !disabled}>
+                <RenderIf isTrue={isReadOnly}>
                     <StyledFlagContainer readOnly>{flagIcon}</StyledFlagContainer>
                 </RenderIf>
-                <RenderIf isTrue={!readOnly || disabled}>
+                <RenderIf isTrue={hasTrigger}>
                     <StyledTrigger
                         ref={triggerRef}
                         onClick={handleClick}
@@ -155,7 +159,17 @@ const PhoneInput = React.forwardRef((props, ref) => {
                         </StyledFlagContainer>
                     </StyledTrigger>
                 </RenderIf>
-
+                <RenderIf isTrue={isOnlyCountry}>
+                    <StyledTrigger
+                        ref={triggerRef}
+                        onFocus={event => handleFocus(event, 0)}
+                        onBlur={handleBlur}
+                        tabIndex={tabIndex}
+                        disabled={disabled}
+                    >
+                        <StyledFlagContainer disabled={disabled}>{flagIcon}</StyledFlagContainer>
+                    </StyledTrigger>
+                </RenderIf>
                 <StyledCountryCode>{formattedCountryCode}</StyledCountryCode>
                 <StyledInput
                     id={inputId}
@@ -179,7 +193,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     error={error}
                     isFocus={isFocus}
                 />
-                <RenderIf isTrue={!!icon}>
+                <RenderIf isTrue={icon}>
                     <StyledIconContainer error={error}>{icon}</StyledIconContainer>
                 </RenderIf>
                 <CountriesDropdown
@@ -193,10 +207,10 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     onCountryChange={handleCountryChange}
                 />
             </StyledInputContainer>
-            <RenderIf isTrue={!!bottomHelpText}>
+            <RenderIf isTrue={bottomHelpText}>
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
             </RenderIf>
-            <RenderIf isTrue={!!error}>
+            <RenderIf isTrue={error}>
                 <ErrorText alignSelf="center" id={errorMessageId}>
                     {error}
                 </ErrorText>

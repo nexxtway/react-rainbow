@@ -54,7 +54,7 @@ class Input extends Component {
 
 Input.propTypes = {
     /** Specifies the value of an input element. */
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.number]),
     /** The name of the input. */
     name: PropTypes.string,
     /** The type of the input. This value defaults to text. */
@@ -78,6 +78,9 @@ Input.propTypes = {
     ]),
     /** Text label for the input. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the input label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     /** A boolean to hide the input label. */
     hideLabel: PropTypes.bool,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
@@ -87,6 +90,10 @@ Input.propTypes = {
     /** Describes the position of the icon with respect to body. Options include left and right.
      * This value defaults to left. */
     iconPosition: PropTypes.oneOf(['left', 'right']),
+    /** Specifies the minimum value allowed in the field. */
+    max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** Specifies the maximum value allowed in the field. */
+    min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The maximum number of characters allowed in the field. */
     maxLength: PropTypes.number,
     /** The minimum number of characters allowed in the field. */
@@ -150,6 +157,8 @@ Input.defaultProps = {
     placeholder: null,
     icon: undefined,
     iconPosition: 'left',
+    max: undefined,
+    min: undefined,
     maxLength: undefined,
     minLength: undefined,
     bottomHelpText: null,
@@ -173,6 +182,7 @@ Input.defaultProps = {
     id: undefined,
     autoComplete: 'on',
     label: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
 };
 

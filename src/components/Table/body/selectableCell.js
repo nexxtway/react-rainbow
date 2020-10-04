@@ -36,7 +36,7 @@ export default function SelectableCell(props) {
     };
 
     return (
-        <StyledCellContainer role="gridcell" tabIndex={-1}>
+        <StyledCellContainer role="gridcell" tabIndex={-1} hideBorderRight>
             <StyledCheckboxContainer role="presentation" onMouseDown={handleMouseDown}>
                 <Input
                     className="rainbow-table_cell-checkbox"

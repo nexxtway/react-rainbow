@@ -70,7 +70,7 @@ class PickerOption extends Component {
                         </RenderIf>
                         {children}
                     </StyledContent>
-                    <RenderIf isTrue={!!footer}>
+                    <RenderIf isTrue={footer}>
                         <StyledFooter>{footer}</StyledFooter>
                     </RenderIf>
                 </StyledLabel>

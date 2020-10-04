@@ -61,7 +61,7 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
 
     return (
         <StyledFieldset className={className} style={style} id={id}>
-            <RenderIf isTrue={!!label}>
+            <RenderIf isTrue={label}>
                 <StyledLabel>
                     <RequiredAsterisk required={required} />
                     {label}
@@ -80,10 +80,10 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
                 onChange={handleOnChange}
                 ref={inputRef}
             />
-            <RenderIf isTrue={!!bottomHelpText}>
+            <RenderIf isTrue={bottomHelpText}>
                 <StyledHelpText>{bottomHelpText}</StyledHelpText>
             </RenderIf>
-            <RenderIf isTrue={!!error}>
+            <RenderIf isTrue={error}>
                 <StyledTextError>{error}</StyledTextError>
             </RenderIf>
         </StyledFieldset>

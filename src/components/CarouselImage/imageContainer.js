@@ -16,10 +16,10 @@ export default function ImageContainer(props) {
             <AssistiveText text={assistiveText} />
             <RenderIf isTrue={hasContent}>
                 <StyledImageFooter>
-                    <RenderIf isTrue={!!header}>
+                    <RenderIf isTrue={header}>
                         <StyledFooterTitle title="Imagen Header">{header}</StyledFooterTitle>
                     </RenderIf>
-                    <RenderIf isTrue={!!description}>
+                    <RenderIf isTrue={description}>
                         <StyledFooterDescription>{description}</StyledFooterDescription>
                     </RenderIf>
                 </StyledImageFooter>

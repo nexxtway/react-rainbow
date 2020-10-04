@@ -8,7 +8,7 @@ import './styles.css';
 
 function AnchorIcon({ logo, href, alt }) {
     return (
-        <RenderIf isTrue={!!href}>
+        <RenderIf isTrue={href}>
             <a className="react-rainbow-donwload-button_anchor" href={href}>
                 <img className="react-rainbow-donwload-button_icon" src={logo} alt={alt} />
                 <p className="react-rainbow-donwload-button_text">Download</p>
@@ -18,12 +18,7 @@ function AnchorIcon({ logo, href, alt }) {
 }
 
 export default function DonwloadDesignButtons(props) {
-    const {
-        className,
-        sketchUrl,
-        photoshopUrl,
-        illustratorUrl,
-    } = props;
+    const { className, sketchUrl, photoshopUrl, illustratorUrl } = props;
 
     return (
         <div className={className}>

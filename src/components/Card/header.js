@@ -8,15 +8,15 @@ import StyledIcon from './styled/icon';
 
 export default function Header({ icon, title, actions }) {
     return (
-        <RenderIf isTrue={!!(icon || title || actions)}>
+        <RenderIf isTrue={icon || title || actions}>
             <StyledHeaderContainer>
                 <StyledHeader>
-                    <RenderIf isTrue={!!icon}>
+                    <RenderIf isTrue={icon}>
                         <StyledIcon>{icon}</StyledIcon>
                     </RenderIf>
                     <HeaderTitle title={title} />
                 </StyledHeader>
-                <RenderIf isTrue={!!actions}>
+                <RenderIf isTrue={actions}>
                     <div>{actions}</div>
                 </RenderIf>
             </StyledHeaderContainer>

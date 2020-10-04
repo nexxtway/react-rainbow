@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ThemeProvider } from 'styled-components';
 import Body from './body';
 import Head from './head';
 import { getNextSortDirection } from './helpers/sort';
@@ -49,6 +50,7 @@ export default class Table extends Component {
             minColumnWidth,
             maxColumnWidth,
             selectedRows,
+            variant,
         } = props;
 
         this.state = {
@@ -59,6 +61,7 @@ export default class Table extends Component {
                 rowNumberOffset,
                 minColumnWidth,
                 maxColumnWidth,
+                variant,
             }),
             tableWidth: undefined,
             rows: getRows({
@@ -117,6 +120,7 @@ export default class Table extends Component {
             minColumnWidth,
             maxColumnWidth,
             onRowSelection,
+            variant,
         } = this.props;
         const prevColumns = getColumns({
             children: prevChildren,
@@ -125,6 +129,7 @@ export default class Table extends Component {
             rowNumberOffset,
             minColumnWidth: prevMinColumnWidth,
             maxColumnWidth: prevMaxColumnWidth,
+            variant,
         });
         const currentColumns = getColumns({
             children,
@@ -133,6 +138,7 @@ export default class Table extends Component {
             rowNumberOffset,
             minColumnWidth,
             maxColumnWidth,
+            variant,
         });
         const isNotSameMaxRowSelection = prevMaxRowSelection !== maxRowSelection;
         const isNotSameData = data !== prevData;
@@ -411,6 +417,7 @@ export default class Table extends Component {
             emptyDescription,
             keyField,
             hideTableHeader,
+            variant,
         } = this.props;
         const { columns, tableWidth, rows, bulkSelection } = this.state;
         const tableStyles = {
@@ -421,24 +428,22 @@ export default class Table extends Component {
         const maxColWidth = Number(maxColumnWidth) || 5000;
 
         const isEmpty = data.length === 0;
+        const theme = { variant, hideTableHeader };
 
         if (keyField && typeof keyField === 'string') {
             return (
                 <StyledContainer id={id} className={className} style={style}>
                     <div ref={this.resizeTarget} />
-                    <StyledContainer>
-                        <StyledScrollableX
-                            ref={this.tableContainerRef}
-                            hideTableHeader={hideTableHeader}
-                        >
-                            <StyledScrollableY
-                                isEmpty={isEmpty}
-                                isLoading={isLoading}
-                                ref={this.scrollableY}
-                                style={tableStyles}
-                            >
-                                <StyledTable style={tableStyles}>
-                                    <RenderIf isTrue={!hideTableHeader}>
+                    <ThemeProvider theme={theme}>
+                        <StyledContainer>
+                            <StyledScrollableX ref={this.tableContainerRef}>
+                                <StyledScrollableY
+                                    isEmpty={isEmpty}
+                                    isLoading={isLoading}
+                                    ref={this.scrollableY}
+                                    style={tableStyles}
+                                >
+                                    <StyledTable style={tableStyles}>
                                         <thead>
                                             <tr>
                                                 <Head
@@ -460,25 +465,25 @@ export default class Table extends Component {
                                                 />
                                             </tr>
                                         </thead>
-                                    </RenderIf>
-                                    <StyledTableBody rowNumberOffset={rowNumberOffset}>
-                                        <Body
-                                            data={normalizeData(data)}
-                                            columns={columns}
-                                            rows={rows}
-                                            tableId={this.tableId}
-                                            isLoading={isLoading}
-                                            emptyIcon={emptyIcon}
-                                            emptyTitle={emptyTitle}
-                                            emptyDescription={emptyDescription}
-                                            onSelectRow={this.handleSelectRow}
-                                            onDeselectRow={this.handleDeselectRow}
-                                        />
-                                    </StyledTableBody>
-                                </StyledTable>
-                            </StyledScrollableY>
-                        </StyledScrollableX>
-                    </StyledContainer>
+                                        <StyledTableBody rowNumberOffset={rowNumberOffset}>
+                                            <Body
+                                                data={normalizeData(data)}
+                                                columns={columns}
+                                                rows={rows}
+                                                tableId={this.tableId}
+                                                isLoading={isLoading}
+                                                emptyIcon={emptyIcon}
+                                                emptyTitle={emptyTitle}
+                                                emptyDescription={emptyDescription}
+                                                onSelectRow={this.handleSelectRow}
+                                                onDeselectRow={this.handleDeselectRow}
+                                            />
+                                        </StyledTableBody>
+                                    </StyledTable>
+                                </StyledScrollableY>
+                            </StyledScrollableX>
+                        </StyledContainer>
+                    </ThemeProvider>
                 </StyledContainer>
             );
         }
@@ -541,6 +546,8 @@ Table.propTypes = {
      *  If not passed a fallback description will be showed.
      */
     emptyDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** The variant changes the appearance of the button. Accepted variants include default and listview. */
+    variant: PropTypes.oneOf(['default', 'listview']),
     /** The id of the outer element. */
     id: PropTypes.string,
     /** Shows or hides the header column. The default is false */
@@ -575,6 +582,7 @@ Table.defaultProps = {
     emptyIcon: <EmptyIcon />,
     emptyTitle: 'It’s empty here',
     emptyDescription: 'Our robots did not find any match...',
+    variant: 'default',
     id: undefined,
     hideTableHeader: false,
     className: undefined,

@@ -124,7 +124,7 @@ export default function HelpText(props) {
                 <Icon isFocused={isFocused} />
                 <AssistiveText text={variant} />
             </StyledButton>
-            <RenderIf isTrue={!!text}>
+            <RenderIf isTrue={text}>
                 <InternalOverlay
                     isVisible={isOpen}
                     render={() => {
@@ -137,7 +137,7 @@ export default function HelpText(props) {
                                 onMouseEnter={handleTooltipMouseEnter}
                                 onMouseLeave={handleTooltipMouseLeave}
                             >
-                                <RenderIf isTrue={!!title}>
+                                <RenderIf isTrue={title}>
                                     <StyledTitle variant={variant}>
                                         <StyledIconContainer>{inverseIcon}</StyledIconContainer>
                                         {title}

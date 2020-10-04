@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import RenderIf from '../../RenderIf';
 import PrimitiveCheckbox from '../../PrimitiveCheckbox';
 import StyledWrapper from './styled/wrapper';
 import StyledCheckboxWrapper from './styled/checkboxWrapper';
@@ -14,6 +15,7 @@ export default function SelectableHeader(props) {
         maxRowSelection,
         bulkSelection,
         hasScroll,
+        isListView,
         style,
     } = props;
     const name = `${tableId}-options`;
@@ -31,13 +33,15 @@ export default function SelectableHeader(props) {
     if (isRadio) {
         return (
             <StyledWrapper as="th" style={style} scope="col" tabIndex={-1}>
-                <StyledScrollShadow hasScroll={hasScroll} />
+                <RenderIf isTrue={!isListView}>
+                    <StyledScrollShadow hasScroll={hasScroll} />
+                </RenderIf>
             </StyledWrapper>
         );
     }
 
     return (
-        <th style={style} scope="col" tabIndex={-1}>
+        <StyledWrapper as="th" style={style} scope="col" tabIndex={-1}>
             <StyledCheckboxWrapper style={style}>
                 <PrimitiveCheckbox
                     name={name}
@@ -50,8 +54,10 @@ export default function SelectableHeader(props) {
                     onClick={handleClick}
                 />
             </StyledCheckboxWrapper>
-            <StyledScrollShadow hasScroll={hasScroll} />
-        </th>
+            <RenderIf isTrue={!isListView}>
+                <StyledScrollShadow hasScroll={hasScroll} />
+            </RenderIf>
+        </StyledWrapper>
     );
 }
 
@@ -62,6 +68,7 @@ SelectableHeader.propTypes = {
     maxRowSelection: PropTypes.number,
     bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
     hasScroll: PropTypes.bool,
+    isListView: PropTypes.bool,
     style: PropTypes.object,
 };
 
@@ -71,5 +78,6 @@ SelectableHeader.defaultProps = {
     maxRowSelection: undefined,
     bulkSelection: 'none',
     hasScroll: false,
+    isListView: false,
     style: undefined,
 };

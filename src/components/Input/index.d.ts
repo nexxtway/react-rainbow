@@ -6,7 +6,7 @@ import {
     FocusEvent,
     KeyboardEvent,
 } from 'react';
-import { BaseProps, IconPosition } from '../types';
+import { BaseProps, IconPosition, labelAlignment } from '../types';
 
 type InputType =
     | 'text'
@@ -27,14 +27,17 @@ type InputType =
     | 'checkbox';
 
 export interface InputProps extends BaseProps {
-    value?: string | boolean;
+    value?: string | boolean | number;
     name?: string;
     type?: InputType;
     label?: ReactNode;
+    labelAlignment?: labelAlignment;
     hideLabel?: boolean;
     placeholder?: string;
     icon?: ReactNode;
     iconPosition?: IconPosition;
+    max?: number | string;
+    min?: number | string;
     maxLength?: number;
     minLength?: number;
     bottomHelpText?: ReactNode;

@@ -6,6 +6,7 @@ import RenderIf from '../../RenderIf';
 import RelativeElement from '../../Structural/relativeElement';
 import StyledContainer from '../styled/container';
 import StyledIconContainer from '../styled/iconContainer';
+import StyledLabelContainer from '../styled/labelContainer';
 import StyledInput from './styled/input';
 import HelpText from '../styled/helpText';
 import ErrorText from '../styled/errorText';
@@ -76,6 +77,8 @@ export default class InputBase extends Component {
             onClick,
             onKeyDown,
             type,
+            max,
+            min,
             maxLength,
             minLength,
             pattern,
@@ -85,6 +88,7 @@ export default class InputBase extends Component {
             id,
             autoComplete,
             name,
+            labelAlignment,
             hideLabel,
             isBare,
             isCentered,
@@ -95,17 +99,18 @@ export default class InputBase extends Component {
 
         return (
             <StyledContainer id={id} className={className} style={style}>
-                <Label
-                    label={label}
-                    hideLabel={hideLabel}
-                    required={required}
-                    inputId={this.inputId}
-                    readOnly={isReadOnly}
-                    id={this.getInlineTextLabelId()}
-                />
-
+                <StyledLabelContainer labelAlignment={labelAlignment} readOnly={isReadOnly}>
+                    <Label
+                        label={label}
+                        hideLabel={hideLabel}
+                        required={required}
+                        inputId={this.inputId}
+                        readOnly={isReadOnly}
+                        id={this.getInlineTextLabelId()}
+                    />
+                </StyledLabelContainer>
                 <RelativeElement>
-                    <RenderIf isTrue={!!icon}>
+                    <RenderIf isTrue={icon}>
                         <StyledIconContainer
                             iconPosition={iconPosition}
                             readOnly={readOnly}
@@ -130,6 +135,8 @@ export default class InputBase extends Component {
                         disabled={disabled}
                         readOnly={readOnly}
                         required={required}
+                        max={max}
+                        min={min}
                         maxLength={maxLength}
                         minLength={minLength}
                         pattern={pattern}
@@ -145,10 +152,10 @@ export default class InputBase extends Component {
                         variant={variant}
                     />
                 </RelativeElement>
-                <RenderIf isTrue={!!bottomHelpText}>
+                <RenderIf isTrue={bottomHelpText}>
                     <HelpText alignSelf="center">{bottomHelpText}</HelpText>
                 </RenderIf>
-                <RenderIf isTrue={!!error}>
+                <RenderIf isTrue={error}>
                     <ErrorText alignSelf="center" id={this.getErrorMessageId()}>
                         {error}
                     </ErrorText>
@@ -159,7 +166,7 @@ export default class InputBase extends Component {
 }
 
 InputBase.propTypes = {
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     name: PropTypes.string,
     type: PropTypes.oneOf([
         'text',
@@ -181,6 +188,8 @@ InputBase.propTypes = {
     placeholder: PropTypes.string,
     icon: PropTypes.node,
     iconPosition: PropTypes.oneOf(['left', 'right']),
+    max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     maxLength: PropTypes.number,
     minLength: PropTypes.number,
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -202,6 +211,7 @@ InputBase.propTypes = {
     variant: PropTypes.oneOf(['default', 'shaded']),
     id: PropTypes.string,
     autoComplete: PropTypes.string,
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     hideLabel: PropTypes.bool,
 };
 
@@ -213,6 +223,8 @@ InputBase.defaultProps = {
     placeholder: undefined,
     icon: undefined,
     iconPosition: 'left',
+    max: undefined,
+    min: undefined,
     maxLength: undefined,
     minLength: undefined,
     bottomHelpText: null,
@@ -234,5 +246,6 @@ InputBase.defaultProps = {
     variant: 'default',
     id: undefined,
     autoComplete: 'on',
+    labelAlignment: 'center',
     hideLabel: false,
 };
