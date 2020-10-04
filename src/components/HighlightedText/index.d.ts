@@ -9,7 +9,8 @@ interface Part {
 export interface HighlightedText extends BaseProps {
     hitComponent?: ComponentType<{ children?: string }>;
     textComponent?: ComponentType<{ children?: string }>;
-    part?: Part[];
+    parts?: Part[];
+    isInline: boolean;
 }
 
 export default function(props: HighlightedText): JSX.Element | null;

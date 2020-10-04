@@ -1,32 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { bool } from 'prop-types';
 import HitText from './hitText';
+import HighlighContainer from './highlighContainer';
 import { DefaultHitContainer, DefaultTextContainer } from './styled/index';
 
 /**
  * HighlightedText is a component that highlights a part of a text.
  */
 
-function HighlightedText(props) {
-    const { style, className, parts, hitComponent, textComponent } = props;
+export default function HighlightedText(props) {
+    const { style, className, parts, hitComponent, textComponent, isInline } = props;
     const finalHitContainer = hitComponent || DefaultHitContainer;
     const finalTextContainer = textComponent || DefaultTextContainer;
 
     return (
-        <p className={className} style={style}>
+        <HighlighContainer className={className} style={style} isInline={isInline}>
             <HitText
                 parts={parts}
                 hitComponent={finalHitContainer}
                 textComponent={finalTextContainer}
             />
-        </p>
+        </HighlighContainer>
     );
 }
 
-export default HighlightedText;
-
 HighlightedText.propTypes = {
-    /** The class of the component. */
+    /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with the custom styles of the container. */
     style: PropTypes.object,
@@ -47,6 +46,8 @@ HighlightedText.propTypes = {
      * the text not highlighted
      */
     textComponent: PropTypes.elementType,
+    /** A boolean that when it is true wraps the text in a span tag, and when it is false wraps it in a p tag, this lets you display the text block or inline */
+    isInline: bool,
 };
 
 HighlightedText.defaultProps = {
@@ -55,4 +56,5 @@ HighlightedText.defaultProps = {
     parts: undefined,
     hitComponent: undefined,
     textComponent: undefined,
+    isInline: false,
 };
