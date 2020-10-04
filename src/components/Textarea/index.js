@@ -104,6 +104,7 @@ class Textarea extends Component {
             required,
             rows,
             id,
+            labelAlignment,
             hideLabel,
             name,
             header,
@@ -115,6 +116,7 @@ class Textarea extends Component {
             <StyledContainer className={className} style={style} id={id}>
                 <Label
                     label={label}
+                    labelAlignment={labelAlignment}
                     hideLabel={hideLabel}
                     required={required}
                     inputId={this.textareaId}
@@ -164,23 +166,26 @@ class Textarea extends Component {
 }
 
 Textarea.propTypes = {
-    /** Text that describes the desired textarea input. */
+    /** Text label for the Textarea. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** A boolean to hide the textarea label */
+    /** Describes the position of the Textarea label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the Textarea label */
     hideLabel: PropTypes.bool,
-    /** The name of the textarea */
+    /** The name of the Textarea */
     name: PropTypes.string,
-    /** The value of the textarea, also used as the default value during init. */
+    /** The value of the Textarea, also used as the default value during init. */
     value: PropTypes.string,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
-    /** The maximum number of characters allowed in the textarea. */
+    /** The maximum number of characters allowed in the Textarea. */
     maxLength: PropTypes.number,
-    /** The minimum number of characters allowed in the textarea. */
+    /** The minimum number of characters allowed in the Textarea. */
     minLength: PropTypes.number,
-    /** This make to textarea grow. This value defaults to false. */
+    /** This make to Textarea grow. This value defaults to false. */
     grow: PropTypes.bool,
-    /** Shows the help message below the textarea. */
+    /** Shows the help message below the Textarea. */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that the textarea field must be filled out before submitting the form.
      * This value defaults to false. */
@@ -201,7 +206,7 @@ Textarea.propTypes = {
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
-    /** Event fired when the user paste on the textarea */
+    /** Event fired when the user paste on the Textarea */
     onPaste: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
@@ -241,6 +246,7 @@ Textarea.defaultProps = {
     style: undefined,
     variant: 'default',
     id: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
     header: undefined,
     footer: undefined,

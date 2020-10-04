@@ -41,6 +41,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
         required,
         name,
         label,
+        labelAlignment,
         hideLabel,
         iconPosition,
     } = useReduxForm(props);
@@ -67,6 +68,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
         <StyledContainer id={id} className={className} style={style}>
             <Label
                 label={label}
+                labelAlignment={labelAlignment}
                 hideLabel={hideLabel}
                 required={required}
                 inputId={inputId}
@@ -131,7 +133,10 @@ StrongPasswordInput.propTypes = {
     name: PropTypes.string,
     /** Text label for the input. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** A boolean to hide the input label. */
+    /** Describes the position of the StrongPasswordInput label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the StrongPasswordInput label. */
     hideLabel: PropTypes.bool,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
