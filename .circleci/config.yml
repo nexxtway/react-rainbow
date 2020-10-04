@@ -54,6 +54,12 @@ jobs:
             - run: yarn install
 
             - run:
+                  name: Update Chromedriver
+                  command: |
+                      sudo apt-get update
+                      sudo apt-get install google-chrome-stable
+
+            - run:
                   command: yarn start
                   background: true
 
