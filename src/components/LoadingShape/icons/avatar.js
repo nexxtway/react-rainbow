@@ -5,7 +5,6 @@ const AvatarIcon = props => {
     const { className, style } = props;
     return (
         <svg className={className} style={style} viewBox="0 0 29 30">
-            <title>Combined Shape Copy 2</title>
             <g id="components" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g
                     id="LoadingShape"

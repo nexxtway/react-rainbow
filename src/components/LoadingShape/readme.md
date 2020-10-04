@@ -1,109 +1,47 @@
-##### LoadingShape solid
+# LoadingShape on card
+##### LoadingShapes can be used on cards, tables, lists, menus to display a placeholder where content is being loaded.
 
 ```js
 import React from 'react';
-import { LoadingShape } from 'react-rainbow-components';
-import styled from 'styled-components';
+import { Card, LoadingShape } from 'react-rainbow-components';
 
-const StyledText = styled.div.attrs(props => {
-    return props.theme.rainbow.palette;
-})`
-    color: ${props => props.text.main};
-    font-family: Lato;
-    font-size: 14px;
-    line-height: 1.57;
-    font-weight: bold;
-`;
-
-const style = { 
-    width: '400px', 
-    display: 'flex', 
-    justifyContent: 'space-evenly', 
+const style = {
+    maxWidth: '400px',
+    minWidth: '300px',
+    display: 'flex',
+    padding: '20px',
 };
-const circleStyle = { width: '50px', height: '50px' };
-const squareStyle = { height: '50px' };
-const rectStyle = { height: '30px', width: '100px', };
-const roundedStyle = { height: '30px', width: '100px', };
 
-<div className="rainbow-p-vertical_x-large rainbow-p-horizontal_small rainbow-m_auto" style={style}>
-    <div className="rainbow-flex rainbow-flex_column rainbow-justify_end">
-        <div className="rainbow-m-vertical_medium" style={circleStyle}>
-            <LoadingShape shape="circle" />
-        </div>
-        <StyledText className="rainbow-m-vertical_xx-small">circle</StyledText>
-    </div>
+const imageStyle = {
+    width: '100px',
+};
 
-    <div className="rainbow-flex rainbow-flex_column rainbow-justify_end">
-        <div className="rainbow-m-vertical_medium" style={squareStyle}>
-            <LoadingShape shape="square" />
+<div className="rainbow-align-content_center rainbow-m-around_x-large">
+    <Card style={style}>
+        <div className="rainbow-m-right_medium" style={imageStyle}>
+            <LoadingShape variant="image" shape="square" />
         </div>
-        <StyledText className="rainbow-m-vertical_xx-small">square</StyledText>
-    </div> 
-
-    <div className="rainbow-flex rainbow-flex_column rainbow-justify_end">
-        <div className="rainbow-m-vertical_medium">
-            <LoadingShape shape="rect" style={rectStyle} />
+        <div>
+            <div className="rainbow-align-content_space-between rainbow-p-bottom_small">
+                <LoadingShape className="rainbow-p-right_small" />
+                <LoadingShape />
+            </div>
+            <div>
+                <LoadingShape className="rainbow-m-bottom_small" />
+                <LoadingShape className="rainbow-m-bottom_small" />
+                <div className="rainbow-align-content_space-between">
+                    <LoadingShape className="rainbow-p-right_small" />
+                    <LoadingShape />
+                </div>
+            </div>
         </div>
-        <StyledText className="rainbow-m-vertical_xx-small">rect</StyledText>
-    </div> 
-
-    <div className="rainbow-flex rainbow-flex_column rainbow-justify_end">
-        <div className="rainbow-m-vertical_medium">
-            <LoadingShape shape="rounded-rect" style={roundedStyle} />
-        </div>
-        <StyledText className="rainbow-m-vertical_xx-small">rounded-rect</StyledText>
-    </div>
+    </Card>
 </div>
+
 ```
 
-##### LoadingShape circle
-
-```js
-import React from 'react';
-import { LoadingShape } from 'react-rainbow-components';
-import styled from 'styled-components';
-
-const StyledText = styled.div.attrs(props => {
-    return props.theme.rainbow.palette;
-})`
-    color: ${props => props.text.main};
-    font-family: Lato;
-    font-size: 14px;
-    line-height: 1.57;
-    font-weight: bold;
-`;
-
-const style = { width: '300px' };
-const shapeStyle = { width: '50px', height: '50px' };
-
-<div className="rainbow-p-vertical_x-large rainbow-p-horizontal_small rainbow-m_auto" style={style}>
-    <div className="rainbow-flex rainbow-justify_spread">
-        <div className="rainbow-flex rainbow-flex_column rainbow-justify_end rainbow-align_center">
-            <div className="rainbow-m-vertical_medium">
-                <LoadingShape shape="circle" style={shapeStyle} />
-            </div>
-            <StyledText className="rainbow-m-vertical_xx-small">solid</StyledText>
-        </div>
-
-        <div className="rainbow-flex rainbow-flex_column rainbow-justify_end rainbow-align_center">
-            <div className="rainbow-m-vertical_medium">
-                <LoadingShape shape="circle" variant="avatar" style={shapeStyle} />
-            </div>
-            <StyledText className="rainbow-m-vertical_xx-small">avatar</StyledText>
-        </div>
-
-        <div className="rainbow-flex rainbow-flex_column rainbow-justify_end rainbow-align_center">
-            <div className="rainbow-m-vertical_medium">
-                <LoadingShape shape="square" variant="image" style={shapeStyle} />
-            </div>
-            <StyledText className="rainbow-m-vertical_xx-small">image</StyledText>
-        </div>
-    </div>
-</div>
-```
-
-
-##### LoadingShape interactive example
+# LoadingShape dynamic example
+##### This is a dynamic example where you can play around with the component customization. 
 
 ```js
 import React, { useState } from 'react';

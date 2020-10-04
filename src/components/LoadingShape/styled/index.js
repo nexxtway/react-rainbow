@@ -13,6 +13,7 @@ const StyledShapeContainer = styled.div`
 
 const StyledImageIcon = attachThemeAttrs(styled(ImageIcon))`
     color: ${props => props.palette.background.main};
+
     ${props =>
         props.shape === 'square' &&
         `

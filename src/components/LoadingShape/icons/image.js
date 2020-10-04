@@ -5,7 +5,6 @@ const ImageIcon = props => {
     const { className, style } = props;
     return (
         <svg viewBox="0 0 37 32" className={className} style={style}>
-            <title>Combined Shape</title>
             <g id="components" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g
                     id="LoadingShape"
