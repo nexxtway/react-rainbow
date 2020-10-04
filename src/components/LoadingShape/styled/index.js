@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { replaceAlpha } from '../../../styles/helpers/color';
+import darken from '../../../styles/helpers/color/darken';
 import AvatarIcon from '../icons/avatar';
 import ImageIcon from '../icons/image';
 
@@ -9,7 +11,8 @@ const StyledShapeContainer = styled.div`
     height: 100%;
 `;
 
-const StyledImageIcon = styled(ImageIcon)`
+const StyledImageIcon = attachThemeAttrs(styled(ImageIcon))`
+    color: ${props => props.palette.background.main};
     ${props =>
         props.shape === 'square' &&
         `
@@ -25,12 +28,12 @@ const StyledImageIcon = styled(ImageIcon)`
     ${props =>
         (props.shape === 'rect' || props.shape === 'rounded-rect') &&
         `
-        max-width: 25%;
         height: 80%;
         `}
 `;
 
-const StyledAvatarIcon = styled(AvatarIcon)`
+const StyledAvatarIcon = attachThemeAttrs(styled(AvatarIcon))`
+    color: ${props => props.palette.background.main};
     ${props =>
         props.shape === 'square' &&
         `
@@ -46,7 +49,6 @@ const StyledAvatarIcon = styled(AvatarIcon)`
     ${props =>
         (props.shape === 'rect' || props.shape === 'rounded-rect') &&
         `
-        max-width: 25%;
         height: 80%;
         `}
 `;
@@ -57,12 +59,12 @@ const StyledLoadingShape = attachThemeAttrs(styled.div)`
     align-items: center;
     width: 100%;
     height: 100%;
-    background: ${props => props.palette.background.secondary}
+    background: ${props => props.palette.background.highlight}
         linear-gradient(
             90deg,
-            rgba(226, 228, 233, 0.01) 0%,
-            rgba(226, 228, 233, 0.85) 50%,
-            rgba(226, 228, 233, 0.01) 100%
+            ${props => replaceAlpha(props.palette.background.highlight, 0.1)} 0%,
+            ${props => darken(props.palette.background.highlight, 0.1)} 50%,
+            ${props => replaceAlpha(props.palette.background.highlight, 0.1)} 100%
         );
     background-size: 400% 400%;
     animation: gradient 2.5s ease-in-out infinite;
