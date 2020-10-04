@@ -22,16 +22,6 @@ describe('<Head />', () => {
         const header = component.find('Header');
         expect(header.length).toBe(3);
     });
-    it('should not show the header columns', () => {
-        const component = mount(<Head columns={columns} hideTableHeader />);
-        const header = component.find('Header');
-        expect(header.at(0).prop('hideTableHeader')).toBeTruthy();
-    });
-    it('should show the header columns', () => {
-        const component = mount(<Head columns={columns} />);
-        const header = component.find('Header');
-        expect(header.at(0).prop('hideTableHeader')).toBeFalsy();
-    });
     it('should set the right sortDirection in Header component when only defaultSortDirection is passed', () => {
         const component = mount(<Head columns={columns} defaultSortDirection="desc" />);
         const header = component.find('Header');
