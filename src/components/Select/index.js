@@ -5,7 +5,7 @@ import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import Options from './options';
 import StyledContainer from './styled/container';
-import Label from './../Input/label';
+import Label from '../Input/label';
 import StyledInnerContainer from './styled/innerContainer';
 import StyledSelect from './styled/select';
 import ErrorText from '../Input/styled/errorText';

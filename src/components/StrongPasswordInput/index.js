@@ -212,6 +212,7 @@ StrongPasswordInput.defaultProps = {
     style: undefined,
     id: undefined,
     label: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
     passwordState: undefined,
     passwordStateLabels: undefined,
