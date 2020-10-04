@@ -142,6 +142,7 @@ const LoadingShapeExample = () => {
                     label="Width"
                     className="rainbow-p-around_small"
                     style={inputStyle}
+                    type="number"
                     value={width}
                     onChange={event => setWidth(event.target.value)}
                 />
@@ -149,6 +150,7 @@ const LoadingShapeExample = () => {
                     label="Height"
                     className="rainbow-p-around_small"
                     style={inputStyle}
+                    type="number"
                     value={height}
                     onChange={event => setHeight(event.target.value)}
                 />
