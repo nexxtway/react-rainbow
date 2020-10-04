@@ -105,6 +105,7 @@ export default class Input extends Component {
             required,
             id,
             hideLabel,
+            labelAlignment,
             iconPosition,
         } = this.props;
 
@@ -112,6 +113,7 @@ export default class Input extends Component {
             <StyledContainer id={id} className={className} style={style} readOnly={readOnly}>
                 <Label
                     label={label}
+                    labelAlignment={labelAlignment}
                     hideLabel={hideLabel}
                     required={required}
                     inputId={this.inputId}
@@ -185,6 +187,7 @@ Input.propTypes = {
     style: PropTypes.object,
     id: PropTypes.string,
     autoComplete: PropTypes.string,
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     hideLabel: PropTypes.bool,
 };
 
@@ -215,5 +218,6 @@ Input.defaultProps = {
     style: undefined,
     id: undefined,
     autoComplete: 'on',
+    labelAlignment: 'center',
     hideLabel: false,
 };

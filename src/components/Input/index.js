@@ -77,12 +77,12 @@ Input.propTypes = {
         'radio',
         'checkbox',
     ]),
-    /** Text label for the input. */
+    /** Text label for the Input. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** Describes the position of the input label. Options include left, center and right.
+    /** Describes the position of the Input label. Options include left, center and right.
      * This value defaults to center. */
     labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
-    /** A boolean to hide the input label. */
+    /** A boolean to hide the Input label. */
     hideLabel: PropTypes.bool,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
@@ -99,7 +99,7 @@ Input.propTypes = {
     maxLength: PropTypes.number,
     /** The minimum number of characters allowed in the field. */
     minLength: PropTypes.number,
-    /** Shows the help message below the input. */
+    /** Shows the help message below the Input. */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
@@ -129,7 +129,7 @@ Input.propTypes = {
     onBlur: PropTypes.func,
     /** The action triggered when a key is pressed on the element. */
     onKeyDown: PropTypes.func,
-    /** Set the input to checked state when true. It is used only for input type checkbox. */
+    /** Set the Input to checked state when true. It is used only for input type checkbox. */
     checked: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
@@ -141,7 +141,7 @@ Input.propTypes = {
     /** The id of the outer element. */
     id: PropTypes.string,
     /** A string indicating the type of autocomplete functionality.
-     * If any, to allow on the input.
+     * If any, to allow on the Input.
      *
      * Values accepted by the autocomplete prop: name, organization-title, username, new-password,
      * street-address, country, cc-name, transaction-currency, language, bday, sex, url, photo,

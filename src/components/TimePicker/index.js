@@ -117,6 +117,7 @@ class TimePicker extends Component {
             required,
             style,
             className,
+            labelAlignment,
             hideLabel,
             name,
             bottomHelpText,
@@ -148,6 +149,7 @@ class TimePicker extends Component {
                     onClick={this.handleClick}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}
+                    labelAlignment={labelAlignment}
                     hideLabel={hideLabel}
                     name={name}
                     bottomHelpText={bottomHelpText}
@@ -193,6 +195,9 @@ TimePicker.propTypes = {
     placeholder: PropTypes.string,
     /** Text label for the TimePicker. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the TimePicker label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     /** A boolean to hide the TimePicker label. */
     hideLabel: PropTypes.bool,
     /** Specifies that the TimePicker must be filled out before submitting the form.
@@ -235,6 +240,7 @@ TimePicker.defaultProps = {
     onChange: () => {},
     placeholder: null,
     label: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
     required: false,
     name: undefined,

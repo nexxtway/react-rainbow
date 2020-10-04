@@ -8,6 +8,10 @@ import useFormatDate from './hooks/useFormatDate';
 import DatePickerModal from '../DatePickerModal';
 import { StyledContainer, StyledInput } from './styled';
 
+/**
+ * The DatePicker is used to select a specific day or a range of days on a calendar.
+ * @category Form
+ */
 const DatePicker = React.forwardRef((props, ref) => {
     const {
         value,
@@ -23,6 +27,7 @@ const DatePicker = React.forwardRef((props, ref) => {
         style,
         className,
         formatStyle,
+        labelAlignment,
         hideLabel,
         name,
         bottomHelpText,
@@ -110,6 +115,7 @@ const DatePicker = React.forwardRef((props, ref) => {
                 onClick={handleClick}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
+                labelAlignment={labelAlignment}
                 hideLabel={hideLabel}
                 name={name}
                 bottomHelpText={bottomHelpText}
@@ -159,6 +165,9 @@ DatePicker.propTypes = {
     placeholder: PropTypes.string,
     /** Text label for the DatePicker. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the DatePicker label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     /** A boolean to hide the DatePicker label. */
     hideLabel: PropTypes.bool,
     /** Specifies that the DatePicker field must be filled out before submitting the form.
@@ -206,6 +215,7 @@ DatePicker.defaultProps = {
     onChange: () => {},
     placeholder: undefined,
     label: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
     required: false,
     name: undefined,

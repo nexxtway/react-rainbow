@@ -1,5 +1,5 @@
 import { ReactNode, FocusEvent } from 'react';
-import { BaseProps } from '../types';
+import { BaseProps, LabelAlignment } from '../types';
 
 export interface MultiSelectOption {
     name?: string | number;
@@ -19,6 +19,7 @@ export interface MultiSelectProps extends BaseProps {
     variant?: 'default' | 'chip';
     chipVariant?: 'base' | 'neutral' | 'outline-brand' | 'brand';
     isBare?: boolean;
+    labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     value?: MultiSelectOption[];
     onChange?: (value: MultiSelectOption[]) => void;

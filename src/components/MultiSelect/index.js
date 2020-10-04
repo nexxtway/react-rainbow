@@ -36,6 +36,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
         className,
         style,
         label,
+        labelAlignment,
         hideLabel,
         placeholder,
         error,
@@ -193,6 +194,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
             <Label
                 id={labelId}
                 label={label}
+                labelAlignment={labelAlignment}
                 hideLabel={hideLabel}
                 required={required}
                 inputId={inputId}
@@ -294,7 +296,10 @@ MultiSelect.propTypes = {
     style: PropTypes.object,
     /** Text label for the input. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** A boolean to hide the input label. */
+    /** Describes the position of the MultiSelect label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the MultiSelect label. */
     hideLabel: PropTypes.bool,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
@@ -342,6 +347,7 @@ MultiSelect.defaultProps = {
     className: undefined,
     style: undefined,
     label: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
     placeholder: null,
     error: null,

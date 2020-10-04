@@ -21,7 +21,7 @@ export type ButtonIconVariant =
     | 'inverse';
 export type VisualPickerSize = 'small' | 'medium' | 'large';
 export type IconPosition = 'left' | 'right';
-export type labelAlignment = 'left' | 'center' | 'right';
+export type LabelAlignment = 'left' | 'center' | 'right';
 
 export interface LookupValue {
     label?: string;

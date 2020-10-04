@@ -6,7 +6,6 @@ import RenderIf from '../../RenderIf';
 import RelativeElement from '../../Structural/relativeElement';
 import StyledContainer from '../styled/container';
 import StyledIconContainer from '../styled/iconContainer';
-import StyledLabelContainer from '../styled/labelContainer';
 import StyledInput from './styled/input';
 import HelpText from '../styled/helpText';
 import ErrorText from '../styled/errorText';
@@ -99,16 +98,15 @@ export default class InputBase extends Component {
 
         return (
             <StyledContainer id={id} className={className} style={style}>
-                <StyledLabelContainer labelAlignment={labelAlignment} readOnly={isReadOnly}>
-                    <Label
-                        label={label}
-                        hideLabel={hideLabel}
-                        required={required}
-                        inputId={this.inputId}
-                        readOnly={isReadOnly}
-                        id={this.getInlineTextLabelId()}
-                    />
-                </StyledLabelContainer>
+                <Label
+                    label={label}
+                    labelAlignment={labelAlignment}
+                    hideLabel={hideLabel}
+                    required={required}
+                    inputId={this.inputId}
+                    readOnly={isReadOnly}
+                    id={this.getInlineTextLabelId()}
+                />
                 <RelativeElement>
                     <RenderIf isTrue={icon}>
                         <StyledIconContainer
