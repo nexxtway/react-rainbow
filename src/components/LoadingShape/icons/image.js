@@ -10,7 +10,7 @@ const ImageIcon = props => {
                 <g
                     id="LoadingShape"
                     transform="translate(-703.000000, -1054.000000)"
-                    fill="#FFFFFF"
+                    fill="currentColor"
                     fillRule="nonzero"
                 >
                     <g id="Group-18" transform="translate(697.000000, 1044.000000)">

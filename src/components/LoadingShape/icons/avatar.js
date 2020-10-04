@@ -10,7 +10,7 @@ const AvatarIcon = props => {
                 <g
                     id="LoadingShape"
                     transform="translate(-573.000000, -1054.000000)"
-                    fill="#FFFFFF"
+                    fill="currentColor"
                     fillRule="nonzero"
                 >
                     <g id="Group-30" transform="translate(563.000000, 1044.000000)">
