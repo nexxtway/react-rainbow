@@ -165,6 +165,7 @@ class PlacesLookupComponent extends Component {
             id,
             name,
             value,
+            labelAlignment,
             hideLabel,
             onClick,
             // onFocus,
@@ -182,6 +183,7 @@ class PlacesLookupComponent extends Component {
                     isLoading={isSearching}
                     placeholder={placeholder}
                     options={options}
+                    labelAlignment={labelAlignment}
                     hideLabel={hideLabel}
                     readOnly={readOnly}
                     required={required}
@@ -214,6 +216,7 @@ PlacesLookupComponent.propTypes = {
     isScriptLoadSucceed: PropTypes.bool.isRequired,
     searchOptions: CustomPropTypes.searchOptionsShape,
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     hideLabel: PropTypes.bool,
     readOnly: PropTypes.bool,
     value: PropTypes.oneOfType([
@@ -254,6 +257,7 @@ PlacesLookupComponent.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
 };
 

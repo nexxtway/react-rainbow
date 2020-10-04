@@ -1,5 +1,5 @@
 import { ComponentType, ReactNode, MouseEvent, FocusEvent } from 'react';
-import { BaseProps } from '../types';
+import { BaseProps, LabelAlignment } from '../types';
 
 export interface TimePickerProps extends BaseProps {
     value?: string;
@@ -8,6 +8,7 @@ export interface TimePickerProps extends BaseProps {
     onChange?: (time: string) => void;
     placeholder?: string;
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     required?: boolean;
     name?: string;

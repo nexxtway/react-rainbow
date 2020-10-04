@@ -34,6 +34,7 @@ const FileSelector = React.forwardRef((props, ref) => {
         multiple,
         disabled,
         variant,
+        labelAlignment,
         hideLabel,
         accept,
         onChange,
@@ -126,6 +127,7 @@ const FileSelector = React.forwardRef((props, ref) => {
         <StyledContainer id={id} className={className} style={style}>
             <Label
                 label={label}
+                labelAlignment={labelAlignment}
                 hideLabel={hideLabel}
                 required={required}
                 inputId={inputId}
@@ -230,7 +232,10 @@ FileSelector.propTypes = {
     disabled: PropTypes.bool,
     /** Specifies that the variant of the file selector. */
     variant: PropTypes.oneOf(['inline', 'multiline']),
-    /** A boolean to hide the input label. */
+    /** Describes the position of the FileSelector label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the FileSelector label. */
     hideLabel: PropTypes.bool,
     /** A string that defines the file types the file input should accept. */
     accept: PropTypes.string,
@@ -259,6 +264,7 @@ FileSelector.defaultProps = {
     multiple: false,
     disabled: false,
     variant: 'inline',
+    labelAlignment: 'center',
     hideLabel: false,
     accept: undefined,
     value: undefined,
