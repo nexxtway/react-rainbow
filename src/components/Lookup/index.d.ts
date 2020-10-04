@@ -1,8 +1,9 @@
 import { ReactNode, ComponentType, MouseEvent } from 'react';
-import { BaseProps, LookupValue } from '../types';
+import { BaseProps, LookupValue, LabelAlignment } from '../types';
 
 export interface LookupProps extends BaseProps {
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     value?: LookupValue;
     options?: LookupValue[];

@@ -50,6 +50,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
         style,
         id,
         label,
+        labelAlignment,
         hideLabel,
         countries: countriesProps,
     } = useReduxForm(props);
@@ -127,6 +128,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
         <StyledContainer id={id} ref={containerRef} className={className} style={style}>
             <Label
                 label={label}
+                labelAlignment={labelAlignment}
                 hideLabel={hideLabel}
                 required={required}
                 inputId={inputId}
@@ -226,7 +228,10 @@ PhoneInput.propTypes = {
     name: PropTypes.string,
     /** Text label for the input. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** A boolean to hide the input label. */
+    /** Describes the position of the PhoneInput label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the PhoneInput label. */
     hideLabel: PropTypes.bool,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
@@ -269,6 +274,7 @@ PhoneInput.defaultProps = {
     placeholder: null,
     icon: undefined,
     label: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
     bottomHelpText: null,
     required: false,

@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Slider from '../index';
 import ErrorText from '../../Input/styled/errorText';
+import StyledLabel from '../styled/label';
 
 describe('<Slider />', () => {
     it('should fire an event when the user change the input', () => {
@@ -29,6 +30,18 @@ describe('<Slider />', () => {
     it('should set the disabled passed in the input element', () => {
         const component = mount(<Slider disabled />);
         expect(component.find('input').prop('disabled')).toBe(true);
+    });
+    it('should set "left" to labelAlignment prop passed in the Label component', () => {
+        const component = mount(<Slider label="Slider Label" labelAlignment="left" />);
+        expect(component.find(StyledLabel).prop('labelAlignment')).toBe('left');
+    });
+    it('should set "right" to labelAlignment prop passed in the Label component', () => {
+        const component = mount(<Slider label="Slider Label" labelAlignment="right" />);
+        expect(component.find(StyledLabel).prop('labelAlignment')).toBe('right');
+    });
+    it('should set "center" to labelAlignment if prop not passed in the Label component', () => {
+        const component = mount(<Slider label="Slider Label" />);
+        expect(component.find(StyledLabel).prop('labelAlignment')).toBe('center');
     });
     it('should set an id in the input element', () => {
         const component = mount(<Slider />);

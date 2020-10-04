@@ -1,5 +1,5 @@
 import { ReactNode, ComponentType, MouseEvent } from 'react';
-import { BaseProps } from '../types';
+import { BaseProps, LabelAlignment } from '../types';
 
 interface PicklistValue {
     label?: string;
@@ -10,6 +10,7 @@ interface PicklistValue {
 
 export interface PicklistProps extends BaseProps {
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     children?: ReactNode;
     isLoading?: boolean;
