@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
-import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
+import { ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
 import {
     disableBodyScroll,
     enableBodyScroll,

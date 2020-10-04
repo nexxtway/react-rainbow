@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Spinner from './../index';
+import Spinner from '..';
 
 describe('<Spinner/>', () => {
     it('should not render the spinner when isVisible is false', () => {

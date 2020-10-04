@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { axe } from 'jest-axe';
-import StrongPasswordInput from '../';
+import StrongPasswordInput from '..';
 
 describe('<StrongPasswordInput />', () => {
     it('should be accessible when label is passed', async () => {

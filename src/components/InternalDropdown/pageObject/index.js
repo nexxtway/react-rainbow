@@ -66,6 +66,7 @@ class PageInternalDropdown {
      */
     [privateGetMenuBoundsRect]() {
         const menu = $(this.rootElement);
+        // eslint-disable-next-line id-length
         const { x, y } = menu.getLocation();
         const { width, height } = menu.getSize();
         return {
@@ -118,6 +119,7 @@ class PageInternalDropdown {
             .$('input[type="search"]')
             .click();
     }
+
     /**
      * Type in the input element.
      * @method

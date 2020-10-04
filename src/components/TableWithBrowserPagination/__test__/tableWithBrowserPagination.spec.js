@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import TableWithBrowserPagination from './../index';
+import TableWithBrowserPagination from '../index';
 import Pagination from '../../Pagination';
 import Table from '../../Table';
 import Options from '../options';

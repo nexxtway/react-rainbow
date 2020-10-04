@@ -1,9 +1,10 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import InputBase from './inputBase';
 import InputRadio from './inputRadio';
 import InputCheckbox from './inputCheckbox';
-import withReduxForm from './../../libs/hocs/withReduxForm';
+import withReduxForm from '../../libs/hocs/withReduxForm';
 
 /**
  * Text inputs are used for freeform data entry.

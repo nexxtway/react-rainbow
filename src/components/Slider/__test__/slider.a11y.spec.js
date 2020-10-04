@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { axe } from 'jest-axe';
-import Slider from './../';
+import Slider from '..';
 
 describe('<Slider/>', () => {
     it('should be accessible', async () => {

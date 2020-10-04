@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { axe } from 'jest-axe';
-import VerticalNavigation from './../';
-import VerticalSection from './../../VerticalSection';
-import VerticalSectionOverflow from './../../VerticalSectionOverflow';
-import VerticalItem from './../../VerticalItem';
+import VerticalNavigation from '..';
+import VerticalSection from '../../VerticalSection';
+import VerticalSectionOverflow from '../../VerticalSectionOverflow';
+import VerticalItem from '../../VerticalItem';
 
 describe('<VerticalNavigation/>', () => {
     it('should be accessible when use VerticalSection', async () => {

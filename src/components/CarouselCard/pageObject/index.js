@@ -1,5 +1,5 @@
 const PageCarouselCardIndicator = require('./indicator');
-const PageCarouselImage = require('./../../CarouselImage/pageObject');
+const PageCarouselImage = require('../../CarouselImage/pageObject');
 
 /**
  * CarouselCard page object class.

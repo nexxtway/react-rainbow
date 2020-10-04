@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { axe } from 'jest-axe';
-import Breadcrumbs from './../';
+import Breadcrumbs from '..';
 import Breadcrumb from '../../Breadcrumb';
 
 describe('<Breadcrumbs/>', () => {

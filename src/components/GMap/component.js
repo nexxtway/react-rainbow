@@ -1,6 +1,7 @@
+/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import RenderIf from './../RenderIf';
+import RenderIf from '../RenderIf';
 import Header from './header';
 import { Provider } from './context';
 import getMapContainerStyles from './getMapContainerStyles';

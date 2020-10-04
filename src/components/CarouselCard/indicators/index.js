@@ -76,6 +76,7 @@ export default class Indicators extends Component {
         const { carouselChildren, onSelect, selectedItem } = this.props;
         return carouselChildren.map(({ ref, ...rest }) => (
             <Indicator
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...rest}
                 onSelect={onSelect}
                 selectedItem={selectedItem}

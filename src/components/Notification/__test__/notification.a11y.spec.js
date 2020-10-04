@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { axe } from 'jest-axe';
 import Notification from '..';
-import Avatar from './../../Avatar';
+import Avatar from '../../Avatar';
 
 describe('<Notification/>', () => {
     it('should be accessible', async () => {

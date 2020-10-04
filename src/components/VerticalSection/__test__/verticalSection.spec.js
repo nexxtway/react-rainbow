@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import VerticalSection from '../';
+import VerticalSection from '..';
 import StyledContainer from '../styled/container';
 
 describe('<VerticalSection/>', () => {

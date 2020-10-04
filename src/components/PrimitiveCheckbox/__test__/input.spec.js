@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import PrimitiveCheckbox from './../';
+import PrimitiveCheckbox from '..';
 
 describe('<PrimitiveCheckbox/>', () => {
     it('should set an id in the input element', () => {

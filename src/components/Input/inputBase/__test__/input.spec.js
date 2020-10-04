@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import InputBase from '../';
+import InputBase from '..';
 import StyledLabelContainer from '../../styled/labelContainer';
 import StyledError from '../../styled/errorText';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Input from '../';
+import Input from '..';
 import StyledPickerInput from '../styled/input';
 import StyledReadonlyInput from '../../inputBase/styled/input';
 import ErrorText from '../../styled/errorText';

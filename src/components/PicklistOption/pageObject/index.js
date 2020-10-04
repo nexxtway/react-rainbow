@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 /**
  * PicklistOption page object class.
  * @class

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { axe } from 'jest-axe';
 import Picklist from '..';
-import PicklistOption from './../../PicklistOption';
+import PicklistOption from '../../PicklistOption';
 
 // TODO:
 // The accessibility test using axe core get the

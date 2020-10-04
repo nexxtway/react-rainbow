@@ -1,5 +1,5 @@
 {
-    "extends": ["airbnb", "plugin:prettier/recommended"],
+    "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
     "plugins": [
         "babel",
         "react",
@@ -12,6 +12,7 @@
         "rainbow"
     ],
     "rules": {
+        "prettier/prettier": "error",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "react/jsx-indent": ["error", 4],
@@ -23,6 +24,7 @@
         "no-mixed-operators": "off",
         "arrow-parens": ["error", "as-needed"],
         "linebreak-style": 0,
+        "id-length": [2, { "min": 3, "exceptions": ["id", "li", "td", "th", "Ul", "to"] }],
         "react/default-props-match-prop-types": ["error", { "allowRequiredDefaults": true }],
         "rainbow/no-double-negation-renderif": 2,
         "rainbow/no-capitalized-props": 2

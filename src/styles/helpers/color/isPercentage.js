@@ -1,3 +1,3 @@
-export default function isPercentage(n) {
-    return typeof n === 'string' && n.indexOf('%') !== -1;
+export default function isPercentage(value) {
+    return typeof value === 'string' && value.indexOf('%') !== -1;
 }

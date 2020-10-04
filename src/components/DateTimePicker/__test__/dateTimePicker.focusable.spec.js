@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import DateTimePicker from '../';
+import DateTimePicker from '..';
 
 describe('<DateTimePicker/>', () => {
     it('should be focusable', () => {

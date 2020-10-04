@@ -1,4 +1,4 @@
-import getPageItems from './../helpers/getPageItems';
+import getPageItems from '../helpers/getPageItems';
 
 const data = [
     { name: 'Leandro Torres' },

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Options from './../options';
+import Options from '../options';
 
 describe('<Options />', () => {
     it('should not render any option when pages is 0', () => {

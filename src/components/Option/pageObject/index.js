@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 /**
  * Option page object class.
  * @class

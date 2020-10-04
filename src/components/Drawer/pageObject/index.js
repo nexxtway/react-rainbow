@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 /**
  * Drawer page object class.
  * @class

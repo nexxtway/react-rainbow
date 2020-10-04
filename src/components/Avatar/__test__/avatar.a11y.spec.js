@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { axe } from 'jest-axe';
-import Avatar from './../';
+import Avatar from '..';
 
 describe('<Avatar/>', () => {
     it('should be accessible when a src and assistiveText are passed', async () => {

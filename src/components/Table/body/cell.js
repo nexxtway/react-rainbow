@@ -11,6 +11,7 @@ function CellValue(props) {
     const { component: CellComponent, value, rowData, restColumnProps } = props;
 
     if (CellComponent) {
+        // eslint-disable-next-line react/jsx-props-no-spreading
         return <CellComponent {...restColumnProps} value={value} row={rowData} />;
     }
     return <span title={value}>{value}</span>;

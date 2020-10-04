@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import AmPmSelect from './../ampmSelect';
+import AmPmSelect from '../ampmSelect';
 
 describe('<AmPmSelect/>', () => {
     it('should render the right markup when isFocused prop is false', () => {

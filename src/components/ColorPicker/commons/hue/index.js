@@ -14,6 +14,7 @@ export default function Hue() {
 
     const handleChange = event => {
         const value = parseInt(event.target.value, 10);
+        // eslint-disable-next-line no-restricted-globals
         hsv[0] = isNaN(value) ? 0 : Math.max(0, Math.min(value, 360));
         const rgbColor = hsvToRgb(recomposeColor({ type: 'hsv', values: hsv }));
         const rgbaColor = rgbToRgba(rgbColor, rgba[3]);

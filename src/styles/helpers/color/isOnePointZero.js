@@ -1,3 +1,3 @@
-export default function isOnePointZero(n) {
-    return typeof n === 'string' && n.indexOf('.') !== -1 && parseFloat(n) === 1;
+export default function isOnePointZero(value) {
+    return typeof value === 'string' && value.indexOf('.') !== -1 && parseFloat(value) === 1;
 }

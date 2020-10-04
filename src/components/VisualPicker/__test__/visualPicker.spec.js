@@ -37,7 +37,7 @@ describe('<VisualPicker/>', () => {
     it('should call onChanged with the new option selected when have it has one selected initially', () => {
         const onChangeFn = jest.fn();
         const component = mount(
-            <VisualPicker onChange={onChangeFn} value={'option1'}>
+            <VisualPicker onChange={onChangeFn} value="option1">
                 <VisualPickerOption name="option1" />
                 <VisualPickerOption name="option2" />
                 <VisualPickerOption name="option3" />
