@@ -3,10 +3,11 @@ import { PADDING_X_SMALL } from '../../../../styles/paddings';
 
 const StyledHeaderContainer = styled.div`
     border: 1px transparent solid;
-    display: ${props => (props.hideTableHeader ? 'none' : 'flex')};
+    display: flex;
     align-items: center;
     height: 44px;
     padding: 0 ${PADDING_X_SMALL};
+
     ${props =>
         props.theme.variant === 'listview' &&
         `
