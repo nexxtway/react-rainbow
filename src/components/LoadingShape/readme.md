@@ -1,6 +1,20 @@
 ##### LoadingShape solid
 
 ```js
+import React from 'react';
+import { LoadingShape } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const StyledText = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+    font-family: Lato;
+    font-size: 14px;
+    line-height: 1.57;
+    font-weight: bold;
+`;
+
 const style = { 
     width: '400px', 
     display: 'flex', 
@@ -16,28 +30,28 @@ const roundedStyle = { height: '30px', width: '100px', };
         <div className="rainbow-m-vertical_medium" style={circleStyle}>
             <LoadingShape shape="circle" />
         </div>
-        <strong className="rainbow-m-vertical_xx-small">circle</strong>
+        <StyledText className="rainbow-m-vertical_xx-small">circle</StyledText>
     </div>
 
     <div className="rainbow-flex rainbow-flex_column rainbow-justify_end">
         <div className="rainbow-m-vertical_medium" style={squareStyle}>
             <LoadingShape shape="square" />
         </div>
-        <strong className="rainbow-m-vertical_xx-small">square</strong>
+        <StyledText className="rainbow-m-vertical_xx-small">square</StyledText>
     </div> 
 
     <div className="rainbow-flex rainbow-flex_column rainbow-justify_end">
         <div className="rainbow-m-vertical_medium">
             <LoadingShape shape="rect" style={rectStyle} />
         </div>
-        <strong className="rainbow-m-vertical_xx-small">rect</strong>
+        <StyledText className="rainbow-m-vertical_xx-small">rect</StyledText>
     </div> 
 
     <div className="rainbow-flex rainbow-flex_column rainbow-justify_end">
         <div className="rainbow-m-vertical_medium">
             <LoadingShape shape="rounded-rect" style={roundedStyle} />
         </div>
-        <strong className="rainbow-m-vertical_xx-small">rounded-rect</strong>
+        <StyledText className="rainbow-m-vertical_xx-small">rounded-rect</StyledText>
     </div>
 </div>
 ```
@@ -45,6 +59,20 @@ const roundedStyle = { height: '30px', width: '100px', };
 ##### LoadingShape circle
 
 ```js
+import React from 'react';
+import { LoadingShape } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const StyledText = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+    font-family: Lato;
+    font-size: 14px;
+    line-height: 1.57;
+    font-weight: bold;
+`;
+
 const style = { width: '300px' };
 const shapeStyle = { width: '50px', height: '50px' };
 
@@ -54,21 +82,21 @@ const shapeStyle = { width: '50px', height: '50px' };
             <div className="rainbow-m-vertical_medium">
                 <LoadingShape shape="circle" style={shapeStyle} />
             </div>
-            <strong className="rainbow-m-vertical_xx-small">solid</strong>
+            <StyledText className="rainbow-m-vertical_xx-small">solid</StyledText>
         </div>
 
         <div className="rainbow-flex rainbow-flex_column rainbow-justify_end rainbow-align_center">
             <div className="rainbow-m-vertical_medium">
                 <LoadingShape shape="circle" variant="avatar" style={shapeStyle} />
             </div>
-            <strong className="rainbow-m-vertical_xx-small">avatar</strong>
+            <StyledText className="rainbow-m-vertical_xx-small">avatar</StyledText>
         </div>
 
         <div className="rainbow-flex rainbow-flex_column rainbow-justify_end rainbow-align_center">
             <div className="rainbow-m-vertical_medium">
                 <LoadingShape shape="square" variant="image" style={shapeStyle} />
             </div>
-            <strong className="rainbow-m-vertical_xx-small">image</strong>
+            <StyledText className="rainbow-m-vertical_xx-small">image</StyledText>
         </div>
     </div>
 </div>
