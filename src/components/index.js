@@ -37,6 +37,7 @@ export { default as GoogleAddressLookup } from './GoogleAddressLookup';
 export { default as HelpText } from './HelpText';
 export { default as ImportRecordsFlow } from './ImportRecordsFlow';
 export { default as Input } from './Input';
+export { default as LoadingShape } from './LoadingShape';
 export { default as Lookup } from './Lookup';
 export { default as MapMarker } from './MapMarker';
 export { default as MarkdownOutput } from './MarkdownOutput';
