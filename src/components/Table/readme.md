@@ -1026,14 +1026,7 @@ function TableListView() {
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCog,
-    faPencilAlt,
-    faStore,
-    faPlus,
-    faBell,
-    faEllipsisV,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
