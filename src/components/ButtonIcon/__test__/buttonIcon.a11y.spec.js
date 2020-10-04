@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
+import axe from '../../../../axe';
 import ButtonIcon from '..';
 
 describe('<ButtonIcon/>', () => {

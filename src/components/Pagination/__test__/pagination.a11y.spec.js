@@ -1,6 +1,6 @@
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
 import React from 'react';
+import axe from '../../../../axe';
 import Pagination from '..';
 
 describe('<Pagination/>', () => {

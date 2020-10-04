@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
+import axe from '../../../../axe';
 import Card from '..';
 import Avatar from '../../Avatar';
 import Button from '../../Button';
