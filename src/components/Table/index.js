@@ -29,7 +29,7 @@ import StyledScrollableX from './styled/scrollableX';
 import StyledScrollableY from './styled/scrollableY';
 import StyledTable from './styled/table';
 import StyledTableBody from './styled/tableBody';
-import RenderIf from '../RenderIf';
+import StyledThead from './styled/thead';
 
 /**
  * Data tables display information in a way that’s easy to scan,
@@ -444,7 +444,7 @@ export default class Table extends Component {
                                     style={tableStyles}
                                 >
                                     <StyledTable style={tableStyles}>
-                                        <thead>
+                                        <StyledThead>
                                             <tr>
                                                 <Head
                                                     columns={columns}
@@ -464,7 +464,7 @@ export default class Table extends Component {
                                                     hasScroll={this.isScrollActive()}
                                                 />
                                             </tr>
-                                        </thead>
+                                        </StyledThead>
                                         <StyledTableBody rowNumberOffset={rowNumberOffset}>
                                             <Body
                                                 data={normalizeData(data)}

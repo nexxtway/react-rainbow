@@ -15,7 +15,7 @@ const StyledScrollableX = attachThemeAttrs(styled.div)`
     ${props =>
         props.theme.hideTableHeader &&
         `
-        padding-top: none;
+        padding-top: 0;
         border-top: none;
     `};
 
