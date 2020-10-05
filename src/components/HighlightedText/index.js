@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { bool } from 'prop-types';
+import PropTypes from 'prop-types';
 import HitText from './hitText';
 import HighlighContainer from './highlighContainer';
 import { DefaultHitContainer, DefaultTextContainer } from './styled/index';
@@ -46,8 +46,8 @@ HighlightedText.propTypes = {
      * the text not highlighted
      */
     textComponent: PropTypes.elementType,
-    /** A boolean that when it is true wraps the text in a span tag, and when it is false wraps it in a p tag, this lets you display the text block or inline */
-    isInline: bool,
+    /** A boolean that when it is true display the text inline, and when it is false display the text block. */
+    isInline: PropTypes.bool,
 };
 
 HighlightedText.defaultProps = {
