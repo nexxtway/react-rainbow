@@ -23,6 +23,7 @@ describe('<Lookup />', () => {
             label: 'custom label',
             required: true,
             readOnly: false,
+            labelAlignment: 'center',
             hideLabel: false,
             inputId: expect.any(String),
         });

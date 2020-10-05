@@ -73,6 +73,7 @@ describe('<PickerInput/>', () => {
             required: true,
             readOnly: false,
             hideLabel: false,
+            labelAlignment: 'center',
             inputId: expect.any(String),
         });
     });

@@ -29,16 +29,15 @@ describe('Select component', () => {
         const component = mount(<Select label="Select Label" required />);
         expect(component.find('RequiredAsterisk').prop('required')).toBe(true);
     });
-    it('should set "left" to labelAlignment prop passed in the Label component', () => {
-        const component = mount(<Select label="Select Label" required labelAlignment="left" />);
-        expect(component.find('SelectStyledLabel').prop('labelAlignment')).toBe('left');
-    });
-    it('should set "right" to labelAlignment prop passed in the Label component', () => {
-        const component = mount(<Select label="Select Label" required labelAlignment="right" />);
-        expect(component.find('SelectStyledLabel').prop('labelAlignment')).toBe('right');
-    });
-    it('should set "center" to labelAlignment if prop not passed (default) in the Label component', () => {
+    it('should pass the right props to the Label component', () => {
         const component = mount(<Select label="Select Label" required />);
-        expect(component.find('SelectStyledLabel').prop('labelAlignment')).toBe('center');
+        expect(component.find('Label').props()).toEqual({
+            label: 'Select Label',
+            required: true,
+            readOnly: false,
+            labelAlignment: 'center',
+            hideLabel: false,
+            inputId: expect.any(String),
+        });
     });
 });

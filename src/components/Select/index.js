@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import { uniqueId } from './../../libs/utils';
 import RenderIf from '../RenderIf';
-import RequiredAsterisk from '../RequiredAsterisk';
 import Options from './options';
 import StyledContainer from './styled/container';
-import StyledLabel from './styled/label';
+import Label from './../Input/label';
 import StyledInnerContainer from './styled/innerContainer';
 import StyledSelect from './styled/select';
 import ErrorText from '../../components/Input/styled/errorText';
@@ -64,21 +63,20 @@ class Select extends Component {
             className,
             id,
             name,
+            labelAlignment,
             hideLabel,
             tabIndex,
-            labelAlignment,
         } = this.props;
 
         return (
             <StyledContainer className={className} style={style} id={id}>
-                <StyledLabel
-                    hideLabel={hideLabel}
-                    htmlFor={this.selectId}
+                <Label
+                    label={label}
                     labelAlignment={labelAlignment}
-                >
-                    <RequiredAsterisk required={required} />
-                    {label}
-                </StyledLabel>
+                    hideLabel={hideLabel}
+                    required={required}
+                    inputId={this.selectId}
+                />
                 <StyledInnerContainer error={error} disabled={disabled}>
                     <StyledSelect
                         error={error}
@@ -109,9 +107,9 @@ class Select extends Component {
 }
 
 Select.propTypes = {
-    /** Text label for the select. */
+    /** Text label for the Select. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The name of the select. */
+    /** The name of the Select. */
     name: PropTypes.string,
     /** Specifies the selected value. */
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -147,12 +145,13 @@ Select.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** The id of the outer element. */
+    /** Describes the position of the Select label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the Select label. */
     hideLabel: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    /** Specifies the label alignment. */
-    labelAlignment: PropTypes.oneOf(['center', 'left', 'right']),
 };
 
 Select.defaultProps = {
@@ -171,9 +170,9 @@ Select.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
     tabIndex: undefined,
-    labelAlignment: 'center',
 };
 
 export default withReduxForm(Select);
