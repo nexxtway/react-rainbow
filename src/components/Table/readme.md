@@ -735,6 +735,8 @@ const StyledTaskHeader = styled.span`
 const StyledPriority = styled.div`
     text-transform: capitalize;
     color: #ffffff;
+    width: calc(100% + 1rem);
+    margin-left: -0.5rem;
     ${props =>
         props.priority === 'hight' &&
         `
@@ -761,7 +763,6 @@ const StyledConstributor = styled.div`
 
 const StyledTask = styled.div`
     text-align: left;
-    padding-left: 15px;
 `;
 
 const StyleCoin = styled(Coin)`
@@ -849,6 +850,11 @@ function TableListView() {
                         component={Constributor}
                         defaultWidth={180}
                         sortable
+                    />
+                    <Column
+                        header={<StyledTaskHeader>Task</StyledTaskHeader>}
+                        field="task"
+                        component={Task}
                     />
                     <Column
                         header="Priority"
