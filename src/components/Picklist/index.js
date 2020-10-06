@@ -175,6 +175,7 @@ class Picklist extends Component {
     render() {
         const {
             label: pickListLabel,
+            labelAlignment,
             hideLabel,
             style,
             className,
@@ -211,6 +212,7 @@ class Picklist extends Component {
                 <RenderIf isTrue={pickListLabel}>
                     <Label
                         label={pickListLabel}
+                        labelAlignment={labelAlignment}
                         hideLabel={hideLabel}
                         required={required}
                         inputId={this.inputId}
@@ -285,6 +287,9 @@ class Picklist extends Component {
 Picklist.propTypes = {
     /** Text label for the PickList. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the PickList label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     /** A boolean to hide the PickList label. */
     hideLabel: PropTypes.bool,
     /** The content of the Picklist. Used to render the options
@@ -350,6 +355,7 @@ Picklist.defaultProps = {
     tabIndex: undefined,
     placeholder: undefined,
     name: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
     id: undefined,
     error: null,

@@ -6,11 +6,12 @@ import {
     FocusEvent,
     ClipboardEvent,
 } from 'react';
-import { BaseProps } from '../types';
+import { BaseProps, LabelAlignment } from '../types';
 
 export interface TextareaProps extends BaseProps {
     label?: ReactNode;
     footer?: ReactNode;
+    labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     name?: string;
     value?: string;

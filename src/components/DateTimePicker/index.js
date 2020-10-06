@@ -18,6 +18,7 @@ import { getLocale } from '../../libs/utils';
 const DateTimePicker = React.forwardRef((props, ref) => {
     const {
         placeholder,
+        labelAlignment,
         hideLabel,
         required,
         name,
@@ -116,6 +117,7 @@ const DateTimePicker = React.forwardRef((props, ref) => {
                 onClick={openModal}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
+                labelAlignment={labelAlignment}
                 hideLabel={hideLabel}
                 name={name}
                 bottomHelpText={bottomHelpText}
@@ -161,6 +163,9 @@ DateTimePicker.propTypes = {
     name: PropTypes.string,
     /** Text label for the DateTimePicker. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the DateTimePicker label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     /** A boolean to hide the DateTimePicker label. */
     hideLabel: PropTypes.bool,
     /** Text that is displayed when the DateTimePicker is empty,
@@ -209,6 +214,7 @@ DateTimePicker.propTypes = {
 DateTimePicker.defaultProps = {
     placeholder: undefined,
     label: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
     required: false,
     name: undefined,

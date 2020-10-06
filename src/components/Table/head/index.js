@@ -20,7 +20,7 @@ export default class Head extends PureComponent {
     }
 
     render() {
-        const { columns, variant, ...rest } = this.props;
+        const { columns, ...rest } = this.props;
 
         if (columns) {
             return columns.map((column, index) => {

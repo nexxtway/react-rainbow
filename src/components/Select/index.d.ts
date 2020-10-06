@@ -1,5 +1,5 @@
 import { ReactNode, ChangeEvent, MouseEvent, FocusEvent } from 'react';
-import { BaseProps } from '../types';
+import { BaseProps, LabelAlignment } from '../types';
 
 export interface Option {
     label?: ReactNode;
@@ -21,6 +21,7 @@ export interface SelectProps extends BaseProps {
     disabled?: boolean;
     options?: Option[];
     id?: string;
+    labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     tabIndex?: number | string;
 }
