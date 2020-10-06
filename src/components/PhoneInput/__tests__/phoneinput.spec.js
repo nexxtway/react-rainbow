@@ -35,13 +35,17 @@ describe('<PhoneInput />', () => {
 
     it('should render the dropdown option when an array containing empty string is passed', () => {
         const countries = [''];
-        const wrapper = mount(<PhoneInput countries={countries} />);
-        expect(wrapper.find(StyledTrigger).prop('onClick')).toBeDefined;
+        const onClickMockFn = jest.fn();
+        const wrapper = mount(<PhoneInput countries={countries} onClick={onClickMockFn} />);
+        wrapper.find(StyledTrigger).simulate('click');
+        expect(onClickMockFn).toBeDefined();
     });
 
     it('should render the dropdown option when an array containing invalid country code is passed', () => {
-        const countries = [!/^w{2}$/];
-        const wrapper = mount(<PhoneInput countries={countries} />);
-        expect(wrapper.find(StyledTrigger).prop('onClick')).toBeDefined;
+        const countries = [!/^\w{1,2}$/];
+        const onClickMockFn = jest.fn();
+        const wrapper = mount(<PhoneInput countries={countries} onClick={onClickMockFn} />);
+        wrapper.find(StyledTrigger).simulate('click');
+        expect(onClickMockFn).toBeDefined();
     });
 });

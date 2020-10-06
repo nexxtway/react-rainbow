@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import allCountries from '../countries';
+import customWarning from './../customWarning';
 
 export default function useCountries(countries) {
     return useMemo(() => {
@@ -7,7 +8,7 @@ export default function useCountries(countries) {
             return allCountries;
         }
         if (allCountries.filter(country => countries.includes(country.isoCode)).length === 0) {
-            console.warn('You have entered an invalid country code or empty input');
+            customWarning();
             return allCountries;
         }
         return allCountries.filter(country => countries.includes(country.isoCode));
