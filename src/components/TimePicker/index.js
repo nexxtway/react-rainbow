@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import ClockIcon from './icons/clock';
 import Input from '../Input/pickerInput';
@@ -9,12 +9,13 @@ import withReduxForm from '../../libs/hocs/withReduxForm';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import StyledContainer from './styled/container';
 import StyledModal from './styled/modal';
+import { useReduxForm } from '../../libs/hooks';
 
 /**
  * A TimePicker is used to input a time by displaying an interface the user can interact with.
  * @category Form
  */
-const TimePicker = props => {
+const TimePicker = React.forwardRef((props, ref) => {
     const {
         placeholder,
         label,
@@ -34,12 +35,26 @@ const TimePicker = props => {
         okLabel,
         onChange,
         hour24,
-    } = props;
+        onClick,
+        onBlur,
+        onFocus,
+    } = useReduxForm(props);
     const [isOpen, setIsOpen] = useState(false);
     const [value, setValue] = useState(hour24 ? props.value : get12HourTime(props.value));
-    const inputRef = React.createRef();
-    const timeSelectRef = React.createRef();
+    const inputRef = useRef();
+    const timeSelectRef = useRef();
     const prevValue = useRef(value);
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            inputRef.current.focus();
+        },
+        click: () => {
+            inputRef.current.click();
+        },
+        blur: () => {
+            inputRef.current.blur();
+        },
+    }));
 
     const getTriggerInputValue = () => {
         return getInputValue(value, placeholder, hour24);
@@ -62,7 +77,6 @@ const TimePicker = props => {
     };
 
     const handleClick = event => {
-        const { onClick } = props;
         if (!readOnly) {
             setIsOpen(true);
             onClick(event);
@@ -70,12 +84,10 @@ const TimePicker = props => {
     };
 
     const handleBlur = () => {
-        const { onBlur } = props;
         onBlur(value);
     };
 
     const handleFocus = () => {
-        const { onFocus } = props;
         onFocus(value);
     };
 
@@ -87,30 +99,6 @@ const TimePicker = props => {
             updateValue();
         }
     });
-
-    /**
-     * Sets focus on the element.
-     * @public
-     */
-    const focus = () => {
-        inputRef.current.focus();
-    };
-
-    /**
-     * Sets click on the element.
-     * @public
-     */
-    const click = () => {
-        inputRef.current.click();
-    };
-
-    /**
-     * Sets blur on the element.
-     * @public
-     */
-    const blur = () => {
-        inputRef.current.blur();
-    };
 
     return (
         <StyledContainer id={id} className={className} style={style}>
@@ -155,7 +143,7 @@ const TimePicker = props => {
             </StyledModal>
         </StyledContainer>
     );
-};
+});
 
 TimePicker.propTypes = {
     /** Sets the date for the TimePicker programmatically. */
