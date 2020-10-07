@@ -15,6 +15,13 @@ const StyledCellContent = attachThemeAttrs(styled.div)`
     white-space: nowrap;
     font-weight: 400;
     box-sizing: border-box;
+
+    ${props =>
+        props.component &&
+        `
+        padding: 0;
+        }
+    `}
 `;
 
 export default StyledCellContent;
