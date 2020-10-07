@@ -46,7 +46,8 @@ import { Button } from 'react-rainbow-components';
 </div>
 ```
 
-##### button shaded
+# button shaded
+##### Button is shade with 
 
 ```js
 import React from 'react';
