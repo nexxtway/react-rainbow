@@ -1,5 +1,5 @@
 import { ReactNode, MouseEvent, FocusEvent, KeyboardEvent } from 'react';
-import { BaseProps } from '../types';
+import { BaseProps, LabelAlignment } from '../types';
 
 export interface PhoneInputValue {
     countryCode?: string;
@@ -11,6 +11,7 @@ export interface PhoneInputProps extends BaseProps {
     id?: string;
     name?: string;
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     placeholder?: string;
     icon?: ReactNode;

@@ -87,7 +87,7 @@ export default function Cell(props) {
     if (isFirst) {
         return (
             <StyledCell scope="row" tabIndex={-1} data-label={getHeaderLabel()}>
-                <StyledCellContent>
+                <StyledCellContent component={component}>
                     <CellValue
                         component={component}
                         value={value}
@@ -101,7 +101,7 @@ export default function Cell(props) {
 
     return (
         <StyledCell as="td" role="gridcell" tabIndex={-1} data-label={getHeaderLabel()}>
-            <StyledCellContent>
+            <StyledCellContent component={component}>
                 <CellValue
                     component={component}
                     value={value}

@@ -1,5 +1,5 @@
 import { ReactNode, ChangeEvent, MouseEvent, FocusEvent, KeyboardEvent } from 'react';
-import { BaseProps, IconPosition } from '../types';
+import { BaseProps, IconPosition, LabelAlignment } from '../types';
 
 export interface PasswordStateLabels {
     weak?: ReactNode;
@@ -11,6 +11,7 @@ export interface StrongPasswordInputProps extends BaseProps {
     value?: string;
     name?: string;
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     placeholder?: string;
     icon?: ReactNode;

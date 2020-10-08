@@ -28,6 +28,9 @@ GoogleAddressLookup.propTypes = {
     apiKey: PropTypes.string.isRequired,
     /** Text label for the component. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the component label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     /** A boolean to hide the component label. */
     hideLabel: PropTypes.bool,
     /** Specifies the selected value of the component. */
@@ -98,6 +101,7 @@ GoogleAddressLookup.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
     searchOptions: {},
 };

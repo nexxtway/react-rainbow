@@ -4,7 +4,7 @@ import { BaseProps } from '../types';
 export interface DrawerProps extends BaseProps {
     header?: ReactNode;
     footer?: ReactNode;
-    size?: 'small' | 'medium' | 'large';
+    size?: 'small' | 'medium' | 'large' | 'full';
     slideFrom?: 'left' | 'right';
     isOpen?: boolean;
     onRequestClose?: () => void;

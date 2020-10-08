@@ -39,10 +39,10 @@ const StyledCell = attachThemeAttrs(styled.th)`
         }
 
         :first-child > div {
-            padding-left: 0;
             border-top-left-radius: 12px; 
             border-bottom-left-radius: 12px;
             overflow: hidden;
+            padding-left: 0.75rem;
         }
     `}
 
