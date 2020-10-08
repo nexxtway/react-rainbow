@@ -94,11 +94,10 @@ class SimpleSidebar extends React.Component {
             </Sidebar>
             <StyledDynamicContent>
                 <RenderIf isTrue={selectedItem}>
-                    <DynamicContent selectedItem={selectedItem} />
+                  <DynamicContent selectedItem={selectedItem} />
                 </RenderIf>
             </StyledDynamicContent>
             </div>
-
         );
     }
 }
