@@ -1,4 +1,5 @@
-##### badges border
+# Badges variant
+##### Badges change color according to the variant applied to them. You can use a lightest or outline brand for borders, or even change it for a default, inverse, brand, warning, success, or error variant that we provide you. 
 
 ```js
 import React from 'react';
@@ -18,16 +19,7 @@ import { Badge } from 'react-rainbow-components';
         variant="outline-brand"
         title="the badge title"
     />
-</div>
-```
-
-##### badges variant
-
-```js
-import React from 'react';
-import { Badge } from 'react-rainbow-components';
-
-<div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+    
     <Badge className="rainbow-m-around_medium" label="Default Badge" title="the badge title" />
 
     <Badge
@@ -66,7 +58,8 @@ import { Badge } from 'react-rainbow-components';
     />
 </div>
 ```
-##### badges custom variant
+# Badges customization
+##### If you need to further customize your badge, you can do so by applying the styles of your choice.
 
 ```js
 import React from 'react';
@@ -100,7 +93,8 @@ const desertStyles = {'color': 'peru', 'backgroundColor': 'bisque'};
 </div>
 ```
 
-##### badges with icons
+# Badges with icons
+##### Icons can be added to badges and combined or not with text, as you can see in the examples below.
 
 ```js
 import React from 'react';
