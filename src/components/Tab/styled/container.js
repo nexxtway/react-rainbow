@@ -31,6 +31,7 @@ const StyledContainer = attachThemeAttrs(styled.li)`
         `};
     ${props =>
         props.isActive &&
+        props.variant === 'card' &&
         `
             background-color: ${props.palette.background.main};
             color: ${props.palette.brand.main};
@@ -107,6 +108,19 @@ const StyledContainer = attachThemeAttrs(styled.li)`
                 position: absolute;
                 border-radius: 100px;
                 box-sizing: border-box;
+            }
+        `};
+    ${props =>
+        props.isActive &&
+        props.variant === 'linear' &&
+        `
+            color: ${props.palette.brand.main};
+            z-index: 2;
+
+            @media (max-width: 600px) {
+                border-radius: 0;
+                position: relative;
+                width: 100%;
             }
         `};
 `;

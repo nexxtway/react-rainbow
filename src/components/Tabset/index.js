@@ -14,6 +14,8 @@ import {
     getUpdatedTabsetChildren,
     getRightButtonDisabledState,
     getLeftButtonDisabledState,
+    getTabsMeta,
+    getTabMeta,
 } from './utils';
 import RightThinChevron from './rightThinChevron';
 import LeftThinChevron from './leftThinChevron';
@@ -25,6 +27,7 @@ import StyledTabset from './styled/tabset';
 import StyledInnerContainer from './styled/innerContainer';
 import StyledButtonGroup from './styled/buttonGroup';
 import StyledButtonIcon from './styled/buttonIcon';
+import StyledIndicator from './styled/indicator';
 
 const RIGHT_SIDE = 1;
 const LEFT_SIDE = -1;
@@ -39,6 +42,9 @@ export default class Tabset extends Component {
         this.state = {
             tabsetChildren: [],
             areButtonsVisible: false,
+            tabsetMeta: {},
+            tabMeta: {},
+            areIndicatorVisible: false,
         };
         this.isFirstTime = true;
         this.tabsetRef = React.createRef();
@@ -50,6 +56,7 @@ export default class Tabset extends Component {
         this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
         this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
         this.updateButtonsVisibility = this.updateButtonsVisibility.bind(this);
+        this.updateIndicator = this.updateIndicator.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
         this.keyHandlerMap = {
             [RIGHT_KEY]: () => this.selectTab(RIGHT_SIDE),
@@ -65,9 +72,9 @@ export default class Tabset extends Component {
     }
 
     componentDidUpdate(prevProp) {
-        const { tabsetChildren } = this.state;
+        const { children, variant, activeTabName } = this.props;
+        const { tabsetChildren, tabsetMeta, tabMeta } = this.state;
         const { isFirstTime } = this;
-        const { children } = this.props;
         const areAllChildrenRegistered = children.length === tabsetChildren.length;
         if (isNotSameChildren(children, prevProp.children)) {
             this.updateButtonsVisibility();
@@ -75,6 +82,22 @@ export default class Tabset extends Component {
         if (areAllChildrenRegistered && isFirstTime) {
             this.updateButtonsVisibility();
             this.isFirstTime = false;
+        }
+
+        if (variant === 'linear') {
+            const tabIndex = getTabIndexFromName(tabsetChildren, activeTabName);
+            if (tabIndex !== -1) {
+                const tabset = this.tabsetRef.current;
+                const currentTabsetMeta = getTabsMeta(tabset);
+                const currentTabMeta = getTabMeta(activeTabName, tabsetChildren);
+                if (
+                    activeTabName !== prevProp.activeTabName ||
+                    tabMeta.left !== currentTabMeta.left ||
+                    tabsetMeta.width !== currentTabsetMeta.width
+                ) {
+                    this.updateIndicator();
+                }
+            }
         }
     }
 
@@ -99,6 +122,18 @@ export default class Tabset extends Component {
         this.maxScroll = scrollWidth - tabsetWidth;
         this.tabsetWidth = tabsetWidth;
         this.setState({ areButtonsVisible: showButtons });
+    }
+
+    updateIndicator() {
+        const tabset = this.tabsetRef.current;
+        const { activeTabName } = this.props;
+        const { tabsetChildren } = this.state;
+        const tabsetMeta = getTabsMeta(tabset);
+        const tabMeta = getTabMeta(activeTabName, tabsetChildren);
+        const showIndicator =
+            Math.trunc(tabMeta.left) >= Math.trunc(tabsetMeta.left) &&
+            Math.trunc(tabMeta.right) <= Math.trunc(tabsetMeta.right);
+        this.setState({ tabsetMeta, tabMeta, areIndicatorVisible: showIndicator });
     }
 
     handleKeyPressed(event) {
@@ -221,10 +256,13 @@ export default class Tabset extends Component {
     }
 
     render() {
-        const { activeTabName, fullWidth, children, style, className, id } = this.props;
-        const { areButtonsVisible } = this.state;
+        const { activeTabName, fullWidth, variant, children, style, className, id } = this.props;
+        const { areButtonsVisible, tabsetMeta, tabMeta, areIndicatorVisible } = this.state;
         const { screenWidth } = this;
         const showButtons = areButtonsVisible || screenWidth < 600;
+        const showIndicator = variant === 'linear' && areIndicatorVisible;
+        const indicatorWidth = tabMeta.width || 0;
+        const indicatorStart = Math.trunc(tabMeta.left) - Math.trunc(tabsetMeta.left) || 0;
         const context = {
             activeTabName,
             onSelect: this.handleSelect,
@@ -232,14 +270,16 @@ export default class Tabset extends Component {
             privateUnRegisterTab: this.unRegisterTab,
             privateUpdateTab: this.updateTab,
             fullWidth,
+            variant,
         };
 
         return (
-            <StyledContainer className={className} style={style} id={id}>
+            <StyledContainer variant={variant} className={className} style={style} id={id}>
                 <StyledObserver ref={this.resizeTarget} />
                 <StyledTabset>
                     <StyledInnerContainer
                         fullWidth={fullWidth}
+                        variant={variant}
                         role="tablist"
                         onKeyDown={this.handleKeyPressed}
                         onScroll={this.updateButtonsVisibility}
@@ -266,6 +306,12 @@ export default class Tabset extends Component {
                         </StyledButtonGroup>
                     </RenderIf>
                 </StyledTabset>
+                <RenderIf isTrue={showIndicator}>
+                    <StyledIndicator
+                        indicatorWidth={indicatorWidth}
+                        indicatorStart={indicatorStart}
+                    />
+                </RenderIf>
             </StyledContainer>
         );
     }
@@ -280,6 +326,8 @@ Tabset.propTypes = {
     /** If true, the tabs will grow to use all the available space.
      * This value defaults to false. */
     fullWidth: PropTypes.bool,
+    /** The variant changes the appearance of the Tabset. Accepted variants include card and linear. The default value is card. */
+    variant: PropTypes.oneOf(['card', 'linear']),
     /** The id of the outer element. */
     id: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -297,6 +345,7 @@ Tabset.defaultProps = {
     activeTabName: undefined,
     onSelect: () => {},
     fullWidth: false,
+    variant: 'card',
     className: undefined,
     style: undefined,
     children: null,
