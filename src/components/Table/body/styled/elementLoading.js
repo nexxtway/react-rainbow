@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
-import { replaceAlpha, darken, getContrastRatio } from '../../../../styles/helpers/color';
+import { replaceAlpha } from '../../../../styles/helpers/color';
 
 const StyledElementLoading = attachThemeAttrs(styled.div)`
     height: 10px;
