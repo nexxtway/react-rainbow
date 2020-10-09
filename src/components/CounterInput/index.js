@@ -68,14 +68,16 @@ export default function CounterInput(props) {
         return undefined;
     };
 
-    const handleMinus = () => {
-        inputRef.current.focus();
-        onChange(floatify(Number(inputRef.current.value) - finalStep));
-    };
-
-    const handlePlus = () => {
+    const handlePlusMouseDown = e => {
+        e.preventDefault();
         inputRef.current.focus();
         onChange(floatify(Number(inputRef.current.value) + finalStep));
+    };
+
+    const handleMinusMouseDown = e => {
+        e.preventDefault();
+        inputRef.current.focus();
+        onChange(floatify(Number(inputRef.current.value) - finalStep));
     };
 
     return (
@@ -95,7 +97,7 @@ export default function CounterInput(props) {
                         variant="base"
                         size="small"
                         icon={<MinusIcon />}
-                        onClick={handleMinus}
+                        onMouseDown={handleMinusMouseDown}
                         tabIndex={-1}
                         disabled={disableButton(
                             isValueNan(Number(value)) - finalStep < min,
@@ -135,7 +137,7 @@ export default function CounterInput(props) {
                         variant="base"
                         size="small"
                         icon={<PlusIcon />}
-                        onClick={handlePlus}
+                        onMouseDown={handlePlusMouseDown}
                         disabled={disableButton(
                             isValueNan(Number(value)) + finalStep > max,
                             disabled,

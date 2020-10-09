@@ -154,6 +154,9 @@ export const StyledButton = attachThemeAttrs(styled(ButtonIcon))`
         width: 17px !important;
         height: 17px !important;
     }
+    :hover{
+        background-color: ${props => props.palette.background.secondary};
+    }
 `;
 
 export const ButtonContainer = attachThemeAttrs(styled.span)`
