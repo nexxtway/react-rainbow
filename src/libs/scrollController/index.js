@@ -239,3 +239,5 @@ export function enableBodyScroll(targetElement) {
         }
     }
 }
+
+export { default as WindowScrolling } from './windowScrolling';

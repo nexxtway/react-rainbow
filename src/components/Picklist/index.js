@@ -5,6 +5,7 @@ import RenderIf from '../RenderIf';
 import { ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
 import { uniqueId } from '../../libs/utils';
 import OutsideClick from '../../libs/outsideClick';
+import { WindowScrolling } from '../../libs/scrollController';
 import Label from '../Input/label';
 import getNormalizeValue from './helpers/getNormalizeValue';
 import shouldOpenMenu from './helpers/shouldOpenMenu';
@@ -54,6 +55,7 @@ class Picklist extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.closeAndFocusInput = this.closeAndFocusInput.bind(this);
         this.outsideClick = new OutsideClick();
+        this.windowScrolling = new WindowScrolling();
         this.activeChildren = [];
         this.state = {
             isOpen: false,
@@ -69,11 +71,15 @@ class Picklist extends Component {
         const { isOpen } = this.state;
         if (!wasOpen && isOpen) {
             this.outsideClick.startListening(this.containerRef.current, () => this.closeMenu());
+            this.windowScrolling.startListening(() => this.closeMenu());
+        } else if (wasOpen && !isOpen) {
+            this.windowScrolling.stopListening();
         }
     }
 
     componentWillUnmount() {
         this.outsideClick.stopListening();
+        this.windowScrolling.stopListening();
     }
 
     getErrorMessageId() {
