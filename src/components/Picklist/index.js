@@ -54,6 +54,7 @@ class Picklist extends Component {
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.closeAndFocusInput = this.closeAndFocusInput.bind(this);
+        this.handleWindowScroll = this.handleWindowScroll.bind(this);
         this.outsideClick = new OutsideClick();
         this.windowScrolling = new WindowScrolling();
         this.activeChildren = [];
@@ -71,7 +72,7 @@ class Picklist extends Component {
         const { isOpen } = this.state;
         if (!wasOpen && isOpen) {
             this.outsideClick.startListening(this.containerRef.current, () => this.closeMenu());
-            this.windowScrolling.startListening(() => this.closeMenu());
+            this.windowScrolling.startListening(this.handleWindowScroll);
         } else if (wasOpen && !isOpen) {
             this.windowScrolling.stopListening();
         }
@@ -102,6 +103,12 @@ class Picklist extends Component {
             this.openMenu();
         }
         return null;
+    }
+
+    handleWindowScroll(_, event) {
+        if (event.target !== this.dropdownRef) {
+            this.closeMenu();
+        }
     }
 
     closeAndFocusInput() {
