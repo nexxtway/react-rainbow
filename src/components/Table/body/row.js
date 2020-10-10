@@ -45,9 +45,9 @@ export default function Row(props) {
 
     if (rowData.type === 'LOADING') {
         return (
-            <tr>
+            <StyledRow>
                 <LoadingCells columns={columns} value={columns.length} />
-            </tr>
+            </StyledRow>
         );
     }
 
