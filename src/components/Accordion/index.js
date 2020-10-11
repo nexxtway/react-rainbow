@@ -112,7 +112,7 @@ export default class Accordion extends Component {
     render() {
         const { id, children, style, className } = this.props;
         return (
-            <StyledUl ref={this.containerRef} d={id} className={className} style={style}>
+            <StyledUl ref={this.containerRef} id={id} className={className} style={style}>
                 <Provider value={this.state}>{children}</Provider>
             </StyledUl>
         );
