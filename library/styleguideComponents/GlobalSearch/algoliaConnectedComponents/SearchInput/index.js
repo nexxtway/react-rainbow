@@ -6,7 +6,8 @@ import SearchIcon from './searchIcon';
 
 const SearchInput = props => {
     // eslint-disable-next-line react/prop-types
-    const { currentRefinement, refine, label, className, style, ref, onClick } = props;
+    const { currentRefinement, refine, label, className, style, onClick } = props;
+
     return (
         <Input
             className={className}
@@ -18,7 +19,6 @@ const SearchInput = props => {
             placeholder="Type to search"
             autoComplete="off"
             icon={<SearchIcon />}
-            ref={ref}
             onClick={onClick}
         />
     );

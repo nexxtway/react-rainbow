@@ -2,11 +2,16 @@ import styled from 'styled-components';
 import AlgoliaLogo from './algoliaConnectedComponents/AlgoliaLogo/index';
 
 export const Dropdown = styled.div`
+    position: absolute;
+    top: 100%;
+    right: 0;
     background: white;
     border-radius: 14px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
-    width: 400px;
+    width: 600px;
     padding: 12px 0;
+    margin-top: 10px;
+    margin-right: 1.5rem;
 `;
 
 export const ItemContainer = styled.a`
@@ -46,6 +51,10 @@ export const Title = styled.h2`
     font-size: 18px;
     color: rgb(42, 48, 57);
     margin-bottom: 4px;
+`;
+
+export const Container = styled.div`
+    position: relative;
 `;
 
 export const Description = styled.h3`
