@@ -21,9 +21,9 @@ class PageInternalDropdown {
      * @method
      */
     hoverScrollUpArrow() {
-        return $(this.rootElement)
-            .$('[data-id="internal-dropdown-arrow-up"]')
-            .moveTo();
+        const upArrow = $(this.rootElement).$('[data-id="internal-dropdown-arrow-up"]');
+        upArrow.scrollIntoView();
+        return upArrow.moveTo();
     }
 
     /**
@@ -31,9 +31,9 @@ class PageInternalDropdown {
      * @method
      */
     hoverScrollDownArrow() {
-        return $(this.rootElement)
-            .$('[data-id="internal-dropdown-arrow-down"]')
-            .moveTo();
+        const downArrow = $(this.rootElement).$('[data-id="internal-dropdown-arrow-down"]');
+        downArrow.scrollIntoView();
+        return downArrow.moveTo();
     }
 
     /**

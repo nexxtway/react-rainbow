@@ -35,6 +35,7 @@ class PageOption {
      */
     hover() {
         const itemElement = this.rootElement.$('div[role="option"]');
+        itemElement.scrollIntoView();
         itemElement.moveTo();
     }
 
