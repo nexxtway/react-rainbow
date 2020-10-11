@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 import AlgoliaLogo from './algoliaConnectedComponents/AlgoliaLogo/index';
+import SearchInput from './algoliaConnectedComponents/SearchInput';
+
+export const StyledSearchInput = styled(SearchInput)`
+    width: 320px;
+    margin-right: 24px;
+`;
 
 export const Dropdown = styled.div`
     position: absolute;
@@ -10,7 +16,7 @@ export const Dropdown = styled.div`
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
     width: 600px;
     padding: 12px 0;
-    margin-top: 10px;
+    margin-top: 4px;
     margin-right: 1.5rem;
 `;
 
@@ -38,34 +44,51 @@ export const LeftContent = styled.div`
 export const Label = styled.h3`
     font-size: 14px;
     color: #8592a0;
+    text-transform: capitalize;
 `;
 
 export const RightContent = styled.div`
     width: 75%;
-    padding: 4px 12px 8px 12px;
+    margin: 4px 12px 8px 12px;
     display: flex;
     flex-direction: column;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 5em;
+    line-height: 1.5em;
 `;
 
-export const Title = styled.h2`
+export const Title = styled.span`
+    font-size: 18px;
+    color: rgb(42, 48, 57);
+`;
+
+export const TitleHighlight = styled.span`
     font-size: 18px;
     color: rgb(42, 48, 57);
     margin-bottom: 4px;
+    font-weight: 900;
+    background: rgba(229, 231, 235, 0.2);
+    font-family: 'Lato Bold', Arial, sans-serif;
 `;
 
 export const Container = styled.div`
     position: relative;
 `;
 
-export const Description = styled.h3`
+export const Description = styled.span`
     font-size: 14px;
     color: #8592a0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    max-lines: 2;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    margin-top: 8px;
+`;
+
+export const DescriptionHighlight = styled.span`
+    font-size: 14px;
+    color: rgb(42, 48, 57);
+    background: rgba(229, 231, 235, 0.2);
+    font-weight: 900;
+    font-family: 'Lato Bold', Arial, sans-serif;
 `;
 
 export const StyledAlgoliaLogo = styled(AlgoliaLogo)`
