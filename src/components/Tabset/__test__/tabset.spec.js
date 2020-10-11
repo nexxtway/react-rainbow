@@ -9,8 +9,6 @@ import {
     getChildrenTotalWidth,
     getChildrenTotalWidthUpToClickedTab,
     getTabIndexFromName,
-    getTabsMeta,
-    getTabMeta,
 } from './../utils';
 import StyledButton from './../../Tab/styled/button';
 
@@ -25,8 +23,6 @@ jest.mock('./../utils.js', () => ({
     isNotSameChildren: jest.fn(() => false),
     getUpdatedTabsetChildren: jest.fn(() => []),
     getTabIndexFromName: jest.fn(() => 0),
-    getTabsMeta: jest.fn(() => {}),
-    getTabMeta: jest.fn(() => {}),
 }));
 
 const registerTabMockFn = jest.fn();
@@ -142,58 +138,6 @@ describe('<Tabset />', () => {
         });
         expect(component.instance().updateButtonsVisibility).toHaveBeenCalledTimes(1);
         expect(component.instance().isFirstTime).toBe(false);
-    });
-    it('should call updateIndicator function if the active tab name is changed', () => {
-        getTabIndexFromName.mockReset();
-        getTabIndexFromName.mockReturnValue(0);
-        const component = mount(
-            <Tabset activeTabName="tab-1" variant="linear">
-                <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />
-                <Tab label="Tab-2" name="tab-2" registerTab={registerTabMockFn} />
-                <Tab label="Tab-3" name="tab-3" registerTab={registerTabMockFn} />
-            </Tabset>,
-        );
-        component.instance().updateIndicator = jest.fn();
-        component.setProps({ activeTabName: 'tab-2' });
-        expect(component.instance().updateIndicator).toHaveBeenCalledTimes(1);
-    });
-    it('should call updateIndicator function when the tabset width is changed', () => {
-        getTabIndexFromName.mockReset();
-        getTabIndexFromName.mockReturnValue(0);
-        getTabsMeta.mockReset();
-        getTabsMeta.mockReturnValue({ width: 10 });
-        getTabMeta.mockReset();
-        getTabMeta.mockReturnValue({ left: 15 });
-        const component = mount(
-            <Tabset activeTabName="tab-1">
-                <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />
-                <Tab label="Tab-2" name="tab-2" registerTab={registerTabMockFn} />
-                <Tab label="Tab-3" name="tab-3" registerTab={registerTabMockFn} />
-            </Tabset>,
-        );
-        component.instance().updateIndicator = jest.fn();
-        component.setState({ tabsetMeta: { width: 9 }, tabMeta: { left: 15 } });
-        component.setProps({ variant: 'linear' });
-        expect(component.instance().updateIndicator).toHaveBeenCalledTimes(1);
-    });
-    it('should call updateIndicator function when the tab position is changed', () => {
-        getTabIndexFromName.mockReset();
-        getTabIndexFromName.mockReturnValue(0);
-        getTabsMeta.mockReset();
-        getTabsMeta.mockReturnValue({ width: 10 });
-        getTabMeta.mockReset();
-        getTabMeta.mockReturnValue({ left: 15 });
-        const component = mount(
-            <Tabset activeTabName="tab-1">
-                <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />
-                <Tab label="Tab-2" name="tab-2" registerTab={registerTabMockFn} />
-                <Tab label="Tab-3" name="tab-3" registerTab={registerTabMockFn} />
-            </Tabset>,
-        );
-        component.instance().updateIndicator = jest.fn();
-        component.setState({ tabsetMeta: { width: 10 }, tabMeta: { left: 14 } });
-        component.setProps({ variant: 'linear' });
-        expect(component.instance().updateIndicator).toHaveBeenCalledTimes(1);
     });
     it('should set the left button disabled to true', () => {
         getLeftButtonDisabledState.mockReset();

@@ -94,29 +94,3 @@ export function getRightButtonDisabledState(params) {
     }
     return false;
 }
-
-export function getTabsMeta(tabsNode) {
-    const rect = tabsNode.getBoundingClientRect();
-    const tabsMeta = {
-        top: rect.top,
-        bottom: rect.bottom,
-        left: rect.left,
-        right: rect.right,
-        width: rect.width,
-    };
-    return tabsMeta;
-}
-
-export function getTabMeta(activeTabName, tabsetChildren) {
-    const tabIndex = getTabIndexFromName(tabsetChildren, activeTabName);
-    const tabNode = tabsetChildren[tabIndex].ref;
-    const rect = tabNode.getBoundingClientRect();
-    const tabMeta = {
-        top: rect.top,
-        bottom: rect.bottom,
-        left: rect.left,
-        right: rect.right,
-        width: rect.width,
-    };
-    return tabMeta;
-}

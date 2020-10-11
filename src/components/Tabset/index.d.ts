@@ -5,7 +5,7 @@ export interface TabsetProps extends BaseProps {
     activeTabName?: string;
     onSelect?: (event: MouseEvent<HTMLElement>, name: string) => void;
     fullWidth?: boolean;
-    variant?: 'card' | 'linear';
+    variant?: 'card' | 'line';
     id?: string;
     children?: ReactNode;
 }

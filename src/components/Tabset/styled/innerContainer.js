@@ -23,7 +23,7 @@ const StyledInnerContainer = styled.ul`
             justify-content: space-between;
         `};
     ${props =>
-        props.variant === 'linear' &&
+        props.variant === 'line' &&
         `
             padding: 0;
         `};

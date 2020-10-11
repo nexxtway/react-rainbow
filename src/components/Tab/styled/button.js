@@ -3,6 +3,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { PADDING_X_SMALL } from '../../../styles/paddings';
 import { FONT_SIZE_TEXT_SMALL, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
+const variants = ['card', 'line'];
 const StyledAnchor = attachThemeAttrs(styled.button)`
     font: inherit;
     background: none;
@@ -53,7 +54,7 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
     }
 
     ${props =>
-        props.variant === 'card' &&
+        (props.variant === 'card' || !variants.includes(props.variant)) &&
         `
             &:hover {
                 background-color: ${props.palette.action.hover};
@@ -75,7 +76,7 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
         
         `};
     ${props =>
-        props.variant === 'linear' &&
+        props.variant === 'line' &&
         `
             border-radius: 0;
         `};
@@ -109,7 +110,7 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
     
     ${props =>
         props.isActive &&
-        props.variant === 'card' &&
+        (props.variant === 'card' || !variants.includes(props.variant)) &&
         `
             z-index: 2;
             background-color: ${props.palette.background.main};
@@ -192,13 +193,24 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
         `};
     ${props =>
         props.isActive &&
-        props.variant === 'linear' &&
+        props.variant === 'line' &&
         `
             z-index: 2;
             color: ${props.palette.brand.main};
 
             &:hover, &:active, &:visited, &:focus {
                 color: ${props.palette.brand.main};
+            }
+
+            &::before {
+                content: "";
+                height: 0.25rem;
+                width: 100%;
+                left: 0;
+                bottom: 0;
+                position: absolute;
+                background-color: ${props.palette.brand.main};
+                border-radius: 100px;
             }
 
             @media (max-width: 600px) {

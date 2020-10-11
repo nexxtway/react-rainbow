@@ -12,7 +12,7 @@ const StyledContainer = attachThemeAttrs(styled.div)`
     }
 
     ${props =>
-        props.variant === 'linear' &&
+        props.variant === 'line' &&
         `
             border-bottom: solid 1px ${props.palette.border.divider};
         `};

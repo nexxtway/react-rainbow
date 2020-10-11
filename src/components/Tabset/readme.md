@@ -524,7 +524,6 @@ class TabsetExample extends React.Component {
                         id="tabset-3"
                         onSelect={this.handleOnSelect}
                         activeTabName={selected}
-                        variant="linear"
                     >
                         <Tab
                             label="PRIMARY"
@@ -792,10 +791,10 @@ class TabsetExample extends React.Component {
 <TabsetExample />;
 ```
 
-##### Tabset linear
+##### Tabset line
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import { Tabset, Tab } from 'react-rainbow-components';
 import styled from 'styled-components';
 
@@ -848,20 +847,14 @@ const facebookIconStyles = { color: '#3c5997', height: 30 };
 const twitterIconStyles = { color: '#00b0f3', width: 30 };
 const googleIconStyles = { height: 30 };
 
-class TabsetExample extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { selected: 'companies' };
-        this.handleOnSelect = this.handleOnSelect.bind(this);
-    }
+function TabsetExample() {
+    const [selected, setSelected] = useState('companies');
 
-    handleOnSelect(event, selected) {
-        this.setState({ selected });
-    }
+    const handleOnSelect = (event, selected) => {
+        setSelected(selected);
+    };
 
-    getTabContent() {
-        const { selected } = this.state;
-
+    const getTabContent = selected => {
         if (selected === 'companies') {
             return (
                 <div className="rainbow-m-top_x-large">
@@ -918,28 +911,21 @@ class TabsetExample extends React.Component {
                 leaving it.
             </StyledTabContentText>
         );
-    }
+    };
 
-    render() {
-        const { selected } = this.state;
-        return (
-            <div className="rainbow-flex rainbow-flex_column rainbow-justify_center rainbow-align_center">
-                <StyledContainer className="rainbow-m-vertical_xx-large">
-                    <Tabset
-                        variant="linear"
-                        onSelect={this.handleOnSelect}
-                        activeTabName={selected}
-                    >
-                        <Tab name="companies" label={<StyledTabLabel>Companies</StyledTabLabel>} />
+    return (
+        <div className="rainbow-flex rainbow-flex_column rainbow-justify_center rainbow-align_center">
+            <StyledContainer className="rainbow-m-vertical_xx-large">
+                <Tabset variant="line" onSelect={handleOnSelect} activeTabName={selected}>
+                    <Tab name="companies" label={<StyledTabLabel>Companies</StyledTabLabel>} />
 
-                        <Tab name="customers" label={<StyledTabLabel>Customers</StyledTabLabel>} />
-                    </Tabset>
-                    {this.getTabContent()}
-                </StyledContainer>
-            </div>
-        );
-    }
+                    <Tab name="customers" label={<StyledTabLabel>Customers</StyledTabLabel>} />
+                </Tabset>
+                {getTabContent(selected)}
+            </StyledContainer>
+        </div>
+    );
 }
 
-    <TabsetExample />;
+<TabsetExample />;
 ```
