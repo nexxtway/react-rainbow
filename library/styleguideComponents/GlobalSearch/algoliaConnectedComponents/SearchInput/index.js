@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connectSearchBox } from 'react-instantsearch-dom';
 import Input from '../../../../../src/components/Input';
+import SearchIcon from './searchIcon';
 
 const SearchInput = props => {
     // eslint-disable-next-line react/prop-types
-    const { currentRefinement, refine, label, className, style } = props;
+    const { currentRefinement, refine, label, className, style, ref, onClick } = props;
     return (
         <Input
             className={className}
@@ -16,6 +17,9 @@ const SearchInput = props => {
             onChange={event => refine(event.currentTarget.value)}
             placeholder="Type to search"
             autoComplete="off"
+            icon={<SearchIcon />}
+            ref={ref}
+            onClick={onClick}
         />
     );
 };

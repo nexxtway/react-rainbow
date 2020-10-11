@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ItemContainer, LeftContent, RightContent, Label, Title, Description } from '../../styled';
 
 const ResultItem = props => {
     const { objectID, type, text, description, url } = props;
 
     return (
-        <div>
-            {type}: {text}, {objectID}, {description}, {url}
-        </div>
+        <ItemContainer href={url}>
+            <LeftContent>
+                <Label>{type}</Label>
+            </LeftContent>
+            <RightContent>
+                <Title>{text}</Title>
+                <Description>{description}</Description>
+            </RightContent>
+        </ItemContainer>
     );
 };
 

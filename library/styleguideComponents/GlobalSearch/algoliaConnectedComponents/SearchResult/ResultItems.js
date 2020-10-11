@@ -11,11 +11,7 @@ const ItemList = ({ component: Component, items }) => {
 
 // eslint-disable-next-line react/prop-types
 const ResultItems = ({ component, hits }) => {
-    return (
-        <div>
-            <ItemList component={component} items={hits} />
-        </div>
-    );
+    return <ItemList component={component} items={hits} />;
 };
 
 export default connectHits(ResultItems);
