@@ -31,7 +31,7 @@ describe('Modal with redux form example', () => {
     beforeEach(() => {
         browser.refresh();
         const component = $(BUTTON);
-        component.waitForExist();
+        component.waitForExist({ timeout: 1000 });
     });
 
     it('should reset form state when close modal', () => {
@@ -89,22 +89,16 @@ describe('Modal with redux form example', () => {
         browser.keys(ESCAPE_KEY);
         expect(modal.isOpen()).toBe(false);
     });
-    it.skip('should return focus to date picker input when both modals are opened and press esc key', () => {
+    it('should return focus to date picker input when both modals are opened and press esc key', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
         triggerButton.click();
         modal.waitUntilOpen();
         const datePicker = new PageDatePicker(DATE_PICKER_INPUT);
         datePicker.click();
-        modal.waitUntilOpen();
+        datePicker.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
-        browser.waitUntil(
-            () =>
-                !browser
-                    .react$('DatePicker')
-                    .react$('Modal')
-                    .isDisplayed(),
-        );
+        datePicker.waitUntilClose();
         expect(datePicker.hasFocusInput()).toBe(true);
     });
     it('should return focus to time picker input when both modals are opened and select a time', () => {
@@ -114,19 +108,13 @@ describe('Modal with redux form example', () => {
         modal.waitUntilOpen();
         const timePicker = new PageTimePicker(TIME_PICKER_INPUT);
         timePicker.clickTimeInput();
-        modal.waitUntilOpen();
+        timePicker.waitUntilOpen();
         browser.keys('0');
         browser.keys('0');
         browser.keys('0');
         browser.keys('0');
         browser.keys(ENTER_KEY);
-        browser.waitUntil(
-            () =>
-                !browser
-                    .react$('DatePicker')
-                    .react$('Modal')
-                    .isDisplayed(),
-        );
+        timePicker.waitUntilClose();
         expect(timePicker.hasFocusTimeInput()).toBe(true);
     });
     it('should have scroll disabled when modal is opened', () => {
@@ -170,6 +158,7 @@ describe('Modal with redux form example', () => {
     it('should have scroll disabled when modal is opened and another modal is opened above and then closed', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
+        const initialScrollTop = getScrollTopPosition();
         triggerButton.click();
         modal.waitUntilOpen();
         const datepicker = new PageDatePicker(DATE_PICKER_INPUT);
@@ -177,7 +166,6 @@ describe('Modal with redux form example', () => {
         datepicker.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
         datepicker.waitUntilClose();
-        const initialScrollTop = getScrollTopPosition();
         scrollDown();
         const finalScrollTop = getScrollTopPosition();
         const hasNotScrolled = finalScrollTop === initialScrollTop;
@@ -212,7 +200,6 @@ describe('Modal with redux form example', () => {
         lookup.waitUntilOpen();
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ENTER_KEY);
-        expect(lookup.getSelectedOptionLabel()).toBe('Barcelona');
         browser.keys(ESCAPE_KEY);
         expect(modal.isOpen()).toBe(false);
     });
