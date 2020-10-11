@@ -7,7 +7,7 @@
 
 function getPointOutsideDrawer(drawerPosition, drawerSize) {
     const x = drawerPosition.x > 0 ? drawerPosition.x - 2 : drawerSize.width + 2;
-    const y = drawerPosition.y > 0 ? drawerPosition.y - 2 : drawerSize.height + 2;
+    const y = Math.round(drawerSize.height / 2);
     return { x, y };
 }
 
@@ -40,14 +40,8 @@ class PageDrawer {
             .$('[id="drawer-close-button"]')
             .waitForDisplayed();
 
-        const { x, y } = getPointOutsideDrawer(
-            $(this.rootElement)
-                .$('section[role="dialog"]')
-                .getLocation(),
-            $(this.rootElement)
-                .$('section[role="dialog"]')
-                .getSize(),
-        );
+        const section = $(this.rootElement).$('section[role="dialog"]');
+        const { x, y } = getPointOutsideDrawer(section.getLocation(), section.getSize());
 
         $(this.rootElement)
             .$('[id="drawer-close-button"]')
