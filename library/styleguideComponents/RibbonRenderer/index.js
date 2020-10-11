@@ -9,10 +9,12 @@ import {
     StyledGithubLink,
     StyledHeading,
 } from './styled';
+import GeneralSearch from '../GeneralSearch';
 
 export default function RibbonRenderer() {
     return (
         <StyledHeading>
+            <GeneralSearch />
             <StyledContainer>
                 <StyledGitHubContianer>
                     <GitHubButton
