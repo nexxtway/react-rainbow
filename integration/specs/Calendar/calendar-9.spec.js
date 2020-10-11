@@ -26,12 +26,10 @@ describe('Calendar', () => {
         expect(calendar.isLeftMonthDaySelected(2)).toBe(true);
         expect(calendar.isRightMonthDaySelected(16)).toBe(true);
     });
-    it.skip('should set range initial and end dates when using keyboard navigation', () => {
+    it('should set range initial and end dates when using keyboard navigation', () => {
         const calendar = new PageCalendar(CALENDAR);
         calendar.clickLeftMonthSelectYear();
         browser.keys(ESCAPE_KEY);
-        browser.keys(TAB_KEY);
-        browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);
         browser.keys(ARROW_UP_KEY);
         browser.keys(ENTER_KEY);
