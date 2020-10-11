@@ -19,6 +19,7 @@ const StripeCardInput = React.forwardRef((props, ref) => {
     const {
         apiKey,
         label,
+        labelAlignment,
         hideLabel,
         bottomHelpText,
         error,
@@ -90,6 +91,7 @@ const StripeCardInput = React.forwardRef((props, ref) => {
             <Label
                 label={label}
                 hideLabel={hideLabel}
+                labelAlignment={labelAlignment}
                 inputId={stripeCardInputId}
                 required={required}
             />
@@ -113,7 +115,10 @@ StripeCardInput.propTypes = {
     apiKey: PropTypes.string.isRequired,
     /** Text label for the component. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** A boolean to hide the input label. */
+    /** Describes the position of the StripeCardInput label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the StripeCardInput label. */
     hideLabel: PropTypes.bool,
     /** Shows the help message below the input. */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -172,6 +177,7 @@ StripeCardInput.propTypes = {
 
 StripeCardInput.defaultProps = {
     label: undefined,
+    labelAlignment: 'center',
     hideLabel: false,
     bottomHelpText: null,
     error: null,

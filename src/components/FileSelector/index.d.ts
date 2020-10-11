@@ -1,4 +1,4 @@
-import { BaseProps } from '../types';
+import { BaseProps, LabelAlignment } from '../types';
 import { ReactNode, FocusEvent } from 'react';
 
 export interface FileSelectorProps extends BaseProps {
@@ -14,6 +14,7 @@ export interface FileSelectorProps extends BaseProps {
     multiple?: boolean;
     disabled?: boolean;
     variant?: 'inline' | 'multiline';
+    labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     accept?: string;
     value?: object;

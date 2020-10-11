@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Stripe, StripeCardElement } from '@stripe/stripe-js';
-import { BaseProps } from '../types';
+import { BaseProps, LabelAlignment } from '../types';
 
 export type StripeCardError = {
     type: 'validation_error';
@@ -27,6 +27,7 @@ export interface StripeCardEvent {
 export interface StripeCardInput extends BaseProps {
     apiKey: string;
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     bottomHelpText?: ReactNode;
     error?: ReactNode;
