@@ -67,6 +67,7 @@ const run = () => {
                 objectID: componentName,
                 type: 'component',
                 text: componentName,
+                componentName,
                 description: extractComponentDescription(file),
                 url: `https://react-rainbow.io/#/${componentName}`,
             });

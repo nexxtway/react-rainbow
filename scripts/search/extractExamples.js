@@ -37,7 +37,8 @@ const extractExamples = file => {
             objectID: `${componentName}-${i + 1}`,
             type: 'example',
             text: example[0].text,
-            url: `https://react-rainbow.io/#!/${componentName}/${i + 1}`,
+            componentName,
+            url: `https://react-rainbow.io/#!/${componentName}/${2 * i + 1}`,
             description: example
                 .slice(1)
                 .map(part => part.text)
