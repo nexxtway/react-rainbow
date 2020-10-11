@@ -1,9 +1,8 @@
 import React, { useState, useRef } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, Configure } from 'react-instantsearch-dom';
-import SearchInput from './algoliaConnectedComponents/SearchInput';
 import SearchResult from './algoliaConnectedComponents/SearchResult';
-import { Dropdown, StyledAlgoliaLogo, Container } from './styled';
+import { Container, StyledSearchInput } from './styled';
 
 const searchClient = algoliasearch(
     process.env.REACT_APP_ALGOLIA_APP_ID,
@@ -22,11 +21,7 @@ const GlobalSearch = () => {
         <InstantSearch indexName={indexName} searchClient={searchClient}>
             <Configure hitsPerPage={6} />
             <Container>
-                <SearchInput
-                    className="rainbow-m-right_large"
-                    ref={triggerRef}
-                    onClick={handleClick}
-                />
+                <StyledSearchInput ref={triggerRef} onClick={handleClick} />
                 <SearchResult />
             </Container>
         </InstantSearch>
