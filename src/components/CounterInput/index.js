@@ -1,16 +1,18 @@
-import React, { useRef } from 'react';
+import React, { useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
+import { useUniqueIdentifier, useReduxForm, useErrorMessageId, useLabelId } from '../../libs/hooks';
 import RenderIf from '../RenderIf';
 import RelativeElement from '../Structural/relativeElement';
 import Label from '../Input/label';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
-import { uniqueId } from '../../libs/utils';
 import PlusIcon from './icons/plus';
 import MinusIcon from './icons/minus';
-import floatify from './helpers/floatify';
-import isValueNan from './helpers/isValueNan';
-import disableButton from './helpers/disableButtons';
+import getNormalizedValue from './helpers/getNormalizedValue';
+import getValueOfNan from './helpers/getValueOfNan';
+import isButtonDisabled from './helpers/isButtonDisabled';
+import isMax from './helpers/isMax';
+import isMin from './helpers/isMin';
 import { StyledContainer, StyledInput, StyledButton, ButtonContainer } from './styled';
 
 /**
@@ -18,7 +20,7 @@ import { StyledContainer, StyledInput, StyledButton, ButtonContainer } from './s
  * @category Form
  */
 
-export default function CounterInput(props) {
+const CounterInput = React.forwardRef((props, ref) => {
     const {
         id,
         name,
@@ -45,39 +47,37 @@ export default function CounterInput(props) {
         bottomHelpText,
         className,
         style,
-    } = props;
+    } = useReduxForm(props);
 
     const inputRef = useRef(null);
-    const inlineTextLabelId = uniqueId('inline-text-label');
-    const inputId = uniqueId('counter-input');
-    const errorMessageId = uniqueId('error-message');
+    const inputId = useUniqueIdentifier('counter-input');
+    const errorMessageId = useErrorMessageId(error);
+    const labelId = useLabelId(label);
     const isReadOnly = !!(!disabled && readOnly);
     const finalStep = step || 1;
 
-    const getInlineTextLabelId = () => {
-        if (bottomHelpText) {
-            return inlineTextLabelId;
-        }
-        return undefined;
-    };
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            inputRef.current.focus();
+        },
+        click: () => {
+            inputRef.current.click();
+        },
+        blur: () => {
+            inputRef.current.blur();
+        },
+    }));
 
-    const getErrorMessageId = () => {
-        if (error) {
-            return errorMessageId;
-        }
-        return undefined;
-    };
-
-    const handlePlusMouseDown = e => {
-        e.preventDefault();
+    const handlePlusMouseDown = event => {
+        event.preventDefault();
         inputRef.current.focus();
-        onChange(floatify(Number(inputRef.current.value) + finalStep));
+        onChange(getNormalizedValue(Number(inputRef.current.value) + finalStep));
     };
 
-    const handleMinusMouseDown = e => {
-        e.preventDefault();
+    const handleMinusMouseDown = event => {
+        event.preventDefault();
         inputRef.current.focus();
-        onChange(floatify(Number(inputRef.current.value) - finalStep));
+        onChange(getNormalizedValue(Number(inputRef.current.value) - finalStep));
     };
 
     return (
@@ -89,18 +89,18 @@ export default function CounterInput(props) {
                 required={required}
                 inputId={inputId}
                 readOnly={isReadOnly}
-                id={getInlineTextLabelId()}
+                id={labelId}
             />
             <RelativeElement>
-                <ButtonContainer iconPosition={'left'} readOnly={readOnly} error={error}>
+                <ButtonContainer iconPosition="left" readOnly={readOnly} error={error}>
                     <StyledButton
                         variant="base"
                         size="small"
                         icon={<MinusIcon />}
                         onMouseDown={handleMinusMouseDown}
                         tabIndex={-1}
-                        disabled={disableButton(
-                            isValueNan(Number(value)) - finalStep < min,
+                        disabled={isButtonDisabled(
+                            isMin(getValueOfNan(Number(value)), finalStep, min),
                             disabled,
                             readOnly,
                         )}
@@ -123,23 +123,23 @@ export default function CounterInput(props) {
                     required={required}
                     min={min}
                     max={max}
-                    aria-labelledby={getInlineTextLabelId()}
-                    aria-describedby={getErrorMessageId()}
+                    aria-labelledby={labelId}
+                    aria-describedby={errorMessageId}
                     ref={inputRef}
                     isBare={isBare}
                     error={error}
                     variant={variant}
                     step={step}
-                    autoComplete={false}
+                    autoComplete={'off'}
                 />
-                <ButtonContainer iconPosition={'right'} readOnly={readOnly} error={error}>
+                <ButtonContainer iconPosition="right" readOnly={readOnly} error={error}>
                     <StyledButton
                         variant="base"
                         size="small"
                         icon={<PlusIcon />}
                         onMouseDown={handlePlusMouseDown}
-                        disabled={disableButton(
-                            isValueNan(Number(value)) + finalStep > max,
+                        disabled={isButtonDisabled(
+                            isMax(getValueOfNan(Number(value)), finalStep, max),
                             disabled,
                             readOnly,
                         )}
@@ -151,13 +151,14 @@ export default function CounterInput(props) {
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
             </RenderIf>
             <RenderIf isTrue={error}>
-                <ErrorText alignSelf="center" id={getErrorMessageId()}>
+                <ErrorText alignSelf="center" id={errorMessageId}>
                     {error}
                 </ErrorText>
             </RenderIf>
         </StyledContainer>
     );
-}
+});
+export default CounterInput;
 
 CounterInput.propTypes = {
     /** The id of the outer element. */

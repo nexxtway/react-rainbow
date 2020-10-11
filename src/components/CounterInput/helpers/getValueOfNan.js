@@ -1,8 +1,8 @@
-const isValueNan = value => {
+const getValueOfNan = value => {
     if (isNaN(value)) {
         return 0;
     }
     return value;
 };
 
-export default isValueNan;
+export default getValueOfNan;
