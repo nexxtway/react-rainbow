@@ -3,7 +3,8 @@ import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, Configure } from 'react-instantsearch-dom';
 import SearchInput from './algoliaConnectedComponents/SearchInput';
 import SearchResult from './algoliaConnectedComponents/SearchResult';
-import { Dropdown, StyledAlgoliaLogo, Container } from './styled';
+import { Container } from './styled';
+import { useOutsideClick } from '../../../src/libs/hooks';
 
 const searchClient = algoliasearch(
     process.env.REACT_APP_ALGOLIA_APP_ID,
@@ -13,19 +14,31 @@ const searchClient = algoliasearch(
 const indexName = process.env.REACT_APP_ALGOLIA_SEARCH_INDEX || '';
 
 const GlobalSearch = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const triggerRef = useRef(null);
-    const handleClick = () => {
-        setIsOpen(!isOpen);
+    const ref = useRef();
+    const containerRef = useRef();
+    const [isOpen, setOpen] = useState(false);
+    const handleChange = event => {
+        if (event.target.value) {
+            setOpen(true);
+        } else {
+            setOpen(false);
+        }
     };
+    useOutsideClick(
+        containerRef,
+        () => {
+            ref.current.clear();
+        },
+        isOpen,
+    );
     return (
         <InstantSearch indexName={indexName} searchClient={searchClient}>
             <Configure hitsPerPage={6} />
-            <Container>
+            <Container ref={containerRef}>
                 <SearchInput
                     className="rainbow-m-right_large"
-                    ref={triggerRef}
-                    onClick={handleClick}
+                    customRef={ref}
+                    onChange={handleChange}
                 />
                 <SearchResult />
             </Container>

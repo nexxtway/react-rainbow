@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import { connectSearchBox } from 'react-instantsearch-dom';
 import Input from '../../../../../src/components/Input';
@@ -6,7 +6,17 @@ import SearchIcon from './searchIcon';
 
 const SearchInput = props => {
     // eslint-disable-next-line react/prop-types
-    const { currentRefinement, refine, label, className, style, onClick } = props;
+    const { currentRefinement, refine, label, className, style, customRef, onChange } = props;
+    const handleChange = event => {
+        onChange(event);
+        refine(event.currentTarget.value);
+    };
+
+    useImperativeHandle(customRef, () => ({
+        clear() {
+            refine('');
+        },
+    }));
 
     return (
         <Input
@@ -15,11 +25,10 @@ const SearchInput = props => {
             label={label}
             type="search"
             value={currentRefinement}
-            onChange={event => refine(event.currentTarget.value)}
+            onChange={handleChange}
             placeholder="Type to search"
             autoComplete="off"
             icon={<SearchIcon />}
-            onClick={onClick}
         />
     );
 };
