@@ -31,6 +31,10 @@ describe('<Slider />', () => {
         const component = mount(<Slider disabled />);
         expect(component.find('input').prop('disabled')).toBe(true);
     });
+    it('should render a label when label prop is passed', () => {
+        const component = mount(<Slider label="Slider Label" />);
+        expect(component.find(StyledLabel).exists()).toBe(true);
+    });
     it('should set "left" to labelAlignment prop passed in the Label component', () => {
         const component = mount(<Slider label="Slider Label" labelAlignment="left" />);
         expect(component.find(StyledLabel).prop('labelAlignment')).toBe('left');

@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
-import RequiredAsterisk from '../RequiredAsterisk';
 import CheckboxList from './checkboxList';
 import StyledFieldset from './styled/fieldset';
-import StyledLegend from './styled/legend';
+import StyledLabel from './styled/label';
 import StyledContentContainer from './styled/contentContainer';
 import StyledTextError from '../Input/styled/errorText';
 
@@ -51,14 +50,29 @@ class CheckboxGroup extends Component {
     }
 
     render() {
-        const { id, options, required, label, error, style, className, orientation } = this.props;
+        const {
+            id,
+            options,
+            required,
+            label,
+            labelAlignment,
+            hideLabel,
+            error,
+            style,
+            className,
+            orientation,
+        } = this.props;
         return (
             <StyledFieldset id={id} className={className} style={style}>
                 <RenderIf isTrue={label}>
-                    <StyledLegend>
-                        <RequiredAsterisk required={required} />
+                    <StyledLabel
+                        hideLabel={hideLabel}
+                        labelAlignment={labelAlignment}
+                        required={required}
+                        as="legend"
+                    >
                         {label}
-                    </StyledLegend>
+                    </StyledLabel>
                 </RenderIf>
                 <StyledContentContainer orientation={orientation}>
                     <CheckboxList
@@ -89,6 +103,11 @@ CheckboxGroup.propTypes = {
     ),
     /** Text label for the checkbox group. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the CheckboxGroup label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the CheckboxGroup label. */
+    hideLabel: PropTypes.bool,
     /** The name of the checkbox group */
     name: PropTypes.string,
     /** The list of selected checkboxes. Each array entry contains the value of a selected checkbox.
@@ -114,6 +133,8 @@ CheckboxGroup.defaultProps = {
     options: [],
     value: [],
     label: null,
+    labelAlignment: 'center',
+    hideLabel: false,
     name: undefined,
     onChange: () => {},
     required: false,

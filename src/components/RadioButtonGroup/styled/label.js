@@ -1,19 +1,22 @@
 import styled from 'styled-components';
-import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
+import Label from '../../Input/label/labelText';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledLabel = attachThemeAttrs(styled.legend)`
-    border: 0;
-    padding: 0;
-    display: inline-block;
-    color: ${props => props.palette.text.label};
-    font-size: ${FONT_SIZE_TEXT_MEDIUM};
-    line-height: 1.5;
-    margin: 0 auto 0.5rem auto;
-    text-align: center;
-    box-sizing: border-box;
-    width: 100%;
-
+const StyledLabel = attachThemeAttrs(styled(Label))`
+    ${props =>
+        props.hideLabel &&
+        `
+            position: absolute !important;
+            margin: -1px !important;
+            border: 0 !important;
+            padding: 0 !important;
+            width: 1px !important;
+            height: 1px !important;
+            overflow: hidden !important;
+            clip: rect(0 0 0 0) !important;
+            text-transform: none !important;
+            white-space: nowrap !important;
+        `};
     ${props =>
         props.variant === 'inverse' &&
         `

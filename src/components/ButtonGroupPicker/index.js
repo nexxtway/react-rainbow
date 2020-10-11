@@ -2,16 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import { uniqueId } from '../../libs/utils';
+import Label from '../Input/label';
 import RenderIf from '../RenderIf';
 import { Provider } from './context';
-import {
-    StyledButtonGroup,
-    StyledContainer,
-    StyledErrorText,
-    StyledHelpText,
-    StyledLegend,
-} from './styled';
-import RequiredAsterisk from '../RequiredAsterisk';
+import { StyledButtonGroup, StyledContainer, StyledErrorText, StyledHelpText } from './styled';
 
 /**
  * ButtonGroupPicker can be used to group related options. The ButtonGroupPicker will control the selected state of its child ButtonOption.
@@ -72,16 +66,21 @@ class ButtonGroupPicker extends Component {
             error,
             bottomHelpText,
             required,
+            labelAlignment,
+            hideLabel,
         } = this.props;
         const context = this.getContext();
 
         return (
             <StyledContainer id={id} className={className} style={style}>
                 <RenderIf isTrue={label}>
-                    <StyledLegend>
-                        <RequiredAsterisk required={required} />
-                        {label}
-                    </StyledLegend>
+                    <Label
+                        label={label}
+                        labelAlignment={labelAlignment}
+                        hideLabel={hideLabel}
+                        required={required}
+                        as="legend"
+                    />
                 </RenderIf>
                 <StyledButtonGroup>
                     <Provider value={context}>{children}</Provider>
@@ -106,6 +105,11 @@ ButtonGroupPicker.propTypes = {
     id: PropTypes.string,
     /** The title at the top of the component. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the ButtonGroupPicker label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the ButtonGroupPicker label. */
+    hideLabel: PropTypes.bool,
     /** The name of the ButtonOption selected or if multiple an array of names. */
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     /** Set to true if at least one option must be selected. This value defaults to false. */
@@ -150,6 +154,8 @@ ButtonGroupPicker.defaultProps = {
     error: undefined,
     bottomHelpText: undefined,
     children: undefined,
+    labelAlignment: 'center',
+    hideLabel: false,
 };
 
 export default withReduxForm(ButtonGroupPicker);

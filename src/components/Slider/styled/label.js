@@ -1,24 +1,9 @@
 import styled from 'styled-components';
-import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import Label from '../../Input/label/labelText';
 
-const labelAlignmentMap = {
-    left: 'flex-start',
-    center: 'center',
-    right: 'flex-end',
-};
-
-const StyledLabel = attachThemeAttrs(styled.label)`
-    color: ${props => props.palette.text.label};
-    font-size: ${FONT_SIZE_TEXT_MEDIUM};
-    line-height: 1.5;
-    margin-bottom: 0.125rem;
-    align-self: ${props => labelAlignmentMap[props.labelAlignment] || labelAlignmentMap.center};
-    box-sizing: border-box;
-
-    :empty {
-        margin: 0;
-    }
+const StyledLabel = styled(Label)`
+    margin-left: 0;
+    margin-right: 0;
 
     ${props =>
         props.hideLabel &&

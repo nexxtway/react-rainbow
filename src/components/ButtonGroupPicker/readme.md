@@ -154,7 +154,7 @@ class ButtonGroupPickerTry extends React.Component {
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
                 <ButtonGroupPicker 
-                    label="Select view type" 
+                    label="Select view type"
                     value={value} 
                     onChange={this.handleOnChange} 
                     name="date-filter" 

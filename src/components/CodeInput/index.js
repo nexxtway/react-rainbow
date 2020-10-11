@@ -2,11 +2,11 @@ import React, { useEffect, useImperativeHandle, useRef } from 'react';
 import PropTypes from 'prop-types';
 import InputItems from './inputItems';
 import RenderIf from '../RenderIf';
-import RequiredAsterisk from '../RequiredAsterisk';
+import Label from '../Input/label';
 import { useReduxForm } from '../../libs/hooks';
 import { useFocusedIndexState, usePreviousIndex, useValueState } from './hooks';
 import { getNormalizedValue, getNumbersFromClipboard, setFocus } from './helpers';
-import { StyledErrorMessage, StyledFieldset, StyledHelpText, StyledLabel } from './styled';
+import { StyledErrorMessage, StyledFieldset, StyledHelpText } from './styled';
 
 /**
  * The CodeInput is an element that allows to fill a list of numbers, suitable for code validations.
@@ -17,6 +17,8 @@ const CodeInput = React.forwardRef((props, ref) => {
         id,
         value: valueProp,
         label,
+        labelAlignment,
+        hideLabel,
         bottomHelpText,
         length,
         disabled,
@@ -78,10 +80,13 @@ const CodeInput = React.forwardRef((props, ref) => {
     return (
         <StyledFieldset className={className} style={style} id={id}>
             <RenderIf isTrue={label}>
-                <StyledLabel>
-                    <RequiredAsterisk required={required} />
-                    {label}
-                </StyledLabel>
+                <Label
+                    label={label}
+                    labelAlignment={labelAlignment}
+                    hideLabel={hideLabel}
+                    required={required}
+                    as="legend"
+                />
             </RenderIf>
 
             <InputItems
@@ -116,6 +121,11 @@ CodeInput.propTypes = {
     value: PropTypes.string,
     /** Specifies the label CodeInput. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the CodeInput label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the CodeInput label. */
+    hideLabel: PropTypes.bool,
     /** Shows the help message below the CodeInput */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies the numeric length to be filled. */
@@ -150,6 +160,8 @@ CodeInput.defaultProps = {
     id: undefined,
     value: '',
     label: undefined,
+    labelAlignment: 'center',
+    hideLabel: false,
     bottomHelpText: undefined,
     length: 4,
     disabled: false,

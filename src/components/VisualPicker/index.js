@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import RenderIf from '../RenderIf';
-import RequiredAsterisk from '../RequiredAsterisk';
+import Label from '../Input/label';
 import { uniqueId } from './../../libs/utils';
 import { Provider } from './context';
 import StyledContainer from './styled/container';
-import StyledLabel from './styled/label';
 import StyledOptionsContainer from './styled/optionsContainer';
 import StyledError from '../Input/styled/errorText';
 
@@ -49,6 +48,8 @@ class VisualPicker extends Component {
         const {
             style,
             label,
+            labelAlignment,
+            hideLabel,
             required,
             error,
             id,
@@ -70,10 +71,13 @@ class VisualPicker extends Component {
         return (
             <StyledContainer id={id} className={className} style={style}>
                 <RenderIf isTrue={label}>
-                    <StyledLabel>
-                        <RequiredAsterisk required={required} />
-                        {label}
-                    </StyledLabel>
+                    <Label
+                        label={label}
+                        labelAlignment={labelAlignment}
+                        hideLabel={hideLabel}
+                        required={required}
+                        as="legend"
+                    />
                 </RenderIf>
                 <StyledOptionsContainer>
                     <Provider value={context}>{children}</Provider>
@@ -99,6 +103,11 @@ VisualPicker.propTypes = {
     required: PropTypes.bool,
     /** The title at the top of the VisualPicker component. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the VisualPicker label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the VisualPicker label. */
+    hideLabel: PropTypes.bool,
     /** Specifies that an VisualPicker must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The class name of the root element. */
@@ -123,7 +132,9 @@ VisualPicker.defaultProps = {
     id: undefined,
     onChange: () => {},
     required: false,
-    label: '',
+    label: null,
+    labelAlignment: 'center',
+    hideLabel: false,
     error: null,
     className: undefined,
     style: undefined,

@@ -9,9 +9,16 @@ import { useUniqueIdentifier } from '../../../libs/hooks';
 jest.mock('../../../libs/hooks/useUniqueIdentifier', () => jest.fn(() => 'week-day-items'));
 
 describe('<WeekDayPicker />', () => {
-    it('should render a label when label prop is passed', () => {
-        const component = mount(<WeekDayPicker label="My label" />);
-        expect(component.find('legend').length).toBe(1);
+    it('should pass the right props to the Label component', () => {
+        const component = mount(<WeekDayPicker label="custom label" required />);
+        expect(component.find('Label').props()).toEqual({
+            label: 'custom label',
+            required: true,
+            readOnly: false,
+            labelAlignment: 'center',
+            hideLabel: false,
+            as: 'legend',
+        });
     });
     it('should render bottom help text when bottomHelpText prop is passed', () => {
         const component = mount(<WeekDayPicker bottomHelpText="My help text" />);

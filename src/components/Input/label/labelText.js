@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import { MARGIN_MEDIUM } from '../../../styles/margins';
+import { PADDING_MEDIUM } from '../../../styles/paddings';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const labelAlignmentMap = {
@@ -30,6 +31,18 @@ const Label = attachThemeAttrs(styled.label)`
         props.labelAlignment === 'right' &&
         `
             margin-right: ${MARGIN_MEDIUM};
+        `};
+    ${props =>
+        props.as === 'legend' &&
+        `
+            text-align: ${
+                Object.prototype.hasOwnProperty.call(labelAlignmentMap, props.labelAlignment)
+                    ? props.labelAlignment
+                    : 'center'
+            }
+            margin-left: 0;
+            margin-right: 0;
+            padding: 0 ${PADDING_MEDIUM};
         `};
     ${props =>
         props.readOnly &&

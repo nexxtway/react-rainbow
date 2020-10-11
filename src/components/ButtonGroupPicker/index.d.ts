@@ -1,10 +1,12 @@
 import { ComponentType, ReactNode } from 'react';
-import { BaseProps } from '../types';
+import { BaseProps, LabelAlignment } from '../types';
 
 type Value = string | string[];
 export interface ButtonGroupPickerProps extends BaseProps {
     id?: string;
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
+    hideLabel?: boolean;
     value?: Value;
     onChange?: (value: Value) => void;
     multiple?: boolean;

@@ -28,6 +28,7 @@ class CheckboxGroupTry extends React.Component {
                 <CheckboxGroup
                     id="checkbox-group-1"
                     label="Checkbox Group Label"
+                    labelAlignment="left"
                     options={options}
                     value={values}
                     onChange={this.handleOnChange}
@@ -69,6 +70,7 @@ class CheckboxGroupTry extends React.Component {
             <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
                 <CheckboxGroup
                     label="Checkbox Group Label"
+                    labelAlignment="left"
                     options={options}
                     value={values}
                     onChange={this.handleOnChange}
@@ -110,6 +112,7 @@ class CheckboxGroupTry extends React.Component {
             <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
                 <CheckboxGroup
                     label="Checkbox Group Label"
+                    labelAlignment="left"
                     required
                     options={options}
                     value={values}
@@ -152,6 +155,7 @@ class CheckboxGroupTry extends React.Component {
             <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
                 <CheckboxGroup
                     label="Checkbox Group Label"
+                    labelAlignment="left"
                     error="This field is required"
                     options={options}
                     value={values}
@@ -259,6 +263,7 @@ const CheckBoxGroupProfile = () => {
                     <CheckboxGroup
                         id="checkbox-group-2"
                         label="Checkbox Group Label"
+                        labelAlignment="left"
                         options={options}
                         value={values}
                         onChange={setSelected}
@@ -299,6 +304,7 @@ const CheckboxGroupTry = () => {
             value={values}
             onChange={handleOnChange}
             label="Checkbox Group Label"
+            labelAlignment="left"
             orientation="horizontal"
         />
     );
