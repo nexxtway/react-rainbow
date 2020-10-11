@@ -1,9 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connectHighlight } from 'react-instantsearch-dom';
 import { ItemContainer, LeftContent, RightContent, Label, Title, Description } from '../../styled';
+import HighlightedText from '../../../../../src/components/HighlightedText';
 
-const ResultItem = props => {
-    const { objectID, type, text, description, url } = props;
+const HighlighAttribute = connectHighlight(({ highlight, attribute, hit }) => {
+    const partsInAlgoliaFormat = highlight({
+        highlightProperty: '_highlightResult',
+        attribute,
+        hit,
+    });
+    const partsInRainbowFormat = partsInAlgoliaFormat.map(part => ({
+        value: part.value,
+        type: part.isHighlighted ? 'hit' : 'text',
+    }));
+
+    return <HighlightedText parts={partsInRainbowFormat} />;
+});
+
+const ResultItem = hit => {
+    const { type, url } = hit;
 
     return (
         <ItemContainer href={url}>
@@ -11,8 +27,12 @@ const ResultItem = props => {
                 <Label>{type}</Label>
             </LeftContent>
             <RightContent>
-                <Title>{text}</Title>
-                <Description>{description}</Description>
+                <Title>
+                    <HighlighAttribute attribute="text" hit={hit} />
+                </Title>
+                <Description>
+                    <HighlighAttribute attribute="description" hit={hit} />
+                </Description>
             </RightContent>
         </ItemContainer>
     );
