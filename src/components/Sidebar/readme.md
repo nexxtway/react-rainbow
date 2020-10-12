@@ -52,12 +52,12 @@ class SimpleSidebar extends React.Component {
 ##### Sidebar with dynamic content
 
 ```js
-import React from 'react';
+import React, { useState} from 'react';
 import { Sidebar, SidebarItem } from 'react-rainbow-components';
 import styled from 'styled-components';
-import DynamicContent from './dynamicContent';
-import StyledDynamicContent from './styled/dynamicontent';
 import RenderIf from './../RenderIf';
+import attachThemeAttrs from './../../styles/helpers/attachThemeAttrs';
+
 
 const SideBarContainer = styled.div.attrs(props => {
     return props.theme.rainbow.palette;
@@ -66,26 +66,29 @@ const SideBarContainer = styled.div.attrs(props => {
     width: 120px;
     border-bottom-left-radius: 0.875rem;
 `;
+const StyledDynamicContent = attachThemeAttrs(styled.div)`
+    color: ${props => props.palette.text.label};
+    font-size: large;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+`;
 
-class SimpleSidebar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedItem: '',
-        };
-        this.handleOnSelect = this.handleOnSelect.bind(this);
-    }
+function DynamicContent(prop) {
+    return <h1>You have clicked on {prop.selectedItem}</h1>;
+}
 
-    handleOnSelect(e, selectedItem) {
-        return this.setState({ selectedItem });
-    }
+function SimpleSidebar() {
+    const [selectedItem, setSelectedItem] = useState('');
 
-    render() {
-        const { selectedItem } = this.state;
-        
+    const handleOnSelect = (e, selectedItem) => {
+        return setSelectedItem(selectedItem);
+    };
+
         return (
-            <div>
-            <Sidebar selectedItem={selectedItem} onSelect={this.handleOnSelect} id="sidebar-1">
+          <div>
+            <Sidebar selectedItem={selectedItem} onSelect={handleOnSelect} id="sidebar-1">
                 <SidebarItem icon={<DashboardPurpleIcon />} name="Dashboard" label="Dashboard" />
                 <SidebarItem icon={<ApplicationIcon />} name="Aplications" label="Aplications" />
                 <SidebarItem icon={<PuzzleIcon />} name="Components" label="Components" />
@@ -97,9 +100,8 @@ class SimpleSidebar extends React.Component {
                     <DynamicContent selectedItem={selectedItem} />
                 </RenderIf>
             </StyledDynamicContent>
-            </div>
+          </div>
         );
-    }
 }
 
 <div>
