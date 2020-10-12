@@ -5,6 +5,7 @@ const percents = {
     small: 25,
     medium: 50,
     large: 75,
+    full: 100,
 };
 
 const positions = {
