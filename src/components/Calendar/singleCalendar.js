@@ -208,7 +208,8 @@ class SingleCalendar extends Component {
     }
 
     nextMonth() {
-        const newMonth = addMonths(this.state.currentMonth, 1);
+        const { currentMonth } = this.state;
+        const newMonth = addMonths(currentMonth, 1);
         const { value } = this.props;
         const focusedDate = getNextFocusedDate(value, newMonth);
 
@@ -219,7 +220,8 @@ class SingleCalendar extends Component {
     }
 
     previousMonth() {
-        const newMonth = addMonths(this.state.currentMonth, -1);
+        const { currentMonth } = this.state;
+        const newMonth = addMonths(currentMonth, -1);
         const { value } = this.props;
         const focusedDate = getNextFocusedDate(value, newMonth);
 
@@ -230,8 +232,9 @@ class SingleCalendar extends Component {
     }
 
     handleYearChange(event) {
+        const { currentMonth } = this.state;
         const year = +event.target.value;
-        const newMonth = new Date(this.state.currentMonth);
+        const newMonth = new Date(currentMonth);
         newMonth.setFullYear(year);
 
         const { value } = this.props;

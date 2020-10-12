@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ExpandCollapseButton from './../expandCollapseButton';
+import ExpandCollapseButton from '../expandCollapseButton';
 
 describe('<ExpandCollapseButton/>', () => {
     it('should return the Spinner component when isLoading prop is true', () => {

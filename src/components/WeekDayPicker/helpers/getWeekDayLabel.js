@@ -5,7 +5,7 @@ const weekDays = getWeekDays();
 export default function getWeekDayLabel(weekDay, locale) {
     if (weekDay && weekDays.includes(weekDay)) {
         try {
-            const dayIndex = weekDays.findIndex(v => v === weekDay);
+            const dayIndex = weekDays.findIndex(value => value === weekDay);
             const dayString = `January ${dayIndex + 2}, 2000 00:00:00`;
             const date = new Date(dayString);
 

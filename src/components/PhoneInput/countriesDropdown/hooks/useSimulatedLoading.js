@@ -2,7 +2,7 @@ import { useRef, useReducer, useEffect } from 'react';
 
 export default function useSimulatedLoading(list, delta) {
     const loading = useRef(true);
-    const [, forceUpdate] = useReducer(x => x + 1, 0);
+    const [, forceUpdate] = useReducer(value => value + 1, 0);
 
     useEffect(() => {
         if (loading.current) {

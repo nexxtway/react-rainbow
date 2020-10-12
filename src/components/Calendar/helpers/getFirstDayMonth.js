@@ -1,5 +1,6 @@
 export default function getFirstDayMonth(date) {
     const clone = new Date(date);
+    // eslint-disable-next-line no-restricted-globals
     const isValidDate = !isNaN(clone.getTime());
     if (isValidDate) {
         clone.setDate(1);

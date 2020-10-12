@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import PhoneInput from '../';
+import PhoneInput from '..';
 import { StyledTrigger } from '../styled';
 
 describe('<PhoneInput />', () => {

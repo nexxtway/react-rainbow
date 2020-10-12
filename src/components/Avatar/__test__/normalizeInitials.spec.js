@@ -1,4 +1,4 @@
-import normalizeInitials from './../normalizeInitials';
+import normalizeInitials from '../normalizeInitials';
 
 describe('normalizeInitials()', () => {
     it('should return one letter when one letter is passed', () => {

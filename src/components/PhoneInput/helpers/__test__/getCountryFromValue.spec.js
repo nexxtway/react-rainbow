@@ -1,6 +1,6 @@
 import { getCountryFromValue } from '..';
 
-const us = {
+const usa = {
     countryCode: '+1',
     country: 'United States',
     isoCode: 'us',
@@ -34,23 +34,23 @@ jest.mock('../../countries', () => [
 
 describe('findCountryByIsoCode', () => {
     it('should return a right country', () => {
-        const uy = countries[1];
-        expect(getCountryFromValue('uy', countries)).toEqual(uy);
+        const uruguay = countries[1];
+        expect(getCountryFromValue('uy', countries)).toEqual(uruguay);
     });
 
     it('should return United States country', () => {
         const isoCodes = ['es', false];
         isoCodes.forEach(isoCode =>
-            expect(getCountryFromValue(isoCode, [...countries, us])).toEqual(us),
+            expect(getCountryFromValue(isoCode, [...countries, usa])).toEqual(usa),
         );
     });
 
     it('should return United Kingdom country', () => {
-        const gb = countries[0];
-        expect(getCountryFromValue('es', countries)).toEqual(gb);
+        const unitedKingdom = countries[0];
+        expect(getCountryFromValue('es', countries)).toEqual(unitedKingdom);
     });
 
     it('should return United States country when countries is empty array', () => {
-        expect(getCountryFromValue('us', [])).toEqual(us);
+        expect(getCountryFromValue('us', [])).toEqual(usa);
     });
 });

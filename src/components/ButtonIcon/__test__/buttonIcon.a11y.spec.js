@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
-import ButtonIcon from './../';
+import axe from '../../../../axe';
+import ButtonIcon from '..';
 
 describe('<ButtonIcon/>', () => {
     it('should be accessible when pass assistiveText', async () => {

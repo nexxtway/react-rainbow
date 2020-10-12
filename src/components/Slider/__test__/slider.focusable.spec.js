@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Slider from './../';
+import Slider from '..';
 
 describe('<Slider/>', () => {
     it('should be focusable', () => {

@@ -17,7 +17,7 @@ class PageMenuItem {
      * @method
      */
     click() {
-        $(this.rootElement).click();
+        this.rootElement.click();
     }
 
     /**
@@ -26,7 +26,7 @@ class PageMenuItem {
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement).isFocused();
+        return this.rootElement.isFocused();
     }
 
     /**
@@ -34,7 +34,7 @@ class PageMenuItem {
      * @method
      */
     hover() {
-        $(this.rootElement).moveTo();
+        this.rootElement.moveTo();
     }
 
     /**
@@ -43,7 +43,7 @@ class PageMenuItem {
      * @returns {string}
      */
     getLabelText() {
-        return $(this.rootElement).getText();
+        return this.rootElement.getText();
     }
 }
 

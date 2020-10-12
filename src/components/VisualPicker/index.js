@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withReduxForm from './../../libs/hocs/withReduxForm';
+import withReduxForm from '../../libs/hocs/withReduxForm';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
-import { uniqueId } from './../../libs/utils';
+import { uniqueId } from '../../libs/utils';
 import { Provider } from './context';
 import StyledContainer from './styled/container';
 import StyledLabel from './styled/label';

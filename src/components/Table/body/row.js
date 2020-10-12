@@ -28,6 +28,7 @@ export default function Row(props) {
 
         return (
             <Cell
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...rest}
                 restColumnProps={restColumnProps}
                 key={key}

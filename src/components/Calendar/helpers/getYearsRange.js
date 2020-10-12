@@ -24,6 +24,7 @@ export default function getYearsRange({ minDate, maxDate, currentMonth }) {
         to = new Date(todayYear + 100, 0, 1).getFullYear();
     }
     const range = [];
+    // eslint-disable-next-line id-length
     for (let i = from; i <= to; i += 1) {
         range.push({
             value: i,

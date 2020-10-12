@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import RenderIf from './../index';
+import RenderIf from '..';
 
 describe('<RenderIf/>', () => {
     it('should not render the children when isTrue is false', () => {

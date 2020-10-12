@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../../RenderIf';
-import { SELECTABLE_CHECKBOX } from './../helpers/columns';
+import { SELECTABLE_CHECKBOX } from '../helpers/columns';
 import SortArrowIcon from './sortArrowIcon';
 import ResizeBar from './resizeBar';
 import SelectableHeader from './selectableHeader';

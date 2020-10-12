@@ -1,6 +1,6 @@
 import filterCountries from '../filterCountries';
 
-const us = {
+const usa = {
     countryCode: '+1',
     country: 'United States',
     isoCode: 'us',
@@ -27,21 +27,21 @@ const countries = [
 describe('findCountryByIsoCode', () => {
     it('should return an array with  United States country', () => {
         const queries = ['us', 'United States', '+1', '1'];
-        const allCountries = [us, ...countries];
-        queries.forEach(query => expect(filterCountries(query, allCountries, us)).toEqual([us]));
+        const allCountries = [usa, ...countries];
+        queries.forEach(query => expect(filterCountries(query, allCountries, usa)).toEqual([usa]));
     });
 
     it('should return an array with 4 countries', () => {
         const queries = ['u', '+', ''];
-        const allCountries = [us, ...countries];
+        const allCountries = [usa, ...countries];
         queries.forEach(query =>
-            expect(filterCountries(query, allCountries, us)).toEqual(allCountries),
+            expect(filterCountries(query, allCountries, usa)).toEqual(allCountries),
         );
     });
 
     it('should return an empty array', () => {
         const queries = ['ww', 'España', '+111', '22'];
-        const allCountries = [us, ...countries];
-        queries.forEach(query => expect(filterCountries(query, allCountries, us)).toEqual([]));
+        const allCountries = [usa, ...countries];
+        queries.forEach(query => expect(filterCountries(query, allCountries, usa)).toEqual([]));
     });
 });

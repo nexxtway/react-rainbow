@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Options from '../';
+import Options from '..';
 import StyledHeaderLi from '../styled/headerLi';
 
 describe('<Options />', () => {

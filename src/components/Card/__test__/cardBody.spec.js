@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import CardBody from './../cardBody';
+import CardBody from '../cardBody';
 import Spinner from '../../Spinner';
 
 describe('<CardBody/>', () => {
