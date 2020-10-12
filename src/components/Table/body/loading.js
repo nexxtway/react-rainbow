@@ -14,10 +14,10 @@ export default function Loading({ columns }) {
                 <LoadingCells columns={columns} value={columnsLength} />
             </StyledRow>
             <StyledRow>
-                <LoadingCells columns={columns} value={columnsLength} />
+                <LoadingCells columns={columns} value={columnsLength - 1} />
             </StyledRow>
             <StyledRow>
-                <LoadingCells columns={columns} value={columnsLength} />
+                <LoadingCells columns={columns} value={columnsLength - 3} />
             </StyledRow>
         </Fragment>
     );
