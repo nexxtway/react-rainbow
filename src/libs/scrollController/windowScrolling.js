@@ -11,7 +11,7 @@ class WindowScrolling {
     [privateHandleScroll](event) {
         if (!this.isTicking) {
             window.requestAnimationFrame(() => {
-                this.callback(this.callback(this, event));
+                this.callback(this, event);
                 this.isTicking = false;
             });
             this.isTicking = true;

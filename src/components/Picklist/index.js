@@ -73,8 +73,6 @@ class Picklist extends Component {
         if (!wasOpen && isOpen) {
             this.outsideClick.startListening(this.containerRef.current, () => this.closeMenu());
             this.windowScrolling.startListening(this.handleWindowScroll);
-        } else if (wasOpen && !isOpen) {
-            this.windowScrolling.stopListening();
         }
     }
 
@@ -124,6 +122,7 @@ class Picklist extends Component {
 
     closeMenu() {
         this.outsideClick.stopListening();
+        this.windowScrolling.stopListening();
         this.setState({
             isOpen: false,
         });
