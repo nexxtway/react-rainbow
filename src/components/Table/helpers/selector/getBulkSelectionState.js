@@ -6,7 +6,8 @@ export default function getBulkSelectionState(params = {}) {
 
     if (selected === 0) {
         return 'none';
-    } else if (selected === maxRowSelection) {
+    }
+    if (selected === maxRowSelection) {
         return 'all';
     }
     return 'some';

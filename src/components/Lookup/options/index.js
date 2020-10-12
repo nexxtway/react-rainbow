@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MenuItem from './menuItem';
 import StyledHeaderLi from './styled/headerLi';
 import StyledSearchIcon from './styled/searchIcon';
-import StyledOptionsContainer from './styled//optionsContainer';
+import StyledOptionsContainer from './styled/optionsContainer';
 import StyledEmptyMessage from './styled/emptyMessage';
 
 function preventDefault(event) {

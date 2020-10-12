@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { SPACE_KEY, ENTER_KEY } from '../../../libs/constants';
-import DatePicker from '../';
+import DatePicker from '..';
 
 const value = new Date('06/01/2019');
 jest.mock('../helpers/formatDate', () => jest.fn(() => '10/13/2019'));

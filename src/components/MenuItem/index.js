@@ -1,7 +1,7 @@
 /* eslint-disable no-script-url, react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Consumer } from './../PrimitiveMenu/context';
+import { Consumer } from '../PrimitiveMenu/context';
 import Icon from './icon';
 import StyledHeader from './styled/header';
 import StyledHeaderLabel from './styled/headerLabel';
@@ -110,6 +110,7 @@ class Item extends Component {
  * Represents a list item in a menu.
  */
 export default function MenuItem(props) {
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <Consumer>{values => <Item {...props} {...values} />}</Consumer>;
 }
 

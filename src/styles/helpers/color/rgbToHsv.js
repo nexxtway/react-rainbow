@@ -1,6 +1,6 @@
-/* eslint-disable default-case */
+/* eslint-disable default-case, id-length */
 import bound01 from './bound01';
-import { decomposeColor } from '.';
+import decomposeColor from './decomposeColor';
 
 export default function rgbToHsv(color) {
     const { type, values } = decomposeColor(color);

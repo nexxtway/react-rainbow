@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 import React, { useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import { useOutsideClick } from '@rainbow-modules/hooks';

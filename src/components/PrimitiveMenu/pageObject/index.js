@@ -48,14 +48,8 @@ class PagePrimitiveMenu {
      */
     getItem(itemPosition) {
         const menuItems = $(this.dropdownElement).$$('li[role="menuitem"]');
-        const buttonMenuItems = $(this.dropdownElement).$$('ul > *');
         if (menuItems[itemPosition]) {
-            const indexPosition = buttonMenuItems.findIndex(
-                element => element.ELEMENT === menuItems[itemPosition].ELEMENT,
-            );
-            return new PageMenuItem(
-                `${this.dropdownElement} ul > li[role="menuitem"]:nth-child(${indexPosition + 1})`,
-            );
+            return new PageMenuItem(menuItems[itemPosition]);
         }
         return null;
     }

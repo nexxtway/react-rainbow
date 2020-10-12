@@ -46,9 +46,6 @@ Event.propTypes = {
 };
 
 Event.defaultProps = {
-    title: undefined,
-    startDate: undefined,
-    endDate: undefined,
     onEventClick: () => {},
     locale: undefined,
 };

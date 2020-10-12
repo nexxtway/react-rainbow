@@ -125,6 +125,16 @@ const initialState = {
                 })}
             />
         </div>
+                <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
+            <Button
+                className="rainbow-m-around_medium"
+                label="Drawer Full"
+                onClick={() => setState({
+                    isOpen: true,
+                    size: 'full',
+                })}
+            />
+        </div>
     </div>
     <Drawer
         id="drawer-3"

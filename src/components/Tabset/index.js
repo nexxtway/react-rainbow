@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from './context';
-import RenderIf from './../RenderIf';
+import RenderIf from '../RenderIf';
 import { LEFT_KEY, RIGHT_KEY } from '../../libs/constants';
 import {
     getChildTabNodes,
@@ -214,10 +214,10 @@ export default class Tabset extends Component {
         }
     }
 
-    handleSelect(e, name) {
+    handleSelect(event, name) {
         const { onSelect } = this.props;
         this.scrollToSelectedTab(name);
-        onSelect(e, name);
+        onSelect(event, name);
     }
 
     render() {

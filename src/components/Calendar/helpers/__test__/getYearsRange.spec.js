@@ -1,4 +1,4 @@
-import getYearsRange from './../getYearsRange';
+import getYearsRange from '../getYearsRange';
 
 describe('getYearsRange', () => {
     it('should return the right years range when only currentMonth is passed', () => {

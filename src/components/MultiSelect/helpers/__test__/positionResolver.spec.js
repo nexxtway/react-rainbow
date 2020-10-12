@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 import positionResolver from '../positionResolver';
 
 const DEFAULT_MARGIN = 5;

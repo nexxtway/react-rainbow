@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from '../../context';
-import { Hue } from '../';
+import { Hue } from '..';
 
 describe('<Hue />', () => {
     it('should fire onChange with object containing the new hue.', () => {

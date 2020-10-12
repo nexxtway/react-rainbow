@@ -158,7 +158,7 @@ describe('Calendar', () => {
         const calendar = new PageCalendar(CALENDAR);
         calendar.clickDay(11);
         browser.keys([ALT_KEY, PAGEDOWN_KEY]);
-        expect(calendar.getSelectedMonth()).toBe('January');
+        expect(calendar.getSelectedMonth()).toBe('December');
         expect(calendar.getSelectedYear()).toBe('2020');
         expect(calendar.isDayFocused(11)).toBe(true);
     });

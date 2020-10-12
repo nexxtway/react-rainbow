@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from '../../context';
-import { DefaultColors } from '../';
+import { DefaultColors } from '..';
 import Color from '../defaultColors/color';
 
 describe('<DefaultColors />', () => {

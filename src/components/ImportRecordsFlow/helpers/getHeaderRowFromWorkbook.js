@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 import XLSX from 'xlsx';
 
 export default function getHeaderRowFromWorkbook(workbook) {

@@ -25,6 +25,7 @@ const blurEvent = {
 };
 const elementMock = {
     mount: jest.fn(),
+    // eslint-disable-next-line id-length
     on: jest.fn((eventType, callback) => {
         if (eventType === 'change') {
             callback(event);
@@ -47,8 +48,8 @@ window.Stripe = jest.fn().mockReturnValue(stripeMock);
 
 describe('<StripeCardInput>', () => {
     it('should fire onChange with specific event', done => {
-        const onChangeMockFn = e => {
-            expect(e).toEqual({
+        const onChangeMockFn = changeEnvent => {
+            expect(changeEnvent).toEqual({
                 cardBrand: 'unknown',
                 isEmpty: false,
                 isComplete: false,
@@ -69,8 +70,8 @@ describe('<StripeCardInput>', () => {
     });
 
     it('should fire onFocus', doneFocus => {
-        const onFocusMockFn = e => {
-            expect(e).toEqual({
+        const onFocusMockFn = fnEvent => {
+            expect(fnEvent).toEqual({
                 type: 'focus',
             });
             doneFocus();
@@ -87,8 +88,8 @@ describe('<StripeCardInput>', () => {
     });
 
     it('should fire onBlur', doneBlur => {
-        const onBlurMockFn = e => {
-            expect(e).toEqual({
+        const onBlurMockFn = fnEvent => {
+            expect(fnEvent).toEqual({
                 type: 'blur',
             });
             doneBlur();

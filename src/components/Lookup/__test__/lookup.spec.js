@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Lookup from '../';
+import Lookup from '..';
 import StyledTextError from '../../Input/styled/errorText';
 
 describe('<Lookup />', () => {

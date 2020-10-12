@@ -41,8 +41,9 @@ class StepItem extends Component {
 
     componentDidUpdate({ currentStepName: prevCurrentStepName }) {
         const { currentStepName, name } = this.props;
+        const { setChildrenState } = this.props;
         if (prevCurrentStepName !== currentStepName) {
-            this.props.setChildrenState({
+            setChildrenState({
                 name,
                 onSetStepState: this.setStepState,
             });
@@ -105,6 +106,7 @@ class StepItem extends Component {
 }
 
 export default function ProgressStep(props) {
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <Consumer>{context => <StepItem {...props} {...context} />}</Consumer>;
 }
 

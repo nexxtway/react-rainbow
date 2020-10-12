@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useTheme } from '../../../libs/hooks';
 
 function ErrorIcon({ className, style, isFocused }) {
-    const error = useTheme().rainbow.palette.error;
+    const { error } = useTheme().rainbow.palette;
     const background = isFocused ? error.dark : error.main;
     return (
         <svg width={22} height={22} viewBox="0 0 22 22" className={className} style={style}>

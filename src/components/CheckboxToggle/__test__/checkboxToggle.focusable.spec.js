@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import CheckboxToggle from './../';
+import CheckboxToggle from '..';
 
 describe('<CheckboxToggle/>', () => {
     it('should be focusable', () => {
