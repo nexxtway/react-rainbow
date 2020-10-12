@@ -6,6 +6,7 @@ import RelativeElement from '../Structural/relativeElement';
 import Label from '../Input/label';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
+import withReduxForm from './../../libs/hocs/withReduxForm';
 import PlusIcon from './icons/plus';
 import MinusIcon from './icons/minus';
 import getValue from './helpers/getValue';
@@ -79,6 +80,13 @@ const CounterInput = React.forwardRef((props, ref) => {
         onChange(getNormalizedValue(getValue(Number(value)) - step));
     };
 
+    const handleEvents = (event, callBack) => {
+        if (event.target.value === '') {
+            return callBack();
+        }
+        return callBack(Number(event.target.value));
+    };
+
     return (
         <StyledContainer id={id} className={className} style={style}>
             <Label
@@ -99,6 +107,7 @@ const CounterInput = React.forwardRef((props, ref) => {
                         onMouseDown={handleMinusMouseDown}
                         tabIndex={-1}
                         disabled={isButtonDisabled(isMin(value, step, min), disabled, readOnly)}
+                        assistiveText="minus button"
                     />
                 </ButtonContainer>
                 <StyledInput
@@ -107,11 +116,11 @@ const CounterInput = React.forwardRef((props, ref) => {
                     type="number"
                     value={value}
                     placeholder={placeholder}
-                    onChange={event => onChange(event.target.value)}
+                    onChange={event => handleEvents(event, onChange)}
                     tabIndex={tabIndex}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    onClick={onClick}
+                    onFocus={event => handleEvents(event, onFocus)}
+                    onBlur={event => handleEvents(event, onBlur)}
+                    onClick={event => handleEvents(event, onClick)}
                     onKeyDown={onKeyDown}
                     disabled={disabled}
                     readOnly={readOnly}
@@ -135,6 +144,7 @@ const CounterInput = React.forwardRef((props, ref) => {
                         onMouseDown={handlePlusMouseDown}
                         disabled={isButtonDisabled(isMax(value, step, max), disabled, readOnly)}
                         tabIndex={-1}
+                        assistiveText="plus button"
                     />
                 </ButtonContainer>
             </RelativeElement>
@@ -149,7 +159,7 @@ const CounterInput = React.forwardRef((props, ref) => {
         </StyledContainer>
     );
 });
-export default CounterInput;
+export default withReduxForm(CounterInput);
 
 CounterInput.propTypes = {
     /** The id of the outer element. */

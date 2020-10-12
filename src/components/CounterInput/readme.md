@@ -16,7 +16,6 @@ const CounterBase = () => {
     const handleOnchange = (value) => {
         setCounter( value );
     }
-
     return(
         <CounterInput
             id="input-component-1"
