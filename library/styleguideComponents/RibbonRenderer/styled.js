@@ -42,6 +42,15 @@ export const StyledGitHubContianer = styled.div`
 export const StyledGithubLink = styled.a`
     width: 32px;
     height: 32px;
+    border-radius: 32px;
+
+    :hover {
+        background: rgba(1, 1, 1, 0.05);
+
+        > img > svg {
+            fill: red;
+        }
+    }
 
     @media (max-width: 800px) {
         margin-right: 54px;

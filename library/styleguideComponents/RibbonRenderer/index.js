@@ -29,6 +29,7 @@ export default function RibbonRenderer() {
                     href="https://github.com/nexxtway/react-rainbow"
                     target="_blank"
                     rel="noopener noreferrer"
+                    title="Github repository"
                 >
                     <StyledGithubIcon src={githublogo} alt="github logo" />
                 </StyledGithubLink>
