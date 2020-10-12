@@ -89,34 +89,6 @@ describe('Modal with redux form example', () => {
         browser.keys(ESCAPE_KEY);
         expect(modal.isOpen()).toBe(false);
     });
-    it('should return focus to date picker input when both modals are opened and press esc key', () => {
-        const modal = new PageModal(MODAL);
-        const triggerButton = $(BUTTON);
-        triggerButton.click();
-        modal.waitUntilOpen();
-        const datePicker = new PageDatePicker(DATE_PICKER_INPUT);
-        datePicker.click();
-        datePicker.waitUntilOpen();
-        browser.keys(ESCAPE_KEY);
-        datePicker.waitUntilClose();
-        expect(datePicker.hasFocusInput()).toBe(true);
-    });
-    it('should return focus to time picker input when both modals are opened and select a time', () => {
-        const modal = new PageModal(MODAL);
-        const triggerButton = $(BUTTON);
-        triggerButton.click();
-        modal.waitUntilOpen();
-        const timePicker = new PageTimePicker(TIME_PICKER_INPUT);
-        timePicker.clickTimeInput();
-        timePicker.waitUntilOpen();
-        browser.keys('0');
-        browser.keys('0');
-        browser.keys('0');
-        browser.keys('0');
-        browser.keys(ENTER_KEY);
-        timePicker.waitUntilClose();
-        expect(timePicker.hasFocusTimeInput()).toBe(true);
-    });
     it('should have scroll disabled when modal is opened', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -202,5 +174,33 @@ describe('Modal with redux form example', () => {
         const finalScrollTop = getScrollTopPosition();
         const hasNotScrolled = finalScrollTop === initialScrollTop;
         expect(hasNotScrolled).toBe(true);
+    });
+    it.skip('should return focus to date picker input when both modals are opened and press esc key', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const datePicker = new PageDatePicker(DATE_PICKER_INPUT);
+        datePicker.click();
+        datePicker.waitUntilOpen();
+        browser.keys(ESCAPE_KEY);
+        datePicker.waitUntilClose();
+        expect(datePicker.hasFocusInput()).toBe(true);
+    });
+    it.skip('should return focus to time picker input when both modals are opened and select a time', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const timePicker = new PageTimePicker(TIME_PICKER_INPUT);
+        timePicker.clickTimeInput();
+        timePicker.waitUntilOpen();
+        browser.keys('0');
+        browser.keys('0');
+        browser.keys('0');
+        browser.keys('0');
+        browser.keys(ENTER_KEY);
+        timePicker.waitUntilClose();
+        expect(timePicker.hasFocusTimeInput()).toBe(true);
     });
 });
