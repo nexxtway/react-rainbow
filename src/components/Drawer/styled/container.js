@@ -73,7 +73,7 @@ const StyledContainer = attachThemeAttrs(styled.section).attrs(props => {
         width: 100%;
         min-width: 100%;
     }
-            
+
     // position
     left: ${props => props.position.left};
     top: ${props => props.position.top};
@@ -132,7 +132,6 @@ const StyledContainer = attachThemeAttrs(styled.section).attrs(props => {
             transform:  translateX(100%);
         }
     }
-
 `;
 
 export default StyledContainer;

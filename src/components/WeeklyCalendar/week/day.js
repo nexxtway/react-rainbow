@@ -9,6 +9,7 @@ export default function Day(props) {
     const eventsOfDay = useEventsOfDay(events, day);
     const Events = () =>
         eventsOfDay.map(event => (
+            // eslint-disable-next-line react/jsx-props-no-spreading
             <Event key={event.id} onEventClick={onEventClick} locale={locale} {...event} />
         ));
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
-import RenderIf from './../RenderIf';
-import { uniqueId } from './../../libs/utils';
-import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
+import RenderIf from '../RenderIf';
+import { uniqueId } from '../../libs/utils';
+import { ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
 import Header from './header';
 import CloseIcon from './closeIcon';
 import manageTab from '../../libs/manageTab';

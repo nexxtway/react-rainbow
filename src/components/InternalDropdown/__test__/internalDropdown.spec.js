@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { ENTER_KEY } from '../../../libs/constants';
-import InternalDropdown from '../';
+import InternalDropdown from '..';
 import Option from '../../Option';
 import Spinner from '../../Spinner';
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import '../../../styles/defaultTheme';
-import attachThemeAttrs from './../../../styles/helpers/attachThemeAttrs';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 export const IconCircleColor = attachThemeAttrs(styled.svg)`
     fill: ${props => props.palette.text.disabled}

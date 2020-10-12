@@ -20,9 +20,6 @@ function preventDefault(event) {
 class OptionItem extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showOption: true,
-        };
         this.itemRef = React.createRef();
         this.handleClick = this.handleClick.bind(this);
         this.handleHover = this.handleHover.bind(this);
@@ -232,6 +229,7 @@ class OptionItem extends Component {
  * @category Form
  */
 export default function Option(props) {
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <Consumer>{values => <OptionItem {...props} {...values} />}</Consumer>;
 }
 

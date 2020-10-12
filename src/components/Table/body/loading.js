@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import LoadingCells from './loadingCells';
 
 export default function Loading({ columns }) {
     const columnsLength = columns.length;
     return (
-        <Fragment>
+        <>
             <tr>
                 <LoadingCells columns={columns} value={columnsLength} />
             </tr>
@@ -18,7 +18,7 @@ export default function Loading({ columns }) {
             <tr>
                 <LoadingCells columns={columns} value={columnsLength - 3} />
             </tr>
-        </Fragment>
+        </>
     );
 }
 

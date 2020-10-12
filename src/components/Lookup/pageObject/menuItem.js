@@ -17,7 +17,7 @@ class PageLookupMenuItem {
      * @method
      */
     click() {
-        $(this.rootElement).click();
+        this.rootElement.click();
     }
 
     /**
@@ -25,7 +25,8 @@ class PageLookupMenuItem {
      * @method
      */
     hover() {
-        const itemElement = $(`${this.rootElement} > div[role="option"]`);
+        const itemElement = this.rootElement.$('div[role="option"]');
+        itemElement.scrollIntoView();
         itemElement.moveTo();
     }
 
@@ -35,11 +36,7 @@ class PageLookupMenuItem {
      * @returns {bool}
      */
     isActive() {
-        return (
-            $(this.rootElement)
-                .$('[role="option"]')
-                .getAttribute('aria-selected') === 'true'
-        );
+        return this.rootElement.$('[role="option"]').getAttribute('aria-selected') === 'true';
     }
 
     /**
@@ -48,7 +45,7 @@ class PageLookupMenuItem {
      * @returns {bool}
      */
     isVisible() {
-        return $(this.rootElement).isDisplayedInViewport();
+        return this.rootElement.isDisplayedInViewport();
     }
 
     /**

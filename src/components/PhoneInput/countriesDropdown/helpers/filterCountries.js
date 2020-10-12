@@ -9,6 +9,7 @@ export default function filterCountries(query, countries, country) {
     let isFilteredCountry = false;
     const filteredCountries =
         countries.filter(value => {
+            // eslint-disable-next-line no-restricted-globals
             if (!isNaN(query)) {
                 const index = value.countryCode.toString().indexOf(queryToLower);
                 if (index === 0 || index === 1) {

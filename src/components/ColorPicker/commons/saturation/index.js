@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 import React, { useRef, useContext } from 'react';
 import { UP_KEY, DOWN_KEY, RIGHT_KEY, LEFT_KEY } from '../../../../libs/constants';
 import {

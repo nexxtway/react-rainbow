@@ -35,7 +35,8 @@ export default class Rating extends Component {
     }
 
     handleOnLeave() {
-        return this.setState({ value: this.props.value });
+        const { value } = this.props;
+        return this.setState({ value });
     }
 
     render() {

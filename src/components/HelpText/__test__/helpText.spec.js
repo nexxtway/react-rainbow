@@ -1,11 +1,12 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { ESCAPE_KEY } from '../../../libs/constants';
-import HelpText from '../';
+import HelpText from '..';
 import InternalOverlay from '../../InternalOverlay';
 
 jest.mock('../../InternalOverlay', () =>
     jest.fn(({ render: Content, ...props }) => (
+        // eslint-disable-next-line react/jsx-props-no-spreading
         <div {...props}>
             <Content />
         </div>

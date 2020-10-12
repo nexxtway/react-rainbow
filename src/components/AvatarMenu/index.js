@@ -26,6 +26,7 @@ export default function AvatarMenu(props) {
 
     return (
         <PrimitiveMenu
+            // eslint-disable-next-line react/jsx-props-no-spreading
             {...rest}
             src={src}
             icon={icon}

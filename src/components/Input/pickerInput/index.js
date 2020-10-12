@@ -67,6 +67,7 @@ export default class Input extends Component {
         if (readOnly) {
             return (
                 <StyledReadonlyInput
+                    // eslint-disable-next-line react/jsx-props-no-spreading
                     {...props}
                     id={this.inputId}
                     readOnly
@@ -80,6 +81,7 @@ export default class Input extends Component {
 
         return (
             <StyledPickerInput
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...props}
                 id={this.inputId}
                 readOnly

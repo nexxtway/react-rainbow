@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Breadcrumbs from './../index';
-import Breadcrumb from './../../Breadcrumb/index';
+import Breadcrumbs from '../index';
+import Breadcrumb from '../../Breadcrumb/index';
 
 describe('<Breadcrumbs/>', () => {
     it('should have a aria-label attribute for accessibility', () => {

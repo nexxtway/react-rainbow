@@ -4,8 +4,8 @@ import Header from '../header';
 import { SELECTABLE_CHECKBOX } from '../../helpers/columns';
 
 const eventMap = {};
-document.addEventListener = jest.fn((event, cb) => {
-    eventMap[event] = cb;
+document.addEventListener = jest.fn((event, callback) => {
+    eventMap[event] = callback;
 });
 const preventDefault = jest.fn();
 

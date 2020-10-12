@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import InputBase from '../';
+import InputBase from '..';
 
 describe('<InputBase/>', () => {
     it('should be focusable', () => {

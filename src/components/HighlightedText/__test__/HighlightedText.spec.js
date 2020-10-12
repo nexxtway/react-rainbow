@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import styled from 'styled-components';
-import HighlightedText from '../';
+import HighlightedText from '..';
 
 describe('<HighlightedText />', () => {
     const parts = [

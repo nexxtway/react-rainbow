@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Label from '../';
+import Label from '..';
 import LabelText from '../labelText';
 import HiddenElement from '../../../Structural/hiddenElement';
 

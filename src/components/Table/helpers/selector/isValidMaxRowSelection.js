@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 export default function isValidMaxRowSelection(maxRowSelection, rowsLength) {
     const maxRowSelectionNumber = Number(maxRowSelection);
     return (

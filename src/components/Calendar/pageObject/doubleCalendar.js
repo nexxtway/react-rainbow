@@ -147,7 +147,7 @@ class PageDoubleCalendar {
      */
     isLeftMonthDayFocused(day) {
         const buttonEl = $(this.rootElement)
-            .$$('table[role=grid')[0]
+            .$$('table[role=grid]')[0]
             .$(`button=${day}`);
         return buttonEl.isExisting() && buttonEl.isFocused();
     }
@@ -159,7 +159,7 @@ class PageDoubleCalendar {
      */
     isLeftMonthDaySelected(day) {
         const buttonEl = $(this.rootElement)
-            .$$('table[role=grid')[0]
+            .$$('table[role=grid]')[0]
             .$(`button=${day}`);
         return buttonEl.isExisting() && buttonEl.getAttribute('data-selected') === 'true';
     }
@@ -248,7 +248,7 @@ class PageDoubleCalendar {
      */
     isRightMonthDayFocused(day) {
         const buttonEl = $(this.rootElement)
-            .$$('table[role=grid')[1]
+            .$$('table[role=grid]')[1]
             .$(`button=${day}`);
         return buttonEl.isExisting() && buttonEl.isFocused();
     }
@@ -260,7 +260,7 @@ class PageDoubleCalendar {
      */
     isRightMonthDaySelected(day) {
         const buttonEl = $(this.rootElement)
-            .$$('table[role=grid')[1]
+            .$$('table[role=grid]')[1]
             .$(`button=${day}`);
         return buttonEl.isExisting() && buttonEl.getAttribute('data-selected') === 'true';
     }

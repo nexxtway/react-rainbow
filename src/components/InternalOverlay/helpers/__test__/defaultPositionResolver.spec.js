@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 import defaultPositionResolver from '../defaultPositionResolver';
 
 describe('defaultPositionResolver', () => {

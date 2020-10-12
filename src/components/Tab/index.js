@@ -39,10 +39,10 @@ class TabItem extends Component {
         return -1;
     }
 
-    handleSelect(e) {
+    handleSelect(event) {
         const { disabled, onSelect, name } = this.props;
         if (!disabled) {
-            onSelect(e, name);
+            onSelect(event, name);
         }
     }
 
@@ -95,6 +95,7 @@ class TabItem extends Component {
 
 /** @category Layout */
 export default function Tab(props) {
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <Consumer>{context => <TabItem {...props} {...context} />}</Consumer>;
 }
 

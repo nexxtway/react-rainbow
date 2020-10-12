@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import HeaderTitle from './../headerTitle';
+import HeaderTitle from '../headerTitle';
 
 describe('<HeaderTitle/>', () => {
     it('should set the title passed', () => {

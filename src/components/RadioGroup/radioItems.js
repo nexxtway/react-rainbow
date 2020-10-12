@@ -11,6 +11,7 @@ export default function RadioItems(props) {
         const key = `radio-${index}`;
         return (
             <Radio
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...option}
                 key={key}
                 onChange={onChange}
