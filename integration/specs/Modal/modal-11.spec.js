@@ -128,19 +128,6 @@ describe('Modal with redux form example', () => {
         const hasNotScrolled = finalScrollTop === initialScrollTop;
         expect(hasNotScrolled).toBe(true);
     });
-    it('should have scroll enabled after closing modal', () => {
-        const modal = new PageModal(MODAL);
-        const initialScrollTop = getScrollTopPosition();
-        const triggerButton = $(BUTTON);
-        triggerButton.click();
-        modal.waitUntilOpen();
-        browser.keys(ESCAPE_KEY);
-        modal.waitUntilClose();
-        scrollDown();
-        const finalScrollTop = getScrollTopPosition();
-        const hasScrolled = finalScrollTop > initialScrollTop;
-        expect(hasScrolled).toBe(true);
-    });
     it('should have scroll disabled when modal is opened and another modal is opened above', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -155,23 +142,34 @@ describe('Modal with redux form example', () => {
         const hasNotScrolled = finalScrollTop === initialScrollTop;
         expect(hasNotScrolled).toBe(true);
     });
-    it('should have scroll disabled when modal is opened and another modal is opened above and then closed', () => {
+    it('should close the modal when select an option with keyboard and then press ESC', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
-        const initialScrollTop = getScrollTopPosition();
         triggerButton.click();
         modal.waitUntilOpen();
-        const datepicker = new PageDatePicker(DATE_PICKER_INPUT);
-        datepicker.click();
-        datepicker.waitUntilOpen();
+        const lookup = new PageLookup(MODAL_LOOKUP);
+        lookup.click();
+        lookup.setQuery('l');
+        lookup.waitUntilOpen();
+        browser.keys(ARROW_DOWN_KEY);
+        browser.keys(ENTER_KEY);
         browser.keys(ESCAPE_KEY);
-        datepicker.waitUntilClose();
+        expect(modal.isOpen()).toBe(false);
+    });
+    it.skip('should have scroll enabled after closing modal', () => {
+        const modal = new PageModal(MODAL);
+        const initialScrollTop = getScrollTopPosition();
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        browser.keys(ESCAPE_KEY);
+        modal.waitUntilClose();
         scrollDown();
         const finalScrollTop = getScrollTopPosition();
-        const hasNotScrolled = finalScrollTop === initialScrollTop;
-        expect(hasNotScrolled).toBe(true);
+        const hasScrolled = finalScrollTop > initialScrollTop;
+        expect(hasScrolled).toBe(true);
     });
-    it('should have scroll enabled when modal is opened and another modal is opened above and then all modals are closed', () => {
+    it.skip('should have scroll enabled when modal is opened and another modal is opened above and then all modals are closed', () => {
         const initialScrollTop = getScrollTopPosition();
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -189,18 +187,20 @@ describe('Modal with redux form example', () => {
         const hasScrolled = finalScrollTop > initialScrollTop;
         expect(hasScrolled).toBe(true);
     });
-    it('should close the modal when select an option with keyboard and then press ESC', () => {
+    it.skip('should have scroll disabled when modal is opened and another modal is opened above and then closed', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
+        const initialScrollTop = getScrollTopPosition();
         triggerButton.click();
         modal.waitUntilOpen();
-        const lookup = new PageLookup(MODAL_LOOKUP);
-        lookup.click();
-        lookup.setQuery('l');
-        lookup.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
+        const datepicker = new PageDatePicker(DATE_PICKER_INPUT);
+        datepicker.click();
+        datepicker.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
-        expect(modal.isOpen()).toBe(false);
+        datepicker.waitUntilClose();
+        scrollDown();
+        const finalScrollTop = getScrollTopPosition();
+        const hasNotScrolled = finalScrollTop === initialScrollTop;
+        expect(hasNotScrolled).toBe(true);
     });
 });
