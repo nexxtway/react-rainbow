@@ -8,8 +8,8 @@ import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import PlusIcon from './icons/plus';
 import MinusIcon from './icons/minus';
+import getValue from './helpers/getValue';
 import getNormalizedValue from './helpers/getNormalizedValue';
-import getValueOfNan from './helpers/getValueOfNan';
 import isButtonDisabled from './helpers/isButtonDisabled';
 import isMax from './helpers/isMax';
 import isMin from './helpers/isMin';
@@ -54,7 +54,6 @@ const CounterInput = React.forwardRef((props, ref) => {
     const errorMessageId = useErrorMessageId(error);
     const labelId = useLabelId(label);
     const isReadOnly = !!(!disabled && readOnly);
-    const finalStep = step || 1;
 
     useImperativeHandle(ref, () => ({
         focus: () => {
@@ -71,13 +70,13 @@ const CounterInput = React.forwardRef((props, ref) => {
     const handlePlusMouseDown = event => {
         event.preventDefault();
         inputRef.current.focus();
-        onChange(getNormalizedValue(Number(inputRef.current.value) + finalStep));
+        onChange(getNormalizedValue(getValue(Number(value)) + step));
     };
 
     const handleMinusMouseDown = event => {
         event.preventDefault();
         inputRef.current.focus();
-        onChange(getNormalizedValue(Number(inputRef.current.value) - finalStep));
+        onChange(getNormalizedValue(getValue(Number(value)) - step));
     };
 
     return (
@@ -99,11 +98,7 @@ const CounterInput = React.forwardRef((props, ref) => {
                         icon={<MinusIcon />}
                         onMouseDown={handleMinusMouseDown}
                         tabIndex={-1}
-                        disabled={isButtonDisabled(
-                            isMin(getValueOfNan(Number(value)), finalStep, min),
-                            disabled,
-                            readOnly,
-                        )}
+                        disabled={isButtonDisabled(isMin(value, step, min), disabled, readOnly)}
                     />
                 </ButtonContainer>
                 <StyledInput
@@ -130,7 +125,7 @@ const CounterInput = React.forwardRef((props, ref) => {
                     error={error}
                     variant={variant}
                     step={step}
-                    autoComplete={'off'}
+                    autoComplete="off"
                 />
                 <ButtonContainer iconPosition="right" readOnly={readOnly} error={error}>
                     <StyledButton
@@ -138,11 +133,7 @@ const CounterInput = React.forwardRef((props, ref) => {
                         size="small"
                         icon={<PlusIcon />}
                         onMouseDown={handlePlusMouseDown}
-                        disabled={isButtonDisabled(
-                            isMax(getValueOfNan(Number(value)), finalStep, max),
-                            disabled,
-                            readOnly,
-                        )}
+                        disabled={isButtonDisabled(isMax(value, step, max), disabled, readOnly)}
                         tabIndex={-1}
                     />
                 </ButtonContainer>

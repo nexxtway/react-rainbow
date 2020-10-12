@@ -10,26 +10,38 @@ describe('<CounterInput />', () => {
         expect(input.prop('value')).toBe(5);
     });
 
-    it('should onChange have been called with -1 when click in minusButton and 1 when click in plusButton', () => {
+    it('should fire onChange with -1 as argument when click in minusButton', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(<CounterInput onChange={onChangeMockFn} value={0} />);
         const button = component.find('button');
         const minusButton = button.at(0);
-        const plusButton = button.at(1);
         minusButton.simulate('mouseDown');
         expect(onChangeMockFn).toHaveBeenCalledWith(-1);
+    });
+
+    it('should fire onChange with 1 as argument when click in plusButton', () => {
+        const onChangeMockFn = jest.fn();
+        const component = mount(<CounterInput onChange={onChangeMockFn} value={0} />);
+        const button = component.find('button');
+        const plusButton = button.at(1);
         plusButton.simulate('mouseDown');
         expect(onChangeMockFn).toHaveBeenCalledWith(1);
     });
 
-    it('should onChange have been called with -2 when click in minusButton and 2 when click in plusButton ', () => {
+    it('should fire onChange with -2 as argument when click in minusButton and step = 2', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(<CounterInput onChange={onChangeMockFn} step={2} />);
         const button = component.find('button');
         const minusButton = button.at(0);
-        const plusButton = button.at(1);
         minusButton.simulate('mouseDown');
         expect(onChangeMockFn).toHaveBeenCalledWith(-2);
+    });
+
+    it('should fire onChange with 2 as argument when click in plusButton and step = 2', () => {
+        const onChangeMockFn = jest.fn();
+        const component = mount(<CounterInput onChange={onChangeMockFn} step={2} />);
+        const button = component.find('button');
+        const plusButton = button.at(1);
         plusButton.simulate('mouseDown');
         expect(onChangeMockFn).toHaveBeenCalledWith(2);
     });
