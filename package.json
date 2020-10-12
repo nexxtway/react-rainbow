@@ -94,6 +94,8 @@
         "outputPath": "./test-results/jest-junit-results/results.html"
     },
     "devDependencies": {
+        "algoliasearch": "^4.5.1",
+        "react-instantsearch-dom": "^6.7.0",
         "@babel/cli": "^7.6.0",
         "@babel/core": "^7.6.0",
         "@babel/plugin-transform-runtime": "^7.6.2",
