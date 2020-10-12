@@ -119,6 +119,10 @@ jobs:
                       echo REACT_APP_RECAPTCHA_APIKEY=$REACT_APP_RECAPTCHA_APIKEY >> .env;
                       echo REACT_APP_CARBON_ADS_SRC=$REACT_APP_CARBON_ADS_SRC >> .env;
                       echo REACT_APP_STRIPE_APIKEY=$REACT_APP_STRIPE_APIKEY >> .env;
+                      echo REACT_APP_ALGOLIA_APP_ID=$REACT_APP_ALGOLIA_APP_ID >> .env;
+                      echo REACT_APP_ALGOLIA_SEARCH_KEY=$REACT_APP_ALGOLIA_SEARCH_KEY >> .env;
+                      echo REACT_APP_ALGOLIA_SEARCH_INDEX=$REACT_APP_ALGOLIA_SEARCH_INDEX >> .env;
+
             - run: yarn install
             - run: yarn deploy:library --token=$FIREBASE_TOKEN
 
