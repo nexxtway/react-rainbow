@@ -39,7 +39,7 @@ const GlobalSearch = () => {
                     customRef={ref}
                     onChange={handleChange}
                 />
-                <SearchResult />
+                <SearchResult onSelect={() => ref.current.clear()} />
             </Container>
         </InstantSearch>
     );

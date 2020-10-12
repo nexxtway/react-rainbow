@@ -37,10 +37,10 @@ const HighlighAttribute = connectHighlight(
 );
 
 const ResultItem = hit => {
-    const { type, url } = hit;
+    const { type, url, onSelect } = hit;
 
     return (
-        <ItemContainer href={url}>
+        <ItemContainer href={url} onClick={onSelect}>
             <LeftContent>
                 <Label>{type}</Label>
             </LeftContent>
