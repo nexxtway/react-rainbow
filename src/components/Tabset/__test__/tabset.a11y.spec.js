@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
-import Tabset from './../';
+import axe from '../../../../axe';
+import Tabset from '..';
 import Tab from '../../Tab';
 
 describe('<Tabset/>', () => {

@@ -46,7 +46,7 @@ describe('Modal base example', () => {
         browser.keys(TAB_KEY);
         expect(modal.hasFocusCloseButton()).toBe(true);
     });
-    it.skip('should close the modal when is opened and click the closeButton', () => {
+    it('should close the modal and return focus to trigger element when is opened and click the closeButton', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
         triggerButton.click();
@@ -54,13 +54,6 @@ describe('Modal base example', () => {
         modal.clickCloseButton();
         modal.waitUntilClose();
         expect(modal.isOpen()).toBe(false);
-    });
-    it.skip('should return focus to trigger element when close modal with close button', () => {
-        const modal = new PageModal(MODAL);
-        const triggerButton = $(BUTTON);
-        triggerButton.click();
-        modal.waitUntilOpen();
-        modal.clickCloseButton();
         expect(triggerButton.isFocused()).toBe(true);
     });
 });

@@ -3,6 +3,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { PADDING_X_SMALL } from '../../../styles/paddings';
 import { FONT_SIZE_TEXT_SMALL, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
+const variants = ['card', 'line'];
 const StyledAnchor = attachThemeAttrs(styled.button)`
     font: inherit;
     background: none;
@@ -43,7 +44,6 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
     }
 
     &:hover {
-        background-color: ${props => props.palette.action.hover};
         color: ${props => props.palette.text.label};
         z-index: 1;
     }
@@ -51,22 +51,35 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
     &:focus {
         text-decoration: none;
         outline: 0;
-        border-radius: 14px 14px 0 0;
     }
 
-    &::after {
-        content: '';
-        position: absolute;
-        left: -2px;
-        height: 20px;
-        width: 1px;
-        background-color: ${props => props.palette.border.divider};
-        box-sizing: border-box;
-    }
+    ${props =>
+        (props.variant === 'card' || !variants.includes(props.variant)) &&
+        `
+            &:hover {
+                background-color: ${props.palette.action.hover};
+            }
 
-    :hover::after {
-        background-color: transparent;
-    }
+            &::after {
+                content: '';
+                position: absolute;
+                left: -2px;
+                height: 20px;
+                width: 1px;
+                background-color: ${props.palette.border.divider};
+                box-sizing: border-box;
+            }
+        
+            :hover::after {
+                background-color: transparent;
+            }
+        
+        `};
+    ${props =>
+        props.variant === 'line' &&
+        `
+            border-radius: 0;
+        `};
 
     @media (max-width: 600px) {
         height: 100%;
@@ -94,15 +107,15 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
             border-radius: 0;
         }
     }
-
+    
     ${props =>
         props.isActive &&
+        (props.variant === 'card' || !variants.includes(props.variant)) &&
         `
             z-index: 2;
             background-color: ${props.palette.background.main};
             color: ${props.palette.brand.main};
             box-shadow: ${props.shadows.shadow_4};
-            border-radius: 14px 14px 0 0;
 
             &:hover, &:active, &:visited, &:focus {
                 background-color: ${props.palette.background.main};
@@ -167,6 +180,44 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
                     border-style: unset;
                     border-color: unset;
                     -webkit-transform: unset;
+                    content: "";
+                    height: 0.15rem;
+                    width: 100%;
+                    left: 0;
+                    bottom: 0;
+                    position: absolute;
+                    background-color: ${props.palette.brand.main};
+                    border-radius: 100px;
+                }
+            }
+        `};
+    ${props =>
+        props.isActive &&
+        props.variant === 'line' &&
+        `
+            z-index: 2;
+            color: ${props.palette.brand.main};
+
+            &:hover, &:active, &:visited, &:focus {
+                color: ${props.palette.brand.main};
+            }
+
+            &::before {
+                content: "";
+                height: 0.25rem;
+                width: 100%;
+                left: 0;
+                bottom: 0;
+                position: absolute;
+                background-color: ${props.palette.brand.main};
+                border-radius: 100px;
+            }
+
+            @media (max-width: 600px) {
+                position: relative;
+                width: 100%;
+
+                &::before {
                     content: "";
                     height: 0.15rem;
                     width: 100%;

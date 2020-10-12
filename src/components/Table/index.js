@@ -72,7 +72,8 @@ export default class Table extends Component {
             }),
             bulkSelection: 'none',
         };
-        this.indexes = getIndexes(this.state.rows);
+        const { rows } = this.state;
+        this.indexes = getIndexes(rows);
         this.selectedRowsKeys = getSelectedRowKeysFromSelectedRows(selectedRows, this.indexes);
 
         this.tableId = uniqueId('table');
@@ -195,6 +196,7 @@ export default class Table extends Component {
         }
         return maxRowSelectionNumber;
     }
+
     /**
      * It will scroll to the top of the Y scrollable container.
      * @public

@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 import resolverBottomRight from '../resolverBottomRight';
 
 describe('resolverBottomRight', () => {

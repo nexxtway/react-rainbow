@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
+import axe from '../../../../axe';
 import Table from '..';
 import Column from '../../Column';
 import Badge from '../../Badge';

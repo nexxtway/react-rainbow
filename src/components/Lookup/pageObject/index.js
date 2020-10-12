@@ -146,9 +146,7 @@ class PageLookup {
     getOption(itemPosition) {
         const items = $(this.rootElement).$$('li[role="presentation"]');
         if (items[itemPosition]) {
-            return new PageLookupMenuItem(
-                `${this.rootElement} li[role="presentation"]:nth-child(${itemPosition + 1})`,
-            );
+            return new PageLookupMenuItem(items[itemPosition]);
         }
         return null;
     }
@@ -201,9 +199,9 @@ class PageLookup {
      * @method
      */
     hoverScrollUpArrow() {
-        return $(this.rootElement)
-            .$('[data-id=lookup-arrow-button-up]')
-            .moveTo();
+        const upArrow = $(this.rootElement).$('[data-id=lookup-arrow-button-up]');
+        upArrow.scrollIntoView();
+        return upArrow.moveTo();
     }
 
     /**
@@ -221,9 +219,9 @@ class PageLookup {
      * @method
      */
     hoverScrollDownArrow() {
-        return $(this.rootElement)
-            .$('[data-id=lookup-arrow-button-down]')
-            .moveTo();
+        const downArrow = $(this.rootElement).$('[data-id=lookup-arrow-button-down]');
+        downArrow.scrollIntoView();
+        return downArrow.moveTo();
     }
 
     /**

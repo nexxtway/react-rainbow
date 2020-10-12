@@ -22,6 +22,11 @@ const StyledInnerContainer = styled.ul`
         `
             justify-content: space-between;
         `};
+    ${props =>
+        props.variant === 'line' &&
+        `
+            padding: 0;
+        `};
 `;
 
 export default StyledInnerContainer;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Head from '../';
+import Head from '..';
 
 const columns = [
     { header: 'header', field: 'name' },

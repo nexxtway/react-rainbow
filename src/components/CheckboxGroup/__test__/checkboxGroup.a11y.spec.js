@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
-import CheckboxGroup from './../';
+import axe from '../../../../axe';
+import CheckboxGroup from '..';
 
 const options = [
     { value: 'checkboxOne', label: 'Checkbox One' },

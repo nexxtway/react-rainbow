@@ -1,4 +1,6 @@
-import { decomposeColor, recomposeColor } from './index';
+/* eslint-disable id-length */
+import decomposeColor from './decomposeColor';
+import recomposeColor from './recomposeColor';
 
 /* eslint-disable no-param-reassign */
 export default function hslToRgb(color) {

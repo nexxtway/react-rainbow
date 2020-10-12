@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import YearSelect from '../';
+import YearSelect from '..';
 
 describe('YearSelect', () => {
     it('should set an id in the select element', () => {

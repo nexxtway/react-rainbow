@@ -80,6 +80,7 @@ function DayComponent(props) {
 }
 
 export default function Day(props) {
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <Consumer>{values => <DayComponent {...values} {...props} />}</Consumer>;
 }
 

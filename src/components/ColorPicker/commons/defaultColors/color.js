@@ -14,10 +14,10 @@ import {
 const Color = React.forwardRef((props, ref) => {
     const { color, name, tabIndex, isChecked, onChange } = props;
     const rgba = colorToRgba(color);
+    const colorId = useUniqueIdentifier('color-picker-default');
     if (!isValidColor(rgba)) {
         return null;
     }
-    const colorId = useUniqueIdentifier('color-picker-default');
 
     const handleChange = () => {
         onChange({
@@ -49,11 +49,11 @@ const Color = React.forwardRef((props, ref) => {
 });
 
 Color.propTypes = {
-    color: PropTypes.string.isRequired,
+    color: PropTypes.string,
     name: PropTypes.string,
     isChecked: PropTypes.bool,
     onChange: PropTypes.func,
-    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };
 
 Color.defaultProps = {

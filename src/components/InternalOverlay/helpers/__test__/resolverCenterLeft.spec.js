@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 import resolverCenterLeft from '../resolverCenterLeft';
 
 describe('resolverCenterLeft', () => {

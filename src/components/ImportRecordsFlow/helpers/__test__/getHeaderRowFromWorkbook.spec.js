@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 import XLSX from 'xlsx';
 import getHeaderRowFromWorkbook from '../getHeaderRowFromWorkbook';
 import getWorkbookParams from './getWorkbookParams';

@@ -1,4 +1,4 @@
-import { getLuminance } from './index';
+import getLuminance from './getLuminance';
 
 export default function getContrastRatio(foreground, background) {
     const lumA = getLuminance(foreground);

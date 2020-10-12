@@ -35,21 +35,21 @@ function allowTouchMove(element) {
 }
 
 function preventDefault(rawEvent) {
-    const e = rawEvent || window.event;
+    const event = rawEvent || window.event;
 
     // For the case whereby consumers adds a touchmove event listener to document.
     // Recall that we do document.addEventListener('touchmove', preventDefault, { passive: false })
     // in disableBodyScroll - so if we provide this opportunity to allowTouchMove, then
     // the touchmove event on document will break.
-    if (allowTouchMove(e.target)) {
+    if (allowTouchMove(event.target)) {
         return true;
     }
 
     // Do not prevent if the event has more than one touch (usually meaning this is a multi
     // touch gesture like pinch to zoom).
-    if (e.touches.length > 1) return true;
+    if (event.touches.length > 1) return true;
 
-    if (e.preventDefault) e.preventDefault();
+    if (event.preventDefault) event.preventDefault();
 
     return false;
 }

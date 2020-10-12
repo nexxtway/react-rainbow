@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
 import { TreeContext } from './context';
+// eslint-disable-next-line import/no-cycle
 import TreeChildren from './treeChildren';
 import ExpandCollapseButton from './expandCollapseButton';
 import ItemContainerLi from './styled/itemContainerLi';

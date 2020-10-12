@@ -1,4 +1,4 @@
-import getFormattedMonth from './../getFormattedMonth';
+import getFormattedMonth from '../getFormattedMonth';
 
 describe('getFormattedMonth', () => {
     it('should return the right month', () => {

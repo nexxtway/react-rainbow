@@ -1,5 +1,6 @@
 import React from 'react';
-import { getEnumerableWidth, SELECTABLE_CHECKBOX, WITH_ENUMERABLE } from './';
+// eslint-disable-next-line import/no-cycle
+import { getEnumerableWidth, SELECTABLE_CHECKBOX, WITH_ENUMERABLE } from '.';
 
 function getDefaultWidth(defaultWidth, minColumnWidth, maxColumnWidth) {
     const minColWidth = Number(minColumnWidth);

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
-import Select from './../';
+import axe from '../../../../axe';
+import Select from '..';
 
 const options = [
     { value: 'option 1', label: 'option 1' },

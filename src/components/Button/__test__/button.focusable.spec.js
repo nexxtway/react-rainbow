@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Button from '../';
+import Button from '..';
 
 describe('<Button />', () => {
     it('should be focusable', () => {

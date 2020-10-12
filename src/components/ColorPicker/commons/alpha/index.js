@@ -7,6 +7,7 @@ export default function Alpha() {
 
     const handleChange = event => {
         const value = parseInt(event.target.value, 10);
+        // eslint-disable-next-line no-restricted-globals
         rgba[3] = isNaN(value) ? 1 : Math.max(0, Math.min(value, 100)) / 100;
 
         onChange({
