@@ -11,7 +11,7 @@ export default function ImageContainer(props) {
     const { imageSrc, assistiveText, hasContent, header, description } = props;
 
     return (
-        <Fragment>
+        <>
             <StyledImage style={imageSrc} />
             <AssistiveText text={assistiveText} />
             <RenderIf isTrue={hasContent}>
@@ -24,7 +24,7 @@ export default function ImageContainer(props) {
                     </RenderIf>
                 </StyledImageFooter>
             </RenderIf>
-        </Fragment>
+        </>
     );
 }
 

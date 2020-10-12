@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import LoadingShape from '../';
+import LoadingShape from '..';
 import { StyledImageIcon, StyledAvatarIcon } from '../styled';
 
 describe('<LoadingShape', () => {

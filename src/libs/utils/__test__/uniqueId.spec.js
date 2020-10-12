@@ -1,4 +1,4 @@
-import { uniqueId } from '../';
+import { uniqueId } from '..';
 
 describe('uniqueId', () => {
     it('should return the unique id', () => {

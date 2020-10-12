@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import getSchemaFieldOptions from '../../helpers/getSchemaFieldOptions';
-import StepOne from '../';
+import StepOne from '..';
 
 jest.mock('../../helpers/getSchemaFieldOptions', () => jest.fn(() => []));
 

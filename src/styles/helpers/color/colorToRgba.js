@@ -1,7 +1,7 @@
 import decomposeColor from './decomposeColor';
 import rgbToRgba from './rgbToRgba';
 import hslToRgb from './hslToRgb';
-import { recomposeColor } from '.';
+import recomposeColor from './recomposeColor';
 
 export default function colorToRgba(color) {
     if (typeof color !== 'string') return '';

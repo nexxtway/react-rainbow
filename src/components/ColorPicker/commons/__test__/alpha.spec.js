@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from '../../context';
-import { Alpha } from '../';
+import { Alpha } from '..';
 
 describe('<Alpha />', () => {
     it('should fire onChange with object containing the new alpha', () => {

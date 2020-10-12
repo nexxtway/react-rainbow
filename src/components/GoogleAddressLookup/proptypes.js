@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 /* eslint-disable import/prefer-default-export */
 import { PropTypes } from 'prop-types';
 

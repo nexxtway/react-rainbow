@@ -524,7 +524,6 @@ class TabsetExample extends React.Component {
                         id="tabset-3"
                         onSelect={this.handleOnSelect}
                         activeTabName={selected}
-                        className="rainbow-p-horizontal_x-large"
                     >
                         <Tab
                             label="PRIMARY"
@@ -787,6 +786,145 @@ class TabsetExample extends React.Component {
             </div>
         );
     }
+}
+
+<TabsetExample />;
+```
+
+##### Tabset line
+
+```js
+import React, { useState } from 'react';
+import { Tabset, Tab } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const StyledTabLabel = styled.div`
+    font-family: Lato;
+    font-size: 14px;
+    letter-spacing: 0.46px;
+`;
+
+const StyledContainer = styled.div`
+    max-width: 600px;
+`;
+
+const StyledContent = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.main};
+    width: 100%;
+    border-radius: 0.875rem 0.875rem;
+`;
+
+const StyledTabContentTitle = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 0.83;
+`;
+
+const StyledTabContentText = styled.div`
+    font-family: Lato;
+    font-size: 14px;
+    line-height: 1.43;
+`;
+
+const StyledIcon = styled.div`
+    width: 60px;
+    height: 50px;
+    border-radius: 100px;
+    background-color: rgba(227, 231, 233, 0.25);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+`;
+
+const facebookIconStyles = { color: '#3c5997', height: 30 };
+const twitterIconStyles = { color: '#00b0f3', width: 30 };
+const googleIconStyles = { height: 30 };
+
+function TabsetExample() {
+    const [selected, setSelected] = useState('companies');
+
+    const handleOnSelect = (event, selected) => {
+        setSelected(selected);
+    };
+
+    const getTabContent = selected => {
+        if (selected === 'companies') {
+            return (
+                <div className="rainbow-m-top_x-large">
+                    <StyledContent className="rainbow-inline-flex rainbow-p-vertical_medium rainbow-p-horizontal_medium rainbow-m-bottom_small">
+                        <StyledIcon>
+                            <GoogleIcon style={googleIconStyles} />
+                        </StyledIcon>
+                        <div className="rainbow-flex rainbow-flex_column rainbow-m-left_medium rainbow-m-top_x-small">
+                            <StyledTabContentTitle className="rainbow-m-bottom_medium">
+                                Google
+                            </StyledTabContentTitle>
+                            <StyledTabContentText className="rainbow-color_gray-4">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore.
+                            </StyledTabContentText>
+                        </div>
+                    </StyledContent>
+                    <StyledContent className="rainbow-inline-flex rainbow-p-vertical_medium rainbow-p-horizontal_medium rainbow-m-bottom_small">
+                        <StyledIcon>
+                            <FacebookIcon style={facebookIconStyles} />
+                        </StyledIcon>
+                        <div className="rainbow-flex rainbow-flex_column rainbow-m-left_medium rainbow-m-top_x-small">
+                            <StyledTabContentTitle className="rainbow-m-bottom_medium">
+                                Facebook
+                            </StyledTabContentTitle>
+                            <StyledTabContentText className="rainbow-color_gray-4">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore.
+                            </StyledTabContentText>
+                        </div>
+                    </StyledContent>
+                    <StyledContent className="rainbow-inline-flex rainbow-p-vertical_medium rainbow-p-horizontal_medium rainbow-m-bottom_small">
+                        <StyledIcon>
+                            <TwitterIcon style={twitterIconStyles} />
+                        </StyledIcon>
+                        <div className="rainbow-flex rainbow-flex_column rainbow-m-left_medium rainbow-m-top_x-small">
+                            <StyledTabContentTitle className="rainbow-m-bottom_medium">
+                                Twitter
+                            </StyledTabContentTitle>
+                            <StyledTabContentText className="rainbow-color_gray-4">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore.
+                            </StyledTabContentText>
+                        </div>
+                    </StyledContent>
+                </div>
+            );
+        }
+        return (
+            <StyledTabContentText className="rainbow-p-around_xx-large rainbow-font-size-text_large rainbow-align-text-center">
+                In a primary rainbow, the arc shows red on the outer part and violet on the inner
+                side. This rainbow is caused by light being refracted when entering a droplet of
+                water, then reflected inside on the back of the droplet and refracted again when
+                leaving it.
+            </StyledTabContentText>
+        );
+    };
+
+    return (
+        <div className="rainbow-flex rainbow-flex_column rainbow-justify_center rainbow-align_center">
+            <StyledContainer className="rainbow-m-vertical_xx-large">
+                <Tabset variant="line" onSelect={handleOnSelect} activeTabName={selected}>
+                    <Tab name="companies" label={<StyledTabLabel>Companies</StyledTabLabel>} />
+
+                    <Tab name="customers" label={<StyledTabLabel>Customers</StyledTabLabel>} />
+                </Tabset>
+                {getTabContent(selected)}
+            </StyledContainer>
+        </div>
+    );
 }
 
 <TabsetExample />;

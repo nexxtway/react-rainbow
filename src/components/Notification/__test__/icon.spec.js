@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Icon from './../icons';
+import Icon from '../icons';
 
 describe('<NotificationIcon/>', () => {
     it('should render the "svg" passed as icon', () => {

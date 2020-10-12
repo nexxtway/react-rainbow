@@ -48,7 +48,7 @@ ReCaptchaComponent.propTypes = {
     size: PropTypes.oneOf(['normal', 'compact']).isRequired,
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     error: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
     onCreateRecaptcha: PropTypes.func,
     className: PropTypes.string,
     style: PropTypes.object,

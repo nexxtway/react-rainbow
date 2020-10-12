@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 /**
  * Option page object class.
  * @class
@@ -34,6 +35,7 @@ class PageOption {
      */
     hover() {
         const itemElement = this.rootElement.$('div[role="option"]');
+        itemElement.scrollIntoView();
         itemElement.moveTo();
     }
 

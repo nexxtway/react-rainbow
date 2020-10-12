@@ -153,19 +153,17 @@ describe('Calendar', () => {
         calendar.clickLeftMonthDay(11);
         browser.keys(ARROW_LEFT_KEY);
         browser.keys(ENTER_KEY);
-        expect(calendar.isLeftMonthDaySelected(11)).toBe(true);
+        expect(calendar.isLeftMonthDaySelected(10)).toBe(true);
         calendar.clickRightMonthDay(11);
         browser.keys(ARROW_LEFT_KEY);
         browser.keys(ENTER_KEY);
-        expect(calendar.isRightMonthDaySelected(11)).toBe(true);
+        expect(calendar.isRightMonthDaySelected(10)).toBe(true);
     });
-    it.skip('should focus the selected day when tab reach days table', () => {
+    it('should focus the selected day when tab reach days table', () => {
         const calendar = new PageCalendar(CALENDAR);
         calendar.clickLeftMonthSelectYear();
         expect(calendar.isLeftMonthDayFocused(11)).toBe(false);
         browser.keys(ESCAPE_KEY);
-        browser.keys(TAB_KEY);
-        browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);
         expect(calendar.isLeftMonthDayFocused(11)).toBe(true);
         calendar.clickRightMonthDay(11);
@@ -173,10 +171,9 @@ describe('Calendar', () => {
         expect(calendar.isRightMonthDayFocused(11)).toBe(false);
         browser.keys(ESCAPE_KEY);
         browser.keys(TAB_KEY);
-        browser.keys(TAB_KEY);
         expect(calendar.isRightMonthDayFocused(11)).toBe(true);
     });
-    it.skip('should change to next year when ALT + PAGEDOWN keys are pressed', () => {
+    it('should change to next year when ALT + PAGEDOWN keys are pressed', () => {
         const calendar = new PageCalendar(CALENDAR);
         calendar.clickLeftMonthDay(10);
         browser.keys([ALT_KEY, PAGEDOWN_KEY]);
@@ -214,7 +211,6 @@ describe('Calendar', () => {
         expect(calendar.isRightYearSelectFocused()).toBe(false);
         expect(calendar.isNextMonthButtonFocused()).toBe(true);
     });
-
     it('should move from calendar controls to days when TAB key is pressed', () => {
         const calendar = new PageCalendar(CALENDAR);
         calendar.clickPrevMonthButton();

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { axe } from 'jest-axe';
+import axe from '../../../../axe';
 import Drawer from '..';
 import Button from '../../Button';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Pagination from '../';
+import Pagination from '..';
 
 describe('<Pagination />', () => {
     it('should disable the previous button if the active page is the first', () => {

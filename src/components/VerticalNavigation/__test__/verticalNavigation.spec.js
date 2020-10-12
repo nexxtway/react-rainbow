@@ -1,9 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import VerticalNavigation from './../';
-import VerticalSection from './../../VerticalSection';
-import VerticalSectionOverflow from './../../VerticalSectionOverflow';
-import VerticalItem from './../../VerticalItem';
+import VerticalNavigation from '..';
+import VerticalSection from '../../VerticalSection';
+import VerticalSectionOverflow from '../../VerticalSectionOverflow';
+import VerticalItem from '../../VerticalItem';
 
 describe('<VerticalNavigation/>', () => {
     it('should set the ariaLabel passed as aria-label in the nav element', () => {
