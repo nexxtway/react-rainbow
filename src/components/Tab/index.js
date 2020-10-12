@@ -60,6 +60,7 @@ class TabItem extends Component {
             id,
             ariaControls,
             fullWidth,
+            variant,
             disabled,
         } = this.props;
         const isActive = this.isSelected();
@@ -68,6 +69,7 @@ class TabItem extends Component {
             <StyledContainer
                 className={className}
                 fullWidth={fullWidth}
+                variant={variant}
                 isActive={isActive}
                 style={style}
                 title={title}
@@ -84,6 +86,7 @@ class TabItem extends Component {
                     isActive={isActive}
                     disabled={disabled}
                     fullWidth={fullWidth}
+                    variant={variant}
                     data-active={isActive}
                 >
                     <TruncatedText>{label}</TruncatedText>
