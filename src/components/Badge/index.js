@@ -4,7 +4,7 @@ import StyledContainer from './styled/container';
 import Content from './content';
 
 /**
- * Badges are labels that hold small amounts of information. They have rounded corners.
+ * Badges are labels that hold small amounts of information.
  */
 export default function Badge(props) {
     const { className, style, label, title, children, variant } = props;
