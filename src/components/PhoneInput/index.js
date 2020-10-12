@@ -7,6 +7,7 @@ import RenderIf from '../RenderIf';
 import StyledContainer from '../Input/styled/container';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
+import AssistiveText from '../AssistiveText';
 import {
     StyledInputContainer,
     StyledInput,
@@ -94,8 +95,8 @@ const PhoneInput = React.forwardRef((props, ref) => {
         focusIndex > -1,
     );
 
-    const handleFocus = useHandleFocus(focusIndex, onFocus, setFocusIndex);
-    const handleBlur = useHandleBlur(focusIndex, onBlur);
+    const handleFocus = useHandleFocus(focusIndex, onFocus, setFocusIndex, value);
+    const handleBlur = useHandleBlur(focusIndex, onBlur, value);
 
     const isOpen = focusIndex === 1;
     const handleCountryChange = useHandleCountryChange(phone, onChange, setFocusIndex, isOpen);
@@ -155,11 +156,13 @@ const PhoneInput = React.forwardRef((props, ref) => {
                         onBlur={handleBlur}
                         tabIndex={tabIndex}
                         disabled={disabled}
+                        type="button"
                     >
                         <StyledFlagContainer disabled={disabled}>
                             {flagIcon}
                             <StyledIndicator error={error} disabled={disabled} />
                         </StyledFlagContainer>
+                        <AssistiveText text="select country" />
                     </StyledTrigger>
                 </RenderIf>
                 <RenderIf isTrue={isOnlyCountry}>
@@ -224,7 +227,14 @@ const PhoneInput = React.forwardRef((props, ref) => {
 
 PhoneInput.propTypes = {
     /** Specifies the value of an input element. */
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({
+            countryCode: PropTypes.string,
+            isoCode: PropTypes.string,
+            phone: PropTypes.string,
+        }),
+    ]),
     /** The name of the input. */
     name: PropTypes.string,
     /** Text label for the input. */
@@ -289,7 +299,11 @@ PhoneInput.defaultProps = {
     onFocus: () => {},
     onBlur: () => {},
     onChange: () => {},
-    value: undefined,
+    value: {
+        countryCode: '+1',
+        isoCode: 'us',
+        phone: '',
+    },
     countries: [
         'af',
         'ax',
