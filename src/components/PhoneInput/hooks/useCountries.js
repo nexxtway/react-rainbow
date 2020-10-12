@@ -4,13 +4,17 @@ import customWarning from './../customWarning';
 
 export default function useCountries(countries) {
     return useMemo(() => {
+        const filteredCountries = allCountries.filter(country =>
+            countries.includes(country.isoCode),
+        );
+
         if (countries.length === 0) {
             return allCountries;
         }
-        if (allCountries.filter(country => countries.includes(country.isoCode)).length === 0) {
+        if (filteredCountries.length === 0) {
             customWarning();
             return allCountries;
         }
-        return allCountries.filter(country => countries.includes(country.isoCode));
+        return filteredCountries;
     }, [countries]);
 }
