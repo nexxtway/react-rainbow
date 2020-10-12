@@ -1,9 +1,17 @@
 import React from 'react';
 import { connectHits } from 'react-instantsearch-dom';
+import { StyledEmptyContainer, StyledEmptyTitle, StyledEmptyDescription } from '../../styled';
 
 const ItemList = ({ component: Component, items }) => {
     if (items.length === 0) {
-        return <span>Empty </span>;
+        return (
+            <StyledEmptyContainer>
+                <StyledEmptyTitle>It’s empty here </StyledEmptyTitle>
+                <StyledEmptyDescription>
+                    Our robots did not find any match...
+                </StyledEmptyDescription>
+            </StyledEmptyContainer>
+        );
     }
     return items.map((item, index) => {
         const key = `item_${index}`;

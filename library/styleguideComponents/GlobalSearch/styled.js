@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 import AlgoliaLogo from './algoliaConnectedComponents/AlgoliaLogo/index';
 import SearchInput from './algoliaConnectedComponents/SearchInput';
+import SearchIcon from './algoliaConnectedComponents/SearchInput/searchIcon';
 
 export const StyledSearchInput = styled(SearchInput)`
     width: 320px;
     margin-right: 24px;
+
+    @media (max-width: 800px) {
+        display: none;
+    }
 `;
 
 export const Dropdown = styled.div`
@@ -97,4 +102,40 @@ export const StyledAlgoliaLogo = styled(AlgoliaLogo)`
     align-items: center;
     color: #8592a0;
     margin-top: 8px;
+`;
+
+export const StyledEmptyContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 32px auto;
+    box-sizing: border-box;
+`;
+
+export const StyledEmptyTitle = styled.h1`
+    font-size: 18px;
+    font-weight: 900;
+    text-align: center;
+    color: rgb(42, 48, 57);
+    margin: 0;
+    padding: 0;
+`;
+
+export const StyledEmptyDescription = styled.h2`
+    font-size: 14px;
+    text-align: center;
+    color: rgb(42, 48, 57);
+    margin: 0;
+    margin-top: 12px;
+    padding: 0;
+    font-weight: inherit;
+`;
+
+export const StyledSearchIcon = styled(SearchIcon)`
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
 `;

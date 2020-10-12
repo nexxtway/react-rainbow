@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import GlobalSearch from '../GlobalSearch';
 
 export const StyledHeading = styled.header`
     position: fixed;
