@@ -1,5 +1,5 @@
 # Badges variant
-##### Badges change color according to the variant applied to them. You can use a lightest or outline brand for borders, or even change it for a default, inverse, brand, warning, success, or error variant that we provide you. 
+##### Badges change color according to the variant applied to them. In the examples below, you can find all the variants that we offer you.
 
 ```js
 import React from 'react';
