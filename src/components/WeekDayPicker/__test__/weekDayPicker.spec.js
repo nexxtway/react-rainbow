@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import WeekDayPicker from '../';
+import WeekDayPicker from '..';
 import { StyledHelpText } from '../styled';
 import StyledTextError from '../../Input/styled/errorText';
 import WeekDayItems from '../weekDayItems';

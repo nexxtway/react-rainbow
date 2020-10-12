@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
+import axe from '../../../../axe';
 import ActivityTimeline from '..';
-import TimelineMarker from './../../TimelineMarker';
+import TimelineMarker from '../../TimelineMarker';
 
 describe('<ActivityTimeline/>', () => {
     it('should be accessible when label is passed on TimelineMarker', async () => {

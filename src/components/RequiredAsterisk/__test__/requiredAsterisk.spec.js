@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import RequiredAsterisk from './../index';
+import RequiredAsterisk from '..';
 import StyledAsterisk from '../styledAsterisk';
 
 describe('<InputRequiredAsterisk/>', () => {

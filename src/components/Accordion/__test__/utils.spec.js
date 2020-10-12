@@ -1,4 +1,4 @@
-import { getChildAccordionSectionNodes, insertChildOrderly } from './../utils';
+import { getChildAccordionSectionNodes, insertChildOrderly } from '../utils';
 
 describe('<Accordion/> utils', () => {
     describe('insertChildOrderly', () => {

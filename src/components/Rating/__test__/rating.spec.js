@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Rating from '../index';
+import Rating from '..';
 
 describe('<Rating />', () => {
     it('should set the value of the star hovered to the state and set the value passed to the state when the mouse leave the component', () => {

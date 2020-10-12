@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 import decomposeColor from './decomposeColor';
 import bound01 from './bound01';
 

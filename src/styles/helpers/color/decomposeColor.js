@@ -1,4 +1,4 @@
-import { hexToRgba } from './index';
+import hexToRgba from './hexToRgba';
 
 export default function decomposeColor(color) {
     // Idempotent

@@ -21,12 +21,12 @@ const InputItem = React.forwardRef((props, ref) => {
         isActive,
     } = props;
 
-    const handleOnKeyDown = (e, inputIndex) => {
-        const shouldMovePrev = inputIndex !== 0 && !value && e.keyCode === DELETE_KEY;
+    const handleOnKeyDown = (event, inputIndex) => {
+        const shouldMovePrev = inputIndex !== 0 && !value && event.keyCode === DELETE_KEY;
         if (shouldMovePrev) {
             onChange('', inputIndex - 1);
         }
-        onKeyDown(e);
+        onKeyDown(event);
     };
 
     return (
@@ -39,10 +39,10 @@ const InputItem = React.forwardRef((props, ref) => {
             error={error}
             tabIndex={tabIndex}
             onClick={onClick}
-            onChange={e => onChange(e.target.value, index)}
-            onFocus={e => onFocus(e, index)}
+            onChange={event => onChange(event.target.value, index)}
+            onFocus={event => onFocus(event, index)}
             onBlur={onBlur}
-            onKeyDown={e => handleOnKeyDown(e, index)}
+            onKeyDown={event => handleOnKeyDown(event, index)}
             onPaste={onPaste}
             ref={ref}
             pattern="\d*"

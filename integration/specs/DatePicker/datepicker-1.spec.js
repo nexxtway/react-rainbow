@@ -62,7 +62,7 @@ describe('DatePicker base', () => {
         datePicker.waitUntilOpen();
         expect(datePicker.getDate()).toBe('Friday, 10/25/2019');
     });
-    it.skip('should set the right value when select a date', () => {
+    it('should set the right value when select a date', () => {
         const datePicker = new PageDatePicker(DATEPICKER);
         datePicker.click();
         datePicker.waitUntilOpen();
@@ -77,8 +77,6 @@ describe('DatePicker base', () => {
         datePicker.click();
         datePicker.waitUntilOpen();
         expect(datePicker.getValue()).toBe('Friday, 10/25/2019');
-        browser.keys(TAB_KEY);
-        browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);

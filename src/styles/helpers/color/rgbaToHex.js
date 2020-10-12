@@ -1,7 +1,7 @@
-import { decomposeColor } from '.';
+import decomposeColor from './decomposeColor';
 
-function pad2(c) {
-    return c.length === 1 ? `0${c}` : `${c}`;
+function pad2(value) {
+    return value.length === 1 ? `0${value}` : `${value}`;
 }
 
 export default function rgbaToHex(color) {

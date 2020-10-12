@@ -76,7 +76,7 @@ describe('ButtonMenu with subheaders example', () => {
         browser.keys(ARROW_DOWN_KEY);
         expect(thirdMenuItem.hasFocus()).toBe(true);
     });
-    it.skip('should move to the last item when first item is active and press arrow up', () => {
+    it('should move to the last item when first item is active and press arrow up', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         buttonMenu.click();
         const menuItem = buttonMenu.getItem(4);

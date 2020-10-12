@@ -1,4 +1,4 @@
-import { decomposeColor } from './index';
+import decomposeColor from './decomposeColor';
 import hslToRgb from './hslToRgb';
 
 /* eslint-disable no-param-reassign */

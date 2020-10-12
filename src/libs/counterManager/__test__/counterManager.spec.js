@@ -1,4 +1,4 @@
-import CounterManager from '../';
+import CounterManager from '..';
 
 describe('CounterManager', () => {
     it('should set counter to 3', () => {

@@ -12,6 +12,7 @@ describe('Picklist with multiple options', () => {
         const component = $(PICKLIST);
         component.waitForExist();
     });
+
     it('should scroll down to see the next option focused when initially is not visible', () => {
         const picklist = new PagePicklist(PICKLIST);
         picklist.clickInput();

@@ -31,8 +31,8 @@ const tableData = [
 ];
 
 const eventMap = {};
-document.addEventListener = jest.fn((event, cb) => {
-    eventMap[event] = cb;
+document.addEventListener = jest.fn((event, callback) => {
+    eventMap[event] = callback;
 });
 const preventDefault = jest.fn();
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
-import StripeCardInput from './../';
+import axe from '../../../../axe';
+import StripeCardInput from '..';
 
 describe('<StripeCardInput/>', () => {
     it('should be accessible', async () => {

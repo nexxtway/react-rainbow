@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Label from './../label';
+import Label from '../label';
 
 describe('<InputCheckboxLabel/>', () => {
     it('should set the inputId passed as the htmlFor prop in the label element', () => {

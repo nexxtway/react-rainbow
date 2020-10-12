@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ProgressIndicator from './../index';
+import ProgressIndicator from '../index';
 import ProgressStep from '../../ProgressStep';
 import StyledActiveIcon from '../../ProgressStep/styled/activeIcon';
 import StyledInactiveIcon from '../../ProgressStep/styled/inactiveIcon';

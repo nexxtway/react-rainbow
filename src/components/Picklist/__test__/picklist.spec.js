@@ -9,11 +9,12 @@ import {
     DOWN_KEY,
     LEFT_KEY,
 } from '../../../libs/constants';
-import { Component as Picklist } from '../';
+import { Component as Picklist } from '..';
 import PicklistOption from '../../PicklistOption';
 import InternalOverlay from '../../InternalOverlay';
 
 jest.mock('../../InternalOverlay', () =>
+    // eslint-disable-next-line react/jsx-props-no-spreading
     jest.fn((...props) => <div {...props} data-id="internal-dropdown" />),
 );
 

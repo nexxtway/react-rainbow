@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 import resolverUpLeft from '../resolverUpLeft';
 
 describe('resolverUpLeft', () => {
