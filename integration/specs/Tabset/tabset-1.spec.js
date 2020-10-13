@@ -50,7 +50,7 @@ describe('Tabset base example', () => {
         browser.keys(ARROW_RIGHT_KEY);
         expect(tabItem.hasFocus()).toBe(false);
     });
-    it.skip('should set the buttons visible when the screen size is resized', () => {
+    it('should set the buttons visible when the screen size is resized', () => {
         const tabset = new PageTabset(TABSET);
         browser.setWindowSize(1920, 1080);
         expect(tabset.isButtonsVisible()).toBe(false);

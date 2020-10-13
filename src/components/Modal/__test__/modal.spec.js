@@ -6,7 +6,7 @@ import {
     enableBodyScroll,
     clearAllBodyScrollLocks,
 } from '../../../libs/scrollController';
-import Modal from '../';
+import Modal from '..';
 import StyledContent from '../styled/content';
 import StyledCloseButton from '../styled/closeButton';
 

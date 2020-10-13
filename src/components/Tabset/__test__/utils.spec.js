@@ -8,7 +8,7 @@ import {
     getUpdatedTabsetChildren,
     getLeftButtonDisabledState,
     getRightButtonDisabledState,
-} from './../utils';
+} from '../utils';
 
 describe('<Tabset/> utils', () => {
     describe('insertChildOrderly', () => {

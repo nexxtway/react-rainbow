@@ -1,5 +1,5 @@
 export default function getNormalizedOptions(options) {
-    const isArray = Array.isArray;
+    const { isArray } = Array;
     if (isArray(options)) {
         return options.reduce((arr, item) => {
             if (item.type === 'section') {

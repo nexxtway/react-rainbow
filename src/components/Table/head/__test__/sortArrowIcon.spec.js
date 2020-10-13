@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import SortArrowIcon from '../sortArrowIcon';
-import StyledSortArrowIcon from './../styled/sortArrowIcon';
+import StyledSortArrowIcon from '../styled/sortArrowIcon';
 
 describe('<SortArrowIcon />', () => {
     it('should set the prop arrowAscendent to true when direction is asc', () => {

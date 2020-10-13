@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import RenderIf from '../../../components/RenderIf';
+import RenderIf from '../../RenderIf';
 import UploadFileButton from './uploadFileButton';
 import Preview from './preview';
 import StyledContainer from './styled/container';

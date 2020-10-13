@@ -1,5 +1,7 @@
 const PageTable = require('../../../src/components/Table/pageObject');
 const { SHIFT_KEY } = require('../../constants');
+const holdDownKey = require('../../helpers/holdDownKey');
+const releaseKey = require('../../helpers/releaseKey');
 
 const TABLE = '#table-5';
 
@@ -12,6 +14,7 @@ describe('Table with selection', () => {
         const component = $(TABLE);
         component.waitForExist();
     });
+
     it('should select and then deselect a row', () => {
         const table = new PageTable(TABLE);
         table.waitUntilDataIsLoaded();
@@ -120,9 +123,9 @@ describe('Table with selection', () => {
         const row6 = table.getRow(5);
         const row7 = table.getRow(6);
         row1.selectRow();
-        browser.keys(SHIFT_KEY);
+        holdDownKey(SHIFT_KEY);
         row5.selectRow();
-        browser.keys(SHIFT_KEY);
+        releaseKey(SHIFT_KEY);
         expect(row1.isRowSelected()).toBe(true);
         expect(row2.isRowSelected()).toBe(true);
         expect(row3.isRowSelected()).toBe(true);
@@ -143,9 +146,9 @@ describe('Table with selection', () => {
         const row7 = table.getRow(6);
         table.selectAllRows();
         row1.deselectRow();
-        browser.keys(SHIFT_KEY);
+        holdDownKey(SHIFT_KEY);
         row4.deselectRow();
-        browser.keys(SHIFT_KEY);
+        releaseKey(SHIFT_KEY);
         expect(row1.isRowSelected()).toBe(false);
         expect(row2.isRowSelected()).toBe(false);
         expect(row3.isRowSelected()).toBe(false);

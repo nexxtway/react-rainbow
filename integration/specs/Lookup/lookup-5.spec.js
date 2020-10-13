@@ -54,9 +54,9 @@ describe('Lookup with options type section example', () => {
         logoElement.click();
         lookup.click();
         lookup.waitUntilOpen();
-        const option2 = lookup.getOption(1);
+        const option1 = lookup.getOption(0);
         expect(option3.isActive()).toBe(false);
-        expect(option2.isActive()).toBe(true);
+        expect(option1.isActive()).toBe(true);
     });
     it('should scroll up to see the first option', () => {
         const lookup = new PageLookup(LOOKUP);
@@ -64,17 +64,18 @@ describe('Lookup with options type section example', () => {
         lookup.setQuery('a');
         lookup.waitUntilOpen();
         const option1 = lookup.getOption(0);
-        lookup.getOption(3).hover();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        lookup.getOption(2).hover();
+        lookup.getOption(7).hover();
+        browser.keys(ARROW_UP_KEY);
+        browser.keys(ARROW_UP_KEY);
+        browser.keys(ARROW_UP_KEY);
+        browser.keys(ARROW_UP_KEY);
+        browser.keys(ARROW_UP_KEY);
         browser.keys(ARROW_UP_KEY);
         browser.keys(ARROW_UP_KEY);
         browser.keys(ARROW_UP_KEY);
         expect(option1.isVisible()).toBe(true);
     });
-    it.skip('should scroll down to see the next option focused when initially is not visible', () => {
+    it('should scroll down to see the next option focused when initially is not visible', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
         lookup.setQuery('a');

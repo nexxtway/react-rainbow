@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
-import CheckboxToggle from './../';
+import axe from '../../../../axe';
+import CheckboxToggle from '..';
 
 describe('<CheckboxToggle/>', () => {
     it('should be accessible when label is passed', async () => {

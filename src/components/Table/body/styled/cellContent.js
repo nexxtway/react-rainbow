@@ -17,10 +17,11 @@ const StyledCellContent = attachThemeAttrs(styled.div)`
     box-sizing: border-box;
 
     ${props =>
-        props.theme.variant === 'listview' &&
+        props.component &&
         `
-            padding: 0;
-        `};
+        padding: 0;
+        }
+    `}
 `;
 
 export default StyledCellContent;

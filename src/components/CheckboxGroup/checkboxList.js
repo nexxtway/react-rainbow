@@ -10,6 +10,7 @@ export default function CheckboxList(props) {
 
         return (
             <Checkbox
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...option}
                 checked={isOptionSelected(values, option)}
                 onChange={onChange}

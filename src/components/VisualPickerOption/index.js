@@ -86,6 +86,7 @@ class PickerOption extends Component {
 export default function VisualPickerOption(props) {
     return (
         <VisualPickerConsumer>
+            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             {context => <PickerOption {...props} {...context} />}
         </VisualPickerConsumer>
     );
