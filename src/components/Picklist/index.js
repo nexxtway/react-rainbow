@@ -104,9 +104,8 @@ class Picklist extends Component {
     }
 
     handleWindowScroll(_, event) {
-        if (event.target !== this.dropdownRef) {
-            this.closeMenu();
-        }
+        if (this.dropdownRef.current.contains(event.target)) return;
+        this.closeMenu();
     }
 
     closeAndFocusInput() {
