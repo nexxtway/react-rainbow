@@ -7,14 +7,29 @@ const StyledContainer = attachThemeAttrs(styled.div)`
     box-sizing: border-box;
 
     @media (max-width: 600px) {
-        border-bottom: solid 1px ${props => props.palette.border.divider};
-        background-color: ${props => props.palette.background.main} !important;
+        &::before {
+            content: "";
+            height: 1px;
+            width: 100%;
+            left: 0;
+            bottom: 0px;
+            position: absolute;
+            background-color: ${props => props.palette.border.divider};
+        }
     }
 
     ${props =>
         props.variant === 'line' &&
         `
-            border-bottom: solid 1px ${props.palette.border.divider};
+            &::before {
+                content: "";
+                height: 1px;
+                width: 100%;
+                left: 0;
+                bottom: 0px;
+                position: absolute;
+                background-color: ${props.palette.border.divider};
+            }
         `};
 `;
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const variants = ['card', 'line'];
+const variantMap = { card: 'card', line: 'line' };
 const StyledContainer = attachThemeAttrs(styled.li)`
     position: relative;
     display: flex;
@@ -32,7 +32,7 @@ const StyledContainer = attachThemeAttrs(styled.li)`
         `};
     ${props =>
         props.isActive &&
-        (props.variant === 'card' || !variants.includes(props.variant)) &&
+        (variantMap[props.variant] === 'card' || !variantMap[props.variant]) &&
         `
             background-color: ${props.palette.background.main};
             color: ${props.palette.brand.main};
