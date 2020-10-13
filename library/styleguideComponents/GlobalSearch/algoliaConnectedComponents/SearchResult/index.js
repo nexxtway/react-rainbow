@@ -8,11 +8,11 @@ const RenderIfQuery = connectStateResults(({ searchState, children }) => {
     return searchState && searchState.query ? children : null;
 });
 
-const SearchResult = () => {
+const SearchResult = ({ onSelect }) => {
     return (
         <RenderIfQuery>
             <Dropdown>
-                <ResultItems component={ResultItem} />
+                <ResultItems component={ResultItem} onSelect={onSelect} />
                 <StyledAlgoliaLogo />
             </Dropdown>
         </RenderIfQuery>
