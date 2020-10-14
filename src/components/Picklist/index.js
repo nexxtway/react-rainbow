@@ -5,6 +5,7 @@ import RenderIf from '../RenderIf';
 import { ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
 import { uniqueId } from '../../libs/utils';
 import OutsideClick from '../../libs/outsideClick';
+import { WindowScrolling } from '../../libs/scrollController';
 import Label from '../Input/label';
 import getNormalizeValue from './helpers/getNormalizeValue';
 import shouldOpenMenu from './helpers/shouldOpenMenu';
@@ -53,7 +54,9 @@ class Picklist extends Component {
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.closeAndFocusInput = this.closeAndFocusInput.bind(this);
+        this.handleWindowScroll = this.handleWindowScroll.bind(this);
         this.outsideClick = new OutsideClick();
+        this.windowScrolling = new WindowScrolling();
         this.activeChildren = [];
         this.state = {
             isOpen: false,
@@ -69,11 +72,13 @@ class Picklist extends Component {
         const { isOpen } = this.state;
         if (!wasOpen && isOpen) {
             this.outsideClick.startListening(this.containerRef.current, () => this.closeMenu());
+            this.windowScrolling.startListening(this.handleWindowScroll);
         }
     }
 
     componentWillUnmount() {
         this.outsideClick.stopListening();
+        this.windowScrolling.stopListening();
     }
 
     getErrorMessageId() {
@@ -98,6 +103,11 @@ class Picklist extends Component {
         return null;
     }
 
+    handleWindowScroll(event) {
+        if (this.dropdownRef.current.contains(event.target)) return;
+        this.closeMenu();
+    }
+
     closeAndFocusInput() {
         this.closeMenu();
         this.focus();
@@ -111,6 +121,7 @@ class Picklist extends Component {
 
     closeMenu() {
         this.outsideClick.stopListening();
+        this.windowScrolling.stopListening();
         this.setState({
             isOpen: false,
         });
