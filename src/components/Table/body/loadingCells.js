@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import RenderIf from '../../RenderIf';
 import { SELECTABLE_CHECKBOX } from '../helpers/columns';
 import StyledTdLoadingContainer from './styled/tdLoadingContainer';
 import StyledLoadingCell from './styled/loadingCell';
@@ -13,7 +14,7 @@ function getRandomWidth() {
 
 export default function LoadingCells({ value, columns }) {
     if (value > 0) {
-        return Array(value)
+        return Array(columns.length)
             .fill()
             .map((item, index) => {
                 const key = `loading-cell-${index}`;
@@ -26,7 +27,9 @@ export default function LoadingCells({ value, columns }) {
                 return (
                     <StyledTdLoadingContainer key={key}>
                         <StyledLoadingCell data-id="table_body--loading">
-                            <StyledElementLoading style={styles} />
+                            <RenderIf isTrue={index < value}>
+                                <StyledElementLoading style={styles} />
+                            </RenderIf>
                         </StyledLoadingCell>
                     </StyledTdLoadingContainer>
                 );
