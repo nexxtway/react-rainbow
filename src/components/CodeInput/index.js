@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 import React, { useEffect, useImperativeHandle, useRef } from 'react';
 import PropTypes from 'prop-types';
 import InputItems from './inputItems';
@@ -64,15 +65,15 @@ const CodeInput = React.forwardRef((props, ref) => {
         }
     };
 
-    const handleOnFocus = (e, index) => {
+    const handleOnFocus = (event, index) => {
         if (focusedIndex !== index) {
             setFocus(inputRef);
         }
-        onFocus(e);
+        onFocus(event);
     };
 
-    const handleOnPaste = e => {
-        onChange(getNumbersFromClipboard(e.clipboardData.getData('Text')));
+    const handleOnPaste = event => {
+        onChange(getNumbersFromClipboard(event.clipboardData.getData('Text')));
     };
 
     return (

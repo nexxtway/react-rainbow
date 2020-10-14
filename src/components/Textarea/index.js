@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import autosize from 'autosize';
-import withReduxForm from './../../libs/hocs/withReduxForm';
-import { uniqueId } from './../../libs/utils';
+import withReduxForm from '../../libs/hocs/withReduxForm';
+import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
-import Label from './../Input/label';
+import Label from '../Input/label';
 import StyledContainer from './styled/container';
 import StyledTextareaContainer from './styled/textareaContainer';
 import StyledTextarea from './styled/textarea';
@@ -111,6 +111,7 @@ class Textarea extends Component {
             footer,
             variant,
         } = this.props;
+        const { isFocused } = this.state;
 
         return (
             <StyledContainer className={className} style={style} id={id}>
@@ -128,7 +129,7 @@ class Textarea extends Component {
                     readOnly={readOnly}
                     disabled={disabled}
                     variant={variant}
-                    isFocused={this.state.isFocused}
+                    isFocused={isFocused}
                 >
                     <RenderIf isTrue={header}>{header}</RenderIf>
                     <StyledTextarea

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Options from './../options';
+import Options from '../options';
 
 const options = [
     { value: 'option 1', label: 'option 1' },

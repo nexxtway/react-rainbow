@@ -76,6 +76,7 @@ const PrimitiveMenu = React.forwardRef((props, ref) => {
             onKeyDown={handleKeyDown}
         >
             <Trigger
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...rest}
                 isOpen={isOpen}
                 title={title}

@@ -6,7 +6,7 @@ import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-com
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
-const badgeStyles = { color: '#1de9b6' };
+const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -39,7 +39,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 
-const badgeStyles = { color: '#1de9b6' };
+const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 const tableContainerStyles = { height: 300 };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
@@ -120,7 +120,7 @@ import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-com
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
-const badgeStyles = { color: '#1de9b6' };
+const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
 
@@ -191,7 +191,7 @@ import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-com
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
-const badgeStyles = { color: '#1de9b6' };
+const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -231,7 +231,7 @@ import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-com
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
-const badgeStyles = { color: '#1de9b6' };
+const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -271,7 +271,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 
-const badgeStyles = { color: '#1de9b6' };
+const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -310,9 +310,9 @@ import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const StatusBadge = ({ value }) => {
     if (value === 'verified') {
-        return <Badge label={value} variant="outline-brand" />;
+        return <Badge label={value} variant="outline-brand" className="rainbow-m-left_small" />;
     }
-    return <Badge label={value} variant="lightest" />;
+    return <Badge label={value} variant="lightest" className="rainbow-m-left_small" />;
 };
 
 const MenuAction = ({value,name}) => {
@@ -336,8 +336,9 @@ const ButtonAction = (props) => {
             menuSize="x-small"
             icon={<FontAwesomeIcon icon={faEllipsisV} />}
             buttonVariant="base"
+            className="rainbow-m-left_xx-small"
         >
-            <MenuAction value={value} name={name}/>   
+            <MenuAction value={value} name={name}/>
         </ButtonMenu>
     );
 
@@ -373,7 +374,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 
-const badgeStyles = { color: '#1de9b6' };
+const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -407,7 +408,7 @@ import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const data = [];
 
-const badgeStyles = { color: '#1de9b6' };
+const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -481,9 +482,9 @@ const tableContainerStyles = { height: 300 };
 
 const StatusBadge = ({ value }) => {
     if (value === 'verified') {
-        return <Badge label={value} variant="outline-brand" />;
+        return <Badge label={value} variant="outline-brand" className="rainbow-m-left_small" />;
     }
-    return <Badge label={value} variant="lightest" />;
+    return <Badge label={value} variant="lightest" className="rainbow-m-left_small" />;
 };
 
 
@@ -504,6 +505,8 @@ const Subtitle = styled.h3.attrs(props => props.theme.rainbow)`
 
 const StyledLink = styled.a.attrs(props => props.theme.rainbow)`
     color: ${props => props.palette.brand.main}
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     &:hover,
     &:visited,
     &:active {
@@ -625,7 +628,7 @@ const WrapDescription = styled.p`
     overflow-wrap: break-word;
     white-space: normal;
     line-height: 20px;
-    margin: 4px 0;
+    margin: 4px 0.5rem;
 `;
 
 function TableCustomAction() {
@@ -687,7 +690,7 @@ import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const columnsNames = ['name', 'status', 'company', 'email'];
 
-const badgeStyles = { color: '#1de9b6' };
+const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -735,6 +738,7 @@ const StyledTaskHeader = styled.span`
 const StyledPriority = styled.div`
     text-transform: capitalize;
     color: #ffffff;
+
     ${props =>
         props.priority === 'hight' &&
         `
@@ -761,7 +765,8 @@ const StyledConstributor = styled.div`
 
 const StyledTask = styled.div`
     text-align: left;
-    padding-left: 15px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 `;
 
 const StyleCoin = styled(Coin)`
@@ -849,6 +854,11 @@ function TableListView() {
                         component={Constributor}
                         defaultWidth={180}
                         sortable
+                    />
+                    <Column
+                        header={<StyledTaskHeader>Task</StyledTaskHeader>}
+                        field="task"
+                        component={Task}
                     />
                     <Column
                         header="Priority"

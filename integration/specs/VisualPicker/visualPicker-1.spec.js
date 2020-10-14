@@ -1,5 +1,4 @@
 const PageVisualPicker = require('../../../src/components/VisualPicker/pageObject');
-
 const { ARROW_LEFT_KEY, ARROW_RIGHT_KEY } = require('../../constants');
 
 const VISUAL_PICKER = '#visual-picker-component-1';

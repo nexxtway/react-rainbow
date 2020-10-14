@@ -7,6 +7,7 @@ import Option from '../Option';
  * @category Form
  */
 export default function PicklistOption(props) {
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <Option {...props} />;
 }
 

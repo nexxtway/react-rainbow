@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import InputRadio from '../';
+import InputRadio from '..';
 
 describe('<InputRadio/>', () => {
     it('should be focusable', () => {

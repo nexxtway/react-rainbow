@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 /* eslint-disable no-underscore-dangle */
 import Chart from 'chart.js';
 

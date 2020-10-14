@@ -1,6 +1,7 @@
+/* eslint-disable id-length */
 import React from 'react';
 import { mount } from 'enzyme';
-import PrimitiveMenu from './../';
+import PrimitiveMenu from '..';
 import ButtonIcon from '../../ButtonIcon';
 
 const mountWithRef = (elWithRef, options) => {

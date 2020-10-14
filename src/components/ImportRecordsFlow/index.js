@@ -4,6 +4,7 @@ import XLSX from 'xlsx';
 import Modal from '../Modal';
 import getDataFromWorkbook from './helpers/getDataFromWorkbook';
 import getHeaderRowFromWorkbook from './helpers/getHeaderRowFromWorkbook';
+// eslint-disable-next-line import/no-cycle
 import getDataToImport from './helpers/getDataToImport';
 import isStepThreeNextButtonDisabled from './helpers/isStepThreeNextButtonDisabled';
 import Footer from './footer';

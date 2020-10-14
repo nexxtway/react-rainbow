@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useTheme } from '../../../libs/hooks';
 
 function InfoIcon({ className, style, isFocused }) {
-    const brand = useTheme().rainbow.palette.brand;
+    const { brand } = useTheme().rainbow.palette;
     const background = isFocused ? brand.dark : brand.main;
     return (
         <svg width={22} height={22} viewBox="0 0 22 22" className={className} style={style}>

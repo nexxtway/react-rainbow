@@ -12,7 +12,7 @@ export default function Month(props) {
     const totalWeeks = (lastDayMonth.getDate() + dayOfWeek + 6 - lastDayMonth.getDay()) / 7;
     const week = addDays(date, -dayOfWeek);
 
-    const weeks = Array.from(Array(totalWeeks), (_, index) => {
+    const weeks = Array.from(Array(totalWeeks), (item, index) => {
         const startDate = addDays(week, 7 * index);
         const endDate = addDays(startDate, 6);
 

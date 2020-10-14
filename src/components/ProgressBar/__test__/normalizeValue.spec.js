@@ -1,4 +1,4 @@
-import normalizeValue from './../normalizeValue';
+import normalizeValue from '../normalizeValue';
 
 describe('<normalizeValue/>', () => {
     it('should return the same value passed if it is between 0 and 100', () => {

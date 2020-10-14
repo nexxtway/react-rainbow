@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { uniqueId } from './../../libs/utils';
+import { uniqueId } from '../../libs/utils';
 import isChecked from './helpers/isChecked';
 import StyledInputHidden from './styled/inputHidden';
 import StyledOptionLabel from './styled/optionLabel';

@@ -19,7 +19,7 @@ import { Arrow } from '../../InternalDropdown/styled';
 import CountriesList from './countriesList';
 import RenderIf from '../../RenderIf';
 import StyledSearchIcon from '../../Lookup/options/styled/searchIcon';
-import StyledOptionsContainer from '../../Lookup/options/styled//optionsContainer';
+import StyledOptionsContainer from '../../Lookup/options/styled/optionsContainer';
 import StyledEmptyMessage from '../../Lookup/options/styled/emptyMessage';
 
 const CountriesDropdown = memo(props => {
@@ -113,8 +113,8 @@ const CountriesDropdown = memo(props => {
 
 CountriesDropdown.propTypes = {
     countries: PropTypes.array,
-    country: PropTypes.object.isRequired,
-    searchRef: PropTypes.object.isRequired,
+    country: PropTypes.object,
+    searchRef: PropTypes.object,
     isOpen: PropTypes.bool,
     setFocusIndex: PropTypes.func,
     onCountryChange: PropTypes.func,

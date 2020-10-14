@@ -1,5 +1,7 @@
 const PageTable = require('../../../src/components/Table/pageObject');
 const { SHIFT_KEY } = require('../../constants');
+const holdDownKey = require('../../helpers/holdDownKey');
+const releaseKey = require('../../helpers/releaseKey');
 
 const TABLE = '#table-7';
 
@@ -113,9 +115,9 @@ describe('Table with selected rows', () => {
         const row7 = table.getRow(6);
         table.deselectAllRows();
         row1.selectRow();
-        browser.keys(SHIFT_KEY);
+        holdDownKey(SHIFT_KEY);
         row6.selectRow();
-
+        releaseKey(SHIFT_KEY);
         expect(row1.isRowSelected()).toBe(true);
         expect(row2.isRowSelected()).toBe(true);
         expect(row3.isRowSelected()).toBe(true);

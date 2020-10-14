@@ -8,7 +8,7 @@ export default function manageTab(node, event) {
         return;
     }
 
-    const shiftKey = event.shiftKey;
+    const { shiftKey } = event;
     const head = tabbable[0];
     const tail = tabbable[tabbable.length - 1];
     let target;
@@ -51,13 +51,13 @@ export default function manageTab(node, event) {
 
     if (!isSafariDesktop) return;
 
-    let x = tabbable.indexOf(document.activeElement);
+    let elem = tabbable.indexOf(document.activeElement);
 
-    if (x > -1) {
-        x += shiftKey ? -1 : 1;
+    if (elem > -1) {
+        elem += shiftKey ? -1 : 1;
     }
 
     event.preventDefault();
 
-    tabbable[x].focus();
+    tabbable[elem].focus();
 }

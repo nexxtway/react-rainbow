@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Textarea from './../';
+import Textarea from '..';
 
 describe('<Textarea/>', () => {
     it('should be focusable', () => {

@@ -7,6 +7,7 @@ export default function ReCaptchaWrapper(props) {
     const shouldRender = isScriptLoaded && isScriptLoadSucceed;
 
     if (shouldRender) {
+        // eslint-disable-next-line react/jsx-props-no-spreading
         return <ReCaptchaComponent {...rest} />;
     }
     return null;
