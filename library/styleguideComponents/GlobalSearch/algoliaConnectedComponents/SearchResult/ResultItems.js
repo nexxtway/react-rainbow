@@ -2,7 +2,7 @@ import React from 'react';
 import { connectHits } from 'react-instantsearch-dom';
 import { StyledEmptyContainer, StyledEmptyTitle, StyledEmptyDescription } from '../../styled';
 
-const ItemList = ({ component: Component, items }) => {
+const ItemList = ({ component: Component, items, onSelect }) => {
     if (items.length === 0) {
         return (
             <StyledEmptyContainer>
@@ -16,13 +16,13 @@ const ItemList = ({ component: Component, items }) => {
     return items.map((item, index) => {
         const key = `item_${index}`;
         // eslint-disable-next-line react/jsx-props-no-spreading
-        return <Component {...item} key={key} />;
+        return <Component {...item} onSelect={onSelect} key={key} />;
     });
 };
 
 // eslint-disable-next-line react/prop-types
-const ResultItems = ({ component, hits }) => {
-    return <ItemList component={component} items={hits} />;
+const ResultItems = ({ component, hits, onSelect }) => {
+    return <ItemList component={component} items={hits} onSelect={onSelect} />;
 };
 
 export default connectHits(ResultItems);
