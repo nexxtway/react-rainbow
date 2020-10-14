@@ -1,13 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import GitHubButton from 'react-github-btn';
-import githublogo from './image/github.svg';
+import StackoverflowIcon from './stackoverflowIcon';
 import {
     StyledContainer,
     StyledGitHubContianer,
     StyledGithubIcon,
     StyledGithubLink,
     StyledHeading,
+    StyledStackoverflowLink,
 } from './styled';
 
 export default function RibbonRenderer() {
@@ -31,8 +32,16 @@ export default function RibbonRenderer() {
                     rel="noopener noreferrer"
                     title="Github repository"
                 >
-                    <StyledGithubIcon src={githublogo} alt="github logo" />
+                    <StyledGithubIcon />
                 </StyledGithubLink>
+                <StyledStackoverflowLink
+                    href="https://stackoverflow.com/questions/tagged/react-rainbow%2bor%2breact-rainbow-components%2bor%2brainbow-components?tab=Active"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Stackoverflow"
+                >
+                    <StyledGithubIcon as={StackoverflowIcon} />
+                </StyledStackoverflowLink>
             </StyledContainer>
         </StyledHeading>
     );

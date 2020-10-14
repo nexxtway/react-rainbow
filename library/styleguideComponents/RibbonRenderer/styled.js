@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import GithubIcon from './githubIcon';
 
 export const StyledHeading = styled.header`
     position: fixed;
@@ -40,16 +41,17 @@ export const StyledGitHubContianer = styled.div`
 `;
 
 export const StyledGithubLink = styled.a`
-    width: 32px;
-    height: 32px;
-    border-radius: 32px;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    color: #24292e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     :hover {
         background: rgba(1, 1, 1, 0.05);
-
-        > img > svg {
-            fill: red;
-        }
+        color: #000;
     }
 
     @media (max-width: 800px) {
@@ -59,7 +61,21 @@ export const StyledGithubLink = styled.a`
     }
 `;
 
-export const StyledGithubIcon = styled.img`
-    width: 100%;
-    height: 100%;
+export const StyledGithubIcon = styled(GithubIcon)`
+    width: 28px;
+    height: 28px;
+`;
+
+export const StyledStackoverflowLink = styled.a`
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+
+    :hover {
+        background: rgba(1, 1, 1, 0.05);
+    }
 `;
