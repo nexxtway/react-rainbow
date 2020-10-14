@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import GitHubButton from 'react-github-btn';
-import githublogo from './image/github.svg';
+import StackoverflowIcon from './stackoverflowIcon';
 import GlobalSearch from '../GlobalSearch';
 import {
     StyledContainer,
@@ -9,6 +9,7 @@ import {
     StyledGithubIcon,
     StyledGithubLink,
     StyledHeading,
+    StyledStackoverflowLink,
 } from './styled';
 
 export default function RibbonRenderer() {
@@ -31,9 +32,18 @@ export default function RibbonRenderer() {
                     href="https://github.com/nexxtway/react-rainbow"
                     target="_blank"
                     rel="noopener noreferrer"
+                    title="Github repository"
                 >
-                    <StyledGithubIcon src={githublogo} alt="github logo" />
+                    <StyledGithubIcon />
                 </StyledGithubLink>
+                <StyledStackoverflowLink
+                    href="https://stackoverflow.com/questions/tagged/react-rainbow+or+react-rainbow-components+or+rainbow-components"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Stackoverflow"
+                >
+                    <StyledGithubIcon as={StackoverflowIcon} />
+                </StyledStackoverflowLink>
             </StyledContainer>
         </StyledHeading>
     );
