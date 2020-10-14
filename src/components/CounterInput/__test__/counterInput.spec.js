@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import CounterInput from '../';
+import CounterInput from '..';
 
 describe('<CounterInput />', () => {
     it('should mount a input type number with a value of 5', () => {
