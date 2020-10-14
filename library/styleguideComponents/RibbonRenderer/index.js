@@ -35,7 +35,7 @@ export default function RibbonRenderer() {
                     <StyledGithubIcon />
                 </StyledGithubLink>
                 <StyledStackoverflowLink
-                    href="https://stackoverflow.com/questions/tagged/react-rainbow%2bor%2breact-rainbow-components%2bor%2brainbow-components?tab=Active"
+                    href="https://stackoverflow.com/questions/tagged/react-rainbow+or+react-rainbow-components+or+rainbow-components"
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Stackoverflow"
