@@ -1,4 +1,4 @@
-import addMonths from './../addMonths';
+import addMonths from '../addMonths';
 
 describe('addMonths', () => {
     it('should return a date 2 month after', () => {

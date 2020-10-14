@@ -1,4 +1,4 @@
-import getLastDayMonth from './../getLastDayMonth';
+import getLastDayMonth from '../getLastDayMonth';
 
 describe('getLastDayMonth', () => {
     it('should return a Date of 2019/03/31 when 2019/03/01', () => {

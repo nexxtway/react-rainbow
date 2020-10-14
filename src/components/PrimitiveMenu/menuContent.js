@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Provider } from './context';
 import { insertChildOrderly, getChildMenuItemNodes } from './utils';
 import useArrowKeyNav from './hooks/useArrowKeyNav';
-import Spinner from './../Spinner';
+import Spinner from '../Spinner';
 import { StyledContent } from './styled';
 
 export default function MenuContent(props) {
@@ -29,7 +29,7 @@ export default function MenuContent(props) {
         onRequestClose();
     }, [clearFocusedChild, onRequestClose]);
 
-    const privateOnHover = useCallback((_, childRef) => focusMatchedItem(childRef), [
+    const privateOnHover = useCallback((event, childRef) => focusMatchedItem(childRef), [
         focusMatchedItem,
     ]);
 

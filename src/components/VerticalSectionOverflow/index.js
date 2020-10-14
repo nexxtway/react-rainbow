@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { uniqueId } from './../../libs/utils';
-import AssistiveText from './../AssistiveText';
+import { uniqueId } from '../../libs/utils';
+import AssistiveText from '../AssistiveText';
 import { Provider } from './context';
 import getMaxHeight from './getMaxHeight';
 import Description from './description';

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AssistiveText from './../AssistiveText';
+import AssistiveText from '../AssistiveText';
 import StyledCircleSpinner from './styled/circleSpinner';
 import StyledArcSpinner from './styled/arcSpinner';
 import StyledSpinnerContainer from './styled/spinnerContainer';

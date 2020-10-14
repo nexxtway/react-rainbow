@@ -20,6 +20,7 @@ export default function ButtonItems(props) {
                 name={name}
                 variant={variant}
                 size={size}
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...option}
             />
         );

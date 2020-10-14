@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Child from './../child';
+import Child from '../child';
 import { Provider } from '../context';
 
 const contextValue = {

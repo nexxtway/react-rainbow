@@ -2,7 +2,7 @@ const PageSelect = require('../../../src/components/Select/pageObject');
 
 const SELECT = '#example-select-1';
 
-describe('Textarea base example', () => {
+describe('Select base example', () => {
     beforeAll(() => {
         browser.url('/#!/Select/1');
     });

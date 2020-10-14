@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import InputBase from '../';
+import InputBase from '..';
 import StyledError from '../../styled/errorText';
 
 describe('<InputBase/>', () => {

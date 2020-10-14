@@ -11,9 +11,11 @@ const googleMapApiUrl = 'https://maps.googleapis.com/maps/api/js';
 export default function GMap(props) {
     const { apiKey, ...rest } = props;
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const Component = useCallback(scriptLoader(`${googleMapApiUrl}?key=${apiKey}`)(MapComponent), [
         apiKey,
     ]);
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <Component {...rest} />;
 }
 

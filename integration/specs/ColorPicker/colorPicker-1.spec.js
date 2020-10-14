@@ -18,6 +18,7 @@ describe('ColorPicker default variant', () => {
         const component = $(COLORPICKER);
         component.waitForExist();
     });
+
     it('should focus the right common component when an tab key is pressed', () => {
         const colorPicker = new PageColorPicker(COLORPICKER);
         colorPicker.clickSaturation();
@@ -65,11 +66,11 @@ describe('ColorPicker default variant', () => {
         const colorPicker = new PageColorPicker(COLORPICKER);
         colorPicker.clickDefaultColors();
         colorPicker.clickHue();
-        expect(colorPicker.getColor()).toBe('abedec');
+        const initialColor = colorPicker.getColor();
         browser.keys(ARROW_LEFT_KEY);
-        expect(colorPicker.getColor()).toBe('abedeb');
+        expect(colorPicker.getColor()).not.toBe(initialColor);
         browser.keys(ARROW_RIGHT_KEY);
-        expect(colorPicker.getColor()).toBe('abedec');
+        expect(colorPicker.getColor()).toBe(initialColor);
     });
 
     it('should change color when alpha component is focused an arrow key is pressed', () => {

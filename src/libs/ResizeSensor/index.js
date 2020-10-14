@@ -1,38 +1,9 @@
 /* eslint-disable no-param-reassign, no-plusplus */
+import EventQueue from './eventQueue';
 
 /**
  * Based on Marc J. Schmidt library: https://github.com/marcj/css-element-queries/blob/master
  */
-
-class EventQueue {
-    constructor() {
-        this.q = [];
-    }
-
-    add(ev) {
-        this.q.push(ev);
-    }
-
-    call(sizeInfo) {
-        for (let i = 0, j = this.q.length; i < j; i++) {
-            this.q[i].call(this, sizeInfo);
-        }
-    }
-
-    remove(ev) {
-        const newQueue = [];
-        for (let i = 0, j = this.q.length; i < j; i++) {
-            if (this.q[i] !== ev) {
-                newQueue.push(this.q[i]);
-            }
-        }
-        this.q = newQueue;
-    }
-
-    length() {
-        return this.q.length;
-    }
-}
 
 /**
  * Get element size
@@ -56,7 +27,6 @@ function createResizeSensor() {
     const styleChild = 'position: absolute; left: 0; top: 0; transition: 0s;';
 
     resizeSensor.style.cssText = style;
-    // eslint-disable-next-line lwc/no-inner-html
     resizeSensor.innerHTML =
         `<div class="resize-sensor-expand" style="${style}">` +
         `<div style="${styleChild}"></div>` +
@@ -171,8 +141,8 @@ function attachResizeEvent(element, resizeListener) {
         reset();
     };
 
-    const addEvent = (el, name, cb) => {
-        el.addEventListener(name, cb);
+    const addEvent = (elem, name, callback) => {
+        elem.addEventListener(name, callback);
     };
 
     addEvent(expand, 'scroll', onScroll);
@@ -182,12 +152,12 @@ function attachResizeEvent(element, resizeListener) {
     requestAnimationFrame(reset);
 }
 
-function detach(elem, ev) {
+function detach(elem, listener) {
     if (!elem) {
         return;
     }
-    if (elem.resizedAttached && typeof ev === 'function') {
-        elem.resizedAttached.remove(ev);
+    if (elem.resizedAttached && typeof listener === 'function') {
+        elem.resizedAttached.remove(listener);
         if (elem.resizedAttached.length()) {
             return;
         }

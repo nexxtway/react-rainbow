@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 import resolverUpCenter from '../resolverUpCenter';
 
 describe('resolverUpCenter', () => {

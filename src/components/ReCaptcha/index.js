@@ -22,9 +22,10 @@ class ReCaptcha extends Component {
     }
 
     render() {
-        const ReCaptchaComponent = this.ReCaptchaComponent;
+        const { ReCaptchaComponent } = this;
         return (
             <ReCaptchaComponent
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...this.props}
                 onCreateRecaptcha={optWidgetID => {
                     this.optWidgetID = optWidgetID;

@@ -7,7 +7,8 @@ import { StyledContainer, StyledSelect } from './styled';
 
 const YearSelect = React.forwardRef((props, ref) => {
     const { currentYear, yearsRange, onYearChange, onClick, onFocus, onBlur, tabIndex } = props;
-    const selectRef = ref || useRef();
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const selectRef = ref || useRef(); // TODO: fix useRef to not use it conditionally
     const selectId = useUniqueIdentifier('select');
     const [isEditMode, setEditMode] = useState(false);
     const [isFocused, setIsFocused] = useState(false);

@@ -9,8 +9,8 @@ import {
     getChildrenTotalWidth,
     getChildrenTotalWidthUpToClickedTab,
     getTabIndexFromName,
-} from './../utils';
-import StyledButton from './../../Tab/styled/button';
+} from '../utils';
+import StyledButton from '../../Tab/styled/button';
 
 jest.mock('./../utils.js', () => ({
     getLeftButtonDisabledState: jest.fn(() => false),

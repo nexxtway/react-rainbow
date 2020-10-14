@@ -1,7 +1,7 @@
 /* eslint-disable no-script-url */
 import React from 'react';
 import { mount } from 'enzyme';
-import Breadcrumb from './../index';
+import Breadcrumb from '../index';
 
 describe('<Breadcrumb/>', () => {
     it('should render an anchor when href is passed', () => {

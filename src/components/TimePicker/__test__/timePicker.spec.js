@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import TimePicker from '../';
+import TimePicker from '..';
 import { SPACE_KEY, ENTER_KEY } from '../../../libs/constants';
 
 describe('<TimePicker/>', () => {

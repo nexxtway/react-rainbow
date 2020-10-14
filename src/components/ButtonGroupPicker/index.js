@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withReduxForm from './../../libs/hocs/withReduxForm';
+import withReduxForm from '../../libs/hocs/withReduxForm';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import { Provider } from './context';
@@ -20,7 +20,8 @@ import RequiredAsterisk from '../RequiredAsterisk';
 class ButtonGroupPicker extends Component {
     constructor(props) {
         super(props);
-        this.groupNameId = this.props.name || uniqueId('options');
+        const { name } = this.props;
+        this.groupNameId = name || uniqueId('options');
         this.errorMessageId = uniqueId('error-message');
         this.handleOnChange = this.handleOnChange.bind(this);
     }

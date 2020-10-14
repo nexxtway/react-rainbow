@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { uniqueId } from './../../../libs/utils';
-import RenderIf from './../../RenderIf';
+import { uniqueId } from '../../../libs/utils';
+import RenderIf from '../../RenderIf';
 import StyledContainer from '../styled/container';
 import HelpText from '../styled/helpText';
 import ErrorText from '../styled/errorText';

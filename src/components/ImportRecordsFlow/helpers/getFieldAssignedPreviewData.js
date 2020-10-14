@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 function getDateValue(value) {
     const date = new Date(value);
     const isValidDate = !isNaN(date.getTime());

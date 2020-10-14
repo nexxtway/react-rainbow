@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
-import StepTwo from '../../stepTwo';
+import axe from '../../../../../axe';
+import StepTwo from '..';
 
 describe('<StepTwo on ImportRecordsFlow/>', () => {
     it('should be accessible', async () => {

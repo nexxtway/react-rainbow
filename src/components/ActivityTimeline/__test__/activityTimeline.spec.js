@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ActivityTimeline from './../index';
-import Card from './../../Card';
+import ActivityTimeline from '../index';
+import Card from '../../Card';
 
 describe('<ActivityTimeline/>', () => {
     it('should render the children passed', () => {

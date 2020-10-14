@@ -78,7 +78,7 @@ describe('Lookup small with icon and description example', () => {
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ARROW_DOWN_KEY);
-        expect(lookup.arrowDownExists()).toBe(false);
+        expect(lookup.arrowDownExists()).toBe(true);
     });
     it('should arrow up be visible when first option is not visible', () => {
         const lookup = new PageLookup(LOOKUP);
