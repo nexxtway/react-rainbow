@@ -29,6 +29,7 @@ import StyledScrollableX from './styled/scrollableX';
 import StyledScrollableY from './styled/scrollableY';
 import StyledTable from './styled/table';
 import StyledTableBody from './styled/tableBody';
+import StyledThead from './styled/thead';
 
 /**
  * Data tables display information in a way that’s easy to scan,
@@ -71,7 +72,8 @@ export default class Table extends Component {
             }),
             bulkSelection: 'none',
         };
-        this.indexes = getIndexes(this.state.rows);
+        const { rows } = this.state;
+        this.indexes = getIndexes(rows);
         this.selectedRowsKeys = getSelectedRowKeysFromSelectedRows(selectedRows, this.indexes);
 
         this.tableId = uniqueId('table');
@@ -194,6 +196,7 @@ export default class Table extends Component {
         }
         return maxRowSelectionNumber;
     }
+
     /**
      * It will scroll to the top of the Y scrollable container.
      * @public
@@ -415,6 +418,7 @@ export default class Table extends Component {
             emptyTitle,
             emptyDescription,
             keyField,
+            hideTableHeader,
             variant,
         } = this.props;
         const { columns, tableWidth, rows, bulkSelection } = this.state;
@@ -426,7 +430,7 @@ export default class Table extends Component {
         const maxColWidth = Number(maxColumnWidth) || 5000;
 
         const isEmpty = data.length === 0;
-        const theme = { variant };
+        const theme = { variant, hideTableHeader };
 
         if (keyField && typeof keyField === 'string') {
             return (
@@ -442,7 +446,7 @@ export default class Table extends Component {
                                     style={tableStyles}
                                 >
                                     <StyledTable style={tableStyles}>
-                                        <thead>
+                                        <StyledThead>
                                             <tr>
                                                 <Head
                                                     columns={columns}
@@ -460,10 +464,9 @@ export default class Table extends Component {
                                                     maxRowSelection={maxRowSelection}
                                                     bulkSelection={bulkSelection}
                                                     hasScroll={this.isScrollActive()}
-                                                    variant={variant}
                                                 />
                                             </tr>
-                                        </thead>
+                                        </StyledThead>
                                         <StyledTableBody rowNumberOffset={rowNumberOffset}>
                                             <Body
                                                 data={normalizeData(data)}
@@ -549,6 +552,8 @@ Table.propTypes = {
     variant: PropTypes.oneOf(['default', 'listview']),
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** Shows or hides the header column. The default is false */
+    hideTableHeader: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -581,6 +586,7 @@ Table.defaultProps = {
     emptyDescription: 'Our robots did not find any match...',
     variant: 'default',
     id: undefined,
+    hideTableHeader: false,
     className: undefined,
     style: undefined,
     children: undefined,

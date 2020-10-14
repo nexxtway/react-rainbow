@@ -28,11 +28,11 @@ export default function getFormattedValue(value, highlightMatch, icon) {
                     return {
                         head: initialPart,
                         tail: (
-                            <React.Fragment>
+                            <>
                                 <b>{matchedTerm}</b>
                                 {finalPart}
                                 {prev.tail}
-                            </React.Fragment>
+                            </>
                         ),
                     };
                 }

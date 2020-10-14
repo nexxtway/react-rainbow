@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import React, { useContext, useRef, useImperativeHandle } from 'react';
 import { ColorPickerContext } from '../../context';
 import { StyledFlexContainer } from '../../styled';
@@ -56,6 +57,7 @@ const Rgba = React.forwardRef((_props, ref) => {
         });
     };
 
+    // eslint-disable-next-line id-length
     const [r, g, b, a] = rgba;
     const alpha = Math.round(a * 100);
 

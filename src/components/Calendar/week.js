@@ -18,7 +18,7 @@ export default function Week(props) {
     const { currentRange, selectionType, selectedRange } = useContext(CalendarContext);
 
     const daysDiff = endDate.getDay() - startDate.getDay() + 1;
-    const days = Array.from(Array(daysDiff), (_, index) => {
+    const days = Array.from(Array(daysDiff), (item, index) => {
         const date = addDays(startDate, index);
         return (
             <Day

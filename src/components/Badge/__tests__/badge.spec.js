@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Badge from './../index';
+import Badge from '../index';
 
 describe('<Badge/>', () => {
     it('should render the "Badge" with the label passed', () => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withReduxForm from './../../libs/hocs/withReduxForm';
+import withReduxForm from '../../libs/hocs/withReduxForm';
 import RadioItmes from './radioItems';
 import RenderIf from '../RenderIf';
 import { uniqueId } from '../../libs/utils';

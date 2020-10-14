@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Button from './../index';
+import Button from '../index';
 import Spinner from '../../Spinner';
 
 describe('<Button/>', () => {

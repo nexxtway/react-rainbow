@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withReduxForm from './../../libs/hocs/withReduxForm';
+import withReduxForm from '../../libs/hocs/withReduxForm';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import CheckboxList from './checkboxList';

@@ -6,7 +6,7 @@ import { COLOR_GRAY_2 } from '../../../styles/colors';
 
 const sizeMap = { large: '3rem', medium: '2.5rem', small: '1.8rem', 'x-small': '1.3rem' };
 const StyledButtonItemsContainer = attachThemeAttrs(styled.div).attrs(props => {
-    const isDark = props.palette.isDark;
+    const { isDark } = props.palette;
     const inverse = {
         border: isDark ? COLOR_GRAY_2 : 'rgba(0, 0, 0, 0.4)',
         background: isDark ? 'rgba(239,241,245,0.4)' : 'rgba(0, 0, 0, 0.4)',

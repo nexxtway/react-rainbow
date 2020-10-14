@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
-const StyledLoadingCell = styled.div`
+const StyledLoadingCell = attachThemeAttrs(styled.div)`
     height: 44px;
     width: 100%;
     display: flex;

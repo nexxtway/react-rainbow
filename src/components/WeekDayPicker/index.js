@@ -1,9 +1,10 @@
+/* eslint-disable react/no-unused-prop-types */
 import React, { useImperativeHandle, useRef } from 'react';
 import PropTypes from 'prop-types';
 import valuePropValidation from './helpers/valuePropValidation';
 import getNormalizedValue from './helpers/getNormalizedValue';
 import { useLocale, useUniqueIdentifier } from '../../libs/hooks';
-import useReduxForm from './../../libs/hooks/useReduxForm';
+import useReduxForm from '../../libs/hooks/useReduxForm';
 import RenderIf from '../RenderIf';
 import Label from '../Input/label';
 import WeekDayItems from './weekDayItems';
@@ -52,9 +53,9 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
         },
     }));
 
-    const handleOnChange = e => {
-        const weekDayValue = e.target.value;
-        const isChecked = e.target.checked;
+    const handleOnChange = event => {
+        const weekDayValue = event.target.value;
+        const isChecked = event.target.checked;
 
         if (!disabled && !readOnly) {
             onChange(getNormalizedValue(weekDayValue, isChecked, multiple, value));

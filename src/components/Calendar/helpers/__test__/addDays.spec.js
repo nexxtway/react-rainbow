@@ -1,4 +1,4 @@
-import addDays from './../addDays';
+import addDays from '../addDays';
 
 describe('addDays', () => {
     it('should return a date 3 days after', () => {

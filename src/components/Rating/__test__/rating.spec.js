@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Rating from '../index';
+import Rating from '..';
 import StyledLabel from '../styled/label';
 
 describe('<Rating />', () => {

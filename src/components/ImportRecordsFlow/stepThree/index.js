@@ -41,6 +41,7 @@ export default function StepThree(props) {
                     header="Modify"
                     field="fileField"
                     component={rowProps => (
+                        // eslint-disable-next-line react/jsx-props-no-spreading
                         <ModifyCell {...rowProps} onClick={openAssignFieldModal} />
                     )}
                 />

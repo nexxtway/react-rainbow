@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ColorPicker from '../';
+import ColorPicker from '..';
 import * as Commons from '../commons';
 
 describe('<ColorPicker />', () => {

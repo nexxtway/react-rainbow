@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import RadioGroup from '../index';
+import RadioGroup from '..';
 import StyledLabel from '../styled/label';
 
 describe('<RadioGroup />', () => {

@@ -27,6 +27,7 @@ export default function ButtonMenu(props) {
 
     return (
         <PrimitiveMenu
+            // eslint-disable-next-line react/jsx-props-no-spreading
             {...rest}
             label={label}
             icon={icon}

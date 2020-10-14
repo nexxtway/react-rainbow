@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RenderIf from './../RenderIf';
+import RenderIf from '../RenderIf';
 import StyledDescription from './styled/description';
 
 export default function Description({ description, isExpanded }) {

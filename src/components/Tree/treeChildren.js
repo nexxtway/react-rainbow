@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-cycle
 import Child from './child';
 import getNodeName from './helpers/getNodeName';
 
@@ -19,6 +20,7 @@ export default function TreeChildren(props) {
         const isFirstNode = !parentName && index === 0;
         return (
             <Child
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...nodeProps}
                 key={nodeName}
                 onNodeCheck={onNodeCheck}
