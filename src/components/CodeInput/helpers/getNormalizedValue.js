@@ -1,4 +1,4 @@
-import { isNumeric } from './';
+import isNumeric from './isNumeric';
 
 export default function getNormalizedValue(inputValue, inputIndex, value) {
     if (isNumeric(inputValue) || inputValue === '') {

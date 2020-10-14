@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Input from './../';
+import Input from '..';
 
 describe('<Input/>', () => {
     it('should return the InputRadio component when type radio is passed', () => {

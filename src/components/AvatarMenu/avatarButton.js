@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Avatar from './../Avatar';
+import Avatar from '../Avatar';
 import StyledButton from './styled/button';
 
 export default class AvatarButton extends Component {

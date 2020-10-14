@@ -2,9 +2,9 @@ import getWeekDays from './getWeekDays';
 
 const weekDays = getWeekDays();
 
-const sortDays = (a, b) => {
-    const weekDayA = weekDays.indexOf(a);
-    const weekDayB = weekDays.indexOf(b);
+const sortDays = (itemA, itemB) => {
+    const weekDayA = weekDays.indexOf(itemA);
+    const weekDayB = weekDays.indexOf(itemB);
 
     if (weekDayA > weekDayB) return 1;
 

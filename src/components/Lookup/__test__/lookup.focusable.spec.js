@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Lookup from './../';
+import Lookup from '..';
 
 describe('<Lookup/>', () => {
     it('should be focusable', () => {

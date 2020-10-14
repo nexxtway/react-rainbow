@@ -28,6 +28,7 @@ export default function Row(props) {
 
         return (
             <Cell
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...rest}
                 restColumnProps={restColumnProps}
                 key={key}
@@ -45,9 +46,9 @@ export default function Row(props) {
 
     if (rowData.type === 'LOADING') {
         return (
-            <tr>
+            <StyledRow>
                 <LoadingCells columns={columns} value={columns.length} />
-            </tr>
+            </StyledRow>
         );
     }
 

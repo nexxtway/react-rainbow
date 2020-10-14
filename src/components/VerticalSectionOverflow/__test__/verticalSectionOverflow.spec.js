@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import VerticalSectionOverflow from './../';
+import VerticalSectionOverflow from '..';
 
 describe('<VerticalSectionOverflow/>', () => {
     it('should change the isExpanded state when the button element is clicked', () => {

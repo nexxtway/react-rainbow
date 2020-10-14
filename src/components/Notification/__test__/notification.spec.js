@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Notification from './../index';
+import Notification from '../index';
 
 describe('<Notification/>', () => {
     it('should fire an event when the close button is clicked', () => {

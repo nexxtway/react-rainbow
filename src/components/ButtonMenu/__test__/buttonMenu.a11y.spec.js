@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
-import ButtonMenu from './../';
-import MenuItem from './../../MenuItem';
-import MenuDivider from './../../MenuDivider';
+import axe from '../../../../axe';
+import ButtonMenu from '..';
+import MenuItem from '../../MenuItem';
+import MenuDivider from '../../MenuDivider';
 
 describe('<ButtonMenu/>', () => {
     it('should be accessible when pass assistiveText', async () => {

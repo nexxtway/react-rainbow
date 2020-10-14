@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import DoubleCalendar from '../';
+import DoubleCalendar from '..';
 
 describe('DoubleCalendar', () => {
     it('should render the component when pass falsy values', () => {

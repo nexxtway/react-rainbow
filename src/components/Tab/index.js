@@ -39,10 +39,10 @@ class TabItem extends Component {
         return -1;
     }
 
-    handleSelect(e) {
+    handleSelect(event) {
         const { disabled, onSelect, name } = this.props;
         if (!disabled) {
-            onSelect(e, name);
+            onSelect(event, name);
         }
     }
 
@@ -60,6 +60,7 @@ class TabItem extends Component {
             id,
             ariaControls,
             fullWidth,
+            variant,
             disabled,
         } = this.props;
         const isActive = this.isSelected();
@@ -68,6 +69,7 @@ class TabItem extends Component {
             <StyledContainer
                 className={className}
                 fullWidth={fullWidth}
+                variant={variant}
                 isActive={isActive}
                 style={style}
                 title={title}
@@ -84,6 +86,7 @@ class TabItem extends Component {
                     isActive={isActive}
                     disabled={disabled}
                     fullWidth={fullWidth}
+                    variant={variant}
                     data-active={isActive}
                 >
                     <TruncatedText>{label}</TruncatedText>
@@ -95,6 +98,7 @@ class TabItem extends Component {
 
 /** @category Layout */
 export default function Tab(props) {
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <Consumer>{context => <TabItem {...props} {...context} />}</Consumer>;
 }
 

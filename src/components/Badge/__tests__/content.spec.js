@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Content from './../content';
+import Content from '../content';
 
 describe('<Content/>', () => {
     it('should return the label when there are not children', () => {

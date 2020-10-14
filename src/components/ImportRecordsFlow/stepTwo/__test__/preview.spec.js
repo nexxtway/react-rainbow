@@ -36,6 +36,7 @@ describe('<Preview />', () => {
             columns: ['First_Name', 'Last_Name'],
             isLoading: true,
         };
+        // eslint-disable-next-line react/jsx-props-no-spreading
         const component = mount(<Preview {...props} />);
         expect(component.find('PreviewTable').props()).toEqual(props);
     });

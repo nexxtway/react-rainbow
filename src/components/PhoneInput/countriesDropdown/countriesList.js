@@ -16,8 +16,8 @@ const CountriesList = memo(props => {
         return (
             <StyledItem
                 key={isoCode}
-                ref={el => {
-                    itemsRef.current[index] = el;
+                ref={elem => {
+                    itemsRef.current[index] = elem;
                     return itemsRef.current[index];
                 }}
                 onClick={() => handleCountryChange(value)}
@@ -43,7 +43,7 @@ const CountriesList = memo(props => {
 
 CountriesList.propTypes = {
     countries: PropTypes.array,
-    country: PropTypes.object.isRequired,
+    country: PropTypes.object,
     itemsRef: PropTypes.object,
     handleCountryChange: PropTypes.func,
     handleActiveChange: PropTypes.func,

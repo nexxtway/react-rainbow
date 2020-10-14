@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import MenuContent from './../menuContent';
+import MenuContent from '../menuContent';
 
 describe('<MenuContent/>', () => {
     it('should render the Spinner when isLoading is true', () => {

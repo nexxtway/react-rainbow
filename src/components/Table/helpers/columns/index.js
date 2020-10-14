@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import getColumns from './getColumns';
 import getEnumerableWidth from './getEnumerableWidth';
 import isNotSameColumns from './isNotSameColumns';

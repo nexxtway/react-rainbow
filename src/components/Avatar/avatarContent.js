@@ -32,13 +32,15 @@ export default class AvatarContent extends Component {
                     alt={assistiveText}
                 />
             );
-        } else if (initials) {
+        }
+        if (initials) {
             return (
                 <StyledContent as="abbr" initialsVariant={initialsVariant} title={title}>
                     {normalizeInitials(initials)}
                 </StyledContent>
             );
-        } else if (icon) {
+        }
+        if (icon) {
             return (
                 <StyledContent initialsVariant={initialsVariant} title={title}>
                     {icon}

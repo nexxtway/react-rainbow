@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import RenderIf from './../RenderIf';
-import { uniqueId } from './../../libs/utils';
-import { Consumer } from './../Accordion/context';
-import ButtonIcon from './../ButtonIcon';
+import RenderIf from '../RenderIf';
+import { uniqueId } from '../../libs/utils';
+import { Consumer } from '../Accordion/context';
+import ButtonIcon from '../ButtonIcon';
 import RightArrow from './rightArrow';
 import isInArray from './isInArray';
 import removeItemFromArray from './removeItemFromArray';
@@ -163,6 +163,7 @@ class AccordionItem extends Component {
  * @category Layout
  */
 export default function AccordionSection(props) {
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <Consumer>{context => <AccordionItem {...props} {...context} />}</Consumer>;
 }
 

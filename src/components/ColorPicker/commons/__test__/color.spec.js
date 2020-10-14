@@ -28,6 +28,6 @@ describe('<Color />', () => {
 
     it('should return null when the color is not valid', () => {
         const wrapper = mount(<Color color="foo" />);
-        expect(wrapper.text()).toBeNull();
+        expect(wrapper.children().length).toBe(0);
     });
 });

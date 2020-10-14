@@ -1,9 +1,4 @@
-import {
-    insertChildOrderly,
-    findItemByKey,
-    findItemIndex,
-    getChildMenuItemNodes,
-} from './../utils';
+import { insertChildOrderly, findItemByKey, findItemIndex, getChildMenuItemNodes } from '../utils';
 
 describe('<ButtonMenu/> utils', () => {
     describe('insertChildOrderly', () => {

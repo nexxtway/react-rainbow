@@ -8,6 +8,7 @@ function PlaceholderOption(props) {
 
     return (
         <StyledTopHeader title={title} role="presentation" onMouseDown={onClick}>
+            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             <StyledPrimitiveCheckbox type="checkbox" label="" checked={isChecked} {...rest} />
             <StyledHeaderLabel>{label}</StyledHeaderLabel>
         </StyledTopHeader>

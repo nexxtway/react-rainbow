@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 function getDifference(a, b) {
     let i = 0;
     let j = 0;
