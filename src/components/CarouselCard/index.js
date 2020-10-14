@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 /* eslint-disable no-script-url,max-len */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -25,10 +26,11 @@ export default class CarouselCard extends Component {
         this.unregisterChild = this.unregisterChild.bind(this);
         this.setActiveItem = this.setActiveItem.bind(this);
         this.handleOnClick = this.handleOnClick.bind(this);
+        const { disableAutoScroll } = this.props;
         this.state = {
             childrenRegistred: [],
             activeItem: undefined,
-            isAnimationPaused: this.props.disableAutoScroll,
+            isAnimationPaused: disableAutoScroll,
             privateRegisterChild: this.registerChild,
             privateUnregisterChild: this.unregisterChild,
         };
@@ -44,7 +46,7 @@ export default class CarouselCard extends Component {
 
     getContainerStyle() {
         const { style } = this.props;
-        return Object.assign({}, getCarouselCardContainerStyles(this.container.current), style);
+        return { ...getCarouselCardContainerStyles(this.container.current), ...style };
     }
 
     setActiveItem(id) {
@@ -71,6 +73,7 @@ export default class CarouselCard extends Component {
             }
         }, scrollDuration * 1000);
     }
+
     handleOnClick() {
         const { isAnimationPaused } = this.state;
         if (isAnimationPaused) {

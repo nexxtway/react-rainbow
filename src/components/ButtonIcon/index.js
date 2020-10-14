@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import AssistiveText from './../AssistiveText';
+import AssistiveText from '../AssistiveText';
 import StyledButton from './styled/button';
 
 /**

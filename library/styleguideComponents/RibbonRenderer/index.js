@@ -2,6 +2,7 @@
 import React from 'react';
 import GitHubButton from 'react-github-btn';
 import StackoverflowIcon from './stackoverflowIcon';
+import GlobalSearch from '../GlobalSearch';
 import {
     StyledContainer,
     StyledGitHubContianer,
@@ -14,6 +15,7 @@ import {
 export default function RibbonRenderer() {
     return (
         <StyledHeading>
+            <GlobalSearch />
             <StyledContainer>
                 <StyledGitHubContianer>
                     <GitHubButton

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import GithubIcon from './githubIcon';
+import GlobalSearch from '../GlobalSearch';
 
 export const StyledHeading = styled.header`
     position: fixed;

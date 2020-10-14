@@ -57,7 +57,7 @@ describe('useMarkdownToReact', () => {
     it('should return valid html for code', () => {
         const values = ['```js\ndoSomething();\n```', '`doSomenthing`'];
         const patterns = [
-            /<pre[^>]*><code class="hljs language-js[^>]*>([^<]*)<\/code><\/pre>/,
+            /<pre[^>]*><code class="[^>]*>([^<]*)<\/code><\/pre>/,
             /<code\s[^>]*>doSomenthing<\/code>/,
         ];
         values.forEach((value, index) => {

@@ -73,7 +73,7 @@ export default class ReactComponent extends Component {
                         </Pathline>
                     </div>
                     <Tabset
-                        className="rainbow-p-horizontal_x-large rainbow-m-bottom_x-large react-rainbow-component_tabset"
+                        className="rainbow-p-horizontal_x-large react-rainbow-component_tabset"
                         activeTabName={activeTabName}
                         onSelect={this.handleOnSelect}
                     >

@@ -1,4 +1,6 @@
-import ImportRecordsFlow from '../';
+/* eslint-disable no-restricted-globals */
+// eslint-disable-next-line import/no-cycle
+import ImportRecordsFlow from '..';
 
 function getDateValue(value) {
     const date = new Date(value);

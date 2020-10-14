@@ -1,4 +1,4 @@
-import { getNextSortDirection } from '../';
+import { getNextSortDirection } from '..';
 
 describe('getNextSortDirection', () => {
     it('should return "asc" by default if any argument is passed', () => {

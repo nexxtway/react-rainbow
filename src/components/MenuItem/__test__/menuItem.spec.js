@@ -1,7 +1,7 @@
 /* eslint-disable no-script-url */
 import React from 'react';
 import { mount } from 'enzyme';
-import MenuItem from '../';
+import MenuItem from '..';
 import StyledIconContainer from '../styled/iconContainer';
 
 describe('<MenuItem/>', () => {

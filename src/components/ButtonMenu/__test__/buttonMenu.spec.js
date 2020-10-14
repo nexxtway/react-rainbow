@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ButtonMenu from './../';
+import ButtonMenu from '..';
 import ButtonTrigger from '../buttonTrigger';
 
 describe('<ButtonMenu/>', () => {

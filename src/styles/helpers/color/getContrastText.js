@@ -1,5 +1,7 @@
 import { COLOR_BRAND, COLOR_SUCCESS } from '../../colors';
-import { darken, getContrastRatio, colorToRgba } from './index';
+import darken from './darken';
+import getContrastRatio from './getContrastRatio';
+import colorToRgba from './colorToRgba';
 
 const light = {
     text: {

@@ -93,6 +93,7 @@ export default class TableWithBrowserPagination extends Component {
 
         return (
             <StyledContainer className={className} style={style}>
+                {/* eslint-disable-next-line react/jsx-props-no-spreading */}
                 <Table data={pageItems} {...rest} ref={this.table}>
                     {children}
                 </Table>
