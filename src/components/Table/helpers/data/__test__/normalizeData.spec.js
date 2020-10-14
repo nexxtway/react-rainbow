@@ -1,4 +1,4 @@
-import { normalizeData } from '../';
+import { normalizeData } from '..';
 
 describe('normalizeData', () => {
     it('should return the same data passed when it is an empty array', () => {

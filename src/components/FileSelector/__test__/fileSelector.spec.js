@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import FileSelector from '../';
+import FileSelector from '..';
 import ErrorText from '../../Input/styled/errorText';
 import HelpText from '../../Input/styled/helpText';
 

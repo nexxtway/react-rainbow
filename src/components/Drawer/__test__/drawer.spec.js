@@ -8,7 +8,7 @@ import {
     enableBodyScroll,
     clearAllBodyScrollLocks,
 } from '../../../libs/scrollController';
-import Drawer from '../';
+import Drawer from '..';
 import StyledFooter from '../styled/footer';
 import StyledContent from '../styled/content';
 import StyledCloseButton from '../styled/closeButton';

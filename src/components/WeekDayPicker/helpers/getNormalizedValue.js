@@ -1,4 +1,4 @@
-import sortWeekDays from '../helpers/sortWeekDays';
+import sortWeekDays from './sortWeekDays';
 
 export default function getNormalizedValue(weekDay, isChecked, multiple, value) {
     if (multiple && value) {

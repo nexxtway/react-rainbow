@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useLocale } from '../../libs/hooks';

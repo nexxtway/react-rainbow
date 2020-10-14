@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ButtonIcon from './../index';
+import ButtonIcon from '../index';
 
 describe('<ButtonIcon/>', () => {
     it('should focus the button when the focus method is called', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ImportRecordsFlow from '../';
+import ImportRecordsFlow from '..';
 import Footer from '../footer';
 
 describe('<ImportRecordsFlow />', () => {

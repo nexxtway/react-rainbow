@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Body from '../';
+import Body from '..';
 import { SELECTABLE_CHECKBOX } from '../../helpers/columns';
 
 const columns = [

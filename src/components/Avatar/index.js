@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AvatarContent from './avatarContent';
-import AssistiveText from './../AssistiveText';
+import AssistiveText from '../AssistiveText';
 import StyledContainer from './styled/container';
 
 /**
@@ -17,6 +17,7 @@ export default function Avatar(props) {
             size={size}
             backgroundColor={backgroundColor}
         >
+            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             <AvatarContent {...rest} assistiveText={assistiveText} />
             <AssistiveText text={assistiveText} />
         </StyledContainer>

@@ -14,6 +14,7 @@ class PageSidebar {
     constructor(rootElement) {
         this.rootElement = rootElement;
     }
+
     /**
      * Return a new SidebarItem page object of the element in item position.
      * @method

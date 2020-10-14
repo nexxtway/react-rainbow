@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Consumer } from './../GMap/context';
-import { uniqueId } from './../../libs/utils';
+import { Consumer } from '../GMap/context';
+import { uniqueId } from '../../libs/utils';
 import Icon from './icon';
 import HiddenElement from '../Structural/hiddenElement';
 import StyledButton from './styled/button';
@@ -30,7 +30,8 @@ class Marker extends Component {
     }
 
     componentDidMount() {
-        if (this.props.map) {
+        const { map } = this.props;
+        if (map) {
             this.setMarker();
         }
     }
@@ -49,6 +50,7 @@ class Marker extends Component {
 
     setMarker() {
         const { map, latitude, longitude, geocoder, label, description } = this.props;
+        const { infowindow } = this.state;
 
         const position = {
             lat: latitude,
@@ -61,7 +63,7 @@ class Marker extends Component {
         this.markerListener = this[marker].addListener('click', this.handleMarkerClick);
         if (!label && !description) {
             geocoder.geocode({ location: position }, this.getLocationInfo);
-        } else if (!this.state.infowindow) {
+        } else if (!infowindow) {
             this.setInfoWindow();
         }
     }
@@ -171,6 +173,7 @@ class Marker extends Component {
  * This component shows you the detailed information of each location that is displayed in the GMap.
  */
 export default function MapMarker(props) {
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <Consumer>{context => <Marker {...props} {...context} />}</Consumer>;
 }
 

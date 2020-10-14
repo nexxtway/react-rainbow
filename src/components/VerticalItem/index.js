@@ -1,4 +1,4 @@
-/* eslint-disable no-script-url, react/prop-types */
+/* eslint-disable no-script-url, react/prop-types, react/jsx-props-no-spreading */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Consumer as NavigationConsumer } from '../VerticalNavigation/context';
@@ -35,9 +35,9 @@ function Item(props) {
         return undefined;
     };
 
-    function hanldeOnClick(e) {
-        onClick(e);
-        onSelect(e, name);
+    function hanldeOnClick(event) {
+        onClick(event);
+        onSelect(event, name);
     }
 
     function resolveTabIndex() {

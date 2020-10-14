@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import AvatarContent from './../avatarContent';
+import AvatarContent from '../avatarContent';
 import StyledImage from '../styled/image';
 
 describe('<AvatarContent/>', () => {

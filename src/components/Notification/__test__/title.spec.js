@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Title from './../title';
+import Title from '../title';
 
 describe('<NotificationTitle/>', () => {
     it('should render the string passed as text in the tag "h1"', () => {

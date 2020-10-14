@@ -1,12 +1,9 @@
 import { useCallback } from 'react';
 
-export default function useHandleBlur(focusIndex, onBlur) {
-    return useCallback(
-        event => {
-            if (focusIndex === -1) {
-                onBlur(event);
-            }
-        },
-        [focusIndex, onBlur],
-    );
+export default function useHandleBlur(focusIndex, onBlur, value) {
+    return useCallback(() => {
+        if (focusIndex === -1) {
+            onBlur(value);
+        }
+    }, [focusIndex, onBlur, value]);
 }

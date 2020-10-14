@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import CodeInput from '../';
+import CodeInput from '..';
 import InputItems from '../inputItems';
 import InputItem from '../inputItem';
 import { StyledErrorMessage, StyledHelpText, StyledLabel } from '../styled';

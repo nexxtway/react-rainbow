@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ButtonGroup from './../index';
-import Button from './../../Button';
+import ButtonGroup from '../index';
+import Button from '../../Button';
 
 describe('<ButtonGroup/>', () => {
     it('should be accessible, the div element should have role="group"', () => {

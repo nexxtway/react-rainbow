@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { mount } from 'enzyme';
-import StepThree from '../';
+import StepThree from '..';
 import getAssignFieldsData from '../../helpers/getAssignFieldsData';
 import StyledTable from '../../styled/table';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from '../../context';
-import { Hex } from '../';
+import { Hex } from '..';
 
 describe('<Hex />', () => {
     it('should fire onChange with object containing the new color', () => {
