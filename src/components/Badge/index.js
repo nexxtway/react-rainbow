@@ -4,7 +4,7 @@ import StyledContainer from './styled/container';
 import Content from './content';
 
 /**
- * Badges are labels which hold small amounts of information.
+ * Badges are labels that hold small amounts of information.
  */
 export default function Badge(props) {
     const { className, style, label, title, children, variant } = props;
@@ -25,11 +25,11 @@ Badge.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
-    /** The content of the badge. Used to render icon or text elements inside the badge.
-     * Children takes precedence over label. */
+    /** The content of the badge. It is used to render icon or text elements within the badge.
+     * Children take precedence over label. */
     children: PropTypes.node,
     /** The variant changes the appearance of the badge. Accepted variants include default,
-     * inverse, lightest, brand, outline-brand, warning, success and error. This value defaults to default. */
+     * inverse, lightest, brand, outline-brand, warning, success and error. This value takes the default variant by default. */
     variant: PropTypes.oneOf([
         'default',
         'inverse',
