@@ -16,6 +16,7 @@ const StyledBackDrop = attachThemeAttrs(styled.div)`
     position: fixed;
     z-index: 1000000;
     opacity: 1;
+    backdrop-filter: blur(5px);
 `;
 
 export default StyledBackDrop;
