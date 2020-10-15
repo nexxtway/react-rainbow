@@ -7,6 +7,9 @@ const StyledContainer = attachThemeAttrs(styled.div)`
     box-sizing: border-box;
 
     @media (max-width: 600px) {
+        background-color: ${props =>
+            props.variant === 'card' ? props.palette.background.main : 'transparent'};
+
         &::before {
             content: "";
             height: 1px;
