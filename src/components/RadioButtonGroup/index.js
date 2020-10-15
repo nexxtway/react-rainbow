@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withReduxForm from './../../libs/hocs/withReduxForm';
+import withReduxForm from '../../libs/hocs/withReduxForm';
 import ButtonItems from './buttonItems';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
@@ -37,11 +37,12 @@ class RadioButtonGroup extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.options !== this.props.options) {
+        const { options, value } = this.props;
+        if (prevProps.options !== options) {
             this.updateRefs();
         }
 
-        if (prevProps.value !== this.props.value) {
+        if (prevProps.value !== value) {
             this.updateMarker();
         }
     }
@@ -91,9 +92,10 @@ class RadioButtonGroup extends Component {
     }
 
     updateRefs() {
+        const { options } = this.props;
         this.optionsRefs = this.generateRefsForOptions();
         this.setState({
-            options: this.addRefsToOptions(this.props.options),
+            options: this.addRefsToOptions(options),
         });
         setTimeout(() => {
             this.updateMarker();

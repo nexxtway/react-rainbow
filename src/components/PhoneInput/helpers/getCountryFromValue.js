@@ -1,4 +1,4 @@
-import { findCountryByIsoCode } from '.';
+import findCountryByIsoCode from './findCountryByIsoCode';
 import allCountries from '../countries';
 
 export default function getCountryFromValue(isoCode, countries) {

@@ -63,9 +63,11 @@ class Item extends Component {
             const prevItemIndex = getItemIndex(childrenRegistred, prevActiveItem);
             if (activeItemIndex === 0 && prevItemIndex === childrenRegistred.length - 1) {
                 return 'right-to-left';
-            } else if (prevItemIndex === 0 && activeItemIndex === childrenRegistred.length - 1) {
+            }
+            if (prevItemIndex === 0 && activeItemIndex === childrenRegistred.length - 1) {
                 return 'left-to-right';
-            } else if (activeItemIndex > prevItemIndex) {
+            }
+            if (activeItemIndex > prevItemIndex) {
                 return 'right-to-left';
             }
             return 'left-to-right';
@@ -161,6 +163,7 @@ class Item extends Component {
 }
 
 export default function CarouselImage(props) {
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <Consumer>{value => <Item {...props} {...value} />}</Consumer>;
 }
 

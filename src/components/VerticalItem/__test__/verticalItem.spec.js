@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import VerticalItem from './../';
+import VerticalItem from '..';
 
 describe('<VerticalItem when href is passed/>', () => {
     it('should pass the right props to anchor element', () => {

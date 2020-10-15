@@ -55,6 +55,7 @@ export default class Body extends PureComponent {
 
             return (
                 <Row
+                    // eslint-disable-next-line react/jsx-props-no-spreading
                     {...row}
                     key={key}
                     rowData={item}

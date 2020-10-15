@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Calendar from './../../Calendar';
+import Calendar from '../../Calendar';
 
 const StyledCalendar = styled(Calendar)`
     width: 340px;

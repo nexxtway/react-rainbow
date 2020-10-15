@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from './context';
-import RenderIf from './../RenderIf';
+import RenderIf from '../RenderIf';
 import { LEFT_KEY, RIGHT_KEY } from '../../libs/constants';
 import {
     getChildTabNodes,
@@ -65,9 +65,9 @@ export default class Tabset extends Component {
     }
 
     componentDidUpdate(prevProp) {
+        const { children } = this.props;
         const { tabsetChildren } = this.state;
         const { isFirstTime } = this;
-        const { children } = this.props;
         const areAllChildrenRegistered = children.length === tabsetChildren.length;
         if (isNotSameChildren(children, prevProp.children)) {
             this.updateButtonsVisibility();
@@ -214,14 +214,14 @@ export default class Tabset extends Component {
         }
     }
 
-    handleSelect(e, name) {
+    handleSelect(event, name) {
         const { onSelect } = this.props;
         this.scrollToSelectedTab(name);
-        onSelect(e, name);
+        onSelect(event, name);
     }
 
     render() {
-        const { activeTabName, fullWidth, children, style, className, id } = this.props;
+        const { activeTabName, fullWidth, variant, children, style, className, id } = this.props;
         const { areButtonsVisible } = this.state;
         const { screenWidth } = this;
         const showButtons = areButtonsVisible || screenWidth < 600;
@@ -232,14 +232,16 @@ export default class Tabset extends Component {
             privateUnRegisterTab: this.unRegisterTab,
             privateUpdateTab: this.updateTab,
             fullWidth,
+            variant,
         };
 
         return (
-            <StyledContainer className={className} style={style} id={id}>
+            <StyledContainer variant={variant} className={className} style={style} id={id}>
                 <StyledObserver ref={this.resizeTarget} />
                 <StyledTabset>
                     <StyledInnerContainer
                         fullWidth={fullWidth}
+                        variant={variant}
                         role="tablist"
                         onKeyDown={this.handleKeyPressed}
                         onScroll={this.updateButtonsVisibility}
@@ -280,6 +282,8 @@ Tabset.propTypes = {
     /** If true, the tabs will grow to use all the available space.
      * This value defaults to false. */
     fullWidth: PropTypes.bool,
+    /** The variant changes the appearance of the Tabset. Accepted variants include card and line. The default value is card. */
+    variant: PropTypes.oneOf(['card', 'line']),
     /** The id of the outer element. */
     id: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -297,6 +301,7 @@ Tabset.defaultProps = {
     activeTabName: undefined,
     onSelect: () => {},
     fullWidth: false,
+    variant: 'card',
     className: undefined,
     style: undefined,
     children: null,

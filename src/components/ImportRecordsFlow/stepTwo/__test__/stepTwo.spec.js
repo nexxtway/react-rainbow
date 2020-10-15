@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import StyledContainer from '../styled/container';
-import StepTwo from '../';
+import StepTwo from '..';
 
 describe('<StepTwo />', () => {
     it('should show preview if file has been selected', () => {

@@ -174,12 +174,12 @@ export const ButtonContainer = attachThemeAttrs(styled.span)`
     ${props =>
         props.iconPosition === 'left' &&
         `
-        left: ${props.readOnly ? '0.4rem' : '0.4rem'};
+        left: 0.4rem;
     `}
     ${props =>
         props.iconPosition === 'right' &&
         `
-        right: ${props.readOnly ? '0.4rem' : '0.4rem'};
+        right: 0.4rem;
     `}
     ${props =>
         props.error &&

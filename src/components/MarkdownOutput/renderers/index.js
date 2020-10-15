@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/prop-types, id-length, react/jsx-props-no-spreading */
 import React from 'react';
 import {
     StyledHeading,

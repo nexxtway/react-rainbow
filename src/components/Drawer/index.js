@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
-import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
+import { ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
 import {
     disableBodyScroll,
     enableBodyScroll,
@@ -165,9 +165,9 @@ Drawer.propTypes = {
     /** The header can include text or another component,
      * and is displayed at the top of the component. */
     header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The size of the drawer. Valid values are small, medium, and large.
+    /** The size of the drawer. Valid values are small, medium, large and full.
      * This value defaults to small. */
-    size: PropTypes.oneOf(['small', 'medium', 'large']),
+    size: PropTypes.oneOf(['small', 'medium', 'large', 'full']),
     /** The footer can include text or another component
      * and is displayed at the bottom of the component. */
     footer: PropTypes.node,

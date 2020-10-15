@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import InputCheckbox from '../';
+import InputCheckbox from '..';
 
 describe('<InputCheckbox/>', () => {
     it('should be focusable', () => {

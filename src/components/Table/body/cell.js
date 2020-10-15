@@ -11,6 +11,7 @@ function CellValue(props) {
     const { component: CellComponent, value, rowData, restColumnProps } = props;
 
     if (CellComponent) {
+        // eslint-disable-next-line react/jsx-props-no-spreading
         return <CellComponent {...restColumnProps} value={value} row={rowData} />;
     }
     return <span title={value}>{value}</span>;
@@ -87,7 +88,7 @@ export default function Cell(props) {
     if (isFirst) {
         return (
             <StyledCell scope="row" tabIndex={-1} data-label={getHeaderLabel()}>
-                <StyledCellContent>
+                <StyledCellContent component={component}>
                     <CellValue
                         component={component}
                         value={value}
@@ -101,7 +102,7 @@ export default function Cell(props) {
 
     return (
         <StyledCell as="td" role="gridcell" tabIndex={-1} data-label={getHeaderLabel()}>
-            <StyledCellContent>
+            <StyledCellContent component={component}>
                 <CellValue
                     component={component}
                     value={value}

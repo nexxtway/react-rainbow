@@ -37,7 +37,7 @@ describe('<Chart />', () => {
                 <Dataset values={[34, 345, 234, 234]} title="Dataset 1" />
             </Chart>,
         );
-        const chartInstance = component.instance().chartInstance;
+        const { chartInstance } = component.instance();
         component.setProps({
             labels: ['A', 'B', 'C', 'D', 'E'],
         });
@@ -51,7 +51,7 @@ describe('<Chart />', () => {
                 <Dataset values={[34, 345, 234, 234]} title="Dataset 1" />
             </Chart>,
         );
-        const chartInstance = component.instance().chartInstance;
+        const { chartInstance } = component.instance();
         component.setProps({
             children: [<Dataset values={[34, 345, 234, 234, 90]} title="Dataset 1" />],
         });

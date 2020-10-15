@@ -10,12 +10,12 @@ export default function hexToRgba(color, alpha = 1) {
         return '';
     }
 
-    const re = new RegExp(`.{1,${color.length / 3}}`, 'g');
-    let colors = color.match(re);
+    const regex = new RegExp(`.{1,${color.length / 3}}`, 'g');
+    let colors = color.match(regex);
 
     if (colors && colors[0].length === 1) {
-        colors = colors.map(n => n + n);
+        colors = colors.map(value => value + value);
     }
 
-    return colors ? `rgba(${colors.map(n => parseInt(n, 16)).join(', ')}, ${alpha})` : '';
+    return colors ? `rgba(${colors.map(value => parseInt(value, 16)).join(', ')}, ${alpha})` : '';
 }

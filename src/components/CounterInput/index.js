@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 import React, { useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import { useUniqueIdentifier, useReduxForm, useErrorMessageId, useLabelId } from '../../libs/hooks';
@@ -80,11 +81,11 @@ const CounterInput = React.forwardRef((props, ref) => {
         onChange(getNormalizedValue(getValue(Number(value)) - step));
     };
 
-    const handleEvents = (event, callBack) => {
+    const handleEvents = (event, callback) => {
         if (event.target.value === '') {
-            return callBack();
+            return callback();
         }
-        return callBack(Number(event.target.value));
+        return callback(Number(event.target.value));
     };
 
     return (
@@ -120,7 +121,7 @@ const CounterInput = React.forwardRef((props, ref) => {
                     tabIndex={tabIndex}
                     onFocus={event => handleEvents(event, onFocus)}
                     onBlur={event => handleEvents(event, onBlur)}
-                    onClick={event => handleEvents(event, onClick)}
+                    onClick={onClick}
                     onKeyDown={onKeyDown}
                     disabled={disabled}
                     readOnly={readOnly}

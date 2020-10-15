@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Tab from '../';
+import Tab from '..';
 
 describe('<Tab />', () => {
     it('should set the right class names when custom class name is passed', () => {

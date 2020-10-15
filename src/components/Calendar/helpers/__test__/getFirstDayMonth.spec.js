@@ -1,4 +1,4 @@
-import getFirstDayMonth from './../getFirstDayMonth';
+import getFirstDayMonth from '../getFirstDayMonth';
 
 describe('getFirstDayMonth', () => {
     it('should return a 2019/03/01 when 2019/03/21', () => {

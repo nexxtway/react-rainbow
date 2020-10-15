@@ -1,7 +1,7 @@
 const PageDrawer = require('../../../src/components/Drawer/pageObject');
 const PageLookup = require('../../../src/components/Lookup/pageObject');
 const PageDatePicker = require('../../../src/components/DatePicker/pageObject');
-const { ESCAPE_KEY, TAB_KEY, ARROW_DOWN_KEY, ENTER_KEY } = require('../../constants');
+const { ESCAPE_KEY, TAB_KEY } = require('../../constants');
 
 const BUTTON = '#contact-1';
 const DRAWER = '#drawer-7';

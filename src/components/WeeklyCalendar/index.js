@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useLocale } from '../../libs/hooks';
 import { useCurrentWeek, useYearRange, useFormattedWeek, useDisabledControls } from './hooks';
 import { addWeeks } from './helpers';
-import Select from './../Select';
+import Select from '../Select';
 import RightIcon from './icons/rightArrow';
 import LeftIcon from './icons/leftArrow';
 import Header from './header';

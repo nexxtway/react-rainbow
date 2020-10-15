@@ -24,8 +24,8 @@ export interface CounterInputProps extends BaseProps {
     step?: number;
     variant?: 'default' | 'shaded';
     onChange?: (value: number) => void;
-    onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
-    onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
+    onFocus?: (value: number) => void;
+    onBlur?: (value: number) => void;
     onClick?: (event: MouseEvent<HTMLInputElement>) => void;
     onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
     label?: ReactNode;

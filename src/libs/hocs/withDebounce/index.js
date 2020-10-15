@@ -36,6 +36,7 @@ export default function withDebounce(WrappedComponent) {
         render() {
             const { onChange, ...rest } = this.props;
 
+            // eslint-disable-next-line react/jsx-props-no-spreading
             return <WrappedComponent {...rest} onChange={this.handleChange} ref={this.fieldRef} />;
         }
     };

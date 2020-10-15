@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
-import CounterInput from './../';
+import axe from '../../../../axe';
+import CounterInput from '..';
 
 describe('<CounterInput/>', () => {
     it('should be accessible when label is passed', async () => {

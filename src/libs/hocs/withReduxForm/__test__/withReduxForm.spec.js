@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import withReduxForm from './../';
+import withReduxForm from '..';
 
 function Input() {
     return <input />;

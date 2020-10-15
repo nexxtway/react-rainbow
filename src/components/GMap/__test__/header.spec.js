@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Header from './../header';
+import Header from '../header';
 
 describe('<Header/>', () => {
     it('should render the text passed inside an h2 element when is a string', () => {
