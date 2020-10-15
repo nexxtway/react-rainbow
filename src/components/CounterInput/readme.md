@@ -1,5 +1,5 @@
-# CounterInput base
-##### The counter with the default variant
+# CounterInput default variant
+##### This example represents a counter with a default variant.
 
 ```js
 import React, {useState} from 'react';
@@ -32,8 +32,8 @@ const CounterBase = () => {
 
 <CounterBase />
 ```
-# CounterInput shaded
-##### The counter with a variant shaded
+# CounterInput shaded variant
+##### You can modify CounterInput appearance by applying the shaded variant we offer you.
 
 ```js
 import React, {useState} from 'react';
@@ -70,7 +70,7 @@ const CounterShaded = () => {
 ```
 
 # CounterInput disabled
-##### The counter disabled
+##### In case you don't need an available state of the CounterInput component, you can disable it with the disabled property.
 
 ```js
 import React, {useState} from 'react';

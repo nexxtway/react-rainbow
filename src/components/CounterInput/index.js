@@ -6,7 +6,7 @@ import RelativeElement from '../Structural/relativeElement';
 import Label from '../Input/label';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
-import withReduxForm from './../../libs/hocs/withReduxForm';
+import withReduxForm from '../../libs/hocs/withReduxForm';
 import PlusIcon from './icons/plus';
 import MinusIcon from './icons/minus';
 import getValue from './helpers/getValue';
@@ -17,7 +17,7 @@ import isMin from './helpers/isMin';
 import { StyledContainer, StyledInput, StyledButton, ButtonContainer } from './styled';
 
 /**
- * CounterInput allows to increase or decrease a numerical value.
+ * CounterInput is a component that lets you enter a number. You can increase and decrease the  value using your mouse or by simply typing the number.
  * @category Form
  */
 
@@ -197,7 +197,7 @@ CounterInput.propTypes = {
     isBare: PropTypes.bool,
     /** Specifies the error that the input contains. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The variant changes the appearance of the Input. Accepted variants include default,
+    /** The variant changes the appearance of the Input. Accepted variants include default
      * and shaded. This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'shaded']),
     /** A number that specifies the granularity that the value must adhere to. */
