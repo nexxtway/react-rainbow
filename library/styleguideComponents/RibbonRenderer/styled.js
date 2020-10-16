@@ -79,4 +79,8 @@ export const StyledStackoverflowLink = styled.a`
     :hover {
         background: rgba(1, 1, 1, 0.05);
     }
+
+    @media (max-width: 800px) {
+        display: none;
+    }
 `;
