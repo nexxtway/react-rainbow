@@ -26,6 +26,7 @@ export { default as Chip } from './Chip';
 export { default as CodeInput } from './CodeInput';
 export { default as ColorPicker } from './ColorPicker';
 export { default as Column } from './Column';
+export { default as CounterInput } from './CounterInput';
 export { default as Dataset } from './Dataset';
 export { default as DatePicker } from './DatePicker';
 export { default as DatePickerModal } from './DatePickerModal';
