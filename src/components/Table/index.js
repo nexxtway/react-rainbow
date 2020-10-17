@@ -32,9 +32,9 @@ import StyledTableBody from './styled/tableBody';
 import StyledThead from './styled/thead';
 
 /**
- * A table lists a collection of data that makes sense when displays them in rows and columns. 
- * The data contained in a table is easier to read due to the format, so it can be useful to sort, 
- * search, and filter your data. 
+ * A table lists a collection of data that makes sense when displays them in rows and columns.
+ * The data contained in a table is easier to read due to the format, so it can be useful to sort,
+ * search, and filter your data.
  * @category DataView
  */
 export default class Table extends Component {
