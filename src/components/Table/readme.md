@@ -922,44 +922,6 @@ import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-com
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
-const data = [
-    {
-        name: 'Leandro Torres',
-        company: 'Nexxtway',
-        email: 'leandro@gmail.com',
-        status: 'verified',
-        id: '1234qwerty',
-    },
-    {
-        name: 'Jose Torres',
-        company: 'Google',
-        email: 'jose@gmail.com',
-        status: 'verified',
-        id: '1234asdfgh',
-    },
-    {
-        name: 'Reinier',
-        company: 'Nexxtway',
-        email: 'reinier@gmail.com',
-        status: 'verified',
-        id: '1234zxcvbn',
-    },
-    {
-        name: 'Sara',
-        company: 'Nexxtway',
-        email: 'sara@gmail.com',
-        status: 'verified',
-        id: '5678qwerty',
-    },
-    {
-        name: 'Tahimi',
-        company: 'Nexxtway',
-        email: 'tahimi@gmail.com',
-        status: 'verified',
-        id: '5678asdfgh',
-    },
-];
-
 const badgeStyles = { color: '#1de9b6' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
@@ -975,7 +937,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
             />
         </ButtonGroup>
     </GlobalHeader>
-    <Table data={data} hideTableHeader keyField="id">
+    <Table data={DataTable} hideTableHeader keyField="id">
         <Column header="Name" field="name" />
         <Column header="Status" field="status" component={StatusBadge} />
         <Column header="Company" field="company" />
