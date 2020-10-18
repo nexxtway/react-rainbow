@@ -13,30 +13,30 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-<div>
-    <GlobalHeader src="images/user/user2.jpg">
-        <div className="rainbow-flex rainbow-align_right">
-            <Picklist value={state.locale} onChange={value => setState({ locale: value })}>
-                <PicklistOption name="en-US" label="English (US)" />
-                <PicklistOption name="es-ES" label="Spanish (Spain)" />
-                <PicklistOption name="fr-Fr" label="French" />
-            </Picklist>
+    <div>
+        <GlobalHeader src="images/user/user2.jpg">
+            <div className="rainbow-flex rainbow-align_right">
+                <Picklist value={state.locale} onChange={value => setState({ locale: value })}>
+                    <PicklistOption name="en-US" label="English (US)" />
+                    <PicklistOption name="es-ES" label="Spanish (Spain)" />
+                    <PicklistOption name="fr-Fr" label="French" />
+                </Picklist>
+            </div>
+        </GlobalHeader>
+        <div
+            className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+            style={containerStyles}
+        >
+            <DatePicker
+                id="datePicker-1"
+                value={state.date}
+                onChange={value => setState({ date: value })}
+                label="DatePicker Label"
+                formatStyle="large"
+                locale={state.locale.name}
+            />
         </div>
-    </GlobalHeader>
-    <div
-        className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
-        style={containerStyles}
-    >
-        <DatePicker
-            id="datePicker-1"
-            value={state.date}
-            onChange={value => setState({ date: value })}
-            label="DatePicker Label"
-            formatStyle="large"
-            locale={state.locale.name}
-        />
     </div>
-</div>
 ```
 
 ##### DatePicker with date constraints:
@@ -49,19 +49,20 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-initialState = { date: new Date() };
-<div
-    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
-    style={containerStyles}
->
-    <DatePicker
-        value={state.date}
-        minDate={new Date(2018, 0, 4)}
-        maxDate={new Date(2020, 0, 4)}
-        label="DatePicker Label"
-        onChange={value => setState({ date: value })}
-    />
-</div>
+const initialState = { date: new Date() };
+
+    <div
+        className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+        style={containerStyles}
+    >
+        <DatePicker
+            value={state.date}
+            minDate={new Date(2018, 0, 4)}
+            maxDate={new Date(2020, 0, 4)}
+            label="DatePicker Label"
+            onChange={value => setState({ date: value })}
+        />
+    </div>
 ```
 
 ##### DatePicker with different date formats:
@@ -70,33 +71,34 @@ initialState = { date: new Date() };
 import React from 'react';
 import { DatePicker } from 'react-rainbow-components';
 
-initialState = { date: new Date() };
-<div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-flex_wrap">
-    <div className="rainbow-m-around_small">
-        <DatePicker
-            formatStyle="small"
-            value={state.date}
-            label="DatePicker Label"
-            onChange={value => setState({ date: value })}
-        />
+const initialState = { date: new Date() };
+
+    <div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-flex_wrap">
+        <div className="rainbow-m-around_small">
+            <DatePicker
+                formatStyle="small"
+                value={state.date}
+                label="DatePicker Label"
+                onChange={value => setState({ date: value })}
+            />
+        </div>
+        <div className="rainbow-m-around_small">
+            <DatePicker
+                formatStyle="medium"
+                value={state.date}
+                label="DatePicker Label"
+                onChange={value => setState({ date: value })}
+            />
+        </div>
+        <div className="rainbow-m-around_small">
+            <DatePicker
+                formatStyle="large"
+                value={state.date}
+                label="DatePicker Label"
+                onChange={value => setState({ date: value })}
+            />
+        </div>
     </div>
-    <div className="rainbow-m-around_small">
-        <DatePicker
-            formatStyle="medium"
-            value={state.date}
-            label="DatePicker Label"
-            onChange={value => setState({ date: value })}
-        />
-    </div>
-    <div className="rainbow-m-around_small">
-        <DatePicker
-            formatStyle="large"
-            value={state.date}
-            label="DatePicker Label"
-            onChange={value => setState({ date: value })}
-        />
-    </div>
-</div>
 ```
 
 ##### DatePicker required:
@@ -109,18 +111,19 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-initialState = { date: new Date() };
-<div
-    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
-    style={containerStyles}
->
-    <DatePicker
-        required
-        value={state.date}
-        label="DatePicker Label"
-        onChange={value => setState({ date: value })}
-    />
-</div>
+const initialState = { date: new Date() };
+
+    <div
+        className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+        style={containerStyles}
+    >
+        <DatePicker
+            required
+            value={state.date}
+            label="DatePicker Label"
+            onChange={value => setState({ date: value })}
+        />
+    </div>
 ```
 
 ##### DatePicker with error:
@@ -133,20 +136,21 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-initialState = { date: undefined };
-<div
-    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
-    style={containerStyles}
->
-    <DatePicker
-        required
-        error="Select a date is Required"
-        placeholder="Select a date"
-        value={state.date}
-        label="DatePicker Label"
-        onChange={value => setState({ date: value })}
-    />
-</div>
+const initialState = { date: undefined };
+
+    <div
+        className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+        style={containerStyles}
+    >
+        <DatePicker
+            required
+            error="Select a date is Required"
+            placeholder="Select a date"
+            value={state.date}
+            label="DatePicker Label"
+            onChange={value => setState({ date: value })}
+        />
+    </div>
 ```
 
 ##### DatePicker disabled:
@@ -159,12 +163,12 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-<div
-    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
-    style={containerStyles}
->
-    <DatePicker disabled value={new Date()} label="DatePicker Label" />
-</div>;
+    <div
+        className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+        style={containerStyles}
+    >
+        <DatePicker disabled value={new Date()} label="DatePicker Label" />
+    </div>;
 ```
 
 ##### DatePicker readOnly:
@@ -177,12 +181,12 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-<div
-    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
-    style={containerStyles}
->
-    <DatePicker id="datePicker-13" readOnly value={new Date()} label="DatePicker Label" />
-</div>
+    <div
+        className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+        style={containerStyles}
+    >
+        <DatePicker id="datePicker-13" readOnly value={new Date()} label="DatePicker Label" />
+    </div>
 ```
 
 ##### DatePicker with range selection:
@@ -198,21 +202,21 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-<div
-    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
-    style={containerStyles}
->
-    <DatePicker
-        id="datePicker-15"
-        label="DatePicker Label"
-        placeholder="Select range of dates"
-        selectionType="range"
-        formatStyle="large"
-        variant="single"
-        value={state.range}
-        onChange={value => setState({ range: value })}
-    />
-</div>
+    <div
+        className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+        style={containerStyles}
+    >
+        <DatePicker
+            id="datePicker-15"
+            label="DatePicker Label"
+            placeholder="Select range of dates"
+            selectionType="range"
+            formatStyle="large"
+            variant="single"
+            value={state.range}
+            onChange={value => setState({ range: value })}
+        />
+    </div>
 ```
 
 ##### DatePicker with variant double:
@@ -228,26 +232,26 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-<div
-    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
-    style={containerStyles}
->
-    <DatePicker
-        id="datePicker-17"
-        label="DatePicker Label"
-        placeholder="Select date"
-        variant="double"
-        value={state.date}
-        onChange={date => setState({ date })}
-    />
-</div>
+    <div
+        className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+        style={containerStyles}
+    >
+        <DatePicker
+            id="datePicker-17"
+            label="DatePicker Label"
+            placeholder="Select date"
+            variant="double"
+            value={state.date}
+            onChange={date => setState({ date })}
+        />
+    </div>
 ```
 
 ##### DatePicker select date:
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption, DatePicker, Input, Avatar } from 'react-rainbow-components';
+import { DatePicker, Input, Avatar } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const initialState = {
@@ -292,32 +296,32 @@ const StyledInput = styled.div`
     min-width: 250px;
 `;
 
-<div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_column">
-    <div className="rainbow-m-vertical_medium">
-        <Title>Complete your Information</Title>
-    </div>
-    <div className="rainbow-flex rainbow-align_center rainbow-m-vertical_medium">
-        <div>
-            <StyledAvatar src="images/user/avatar-5.svg" assistiveText={name} title={name} />
+    <div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_column">
+        <div className="rainbow-m-vertical_medium">
+            <Title>Complete your Information</Title>
         </div>
-        <div>
-            <Name>Ana Doe</Name>
-            <Email>ana@gmail.com</Email>
+        <div className="rainbow-flex rainbow-align_center rainbow-m-vertical_medium">
+            <div>
+                <StyledAvatar src="images/user/avatar-5.svg" />
+            </div>
+            <div>
+                <Name>Ana Doe</Name>
+                <Email>ana@gmail.com</Email>
+            </div>
         </div>
+        <StyledDatePicker className="rainbow-m-vertical_medium">
+            <DatePicker
+                id="datePicker-1"
+                placeholder="Select your DOB"
+                value={state.date}
+                onChange={value => setState({ date: value })}
+                label="Birthday"
+                formatStyle="medium"
+                locale="en-US"
+            />
+        </StyledDatePicker>
+        <StyledInput className="rainbow-m-vertical_medium">
+            <Input id="input-component-1" label="Company Name" placeholder="Enter company name" />
+        </StyledInput>
     </div>
-    <StyledDatePicker className="rainbow-m-vertical_medium">
-        <DatePicker
-            id="datePicker-1"
-            placeholder="Select your DOB"
-            value={state.date}
-            onChange={value => setState({ date: value })}
-            label="Birthday"
-            formatStyle="medium"
-            locale={'en-US'}
-        />
-    </StyledDatePicker>
-    <StyledInput className="rainbow-m-vertical_medium">
-        <Input id="input-component-1" label="Company Name" placeholder="Enter company name" />
-    </StyledInput>
-</div>
 ```

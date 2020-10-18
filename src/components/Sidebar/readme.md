@@ -22,7 +22,7 @@ class SimpleSidebar extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(e, selectedItem) {
+    handleOnSelect(event, selectedItem) {
         return this.setState({ selectedItem });
     }
 
@@ -41,21 +41,20 @@ class SimpleSidebar extends React.Component {
     }
 }
 
-<div>
-    <GlobalHeader src="images/user/user3.jpg" />
-    <SideBarContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
-        <SimpleSidebar />
-    </SideBarContainer>
-</div>
+    <div>
+        <GlobalHeader src="images/user/user3.jpg" />
+        <SideBarContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
+            <SimpleSidebar />
+        </SideBarContainer>
+    </div>
 ```
 
 ##### Sidebar with dynamic content
 
 ```js
-import React, { useState} from 'react';
-import { Sidebar, SidebarItem } from 'react-rainbow-components';
+import React, { useState } from 'react';
+import { Sidebar, SidebarItem, RenderIf } from 'react-rainbow-components';
 import styled from 'styled-components';
-import RenderIf from './../RenderIf';
 
 const SideBarContainer = styled.div.attrs(props => {
     return props.theme.rainbow.palette;
@@ -64,6 +63,7 @@ const SideBarContainer = styled.div.attrs(props => {
     width: 120px;
     border-bottom-left-radius: 0.875rem;
 `;
+
 const StyledDynamicContent = styled.div.attrs(props => {
     return props.theme.rainbow.palette;
 })`
@@ -82,32 +82,32 @@ function DynamicContent(prop) {
 function SimpleSidebar() {
     const [selectedItem, setSelectedItem] = useState('');
 
-    const handleOnSelect = (event, selectedItem) => {
-        return setSelectedItem(selectedItem);
+    const handleOnSelect = (event, value) => {
+        return setSelectedItem(value);
     };
 
         return (
-          <div>
-            <Sidebar selectedItem={selectedItem} onSelect={handleOnSelect} id="sidebar-1">
-                <SidebarItem icon={<DashboardPurpleIcon />} name="Dashboard" label="Dashboard" />
-                <SidebarItem icon={<ApplicationIcon />} name="Aplications" label="Aplications" />
-                <SidebarItem icon={<PuzzleIcon />} name="Components" label="Components" />
-                <SidebarItem icon={<MessagesIcon />} name="Messages" label="Messages" />
-                <SidebarItem icon={<ChartsIcon />} name="Charts" label="Charts" />
-            </Sidebar>
-            <StyledDynamicContent>
-                <RenderIf isTrue={selectedItem}>
-                    <DynamicContent selectedItem={selectedItem} />
-                </RenderIf>
-            </StyledDynamicContent>
-          </div>
+            <div>
+                <Sidebar selectedItem={selectedItem} onSelect={handleOnSelect} id="sidebar-1">
+                    <SidebarItem icon={<DashboardPurpleIcon />} name="Dashboard" label="Dashboard" />
+                    <SidebarItem icon={<ApplicationIcon />} name="Aplications" label="Aplications" />
+                    <SidebarItem icon={<PuzzleIcon />} name="Components" label="Components" />
+                    <SidebarItem icon={<MessagesIcon />} name="Messages" label="Messages" />
+                    <SidebarItem icon={<ChartsIcon />} name="Charts" label="Charts" />
+                </Sidebar>
+                <StyledDynamicContent>
+                    <RenderIf isTrue={selectedItem}>
+                        <DynamicContent selectedItem={selectedItem} />
+                    </RenderIf>
+                </StyledDynamicContent>
+            </div>
         );
 }
 
-<div>
-    <GlobalHeader src="images/user/user3.jpg" />
-    <SideBarContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
-        <SimpleSidebar />
-    </SideBarContainer>
-</div>
+    <div>
+        <GlobalHeader src="images/user/user3.jpg" />
+        <SideBarContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
+            <SimpleSidebar />
+        </SideBarContainer>
+    </div>
 ```

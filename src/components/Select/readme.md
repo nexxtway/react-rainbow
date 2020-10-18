@@ -14,13 +14,13 @@ const options = [
     { value: 'option 3', label: 'Option 3' },
 ];
 
-<Select
-    label="Select Label"
-    options={options}
-    id="example-select-1"
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Select
+        label="Select Label"
+        options={options}
+        id="example-select-1"
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### select required
@@ -39,13 +39,13 @@ const options = [
     { value: 'option 3', label: 'Option required 3' },
 ];
 
-<Select
-    label="Select Label"
-    required
-    options={options}
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Select
+        label="Select Label"
+        required
+        options={options}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### select disabled
@@ -64,13 +64,13 @@ const options = [
     { value: 'option 3', label: 'Option disabled 3' },
 ];
 
-<Select
-    label="Select Label"
-    disabled
-    options={options}
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Select
+        label="Select Label"
+        disabled
+        options={options}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### select with error
@@ -89,14 +89,14 @@ const options = [
     { value: 'option 3', label: 'Option with error 3' },
 ];
 
-<Select
-    label="Select Label"
-    required
-    error="this field is required"
-    options={options}
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Select
+        label="Select Label"
+        required
+        error="this field is required"
+        options={options}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### select controlled example
@@ -142,7 +142,7 @@ class ControlledSelect extends React.Component {
     }
 }
 
-<ControlledSelect />;
+    <ControlledSelect />;
 ```
 
 ##### select with help
@@ -161,13 +161,13 @@ const options = [
     { value: 'option 3', label: 'Option with help 3' },
 ];
 
-<Select
-    label="Select Label"
-    bottomHelpText="ex: here goes the help"
-    options={options}
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Select
+        label="Select Label"
+        bottomHelpText="ex: here goes the help"
+        options={options}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### select with left align label
@@ -186,14 +186,14 @@ const options = [
     { value: 'option 3', label: 'Option with help 3' },
 ];
 
-<Select
-    label="Select Label"
-    bottomHelpText="ex: here goes the help"
-    options={options}
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-    labelAlignment="left"
-/>;
+    <Select
+        label="Select Label"
+        bottomHelpText="ex: here goes the help"
+        options={options}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        labelAlignment="left"
+    />;
 ```
 
 ##### select with right align label
@@ -212,12 +212,12 @@ const options = [
     { value: 'option 3', label: 'Option with help 3' },
 ];
 
-<Select
-    label="Select Label"
-    bottomHelpText="ex: here goes the help"
-    options={options}
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-    labelAlignment="right"
-/>;
+    <Select
+        label="Select Label"
+        bottomHelpText="ex: here goes the help"
+        options={options}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        labelAlignment="right"
+    />;
 ```

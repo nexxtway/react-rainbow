@@ -1,4 +1,4 @@
-import GlobalHeader from './../library/exampleComponents/GlobalHeader';
+import GlobalHeader from './exampleComponents/GlobalHeader';
 import CodeEditor from './pages/components/CodeEditor';
 import FeatureList from './pages/components/FeatureList';
 import ExperienceExamplesPage from './pages/ExperienceExamplesPage';
@@ -45,7 +45,7 @@ import PencilIcon from './exampleComponents/Icons/pencil';
 import FileIcon from './exampleComponents/Icons/file';
 import FolderOpenIcon from './exampleComponents/Icons/folderOpen';
 import FolderCloseIcon from './exampleComponents/Icons/folderClose';
-import InverseContainer from './../library/exampleComponents/InverseContainer';
+import InverseContainer from './exampleComponents/InverseContainer';
 import ApplicationIcon from './exampleComponents/Icons/application';
 import ChartsIcon from './exampleComponents/Icons/charts';
 import DashboardPurpleIcon from './exampleComponents/Icons/dashboardPurple';

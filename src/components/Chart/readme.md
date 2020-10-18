@@ -3,35 +3,33 @@
 ```js
 import React from 'react';
 import { Chart, Dataset } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 600,
 };
 
-<div className="rainbow-p-vertical_medium rainbow-m_auto" style={containerStyles}>
-    <div className="rainbow-align-content_center">
-        <Chart
-            labels={['A', 'B', 'C', 'D']}
-            type="line"
-            className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
-        >
-            <Dataset
-                title="Dataset 1"
-                values={[23, 45, 123, 56]}
-                backgroundColor="#1de9b6"
-                borderColor="#1de9b6"
-            />
-            <Dataset
-                title="Dataset 2"
-                values={[66, 100, 30, 156]}
-                backgroundColor="#01b6f5"
-                borderColor="#01b6f5"
-            />
-        </Chart>
+    <div className="rainbow-p-vertical_medium rainbow-m_auto" style={containerStyles}>
+        <div className="rainbow-align-content_center">
+            <Chart
+                labels={['A', 'B', 'C', 'D']}
+                type="line"
+                className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
+            >
+                <Dataset
+                    title="Dataset 1"
+                    values={[23, 45, 123, 56]}
+                    backgroundColor="#1de9b6"
+                    borderColor="#1de9b6"
+                />
+                <Dataset
+                    title="Dataset 2"
+                    values={[66, 100, 30, 156]}
+                    backgroundColor="#01b6f5"
+                    borderColor="#01b6f5"
+                />
+            </Chart>
+        </div>
     </div>
-</div>
 ```
 
 ##### Bar chart vertical:
@@ -81,7 +79,7 @@ class BarChartExample extends React.Component {
 
     addDataset() {
         const { labels, datasets } = this.state;
-        const newValues = labels.map(label => Math.round(Math.random() * 100));
+        const newValues = labels.map(() => Math.round(Math.random() * 100));
         const newDatasets = datasets.concat({
             title: this.titles.shift(),
             values: newValues,
@@ -95,7 +93,7 @@ class BarChartExample extends React.Component {
         const dataset = datasets[datasets.length - 1];
         this.titles.unshift(dataset.title);
         this.colors.unshift(dataset.backgroundColor);
-        const newDatasets = datasets.filter(d => d.title !== dataset.title);
+        const newDatasets = datasets.filter(set => set.title !== dataset.title);
         this.setState({ datasets: newDatasets });
     }
 
@@ -117,7 +115,7 @@ class BarChartExample extends React.Component {
         const { labels, datasets } = this.state;
         const label = labels[labels.length - 1];
         this.months.unshift(label);
-        const newLabels = labels.filter(l => l !== label);
+        const newLabels = labels.filter(item => item !== label);
         const newDatasets = datasets.map(dataset => {
             const { values, ...rest } = dataset;
             const newValues = values.slice(0, values.length - 1);
@@ -181,7 +179,7 @@ class BarChartExample extends React.Component {
     }
 }
 
-<BarChartExample />;
+    <BarChartExample />;
 ```
 
 ##### Bar chart horizontal:
@@ -231,7 +229,7 @@ class BarChartExample extends React.Component {
 
     addDataset() {
         const { labels, datasets } = this.state;
-        const newValues = labels.map(label => Math.round(Math.random() * 100));
+        const newValues = labels.map(() => Math.round(Math.random() * 100));
         const newDatasets = datasets.concat({
             title: this.titles.shift(),
             values: newValues,
@@ -245,7 +243,7 @@ class BarChartExample extends React.Component {
         const dataset = datasets[datasets.length - 1];
         this.titles.unshift(dataset.title);
         this.colors.unshift(dataset.backgroundColor);
-        const newDatasets = datasets.filter(d => d.title !== dataset.title);
+        const newDatasets = datasets.filter(set => set.title !== dataset.title);
         this.setState({ datasets: newDatasets });
     }
 
@@ -267,7 +265,7 @@ class BarChartExample extends React.Component {
         const { labels, datasets } = this.state;
         const label = labels[labels.length - 1];
         this.months.unshift(label);
-        const newLabels = labels.filter(l => l !== label);
+        const newLabels = labels.filter(item => item !== label);
         const newDatasets = datasets.map(dataset => {
             const { values, ...rest } = dataset;
             const newValues = values.slice(0, values.length - 1);
@@ -331,7 +329,7 @@ class BarChartExample extends React.Component {
     }
 }
 
-<BarChartExample />;
+    <BarChartExample />;
 ```
 
 ##### Line chart:
@@ -371,7 +369,7 @@ class LineChartExample extends React.Component {
 
     addDataset() {
         const { labels, datasets } = this.state;
-        const newValues = labels.map(label => Math.round(Math.random() * 100));
+        const newValues = labels.map(() => Math.round(Math.random() * 100));
         const newDatasets = datasets.concat({
             title: this.titles.shift(),
             values: newValues,
@@ -385,7 +383,7 @@ class LineChartExample extends React.Component {
         const dataset = datasets[datasets.length - 1];
         this.titles.unshift(dataset.title);
         this.colors.unshift(dataset.borderColor);
-        const newDatasets = datasets.filter(d => d.title !== dataset.title);
+        const newDatasets = datasets.filter(set => set.title !== dataset.title);
         this.setState({ datasets: newDatasets });
     }
 
@@ -407,7 +405,7 @@ class LineChartExample extends React.Component {
         const { labels, datasets } = this.state;
         const label = labels[labels.length - 1];
         this.months.unshift(label);
-        const newLabels = labels.filter(l => l !== label);
+        const newLabels = labels.filter(item => item !== label);
         const newDatasets = datasets.map(dataset => {
             const { values, ...rest } = dataset;
             const newValues = values.slice(0, values.length - 1);
@@ -477,7 +475,7 @@ class LineChartExample extends React.Component {
     }
 }
 
-<LineChartExample />;
+    <LineChartExample />;
 ```
 
 ##### Line chart fill:
@@ -528,7 +526,7 @@ class LineChartExample extends React.Component {
 
     addDataset() {
         const { labels, datasets } = this.state;
-        const newValues = labels.map(label => Math.round(Math.random() * 100));
+        const newValues = labels.map(() => Math.round(Math.random() * 100));
         const newDatasets = datasets.concat({
             title: this.titles.shift(),
             values: newValues,
@@ -545,7 +543,7 @@ class LineChartExample extends React.Component {
             this.titles.unshift(dataset.title);
             this.colors.unshift(dataset.borderColor);
             this.backgrounds.unshift(dataset.backgroundColor);
-            const newDatasets = datasets.filter(d => d.title !== dataset.title);
+            const newDatasets = datasets.filter(set => set.title !== dataset.title);
             this.setState({ datasets: newDatasets });
         }
     }
@@ -568,7 +566,7 @@ class LineChartExample extends React.Component {
         const { labels, datasets } = this.state;
         const label = labels[labels.length - 1];
         this.months.unshift(label);
-        const newLabels = labels.filter(l => l !== label);
+        const newLabels = labels.filter(item => item !== label);
         const newDatasets = datasets.map(dataset => {
             const { values, ...rest } = dataset;
             const newValues = values.slice(0, values.length - 1);
@@ -639,7 +637,7 @@ class LineChartExample extends React.Component {
     }
 }
 
-<LineChartExample />;
+    <LineChartExample />;
 ```
 
 ##### Pie chart:
@@ -696,7 +694,7 @@ class PieChartExample extends React.Component {
         const { labels, dataset } = this.state;
         const lastLabel = labels[labels.length - 1];
         this.titles.unshift(lastLabel);
-        const newLabels = labels.filter(l => l !== lastLabel);
+        const newLabels = labels.filter(item => item !== lastLabel);
         const lastData = dataset[dataset.length - 1];
         this.colors.unshift(lastData.color);
         const newDataset = dataset.slice(0, dataset.length - 1);
@@ -704,12 +702,12 @@ class PieChartExample extends React.Component {
     }
 
     renderDataset() {
-        let data = [];
-        let colors = [];
+        const data = [];
+        const colors = [];
         const { dataset } = this.state;
-        dataset.forEach(d => {
-            data.push(d.value);
-            colors.push(d.color);
+        dataset.forEach(set => {
+            data.push(set.value);
+            colors.push(set.color);
         });
 
         return <Dataset title="Data" values={data} backgroundColor={colors} />;
@@ -744,7 +742,7 @@ class PieChartExample extends React.Component {
     }
 }
 
-<PieChartExample />;
+    <PieChartExample />;
 ```
 
 ##### Doughnut chart:
@@ -801,7 +799,7 @@ class DoughnutChartExample extends React.Component {
         const { labels, dataset } = this.state;
         const lastLabel = labels[labels.length - 1];
         this.titles.unshift(lastLabel);
-        const newLabels = labels.filter(l => l !== lastLabel);
+        const newLabels = labels.filter(item => item !== lastLabel);
         const lastData = dataset[dataset.length - 1];
         this.colors.unshift(lastData.color);
         const newDataset = dataset.slice(0, dataset.length - 1);
@@ -809,12 +807,12 @@ class DoughnutChartExample extends React.Component {
     }
 
     renderDataset() {
-        let data = [];
-        let colors = [];
+        const data = [];
+        const colors = [];
         const { dataset } = this.state;
-        dataset.forEach(d => {
-            data.push(d.value);
-            colors.push(d.color);
+        dataset.forEach(set => {
+            data.push(set.value);
+            colors.push(set.color);
         });
 
         return <Dataset title="Data" values={data} backgroundColor={colors} />;
@@ -853,19 +851,19 @@ class DoughnutChartExample extends React.Component {
     }
 }
 
-<DoughnutChartExample />;
+    <DoughnutChartExample />;
 ```
 
 ##### Interactive chart:
 
 ```js
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Chart, Dataset, Card, RadioButtonGroup } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const ChartHeading = styled.div`
     padding-left: 7px;
-    padding-right: 7px;    
+    padding-right: 7px;
 
     @media (max-width: 991px) {
         flex-direction: column;
@@ -888,7 +886,7 @@ const styles = {
 };
 
 const chartTypes = [
-    { value: 'line', label: 'Lines'},
+    { value: 'line', label: 'Lines' },
     { value: 'bar', label: 'Bars' }
 ];
 
@@ -912,30 +910,30 @@ const CurrentChartType = styled.span.attrs(props => {
 
 const InteractiveChart = () => {
     const [chartType, setChartType] = useState('line');
-    
+
     return (
         <div className="rainbow-p-vertical_medium rainbow-m_auto">
             <div className="rainbow-align-content_center">
                 <Card className="rainbow-m-horizontal_large rainbow-m-top_x-large rainbow-m-bottom_x-large rainbow-p-around_large" style={styles.container} >
-        
-                     <ChartHeading className="rainbow-align-content_space-between rainbow-flex rainbow-m-bottom_large">
+
+                    <ChartHeading className="rainbow-align-content_space-between rainbow-flex rainbow-m-bottom_large">
                         <div className="rainbow-m-bottom_medium">
                             <Title>Performance</Title>
                         </div>
-                    
-                         <RadioButtonGroup
+
+                        <RadioButtonGroup
                             id="radio-button-group-component-1"
                             options={chartTypes}
                             value={chartType}
                             variant="brand"
-                            onChange={ (e) => setChartType(e.target.value) }
+                            onChange={event => setChartType(event.target.value) }
                         />
                     </ChartHeading>
 
                     <CurrentChartType className="rainbow-flex rainbow-align-content_center rainbow-m-bottom_medium">
-                        {chartTypeMap[chartType]}        
-                    </CurrentChartType>            
-                       
+                        {chartTypeMap[chartType]}
+                    </CurrentChartType>
+
                     <Chart labels={months} type={chartType}  style={styles.chart} maintainAspectRatio={false}>
                         <Dataset
                             title="Google"
@@ -962,7 +960,7 @@ const InteractiveChart = () => {
     );
 };
 
-<InteractiveChart />
+    <InteractiveChart />
 
 ```
 
@@ -971,37 +969,35 @@ const InteractiveChart = () => {
 ```js
 import React from 'react';
 import { Chart, Dataset } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 600,
 };
 
-<div className="rainbow-p-vertical_medium rainbow-m_auto" style={containerStyles}>
-    <div className="rainbow-align-content_center">
-        <Chart
-            labels={['A', 'B', 'C', 'D']}
-            type="bar"
-            className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
-            disableXAxisGridLines
-            disableYAxisGridLines
-        >
-            <Dataset
-                title="Dataset 1"
-                values={[23, 45, 123, 56]}
-                backgroundColor="#1de9b6"
-                borderColor="#1de9b6"
-            />
-            <Dataset
-                title="Dataset 2"
-                values={[66, 100, 30, 156]}
-                backgroundColor="#01b6f5"
-                borderColor="#01b6f5"
-            />
-        </Chart>
+    <div className="rainbow-p-vertical_medium rainbow-m_auto" style={containerStyles}>
+        <div className="rainbow-align-content_center">
+            <Chart
+                labels={['A', 'B', 'C', 'D']}
+                type="bar"
+                className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
+                disableXAxisGridLines
+                disableYAxisGridLines
+            >
+                <Dataset
+                    title="Dataset 1"
+                    values={[23, 45, 123, 56]}
+                    backgroundColor="#1de9b6"
+                    borderColor="#1de9b6"
+                />
+                <Dataset
+                    title="Dataset 2"
+                    values={[66, 100, 30, 156]}
+                    backgroundColor="#01b6f5"
+                    borderColor="#01b6f5"
+                />
+            </Chart>
+        </div>
     </div>
-</div>
 ```
 
 ##### Chart with minimalist design:
@@ -1009,35 +1005,33 @@ const containerStyles = {
 ```js
 import React from 'react';
 import { Chart, Dataset } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 600,
 };
 
-<div className="rainbow-p-vertical_medium rainbow-m_auto" style={containerStyles}>
-    <div className="rainbow-align-content_center">
-        <Chart
-            labels={['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']}
-            type="bar"
-            className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
-            disableXAxisGridLines
-            disableYAxisGridLines
-            disableXAxisBorders
-            disableYAxisBorders
-            disableXAxisTickLabels
-            disableYAxisTickLabels
-        >
-            <Dataset
-                title="Dataset 1"
-                values={[23, 45, 123, 56, 66, 100, 30, 156]}
-                backgroundColor="#1de9b6"
-                borderColor="#1de9b6"
-            />
-        </Chart>
+    <div className="rainbow-p-vertical_medium rainbow-m_auto" style={containerStyles}>
+        <div className="rainbow-align-content_center">
+            <Chart
+                labels={['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']}
+                type="bar"
+                className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
+                disableXAxisGridLines
+                disableYAxisGridLines
+                disableXAxisBorders
+                disableYAxisBorders
+                disableXAxisTickLabels
+                disableYAxisTickLabels
+            >
+                <Dataset
+                    title="Dataset 1"
+                    values={[23, 45, 123, 56, 66, 100, 30, 156]}
+                    backgroundColor="#1de9b6"
+                    borderColor="#1de9b6"
+                />
+            </Chart>
+        </div>
     </div>
-</div>
 ```
 
 ##### Bar chart with integrated plugins:
@@ -1045,8 +1039,6 @@ const containerStyles = {
 ```js
 import React from 'react';
 import { Chart, Dataset } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import datalabels from 'chartjs-plugin-datalabels';
 import colorschemes from 'chartjs-plugin-colorschemes';
 
@@ -1056,33 +1048,33 @@ const containerStyles = {
     maxWidth: 600,
 };
 
-<div className="rainbow-p-vertical_large rainbow-m_auto" style={containerStyles}>
-    <div className="rainbow-align-content_center">
-        <Chart
-            plugins={plugins}
-            datalabels={ { color: '#fc8d62', anchor: 'end', align: 'top' } }
-            colorschemes={ { scheme: 'brewer.SetTwo7' } }
-            labels={['A', 'B', 'C', 'D']}
-            type="bar"
-            className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
-            disableXAxisGridLines
-            disableYAxisGridLines
-        >
-            <Dataset
-                datalabels={ { color: '#66c2a5' } }
-                title="Dataset 1"
-                values={[15, 33, 111, 42]}
-            />
-            <Dataset
-                title="Dataset 2"
-                values={[23, 45, 123, 56]}
-            />
-            <Dataset
-                datalabels={ { color: '#8da0cb' } }
-                title="Dataset 3"
-                values={[66, 100, 30, 156]}
-            />
-        </Chart>
+    <div className="rainbow-p-vertical_large rainbow-m_auto" style={containerStyles}>
+        <div className="rainbow-align-content_center">
+            <Chart
+                plugins={plugins}
+                datalabels={ { color: '#fc8d62', anchor: 'end', align: 'top' } }
+                colorschemes={ { scheme: 'brewer.SetTwo7' } }
+                labels={['A', 'B', 'C', 'D']}
+                type="bar"
+                className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
+                disableXAxisGridLines
+                disableYAxisGridLines
+            >
+                <Dataset
+                    datalabels={ { color: '#66c2a5' } }
+                    title="Dataset 1"
+                    values={[15, 33, 111, 42]}
+                />
+                <Dataset
+                    title="Dataset 2"
+                    values={[23, 45, 123, 56]}
+                />
+                <Dataset
+                    datalabels={ { color: '#8da0cb' } }
+                    title="Dataset 3"
+                    values={[66, 100, 30, 156]}
+                />
+            </Chart>
+        </div>
     </div>
-</div>
 ```

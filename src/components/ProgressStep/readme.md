@@ -37,9 +37,8 @@ class SimpleProgressStep extends React.Component {
         const { currentStepIndex } = this.state;
         if (currentStepIndex < stepNames.length - 1) {
             const nextStepIndex = currentStepIndex + 1;
-            return this.setState({ currentStepIndex: nextStepIndex });
+            this.setState({ currentStepIndex: nextStepIndex });
         }
-        return this.setState({ isNextDisabled: false });
     }
 
     handleBackClick() {
@@ -67,7 +66,7 @@ class SimpleProgressStep extends React.Component {
     }
 
     render() {
-        const { currentStepIndex, isBackDisabled, isNextDisabled } = this.state;
+        const { currentStepIndex } = this.state;
         return (
             <div className="rainbow-m-bottom_large rainbow-p-bottom_large">
                 <GlobalHeader
@@ -117,5 +116,5 @@ class SimpleProgressStep extends React.Component {
         );
     }
 }
-<SimpleProgressStep />;
+    <SimpleProgressStep />;
 ```

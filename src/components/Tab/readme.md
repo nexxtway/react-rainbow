@@ -4,8 +4,7 @@
 import React from 'react';
 import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faEllipsisV, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
-import { faClock, faStar } from '@fortawesome/free-regular-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
 const StyledHeader = styled.div.attrs(props => {
@@ -30,10 +29,6 @@ class TabExample extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(event, selected) {
-        this.setState({ selected });
-    }
-
     getTabContent() {
         const { selected } = this.state;
 
@@ -49,7 +44,7 @@ class TabExample extends React.Component {
                     light appearing in the sky.
                 </StyledTabContent>
             );
-        } else if (selected === 'recents') {
+        } if (selected === 'recents') {
             return (
                 <StyledTabContent
                     aria-labelledby="recents"
@@ -69,9 +64,13 @@ class TabExample extends React.Component {
             >
                 Rainbows can be full circles. However, the observer normally sees only an arc formed
                 by illuminated droplets above the ground, and centered on a line from the sun to the
-                observer's eye.
+                observer&apos;s eye.
             </StyledTabContent>
         );
+    }
+
+    handleOnSelect(event, selected) {
+        this.setState({ selected });
     }
 
     render() {
@@ -128,7 +127,7 @@ class TabExample extends React.Component {
     }
 }
 
-<TabExample />;
+    <TabExample />;
 ```
 
 ##### Tab with icon
@@ -163,10 +162,6 @@ class TabExample extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(event, selected) {
-        this.setState({ selected });
-    }
-
     getTabContent() {
         const { selected } = this.state;
 
@@ -182,7 +177,7 @@ class TabExample extends React.Component {
                     light appearing in the sky.
                 </StyledTabContent>
             );
-        } else if (selected === 'recents') {
+        } if (selected === 'recents') {
             return (
                 <StyledTabContent
                     aria-labelledby="recents"
@@ -202,9 +197,13 @@ class TabExample extends React.Component {
             >
                 Rainbows can be full circles. However, the observer normally sees only an arc formed
                 by illuminated droplets above the ground, and centered on a line from the sun to the
-                observer's eye.
+                observer&apos;s eye.
             </StyledTabContent>
         );
+    }
+
+    handleOnSelect(event, selected) {
+        this.setState({ selected });
     }
 
     render() {
@@ -272,7 +271,7 @@ class TabExample extends React.Component {
     }
 }
 
-<TabExample />;
+    <TabExample />;
 ```
 
 ##### Tab disabled
@@ -308,10 +307,6 @@ class TabExample extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(event, selected) {
-        this.setState({ selected });
-    }
-
     getTabContent() {
         const { selected } = this.state;
 
@@ -327,7 +322,7 @@ class TabExample extends React.Component {
                     light appearing in the sky.
                 </StyledTabContent>
             );
-        } else if (selected === 'recents') {
+        } if (selected === 'recents') {
             return (
                 <StyledTabContent
                     aria-labelledby="recents"
@@ -347,9 +342,13 @@ class TabExample extends React.Component {
             >
                 Rainbows can be full circles. However, the observer normally sees only an arc formed
                 by illuminated droplets above the ground, and centered on a line from the sun to the
-                observer's eye.
+                observer&apos;s eye.
             </StyledTabContent>
         );
+    }
+
+    handleOnSelect(event, selected) {
+        this.setState({ selected });
     }
 
     render() {
@@ -418,5 +417,5 @@ class TabExample extends React.Component {
     }
 }
 
-<TabExample />;
+    <TabExample />;
 ```

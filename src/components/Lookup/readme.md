@@ -8,7 +8,7 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-const options = [
+const data = [
     { label: 'Paris' },
     { label: 'New York' },
     { label: 'San Fransisco' },
@@ -44,7 +44,7 @@ function search(value) {
             value,
         });
         setState({
-            options: filter(value, options),
+            options: filter(value, data),
             value,
         });
     } else {
@@ -55,19 +55,19 @@ function search(value) {
     }
 }
 
-initialState = { options: null };
+const initialState = { options: null };
 
-<Lookup
-    id="lookup-1"
-    label="Lookup Label"
-    placeholder="Find"
-    options={state.options}
-    value={state.option}
-    onChange={option => setState({ option })}
-    onSearch={search}
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Lookup
+        id="lookup-1"
+        label="Lookup Label"
+        placeholder="Find"
+        options={state.options}
+        value={state.option}
+        onChange={option => setState({ option })}
+        onSearch={search}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### Lookup small with icon and description
@@ -93,7 +93,7 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-const options = [
+const data = [
     {
         label: 'Paris',
         description: 'This is an awesome city',
@@ -240,7 +240,7 @@ function search(value) {
         setTimeout(
             () =>
                 setState({
-                    options: filter(value, options),
+                    options: filter(value, data),
                     isLoading: false,
                 }),
             500,
@@ -254,22 +254,22 @@ function search(value) {
     }
 }
 
-initialState = { options: null };
+const initialState = { options: null };
 
-<Lookup
-    id="lookup-3"
-    label="Lookup Label"
-    placeholder="Find"
-    size="small"
-    options={state.options}
-    value={state.option}
-    onChange={option => setState({ option })}
-    debounce
-    isLoading={state.isLoading}
-    onSearch={search}
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Lookup
+        id="lookup-3"
+        label="Lookup Label"
+        placeholder="Find"
+        size="small"
+        options={state.options}
+        value={state.option}
+        onChange={option => setState({ option })}
+        debounce
+        isLoading={state.isLoading}
+        onSearch={search}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### Lookup with options type section
@@ -284,7 +284,7 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-const options = [
+const data = [
     {
         type: 'section',
         label: 'European Cities',
@@ -347,9 +347,9 @@ function filter(query, options) {
     if (query) {
         const filteredOptions = options.map(item => {
             if (item.type === 'section') {
-                const sectionOptions = item.options.filter(item => {
+                const sectionOptions = item.options.filter(subItem => {
                     const regex = new RegExp(query, 'i');
-                    return regex.test(item.label);
+                    return regex.test(subItem.label);
                 });
                 if (sectionOptions.length) {
                     return {
@@ -380,7 +380,7 @@ function search(value) {
         setTimeout(
             () =>
                 setState({
-                    options: filter(value, options),
+                    options: filter(value, data),
                     isLoading: false,
                 }),
             500,
@@ -394,21 +394,21 @@ function search(value) {
     }
 }
 
-initialState = { options: null };
+const initialState = { options: null };
 
-<Lookup
-    id="lookup-5"
-    label="Lookup Label"
-    placeholder="Find"
-    options={state.options}
-    value={state.option}
-    onChange={option => setState({ option })}
-    debounce
-    isLoading={state.isLoading}
-    onSearch={search}
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Lookup
+        id="lookup-5"
+        label="Lookup Label"
+        placeholder="Find"
+        options={state.options}
+        value={state.option}
+        onChange={option => setState({ option })}
+        debounce
+        isLoading={state.isLoading}
+        onSearch={search}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### Lookup disabled
@@ -416,14 +416,12 @@ initialState = { options: null };
 ```js
 import React from 'react';
 import { Lookup } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCity } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 700,
 };
 
-const options = [
+const data = [
     { label: 'Paris' },
     { label: 'New York' },
     { label: 'San Fransisco' },
@@ -462,7 +460,7 @@ function search(value) {
         setTimeout(
             () =>
                 setState({
-                    options: filter(value, options),
+                    options: filter(value, data),
                     isLoading: false,
                 }),
             500,
@@ -476,20 +474,20 @@ function search(value) {
     }
 }
 
-initialState = { options: null };
+const initialState = { options: null };
 
-<Lookup
-    label="Lookup Label"
-    placeholder="Find"
-    options={state.options}
-    value={state.option}
-    onChange={option => setState({ option })}
-    disabled
-    isLoading={state.isLoading}
-    onSearch={search}
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Lookup
+        label="Lookup Label"
+        placeholder="Find"
+        options={state.options}
+        value={state.option}
+        onChange={option => setState({ option })}
+        disabled
+        isLoading={state.isLoading}
+        onSearch={search}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### Lookup required with error
@@ -497,14 +495,12 @@ initialState = { options: null };
 ```js
 import React from 'react';
 import { Lookup } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCity } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 700,
 };
 
-const options = [
+const data = [
     { label: 'Paris' },
     { label: 'New York' },
     { label: 'San Fransisco' },
@@ -543,7 +539,7 @@ function search(value) {
         setTimeout(
             () =>
                 setState({
-                    options: filter(value, options),
+                    options: filter(value, data),
                     isLoading: false,
                 }),
             500,
@@ -557,21 +553,21 @@ function search(value) {
     }
 }
 
-initialState = { options: null };
+const initialState = { options: null };
 
-<Lookup
-    label="Lookup Label"
-    placeholder="Find"
-    options={state.options}
-    value={state.option}
-    onChange={option => setState({ option })}
-    required
-    error="This field is required"
-    isLoading={state.isLoading}
-    onSearch={search}
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Lookup
+        label="Lookup Label"
+        placeholder="Find"
+        options={state.options}
+        value={state.option}
+        onChange={option => setState({ option })}
+        required
+        error="This field is required"
+        isLoading={state.isLoading}
+        onSearch={search}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### Lookup with value selected
@@ -586,26 +582,26 @@ const inputStyles = {
     width: 300,
 };
 
-<div className="rainbow-align-content_center rainbow-p-vertical_x-large rainbow-flex_wrap">
-    <Lookup
-        className="rainbow-p-around_medium"
-        style={inputStyles}
-        label="Place of Birth"
-        value={{
+    <div className="rainbow-align-content_center rainbow-p-vertical_x-large rainbow-flex_wrap">
+        <Lookup
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Place of Birth"
+            value={{
             label: 'London',
             icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" />,
         }}
-    />
+        />
 
-    <Lookup
-        className="rainbow-p-around_medium"
-        style={inputStyles}
-        label="Place of Birth"
-        readOnly
-        value={{
+        <Lookup
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Place of Birth"
+            readOnly
+            value={{
             label: 'London',
             icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" />,
         }}
-    />
-</div>
+        />
+    </div>
 ```

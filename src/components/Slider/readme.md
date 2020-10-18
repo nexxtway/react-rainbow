@@ -17,8 +17,8 @@ class SliderExample extends React.Component {
         this.onChange = this.onChange.bind(this);
     }
 
-    onChange(e) {
-        this.setState({ value: e.target.value });
+    onChange(event) {
+        this.setState({ value: event.target.value });
     }
 
     render() {
@@ -37,7 +37,7 @@ class SliderExample extends React.Component {
     }
 }
 
-<SliderExample />;
+    <SliderExample />;
 ```
 
 ##### Slider with min, max and step properties
@@ -59,8 +59,8 @@ class SliderExample extends React.Component {
         this.onChange = this.onChange.bind(this);
     }
 
-    onChange(e) {
-        this.setState({ value: e.target.value });
+    onChange(event) {
+        this.setState({ value: event.target.value });
     }
 
     render() {
@@ -86,7 +86,7 @@ class SliderExample extends React.Component {
     }
 }
 
-<SliderExample />;
+    <SliderExample />;
 ```
 
 ##### Slider with error
@@ -108,8 +108,8 @@ class SliderExample extends React.Component {
         this.onChange = this.onChange.bind(this);
     }
 
-    onChange(e) {
-        this.setState({ value: e.target.value });
+    onChange(event) {
+        this.setState({ value: event.target.value });
     }
 
     render() {
@@ -133,7 +133,7 @@ class SliderExample extends React.Component {
     }
 }
 
-<SliderExample />;
+    <SliderExample />;
 ```
 
 ##### Slider disabled
@@ -155,8 +155,8 @@ class SliderExample extends React.Component {
         this.onChange = this.onChange.bind(this);
     }
 
-    onChange(e) {
-        this.setState({ value: e.target.value });
+    onChange(event) {
+        this.setState({ value: event.target.value });
     }
 
     render() {
@@ -175,5 +175,5 @@ class SliderExample extends React.Component {
     }
 }
 
-<SliderExample />;
+    <SliderExample />;
 ```

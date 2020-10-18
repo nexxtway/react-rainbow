@@ -2,7 +2,7 @@
 
 ```js
 import React, { useState } from 'react';
-import { PicklistOption } from 'react-rainbow-components';
+import { InternalDropdown, PicklistOption } from 'react-rainbow-components';
 
 function BasicInternalDropdown() {
     const [value, setValue] = useState();
@@ -23,14 +23,14 @@ function BasicInternalDropdown() {
     );
 }
 
-<BasicInternalDropdown />
+    <BasicInternalDropdown />
 ```
 
 ##### With search input:
 
 ```js
 import React, { useState } from 'react';
-import { PicklistOption } from 'react-rainbow-components';
+import { InternalDropdown, PicklistOption } from 'react-rainbow-components';
 
 function InternalDropdownWithSearch() {
     const [value, setValue] = useState();
@@ -51,14 +51,14 @@ function InternalDropdownWithSearch() {
     );
 }
 
-<InternalDropdownWithSearch />
+    <InternalDropdownWithSearch />
 ```
 
 ##### With multiple selection:
 
 ```js
 import React, { useState } from 'react';
-import { PicklistOption } from 'react-rainbow-components';
+import { InternalDropdown, PicklistOption } from 'react-rainbow-components';
 
 function InternalDropdownWithMultipleSelection() {
     const [value, setValue] = useState();
@@ -79,5 +79,5 @@ function InternalDropdownWithMultipleSelection() {
     );
 }
 
-<InternalDropdownWithMultipleSelection />
+    <InternalDropdownWithMultipleSelection />
 ```

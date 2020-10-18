@@ -94,8 +94,6 @@
         "outputPath": "./test-results/jest-junit-results/results.html"
     },
     "devDependencies": {
-        "algoliasearch": "^4.5.1",
-        "react-instantsearch-dom": "^6.7.0",
         "@babel/cli": "^7.6.0",
         "@babel/core": "^7.6.0",
         "@babel/parser": "^7.11.5",
@@ -123,6 +121,7 @@
         "@wdio/selenium-standalone-service": "^6.4.7",
         "@wdio/spec-reporter": "^6.4.7",
         "@wdio/sync": "^6.5.0",
+        "algoliasearch": "^4.5.1",
         "allure-commandline": "^2.13.0",
         "assert": "^1.4.1",
         "babel-eslint": "^10.0.3",
@@ -145,6 +144,7 @@
         "eslint-plugin-import": "^2.6.0",
         "eslint-plugin-jest": "^24.0.2",
         "eslint-plugin-jsx-a11y": "^6.3.1",
+        "eslint-plugin-markdown": "^2.0.0-rc.0",
         "eslint-plugin-prettier": "^3.1.2",
         "eslint-plugin-rainbow": "^0.2.0",
         "eslint-plugin-react": "^7.1.0",
@@ -170,6 +170,7 @@
         "react-dom": "^16.8.6",
         "react-ga": "^2.5.3",
         "react-github-btn": "^1.2.0",
+        "react-instantsearch-dom": "^6.7.0",
         "react-is": "16.8.6",
         "react-prismic-cms": "^0.3.1",
         "react-redux": "^5.1.0",

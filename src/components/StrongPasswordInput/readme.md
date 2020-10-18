@@ -8,7 +8,7 @@ const containerStyles = {
     maxWidth: 500,
 };
 
-function ControlledStrongPasswordInput(props) {
+function ControlledStrongPasswordInput() {
     const [value, setValue] = useState('');
 
     function handleOnChange(event) {
@@ -16,16 +16,16 @@ function ControlledStrongPasswordInput(props) {
     }
 
     function getStrength() {
-        const length = value.length;
+        const { length } = value;
         if (length === 0) {
             return undefined;
         }
         if (length <= 3) {
             return 'weak';
-        }        
+        }
         if (length > 3 && length < 8) {
             return 'average';
-        }        
+        }
         return 'strong';
     }
 
@@ -46,7 +46,7 @@ function ControlledStrongPasswordInput(props) {
     )
 }
 
-<ControlledStrongPasswordInput />
+    <ControlledStrongPasswordInput />
 ```
 
 ##### StrongPasswordInput with icon
@@ -61,7 +61,7 @@ const containerStyles = {
     maxWidth: 500,
 };
 
-function ControlledStrongPasswordInput(props) {
+function ControlledStrongPasswordInput() {
     const [value, setValue] = useState('');
 
     function handleOnChange(event) {
@@ -69,16 +69,16 @@ function ControlledStrongPasswordInput(props) {
     }
 
     function getStrength() {
-        const length = value.length;
+        const { length } = value;
         if (length === 0) {
             return undefined;
         }
         if (length <= 3) {
             return 'weak';
-        }        
+        }
         if (length > 3 && length < 8) {
             return 'average';
-        }        
+        }
         return 'strong';
     }
 
@@ -100,7 +100,7 @@ function ControlledStrongPasswordInput(props) {
     )
 }
 
-<ControlledStrongPasswordInput />
+    <ControlledStrongPasswordInput />
 ```
 
 ##### StrongPasswordInput with password state label
@@ -119,7 +119,7 @@ const passwordStateLabels = {
     strong: 'Strong',
 };
 
-function ControlledStrongPasswordInput(props) {
+function ControlledStrongPasswordInput() {
     const [value, setValue] = useState('');
 
     function handleOnChange(event) {
@@ -127,16 +127,16 @@ function ControlledStrongPasswordInput(props) {
     }
 
     function getStrength() {
-        const length = value.length;
+        const { length } = value;
         if (length === 0) {
             return undefined;
         }
         if (length <= 3) {
             return 'weak';
-        }        
+        }
         if (length > 3 && length < 8) {
             return 'average';
-        }        
+        }
         return 'strong';
     }
 
@@ -158,7 +158,7 @@ function ControlledStrongPasswordInput(props) {
     )
 }
 
-<ControlledStrongPasswordInput />
+    <ControlledStrongPasswordInput />
 ```
 
 ##### StrongPasswordInput with error
@@ -171,7 +171,7 @@ const containerStyles = {
     maxWidth: 500,
 };
 
-function ControlledStrongPasswordInput(props) {
+function ControlledStrongPasswordInput() {
     const [value, setValue] = useState('');
 
     function handleOnChange(event) {
@@ -179,16 +179,16 @@ function ControlledStrongPasswordInput(props) {
     }
 
     function getStrength() {
-        const length = value.length;
+        const { length } = value;
         if (length === 0) {
             return undefined;
         }
         if (length <= 3) {
             return 'weak';
-        }        
+        }
         if (length > 3 && length < 8) {
             return 'average';
-        }        
+        }
         return 'strong';
     }
 
@@ -211,7 +211,7 @@ function ControlledStrongPasswordInput(props) {
     )
 }
 
-<ControlledStrongPasswordInput />
+    <ControlledStrongPasswordInput />
 ```
 
 ##### StrongPasswordInput disabled
@@ -224,12 +224,12 @@ const containerStyles = {
     maxWidth: 500,
 };
 
-<StrongPasswordInput
-    id="strong-password-input-9"
-    label="Password"
-    placeholder="Placeholder text"
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-    style={containerStyles}
-    disabled
-/>
+    <StrongPasswordInput
+        id="strong-password-input-9"
+        label="Password"
+        placeholder="Placeholder text"
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        style={containerStyles}
+        disabled
+    />
 ```

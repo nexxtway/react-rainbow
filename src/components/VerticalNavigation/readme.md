@@ -23,14 +23,15 @@ class SimpleVerticalNavigation extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(e, selectedItem) {
+    handleOnSelect(event, selectedItem) {
         return this.setState({ selectedItem });
     }
 
     render() {
+        const { selectedItem } = this.state;
         return (
             <VerticalNavigation
-                selectedItem={this.state.selectedItem}
+                selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}
             >
                 <VerticalSection>
@@ -45,12 +46,12 @@ class SimpleVerticalNavigation extends React.Component {
     }
 }
 
-<div>
-    <GlobalHeader src="images/user/user3.jpg" />
-    <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
-        <SimpleVerticalNavigation />
-    </StyledContainer>
-</div>
+    <div>
+        <GlobalHeader src="images/user/user3.jpg" />
+        <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
+            <SimpleVerticalNavigation />
+        </StyledContainer>
+    </div>
 ```
 
 ##### compact VerticalNavigation compact with href
@@ -78,16 +79,17 @@ class CompactVerticalNavigation extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(e, selectedItem) {
+    handleOnSelect(event, selectedItem) {
         return this.setState({ selectedItem });
     }
 
     render() {
+        const { selectedItem } = this.state;
         return (
             <VerticalNavigation
                 id="vertical-navigation-3"
                 compact
-                selectedItem={this.state.selectedItem}
+                selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}
             >
                 <VerticalSection>
@@ -114,12 +116,12 @@ class CompactVerticalNavigation extends React.Component {
     }
 }
 
-<div>
-    <GlobalHeader src="images/user/user2.jpg" />
-    <StyledContainer className="rainbow-p-top_small rainbow-p-vertical_medium">
-        <CompactVerticalNavigation />
-    </StyledContainer>
-</div>
+    <div>
+        <GlobalHeader src="images/user/user2.jpg" />
+        <StyledContainer className="rainbow-p-top_small rainbow-p-vertical_medium">
+            <CompactVerticalNavigation />
+        </StyledContainer>
+    </div>
 ```
 
 ##### vertical navigation with headers
@@ -147,14 +149,15 @@ class VerticalNavigationWithHeaders extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(e, selectedItem) {
+    handleOnSelect(event, selectedItem) {
         return this.setState({ selectedItem });
     }
 
     render() {
+        const { selectedItem } = this.state;
         return (
             <VerticalNavigation
-                selectedItem={this.state.selectedItem}
+                selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}
             >
                 <VerticalSection label="GETTING STARTED">
@@ -171,12 +174,12 @@ class VerticalNavigationWithHeaders extends React.Component {
     }
 }
 
-<div>
-    <GlobalHeader src="images/user/user3.jpg" />
-    <StyledContainer className="rainbow-p-top_small rainbow-p-vertical_medium">
-        <VerticalNavigationWithHeaders />
-    </StyledContainer>
-</div>
+    <div>
+        <GlobalHeader src="images/user/user3.jpg" />
+        <StyledContainer className="rainbow-p-top_small rainbow-p-vertical_medium">
+            <VerticalNavigationWithHeaders />
+        </StyledContainer>
+    </div>
 ```
 
 ##### vertical navigation with icons
@@ -206,14 +209,15 @@ class VerticalNavigationWithIcons extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(e, selectedItem) {
+    handleOnSelect(event, selectedItem) {
         return this.setState({ selectedItem });
     }
 
     render() {
+        const { selectedItem } = this.state;
         return (
             <VerticalNavigation
-                selectedItem={this.state.selectedItem}
+                selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}
             >
                 <VerticalSection>
@@ -248,12 +252,12 @@ class VerticalNavigationWithIcons extends React.Component {
     }
 }
 
-<div>
-    <GlobalHeader />
-    <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_large">
-        <VerticalNavigationWithIcons />
-    </StyledContainer>
-</div>
+    <div>
+        <GlobalHeader />
+        <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_large">
+            <VerticalNavigationWithIcons />
+        </StyledContainer>
+    </div>
 ```
 
 ##### vertical navigation with header and icons
@@ -283,14 +287,15 @@ class VerticalNavigationWithIcons extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(e, selectedItem) {
+    handleOnSelect(event, selectedItem) {
         return this.setState({ selectedItem });
     }
 
     render() {
+        const { selectedItem } = this.state;
         return (
             <VerticalNavigation
-                selectedItem={this.state.selectedItem}
+                selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}
             >
                 <VerticalSection label="GETTING STARTED">
@@ -328,12 +333,12 @@ class VerticalNavigationWithIcons extends React.Component {
     }
 }
 
-<div>
-    <GlobalHeader src="images/user/user2.jpg" />
-    <StyledContainer className="rainbow-p-vertical_medium rainbow-p-top_small">
-        <VerticalNavigationWithIcons />
-    </StyledContainer>
-</div>
+    <div>
+        <GlobalHeader src="images/user/user2.jpg" />
+        <StyledContainer className="rainbow-p-vertical_medium rainbow-p-top_small">
+            <VerticalNavigationWithIcons />
+        </StyledContainer>
+    </div>
 ```
 
 ##### vertical navigation expandable
@@ -346,7 +351,7 @@ import {
     VerticalSectionOverflow,
 } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faTh, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { faTh, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div.attrs(props => {
@@ -367,15 +372,16 @@ class ShadedVerticalNavigation extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(e, selectedItem) {
+    handleOnSelect(event, selectedItem) {
         return this.setState({ selectedItem });
     }
 
     render() {
+        const { selectedItem } = this.state;
         return (
             <VerticalNavigation
                 id="vertical-navigation-11"
-                selectedItem={this.state.selectedItem}
+                selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}
             >
                 <VerticalSectionOverflow label="Folders" description="Folders created, shared...">
@@ -409,12 +415,12 @@ class ShadedVerticalNavigation extends React.Component {
     }
 }
 
-<div>
-    <GlobalHeader />
-    <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_x-large">
-        <ShadedVerticalNavigation />
-    </StyledContainer>
-</div>
+    <div>
+        <GlobalHeader />
+        <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_x-large">
+            <ShadedVerticalNavigation />
+        </StyledContainer>
+    </div>
 ```
 
 ##### vertical navigation with notifications
@@ -442,14 +448,15 @@ class VerticalNavigationWithNotifications extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(e, selectedItem) {
+    handleOnSelect(event, selectedItem) {
         return this.setState({ selectedItem });
     }
 
     render() {
+        const { selectedItem } = this.state;
         return (
             <VerticalNavigation
-                selectedItem={this.state.selectedItem}
+                selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}
             >
                 <VerticalSection>
@@ -473,12 +480,12 @@ class VerticalNavigationWithNotifications extends React.Component {
     }
 }
 
-<div>
-    <GlobalHeader src="images/user/user3.jpg" />
-    <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_x-large">
-        <VerticalNavigationWithNotifications />
-    </StyledContainer>
-</div>
+    <div>
+        <GlobalHeader src="images/user/user3.jpg" />
+        <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_x-large">
+            <VerticalNavigationWithNotifications />
+        </StyledContainer>
+    </div>
 ```
 
 ##### VerticalNavigation shaded
@@ -506,14 +513,15 @@ class SimpleVerticalNavigation extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(e, selectedItem) {
+    handleOnSelect(event, selectedItem) {
         return this.setState({ selectedItem });
     }
 
     render() {
+        const { selectedItem } = this.state;
         return (
             <VerticalNavigation
-                selectedItem={this.state.selectedItem}
+                selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}
                 shaded
             >
@@ -529,10 +537,10 @@ class SimpleVerticalNavigation extends React.Component {
     }
 }
 
-<div>
-    <GlobalHeader src="images/user/user3.jpg" />
-    <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
-        <SimpleVerticalNavigation />
-    </StyledContainer>
-</div>
+    <div>
+        <GlobalHeader src="images/user/user3.jpg" />
+        <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
+            <SimpleVerticalNavigation />
+        </StyledContainer>
+    </div>
 ```
