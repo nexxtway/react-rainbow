@@ -1,8 +1,9 @@
 ##### Basic:
 
 ```js
+/* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
-import { InternalDropdown, PicklistOption } from 'react-rainbow-components';
+import { PicklistOption } from 'react-rainbow-components';
 
 function BasicInternalDropdown() {
     const [value, setValue] = useState();
@@ -29,8 +30,9 @@ function BasicInternalDropdown() {
 ##### With search input:
 
 ```js
+/* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
-import { InternalDropdown, PicklistOption } from 'react-rainbow-components';
+import { PicklistOption } from 'react-rainbow-components';
 
 function InternalDropdownWithSearch() {
     const [value, setValue] = useState();
@@ -57,8 +59,9 @@ function InternalDropdownWithSearch() {
 ##### With multiple selection:
 
 ```js
+/* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
-import { InternalDropdown, PicklistOption } from 'react-rainbow-components';
+import { PicklistOption } from 'react-rainbow-components';
 
 function InternalDropdownWithMultipleSelection() {
     const [value, setValue] = useState();
