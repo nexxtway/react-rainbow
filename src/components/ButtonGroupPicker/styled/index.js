@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import ErrorText from '../../Input/styled/errorText';
 import HelpText from '../../Input/styled/helpText';
 import StyledButtonGroup from './buttonGroup';

@@ -133,7 +133,7 @@ CheckboxGroup.defaultProps = {
     options: [],
     value: [],
     label: null,
-    labelAlignment: 'center',
+    labelAlignment: 'left',
     hideLabel: false,
     name: undefined,
     onChange: () => {},

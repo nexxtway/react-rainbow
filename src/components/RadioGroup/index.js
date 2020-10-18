@@ -112,7 +112,7 @@ RadioGroup.propTypes = {
 
 RadioGroup.defaultProps = {
     label: null,
-    labelAlignment: 'center',
+    labelAlignment: 'left',
     hideLabel: false,
     name: null,
     className: undefined,

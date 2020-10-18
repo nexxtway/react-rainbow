@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import CodeInput from '..';
 import InputItems from '../inputItems';
 import InputItem from '../inputItem';
-import { StyledErrorMessage, StyledHelpText, StyledLabel } from '../styled';
+import { StyledErrorMessage, StyledHelpText } from '../styled';
 
 import useFocusedIndexState from '../hooks/useFocusedIndexState';
 import usePreviousIndex from '../hooks/usePreviousIndex';

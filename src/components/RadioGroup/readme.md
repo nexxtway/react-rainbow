@@ -31,7 +31,6 @@ class SimpleRadioGroup extends React.Component {
                 value={this.state.value}
                 onChange={this.handleOnChange}
                 label="Radio Group Label"
-                labelAlignment="left"
             />
         );
     }
@@ -74,7 +73,6 @@ class DisabledRadioGroup extends React.Component {
                 value={this.state.value}
                 onChange={this.handleOnChange}
                 label="Radio Group Label"
-                labelAlignment="left"
             />
         );
     }
@@ -117,7 +115,6 @@ class RequiredRadioGroup extends React.Component {
                 value={this.state.value}
                 onChange={this.handleOnChange}
                 label="Radio Group Label"
-                labelAlignment="left"
                 required
             />
         );
@@ -161,7 +158,6 @@ class ErrorRadioGroup extends React.Component {
                 value={this.state.value}
                 onChange={this.handleOnChange}
                 label="Radio Group Label"
-                labelAlignment="left"
                 error="This field is required"
             />
         );
@@ -199,7 +195,6 @@ const SimpleRadioGroup = () => {
             value={value}
             onChange={handleOnChange}
             label="Radio Group Label"
-            labelAlignment="left"
             orientation="horizontal"
         />
     );

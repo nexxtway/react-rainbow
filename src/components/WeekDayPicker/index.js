@@ -150,6 +150,8 @@ WeekDayPicker.defaultProps = {
     name: undefined,
     value: undefined,
     label: undefined,
+    labelAlignment: 'center',
+    hideLabel: false,
     bottomHelpText: undefined,
     availableDates: [],
     locale: undefined,

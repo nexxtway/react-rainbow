@@ -50,8 +50,8 @@ describe('<RadioGroup />', () => {
         expect(component.find(StyledLabel).prop('labelAlignment')).toBe('right');
     });
 
-    it('should set "center" to labelAlignment if prop not passed in the Label component', () => {
+    it('should set "left" to labelAlignment if prop not passed in the Label component', () => {
         const component = mount(<RadioGroup label="RadioGroup Label" />);
-        expect(component.find(StyledLabel).prop('labelAlignment')).toBe('center');
+        expect(component.find(StyledLabel).prop('labelAlignment')).toBe('left');
     });
 });
