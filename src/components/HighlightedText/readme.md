@@ -1,5 +1,6 @@
 # HighlightedText base
 ##### This example shows the style that is applied by default to the component.
+
 ```js
 import React from 'react';
 import { HighlightedText } from 'react-rainbow-components';
@@ -26,8 +27,7 @@ const parts = [
     },
 ];
 
-<HighlightedText parts={parts} style={style} />;
-
+    <HighlightedText parts={parts} style={style} />;
 ```
 
 # HighlightedText with custom styles
@@ -61,7 +61,7 @@ const parts = [
 ];
 
 const TextContainer = styled.span`
-    color: ${(props) => props.theme.rainbow.palette.text.title};
+    color: ${props => props.theme.rainbow.palette.text.title};
     font-size: 1rem;
 `;
 
@@ -69,12 +69,10 @@ const HitContainer = styled.span.attrs(props => {
     return props.theme.rainbow.palette;
 })
 `
-    background-color: ${(props) => props.brand.main};
+    background-color: ${props => props.brand.main};
     color: ${props => props.getContrastText(props.text.main)};
     font-size: 1rem;
 `;
 
-<HighlightedText parts={parts} style={style} textComponent={TextContainer} hitComponent={HitContainer} />;
-
+    <HighlightedText parts={parts} style={style} textComponent={TextContainer} hitComponent={HitContainer} />;
 ```
-

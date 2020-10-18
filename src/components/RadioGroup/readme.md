@@ -24,11 +24,12 @@ class SimpleRadioGroup extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <RadioGroup
                 id="radio-group-component-1"
                 options={options}
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
                 label="Radio Group Label"
             />
@@ -36,9 +37,9 @@ class SimpleRadioGroup extends React.Component {
     }
 }
 
-<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-    <SimpleRadioGroup />
-</div>
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+        <SimpleRadioGroup />
+    </div>
 ```
 
 ##### radio group disabled
@@ -67,10 +68,11 @@ class DisabledRadioGroup extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <RadioGroup
                 options={options}
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
                 label="Radio Group Label"
             />
@@ -78,9 +80,9 @@ class DisabledRadioGroup extends React.Component {
     }
 }
 
-<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-    <DisabledRadioGroup />
-</div>
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+        <DisabledRadioGroup />
+    </div>
 ```
 
 ##### radio group required
@@ -109,10 +111,11 @@ class RequiredRadioGroup extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <RadioGroup
                 options={options}
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
                 label="Radio Group Label"
                 required
@@ -121,9 +124,9 @@ class RequiredRadioGroup extends React.Component {
     }
 }
 
-<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-    <RequiredRadioGroup />
-</div>
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+        <RequiredRadioGroup />
+    </div>
 ```
 
 ##### radio group error
@@ -152,10 +155,11 @@ class ErrorRadioGroup extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <RadioGroup
                 options={options}
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
                 label="Radio Group Label"
                 error="This field is required"
@@ -164,9 +168,9 @@ class ErrorRadioGroup extends React.Component {
     }
 }
 
-<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-    <ErrorRadioGroup />
-</div>
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+        <ErrorRadioGroup />
+    </div>
 ```
 
 ##### radio group horizontal
@@ -183,7 +187,7 @@ const options = [
 
 const SimpleRadioGroup = () => {
     const [value, setValue] = useState('anonymous');
-    
+
     const handleOnChange = event => {
         setValue(event.target.value);
     }
@@ -200,7 +204,7 @@ const SimpleRadioGroup = () => {
     );
 }
 
-<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-    <SimpleRadioGroup />
-</div>
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+        <SimpleRadioGroup />
+    </div>
 ```

@@ -82,47 +82,47 @@ const avatarsIcon = [
     },
 ];
 
-<div className="rainbow-m-around_large">
-    <Card className="rainbow-flex rainbow-justify_spread rainbow-p-horizontal_large rainbow-flex_wrap">
-        <div className="rainbow-flex_column rainbow-m-horizontal_small rainbow-m-vertical_large">
-            <Label>
-                photo-url with counter
-            </Label>
-            <AvatarGroup
-                avatars={avatarsUrl}
-                maxAvatars={3}
-                showCounter
-            />
-        </div>
-        <div className="rainbow-flex_column rainbow-m-around_large">
-            <Label>
-                photo-url
-            </Label>
-            <AvatarGroup
-                avatars={avatarsUrl}
-                maxAvatars={4}
-            />
-        </div>
-        <div className="rainbow-flex_column rainbow-m-around_large">
-            <Label>
-                fallback user icon
-            </Label>
-            <AvatarGroup
-                avatars={avatarsIcon}
-                maxAvatars={4}
-            />
-        </div>
-        <div className="rainbow-flex_column rainbow-m-around_large">
-            <Label>
-                fallback user initials
-            </Label>
-            <AvatarGroup
-                avatars={avatarsInitials}
-                maxAvatars={4}
-            />
-        </div>
-    </Card>
-</div>
+    <div className="rainbow-m-around_large">
+        <Card className="rainbow-flex rainbow-justify_spread rainbow-p-horizontal_large rainbow-flex_wrap">
+            <div className="rainbow-flex_column rainbow-m-horizontal_small rainbow-m-vertical_large">
+                <Label>
+                    photo-url with counter
+                </Label>
+                <AvatarGroup
+                    avatars={avatarsUrl}
+                    maxAvatars={3}
+                    showCounter
+                />
+            </div>
+            <div className="rainbow-flex_column rainbow-m-around_large">
+                <Label>
+                    photo-url
+                </Label>
+                <AvatarGroup
+                    avatars={avatarsUrl}
+                    maxAvatars={4}
+                />
+            </div>
+            <div className="rainbow-flex_column rainbow-m-around_large">
+                <Label>
+                    fallback user icon
+                </Label>
+                <AvatarGroup
+                    avatars={avatarsIcon}
+                    maxAvatars={4}
+                />
+            </div>
+            <div className="rainbow-flex_column rainbow-m-around_large">
+                <Label>
+                    fallback user initials
+                </Label>
+                <AvatarGroup
+                    avatars={avatarsInitials}
+                    maxAvatars={4}
+                />
+            </div>
+        </Card>
+    </div>
 
 ```
 
@@ -131,7 +131,7 @@ const avatarsIcon = [
 
 ```js
 import React from 'react';
-import { AvatarGroup, Card } from 'react-rainbow-components';
+import { AvatarGroup } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const Label = styled.h1`
@@ -163,48 +163,48 @@ const avatars = [
     },
 ];
 
-<div className="rainbow-flex rainbow-justify_center rainbow-align_end rainbow-m-around_large rainbow-flex_wrap">
-    <div className="rainbow-flex_column rainbow-m-around_large">
-        <AvatarGroup
-            avatars={avatars}
-            maxAvatars={4}
-            size="x-small"
-        />
-        <Label>
-            x-small
-        </Label>
+    <div className="rainbow-flex rainbow-justify_center rainbow-align_end rainbow-m-around_large rainbow-flex_wrap">
+        <div className="rainbow-flex_column rainbow-m-around_large">
+            <AvatarGroup
+                avatars={avatars}
+                maxAvatars={4}
+                size="x-small"
+            />
+            <Label>
+                x-small
+            </Label>
+        </div>
+        <div className="rainbow-flex_column rainbow-m-around_large">
+            <AvatarGroup
+                avatars={avatars}
+                maxAvatars={4}
+                size="small"
+            />
+            <Label>
+                small
+            </Label>
+        </div>
+        <div className="rainbow-flex_column rainbow-m-around_large">
+            <AvatarGroup
+                avatars={avatars}
+                maxAvatars={4}
+                size="medium"
+            />
+            <Label>
+                medium
+            </Label>
+        </div>
+        <div className="rainbow-flex_column rainbow-m-around_large">
+            <AvatarGroup
+                avatars={avatars}
+                maxAvatars={4}
+                size="large"
+            />
+            <Label>
+                large
+            </Label>
+        </div>
     </div>
-    <div className="rainbow-flex_column rainbow-m-around_large">
-        <AvatarGroup
-            avatars={avatars}
-            maxAvatars={4}
-            size="small"
-        />
-        <Label>
-            small
-        </Label>
-    </div>
-    <div className="rainbow-flex_column rainbow-m-around_large">
-        <AvatarGroup
-            avatars={avatars}
-            maxAvatars={4}
-            size="medium"
-        />
-        <Label>
-            medium
-        </Label>
-    </div>
-    <div className="rainbow-flex_column rainbow-m-around_large">
-        <AvatarGroup
-            avatars={avatars}
-            maxAvatars={4}
-            size="large"
-        />
-        <Label>
-            large
-        </Label>
-    </div>
-</div>
 ```
 
 ##### AvatarGroup
@@ -289,7 +289,7 @@ const Column = props => {
     const { label, description } = props;
     return (
         <ColumnContainer>
-             <Label>
+            <Label>
                 {label}
             </Label>
             <Description>
@@ -311,43 +311,43 @@ const ExampleCard = props => {
     );
 }
 
-<div className="rainbow-m-around_large">
-    <ExampleCard
-        organization="Nexxtway"
-        localization="Miami, Fl"
-        earnings="$120 M"
-        members={
-            <AvatarGroup
-                avatars={avatars}
-                maxAvatars={3}
-                size='small'
-            />
+    <div className="rainbow-m-around_large">
+        <ExampleCard
+            organization="Nexxtway"
+            localization="Miami, Fl"
+            earnings="$120 M"
+            members={
+                <AvatarGroup
+                    avatars={avatars}
+                    maxAvatars={3}
+                    size='small'
+                />
         }
-    />
-    <ExampleCard
-        organization="NexxtwayMX"
-        localization="Guadalajara, Jl"
-        earnings="$50 M"
-        members={
-            <AvatarGroup
-                avatars={avatars}
-                maxAvatars={2}
-                size='small'
-            />
+        />
+        <ExampleCard
+            organization="NexxtwayMX"
+            localization="Guadalajara, Jl"
+            earnings="$50 M"
+            members={
+                <AvatarGroup
+                    avatars={avatars}
+                    maxAvatars={2}
+                    size='small'
+                />
         }
-    />
-    <ExampleCard
-        organization="Rainbow"
-        localization="world-wide"
-        earnings="free"
-        members={
-            <AvatarGroup
-                avatars={avatars}
-                maxAvatars={5}
-                showCounter
-                size='small'
-            />
-        }
-    />
-</div>
+        />
+        <ExampleCard
+            organization="Rainbow"
+            localization="world-wide"
+            earnings="free"
+            members={
+                <AvatarGroup
+                    avatars={avatars}
+                    maxAvatars={5}
+                    showCounter
+                    size='small'
+                />
+            }
+        />
+    </div>
 ```

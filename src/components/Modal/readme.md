@@ -2,9 +2,7 @@
 
 ```js
 import React from 'react';
-import { Modal, Button, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { Modal, Button } from 'react-rainbow-components';
 
 class EmptyModal extends React.Component {
     constructor(props) {
@@ -25,6 +23,7 @@ class EmptyModal extends React.Component {
     }
 
     render() {
+        const { isOpen } = this.state;
         return (
             <div>
                 <Button
@@ -33,7 +32,7 @@ class EmptyModal extends React.Component {
                     label="Open Modal"
                     onClick={this.handleOnClick}
                 />
-                <Modal id="modal-1" isOpen={this.state.isOpen} onRequestClose={this.handleOnClose}>
+                <Modal id="modal-1" isOpen={isOpen} onRequestClose={this.handleOnClose}>
                     <img
                         src="images/illustrations/Illustration-rainbow-1.svg"
                         className="rainbow-p-around_xx-large rainbow-m_auto rainbow-align-content_center"
@@ -45,13 +44,13 @@ class EmptyModal extends React.Component {
     }
 }
 
-<div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
-        <div className="rainbow-m-right_medium">
-            <EmptyModal />
-        </div>
-    </GlobalHeader>
-</div>
+    <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
+            <div className="rainbow-m-right_medium">
+                <EmptyModal />
+            </div>
+        </GlobalHeader>
+    </div>
 ```
 
 ##### modal with header
@@ -59,8 +58,6 @@ class EmptyModal extends React.Component {
 ```js
 import React from 'react';
 import { Modal, Button } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 const textStyles = {
     textAlign: 'center',
@@ -85,6 +82,7 @@ class ModalWHeader extends React.Component {
     }
 
     render() {
+        const { isOpen } = this.state;
         return (
             <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
                 <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
@@ -95,7 +93,7 @@ class ModalWHeader extends React.Component {
                     />
                 </GlobalHeader>
                 <Modal
-                    isOpen={this.state.isOpen}
+                    isOpen={isOpen}
                     onRequestClose={this.handleOnClose}
                     title="Modal Header"
                 >
@@ -113,7 +111,7 @@ class ModalWHeader extends React.Component {
     }
 }
 
-<ModalWHeader />;
+    <ModalWHeader />;
 ```
 
 ##### modal with footer
@@ -121,8 +119,6 @@ class ModalWHeader extends React.Component {
 ```js
 import React from 'react';
 import { Modal, Button } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 const textStyles = {
     textAlign: 'center',
@@ -149,6 +145,7 @@ class ModalWFooter extends React.Component {
     }
 
     render() {
+        const { isOpen } = this.state;
         return (
             <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
                 <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
@@ -161,7 +158,7 @@ class ModalWFooter extends React.Component {
                 </GlobalHeader>
                 <Modal
                     id="modal-2"
-                    isOpen={this.state.isOpen}
+                    isOpen={isOpen}
                     onRequestClose={this.handleOnClose}
                     title="Modal Header"
                     footer={
@@ -218,7 +215,7 @@ class ModalWFooter extends React.Component {
     }
 }
 
-<ModalWFooter />;
+    <ModalWFooter />;
 ```
 
 ##### modal with footer directional
@@ -226,8 +223,6 @@ class ModalWFooter extends React.Component {
 ```js
 import React from 'react';
 import { Modal, Button } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 const textStyles = {
     textAlign: 'center',
@@ -254,6 +249,7 @@ class ModalWFooterDirectional extends React.Component {
     }
 
     render() {
+        const { isOpen } = this.state;
         return (
             <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
                 <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
@@ -264,7 +260,7 @@ class ModalWFooterDirectional extends React.Component {
                     />
                 </GlobalHeader>
                 <Modal
-                    isOpen={this.state.isOpen}
+                    isOpen={isOpen}
                     onRequestClose={this.handleOnClose}
                     title="Modal Header"
                     footer={
@@ -289,7 +285,7 @@ class ModalWFooterDirectional extends React.Component {
     }
 }
 
-<ModalWFooterDirectional />;
+    <ModalWFooterDirectional />;
 ```
 
 ##### modal with variant size
@@ -298,8 +294,7 @@ class ModalWFooterDirectional extends React.Component {
 import React from 'react';
 import { Modal, Card, Button, ButtonGroup } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTasks, faShareAlt, faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faTasks } from '@fortawesome/free-solid-svg-icons';
 
 const iconContainerStyles = {
     width: '2.5rem',
@@ -347,6 +342,7 @@ class ModalWSize extends React.Component {
     }
 
     render() {
+        const { isOpen, isOpenMedium, isOpenLarge } = this.state;
         return (
             <div className="rainbow-m-around_large">
                 <Card
@@ -395,7 +391,7 @@ class ModalWSize extends React.Component {
                     </div>
                 </Card>
                 <Modal
-                    isOpen={this.state.isOpen}
+                    isOpen={isOpen}
                     onRequestClose={this.handleOnClose}
                     title="Modal Small"
                 >
@@ -410,7 +406,7 @@ class ModalWSize extends React.Component {
                     </p>
                 </Modal>
                 <Modal
-                    isOpen={this.state.isOpenMedium}
+                    isOpen={isOpenMedium}
                     onRequestClose={this.handleOnClose}
                     title="Modal Medium"
                     size="medium"
@@ -426,7 +422,7 @@ class ModalWSize extends React.Component {
                     </p>
                 </Modal>
                 <Modal
-                    isOpen={this.state.isOpenLarge}
+                    isOpen={isOpenLarge}
                     onRequestClose={this.handleOnClose}
                     title="Modal Large"
                     size="large"
@@ -446,7 +442,7 @@ class ModalWSize extends React.Component {
     }
 }
 
-<ModalWSize />;
+    <ModalWSize />;
 ```
 
 ##### modal with redux form
@@ -455,8 +451,6 @@ class ModalWSize extends React.Component {
 import React from 'react';
 import {
     Modal,
-    ButtonIcon,
-    ButtonGroup,
     Button,
     Input,
     TimePicker,
@@ -465,8 +459,6 @@ import {
     Textarea,
 } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const styles = {
     input: {
@@ -478,7 +470,7 @@ const styles = {
     },
 };
 
-const options = [
+const data = [
     { label: 'Paris' },
     { label: 'New York' },
     { label: 'San Fransisco' },
@@ -629,9 +621,10 @@ class FormModal extends React.Component {
     }
 
     search(value) {
-        if (this.state.options && this.state.value && value.length > this.state.value.length) {
+        const { options, value: valueState } = this.state;
+        if (options && valueState && value.length > valueState.length) {
             this.setState({
-                options: filter(value, this.state.options),
+                options: filter(value, options),
                 value,
             });
         } else if (value) {
@@ -642,7 +635,7 @@ class FormModal extends React.Component {
             setTimeout(
                 () =>
                     this.setState({
-                        options: filter(value, options),
+                        options: filter(value, data),
                         isLoading: false,
                     }),
                 500,
@@ -702,19 +695,19 @@ class FormModal extends React.Component {
     }
 }
 
-<div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
-        <div className="rainbow-m-right_medium">
-            <FormModal />
-        </div>
-    </GlobalHeader>
-</div>
+    <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
+            <div className="rainbow-m-right_medium">
+                <FormModal />
+            </div>
+        </GlobalHeader>
+    </div>
 ```
 
 ##### make reservation modal
 
 ```js
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Modal, Button, Input, TimePicker, DatePicker, Textarea, Select } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
@@ -728,11 +721,11 @@ const Content = styled.div`
 
     @media (max-width: 768px) {
         flex-direction: column-reverse;
-        
+
         > div:nth-child(1) {
             text-align: center;
         }
-        
+
         div:nth-child(2) img {
             min-width: 0;
             width: ${imgWidth};
@@ -781,7 +774,7 @@ const countries = [
     { value: 'Spain', label: 'Spain' },
     { value: 'Greece', label: 'Greece' },
     { value: 'Canada', label: 'Canada' }
-]; 
+];
 
 const formInitialValues = {
     date: new Date(),
@@ -847,7 +840,7 @@ function ReservationForm(props) {
                     required
                     label="Email Address"
                 />
-                
+
                 <Field
                     style={styles.inputColumn}
                     required
@@ -880,7 +873,7 @@ const Form = reduxForm({
 const FormModal = () => {
     const [isOpen, setOpenStatus] = useState(false);
 
-    const submit = (values) => {
+    const submit = values => {
         console.log(values);
     }
 
@@ -888,7 +881,6 @@ const FormModal = () => {
         <div>
             <Button
                 id="button-12"
-                variant="neutral"
                 label="Book Now!!"
                 onClick={() => setOpenStatus(true)}
                 variant="brand"
@@ -922,27 +914,27 @@ const FormModal = () => {
     );
 };
 
-<div>
-    <GlobalHeader/>
+    <div>
+        <GlobalHeader/>
 
-    <Content className="rainbow-p-around_xx-large rainbow-flex rainbow-align-content_center">
-        <div>
-            <div className="rainbow-m-bottom_medium">
-                <Title>Make your reservation</Title>
+        <Content className="rainbow-p-around_xx-large rainbow-flex rainbow-align-content_center">
+            <div>
+                <div className="rainbow-m-bottom_medium">
+                    <Title>Make your reservation</Title>
+                </div>
+
+                <div className="rainbow-m-bottom_medium">
+                    <Description>This is a reservation system UI practice. Hope you will let me know how you feel about this. Thanks</Description>
+                </div>
+
+                <FormModal />
             </div>
 
-            <div className="rainbow-m-bottom_medium">
-                <Description>This is a reservation system UI practice. Hope you will let me know how you feel about this. Thanks</Description>
+            <div>
+                <img alt="traveler" className="rainbow-m-bottom_medium" src="/images/illustrations/Illustration-traveler.svg" />
             </div>
+        </Content>
 
-            <FormModal />
-        </div>
-
-        <div>
-            <img className="rainbow-m-bottom_medium" src="/images/illustrations/Illustration-traveler.svg" />
-        </div>
-    </Content>
-
-</div>
+    </div>
 
 ```

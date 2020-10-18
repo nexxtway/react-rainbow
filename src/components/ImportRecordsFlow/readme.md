@@ -41,6 +41,7 @@ class ImportRecordsFlowModal extends React.Component {
     }
 
     render() {
+        const { isOpen } = this.state;
         return (
             <div>
                 <Button variant="neutral" onClick={this.handleOnClick}>
@@ -48,7 +49,7 @@ class ImportRecordsFlowModal extends React.Component {
                     Import
                 </Button>
                 <ImportRecordsFlow
-                    isOpen={this.state.isOpen}
+                    isOpen={isOpen}
                     onRequestClose={this.handleOnClose}
                     schema={schema}
                     onComplete={data => console.log(data)}
@@ -58,13 +59,13 @@ class ImportRecordsFlowModal extends React.Component {
     }
 }
 
-<div style={containerStyles}>
-    <GlobalHeader>
-        <div className="rainbow-m-right_medium">
-            <ImportRecordsFlowModal />
-        </div>
-    </GlobalHeader>
-</div>
+    <div style={containerStyles}>
+        <GlobalHeader>
+            <div className="rainbow-m-right_medium">
+                <ImportRecordsFlowModal />
+            </div>
+        </GlobalHeader>
+    </div>
 ```
 
 
@@ -111,6 +112,7 @@ class ImportRecordsFlowModal extends React.Component {
     }
 
     render() {
+        const { isOpen } = this.state;
         return (
             <div>
                 <Button variant="neutral" onClick={this.handleOnClick}>
@@ -118,7 +120,7 @@ class ImportRecordsFlowModal extends React.Component {
                     Import
                 </Button>
                 <ImportRecordsFlow
-                    isOpen={this.state.isOpen}
+                    isOpen={isOpen}
                     onRequestClose={this.handleOnClose}
                     schema={schema}
                     onComplete={data => console.log(data)}
@@ -129,11 +131,11 @@ class ImportRecordsFlowModal extends React.Component {
     }
 }
 
-<div style={containerStyles}>
-    <GlobalHeader>
-        <div className="rainbow-m-right_medium">
-            <ImportRecordsFlowModal />
-        </div>
-    </GlobalHeader>
-</div>
+    <div style={containerStyles}>
+        <GlobalHeader>
+            <div className="rainbow-m-right_medium">
+                <ImportRecordsFlowModal />
+            </div>
+        </GlobalHeader>
+    </div>
 ```
