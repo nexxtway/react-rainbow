@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Label from '../../Input/label/labelText';
+import Label from '../../Input/label';
 
 const StyledLabel = styled(Label)`
     padding-left: 0;

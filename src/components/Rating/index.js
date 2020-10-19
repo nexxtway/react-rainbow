@@ -58,9 +58,12 @@ export default class Rating extends Component {
                 style={style}
             >
                 <RenderIf isTrue={label}>
-                    <StyledLabel hideLabel={hideLabel} labelAlignment={labelAlignment} as="legend">
-                        {label}
-                    </StyledLabel>
+                    <StyledLabel
+                        label={label}
+                        labelAlignment={labelAlignment}
+                        hideLabel={hideLabel}
+                        forwardedAs="legend"
+                    />
                 </RenderIf>
                 <RatingItems
                     onChange={onChange}

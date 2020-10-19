@@ -126,14 +126,13 @@ class RadioButtonGroup extends Component {
             <StyledContainer id={id} className={className} style={style}>
                 <RenderIf isTrue={label}>
                     <StyledLabel
+                        label={label}
                         variant={variant}
-                        hideLabel={hideLabel}
                         labelAlignment={labelAlignment}
+                        hideLabel={hideLabel}
                         required={required}
-                        as="legend"
-                    >
-                        {label}
-                    </StyledLabel>
+                        forwardedAs="legend"
+                    />
                 </RenderIf>
                 <StyledButtonItemsContainer variant={variant} size={size}>
                     <Marker

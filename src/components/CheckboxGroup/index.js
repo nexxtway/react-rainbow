@@ -66,13 +66,12 @@ class CheckboxGroup extends Component {
             <StyledFieldset id={id} className={className} style={style}>
                 <RenderIf isTrue={label}>
                     <StyledLabel
-                        hideLabel={hideLabel}
+                        label={label}
                         labelAlignment={labelAlignment}
+                        hideLabel={hideLabel}
                         required={required}
-                        as="legend"
-                    >
-                        {label}
-                    </StyledLabel>
+                        forwardedAs="legend"
+                    />
                 </RenderIf>
                 <StyledContentContainer orientation={orientation}>
                     <CheckboxList

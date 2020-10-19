@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Label from '../../Input/label/labelText';
+import Label from '../../Input/label';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledLabel = attachThemeAttrs(styled(Label))`

@@ -5,8 +5,17 @@ import HiddenElement from '../../Structural/hiddenElement';
 import LabelText from './labelText';
 
 export default function Label(props) {
-    const { label, required, inputId, readOnly, id, labelAlignment, hideLabel, as } = props;
-
+    const {
+        className,
+        label,
+        required,
+        inputId,
+        readOnly,
+        id,
+        labelAlignment,
+        hideLabel,
+        as,
+    } = props;
     if (hideLabel) {
         return (
             <HiddenElement as="label" htmlFor={inputId} id={id}>
@@ -18,6 +27,7 @@ export default function Label(props) {
 
     return (
         <LabelText
+            className={className}
             readOnly={readOnly}
             labelAlignment={labelAlignment}
             htmlFor={inputId}
@@ -31,6 +41,7 @@ export default function Label(props) {
 }
 
 Label.propTypes = {
+    className: PropTypes.string,
     label: PropTypes.node,
     required: PropTypes.bool,
     inputId: PropTypes.string,
@@ -42,6 +53,7 @@ Label.propTypes = {
 };
 
 Label.defaultProps = {
+    className: undefined,
     label: undefined,
     required: false,
     inputId: undefined,
