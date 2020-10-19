@@ -4,6 +4,7 @@ import {
     COLOR_ERROR,
     COLOR_WARNING,
     COLOR_WHITE,
+    COLOR_WHITE_TRANSPARENT_1,
     COLOR_DARK_1,
     COLOR_GRAY_1,
     COLOR_GRAY_2,
@@ -39,6 +40,7 @@ const defaultTheme = {
             highlight: '#eff1f5',
             secondary: '#f9fafc',
             disabled: COLOR_GRAY_1,
+            inverse: COLOR_WHITE_TRANSPARENT_1,
         },
         text: {
             main: COLOR_DARK_1,

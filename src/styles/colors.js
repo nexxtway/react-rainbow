@@ -1,5 +1,6 @@
 // white
 export const COLOR_WHITE = '#fff';
+export const COLOR_WHITE_TRANSPARENT_1 = 'rgba(255, 255, 255, 0.1)';
 
 // brand colors
 export const COLOR_BRAND = '#01b6f5';

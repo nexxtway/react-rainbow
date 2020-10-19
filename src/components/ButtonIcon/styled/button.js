@@ -280,6 +280,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             &:focus,
             &:active {
                 color: ${props.inverse.active};
+                background-color: ${props.palette.background.inverse};
             }
         
             &:focus {
@@ -304,6 +305,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             &:active {
                 border-color: ${props.inverse.active};
                 color: ${props.inverse.active};
+                background-color: ${props.palette.background.inverse};
             }
         
             &:focus {
