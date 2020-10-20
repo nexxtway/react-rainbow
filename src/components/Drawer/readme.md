@@ -158,7 +158,8 @@ import {
     Input,
     GoogleAddressLookup,
     Lookup,
-    Select,
+    Picklist,
+    Option,
 } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
@@ -172,12 +173,6 @@ const countries = [
     { value: 'mx', label: 'Mexico' },
     { value: 'uk', label: 'United Kingdom' },
     { value: 'us', label: 'United States' },
-];
-
-const roles = [
-    { value: '', label: 'Select role' },
-    { value: 'manager', label: 'Manager' },
-    { value: 'developer', label: 'Developer' },
 ];
 
 const StyledExampleHeader = styled.h3.attrs(props => {
@@ -321,7 +316,7 @@ function EditContactForm(props) {
                     className="rainbow-m-right_medium"
                 />
                 <div className="rainbow-flex_column">
-                    <FormNameLabel className="rainbow-m-top_small">
+                    <FormNameLabel id="contact-name-label" className="rainbow-m-top_small">
                         {contactInfo.name}
                     </FormNameLabel>
                     <FormEmailLabel className="rainbow-m-top_xx-small">
@@ -364,12 +359,19 @@ function EditContactForm(props) {
                         onSearch={handleSearch}
                     />
                     <Field
+                        id="contact-role-input"
                         className="rainbow-m-top_large"
-                        component={Select}
+                        component={Picklist}
                         name="role"
                         label="Role"
-                        options={roles}
-                    />
+                    >
+                        <Option name="unknown" label="Select your role" />
+                        <Option name="manager" label="Manager" />
+                        <Option name="developer" label="Developer" />
+                        <Option name="consultant" label="Consultant" />
+                        <Option name="accountant" label="Accountant" />
+                        <Option name="security" label="Security" />
+                    </Field>
                     <Field
                         className="rainbow-m-top_large"
                         name="skills"
@@ -431,19 +433,19 @@ const users = [{
     name: 'Jane Doe',
     email: 'jane@gmail.com',
     birthdate: '1995-12-01',
-    role: 'developer',
+    role: { name: 'developer', label: 'Developer' },
 }, {
     avatar: 'images/user/avatar-4.svg',
     name: 'John Doe',
     email: 'john@gmail.com',
     birthdate: '1985-02-12',
-    role: 'developer',
+    role: { name: 'developer', label: 'Developer' },
 }, {
     avatar: 'images/user/avatar-5.svg',
     name: 'Ana Doe',
     email: 'ana@gmail.com',
     birthdate: '1998-05-21',
-    role: 'manager',
+    role: { name: 'manager', label: 'Manager' },
 }];
 
 const initialState = { isOpen: false, info: null };

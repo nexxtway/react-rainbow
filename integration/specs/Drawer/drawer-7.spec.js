@@ -1,12 +1,15 @@
 const PageDrawer = require('../../../src/components/Drawer/pageObject');
 const PageLookup = require('../../../src/components/Lookup/pageObject');
+const PagePicklist = require('../../../src/components/Picklist/pageObject');
 const PageDatePicker = require('../../../src/components/DatePicker/pageObject');
 const { ESCAPE_KEY, TAB_KEY } = require('../../constants');
 
 const BUTTON = '#contact-1';
 const DRAWER = '#drawer-7';
 const LOOKUP = '#contact-country-input';
+const PICKLIST = '#contact-role-input';
 const DATEPICKER = '#contact-birthday-input';
+const CONTACT_NAME_LABEL = '#contact-name-label';
 
 describe('Drawer advanced example', () => {
     beforeAll(() => {
@@ -86,5 +89,27 @@ describe('Drawer advanced example', () => {
         browser.keys(ESCAPE_KEY);
         drawer.waitUntilClose();
         expect(drawer.isOpen()).toBe(false);
+    });
+    it('should close the picklist when is open and use window scroll', () => {
+        const drawer = new PageDrawer(DRAWER);
+        const picklist = new PagePicklist(PICKLIST);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        drawer.waitUntilOpen();
+        picklist.clickInput();
+        picklist.waitUntilOpen();
+        $(CONTACT_NAME_LABEL).click();
+        expect(picklist.isMenuOpen()).toBe(false);
+    });
+    it('should not close the picklist when is open and scroll inside the picklist menu', () => {
+        const drawer = new PageDrawer(DRAWER);
+        const picklist = new PagePicklist(PICKLIST);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        drawer.waitUntilOpen();
+        picklist.clickInput();
+        picklist.waitUntilOpen();
+        picklist.getOption(picklist.getOptionsLength() - 1).hover();
+        expect(picklist.isMenuOpen()).toBe(true);
     });
 });
