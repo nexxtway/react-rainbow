@@ -325,24 +325,24 @@ const events = [
         title: 'Reinier',
         startDate: new Date(daysOfWeek[0].setHours(6, 0, 0, 0)),
         endDate: new Date(daysOfWeek[0].setHours(6,30, 0, 0)),
-        backgroundColor: 'rgba(254,72,73,1)',
-        color: 'rgba(242,241,252,1)',
+        backgroundColor: 'rgba(253,230,230,1)',
+        color: 'rgba(254,72,73,1)',
     },
     {
         id: 2,
         title: 'JL Torres',
         startDate: new Date(daysOfWeek[0].setHours(7, 30, 0, 0)),
         endDate: new Date(daysOfWeek[0].setHours(8, 0, 0, 0)),
-        backgroundColor: 'rgba(255,204,0,1)',
-        color: 'rgba(21,2,253,1)',
+        backgroundColor: 'rgba(255,204,0,0.4)',
+        color: 'rgba(255,157,0,1)',
     },
     {
         id: 3,
         title: 'Leandro Torres',
         startDate: new Date(daysOfWeek[0].setHours(11, 0, 0, 0)),
         endDate: new Date(daysOfWeek[0].setHours(12, 15, 0, 0)),
-        backgroundColor: 'rgba(29,233,182,1)',
-        color: 'rgba(21,2,253,1)',
+        backgroundColor: 'rgba(145,220,193,1)',
+        color: 'rgba(0,171,142,1)',
     },
     {
         id: 4,
@@ -399,7 +399,7 @@ const events = [
         startDate: new Date(daysOfWeek[5].setHours(6, 0, 0, 0)),
         endDate: new Date(daysOfWeek[5].setHours(7, 0, 0, 0)),
         backgroundColor: 'rgba(254,72,73,1)',
-        
+
     },
     {
         id: 12,
