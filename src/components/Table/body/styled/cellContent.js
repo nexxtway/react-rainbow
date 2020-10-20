@@ -22,6 +22,17 @@ const StyledCellContent = attachThemeAttrs(styled.div)`
         padding: 0;
         }
     `}
+
+    ${props =>
+        props.isEditable &&
+        `
+        min-height: 20px;
+        line-height: 12px;
+        max-width: 100%;
+        margin: auto;
+        padding: 0.3rem 0.5rem;
+        }
+    `}
 `;
 
 export default StyledCellContent;

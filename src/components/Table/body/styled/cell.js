@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
+const getBorderRadius = value => {
+    if (value) {
+        return '0.2rem';
+    }
+    return '12px';
+};
+
 const StyledCell = attachThemeAttrs(styled.th)`
     padding: 0;
     text-align: left;
@@ -43,10 +50,11 @@ const StyledCell = attachThemeAttrs(styled.th)`
             border-bottom-left-radius: 12px;
             overflow: hidden;
             padding-left: 0.75rem;
-        }
-    `}
 
-    
+        }
+
+
+    `}
 
     :focus {
         outline: none;
@@ -55,6 +63,19 @@ const StyledCell = attachThemeAttrs(styled.th)`
             border-color: ${props => props.palette.brand.main};
         }
     }
+
+    ${props =>
+        props.isEditable &&
+        `
+        :focus {
+            outline: none;
+            > div {
+                border-color: transparent;
+            }
+        }
+    `}
+
+    
 `;
 
 export default StyledCell;

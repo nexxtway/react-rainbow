@@ -1062,8 +1062,8 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 </div>
 ```
 
-##### Table with inline editable columns
-
+# Table with inline editable columns
+##### This example shows a table whose first and last columns are editable. You can inline editing the information of the columns by adding `isEditable` prop.
 ```js
 import React, { useState } from 'react';
 import styled from 'styled-components';

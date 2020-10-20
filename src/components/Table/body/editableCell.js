@@ -1,39 +1,79 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import RelativeElement from '../../Structural/relativeElement';
-import { StyledInput, IconContainer, StyledButtonIcon } from './styled/styledEditableCell';
+import RenderIf from '../../RenderIf';
 import Edit from './icons/edit';
+import {
+    StyledInput,
+    IconContainer,
+    StyledButtonIcon,
+    StyledSpan,
+    SpanContainer,
+    RelativeInputContainer,
+} from './styled/editableCell';
 import Cancel from './icons/cancel';
 
 export default function EditableCell(props) {
     const { value, onChange, row, field } = props;
+    const [editable, setEditable] = useState(false);
+    const [internalValue, setInternalValue] = useState(value);
     const inputRef = useRef(null);
+
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, [editable]);
 
     const handleMouseDown = event => {
         event.preventDefault();
         inputRef.current.focus();
-        onChange('', row);
+        setInternalValue('');
+    };
+
+    const handleOnChange = event => {
+        setInternalValue(event.target.value);
+    };
+
+    const handleOnBlur = () => {
+        if (value !== internalValue) {
+            onChange(internalValue, row);
+        }
+        setEditable(false);
+    };
+
+    const handleOnClick = () => {
+        setEditable(true);
     };
 
     return (
-        <RelativeElement>
-            <StyledInput
-                value={value}
-                onChange={event => onChange(event.target.value, row)}
-                ref={inputRef}
-                aria-label={field}
-            />
-            <IconContainer iconPosition="right">
-                <Edit />
-            </IconContainer>
-            <StyledButtonIcon
-                variant="base"
-                icon={<Cancel />}
-                size="medium"
-                onMouseDown={handleMouseDown}
-                assistiveText="Clear"
-            />
-        </RelativeElement>
+        <>
+            <RenderIf isTrue={!editable}>
+                <SpanContainer onClick={handleOnClick}>
+                    <StyledSpan title={value}>{value}</StyledSpan>
+                    <IconContainer>
+                        <Edit />
+                    </IconContainer>
+                </SpanContainer>
+            </RenderIf>
+            <RenderIf isTrue={editable}>
+                <RelativeInputContainer>
+                    <StyledInput
+                        value={internalValue}
+                        onChange={handleOnChange}
+                        ref={inputRef}
+                        aria-label={field}
+                        onBlur={handleOnBlur}
+                    />
+                    <StyledButtonIcon
+                        variant="base"
+                        icon={<Cancel />}
+                        size="medium"
+                        onMouseDown={handleMouseDown}
+                        assistiveText="Clear"
+                    />
+                </RelativeInputContainer>
+            </RenderIf>
+        </>
     );
 }
 

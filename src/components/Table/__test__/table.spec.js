@@ -108,6 +108,8 @@ describe('<Table />', () => {
                 computedWidth: 50,
                 type: 'text',
                 isFirstDataColumn: true,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ]);
         component.setProps({
@@ -122,6 +124,8 @@ describe('<Table />', () => {
                 computedWidth: 50,
                 type: 'text',
                 isFirstDataColumn: true,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
             {
                 field: 'number',
@@ -129,6 +133,8 @@ describe('<Table />', () => {
                 computedWidth: 50,
                 type: 'text',
                 isFirstDataColumn: false,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ]);
     });
@@ -151,6 +157,8 @@ describe('<Table />', () => {
                 computedWidth: 50,
                 type: 'text',
                 isFirstDataColumn: true,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ]);
         component.setProps({
@@ -170,6 +178,8 @@ describe('<Table />', () => {
                 computedWidth: 50,
                 type: 'text',
                 isFirstDataColumn: true,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
             {
                 field: 'number',
@@ -177,6 +187,8 @@ describe('<Table />', () => {
                 computedWidth: 50,
                 type: 'text',
                 isFirstDataColumn: false,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ]);
     });
@@ -189,6 +201,8 @@ describe('<Table />', () => {
                 computedWidth: 50,
                 type: 'text',
                 isFirstDataColumn: true,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ];
         const component = mount(
@@ -236,6 +250,8 @@ describe('<Table />', () => {
                 sortable: false,
                 type: 'text',
                 isFirstDataColumn: true,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
             {
                 field: 'number',
@@ -244,6 +260,8 @@ describe('<Table />', () => {
                 sortable: false,
                 type: 'text',
                 isFirstDataColumn: false,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ]);
         resizeBar.at(0).simulate('mousedown', { clientX: 100 });
@@ -259,6 +277,8 @@ describe('<Table />', () => {
                 sortable: false,
                 type: 'text',
                 isFirstDataColumn: true,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
             {
                 field: 'number',
@@ -267,6 +287,8 @@ describe('<Table />', () => {
                 sortable: false,
                 type: 'text',
                 isFirstDataColumn: false,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ]);
     });

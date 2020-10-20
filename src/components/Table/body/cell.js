@@ -27,6 +27,7 @@ function CellValue(props) {
                 value={value}
                 row={rowData}
                 isEditable={isEditable}
+                onChange={onChange}
             />
         );
     }
@@ -44,6 +45,7 @@ CellValue.propTypes = {
     isEditable: PropTypes.bool,
     onChange: PropTypes.func,
     field: PropTypes.string,
+    activateEditable: PropTypes.bool,
 };
 
 CellValue.defaultProps = {
@@ -53,6 +55,7 @@ CellValue.defaultProps = {
     isEditable: false,
     onChange: () => {},
     field: undefined,
+    activateEditable: undefined,
 };
 
 export default function Cell(props) {
@@ -115,8 +118,13 @@ export default function Cell(props) {
 
     if (isFirst) {
         return (
-            <StyledCell scope="row" tabIndex={-1} data-label={getHeaderLabel()}>
-                <StyledCellContent component={component}>
+            <StyledCell
+                scope="row"
+                tabIndex={-1}
+                data-label={getHeaderLabel()}
+                isEditable={isEditable}
+            >
+                <StyledCellContent component={component} isEditable={isEditable}>
                     <CellValue
                         component={component}
                         value={value}
@@ -132,8 +140,14 @@ export default function Cell(props) {
     }
 
     return (
-        <StyledCell as="td" role="gridcell" tabIndex={-1} data-label={getHeaderLabel()}>
-            <StyledCellContent component={component}>
+        <StyledCell
+            as="td"
+            role="gridcell"
+            tabIndex={-1}
+            data-label={getHeaderLabel()}
+            isEditable={isEditable}
+        >
+            <StyledCellContent component={component} isEditable={isEditable}>
                 <CellValue
                     component={component}
                     value={value}
