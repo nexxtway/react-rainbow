@@ -1009,8 +1009,7 @@ const Constributor = () => (
 );
 
 const priorityMap = ['low', 'medium', 'hight'];
-const Priority = ({ value, onChange, row }) => {
-    onChange();
+const Priority = ({ value }) => {
     const priority = priorityMap[value];
     return <StyledPriority priority={priority}>{priority}</StyledPriority>;
 };
