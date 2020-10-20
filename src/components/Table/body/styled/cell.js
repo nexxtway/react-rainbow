@@ -1,13 +1,6 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
-const getBorderRadius = value => {
-    if (value) {
-        return '0.2rem';
-    }
-    return '12px';
-};
-
 const StyledCell = attachThemeAttrs(styled.th)`
     padding: 0;
     text-align: left;

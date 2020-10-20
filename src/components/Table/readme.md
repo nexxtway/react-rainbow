@@ -990,19 +990,11 @@ const StyledConstributor = styled.div`
     height: 40px;
 `;
 
-const StyledTask = styled.div`
-    text-align: left;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-`;
-
 const StyleCoin = styled(Coin)`
     margin-right: 10px;
     width: 20px;
     height: 20px;
 `;
-
-const Task = ({ value }) => <StyledTask>{value}</StyledTask>;
 
 const Coins = ({ value }) => (
     <>
@@ -1018,7 +1010,7 @@ const Constributor = () => (
 );
 
 const priorityMap = ['low', 'medium', 'hight'];
-const Priority = ({ value, isEditable }) => {
+const Priority = ({ value }) => {
     const priority = priorityMap[value];
     return <StyledPriority priority={priority}>{priority}</StyledPriority>;
 };
@@ -1030,13 +1022,13 @@ function TableListView() {
 
     function handleSort(event, field, nextSortDirection) {
         const newData = [...data];
-        const key = x => x[field];
+        const key = value => value[field];
         const reverse = nextSortDirection === 'asc' ? 1 : -1;
 
-        const sortedData = newData.sort((a, b) => {
-            a = key(a);
-            b = key(b);
-            return reverse * ((a > b) - (b > a));
+        const sortedData = newData.sort((aItem, bItem) => {
+            const aValue = key(aItem);
+            const bValue = key(bItem);
+            return reverse * ((aValue > bValue) - (bValue > aValue));
         });
 
         setData(sortedData);
@@ -1102,5 +1094,5 @@ function TableListView() {
     );
 }
 
-<TableListView />;
+    <TableListView />;
 ```
