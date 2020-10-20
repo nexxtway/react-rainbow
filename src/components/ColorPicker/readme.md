@@ -31,14 +31,14 @@ const ColorPickerExample = () => {
     return <ColorPicker id="picker-color-1" value={color} onChange={setColor}/>;
 }
 
-<Container>
-    <StyledCard>
-        <StyledLabel>Color Picker</StyledLabel>
-        <StyledContent>
-            <ColorPickerExample />
-        </StyledContent>
-    </StyledCard>
-</Container>
+    <Container>
+        <StyledCard>
+            <StyledLabel>Color Picker</StyledLabel>
+            <StyledContent>
+                <ColorPickerExample />
+            </StyledContent>
+        </StyledCard>
+    </Container>
 ```
 
 ##### ColorPicker without default colors
@@ -73,14 +73,14 @@ const ColorPickerExample = () => {
     return <ColorPicker value={color} onChange={setColor} defaultColors={[]} />;
 }
 
-<Container>
-    <StyledCard>
-        <StyledLabel>Color Picker</StyledLabel>
-        <StyledContent>
-            <ColorPickerExample />
-        </StyledContent>
-    </StyledCard>
-</Container>
+    <Container>
+        <StyledCard>
+            <StyledLabel>Color Picker</StyledLabel>
+            <StyledContent>
+                <ColorPickerExample />
+            </StyledContent>
+        </StyledCard>
+    </Container>
 ```
 
 ##### ColorPicker colors-fixed variant
@@ -117,10 +117,10 @@ const ColorsFixedPicker = () => {
     );
 }
 
-<Container>
-    <StyledCard>
-        <StyledLabel>Default Colors</StyledLabel>
-        <ColorsFixedPicker />
-    </StyledCard>
-</Container>
+    <Container>
+        <StyledCard>
+            <StyledLabel>Default Colors</StyledLabel>
+            <ColorsFixedPicker />
+        </StyledCard>
+    </Container>
 ```

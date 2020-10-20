@@ -23,14 +23,15 @@ class SimpleVerticalNavigation extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(e, selectedItem) {
+    handleOnSelect(event, selectedItem) {
         return this.setState({ selectedItem });
     }
 
     render() {
+        const { selectedItem } = this.state;
         return (
             <VerticalNavigation
-                selectedItem={this.state.selectedItem}
+                selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}
             >
                 <VerticalSection label="REPORTS">
@@ -58,10 +59,10 @@ class SimpleVerticalNavigation extends React.Component {
     }
 }
 
-<div>
-    <GlobalHeader src="images/user/user3.jpg" />
-    <StyledContainer className="rainbow-p-vertical_small">
-        <SimpleVerticalNavigation />
-    </StyledContainer>
-</div>
+    <div>
+        <GlobalHeader src="images/user/user3.jpg" />
+        <StyledContainer className="rainbow-p-vertical_small">
+            <SimpleVerticalNavigation />
+        </StyledContainer>
+    </div>
 ```

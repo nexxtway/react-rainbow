@@ -23,9 +23,9 @@ function CodeInputBase() {
     );
 };
 
-<div className="rainbow-align-content_center rainbow-m-around_xx-large">
-    <CodeInputBase  />
-</div>
+    <div className="rainbow-align-content_center rainbow-m-around_xx-large">
+        <CodeInputBase  />
+    </div>
 ```
 
 ##### CodeInput with length:
@@ -86,9 +86,9 @@ function CodeInputWithLength() {
     );
 };
 
-<div className="rainbow-align-content_center rainbow-m-around_xx-large">
-    <CodeInputWithLength  />
-</div>
+    <div className="rainbow-align-content_center rainbow-m-around_xx-large">
+        <CodeInputWithLength  />
+    </div>
 ```
 
 ##### CodeInput disabled:
@@ -108,9 +108,9 @@ function CodeInputDisabled() {
     );
 };
 
-<div className="rainbow-align-content_center rainbow-m-around_xx-large">
-    <CodeInputDisabled  />
-</div>
+    <div className="rainbow-align-content_center rainbow-m-around_xx-large">
+        <CodeInputDisabled  />
+    </div>
 ```
 
 ##### CodeInput error:
@@ -130,9 +130,9 @@ function CodeInputError() {
     );
 };
 
-<div className="rainbow-align-content_center rainbow-m-around_xx-large">
-    <CodeInputError  />
-</div>
+    <div className="rainbow-align-content_center rainbow-m-around_xx-large">
+        <CodeInputError  />
+    </div>
 ```
 
 ##### CodeInput readOnly:
@@ -152,7 +152,7 @@ function CodeInputReadOnly() {
     );
 };
 
-<div className="rainbow-align-content_center rainbow-m-around_xx-large">
-    <CodeInputReadOnly  />
-</div>
+    <div className="rainbow-align-content_center rainbow-m-around_xx-large">
+        <CodeInputReadOnly  />
+    </div>
 ```

@@ -96,27 +96,25 @@ const initialState = {
     currentWeek: new Date(),
 };
 
-<div className="rainbow-m-around_large">
-    <StyledCard>
-        <WeeklyCalendar
-            events={events}
-            currentWeek={state.currentWeek}
-            onWeekChange={({ week }) => setState({ currentWeek: week })}
-            onEventClick={event => alert(event.title)}
-            locale="en"
-        />
-    </StyledCard>
-</div>
+    <div className="rainbow-m-around_large">
+        <StyledCard>
+            <WeeklyCalendar
+                events={events}
+                currentWeek={state.currentWeek}
+                onWeekChange={({ week }) => setState({ currentWeek: week })}
+                onEventClick={event => alert(event.title)}
+                locale="en"
+            />
+        </StyledCard>
+    </div>
 ```
 
 ##### Weekly Calendar opens a Drawer when clicking on the event
 
 ```js
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { WeeklyCalendar, Card, Drawer, ButtonIcon, Avatar } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { WeeklyCalendar, Card, Drawer, Avatar } from 'react-rainbow-components';
 
 const today = new Date();
 const events = [
@@ -170,9 +168,6 @@ const events = [
     },
 ];
 
-const Container = styled.div`
-    padding: 10px;
-`;
 const StyledCard = styled(Card)`
     height: 600px;
     padding: 1rem;
@@ -221,7 +216,7 @@ const fomatterDay = day => new Intl.DateTimeFormat('en', {
     month: 'short',
 }).format(day);
 
-const formattedTimeRange = (startDate, endDate) => 
+const formattedTimeRange = (startDate, endDate) =>
     `${fomatterDay(startDate)}, ${fomatterTime(startDate)} - ${fomatterTime(endDate)}`;
 
 const EventHeader = ({ title, startDate, endDate }) => (
@@ -263,7 +258,8 @@ const WeeklyCalendarExample = () => {
                 }
                 slideFrom="right"
                 isOpen={isOpen}
-                onRequestClose={() => setIsOpen(false)}>
+                onRequestClose={() => setIsOpen(false)}
+            >
                 <div className="rainbow-flex rainbow-m-bottom_medium rainbow-align_center">
                     <HangoutsIcon className="rainbow-m-right_medium rainbow-m-left_xx-small" />
                     <div>
@@ -303,7 +299,7 @@ const WeeklyCalendarExample = () => {
     );
 }
 
-<div className="rainbow-m-around_large">
-    <WeeklyCalendarExample />
-</div>
+    <div className="rainbow-m-around_large">
+        <WeeklyCalendarExample />
+    </div>
 ```

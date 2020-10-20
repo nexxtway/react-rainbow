@@ -16,27 +16,27 @@ const imageStyle = {
     width: '100px',
 };
 
-<div className="rainbow-align-content_center rainbow-m-around_x-large">
-    <Card style={style}>
-        <div className="rainbow-m-right_medium" style={imageStyle}>
-            <LoadingShape variant="image" shape="square" />
-        </div>
-        <div>
-            <div className="rainbow-align-content_space-between rainbow-p-bottom_small">
-                <LoadingShape className="rainbow-p-right_small" />
-                <LoadingShape />
+    <div className="rainbow-align-content_center rainbow-m-around_x-large">
+        <Card style={style}>
+            <div className="rainbow-m-right_medium" style={imageStyle}>
+                <LoadingShape variant="image" shape="square" />
             </div>
             <div>
-                <LoadingShape className="rainbow-m-bottom_small" />
-                <LoadingShape className="rainbow-m-bottom_small" />
-                <div className="rainbow-align-content_space-between">
+                <div className="rainbow-align-content_space-between rainbow-p-bottom_small">
                     <LoadingShape className="rainbow-p-right_small" />
                     <LoadingShape />
                 </div>
+                <div>
+                    <LoadingShape className="rainbow-m-bottom_small" />
+                    <LoadingShape className="rainbow-m-bottom_small" />
+                    <div className="rainbow-align-content_space-between">
+                        <LoadingShape className="rainbow-p-right_small" />
+                        <LoadingShape />
+                    </div>
+                </div>
             </div>
-        </div>
-    </Card>
-</div>
+        </Card>
+    </div>
 
 ```
 
@@ -90,7 +90,7 @@ const LoadingShapeExample = () => {
         width: `${width}px`,
     };
 
-    const handleShapeChange = (event) => {
+    const handleShapeChange = event => {
         setShape(event.target.value);
         if (event.target.value === 'circle' || event.target.value === 'square') {
             setWidth(75);
@@ -131,7 +131,7 @@ const LoadingShapeExample = () => {
                 <RadioGroup
                     options={variantOptions}
                     value={variant}
-                    onChange={(event) => setVariant(event.target.value)}
+                    onChange={event => setVariant(event.target.value)}
                     label="Select variant"
                 />
             </div>
@@ -144,5 +144,5 @@ const LoadingShapeExample = () => {
     );
 }
 
-<LoadingShapeExample />
+    <LoadingShapeExample />
 ```
