@@ -6,8 +6,12 @@ const StyledEvent = attachThemeAttrs(styled.div)`
     text-align: left;
     font-size: 12px;
     border: 1px solid ${props => replaceAlpha(props.palette.background.main, 0.8)};
-    color: ${props => props.palette.getContrastText(props.palette.brand.main)};
-    background-color: ${props => props.palette.brand.main};
+    color: ${props =>
+        props.color ||
+        (props.backgroundColor
+            ? props.palette.getContrastText(props.backgroundColor)
+            : props.palette.getContrastText(props.palette.brand.main))};
+    background-color: ${props => props.backgroundColor || props.palette.brand.main};
     width: 100%;
     min-height: 20px;
     border-radius: 8px;
