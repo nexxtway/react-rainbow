@@ -25,6 +25,7 @@ const StyledCellContent = attachThemeAttrs(styled.div)`
 
     ${props =>
         props.isEditable &&
+        !props.component &&
         `
         min-height: 20px;
         line-height: 12px;

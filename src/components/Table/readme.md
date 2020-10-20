@@ -950,7 +950,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ```
 
 # Table with inline editable columns
-##### This example shows a table whose first and last columns are editable. You can inline editing the information of the columns by adding `isEditable` prop.
+##### This example shows a table whose first editable. You can inline editing the information of the columns by adding `isEditable` prop.
 ```js
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -993,7 +993,6 @@ const StyledConstributor = styled.div`
 const StyleCoin = styled(Coin)`
     margin-right: 10px;
     width: 20px;
-    height: 20px;
 `;
 
 const Coins = ({ value }) => (
@@ -1010,7 +1009,8 @@ const Constributor = () => (
 );
 
 const priorityMap = ['low', 'medium', 'hight'];
-const Priority = ({ value }) => {
+const Priority = ({ value, onChange, row }) => {
+    onChange();
     const priority = priorityMap[value];
     return <StyledPriority priority={priority}>{priority}</StyledPriority>;
 };

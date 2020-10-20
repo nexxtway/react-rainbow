@@ -45,6 +45,16 @@ export default function EditableCell(props) {
         setEditable(true);
     };
 
+    const handleOnKeyDown = event => {
+        if (event.keyCode === 27) {
+            setInternalValue(value);
+            setEditable(false);
+        }
+        if (event.keyCode === 13) {
+            handleOnBlur();
+        }
+    };
+
     return (
         <>
             <RenderIf isTrue={!editable}>
@@ -63,6 +73,7 @@ export default function EditableCell(props) {
                         ref={inputRef}
                         aria-label={field}
                         onBlur={handleOnBlur}
+                        onKeyDown={handleOnKeyDown}
                     />
                     <StyledButtonIcon
                         variant="base"

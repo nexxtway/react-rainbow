@@ -70,7 +70,7 @@ export const StyledInput = attachThemeAttrs(styled.input)`
     margin: 0;
     color: ${props => props.palette.text.title};
     border: 1px dotted ${props => props.palette.brand.main};
-    padding: 5px 5px 5px 4px;;
+    padding: 5px 25px 5px 4px;;
 
     :focus{
         outline: none;
