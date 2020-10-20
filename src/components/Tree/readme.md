@@ -1,6 +1,9 @@
 ##### Tree basic
 
 ```js
+import React from 'react';
+import { Tree } from 'react-rainbow-components';
+
 const data = [
         { label: 'Tree Item' },
         { label: 'Tree Item' },
@@ -58,22 +61,25 @@ const data = [
         setState({ data: state.data });
     }
 
-    <Tree
-        id="tree-component-1"
-        data={state.data}
-        className="rainbow-m-around_xx-large"
-        onNodeExpand={expandNode}
-        selectedNode={state.selectedNode}
-        onNodeSelect={({ name }) => {
+        <Tree
+            id="tree-component-1"
+            data={state.data}
+            className="rainbow-m-around_xx-large"
+            onNodeExpand={expandNode}
+            selectedNode={state.selectedNode}
+            onNodeSelect={({ name }) => {
             setState({ selectedNode: name });
-        }}
-        ariaLabel="tree-basic"
-    />
+            }}
+            ariaLabel="tree-basic"
+        />
 ```
 
 ##### Tree loading data when a node is expanded
 
 ```js
+    import React, { useState } from 'react';
+    import { Tree } from 'react-rainbow-components';
+
     const initialData = [
         { label: 'Tree Item' },
         { label: 'Tree Item' },
@@ -109,11 +115,10 @@ const data = [
 
     const selectedNode = '';
 
-    import React, { useState, useEffect } from 'react';
-
     const TreeExample = () => {
         const [data, setData] = useState(initialData);
         const [node, setSelectedNode] = useState(selectedNode);
+
         const openNode = ({ nodePath }) => {
             const child = Tree.getNode(data, nodePath);
             if(!child.isExpanded){
@@ -121,24 +126,24 @@ const data = [
                 setTimeout(() => {
                     child.isLoading = !child.isLoading;
                     child.isExpanded = !child.isExpanded;
-                    let newData = [...data];
+                    const newData = [...data];
                     newData[nodePath] = child;
                     setData(newData);
                 }, 1000);
             }
             else {child.isExpanded = !child.isExpanded}
-            let newData = [...data];
+            const newData = [...data];
             newData[nodePath] = child;
             setData(newData);
-        
         }
+
         return (
             <Tree
                 data={data}
                 className="rainbow-m-around_xx-large"
                 onNodeExpand={openNode}
                 selectedNode={node}
-                onNodeSelect={({ name }) => 
+                onNodeSelect={({ name }) =>
                     {setSelectedNode(name)}
                 }
                 ariaLabel="tree-loading"
@@ -146,12 +151,15 @@ const data = [
         );
     }
 
-    <TreeExample />
+        <TreeExample />
 ```
 
 ##### Tree with icons
 
 ```js
+    import React from 'react';
+    import { Tree } from 'react-rainbow-components';
+
     const data = [
         { label: 'Tree Item', icon: <FileIcon /> },
         { label: 'Tree Item', icon: <FileIcon /> },
@@ -170,8 +178,8 @@ const data = [
             icon: <FolderCloseIcon />,
             isExpanded: true,
             children: [
-                { label: 'Tree Item'},
-                { label: 'Tree Item'},
+                { label: 'Tree Item' },
+                { label: 'Tree Item' },
             ],
         },
         {
@@ -184,7 +192,7 @@ const data = [
             ],
         },
     ];
-    const initialState = { 
+    const initialState = {
         data,
         selectedNode: ''
     };
@@ -193,21 +201,25 @@ const data = [
         child.isExpanded = !child.isExpanded;
         setState({ data: state.data });
     }
-    <Tree
-        data={state.data}
-        className="rainbow-m-around_xx-large"
-        onNodeExpand={openNode}
-        selectedNode={state.selectedNode}
-        onNodeSelect={({ name }) => {
+        <Tree
+            data={state.data}
+            className="rainbow-m-around_xx-large"
+            onNodeExpand={openNode}
+            selectedNode={state.selectedNode}
+            onNodeSelect={({ name }) => {
             setState({ selectedNode: name });
         }}
-        ariaLabel="tree-icons"
-    />
+            ariaLabel="tree-icons"
+        />
 ```
 
 ##### Tree with checkboxes
 
 ```js
+    /* eslint-disable no-param-reassign */
+    import React from 'react';
+    import { Tree } from 'react-rainbow-components';
+
     const data = [
         { label: 'Tree Item',isChecked: false, icon: <FileIcon /> },
         { label: 'Tree Item',isChecked: false, icon: <FileIcon /> },
@@ -219,7 +231,7 @@ const data = [
             isChecked: false,
             children: [
                 { label: 'Tree Item', isChecked: false },
-                { label: 'Tree Item', isChecked: false }, 
+                { label: 'Tree Item', isChecked: false },
                 {
                     label: 'Tree Branch',
                     icon: <FolderCloseIcon />,
@@ -236,15 +248,13 @@ const data = [
                             children: [
                                 { label: 'Tree Item', isChecked: false },
                                 { label: 'Tree Item', isChecked: false },
-                                { label: 'Tree Item', isChecked: false }, 
+                                { label: 'Tree Item', isChecked: false },
                             ],
                 },
-                        { label: 'Tree Item', isChecked: false }, 
+                        { label: 'Tree Item', isChecked: false },
                     ],
                 },
                 { label: 'Tree Item', isChecked: false },
-                
-
             ],
         },
         {
@@ -258,7 +268,7 @@ const data = [
             ],
         },
     ];
-    const initialState = { 
+    const initialState = {
         data,
         selectedNode: ''
     };
@@ -308,7 +318,7 @@ const data = [
     }
 
     function passParentState(node) {
-        const children = node.children;
+        const { children } = node;
 
         children.forEach(child => {
             child.isChecked = node.isChecked;
@@ -334,22 +344,25 @@ const data = [
         setState({ data: state.data });
     }
 
-    <Tree
-        data={state.data}
-        className="rainbow-m-around_xx-large"
-        onNodeCheck={handleCheck}
-        onNodeExpand={openNode}
-        selectedNode={state.selectedNode}
-        onNodeSelect={({ name }) => {
+        <Tree
+            data={state.data}
+            className="rainbow-m-around_xx-large"
+            onNodeCheck={handleCheck}
+            onNodeExpand={openNode}
+            selectedNode={state.selectedNode}
+            onNodeSelect={({ name }) => {
             setState({ selectedNode: name });
         }}
-        ariaLabel="tree-icons"
-    />
+            ariaLabel="tree-icons"
+        />
 ```
 
 ##### Tree basic
 
 ```js
+import React from 'react';
+import { Tree } from 'react-rainbow-components';
+
 const data = [
         {
             label: 'Fruits',
@@ -454,15 +467,15 @@ const data = [
         setState({ data: state.data });
     }
 
-    <Tree
-        id="tree-component-9"
-        data={state.data}
-        className="rainbow-m-around_xx-large"
-        onNodeExpand={expandNode}
-        selectedNode={state.selectedNode}
-        onNodeSelect={({ name }) => {
+        <Tree
+            id="tree-component-9"
+            data={state.data}
+            className="rainbow-m-around_xx-large"
+            onNodeExpand={expandNode}
+            selectedNode={state.selectedNode}
+            onNodeSelect={({ name }) => {
             setState({ selectedNode: name });
         }}
-        ariaLabel="tree-basic"
-    />
+            ariaLabel="tree-basic"
+        />
 ```

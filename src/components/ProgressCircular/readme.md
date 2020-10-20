@@ -80,16 +80,16 @@ function ActiveUsersCard({ title, variant }) {
     );
 }
 
-<div className="rainbow-m-around_xx-large rainbow-flex_column rainbow-align-content_center">
-    <StyledExampleHeader className="rainbow-font-size-heading_large rainbow-p-bottom_small">
-        Social Network Activity
-    </StyledExampleHeader>
-    <div className="rainbow-flex rainbow-flex_wrap">
-        <ActiveUsersCard title="snapchat" variant="warning" />
-        <ActiveUsersCard title="twitter" />
-        <ActiveUsersCard title="google" variant="error" />
+    <div className="rainbow-m-around_xx-large rainbow-flex_column rainbow-align-content_center">
+        <StyledExampleHeader className="rainbow-font-size-heading_large rainbow-p-bottom_small">
+            Social Network Activity
+        </StyledExampleHeader>
+        <div className="rainbow-flex rainbow-flex_wrap">
+            <ActiveUsersCard title="snapchat" variant="warning" />
+            <ActiveUsersCard title="twitter" />
+            <ActiveUsersCard title="google" variant="error" />
+        </div>
     </div>
-</div>
 ```
 
 ##### ProgressCircular variants
@@ -98,22 +98,22 @@ function ActiveUsersCard({ title, variant }) {
 import React from 'react';
 import { ProgressCircular } from 'react-rainbow-components';
 
-<div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-    <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
-        <ProgressCircular value={24} />
-        <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">brand</h1>
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+        <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
+            <ProgressCircular value={24} />
+            <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">brand</h1>
+        </div>
+        <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
+            <ProgressCircular value={45} variant="success" />
+            <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">success</h1>
+        </div>
+        <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
+            <ProgressCircular value={60} variant="warning" />
+            <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">warning</h1>
+        </div>
+        <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
+            <ProgressCircular value={82} variant="error" />
+            <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">error</h1>
+        </div>
     </div>
-    <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
-        <ProgressCircular value={45} variant="success" />
-        <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">success</h1>
-    </div>
-    <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
-        <ProgressCircular value={60} variant="warning" />
-        <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">warning</h1>
-    </div>
-    <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
-        <ProgressCircular value={82} variant="error" />
-        <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">error</h1>
-    </div>
-</div>
 ```

@@ -37,9 +37,8 @@ class SimpleProgressIndicator extends React.Component {
         const { currentStepIndex } = this.state;
         if (currentStepIndex < stepNames.length - 1) {
             const nextStepIndex = currentStepIndex + 1;
-            return this.setState({ currentStepIndex: nextStepIndex });
+            this.setState({ currentStepIndex: nextStepIndex });
         }
-        return this.setState({ isNextDisabled: false });
     }
 
     handleBackClick() {
@@ -118,7 +117,7 @@ class SimpleProgressIndicator extends React.Component {
     }
 }
 
-<SimpleProgressIndicator />;
+    <SimpleProgressIndicator />;
 ```
 
 ##### progress indicator with label
@@ -160,9 +159,8 @@ class ProgressIndicatorWithLabel extends React.Component {
         const { currentStepIndex } = this.state;
         if (currentStepIndex < stepNames.length - 1) {
             const nextStepIndex = currentStepIndex + 1;
-            return this.setState({ currentStepIndex: nextStepIndex });
+            this.setState({ currentStepIndex: nextStepIndex });
         }
-        return this.setState({ isNextDisabled: false });
     }
 
     handleBackClick() {
@@ -241,7 +239,7 @@ class ProgressIndicatorWithLabel extends React.Component {
     }
 }
 
-<ProgressIndicatorWithLabel />;
+    <ProgressIndicatorWithLabel />;
 ```
 
 ##### progress indicator with error
@@ -283,9 +281,8 @@ class ProgressIndicatorWithError extends React.Component {
         const { currentStepIndex } = this.state;
         if (currentStepIndex < stepNames.length - 1) {
             const nextStepIndex = currentStepIndex + 1;
-            return this.setState({ currentStepIndex: nextStepIndex });
+            this.setState({ currentStepIndex: nextStepIndex });
         }
-        return this.setState({ isNextDisabled: false });
     }
 
     handleBackClick() {
@@ -364,7 +361,7 @@ class ProgressIndicatorWithError extends React.Component {
     }
 }
 
-<ProgressIndicatorWithError />;
+    <ProgressIndicatorWithError />;
 ```
 
 ##### progress indicator with click
@@ -439,5 +436,5 @@ class OnClickProgressIndicator extends React.Component {
     }
 }
 
-<OnClickProgressIndicator />;
+    <OnClickProgressIndicator />;
 ```
