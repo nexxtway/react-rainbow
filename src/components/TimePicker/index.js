@@ -85,11 +85,11 @@ const TimePicker = React.forwardRef((props, ref) => {
     };
 
     const handleBlur = () => {
-        onBlur(value);
+        onBlur(props.value);
     };
 
     const handleFocus = () => {
-        onFocus(value);
+        onFocus(props.value);
     };
 
     const closeModal = () => {
