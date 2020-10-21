@@ -1,11 +1,13 @@
 import { ReactNode, ChangeEvent } from 'react';
-import { BaseProps } from '../types';
+import { BaseProps, LabelAlignment } from '../types';
 
 export interface RatingProps extends BaseProps {
     value?: string | number;
     onChange?: (event: ChangeEvent<HTMLElement>) => void;
     name?: string;
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
+    hideLabel?: boolean;
     readOnly?: boolean;
 }
 
