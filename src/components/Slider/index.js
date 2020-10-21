@@ -77,12 +77,11 @@ export default class Slider extends Component {
             <StyledContainer className={className} style={style}>
                 <RenderIf isTrue={label}>
                     <StyledLabel
-                        hideLabel={hideLabel}
+                        label={label}
                         labelAlignment={labelAlignment}
-                        htmlFor={this.sliderId}
-                    >
-                        {label}
-                    </StyledLabel>
+                        hideLabel={hideLabel}
+                        inputId={this.sliderId}
+                    />
                 </RenderIf>
                 <StyledSlider>
                     <StyledInputRange
