@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import RadioButtonGroup from '../index';
+import StyledLabel from '../styled/label';
 
 const options = [
     { value: 'admin', label: 'Admin', disabled: true },
@@ -55,5 +56,25 @@ describe('<RadioButtonGroup />', () => {
         radio.simulate('change');
         expect(onChangeFn).toHaveBeenCalled();
         expect(component.find('Marker').prop('isVisible')).toBe(true);
+    });
+    it('should render a label when label prop is passed', () => {
+        const component = mount(<RadioButtonGroup label="RadioButtonGroup Label" />);
+        expect(component.find(StyledLabel).exists()).toBe(true);
+    });
+    it('should set "left" to labelAlignment prop passed in the Label component', () => {
+        const component = mount(
+            <RadioButtonGroup label="RadioButtonGroup Label" labelAlignment="left" />,
+        );
+        expect(component.find(StyledLabel).prop('labelAlignment')).toBe('left');
+    });
+    it('should set "right" to labelAlignment prop passed in the Label component', () => {
+        const component = mount(
+            <RadioButtonGroup label="RadioButtonGroup Label" labelAlignment="right" />,
+        );
+        expect(component.find(StyledLabel).prop('labelAlignment')).toBe('right');
+    });
+    it('should set "center" to labelAlignment if prop not passed in the Label component', () => {
+        const component = mount(<RadioButtonGroup label="RadioButtonGroup Label" />);
+        expect(component.find(StyledLabel).prop('labelAlignment')).toBe('center');
     });
 });
