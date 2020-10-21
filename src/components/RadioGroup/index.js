@@ -77,7 +77,7 @@ RadioGroup.propTypes = {
     /** The radio group label */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Describes the position of the RadioGroup label. Options include left, center and right.
-     * This value defaults to center. */
+     * This value defaults to left. */
     labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     /** A boolean to hide the RadioGroup label. */
     hideLabel: PropTypes.bool,
