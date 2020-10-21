@@ -950,7 +950,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ```
 
 # Table with inline editable columns
-##### This example shows a table whose first editable. You can inline editing the information of the columns by adding `isEditable` prop.
+##### This example shows a table whose first column is editable. You can inline editing the information of the columns by adding `isEditable` prop.
 ```js
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -1073,12 +1073,12 @@ function TableListView() {
                         isEditable
                         onChange={handleTaskOnChange}
                     />
-                    <Column header="Coins" field="coins" component={Coins} defaultWidth={120} />
+                    <Column header="Coins" field="coins" component={Coins} defaultWidth={200} />
                     <Column
                         header="Constributor"
                         field="constributor"
                         component={Constributor}
-                        defaultWidth={100}
+                        defaultWidth={200}
                     />
                     <Column
                         header="Priority"
