@@ -1,6 +1,6 @@
 # The basic Table
-##### Our table component comes off course with our rainbow styles out of the box. As you can see in the code below, in order to use the component, you have to compose the `Table` with the `Column` component.
-##### Notice there is a required prop `keyfield` that indicates the name of the field in your data (rows) and contains the key value.
+##### Our table component comes of course with our rainbow styles out of the box. As you can see in the code below, in order to use the component, you have to compose the `Table` with the `Column` component.
+##### Notice there is a required prop `keyField` that indicates the name of the field in your data (rows) and contains the key value.
 
 ```js
 import React from 'react';
@@ -116,7 +116,7 @@ class TableExample extends React.Component {
 ```
 
 # Table with selectable rows
-##### The `showCheckboxColumn` at the `Table` component level will add an extra column in the table with checkboxes, or radio buttons that will allow you to do multiple or single selection on rows. Events will be trigger on every selection via `onRowSelection`.
+##### The `showCheckboxColumn` at the `Table` component level will add an extra column in the table with checkboxes, or radio buttons that will allow you to do multiple or single selection on rows. Events will be triggered on every selection via `onRowSelection`.
 
 ```js
 import React from 'react';
