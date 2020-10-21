@@ -1,28 +1,28 @@
 import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { ESCAPE_KEY, ENTER_KEY } from '../../../libs/constants';
 import RenderIf from '../../RenderIf';
-import Edit from './icons/edit';
 import {
     StyledInput,
-    IconContainer,
     StyledButtonIcon,
     StyledSpan,
     SpanContainer,
     RelativeInputContainer,
+    StyledEditIcon,
 } from './styled/editableCell';
 import Cancel from './icons/cancel';
 
 export default function EditableCell(props) {
     const { value, onChange, row, field } = props;
-    const [editable, setEditable] = useState(false);
+    const [isEditMode, setIsEditMode] = useState(false);
     const [internalValue, setInternalValue] = useState(value);
     const inputRef = useRef(null);
 
     useEffect(() => {
-        if (inputRef.current) {
+        if (isEditMode) {
             inputRef.current.focus();
         }
-    }, [editable]);
+    }, [isEditMode]);
 
     const handleMouseDown = event => {
         event.preventDefault();
@@ -34,45 +34,43 @@ export default function EditableCell(props) {
         setInternalValue(event.target.value);
     };
 
-    const handleOnBlur = () => {
+    const fireOnChange = () => {
         if (value !== internalValue) {
-            onChange(internalValue, row);
+            onChange({ value: internalValue, row });
         }
-        setEditable(false);
+        setIsEditMode(false);
     };
 
     const handleOnClick = () => {
-        setEditable(true);
+        setIsEditMode(true);
     };
 
     const handleOnKeyDown = event => {
-        if (event.keyCode === 27) {
+        if (event.keyCode === ESCAPE_KEY) {
             setInternalValue(value);
-            setEditable(false);
+            setIsEditMode(false);
         }
-        if (event.keyCode === 13) {
-            handleOnBlur();
+        if (event.keyCode === ENTER_KEY) {
+            fireOnChange();
         }
     };
 
     return (
         <>
-            <RenderIf isTrue={!editable}>
+            <RenderIf isTrue={!isEditMode}>
                 <SpanContainer onClick={handleOnClick}>
                     <StyledSpan title={value}>{value}</StyledSpan>
-                    <IconContainer>
-                        <Edit />
-                    </IconContainer>
+                    <StyledEditIcon />
                 </SpanContainer>
             </RenderIf>
-            <RenderIf isTrue={editable}>
+            <RenderIf isTrue={isEditMode}>
                 <RelativeInputContainer>
                     <StyledInput
                         value={internalValue}
                         onChange={handleOnChange}
                         ref={inputRef}
                         aria-label={field}
-                        onBlur={handleOnBlur}
+                        onBlur={fireOnChange}
                         onKeyDown={handleOnKeyDown}
                     />
                     <StyledButtonIcon

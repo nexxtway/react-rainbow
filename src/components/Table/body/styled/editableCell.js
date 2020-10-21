@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 import ButtonIcon from '../../../ButtonIcon';
+import Edit from '../icons/edit';
 
-export const IconContainer = attachThemeAttrs(styled.span)`
+export const StyledEditIcon = attachThemeAttrs(styled(Edit))`
     color: ${props => props.palette.brand.main};
     flex-shrink: 0;
     display: none;
@@ -32,7 +33,7 @@ export const SpanContainer = attachThemeAttrs(styled.div)`
         padding: 5px 5px 5px 4px;
         border: 1px dotted ${props => props.palette.border.main};
         cursor: pointer;
-        > span { 
+        > svg { 
             display: inline;
         }
     }

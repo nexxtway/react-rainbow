@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Edit() {
+export default function Edit(props) {
+    const { className, style } = props;
     return (
         <svg
             width="14px"
@@ -8,6 +10,8 @@ export default function Edit() {
             viewBox="0 0 14 13"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
+            className={className}
+            style={style}
         >
             <title>Shape</title>
             <g id="components" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -32,3 +36,12 @@ export default function Edit() {
         </svg>
     );
 }
+
+Edit.propTypes = {
+    className: PropTypes.string,
+    style: PropTypes.object,
+};
+Edit.defaultProps = {
+    className: undefined,
+    style: undefined,
+};

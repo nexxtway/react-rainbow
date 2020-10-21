@@ -45,7 +45,6 @@ CellValue.propTypes = {
     isEditable: PropTypes.bool,
     onChange: PropTypes.func,
     field: PropTypes.string,
-    activateEditable: PropTypes.bool,
 };
 
 CellValue.defaultProps = {
@@ -55,7 +54,6 @@ CellValue.defaultProps = {
     isEditable: false,
     onChange: () => {},
     field: undefined,
-    activateEditable: undefined,
 };
 
 export default function Cell(props) {

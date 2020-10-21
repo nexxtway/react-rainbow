@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Cancel() {
+export default function Cancel(props) {
+    const { className, style } = props;
     return (
         <svg
             width="16px"
@@ -8,6 +10,8 @@ export default function Cancel() {
             viewBox="0 0 16 16"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
+            className={className}
+            style={style}
         >
             <title>cancel</title>
             <g id="components" stroke="none" strokeWidth="1" fill="currentColor" fillRule="evenodd">
@@ -25,3 +29,12 @@ export default function Cancel() {
         </svg>
     );
 }
+
+Cancel.propTypes = {
+    className: PropTypes.string,
+    style: PropTypes.object,
+};
+Cancel.defaultProps = {
+    className: undefined,
+    style: undefined,
+};

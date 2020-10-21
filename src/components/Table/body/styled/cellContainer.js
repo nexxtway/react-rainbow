@@ -49,8 +49,6 @@ const StyledCellContainer = attachThemeAttrs(styled.td)`
     :focus {
         outline: none;
     }
-
-    
 `;
 
 export default StyledCellContainer;

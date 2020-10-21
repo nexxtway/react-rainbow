@@ -1035,8 +1035,8 @@ function TableListView() {
         setSortDirection(nextSortDirection);
     }
 
-    const handleTaskOnChange = (value, row) =>{
-        const index = data.findIndex(item=>item.id === row.id)
+    const handleTaskOnChange = ({value, row}) =>{
+        const index = data.findIndex(item => item.id === row.id)
         const newData = [...data];
         newData[index].task = value;
         setData(newData);

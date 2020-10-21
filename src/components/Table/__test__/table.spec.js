@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Table from '../index';
 import Column from '../../Column';
+import { ESCAPE_KEY, ENTER_KEY } from '../../../libs/constants';
 
 jest.mock('../helpers/columns/getEnumerableWidth', () => jest.fn(() => 50));
 
@@ -1467,5 +1468,167 @@ describe('<Table />', () => {
                 );
             }
         });
+    });
+
+    it('should return a table with EditableCell', () => {
+        const component = mount(
+            <Table data={data} keyField="name">
+                <Column field="name" header="Name" isEditable />
+            </Table>,
+        );
+        expect(component.find('EditableCell').exists()).toBe(true);
+    });
+
+    it('should render a span with the received value of the data inside the EditableCell', () => {
+        const component = mount(
+            <Table data={data} keyField="name">
+                <Column field="name" header="Name" isEditable />
+            </Table>,
+        );
+        const editableCell = component.find('EditableCell');
+        const span = editableCell.find('span');
+        expect(span.text().includes('a')).toBe(true);
+    });
+
+    it('should render an input with the received value when click inside the EditableCell', () => {
+        const component = mount(
+            <Table data={data} keyField="name">
+                <Column field="name" header="Name" isEditable />
+            </Table>,
+        );
+        const editableCell = component.find('EditableCell');
+        const div = editableCell.find('div');
+        div.simulate('click');
+        const editableCellAfterClick = component.find('EditableCell');
+        expect(editableCellAfterClick.find('input').prop('value')).toBe('a');
+    });
+
+    it('should render a button when click inside the EditableCell', () => {
+        const component = mount(
+            <Table data={data} keyField="name">
+                <Column field="name" header="Name" isEditable />
+            </Table>,
+        );
+        const editableCell = component.find('EditableCell');
+        const div = editableCell.find('div');
+        div.simulate('click');
+        const editableCellAfterClick = component.find('EditableCell');
+        expect(editableCellAfterClick.find('button').exists()).toBe(true);
+    });
+
+    it('should desmount the input when blur', () => {
+        const component = mount(
+            <Table data={data} keyField="name">
+                <Column field="name" header="Name" isEditable />
+            </Table>,
+        );
+        const editableCell = component.find('EditableCell');
+        const div = editableCell.find('div');
+        div.simulate('click');
+        const editableCellAfterClick = component.find('EditableCell');
+        const input = editableCellAfterClick.find('input');
+        input.simulate('change', { target: { value: 'b' } });
+        input.simulate('blur');
+        const editableCellAfterBlur = component.find('EditableCell');
+        const inputAfterBlur = editableCellAfterBlur.find('input');
+        expect(inputAfterBlur.exists()).toBe(false);
+    });
+
+    it('should call onChangeMockFn when blur', () => {
+        const onChangeMockFn = jest.fn();
+        const component = mount(
+            <Table data={data} keyField="name">
+                <Column field="name" header="Name" isEditable onChange={onChangeMockFn} />
+            </Table>,
+        );
+        const editableCell = component.find('EditableCell');
+        const div = editableCell.find('div');
+        div.simulate('click');
+        const editableCellAfterClick = component.find('EditableCell');
+        const input = editableCellAfterClick.find('input');
+        input.simulate('change', { target: { value: 'b' } });
+        input.simulate('blur');
+        expect(onChangeMockFn.mock.calls.length).toBe(1);
+        expect(onChangeMockFn).toBeCalledWith({ value: 'b', row: expect.any(Object) });
+    });
+
+    it('should clear the input when click in button clear', () => {
+        const component = mount(
+            <Table data={data} keyField="name">
+                <Column field="name" header="Name" isEditable />
+            </Table>,
+        );
+        const editableCell = component.find('EditableCell');
+        const div = editableCell.find('div');
+        div.simulate('click');
+        const editableCellAfterClick = component.find('EditableCell');
+        const button = editableCellAfterClick.find('button');
+        button.simulate('mouseDown');
+        const editableCellAfterClearClick = component.find('EditableCell');
+        const input = editableCellAfterClearClick.find('input');
+        expect(input.prop('value')).toBe('');
+    });
+
+    it('should desmount the input when onKey ENTER and call the onChange', () => {
+        const onChangeMockFn = jest.fn();
+        const component = mount(
+            <Table data={data} keyField="name">
+                <Column field="name" header="Name" isEditable onChange={onChangeMockFn} />
+            </Table>,
+        );
+        const editableCell = component.find('EditableCell');
+        const div = editableCell.find('div');
+        div.simulate('click');
+        const editableCellAfterClick = component.find('EditableCell');
+        const input = editableCellAfterClick.find('input');
+        input.simulate('change', { target: { value: 'b' } });
+        input.simulate('keydown', { keyCode: ENTER_KEY });
+        const editableCellAfterKeyDown = component.find('EditableCell');
+        const inputAfterKeyDown = editableCellAfterKeyDown.find('input');
+        expect(inputAfterKeyDown.exists()).toBe(false);
+        expect(onChangeMockFn).toBeCalledWith({ value: 'b', row: expect.any(Object) });
+    });
+
+    it('should desmount the input when onKey ESCAPE and not call the onChange', () => {
+        const onChangeMockFn = jest.fn();
+        const component = mount(
+            <Table data={data} keyField="name">
+                <Column field="name" header="Name" isEditable onChange={onChangeMockFn} />
+            </Table>,
+        );
+        const editableCell = component.find('EditableCell');
+        const div = editableCell.find('div');
+        div.simulate('click');
+        const editableCellAfterClick = component.find('EditableCell');
+        const input = editableCellAfterClick.find('input');
+        input.simulate('change', { target: { value: 'b' } });
+        input.simulate('keydown', { keyCode: ESCAPE_KEY });
+        const editableCellAfterKeyDown = component.find('EditableCell');
+        const inputAfterKeyDown = editableCellAfterKeyDown.find('input');
+        expect(inputAfterKeyDown.exists()).toBe(false);
+        expect(onChangeMockFn).not.toHaveBeenCalled();
+    });
+
+    it.only('should render a CustomComponent with the isEditablr and onChange props', () => {
+        const onChangeFn = () => {};
+        const CustomComponent = () => {
+            return <span>Hola Mundo</span>;
+        };
+
+        const component = mount(
+            <Table data={data} keyField="name">
+                <Column
+                    field="name"
+                    header="Name"
+                    isEditable
+                    onChange={onChangeFn}
+                    component={CustomComponent}
+                />
+            </Table>,
+        );
+
+        const customComponent = component.find('CustomComponent');
+        expect(customComponent.prop('isEditable')).toBe(true);
+        expect(customComponent.prop('onChange')).toEqual(onChangeFn);
     });
 });
