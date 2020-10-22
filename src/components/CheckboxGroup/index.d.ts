@@ -1,5 +1,5 @@
 import { ComponentType, ReactNode } from 'react';
-import { BaseProps } from '../types';
+import { BaseProps, LabelAlignment } from '../types';
 
 interface Option {
     label?: ReactNode;
@@ -10,6 +10,8 @@ interface Option {
 export interface CheckboxGroupProps extends BaseProps {
     options?: Option[];
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
+    hideLabel?: boolean;
     name?: string;
     value?: string[];
     required?: boolean;
