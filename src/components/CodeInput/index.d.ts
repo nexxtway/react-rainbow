@@ -1,10 +1,12 @@
 import { ReactNode, MouseEvent, FocusEvent, KeyboardEvent } from 'react';
-import { BaseProps } from '../types';
+import { BaseProps, LabelAlignment } from '../types';
 
 export interface CodeInputProps extends BaseProps {
     id?: string;
     value?: string;
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
+    hideLabel?: boolean;
     bottomHelpText?: ReactNode;
     length?: number;
     disabled?: boolean;

@@ -1,8 +1,10 @@
 import { ReactNode, ComponentType, ChangeEvent } from 'react';
-import { BaseProps, RadioOption } from '../types';
+import { BaseProps, RadioOption, LabelAlignment } from '../types';
 
 export interface RadioButtonGroupProps extends BaseProps {
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
+    hideLabel?: boolean;
     name?: string;
     value?: string;
     variant?: 'default' | 'inverse' | 'brand';

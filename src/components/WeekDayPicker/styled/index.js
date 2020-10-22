@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import HelpText from '../../Input/styled/helpText';
 import HiddenElement from '../../Structural/hiddenElement';
@@ -31,22 +30,6 @@ export const StyledInput = attachThemeAttrs(styled(HiddenElement))`
                 box-shadow: none;
             }
         `}
-`;
-
-export const StyledLabel = attachThemeAttrs(styled.legend)`
-    border: 0;
-    padding: 0;
-    color: ${props => props.palette.text.label};
-    font-size: ${FONT_SIZE_TEXT_MEDIUM};
-    line-height: 1.5;
-    margin-bottom: 0.125rem;
-    align-self: center;
-    box-sizing: border-box;
-    text-align: center;
-
-    &:empty {
-        margin: 0;
-    }
 `;
 
 export const StyledWeekDayContainer = styled.span`
