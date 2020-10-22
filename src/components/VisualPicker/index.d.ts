@@ -1,5 +1,5 @@
 import { ReactNode, ComponentType } from 'react';
-import { BaseProps, VisualPickerSize } from '../types';
+import { BaseProps, VisualPickerSize, LabelAlignment } from '../types';
 
 type Value = string[] | string;
 
@@ -10,6 +10,8 @@ export interface VisualPickerProps extends BaseProps {
     onChange?: (value: Value) => void;
     required?: boolean;
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
+    hideLabel?: boolean;
     error?: ReactNode;
     children?: ReactNode;
     multiple?: boolean;
