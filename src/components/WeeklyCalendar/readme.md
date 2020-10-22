@@ -307,7 +307,7 @@ const WeeklyCalendarExample = () => {
 ##### Weekly Calendar with styled events
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { WeeklyCalendar, Card } from 'react-rainbow-components';
 
@@ -414,19 +414,24 @@ const StyledCard = styled(Card)`
     height: 600px;
     padding: 1rem;
 `;
-const initialState = {
-    currentWeek: new Date(),
-};
 
-    <div className="rainbow-m-around_large">
-        <StyledCard>
-            <WeeklyCalendar
-                events={events}
-                currentWeek={state.currentWeek}
-                onWeekChange={({ week }) => setState({ currentWeek: week })}
-                onEventClick={event => alert(event.title)}
-                locale="en"
-            />
-        </StyledCard>
-    </div>
+function CustomWeecklyCalendar() {
+    const [currentWeek, setCurrentWeek] = useState(new Date());
+
+    return (
+        <div className="rainbow-m-around_large">
+            <StyledCard>
+                <WeeklyCalendar
+                    events={events}
+                    currentWeek={currentWeek}
+                    onWeekChange={({ week }) => setCurrentWeek(week)}
+                    onEventClick={event => alert(event.title)}
+                    locale="en"
+                />
+            </StyledCard>
+        </div>
+    );
+}
+
+    <CustomWeecklyCalendar />
 ```

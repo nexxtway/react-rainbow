@@ -1,17 +1,24 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 import { replaceAlpha } from '../../../../styles/helpers/color';
+import getTheme from '../../../../styles/helpers/getTheme';
+import { getCurrentColor, getCurrentBackgroundColor } from '../helpers';
 
-const StyledEvent = attachThemeAttrs(styled.div)`
+const StyledEvent = attachThemeAttrs(styled.div).attrs(props => {
+    const theme = getTheme(props);
+    const currentColor = getCurrentColor(props.color, props.backgroundColor, theme);
+    const currentBackgroundColor = getCurrentBackgroundColor(props.backgroundColor, theme);
+
+    return {
+        currentColor,
+        currentBackgroundColor,
+    };
+})`
     text-align: left;
     font-size: 12px;
     border: 1px solid ${props => replaceAlpha(props.palette.background.main, 0.8)};
-    color: ${props =>
-        props.color ||
-        (props.backgroundColor
-            ? props.palette.getContrastText(props.backgroundColor)
-            : props.palette.getContrastText(props.palette.brand.main))};
-    background-color: ${props => props.backgroundColor || props.palette.brand.main};
+    color: ${props => props.currentColor};
+    background-color: ${props => props.currentBackgroundColor};
     width: 100%;
     min-height: 20px;
     border-radius: 8px;
