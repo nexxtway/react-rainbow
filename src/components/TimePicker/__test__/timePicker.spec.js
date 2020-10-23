@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import TimePicker from '..';
 import { SPACE_KEY, ENTER_KEY } from '../../../libs/constants';
-import StyledModal from '../styled/modal';
 
 describe('<TimePicker/>', () => {
     it('should fire onBlur with undefined when there is not value', () => {
@@ -83,6 +82,16 @@ describe('<TimePicker/>', () => {
             expect(component.find('Modal').prop('isOpen')).toBe(false);
         });
     });
+    it('should call to focusHourInput when the modal is open', () => {
+        const wrapper = mount(<TimePicker label="unit-testing-timePicker" />);
+        wrapper.find('input').simulate('click');
+        expect(
+            wrapper
+                .find('input')
+                .at(1)
+                .is(':focus'),
+        ).toBe(true);
+    });
     it('should set the right input value when value change dynamically', () => {
         const component = mount(<TimePicker label="unit-testing-timePicker" value="22:59" />);
         component.setProps({ value: '23:01' });
@@ -102,14 +111,5 @@ describe('<TimePicker/>', () => {
         wrapper.setProps({ value: '23:01' });
         wrapper.update();
         expect(wrapper.find('input').props().value).toBe('23:01');
-    });
-    it('should call to focusHourInput when the modal is open', () => {
-        const setFocusToHourInptuMockFn = jest.fn();
-        const wrapper = mount(
-            <TimePicker label="unit-testing-timePicker" onOpened={setFocusToHourInptuMockFn} />,
-        );
-        wrapper.find('input').simulate('click');
-        expect(wrapper.find(StyledModal).prop('isOpen')).toEqual(true);
-        expect(setFocusToHourInptuMockFn).toHaveBeenCalled();
     });
 });
