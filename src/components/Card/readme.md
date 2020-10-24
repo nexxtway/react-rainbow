@@ -4,15 +4,15 @@
 import React from 'react';
 import { Card } from 'react-rainbow-components';
 
-<div className="rainbow-p-around_large">
-    <Card>
-        <img
-            src="images/illustrations/Illustration-rainbow-1.svg"
-            className="rainbow-p-around_xx-large rainbow-m_auto rainbow-align-content_center"
-            alt="landscape with rainbows, birds and colorful balloons"
-        />
-    </Card>
-</div>
+    <div className="rainbow-p-around_large">
+        <Card>
+            <img
+                src="images/illustrations/Illustration-rainbow-1.svg"
+                className="rainbow-p-around_xx-large rainbow-m_auto rainbow-align-content_center"
+                alt="landscape with rainbows, birds and colorful balloons"
+            />
+        </Card>
+    </div>
 ```
 
 ##### card-with header and button
@@ -23,13 +23,13 @@ import { Card, Avatar, Button } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 
-<div className="rainbow-m-around_large">
-    <Card
-        icon={<Avatar icon={<FontAwesomeIcon icon={faUser} />} />}
-        title="Contact details"
-        actions={<Button label="New" variant="outline-brand" />}
-    />
-</div>
+    <div className="rainbow-m-around_large">
+        <Card
+            icon={<Avatar icon={<FontAwesomeIcon icon={faUser} />} />}
+            title="Contact details"
+            actions={<Button label="New" variant="outline-brand" />}
+        />
+    </div>
 ```
 
 ##### card-with header and spinner
@@ -40,24 +40,24 @@ import { Card, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faUsers, faEdit, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
-<div className="rainbow-m-around_large">
-    <Card
-        isLoading
-        icon={<FontAwesomeIcon icon={faUsers} size="lg" className="rainbow-color_brand" />}
-        title="Contacts"
-        actions={
-            <ButtonGroup>
-                <ButtonIcon variant="border" icon={<FontAwesomeIcon icon={faPlus} />} />
-                <ButtonIcon variant="border" icon={<FontAwesomeIcon icon={faEdit} />} disabled />
-                <ButtonIcon
-                    variant="border"
-                    icon={<FontAwesomeIcon icon={faAngleDown} />}
-                    disabled
-                />
-            </ButtonGroup>
+    <div className="rainbow-m-around_large">
+        <Card
+            isLoading
+            icon={<FontAwesomeIcon icon={faUsers} size="lg" className="rainbow-color_brand" />}
+            title="Contacts"
+            actions={
+                <ButtonGroup>
+                    <ButtonIcon variant="border" icon={<FontAwesomeIcon icon={faPlus} />} />
+                    <ButtonIcon variant="border" icon={<FontAwesomeIcon icon={faEdit} />} disabled />
+                    <ButtonIcon
+                        variant="border"
+                        icon={<FontAwesomeIcon icon={faAngleDown} />}
+                        disabled
+                    />
+                </ButtonGroup>
         }
-    />
-</div>
+        />
+    </div>
 ```
 
 ##### card with header and illustration
@@ -74,42 +74,42 @@ const iconContainerStyles = {
     height: '2.5rem',
 };
 
-<div className="rainbow-m-around_large">
-    <Card
-        icon={
-            <span
-                className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"
-                style={iconContainerStyles}
-            >
-                <FontAwesomeIcon icon={faTasks} size="lg" className="rainbow-color_white" />
-            </span>
+    <div className="rainbow-m-around_large">
+        <Card
+            icon={
+                <span
+                    className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"
+                    style={iconContainerStyles}
+                >
+                    <FontAwesomeIcon icon={faTasks} size="lg" className="rainbow-color_white" />
+                </span>
         }
-        title="Task"
-        actions={<Button variant="neutral" label="Add" />}
-        footer={
-            <div className="rainbow-align-content_space-between">
-                <div className="rainbow-flex">
-                    <ButtonIcon
-                        icon={<FontAwesomeIcon icon={faHeart} />}
-                        className="rainbow-m-right_xx-small"
-                    />
-                    <ButtonIcon icon={<FontAwesomeIcon icon={faShareAlt} />} />
+            title="Task"
+            actions={<Button variant="neutral" label="Add" />}
+            footer={
+                <div className="rainbow-align-content_space-between">
+                    <div className="rainbow-flex">
+                        <ButtonIcon
+                            icon={<FontAwesomeIcon icon={faHeart} />}
+                            className="rainbow-m-right_xx-small"
+                        />
+                        <ButtonIcon icon={<FontAwesomeIcon icon={faShareAlt} />} />
+                    </div>
+                    <ButtonIcon icon={<FontAwesomeIcon icon={faAngleDown} />} />
                 </div>
-                <ButtonIcon icon={<FontAwesomeIcon icon={faAngleDown} />} />
-            </div>
         }
-    >
-        <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
-            <img
-                src="images/illustrations/Illustration-rainbow-2.svg"
-                alt="landscape with rainbows and colorful birds"
-            />
-            <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
-                No new tasks
-            </h1>
-        </div>
-    </Card>
-</div>
+        >
+            <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
+                <img
+                    src="images/illustrations/Illustration-rainbow-2.svg"
+                    alt="landscape with rainbows and colorful birds"
+                />
+                <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
+                    No new tasks
+                </h1>
+            </div>
+        </Card>
+    </div>
 ```
 
 ##### pricing card
@@ -164,7 +164,7 @@ const StyledCard = styled(Card)`
 `;
 
 function PriceCard(props) {
-    const { packageType, packagePrice, projectsCount, members, contacts} = props;
+    const { packageType, packagePrice, projectsCount, members, contacts } = props;
     return (
         <StyledCard
             className="rainbow-flex rainbow-flex_column rainbow-align_center rainbow-justify_space-around rainbow-p-vertical_small rainbow-m-around_small"
@@ -188,26 +188,26 @@ function PriceCard(props) {
     )
 }
 
-<div>
-    <Title
-        className="rainbow-p-top_x-large"
-    >
-        Our Prices
-    </Title>
+    <div>
+        <Title
+            className="rainbow-p-top_x-large"
+        >
+            Our Prices
+        </Title>
 
-    <Subtitle
-        className="rainbow-p-around_medium"
-    >
-        You have Free Unlimited Updates and Premium Support on each package.
-    </Subtitle>
+        <Subtitle
+            className="rainbow-p-around_medium"
+        >
+            You have Free Unlimited Updates and Premium Support on each package.
+        </Subtitle>
 
 
-    <div className="rainbow-align-content_center rainbow-flex_wrap rainbow-p-around_medium">
-        <PriceCard packageType="Standard" packagePrice="24" projectsCount="100" members="5" contacts="50"/>
-        <PriceCard packageType="Standard" packagePrice="85" projectsCount="500" members="50" contacts="150"/>
-        <PriceCard packageType="Standard" packagePrice="149" projectsCount="1000" members="100" contacts="200"/>
+        <div className="rainbow-align-content_center rainbow-flex_wrap rainbow-p-around_medium">
+            <PriceCard packageType="Standard" packagePrice="24" projectsCount="100" members="5" contacts="50"/>
+            <PriceCard packageType="Standard" packagePrice="85" projectsCount="500" members="50" contacts="150"/>
+            <PriceCard packageType="Standard" packagePrice="149" projectsCount="1000" members="100" contacts="200"/>
+        </div>
     </div>
-</div>
 ```
 
 ##### Card with Progress circular chart
@@ -259,24 +259,24 @@ const style = { width: '250px' };
 
 const progressValue = Math.round(usersActivity.activeUsers * 100 / usersActivity.usersTotal);
 
-function ProgressCard(props) {
-    const { usersActivity, progressValue } = props;
+function ProgressCard() {
     return (
         <StyledCard className="rainbow-flex rainbow-p-vertical_small rainbow-p-horizontal_small">
             <Col>
                 <Subtitle>
                     <HelpText title="Active Users"
-                        text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>} />
+                        text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>}
+                    />
                     Active Users
                 </Subtitle>
                 <ActiveUsers>{usersActivity.activeUsers}</ActiveUsers>
             </Col>
-        <StyledProgressCircular value={progressValue} />
-    </StyledCard>
+            <StyledProgressCircular value={progressValue} />
+        </StyledCard>
     )
 }
 
-<div className="rainbow-align-content_center rainbow-p-horizontal_medium rainbow-p-vertical_xx-large">
-    <ProgressCard usersActivity={usersActivity} progressValue={progressValue} />
-</div>
+    <div className="rainbow-align-content_center rainbow-p-horizontal_medium rainbow-p-vertical_xx-large">
+        <ProgressCard />
+    </div>
 ```

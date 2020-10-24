@@ -150,7 +150,7 @@ function RenderIfExample() {
     );
 }
 
-<div className="rainbow-m-around_large">
-    <RenderIfExample />
-</div>;
+    <div className="rainbow-m-around_large">
+        <RenderIfExample />
+    </div>;
 ```

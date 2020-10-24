@@ -13,25 +13,27 @@ class SimpleCheckboxToggle extends React.Component {
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
-    handleOnChange(event) {
-        return this.setState({ value: !this.state.value });
+    handleOnChange() {
+        const { value } = this.state;
+        return this.setState({ value: !value });
     }
 
     render() {
+        const { value } = this.state;
         return (
             <CheckboxToggle
                 id="checkbox-toggle-component-1"
                 label="Toggle Label"
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
             />
         );
     }
 }
 
-<div className="rainbow-p-vertical_large rainbow-p-left_x-large">
-    <SimpleCheckboxToggle />
-</div>
+    <div className="rainbow-p-vertical_large rainbow-p-left_x-large">
+        <SimpleCheckboxToggle />
+    </div>
 ```
 
 ##### checkbox toggle checked
@@ -49,24 +51,26 @@ class CheckedCheckboxToggle extends React.Component {
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
-    handleOnChange(event) {
-        return this.setState({ value: !this.state.value });
+    handleOnChange() {
+        const { value } = this.state;
+        return this.setState({ value: !value });
     }
 
     render() {
+        const { value } = this.state;
         return (
             <CheckboxToggle
                 label="Toggle Label"
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
             />
         );
     }
 }
 
-<div className="rainbow-p-vertical_large rainbow-p-left_x-large">
-    <CheckedCheckboxToggle />
-</div>
+    <div className="rainbow-p-vertical_large rainbow-p-left_x-large">
+        <CheckedCheckboxToggle />
+    </div>
 ```
 
 ##### checkbox toggle disabled
@@ -84,15 +88,17 @@ class DisabledCheckboxToggle extends React.Component {
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
-    handleOnChange(event) {
-        return this.setState({ value: !this.state.value });
+    handleOnChange() {
+        const { value } = this.state;
+        return this.setState({ value: !value });
     }
 
     render() {
+        const { value } = this.state;
         return (
             <CheckboxToggle
                 label="Toggle Label"
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
                 disabled
             />
@@ -100,7 +106,7 @@ class DisabledCheckboxToggle extends React.Component {
     }
 }
 
-<div className="rainbow-p-vertical_large rainbow-p-left_x-large">
-    <DisabledCheckboxToggle />
-</div>
+    <div className="rainbow-p-vertical_large rainbow-p-left_x-large">
+        <DisabledCheckboxToggle />
+    </div>
 ```

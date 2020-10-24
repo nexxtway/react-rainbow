@@ -40,7 +40,15 @@ export default class Rating extends Component {
     }
 
     render() {
-        const { style, className, onChange, label, readOnly } = this.props;
+        const {
+            style,
+            className,
+            onChange,
+            label,
+            labelAlignment,
+            hideLabel,
+            readOnly,
+        } = this.props;
         const { value } = this.state;
         return (
             <StyledFieldset
@@ -50,7 +58,12 @@ export default class Rating extends Component {
                 style={style}
             >
                 <RenderIf isTrue={label}>
-                    <StyledLabel>{label}</StyledLabel>
+                    <StyledLabel
+                        label={label}
+                        labelAlignment={labelAlignment}
+                        hideLabel={hideLabel}
+                        forwardedAs="legend"
+                    />
                 </RenderIf>
                 <RatingItems
                     onChange={onChange}
@@ -72,6 +85,11 @@ Rating.propTypes = {
     name: PropTypes.string,
     /** The rating label */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the Rating label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the Rating label. */
+    hideLabel: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -85,6 +103,8 @@ Rating.defaultProps = {
     onChange: () => {},
     name: undefined,
     label: null,
+    labelAlignment: 'center',
+    hideLabel: false,
     className: undefined,
     style: undefined,
     readOnly: false,

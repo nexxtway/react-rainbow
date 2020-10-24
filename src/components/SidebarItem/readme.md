@@ -22,7 +22,7 @@ class SimpleSidebar extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(e, selectedItem) {
+    handleOnSelect(event, selectedItem) {
         return this.setState({ selectedItem });
     }
 
@@ -41,12 +41,12 @@ class SimpleSidebar extends React.Component {
     }
 }
 
-<div>
-    <GlobalHeader src="images/user/user3.jpg" />
-    <SideBarContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
-        <SimpleSidebar />
-    </SideBarContainer>
-</div>
+    <div>
+        <GlobalHeader src="images/user/user3.jpg" />
+        <SideBarContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
+            <SimpleSidebar />
+        </SideBarContainer>
+    </div>
 ```
 
 ##### SidebarItem with selectedIcon
@@ -73,7 +73,7 @@ class SimpleSidebar extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(e, selectedItem) {
+    handleOnSelect(event, selectedItem) {
         return this.setState({ selectedItem });
     }
 
@@ -86,26 +86,29 @@ class SimpleSidebar extends React.Component {
                     icon={<HomeBorderIcon />}
                     selectedIcon={<HomeFilledIcon />}
                     name="Home"
-                    label="Home" />
+                    label="Home"
+                />
                 <SidebarItem
                     icon={<ExportBorderIcon />}
                     selectedIcon={<ExportFilledIcon />}
                     name="Export"
-                    label="Export" />
+                    label="Export"
+                />
                 <SidebarItem
                     icon={<MoneyBorderIcon />}
                     selectedIcon={<MoneyFilledIcon />}
                     name="Billing"
-                    label="Billing" />
+                    label="Billing"
+                />
             </Sidebar>
         );
     }
 }
 
-<div>
-    <GlobalHeader src="images/user/user2.jpg" />
-    <SideBarContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
-        <SimpleSidebar />
-    </SideBarContainer>
-</div>
+    <div>
+        <GlobalHeader src="images/user/user2.jpg" />
+        <SideBarContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
+            <SimpleSidebar />
+        </SideBarContainer>
+    </div>
 ```

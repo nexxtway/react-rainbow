@@ -25,7 +25,7 @@ const Payment = () => {
         </Container>
     );
 };
-<Payment/>
+    <Payment/>
 
 ```
 
@@ -87,14 +87,12 @@ const Payment = () => {
                 });
                 if (result.error) {
                     setError(result.error);
-                } else {
+                } else if (result.paymentIntent.status === 'succeeded') {
                     // The payment has been processed!
-                    if (result.paymentIntent.status === 'succeeded') {
-                        // Show a success message to your customer
-                    }
+                    // Show a success message to your customer
                 }
-            } catch (e) {
-                setError(e.message);
+            } catch (err) {
+                setError(err.message);
             }
         }
     };
@@ -152,7 +150,7 @@ const Payment = () => {
         </Container>
     );
 };
-<Payment/>
+    <Payment/>
 ```
 
 ##### StripeCardInput disabled
@@ -183,5 +181,5 @@ const Payment = () => {
         </Container>
     );
 };
-<Payment/>
+    <Payment/>
 ```

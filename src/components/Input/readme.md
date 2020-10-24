@@ -8,13 +8,13 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-<Input
-    id="input-component-1"
-    label="Input Label"
-    placeholder="Placeholder text"
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Input
+        id="input-component-1"
+        label="Input Label"
+        placeholder="Placeholder text"
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### type of the inputs
@@ -27,121 +27,121 @@ const inputStyles = {
     width: 300,
 };
 
-<div className="rainbow-m-vertical_x-large rainbow-m_auto">
-    <div className="rainbow-align-content_center rainbow-flex_wrap">
-        <Input
-            label="Input Text"
-            placeholder="Placeholder text"
-            type="text"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
+    <div className="rainbow-m-vertical_x-large rainbow-m_auto">
+        <div className="rainbow-align-content_center rainbow-flex_wrap">
+            <Input
+                label="Input Text"
+                placeholder="Placeholder text"
+                type="text"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
 
-        <Input
-            label="Input Paassword"
-            placeholder="**********"
-            type="password"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
-    </div>
-    <div className="rainbow-align-content_center rainbow-flex_wrap">
-        <Input
-            label="Input DateTime"
-            value="02/12/2018"
-            type="datetime"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
+            <Input
+                label="Input Paassword"
+                placeholder="**********"
+                type="password"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
+        </div>
+        <div className="rainbow-align-content_center rainbow-flex_wrap">
+            <Input
+                label="Input DateTime"
+                value="02/12/2018"
+                type="datetime"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
 
-        <Input
-            label="Input DateTime Local"
-            type="datetime-local"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
-    </div>
-    <div className="rainbow-align-content_center rainbow-flex_wrap">
-        <Input
-            label="Input Date"
-            type="date"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
+            <Input
+                label="Input DateTime Local"
+                type="datetime-local"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
+        </div>
+        <div className="rainbow-align-content_center rainbow-flex_wrap">
+            <Input
+                label="Input Date"
+                type="date"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
 
-        <Input
-            label="Input Month"
-            type="month"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
-    </div>
-    <div className="rainbow-align-content_center rainbow-flex_wrap">
-        <Input
-            label="Input Time"
-            type="time"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
+            <Input
+                label="Input Month"
+                type="month"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
+        </div>
+        <div className="rainbow-align-content_center rainbow-flex_wrap">
+            <Input
+                label="Input Time"
+                type="time"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
 
-        <Input
-            label="Input Week"
-            type="week"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
-    </div>
-    <div className="rainbow-align-content_center rainbow-flex_wrap">
-        <Input
-            label="Input Email"
-            placeholder="inputEmail@gmail.com"
-            type="email"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
+            <Input
+                label="Input Week"
+                type="week"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
+        </div>
+        <div className="rainbow-align-content_center rainbow-flex_wrap">
+            <Input
+                label="Input Email"
+                placeholder="inputEmail@gmail.com"
+                type="email"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
 
-        <Input
-            label="Input Number"
-            placeholder="1234567890"
-            type="number"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
-    </div>
-    <div className="rainbow-align-content_center rainbow-flex_wrap">
-        <Input
-            label="Input Url"
-            placeholder="https://react-rainbow-components.com"
-            type="url"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
+            <Input
+                label="Input Number"
+                placeholder="1234567890"
+                type="number"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
+        </div>
+        <div className="rainbow-align-content_center rainbow-flex_wrap">
+            <Input
+                label="Input Url"
+                placeholder="https://react-rainbow-components.com"
+                type="url"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
 
-        <Input
-            label="Input Search"
-            placeholder="Search"
-            type="search"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
-    </div>
-    <div className="rainbow-align-content_center rainbow-flex_wrap">
-        <Input
-            label="Input Phone"
-            placeholder="111-111-1111"
-            type="tel"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
+            <Input
+                label="Input Search"
+                placeholder="Search"
+                type="search"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
+        </div>
+        <div className="rainbow-align-content_center rainbow-flex_wrap">
+            <Input
+                label="Input Phone"
+                placeholder="111-111-1111"
+                type="tel"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
 
-        <Input
-            label="Input Color"
-            type="color"
-            className="rainbow-p-around_medium"
-            style={inputStyles}
-        />
+            <Input
+                label="Input Color"
+                type="color"
+                className="rainbow-p-around_medium"
+                style={inputStyles}
+            />
+        </div>
     </div>
-</div>
 ```
 
 ##### input radio
@@ -150,22 +150,22 @@ const inputStyles = {
 import React from 'react';
 import { Input } from 'react-rainbow-components';
 
-<div className="rainbow-p-around_x-large rainbow-flex rainbow-justify_space-around rainbow-flex_wrap">
-    <Input className="rainbow-m-around_medium" type="radio" label="Input Radio Label" />
-    <Input
-        className="rainbow-m-around_medium"
-        type="radio"
-        error="This Field is Required"
-        label="Input Radio Label"
-    />
-    <Input className="rainbow-m-around_medium" disabled type="radio" label="Input Radio Label" />
-    <Input
-        className="rainbow-m-around_medium"
-        type="radio"
-        bottomHelpText="ex: (111) 111 1111"
-        label="Input Radio Label"
-    />
-</div>
+    <div className="rainbow-p-around_x-large rainbow-flex rainbow-justify_space-around rainbow-flex_wrap">
+        <Input className="rainbow-m-around_medium" type="radio" label="Input Radio Label" />
+        <Input
+            className="rainbow-m-around_medium"
+            type="radio"
+            error="This Field is Required"
+            label="Input Radio Label"
+        />
+        <Input className="rainbow-m-around_medium" disabled type="radio" label="Input Radio Label" />
+        <Input
+            className="rainbow-m-around_medium"
+            type="radio"
+            bottomHelpText="ex: (111) 111 1111"
+            label="Input Radio Label"
+        />
+    </div>
 ```
 
 ##### input type checkbox
@@ -174,27 +174,27 @@ import { Input } from 'react-rainbow-components';
 import React from 'react';
 import { Input } from 'react-rainbow-components';
 
-<div className="rainbow-p-around_x-large rainbow-flex rainbow-justify_space-around rainbow-flex_wrap">
-    <Input className="rainbow-m-around_medium" type="checkbox" label="Input Checkbox Label" />
-    <Input
-        className="rainbow-m-around_medium"
-        type="checkbox"
-        error="This Field is Required"
-        label="Input Checkbox Label"
-    />
-    <Input
-        className="rainbow-m-around_medium"
-        disabled
-        type="checkbox"
-        label="Input Checkbox Label"
-    />
-    <Input
-        className="rainbow-m-around_medium"
-        type="checkbox"
-        bottomHelpText="ex: (111) 111 1111"
-        label="Input Checkbox Label"
-    />
-</div>
+    <div className="rainbow-p-around_x-large rainbow-flex rainbow-justify_space-around rainbow-flex_wrap">
+        <Input className="rainbow-m-around_medium" type="checkbox" label="Input Checkbox Label" />
+        <Input
+            className="rainbow-m-around_medium"
+            type="checkbox"
+            error="This Field is Required"
+            label="Input Checkbox Label"
+        />
+        <Input
+            className="rainbow-m-around_medium"
+            disabled
+            type="checkbox"
+            label="Input Checkbox Label"
+        />
+        <Input
+            className="rainbow-m-around_medium"
+            type="checkbox"
+            bottomHelpText="ex: (111) 111 1111"
+            label="Input Checkbox Label"
+        />
+    </div>
 ```
 
 ##### input with icons
@@ -209,23 +209,23 @@ const inputStyles = {
     width: 300,
 };
 
-<div className="rainbow-align-content_center rainbow-p-vertical_x-large rainbow-flex_wrap">
-    <Input
-        className="rainbow-p-around_medium"
-        style={inputStyles}
-        label="Input label"
-        placeholder="Input with left icon"
-        icon={<FontAwesomeIcon icon={faSearch} className="rainbow-color_gray-3" />}
-    />
-    <Input
-        className="rainbow-p-around_medium"
-        style={inputStyles}
-        label="Input label"
-        placeholder="Input with right icon"
-        iconPosition="right"
-        icon={<FontAwesomeIcon icon={faSearch} className="rainbow-color_gray-3" />}
-    />
-</div>
+    <div className="rainbow-align-content_center rainbow-p-vertical_x-large rainbow-flex_wrap">
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input label"
+            placeholder="Input with left icon"
+            icon={<FontAwesomeIcon icon={faSearch} className="rainbow-color_gray-3" />}
+        />
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input label"
+            placeholder="Input with right icon"
+            iconPosition="right"
+            icon={<FontAwesomeIcon icon={faSearch} className="rainbow-color_gray-3" />}
+        />
+    </div>
 ```
 
 ##### input with help
@@ -238,13 +238,13 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-<Input
-    label="Input label"
-    placeholder="Input with inline help"
-    bottomHelpText="ex: (111) 111 1111"
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Input
+        label="Input label"
+        placeholder="Input with inline help"
+        bottomHelpText="ex: (111) 111 1111"
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### input required
@@ -257,13 +257,13 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-<Input
-    label="Input label"
-    placeholder="Input required"
-    required
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Input
+        label="Input label"
+        placeholder="Input required"
+        required
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### input disabled
@@ -276,13 +276,13 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-<Input
-    label="Input label"
-    value="Input disabled"
-    disabled
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Input
+        label="Input label"
+        value="Input disabled"
+        disabled
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### input centered
@@ -295,13 +295,13 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-<Input
-    label="Input label"
-    placeholder="center"
-    isCentered
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Input
+        label="Input label"
+        placeholder="center"
+        isCentered
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### input error
@@ -316,24 +316,24 @@ const inputStyles = {
     width: 300,
 };
 
-<div className="rainbow-align-content_center rainbow-m-vertical_x-large rainbow-flex_wrap">
-    <Input
-        label="Input label"
-        placeholder="Placeholder text"
-        error="This Field is Required"
-        className="rainbow-p-around_medium"
-        style={inputStyles}
-    />
+    <div className="rainbow-align-content_center rainbow-m-vertical_x-large rainbow-flex_wrap">
+        <Input
+            label="Input label"
+            placeholder="Placeholder text"
+            error="This Field is Required"
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+        />
 
-    <Input
-        label="Input label"
-        placeholder="Placeholder text with icon"
-        error="This Field is Required"
-        icon={<FontAwesomeIcon icon={faBan} />}
-        className="rainbow-p-around_medium"
-        style={inputStyles}
-    />
-</div>
+        <Input
+            label="Input label"
+            placeholder="Placeholder text with icon"
+            error="This Field is Required"
+            icon={<FontAwesomeIcon icon={faBan} />}
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+        />
+    </div>
 ```
 
 ##### input read only
@@ -348,24 +348,24 @@ const inputStyles = {
     width: 300,
 };
 
-<div className="rainbow-align-content_center rainbow-m-vertical_x-large rainbow-flex_wrap">
-    <Input
-        label="Input Label"
-        readOnly
-        value="Read Only"
-        className="rainbow-p-around_medium"
-        style={inputStyles}
-    />
+    <div className="rainbow-align-content_center rainbow-m-vertical_x-large rainbow-flex_wrap">
+        <Input
+            label="Input Label"
+            readOnly
+            value="Read Only"
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+        />
 
-    <Input
-        label="Input Label"
-        readOnly
-        value="Read Only with icon left"
-        icon={<FontAwesomeIcon icon={faStar} />}
-        className="rainbow-p-around_medium"
-        style={inputStyles}
-    />
-</div>
+        <Input
+            label="Input Label"
+            readOnly
+            value="Read Only with icon left"
+            icon={<FontAwesomeIcon icon={faStar} />}
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+        />
+    </div>
 ```
 
 ##### input with variant shaded
@@ -373,23 +373,24 @@ const inputStyles = {
 ```js
 import React from 'react';
 import { Input } from 'react-rainbow-components';
-import logo from './../../../assets/images/rainbow-logo.svg';
+// eslint-disable-next-line import/no-unresolved
+import logo from "../../../assets/images/rainbow-logo.svg";
 
 const inputStyles = {
     width: 300,
 };
-<div>
-    <div className="rainbow-flex_column rainbow-align-content_center">
-        <img src={logo}  className="rainbow-p-top_x-large" />
-        <p className="rainbow-p-around_xx-small">react-rainbow components</p>
+    <div>
+        <div className="rainbow-flex_column rainbow-align-content_center">
+            <img alt="rainbow" src={logo}  className="rainbow-p-top_x-large" />
+            <p className="rainbow-p-around_xx-small">react-rainbow components</p>
+        </div>
+        <Input
+            placeholder="Find Something"
+            className="rainbow-m_auto rainbow-p-around_medium"
+            variant="shaded"
+            style={inputStyles}
+        />
     </div>
-    <Input
-        placeholder="Find Something"
-        className="rainbow-m_auto rainbow-p-around_medium"
-        variant="shaded"
-        style={inputStyles}
-    />
-</div>
 ```
 
 ##### input with range
@@ -402,27 +403,27 @@ const inputStyles = {
     width: 300,
 };
 
-<div className="rainbow-align-content_center rainbow-p-vertical_x-large rainbow-flex_wrap">
-    <Input
-        className="rainbow-p-around_medium"
-        style={inputStyles}
-        label="Input Number"
-        bottomHelpText="between 10 & 100"
-        placeholder="1234567890"
-        type="number"
-        max={100}
-        min={10}
-    />
-    <Input
-        className="rainbow-p-around_medium"
-        style={inputStyles}
-        label="Input Date"
-        bottomHelpText="between 2019-01-01 & 2021-01-01"
-        type="date"
-        max="2021-01-01"
-        min="2019-01-01"
-    />
-</div>
+    <div className="rainbow-align-content_center rainbow-p-vertical_x-large rainbow-flex_wrap">
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input Number"
+            bottomHelpText="between 10 & 100"
+            placeholder="1234567890"
+            type="number"
+            max={100}
+            min={10}
+        />
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input Date"
+            bottomHelpText="between 2019-01-01 & 2021-01-01"
+            type="date"
+            max="2021-01-01"
+            min="2019-01-01"
+        />
+    </div>
 ```
 
 ##### input with aligned label
@@ -435,31 +436,31 @@ const inputStyles = {
     width: 300,
 };
 
-<div className="rainbow-align-content_center rainbow-p-vertical_x-large rainbow-flex_wrap">
-    <Input
-        className="rainbow-p-around_medium"
-        style={inputStyles}
-        label="Input Label"
-        labelAlignment="left"
-        bottomHelpText="Label on the left"
-        placeholder="Placeholder text"
-    />
-    <Input
-        className="rainbow-p-around_medium"
-        style={inputStyles}
-        label="Input Label"
-        bottomHelpText="Label centered"
-        placeholder="Placeholder text"
-    />
-    <Input
-        className="rainbow-p-around_medium"
-        style={inputStyles}
-        label="Input Label"
-        labelAlignment="right"
-        bottomHelpText="Label on the right"
-        placeholder="Placeholder text"
-    />
-</div>
+    <div className="rainbow-align-content_center rainbow-p-vertical_x-large rainbow-flex_wrap">
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input Label"
+            labelAlignment="left"
+            bottomHelpText="Label on the left"
+            placeholder="Placeholder text"
+        />
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input Label"
+            bottomHelpText="Label centered"
+            placeholder="Placeholder text"
+        />
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input Label"
+            labelAlignment="right"
+            bottomHelpText="Label on the right"
+            placeholder="Placeholder text"
+        />
+    </div>
 ```
 # Input with a set value
 ##### This example shows an input base with a value controlled through a state and an initial value set by default.
@@ -468,10 +469,6 @@ const inputStyles = {
 import React, { useState } from 'react';
 import { Input } from 'react-rainbow-components';
 
-
-
-
-
 const containerStyles = {
     maxWidth: 700,
 };
@@ -479,10 +476,10 @@ const containerStyles = {
 const SetValueInput = () => {
     const [ value, setValue ] = useState('John Doe');
 
-    const handleChange = (e) => {
-        setValue(e.target.value)
+    const handleChange = event => {
+        setValue(event.target.value)
     }
-    
+
     return (
         <Input
             label="Input Label"
@@ -495,6 +492,5 @@ const SetValueInput = () => {
     )
 }
 
-<SetValueInput />
-
+    <SetValueInput />
 ```
