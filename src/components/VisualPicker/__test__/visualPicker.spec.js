@@ -79,4 +79,15 @@ describe('<VisualPicker/>', () => {
             .simulate('change', { target: { checked: false } });
         expect(onChangeFn).toHaveBeenCalledWith(['option1']);
     });
+    it('should pass the right props to the Label component', () => {
+        const component = mount(<VisualPicker label="custom label" required />);
+        expect(component.find('Label').props()).toEqual({
+            label: 'custom label',
+            required: true,
+            readOnly: false,
+            labelAlignment: 'center',
+            hideLabel: false,
+            as: 'legend',
+        });
+    });
 });

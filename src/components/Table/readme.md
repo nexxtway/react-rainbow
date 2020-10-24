@@ -1,6 +1,6 @@
 # The basic Table
-##### Our table component comes off course with our rainbow styles out of the box. As you can see in the code below, in order to use the component, you have to compose the `Table` with the `Column` component.
-##### Notice there is a required prop `keyfield` that indicates the name of the field in your data (rows) and contains the key value.
+##### Our table component comes of course with our rainbow styles out of the box. As you can see in the code below, in order to use the component, you have to compose the `Table` with the `Column` component.
+##### Notice there is a required prop `keyField` that indicates the name of the field in your data (rows) and contains the key value.
 
 ```js
 import React from 'react';
@@ -12,24 +12,24 @@ const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
-<div className="rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-        <ButtonGroup className="rainbow-m-right_medium">
-            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-            <ButtonIcon
-                variant="border-filled"
-                disabled
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-            />
-        </ButtonGroup>
-    </GlobalHeader>
-    <Table data={DataTable} keyField="id">
-        <Column header="Name" field="name" />
-        <Column header="Status" field="status" component={StatusBadge} />
-        <Column header="Company" field="company" />
-        <Column header="Email" field="email" />
-    </Table>
-</div>
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon
+                    variant="border-filled"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table data={DataTable} keyField="id">
+            <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={StatusBadge} />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </div>
 ```
 
 # Table with sorting
@@ -59,17 +59,17 @@ class TableExample extends React.Component {
     }
 
     handleOnSort(event, field, nextSortDirection) {
-        const { data, sortedBy, sortDirection } = this.state;
+        const { data } = this.state;
 
-        let newData = [...data];
+        const newData = [...data];
 
-        const key = x => x[field];
+        const key = value => value[field];
         const reverse = nextSortDirection === 'asc' ? 1 : -1;
 
-        const sortedData = newData.sort((a, b) => {
-            a = key(a);
-            b = key(b);
-            return reverse * ((a > b) - (b > a));
+        const sortedData = newData.sort((aItem, bItem) => {
+            const aValue = key(aItem);
+            const bValue = key(bItem);
+            return reverse * ((aValue > bValue) - (bValue > aValue));
         });
 
         this.setState({ data: sortedData, sortedBy: field, sortDirection: nextSortDirection });
@@ -112,11 +112,11 @@ class TableExample extends React.Component {
     }
 }
 
-<TableExample />;
+    <TableExample />;
 ```
 
 # Table with selectable rows
-##### The `showCheckboxColumn` at the `Table` component level will add an extra column in the table with checkboxes, or radio buttons that will allow you to do multiple or single selection on rows. Events will be trigger on every selection via `onRowSelection`.
+##### The `showCheckboxColumn` at the `Table` component level will add an extra column in the table with checkboxes, or radio buttons that will allow you to do multiple or single selection on rows. Events will be triggered on every selection via `onRowSelection`.
 
 ```js
 import React from 'react';
@@ -172,7 +172,7 @@ class TableExample extends React.Component {
                     showCheckboxColumn
                     isLoading={isLoading}
                     data={data}
-                    onRowSelection={data => console.log(data)}
+                    onRowSelection={selection => console.log(selection)}
                 >
                     <Column header="Name" field="name" />
                     <Column header="Status" field="status" component={StatusBadge} />
@@ -184,11 +184,12 @@ class TableExample extends React.Component {
     }
 }
 
-<TableExample />;
+    <TableExample />;
 ```
 
 # Table with a limited number of selectable rows
 ##### Adding limits to the number of rows that you can select is possible by using `maxRowSelection` prop. Notice if the value is `1` the table will render radio buttons instead of checkboxes.
+
 ```js
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
@@ -199,32 +200,32 @@ const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
-<div className="rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-        <ButtonGroup className="rainbow-m-right_medium">
-            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-            <ButtonIcon
-                variant="border-filled"
-                disabled
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-            />
-        </ButtonGroup>
-    </GlobalHeader>
-    <Table
-        id="table-7"
-        keyField="id"
-        showCheckboxColumn
-        data={DataTable}
-        maxRowSelection={4}
-        selectedRows={['1234qwerty', '1234zxcvbn']}
-        onRowSelection={data => console.log(data)}
-    >
-        <Column header="Name" field="name" />
-        <Column header="Status" field="status" component={StatusBadge} />
-        <Column header="Company" field="company" />
-        <Column header="Email" field="email" />
-    </Table>
-</div>
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon
+                    variant="border-filled"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table
+            id="table-7"
+            keyField="id"
+            showCheckboxColumn
+            data={DataTable}
+            maxRowSelection={4}
+            selectedRows={['1234qwerty', '1234zxcvbn']}
+            onRowSelection={data => console.log(data)}
+        >
+            <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={StatusBadge} />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </div>
 ```
 
 # Table with selectable rows `maxRowSelection={1}`
@@ -240,31 +241,31 @@ const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
-<div className="rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-        <ButtonGroup className="rainbow-m-right_medium">
-            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-            <ButtonIcon
-                variant="border-filled"
-                disabled
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-            />
-        </ButtonGroup>
-    </GlobalHeader>
-    <Table
-        id="table-9"
-        keyField="id"
-        showCheckboxColumn
-        data={DataTable}
-        maxRowSelection={1}
-        onRowSelection={data => console.log(data)}
-    >
-        <Column header="Name" field="name" />
-        <Column header="Status" field="status" component={StatusBadge} />
-        <Column header="Company" field="company" />
-        <Column header="Email" field="email" />
-    </Table>
-</div>
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon
+                    variant="border-filled"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table
+            id="table-9"
+            keyField="id"
+            showCheckboxColumn
+            data={DataTable}
+            maxRowSelection={1}
+            onRowSelection={data => console.log(data)}
+        >
+            <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={StatusBadge} />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </div>
 ```
 
 # Table with row actions
@@ -282,28 +283,28 @@ const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
-<div className="rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-        <ButtonGroup className="rainbow-m-right_medium">
-            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-            <ButtonIcon
-                variant="border-filled"
-                disabled
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-            />
-        </ButtonGroup>
-    </GlobalHeader>
-    <Table keyField="id" data={DataTable}>
-        <Column header="Name" field="name" />
-        <Column header="Status" field="status" component={StatusBadge} />
-        <Column header="Company" field="company" />
-        <Column header="Email" field="email" />
-        <Column type="action">
-            <MenuItem label="Edit" onClick={(e, data) => console.log(`Edit ${data.name}`)} />
-            <MenuItem label="Delete" onClick={(e, data) => console.log(`Delete ${data.name}`)} />
-        </Column>
-    </Table>
-</div>
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon
+                    variant="border-filled"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table keyField="id" data={DataTable}>
+            <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={StatusBadge} />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+            <Column type="action">
+                <MenuItem label="Edit" onClick={(event, data) => console.log(`Edit ${data.name}`)} />
+                <MenuItem label="Delete" onClick={(event, data) => console.log(`Delete ${data.name}`)} />
+            </Column>
+        </Table>
+    </div>
 ```
 
 # Table with dynamic row actions
@@ -323,7 +324,7 @@ const StatusBadge = ({ value }) => {
     return <Badge label={value} variant="lightest" className="rainbow-m-left_small" />;
 };
 
-const MenuAction = ({value,name}) => {
+const MenuAction = ({ value,name }) => {
     if(value === 'verified'){
         return  <MenuItem label="Delete" />
     }
@@ -335,8 +336,8 @@ const MenuAction = ({value,name}) => {
     );
 };
 
-const ButtonAction = (props) => {
-    const {value, row:{name}}=props;
+const ButtonAction = props => {
+    const { value, row:{ name } }=props;
     return (
         <ButtonMenu
             id="button-menu-2"
@@ -352,25 +353,25 @@ const ButtonAction = (props) => {
 
 }
 
-<div className="rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-        <ButtonGroup className="rainbow-m-right_medium">
-            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-            <ButtonIcon
-                variant="border-filled"
-                disabled
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-            />
-        </ButtonGroup>
-    </GlobalHeader>
-    <Table keyField="id" data={DynamicDataTable}>
-        <Column header="Name" field="name" />
-        <Column header="Status" field="status" component={StatusBadge} />
-        <Column header="Company" field="company" />
-        <Column header="Email" field="email" />
-        <Column field="status" component={ButtonAction} width={60}/>
-    </Table>
-</div>
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon
+                    variant="border-filled"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table keyField="id" data={DynamicDataTable}>
+            <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={StatusBadge} />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+            <Column field="status" component={ButtonAction} width={60}/>
+        </Table>
+    </div>
 ```
 
 # Table with enumerates row
@@ -387,24 +388,24 @@ const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
-<div className="rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-        <ButtonGroup className="rainbow-m-right_medium">
-            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-            <ButtonIcon
-                variant="border-filled"
-                disabled
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-            />
-        </ButtonGroup>
-    </GlobalHeader>
-    <Table showCheckboxColumn showRowNumberColumn rowNumberOffset={99} data={DataTable} keyField="id">
-        <Column header="Name" field="name" />
-        <Column header="Status" field="status" component={StatusBadge} />
-        <Column header="Company" field="company" />
-        <Column header="Email" field="email" />
-    </Table>
-</div>
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon
+                    variant="border-filled"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table showCheckboxColumn showRowNumberColumn rowNumberOffset={99} data={DataTable} keyField="id">
+            <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={StatusBadge} />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </div>
 ```
 
 # Table with loading state
@@ -422,24 +423,24 @@ const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
-<div className="rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-        <ButtonGroup className="rainbow-m-right_medium">
-            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-            <ButtonIcon
-                variant="border-filled"
-                disabled
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-            />
-        </ButtonGroup>
-    </GlobalHeader>
-    <Table isLoading data={data} keyField="id">
-        <Column header="Name" field="name" />
-        <Column header="Status" field="status" component={StatusBadge} />
-        <Column header="Company" field="company" />
-        <Column header="Email" field="email" />
-    </Table>
-</div>
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon
+                    variant="border-filled"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table isLoading data={data} keyField="id">
+            <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={StatusBadge} />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </div>
 ```
 
 # Table empty state
@@ -452,23 +453,23 @@ import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const tableContainerStyles = { height: 300 };
 
-<div className="rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-        <ButtonGroup className="rainbow-m-right_medium">
-            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-            <ButtonIcon
-                variant="border-filled"
-                disabled
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-            />
-        </ButtonGroup>
-    </GlobalHeader>
-    <Table style={tableContainerStyles} keyField="id">
-        <Column header="Name" field="name" />
-        <Column header="Company" field="company" />
-        <Column header="Email" field="email" />
-    </Table>
-</div>
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon
+                    variant="border-filled"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table style={tableContainerStyles} keyField="id">
+            <Column header="Name" field="name" />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </div>
 ```
 
 # Table with wrap text
@@ -518,7 +519,7 @@ function TableCustomAction() {
     const [data, setData] = useState(ActionsDataTable);
 
     function handleDeleteElement(id) {
-        const newData = data.filter(e => e.id !== id);
+        const newData = data.filter(item => item.id !== id);
         setData(newData);
     }
 
@@ -559,7 +560,7 @@ function TableCustomAction() {
         </div>
     );
 }
-<TableCustomAction />;
+    <TableCustomAction />;
 ```
 
 # Table with dynamic columns
@@ -577,27 +578,27 @@ const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
-<div className="rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-        <ButtonGroup className="rainbow-m-right_medium">
-            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-            <ButtonIcon
-                variant="border-filled"
-                disabled
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-            />
-        </ButtonGroup>
-    </GlobalHeader>
-    <Table data={DataTable} keyField="id">
-        {columnsNames.map(item => {
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon
+                    variant="border-filled"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table data={DataTable} keyField="id">
+            {columnsNames.map(item => {
             if (item === 'status') {
                 return <Column header={item} field={item} component={StatusBadge} />;
-            } else {
-                return <Column header={item} field={item} />;
             }
+                return <Column header={item} field={item} />;
+
         })}
-    </Table>
-</div>
+        </Table>
+    </div>
 ```
 
 # Table variant "listview"
@@ -687,13 +688,13 @@ function TableListView() {
 
     function handleSort(event, field, nextSortDirection) {
         const newData = [...data];
-        const key = x => x[field];
+        const key = value => value[field];
         const reverse = nextSortDirection === 'asc' ? 1 : -1;
 
-        const sortedData = newData.sort((a, b) => {
-            a = key(a);
-            b = key(b);
-            return reverse * ((a > b) - (b > a));
+        const sortedData = newData.sort((aItem, bItem) => {
+            const aValue = key(aItem);
+            const bValue = key(bItem);
+            return reverse * ((aValue > bValue) - (bValue > aValue));
         });
 
         setData(sortedData);
@@ -757,11 +758,12 @@ function TableListView() {
     );
 }
 
-<TableListView />;
+    <TableListView />;
 ```
 
 # Table "listview" variant, selectable and enumerated rows.
 ##### The following example shows a version of the `listview` variant, where rows can be selectable and enumerated.
+
 ```js
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -844,13 +846,13 @@ function TableListView() {
 
     function handleSort(event, field, nextSortDirection) {
         const newData = [...data];
-        const key = x => x[field];
+        const key = value => value[field];
         const reverse = nextSortDirection === 'asc' ? 1 : -1;
 
-        const sortedData = newData.sort((a, b) => {
-            a = key(a);
-            b = key(b);
-            return reverse * ((a > b) - (b > a));
+        const sortedData = newData.sort((aItem, bItem) => {
+            const aValue = key(aItem);
+            const bValue = key(bItem);
+            return reverse * ((aValue > bValue) - (bValue > aValue));
         });
 
         setData(sortedData);
@@ -911,11 +913,12 @@ function TableListView() {
     );
 }
 
-<TableListView />;
+    <TableListView />;
 ```
 
 # Table with hidden header
 ##### Hiding the header of the table is possible by using `hideTableHeader`.
+
 ```js
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
@@ -926,22 +929,22 @@ const badgeStyles = { color: '#1de9b6' };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
-<div className="rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-        <ButtonGroup className="rainbow-m-right_medium">
-            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-            <ButtonIcon
-                variant="border-filled"
-                disabled
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-            />
-        </ButtonGroup>
-    </GlobalHeader>
-    <Table data={DataTable} hideTableHeader keyField="id">
-        <Column header="Name" field="name" />
-        <Column header="Status" field="status" component={StatusBadge} />
-        <Column header="Company" field="company" />
-        <Column header="Email" field="email" />
-    </Table>
-</div>
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon
+                    variant="border-filled"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table data={DataTable} hideTableHeader keyField="id">
+            <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={StatusBadge} />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </div>
 ```

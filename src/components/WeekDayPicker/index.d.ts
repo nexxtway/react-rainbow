@@ -1,5 +1,5 @@
 import { ReactNode, ChangeEvent } from 'react';
-import { BaseProps } from '../types';
+import { BaseProps, LabelAlignment } from '../types';
 
 type WeekDays = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
 type Value = WeekDays | WeekDays[];
@@ -9,6 +9,8 @@ export interface WeekDayPickerProps extends BaseProps {
     name?: string;
     value?: Value;
     label?: ReactNode;
+    labelAlignment?: LabelAlignment;
+    hideLabel?: boolean;
     bottomHelpText?: ReactNode;
     availableDates?: WeekDays[];
     disabled?: boolean;

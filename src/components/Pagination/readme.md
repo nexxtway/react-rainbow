@@ -122,5 +122,5 @@ class PaginationExample extends React.Component {
     }
 }
 
-<PaginationExample />;
+    <PaginationExample />;
 ```

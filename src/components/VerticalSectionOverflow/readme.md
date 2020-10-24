@@ -8,7 +8,7 @@ import {
     VerticalSectionOverflow,
 } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faTh, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { faTh, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div.attrs(props => {
@@ -29,14 +29,15 @@ class ShadedVerticalNavigation extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(e, selectedItem) {
+    handleOnSelect(event, selectedItem) {
         return this.setState({ selectedItem });
     }
 
     render() {
+        const { selectedItem } = this.state;
         return (
             <VerticalNavigation
-                selectedItem={this.state.selectedItem}
+                selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}
             >
                 <VerticalSectionOverflow label="Folders" description="Folders created, shared...">
@@ -70,10 +71,10 @@ class ShadedVerticalNavigation extends React.Component {
     }
 }
 
-<div>
-    <GlobalHeader />
-    <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_x-large">
-        <ShadedVerticalNavigation />
-    </StyledContainer>
-</div>
+    <div>
+        <GlobalHeader />
+        <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_x-large">
+            <ShadedVerticalNavigation />
+        </StyledContainer>
+    </div>
 ```

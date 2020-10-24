@@ -4,7 +4,7 @@
 import React from 'react';
 import { Picklist, Option, DatePickerModal } from 'react-rainbow-components';
 
-initialState = { isOpen: false, selection: { name: '', label: '' } };
+const initialState = { isOpen: false, selection: { name: '', label: '' } };
 
 function handlePicklistChange(value) {
     if (value.name === 'Custom') {
@@ -17,6 +17,18 @@ function handlePicklistChange(value) {
     } else {
         setState({ selection: value });
     }
+}
+
+function formatDates(dates) {
+    if (dates) {
+        const startDay = new Intl.DateTimeFormat().format(dates[0]);
+        if (dates.length > 1) {
+            const endDay = new Intl.DateTimeFormat().format(dates[1]);
+            return `${startDay  } - ${  endDay}`;
+        }
+        return startDay;
+    }
+    return '';
 }
 
 function handleDatePickerChange(value) {
@@ -37,47 +49,36 @@ function handleDatePickerChange(value) {
     }
 }
 
-function formatDates(dates) {
-    if (dates) {
-        const startDay = new Intl.DateTimeFormat().format(dates[0]);
-        if (dates.length > 1) {
-            const endDay = new Intl.DateTimeFormat().format(dates[1]);
-            return startDay + ' - ' + endDay;
-        }
-        return startDay;
-    }
-}
-
 const containerStyles = {
     width: '160px',
 };
 
-<div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
-    <GlobalHeader src="images/user/user3.jpg">
-        <div className="rainbow-flex rainbow-align_right">
-            <Picklist
-                value={state.selection}
-                style={containerStyles}
-                placeholder="Select Date"
-                onChange={handlePicklistChange}
-            >
-                <Option name="Custom" label="Custom" />
-                <Option name="Today" label="Today" />
-                <Option name="Yesterday" label="Yesterday" />
-                <Option name="This Week" label="This Week" />
-            </Picklist>
-        </div>
-    </GlobalHeader>
-    <DatePickerModal
-        title={state.title}
-        isOpen={state.isOpen}
-        variant="double"
-        value={state.value}
-        selectionType="range"
-        onChange={handleDatePickerChange}
-        onRequestClose={() => setState({ isOpen: false })}
-    />
-</div>
+    <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+        <GlobalHeader src="images/user/user3.jpg">
+            <div className="rainbow-flex rainbow-align_right">
+                <Picklist
+                    value={state.selection}
+                    style={containerStyles}
+                    placeholder="Select Date"
+                    onChange={handlePicklistChange}
+                >
+                    <Option name="Custom" label="Custom" />
+                    <Option name="Today" label="Today" />
+                    <Option name="Yesterday" label="Yesterday" />
+                    <Option name="This Week" label="This Week" />
+                </Picklist>
+            </div>
+        </GlobalHeader>
+        <DatePickerModal
+            title={state.title}
+            isOpen={state.isOpen}
+            variant="double"
+            value={state.value}
+            selectionType="range"
+            onChange={handleDatePickerChange}
+            onRequestClose={() => setState({ isOpen: false })}
+        />
+    </div>
 ```
 
 ##### DatePickerModal select date range:
@@ -87,7 +88,6 @@ import React from 'react';
 import {
     DatePickerModal,
     ButtonIcon,
-    ButtonGroup,
     ButtonMenu,
     MenuItem,
 } from 'react-rainbow-components';
@@ -160,6 +160,18 @@ const setGuests = value => {
     setState({ guests: value });
 };
 
+function formatDates(dates) {
+    if (dates) {
+        const startDay = new Intl.DateTimeFormat().format(dates[0]);
+        if (dates.length > 1) {
+            const endDay = new Intl.DateTimeFormat().format(dates[1]);
+            return `${startDay  } - ${  endDay}`;
+        }
+        return startDay;
+    }
+    return '';
+}
+
 function handleDatePickerChange(value) {
     const formatedDate = formatDates(value);
     if (value.length > 1) {
@@ -178,65 +190,54 @@ function handleDatePickerChange(value) {
     }
 }
 
-function formatDates(dates) {
-    if (dates) {
-        const startDay = new Intl.DateTimeFormat().format(dates[0]);
-        if (dates.length > 1) {
-            const endDay = new Intl.DateTimeFormat().format(dates[1]);
-            return startDay + ' - ' + endDay;
-        }
-        return startDay;
-    }
-}
-
-<div className="rainbow-p-around_large">
-    <Row>
-        <Column>
-            <div>
-                <Title>LOCATION</Title>
-                <Features>{state.location}</Features>
-            </div>
-            <ButtonMenu
-                menuAlignment="right"
-                menuSize="x-small"
-                buttonVariant="base"
-                icon={<ArrowIcon />}
-            >
-                <MenuItem
-                    label="Mexico"
-                    onClick={() => {
+    <div className="rainbow-p-around_large">
+        <Row>
+            <Column>
+                <div>
+                    <Title>LOCATION</Title>
+                    <Features>{state.location}</Features>
+                </div>
+                <ButtonMenu
+                    menuAlignment="right"
+                    menuSize="x-small"
+                    buttonVariant="base"
+                    icon={<ArrowIcon />}
+                >
+                    <MenuItem
+                        label="Mexico"
+                        onClick={() => {
                         setLocation('Mexico');
                     }}
-                />
-                <MenuItem
-                    label="Brasil"
-                    onClick={() => {
+                    />
+                    <MenuItem
+                        label="Brasil"
+                        onClick={() => {
                         setLocation('Brasil');
                     }}
-                />
-                <MenuItem
-                    label="Canada"
-                    onClick={() => {
+                    />
+                    <MenuItem
+                        label="Canada"
+                        onClick={() => {
                         setLocation('Canada');
                     }}
-                />
-                <MenuItem
-                    label="United State"
-                    onClick={() => {
+                    />
+                    <MenuItem
+                        label="United State"
+                        onClick={() => {
                         setLocation('United State');
                     }}
-                />
-            </ButtonMenu>
-        </Column>
-        <Divider />
-        <Column>
-            <div>
-                <Title>CHECK IN / CHECK OUT</Title>
-                <Features>{state.dates}</Features>
-            </div>
-            <ButtonIcon
-                icon={<ArrowIcon />}
-                onClick={() =>
+                    />
+                </ButtonMenu>
+            </Column>
+            <Divider />
+            <Column>
+                <div>
+                    <Title>CHECK IN / CHECK OUT</Title>
+                    <Features>{state.dates}</Features>
+                </div>
+                <ButtonIcon
+                    icon={<ArrowIcon />}
+                    onClick={() =>
                     setState({
                         isOpen: true,
                         selectionType: 'range',
@@ -244,57 +245,56 @@ function formatDates(dates) {
                         title: 'Select range of dates',
                     })
                 }
-            />
-        </Column>
-        <Divider />
-        <Column>
-            <div>
-                <Title>GUESTS</Title>
-                <Features>{state.guests}</Features>
-            </div>
-            <ButtonMenu
-                menuAlignment="right"
-                menuSize="xx-small"
-                buttonVariant="base"
-                icon={<ArrowIcon />}
-            >
-                <MenuItem
-                    label="1"
-                    onClick={() => {
+                />
+            </Column>
+            <Divider />
+            <Column>
+                <div>
+                    <Title>GUESTS</Title>
+                    <Features>{state.guests}</Features>
+                </div>
+                <ButtonMenu
+                    menuAlignment="right"
+                    menuSize="xx-small"
+                    buttonVariant="base"
+                    icon={<ArrowIcon />}
+                >
+                    <MenuItem
+                        label="1"
+                        onClick={() => {
                         setGuests('1');
                     }}
-                />
-                <MenuItem
-                    label="2"
-                    onClick={() => {
+                    />
+                    <MenuItem
+                        label="2"
+                        onClick={() => {
                         setGuests('2');
                     }}
-                />
-                <MenuItem
-                    label="3"
-                    onClick={() => {
+                    />
+                    <MenuItem
+                        label="3"
+                        onClick={() => {
                         setGuests('3');
                     }}
-                />
-                <MenuItem
-                    label="4"
-                    onClick={() => {
+                    />
+                    <MenuItem
+                        label="4"
+                        onClick={() => {
                         setGuests('4');
                     }}
-                />
-            </ButtonMenu>
-        </Column>
-    </Row>
+                    />
+                </ButtonMenu>
+            </Column>
+        </Row>
 
-    <DatePickerModal
-        title={state.title}
-        isOpen={state.isOpen}
-        value={state.value}
-        variant="double"
-        selectionType="range"
-        onChange={value => setState({ value })}
-        onChange={handleDatePickerChange}
-        onRequestClose={() => setState({ isOpen: false })}
-    />
-</div>
+        <DatePickerModal
+            title={state.title}
+            isOpen={state.isOpen}
+            value={state.value}
+            variant="double"
+            selectionType="range"
+            onChange={handleDatePickerChange}
+            onRequestClose={() => setState({ isOpen: false })}
+        />
+    </div>
 ```

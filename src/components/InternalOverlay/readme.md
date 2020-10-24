@@ -1,11 +1,12 @@
 ##### Using InternalOverlay with default position resolver:
 
 ```js
-import { useRef, useState } from 'react';
+/* eslint-disable import/extensions, import/no-unresolved */
+import React, { useRef, useState } from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
 import styled from 'styled-components';
-import RenderIf from '../RenderIf';
 import { useOutsideClick, useWindowResize } from '../../libs/hooks';
+import InternalOverlay from '../InternalOverlay';
 
 const Container = styled.div`
     height: 240px;
@@ -86,25 +87,26 @@ const Component = props => {
     );
 }
 
-<Container id="overlay-1-container">
-    <div className="rainbow-flex rainbow-justify_spread">
-        <Component id="overlay-1" buttonId="button-icon-element" />
-        <Component />
-    </div>
-    <div className="rainbow-flex rainbow-justify_spread">
-        <Component />
-        <Component />
-    </div>
-</Container>
+    <Container id="overlay-1-container">
+        <div className="rainbow-flex rainbow-justify_spread">
+            <Component id="overlay-1" buttonId="button-icon-element" />
+            <Component />
+        </div>
+        <div className="rainbow-flex rainbow-justify_spread">
+            <Component />
+            <Component />
+        </div>
+    </Container>
 ```
 
 ##### Using InternalOverlay with custom position resolver:
 
 ```js
-import { useRef, useState } from 'react';
-import { Button, ButtonIcon } from 'react-rainbow-components';
+/* eslint-disable import/extensions, import/no-unresolved */
+import React, { useRef, useState } from 'react';
+import { ButtonIcon } from 'react-rainbow-components';
 import styled from 'styled-components';
-import RenderIf from '../RenderIf';
+import InternalOverlay from '../InternalOverlay';
 import { useOutsideClick, useWindowResize } from '../../libs/hooks';
 
 const Container = styled.div`
@@ -189,7 +191,7 @@ const Body = styled.p`
     margin: 0 24px 24px 24px;
 `;
 
-const positionResolver = (opts) => {
+const positionResolver = opts => {
     const { trigger, viewport, content } = opts;
     if (trigger.rightBottomAnchor.x + content.width + 15 <= viewport.width) {
         if (trigger.rightBottomAnchor.y - content.height >= 0) {
@@ -236,7 +238,7 @@ const Component = () => {
         isOpen,
     );
     useWindowResize(() => setIsOpen(false), isOpen);
-    
+
     return (
         <Container>
             <Cell>
@@ -251,7 +253,7 @@ const Component = () => {
                 <InternalOverlay
                     isVisible={isOpen}
                     render={() => (
-                        <Dropdown ref={el => {dropdownRef.current = el}}>
+                        <Dropdown ref={element => {dropdownRef.current = element}}>
                             <Header>
                                 <ButtonIcon icon={<TrashBorderIcon />} />
                                 <ButtonIcon
@@ -284,5 +286,5 @@ const Component = () => {
     );
 }
 
-<Component />
+    <Component />
 ```

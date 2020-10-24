@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import ButtonItems from './buttonItems';
 import RenderIf from '../RenderIf';
-import RequiredAsterisk from '../RequiredAsterisk';
 import { uniqueId } from '../../libs/utils';
 import Marker from './marker';
 import StyledErrorText from './styled/errorText';
@@ -107,6 +106,8 @@ class RadioButtonGroup extends Component {
             style,
             className,
             label,
+            labelAlignment,
+            hideLabel,
             required,
             error,
             value,
@@ -124,10 +125,14 @@ class RadioButtonGroup extends Component {
         return (
             <StyledContainer id={id} className={className} style={style}>
                 <RenderIf isTrue={label}>
-                    <StyledLabel variant={variant}>
-                        <RequiredAsterisk required={required} />
-                        {label}
-                    </StyledLabel>
+                    <StyledLabel
+                        label={label}
+                        variant={variant}
+                        labelAlignment={labelAlignment}
+                        hideLabel={hideLabel}
+                        required={required}
+                        forwardedAs="legend"
+                    />
                 </RenderIf>
                 <StyledButtonItemsContainer variant={variant} size={size}>
                     <Marker
@@ -159,6 +164,11 @@ class RadioButtonGroup extends Component {
 RadioButtonGroup.propTypes = {
     /** The radio group label */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the RadioButtonGroup label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the RadioButtonGroup label. */
+    hideLabel: PropTypes.bool,
     /** The name of the radio group */
     name: PropTypes.string,
     /** The value of the element. */
@@ -196,6 +206,8 @@ RadioButtonGroup.propTypes = {
 
 RadioButtonGroup.defaultProps = {
     label: null,
+    labelAlignment: 'center',
+    hideLabel: false,
     name: null,
     className: undefined,
     style: undefined,

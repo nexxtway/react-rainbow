@@ -8,9 +8,16 @@ import { Provider } from '../context';
 jest.mock('../../../libs/utils/uniqueId', () => jest.fn(() => 'unique-error-id'));
 
 describe('<ButtonGroupPicker />', () => {
-    it('should render a label when label prop is passed', () => {
-        const component = mount(<ButtonGroupPicker label="My label" />);
-        expect(component.find('legend').length).toBe(1);
+    it('should pass the right props to the Label component', () => {
+        const component = mount(<ButtonGroupPicker label="custom label" required />);
+        expect(component.find('Label').props()).toEqual({
+            label: 'custom label',
+            required: true,
+            readOnly: false,
+            labelAlignment: 'center',
+            hideLabel: false,
+            as: 'legend',
+        });
     });
 
     it('should render bottom help text when bottomHelpText prop is passed', () => {
