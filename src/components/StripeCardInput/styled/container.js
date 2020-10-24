@@ -21,6 +21,11 @@ const StyledContainer = attachThemeAttrs(styled.div)`
     ${props =>
         props.error &&
         `
+        .StripeElement--empty {
+            padding: 0.5175rem 1rem 0 0.9375rem;
+            border: 2px solid ${props.palette.error.main};
+        }
+
         .StripeElement--invalid {
             padding: 0.5175rem 1rem 0 0.9375rem;
             background-color: ${props.palette.background.main};

@@ -32,6 +32,7 @@
                 "no-unused-vars": ["error", { "varsIgnorePattern": "^initialState$" }],
                 "object-curly-spacing": ["error", "always"],
                 "no-trailing-spaces": "error",
+                "arrow-spacing": ["error", { "before": true, "after": true }],
                 "react/jsx-indent": ["error", 4],
                 "react/prop-types": "off",
                 "react/jsx-no-undef": ["error", { "allowGlobals": true }],
