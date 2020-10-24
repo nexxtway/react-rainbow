@@ -1516,7 +1516,7 @@ describe('<Table />', () => {
         expect(editableCellAfterClick.find('button').exists()).toBe(true);
     });
 
-    it('should desmount the input when blur', () => {
+    it('should unmount the input when blur', () => {
         const component = mount(
             <Table data={data} keyField="name">
                 <Column field="name" header="Name" isEditable />
@@ -1569,7 +1569,7 @@ describe('<Table />', () => {
         expect(input.prop('value')).toBe('');
     });
 
-    it('should desmount the input when onKey ENTER and call the onChange', () => {
+    it('should unmount the input when onKey ENTER and call the onChange', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(
             <Table data={data} keyField="name">
@@ -1589,7 +1589,7 @@ describe('<Table />', () => {
         expect(onChangeMockFn).toBeCalledWith({ value: 'b', row: expect.any(Object) });
     });
 
-    it('should desmount the input when onKey ESCAPE and not call the onChange', () => {
+    it('should unmount the input when onKey ESCAPE and not call the onChange', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(
             <Table data={data} keyField="name">
@@ -1609,7 +1609,7 @@ describe('<Table />', () => {
         expect(onChangeMockFn).not.toHaveBeenCalled();
     });
 
-    it.only('should render a CustomComponent with the isEditablr and onChange props', () => {
+    it('should render a CustomComponent with the isEditable and onChange props', () => {
         const onChangeFn = () => {};
         const CustomComponent = () => {
             return <span>Hola Mundo</span>;

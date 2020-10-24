@@ -24,7 +24,7 @@ export default function EditableCell(props) {
         }
     }, [isEditMode]);
 
-    const handleMouseDown = event => {
+    const clear = event => {
         event.preventDefault();
         inputRef.current.focus();
         setInternalValue('');
@@ -77,7 +77,7 @@ export default function EditableCell(props) {
                         variant="base"
                         icon={<Cancel />}
                         size="medium"
-                        onMouseDown={handleMouseDown}
+                        onMouseDown={clear}
                         assistiveText="Clear"
                     />
                 </RelativeInputContainer>
