@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 import { replaceAlpha } from '../../../../styles/helpers/color';
-import getTheme from '../../../../styles/helpers/getTheme';
 import { getCurrentColor, getCurrentBackgroundColor } from '../helpers';
 
 const StyledEvent = attachThemeAttrs(styled.div).attrs(props => {
-    const theme = getTheme(props);
-    const { color, backgroundColor } = props;
-    const currentColor = getCurrentColor({ color, backgroundColor, theme });
-    const currentBackgroundColor = getCurrentBackgroundColor({ backgroundColor, theme });
+    const { color, backgroundColor, palette } = props;
+    const currentColor = getCurrentColor({ color, backgroundColor, palette });
+    const currentBackgroundColor = getCurrentBackgroundColor({ backgroundColor, palette });
 
     return {
         currentColor,

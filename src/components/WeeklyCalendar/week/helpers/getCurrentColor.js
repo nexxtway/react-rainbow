@@ -1,7 +1,7 @@
 import { isValidColor } from '../../../../styles/helpers/color';
 
-export default function getCurrentColor({ color, backgroundColor, theme }) {
-    const { getContrastText, brand } = theme.palette;
+export default function getCurrentColor({ color, backgroundColor, palette }) {
+    const { getContrastText, brand } = palette;
 
     if (color && isValidColor(color)) {
         return color;
