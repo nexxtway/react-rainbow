@@ -6,8 +6,9 @@ import { getCurrentColor, getCurrentBackgroundColor } from '../helpers';
 
 const StyledEvent = attachThemeAttrs(styled.div).attrs(props => {
     const theme = getTheme(props);
-    const currentColor = getCurrentColor(props.color, props.backgroundColor, theme);
-    const currentBackgroundColor = getCurrentBackgroundColor(props.backgroundColor, theme);
+    const { color, backgroundColor } = props;
+    const currentColor = getCurrentColor({ color, backgroundColor, theme });
+    const currentBackgroundColor = getCurrentBackgroundColor({ backgroundColor, theme });
 
     return {
         currentColor,

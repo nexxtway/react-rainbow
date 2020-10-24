@@ -415,7 +415,7 @@ const StyledCard = styled(Card)`
     padding: 1rem;
 `;
 
-function CustomWeecklyCalendar() {
+function CustomWeeklyCalendar() {
     const [currentWeek, setCurrentWeek] = useState(new Date());
 
     return (
@@ -433,5 +433,5 @@ function CustomWeecklyCalendar() {
     );
 }
 
-    <CustomWeecklyCalendar />
+    <CustomWeeklyCalendar />
 ```

@@ -1,10 +1,10 @@
 import { isValidColor } from '../../../../styles/helpers/color';
 
-export default function getCurrentBackgroundColor(color1, theme) {
+export default function getCurrentBackgroundColor({ backgroundColor, theme }) {
     const { brand } = theme.palette;
 
-    if (color1 && isValidColor(color1)) {
-        return color1;
+    if (backgroundColor && isValidColor(backgroundColor)) {
+        return backgroundColor;
     }
     return brand.main;
 }
