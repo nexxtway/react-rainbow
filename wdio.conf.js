@@ -57,14 +57,14 @@ exports.config = {
                 args: (() => {
                     if (process.argv.indexOf('--headless') !== -1) {
                         return [
-                            'disable-gpu',
-                            'no-sandbox',
-                            'headless',
-                            'disable-dev-shm-usage',
+                            '--disable-gpu',
+                            '--no-sandbox',
+                            '--headless',
+                            '--disable-dev-shm-usage',
                             '--window-size=1280,760',
                         ];
                     }
-                    return ['disable-gpu', 'no-sandbox', '--window-size=1280,760'];
+                    return ['--disable-gpu', '--no-sandbox', '--window-size=1280,760'];
                 })(),
             },
             // If outputDir is provided WebdriverIO can capture driver session logs

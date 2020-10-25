@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback, useState } from 'react';
+import React, { useRef, useEffect, useCallback, useState, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import { HiddenElement } from '../../../Structural';
 import { useUniqueIdentifier } from '../../../../libs/hooks';
@@ -7,11 +7,12 @@ import { StyledContainer, StyledSelect } from './styled';
 
 const YearSelect = React.forwardRef((props, ref) => {
     const { currentYear, yearsRange, onYearChange, onClick, onFocus, onBlur, tabIndex } = props;
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const selectRef = ref || useRef(); // TODO: fix useRef to not use it conditionally
+    const selectRef = useRef();
     const selectId = useUniqueIdentifier('select');
     const [isEditMode, setEditMode] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
+
+    useImperativeHandle(ref, () => selectRef.current, []);
 
     const handleYearChange = useCallback(
         value => {
