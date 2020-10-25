@@ -122,7 +122,7 @@ import { Spinner } from 'react-rainbow-components';
     <div>
         <GlobalHeader src="images/user/user3.jpg" />
         <div className="rainbow-p-vertical_xx-large">
-            <div className="rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large">
+            <div className="rainbow-position_relative rainbow-p-vertical_xx-large">
                 <Spinner size="large" type="arc" variant="brand" />
             </div>
         </div>
@@ -138,7 +138,7 @@ import { Spinner } from 'react-rainbow-components';
     <div>
         <GlobalHeader src="images/user/user3.jpg" />
         <div className="rainbow-p-vertical_xx-large">
-            <div className="rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large">
+            <div className="rainbow-position_relative rainbow-p-vertical_xx-large">
                 <Spinner size="x-large" type="arc" variant="brand">
                     <GoogleIcon />
                 </Spinner>
