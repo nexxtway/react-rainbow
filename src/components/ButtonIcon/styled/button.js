@@ -327,7 +327,8 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
     ${props =>
         props.shaded &&
         `
-            box-shadow: ${props.shadows.shadow_3};
+            box-shadow: ${props.shadows.shadow_10};
+            border: 1px solid transparent;
         `};
     ${props =>
         props.size === 'xx-small' &&
