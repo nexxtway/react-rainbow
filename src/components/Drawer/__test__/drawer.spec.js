@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { TAB_KEY } from '../../../libs/constants';
 import manageTab from '../../../libs/manageTab';
-import Drawer from '../';
+import Drawer from '..';
 import StyledFooter from '../styled/footer';
 import StyledContent from '../styled/content';
 import StyledCloseButton from '../styled/closeButton';

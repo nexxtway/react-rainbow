@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { uniqueId } from './../../libs/utils';
+import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import StyledContainer from './styled/container';
 import StyledLabel from './styled/label';
@@ -77,12 +77,11 @@ export default class Slider extends Component {
             <StyledContainer className={className} style={style}>
                 <RenderIf isTrue={label}>
                     <StyledLabel
-                        hideLabel={hideLabel}
+                        label={label}
                         labelAlignment={labelAlignment}
-                        htmlFor={this.sliderId}
-                    >
-                        {label}
-                    </StyledLabel>
+                        hideLabel={hideLabel}
+                        inputId={this.sliderId}
+                    />
                 </RenderIf>
                 <StyledSlider>
                     <StyledInputRange

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
+const variantMap = { card: 'card', line: 'line' };
 const StyledContainer = attachThemeAttrs(styled.li)`
     position: relative;
     display: flex;
@@ -31,6 +32,7 @@ const StyledContainer = attachThemeAttrs(styled.li)`
         `};
     ${props =>
         props.isActive &&
+        (variantMap[props.variant] === 'card' || !variantMap[props.variant]) &&
         `
             background-color: ${props.palette.background.main};
             color: ${props.palette.brand.main};
@@ -107,6 +109,19 @@ const StyledContainer = attachThemeAttrs(styled.li)`
                 position: absolute;
                 border-radius: 100px;
                 box-sizing: border-box;
+            }
+        `};
+    ${props =>
+        props.isActive &&
+        props.variant === 'line' &&
+        `
+            color: ${props.palette.brand.main};
+            z-index: 2;
+
+            @media (max-width: 600px) {
+                border-radius: 0;
+                position: relative;
+                width: 100%;
             }
         `};
 `;

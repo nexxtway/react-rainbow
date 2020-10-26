@@ -32,8 +32,9 @@ import StyledTableBody from './styled/tableBody';
 import StyledThead from './styled/thead';
 
 /**
- * Data tables display information in a way that’s easy to scan,
- * so that users can look for patterns and insights.
+ * A table lists a collection of data that makes sense when displays them in rows and columns.
+ * The data contained in a table is easier to read due to the format, so it can be useful to sort,
+ * search, and filter your data.
  * @category DataView
  */
 export default class Table extends Component {
@@ -72,7 +73,8 @@ export default class Table extends Component {
             }),
             bulkSelection: 'none',
         };
-        this.indexes = getIndexes(this.state.rows);
+        const { rows } = this.state;
+        this.indexes = getIndexes(rows);
         this.selectedRowsKeys = getSelectedRowKeysFromSelectedRows(selectedRows, this.indexes);
 
         this.tableId = uniqueId('table');
@@ -195,6 +197,7 @@ export default class Table extends Component {
         }
         return maxRowSelectionNumber;
     }
+
     /**
      * It will scroll to the top of the Y scrollable container.
      * @public
@@ -496,10 +499,10 @@ Table.propTypes = {
     /** An array containing the objects(rows) to be displayed. */
     data: PropTypes.arrayOf(Object),
     /** The column fieldName that controls the sorting order.
-     * Sort the data using the onsort event handler. */
+     * Sorts the data using the onsort event handler. */
     sortedBy: PropTypes.string,
     /**
-     * Specifies the sorting direction, valid options are 'asc' or 'desc'.
+     * Specifies the sorting direction. Valid options are 'asc' or 'desc'.
      */
     sortDirection: PropTypes.oneOf(['asc', 'desc']),
     /** Specifies the default sorting direction on an unsorted column.
@@ -507,7 +510,7 @@ Table.propTypes = {
      * The default is 'asc' for sorting in ascending order. */
     defaultSortDirection: PropTypes.oneOf(['asc', 'desc']),
     /** Action triggered when a column is sorted.
-     * Receive the event object, field and sortDirection. */
+     * Receives the event object, field and sortDirection. */
     onSort: PropTypes.func,
     /** Specifies whether column resizing is disabled. The default is false. */
     resizeColumnDisabled: PropTypes.bool,
@@ -515,35 +518,35 @@ Table.propTypes = {
     minColumnWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The maximum width for all columns. The default value is Infinity. */
     maxColumnWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    /** Show or hide the checkbox column for row selection. To show set
+    /** Shows or hide the checkbox column for row selection. To show set
      * showCheckboxColumn to true. The default value is false. */
     showCheckboxColumn: PropTypes.bool,
     /** Shows or hides the row number column. Set to true to show the row number column. The default is false. */
     showRowNumberColumn: PropTypes.bool,
     /** Determines where to start counting the row number. The default is 0. */
     rowNumberOffset: PropTypes.number,
-    /** The action triggered when a row is selected. Receive the selectedRows array. */
+    /** The action triggered when a row is selected. Receives the selectedRows array. */
     onRowSelection: PropTypes.func,
     /** The maximum number of rows that can be selected. When the value is
      * 1 the selection is made by radio buttons, otherwise with checkboxes. */
     maxRowSelection: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** An array with a list of keyField values of the selected rows. */
     selectedRows: PropTypes.array,
-    /** It is required for associate each row with a unique ID. Must be one of the data key.
+    /** It is required to associate each row with a unique ID. Must be one of the data key.
      * If it is not passed the component will not render.
      */
     keyField: PropTypes.string.isRequired,
     /** Specifies whether data is being loaded. The default is false. */
     isLoading: PropTypes.bool,
     /** The icon that appears in the message of the Table when is empty.
-     * If not passed a fallback icon will be showed. */
+     * If not passed a fallback icon will be shown. */
     emptyIcon: PropTypes.node,
     /** The title that appears in the message of the Table when is empty.
-     *  If not passed a fallback title will be showed.
+     *  If not passed a fallback title will be shown.
      */
     emptyTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The description that appears in the message of the Table when is empty.
-     *  If not passed a fallback description will be showed.
+     *  If not passed a fallback description will be shown.
      */
     emptyDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The variant changes the appearance of the button. Accepted variants include default and listview. */

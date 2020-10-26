@@ -56,9 +56,15 @@ exports.config = {
                 // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
                 args: (() => {
                     if (process.argv.indexOf('--headless') !== -1) {
-                        return ['disable-gpu', 'no-sandbox', 'headless', 'disable-dev-shm-usage'];
+                        return [
+                            '--disable-gpu',
+                            '--no-sandbox',
+                            '--headless',
+                            '--disable-dev-shm-usage',
+                            '--window-size=1280,760',
+                        ];
                     }
-                    return ['disable-gpu', 'no-sandbox'];
+                    return ['--disable-gpu', '--no-sandbox', '--window-size=1280,760'];
                 })(),
             },
             // If outputDir is provided WebdriverIO can capture driver session logs

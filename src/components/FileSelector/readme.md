@@ -9,10 +9,11 @@ const containerStyles = {
 };
 
 function FileSelectorExample() {
+    // eslint-disable-next-line no-unused-vars
     const [files, setFiles] = useState([]);
 
-    const handleChange = files => {
-        setFiles(files);
+    const handleChange = value => {
+        setFiles(value);
     }
 
     return (
@@ -29,13 +30,13 @@ function FileSelectorExample() {
     );
 }
 
-<FileSelectorExample />
+    <FileSelectorExample />
 ```
 
 ##### FileSelector inline with multiple selections
 
 ```js
-import React, { useState } from 'react';
+import React from 'react';
 import { FileSelector } from 'react-rainbow-components';
 
 const containerStyles = {
@@ -43,12 +44,6 @@ const containerStyles = {
 };
 
 function FileSelectorExample() {
-    const [files, setFiles] = useState([]);
-
-    const handleChange = files => {
-        setFiles(files);
-    }
-
     return (
         <div>
             <FileSelector
@@ -63,13 +58,13 @@ function FileSelectorExample() {
     );
 }
 
-<FileSelectorExample />
+    <FileSelectorExample />
 ```
 
 ##### FileSelector inline disabled
 
 ```js
-import React, { useState } from 'react';
+import React from 'react';
 import { FileSelector } from 'react-rainbow-components';
 
 const containerStyles = {
@@ -77,12 +72,6 @@ const containerStyles = {
 };
 
 function FileSelectorExample() {
-    const [files, setFiles] = useState([]);
-
-    const handleChange = files => {
-        setFiles(files);
-    }
-
     return (
         <div>
             <FileSelector
@@ -96,13 +85,13 @@ function FileSelectorExample() {
     );
 }
 
-<FileSelectorExample />
+    <FileSelectorExample />
 ```
 
 ##### FileSelector inline with error
 
 ```js
-import React, { useState } from 'react';
+import React from 'react';
 import { FileSelector } from 'react-rainbow-components';
 
 const containerStyles = {
@@ -110,12 +99,6 @@ const containerStyles = {
 };
 
 function FileSelectorExample() {
-    const [files, setFiles] = useState([]);
-
-    const handleChange = files => {
-        setFiles(files);
-    }
-
     return (
         <div>
             <FileSelector
@@ -129,7 +112,7 @@ function FileSelectorExample() {
     );
 }
 
-<FileSelectorExample />
+    <FileSelectorExample />
 ```
 
 ##### FileSelector multiline
@@ -143,10 +126,11 @@ const containerStyles = {
 };
 
 function FileSelectorExample() {
+    // eslint-disable-next-line no-unused-vars
     const [files, setFiles] = useState([]);
 
-    const handleChange = files => {
-        setFiles(files);
+    const handleChange = value => {
+        setFiles(value);
     }
 
     return (
@@ -164,13 +148,13 @@ function FileSelectorExample() {
     );
 }
 
-<FileSelectorExample />
+    <FileSelectorExample />
 ```
 
 ##### FileSelector multiline with multiple selections
 
 ```js
-import React, { useState } from 'react';
+import React from 'react';
 import { FileSelector } from 'react-rainbow-components';
 
 const containerStyles = {
@@ -178,12 +162,6 @@ const containerStyles = {
 };
 
 function FileSelectorExample() {
-    const [files, setFiles] = useState([]);
-
-    const handleChange = files => {
-        setFiles(files);
-    }
-
     return (
         <div>
             <FileSelector
@@ -199,13 +177,13 @@ function FileSelectorExample() {
     );
 }
 
-<FileSelectorExample />
+    <FileSelectorExample />
 ```
 
 ##### FileSelector multiline disabled
 
 ```js
-import React, { useState } from 'react';
+import React from 'react';
 import { FileSelector } from 'react-rainbow-components';
 
 const containerStyles = {
@@ -213,18 +191,12 @@ const containerStyles = {
 };
 
 function FileSelectorExample() {
-    const [files, setFiles] = useState([]);
-
-    const handleChange = files => {
-        setFiles(files);
-    }
-
     return (
         <div>
-            <FileSelector 
+            <FileSelector
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-                style={containerStyles} 
-                label="File selector with error" 
+                style={containerStyles}
+                label="File selector with error"
                 placeholder="Drag & Drop or Click to Browse"
                 variant="multiline"
                 disabled
@@ -233,13 +205,13 @@ function FileSelectorExample() {
     );
 }
 
-<FileSelectorExample />
+    <FileSelectorExample />
 ```
 
 ##### FileSelector multiline with error
 
 ```js
-import React, { useState } from 'react';
+import React from 'react';
 import { FileSelector } from 'react-rainbow-components';
 
 const containerStyles = {
@@ -247,12 +219,6 @@ const containerStyles = {
 };
 
 function FileSelectorExample() {
-    const [files, setFiles] = useState([]);
-
-    const handleChange = files => {
-        setFiles(files);
-    }
-
     return (
         <div>
             <FileSelector
@@ -267,7 +233,7 @@ function FileSelectorExample() {
     );
 }
 
-<FileSelectorExample />
+    <FileSelectorExample />
 ```
 
 ##### FileSelector multiline that does not change the icon either the text
@@ -281,10 +247,11 @@ const containerStyles = {
 };
 
 function FileSelectorExample() {
+    // eslint-disable-next-line no-unused-vars
     const [files, setFiles] = useState([]);
 
-    const handleChange = files => {
-        setFiles(files);
+    const handleChange = value => {
+        setFiles(value);
     }
 
     return (
@@ -303,7 +270,7 @@ function FileSelectorExample() {
     );
 }
 
-<FileSelectorExample />
+    <FileSelectorExample />
 ```
 
 ##### FileSelector multiline with custom icon
@@ -318,10 +285,11 @@ const containerStyles = {
 };
 
 function FileSelectorExample() {
+    // eslint-disable-next-line no-unused-vars
     const [files, setFiles] = useState([]);
 
-    const handleChange = files => {
-        setFiles(files);
+    const handleChange = value => {
+        setFiles(value);
     }
 
     return (
@@ -340,5 +308,5 @@ function FileSelectorExample() {
     );
 }
 
-<FileSelectorExample />
+    <FileSelectorExample />
 ```

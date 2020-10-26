@@ -8,14 +8,14 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-<Textarea
-    id="example-textarea-1"
-    label="Textarea Label"
-    rows={4}
-    placeholder="Placeholder Text"
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Textarea
+        id="example-textarea-1"
+        label="Textarea Label"
+        rows={4}
+        placeholder="Placeholder Text"
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />
 ```
 
 ##### Textarea required
@@ -28,14 +28,14 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-<Textarea
-    label="Textarea Label"
-    required
-    rows={4}
-    placeholder="Placeholder Text Required"
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Textarea
+        label="Textarea Label"
+        required
+        rows={4}
+        placeholder="Placeholder Text Required"
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### Textarea disabled
@@ -48,14 +48,14 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-<Textarea
-    label="Textarea Label"
-    disabled
-    rows={4}
-    placeholder="Textarea disabled"
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Textarea
+        label="Textarea Label"
+        disabled
+        rows={4}
+        placeholder="Textarea disabled"
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### Textarea with bottom help
@@ -68,14 +68,14 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-<Textarea
-    label="Textarea Label"
-    bottomHelpText="This is the bottom help"
-    placeholder="Placeholder Text"
-    rows={4}
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Textarea
+        label="Textarea Label"
+        bottomHelpText="This is the bottom help"
+        placeholder="Placeholder Text"
+        rows={4}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### Textarea error
@@ -88,14 +88,14 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-<Textarea
-    label="Textarea Label Error"
-    error="This Field is Required"
-    rows={4}
-    placeholder="Placeholder Text Error"
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Textarea
+        label="Textarea Label Error"
+        error="This Field is Required"
+        rows={4}
+        placeholder="Placeholder Text Error"
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### Textarea read only
@@ -108,20 +108,20 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-<Textarea
-    label="Textarea read only Label"
-    rows={4}
-    value="A rainbow is a meteorological phenomenon that is caused by reflection, refraction and dispersion of light in water droplets resulting in a spectrum of light appearing in the sky. It takes the form of a multicoloured circular arc. Rainbows caused by sunlight always appear in the section of sky directly opposite the sun."
-    readOnly
-    style={containerStyles}
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Textarea
+        label="Textarea read only Label"
+        rows={4}
+        value="A rainbow is a meteorological phenomenon that is caused by reflection, refraction and dispersion of light in water droplets resulting in a spectrum of light appearing in the sky. It takes the form of a multicoloured circular arc. Rainbows caused by sunlight always appear in the section of sky directly opposite the sun."
+        readOnly
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```
 
 ##### Textarea with header
 
 ```js
-import React, { useState } from 'react';
+import React from 'react';
 import { Textarea, Chip } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
@@ -155,15 +155,11 @@ const Icon = styled.span.attrs(props => {
         `};
 `;
 
-function TextareaExample(props) {
-    const [count, setCount] = useState(0);
-    const {maxLength} = props;
-    
+function TextareaExample({ maxLength }) {
     return (
         <Textarea
             label="Textarea Label"
             rows={4}
-            onChange={(event) => setCount(event.target.value.length)}
             maxLength={maxLength}
             placeholder="Type something . . ."
             style={containerStyles}
@@ -188,7 +184,7 @@ function TextareaExample(props) {
     );
 }
 
-<TextareaExample maxLength={160} />
+    <TextareaExample maxLength={160} />
 ```
 
 ##### Textarea with footer
@@ -216,13 +212,13 @@ const containerStyles = {
 
 function TextareaExample(props) {
     const [count, setCount] = useState(0);
-    const maxLength = props.maxLength;
-    
+    const { maxLength } = props;
+
     return (
         <Textarea
             label="Textarea Label"
             rows={4}
-            onChange={(event) => setCount(event.target.value.length)}
+            onChange={event => setCount(event.target.value.length)}
             maxLength={maxLength}
             placeholder="Placeholder Text"
             style={containerStyles}
@@ -235,7 +231,7 @@ function TextareaExample(props) {
     );
 }
 
-<TextareaExample maxLength={160} />
+    <TextareaExample maxLength={160} />
 ```
 ##### Textarea with variant shaded
 
@@ -247,13 +243,13 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-<Textarea
-    id="example-textarea-1"
-    label="Textarea Label"
-    rows={4}
-    placeholder="Placeholder Text"
-    style={containerStyles}
-    variant="shaded"
-    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+    <Textarea
+        id="example-textarea-1"
+        label="Textarea Label"
+        rows={4}
+        placeholder="Placeholder Text"
+        style={containerStyles}
+        variant="shaded"
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    />;
 ```

@@ -78,7 +78,8 @@ const StripeCardInput = React.forwardRef((props, ref) => {
                 card.destroy();
             };
         }
-    }, [cardElementOptions, elementsOptions, onBlur, onChange, onFocus, stripe]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [cardElementOptions, elementsOptions, stripe]);
 
     return (
         <StyledContainer

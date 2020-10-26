@@ -37,7 +37,7 @@ describe('<VisualPicker/>', () => {
     it('should call onChanged with the new option selected when have it has one selected initially', () => {
         const onChangeFn = jest.fn();
         const component = mount(
-            <VisualPicker onChange={onChangeFn} value={'option1'}>
+            <VisualPicker onChange={onChangeFn} value="option1">
                 <VisualPickerOption name="option1" />
                 <VisualPickerOption name="option2" />
                 <VisualPickerOption name="option3" />
@@ -78,5 +78,16 @@ describe('<VisualPicker/>', () => {
             .find('input[type="checkbox"]')
             .simulate('change', { target: { checked: false } });
         expect(onChangeFn).toHaveBeenCalledWith(['option1']);
+    });
+    it('should pass the right props to the Label component', () => {
+        const component = mount(<VisualPicker label="custom label" required />);
+        expect(component.find('Label').props()).toEqual({
+            label: 'custom label',
+            required: true,
+            readOnly: false,
+            labelAlignment: 'center',
+            hideLabel: false,
+            as: 'legend',
+        });
     });
 });

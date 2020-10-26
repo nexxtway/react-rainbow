@@ -19,13 +19,13 @@ class ButtonOptionTry extends React.Component {
         const { value } = this.state;
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-                <ButtonGroupPicker 
-                    className="rainbow-m-around_medium" 
-                    label="Select view type" 
-                    value={value} 
-                    onChange={this.handleOnChange} 
-                    name="filter" 
-                    size="medium" 
+                <ButtonGroupPicker
+                    className="rainbow-m-around_medium"
+                    label="Select view type"
+                    value={value}
+                    onChange={this.handleOnChange}
+                    name="filter"
+                    size="medium"
                     bottomHelpText="Select one option"
                 >
                     <ButtonOption label="Month" name="month" />
@@ -37,6 +37,5 @@ class ButtonOptionTry extends React.Component {
     }
 }
 
-<ButtonOptionTry />;
-
+    <ButtonOptionTry />;
 ```

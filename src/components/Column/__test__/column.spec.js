@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Column from '../';
+import Column from '..';
 
 describe('<Column />', () => {
     it('should return a div element', () => {

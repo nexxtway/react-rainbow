@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
-import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
+import { ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
 import manageTab from '../../libs/manageTab';
 import RenderIf from '../RenderIf';
 import StyledBackDrop from './styled/backDrop';

@@ -1,9 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import CodeInput from '../';
+import CodeInput from '..';
 import InputItems from '../inputItems';
 import InputItem from '../inputItem';
-import { StyledErrorMessage, StyledHelpText, StyledLabel } from '../styled';
+import { StyledErrorMessage, StyledHelpText } from '../styled';
 
 import useFocusedIndexState from '../hooks/useFocusedIndexState';
 import usePreviousIndex from '../hooks/usePreviousIndex';
@@ -23,13 +23,16 @@ describe('<CodeInput />', () => {
         const component = mount(<CodeInput length={6} />);
         expect(component.find(InputItems).prop('value').length).toBe(6);
     });
-    it('should have label rendered if label is sent as param', () => {
-        const component = mount(<CodeInput label="label-test" />);
-        expect(component.find(StyledLabel).exists()).toBe(true);
-    });
-    it('should not have label rendered when label is emtpy', () => {
-        const component = mount(<CodeInput />);
-        expect(component.find(StyledLabel).exists()).toBe(false);
+    it('should pass the right props to the Label component', () => {
+        const component = mount(<CodeInput label="custom label" required />);
+        expect(component.find('Label').props()).toEqual({
+            label: 'custom label',
+            required: true,
+            readOnly: false,
+            labelAlignment: 'center',
+            hideLabel: false,
+            as: 'legend',
+        });
     });
     it('should have bottomHelpText rendered if is sent as param', () => {
         const component = mount(<CodeInput bottomHelpText="help-text-test" />);

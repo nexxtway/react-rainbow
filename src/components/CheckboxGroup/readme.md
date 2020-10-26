@@ -37,7 +37,7 @@ class CheckboxGroupTry extends React.Component {
     }
 }
 
-<CheckboxGroupTry />;
+    <CheckboxGroupTry />;
 ```
 
 ##### Checkbox Group disabled
@@ -78,7 +78,7 @@ class CheckboxGroupTry extends React.Component {
     }
 }
 
-<CheckboxGroupTry />;
+    <CheckboxGroupTry />;
 ```
 
 ##### Checkbox Group required
@@ -120,7 +120,7 @@ class CheckboxGroupTry extends React.Component {
     }
 }
 
-<CheckboxGroupTry />;
+    <CheckboxGroupTry />;
 ```
 
 ##### Checkbox Group error
@@ -162,13 +162,13 @@ class CheckboxGroupTry extends React.Component {
     }
 }
 
-<CheckboxGroupTry />;
+    <CheckboxGroupTry />;
 ```
 
 ##### Checkbox Group basic
 
 ```js
-import {useState} from 'react';
+import React, { useState } from 'react';
 import { CheckboxGroup } from 'react-rainbow-components';
 import styled from 'styled-components';
 
@@ -228,7 +228,7 @@ const defaultOptions = ['email'];
 
 const CheckBoxGroupProfile = () => {
     const [values, setSelected] = useState(defaultOptions);
-    
+
     return (
         <Container className="rainbow-p-around_x-large rainbow-p-bottom_xx-large">
             <Title>Profile</Title>
@@ -238,7 +238,7 @@ const CheckBoxGroupProfile = () => {
                 <ProfileLeftCol className="rainbow-flex">
 
                     <div>
-                        <img src="https://placeimg.com/110/110/people"/>
+                        <img alt="people" src="https://placeimg.com/110/110/people"/>
                     </div>
 
                     <div className="rainbow-p-left_medium">
@@ -270,7 +270,7 @@ const CheckBoxGroupProfile = () => {
     );
 };
 
-<CheckBoxGroupProfile />
+    <CheckBoxGroupProfile />
 ```
 
 ##### Checkbox Group horizontal
@@ -287,23 +287,19 @@ const options = [
 
 const CheckboxGroupTry = () => {
     const [values, setValues] = useState([]);
-    
-    const handleOnChange = values => {
-        setValues(values);
-    }
 
     return (
         <CheckboxGroup
             id="checkbox-group-1"
             options={options}
             value={values}
-            onChange={handleOnChange}
+            onChange={setValues}
             label="Checkbox Group Label"
             orientation="horizontal"
         />
     );
 }
-<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-    <CheckboxGroupTry />
-</div>;
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+        <CheckboxGroupTry />
+    </div>;
 ```

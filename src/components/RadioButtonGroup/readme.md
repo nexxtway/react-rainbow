@@ -25,20 +25,21 @@ class SimpleRadioButtonGroup extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <RadioButtonGroup
                 id="radio-button-group-component-1"
                 options={options}
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
             />
         );
     }
 }
 
-<div className="rainbow-p-around_x-large rainbow-align-content_center">
-    <SimpleRadioButtonGroup />
-</div>
+    <div className="rainbow-p-around_x-large rainbow-align-content_center">
+        <SimpleRadioButtonGroup />
+    </div>
 ```
 
 ##### RadioButtonGroup small
@@ -68,11 +69,12 @@ class SimpleRadioButtonGroup extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <RadioButtonGroup
                 id="radio-button-group-component-1"
                 options={options}
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
                 size="small"
                 variant="brand"
@@ -81,9 +83,9 @@ class SimpleRadioButtonGroup extends React.Component {
     }
 }
 
-<div className="rainbow-p-around_x-large rainbow-align-content_center">
-    <SimpleRadioButtonGroup />
-</div>
+    <div className="rainbow-p-around_x-large rainbow-align-content_center">
+        <SimpleRadioButtonGroup />
+    </div>
 ```
 
 ##### RadioButtonGroup brand with label
@@ -113,11 +115,12 @@ class LabeledBrandRadioButtonGroup extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <RadioButtonGroup
                 id="radio-button-group-component-1"
                 options={options}
-                value={this.state.value}
+                value={value}
                 variant="brand"
                 onChange={this.handleOnChange}
                 label="RadioButtonGroup Label"
@@ -126,9 +129,9 @@ class LabeledBrandRadioButtonGroup extends React.Component {
     }
 }
 
-<div className="rainbow-p-around_x-large rainbow-align-content_center">
-    <LabeledBrandRadioButtonGroup />
-</div>
+    <div className="rainbow-p-around_x-large rainbow-align-content_center">
+        <LabeledBrandRadioButtonGroup />
+    </div>
 ```
 
 ##### RadioButtonGroup inverse
@@ -158,11 +161,12 @@ class RadioButtonGroupInverse extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <RadioButtonGroup
                 id="radio-button-group-component-1"
                 options={options}
-                value={this.state.value}
+                value={value}
                 variant="inverse"
                 onChange={this.handleOnChange}
             />
@@ -170,9 +174,9 @@ class RadioButtonGroupInverse extends React.Component {
     }
 }
 
-<InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-    <RadioButtonGroupInverse />
-</InverseContainer>
+    <InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+        <RadioButtonGroupInverse />
+    </InverseContainer>
 ```
 
 ##### RadioButtonGroup disabled
@@ -202,10 +206,11 @@ class DisabledRadioButtonGroup extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <RadioButtonGroup
                 options={options}
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
                 label="RadioButtonGroup Label"
             />
@@ -213,9 +218,9 @@ class DisabledRadioButtonGroup extends React.Component {
     }
 }
 
-<div className="rainbow-p-around_x-large rainbow-align-content_center">
-    <DisabledRadioButtonGroup />
-</div>
+    <div className="rainbow-p-around_x-large rainbow-align-content_center">
+        <DisabledRadioButtonGroup />
+    </div>
 ```
 
 ##### RadioButtonGroup required
@@ -245,10 +250,11 @@ class RequiredRadioButtonGroup extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <RadioButtonGroup
                 options={options}
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
                 label="RadioButtonGroup Label"
                 required
@@ -257,9 +263,9 @@ class RequiredRadioButtonGroup extends React.Component {
     }
 }
 
-<div className="rainbow-p-around_x-large rainbow-align-content_center">
-    <RequiredRadioButtonGroup />
-</div>
+    <div className="rainbow-p-around_x-large rainbow-align-content_center">
+        <RequiredRadioButtonGroup />
+    </div>
 ```
 
 ##### RadioButtonGroup error
@@ -289,10 +295,11 @@ class ErrorRadioButtonGroup extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <RadioButtonGroup
                 options={options}
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
                 label="RadioButtonGroup Label"
                 error="This field is required"
@@ -301,15 +308,15 @@ class ErrorRadioButtonGroup extends React.Component {
     }
 }
 
-<div className="rainbow-p-around_x-large rainbow-align-content_center">
-    <ErrorRadioButtonGroup />
-</div>
+    <div className="rainbow-p-around_x-large rainbow-align-content_center">
+        <ErrorRadioButtonGroup />
+    </div>
 ```
 
 
 ##### RadioButtonGroup brand with label
 ```js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { RadioButtonGroup, Avatar } from 'react-rainbow-components';
 import styled from 'styled-components';
 
@@ -418,10 +425,8 @@ const ConctactContainer = styled.div`
     width: max-content;
 `;
 
-const linkedinIconStyle = {color: '#0E76A8'};
-
-const Contact = (props) => {
-    const {avatar, name, email, linkedin, github} = props;
+const Contact = props => {
+    const { avatar, name, email, linkedin } = props;
     return (
         <ConctactContainer className="rainbow-m-around_medium">
             <StyledAvatar
@@ -449,10 +454,10 @@ const options = [
     { value: 'all', label: 'All' },
 ];
 
-const ContactsFilteredContainer = (props) => {
-    const {statusToShow, data} = props;
-    return data.filter(contact => statusToShow === 'all' || contact.isActive).map((contact, i) => {
-        const key = `contact-${i}`;
+const ContactsFilteredContainer = props => {
+    const { statusToShow, contacts } = props;
+    return contacts.filter(contact => statusToShow === 'all' || contact.isActive).map((contact, index) => {
+        const key = `contact-${index}`;
         return (
             <Contact
                 key={key}
@@ -466,13 +471,13 @@ const ContactsFilteredContainer = (props) => {
     });
 }
 
-const Contacts = ({data}) => {
+const Contacts = ({ data: contacts }) => {
     const [statusToShow, setStatusToShow] = useState('active');
 
-    const handleOnChange = ( event ) => {
+    const handleOnChange = event => {
         setStatusToShow(event.target.value);
     }
-    
+
     return (
         <div className="rainbow-flex rainbow-flex_column rainbow-align_center">
             <RadioButtonGroup
@@ -483,14 +488,14 @@ const Contacts = ({data}) => {
                 onChange={handleOnChange}
             />
             <div className="rainbow-flex rainbow-flex_wrap rainbow-justify_space-around">
-                <ContactsFilteredContainer statusToShow={statusToShow} data={data}/>
+                <ContactsFilteredContainer statusToShow={statusToShow} contacts={contacts}/>
             </div>
         </div>
     );
 }
 
-<div className="rainbow-m-around_large">
-    <Title className="rainbow-m-top_large">Contributors</Title>
-    <Contacts data={data} />
-</div>
+    <div className="rainbow-m-around_large">
+        <Title className="rainbow-m-top_large">Contributors</Title>
+        <Contacts data={data} />
+    </div>
 ```

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
-import Input from './../';
+import axe from '../../../../axe';
+import Input from '..';
 
 describe('<Input/>', () => {
     it('should be accessible when label is passed', async () => {

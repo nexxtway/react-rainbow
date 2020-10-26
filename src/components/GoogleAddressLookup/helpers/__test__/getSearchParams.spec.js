@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file, id-length */
 import getSearchParams from '../getSearchParams';
 
 const setupGoogleMapsMock = () => {

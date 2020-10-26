@@ -1,14 +1,13 @@
 ##### PresenceMap:
 
 ```js
-import React, { useState, useEffect, useCallback } from 'react';
+/* eslint-disable import/no-unresolved, import/extensions */
+import React, { useState } from 'react';
 import { PresenceMap, Input, Picklist, PicklistOption, ButtonIcon } from 'react-rainbow-components';
 import styled from 'styled-components';
-import LocationIcon from './icons/locationIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCrosshairs } from '@fortawesome/free-solid-svg-icons';
-import { COLOR_WHITE } from '../../styles/colors';
-import { SHADOW_1 } from '../../styles/shadows';
+import LocationIcon from './icons/locationIcon';
 import { BORDER_RADIUS_2 } from '../../styles/borderRadius';
 
 const RegularControl = styled(Input).attrs(props => {
@@ -139,7 +138,7 @@ const PresenceMapExample = () => {
         setMapType(value);
     };
 
-    const handleMarkerClick = (marker, idx) => {
+    const handleMarkerClick = marker => {
         alert(`Marker position:\n Latitude: ${marker.position.lat}\n Longitude: ${marker.position.lng}`);
     };
 
@@ -151,7 +150,7 @@ const PresenceMapExample = () => {
             showTransit={showTransitState}
             center={centerState}
             type={mapTypeState.name}
-            onMarkerClick={(marker, idx) => handleMarkerClick(marker, idx)}
+            onMarkerClick={(marker, index) => handleMarkerClick(marker, index)}
         >
             <ControlsContainer>
                 <ButtonIcon
@@ -166,13 +165,15 @@ const PresenceMapExample = () => {
                     type="checkbox"
                     label="Traffic"
                     onClick={handleShowTraffic}
-                    checked={showTrafficState} />
+                    checked={showTrafficState}
+                />
                 <RegularControl
                     className="rainbow-m-right_medium"
                     type="checkbox"
                     label="Transit"
                     onClick={handleShowTransit}
-                    checked={showTransitState} />
+                    checked={showTransitState}
+                />
                 <MenuControl
                     id="picklist-mapstyle-1"
                     onChange={handleMapStyle}
@@ -190,20 +191,19 @@ const PresenceMapExample = () => {
     );
 }
 
-<PresenceMapExample />
+    <PresenceMapExample />
 ```
 
 ##### Interactive PresenceMap:
 
 ```js
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { PresenceMap, Input, Picklist, PicklistOption, ButtonIcon, RenderIf } from 'react-rainbow-components';
+/* eslint-disable import/no-unresolved, import/extensions */
+import React, { useState, useMemo } from 'react';
+import { PresenceMap, Input, Picklist, PicklistOption, ButtonIcon } from 'react-rainbow-components';
 import styled from 'styled-components';
-import LocationIcon from './icons/locationIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCrosshairs } from '@fortawesome/free-solid-svg-icons';
-import { COLOR_WHITE } from '../../styles/colors';
-import { SHADOW_1 } from '../../styles/shadows';
+import LocationIcon from './icons/locationIcon';
 import { BORDER_RADIUS_2 } from '../../styles/borderRadius';
 
 const RegularControl = styled(Input).attrs(props => {
@@ -313,7 +313,7 @@ const PresenceMapExample = () => {
     const [showTransitState, setShowTransit] = useState(false);
     const [centerState, setCenter] = useState('auto');
     const [mapTypeState, setMapType] = useState({ name: 'roadmap', label: 'Roadmap', icon: <LocationIcon /> });
-    const [carAvailabilityState, setCarAvailability] = useState({ name: 'all', label: 'All'})
+    const [carAvailabilityState, setCarAvailability] = useState({ name: 'all', label: 'All' })
 
     const handleShowTraffic = () => {
         setShowTraffic(!showTrafficState);
@@ -338,12 +338,12 @@ const PresenceMapExample = () => {
         setMapType(value);
     };
 
-    const handleMarkerClick = (marker, idx) => {
+    const handleMarkerClick = marker => {
         alert(`Marker position:\n Latitude: ${marker.position.lat}\n Longitude: ${marker.position.lng}`);
     };
-    
+
     const filteredMarkers = useMemo(() => markers.filter(marker => carAvailabilityState.name === 'all' || (marker.available === (carAvailabilityState.name === 'availables'))), [carAvailabilityState.name]);
-    
+
     const handleCarAvailability = value => {
         setCarAvailability(value);
         setCenter('auto');
@@ -357,21 +357,21 @@ const PresenceMapExample = () => {
             showTransit={showTransitState}
             center={centerState}
             type={mapTypeState.name}
-            onMarkerClick={(marker, idx) => handleMarkerClick(marker, idx)}
+            onMarkerClick={(marker, index) => handleMarkerClick(marker, index)}
         >
             <ControlsContainer>
-                                {markers.length &&
-                    <MenuControl
-                        id="picklist-availability-1"
-                        onChange={handleCarAvailability}
-                        value={carAvailabilityState}
-                        label="Select Car Availability"
-                        hideLabel
-                    >
-                        <PicklistOption name="all" label="All" />
-                        <PicklistOption name="availables" label="Availables" />
-                        <PicklistOption name="busy" label="Busy" />
-                    </MenuControl>}
+                {markers.length &&
+                <MenuControl
+                    id="picklist-availability-1"
+                    onChange={handleCarAvailability}
+                    value={carAvailabilityState}
+                    label="Select Car Availability"
+                    hideLabel
+                >
+                    <PicklistOption name="all" label="All" />
+                    <PicklistOption name="availables" label="Availables" />
+                    <PicklistOption name="busy" label="Busy" />
+                </MenuControl>}
                 <div className="rainbow-flex">
                     <ButtonIcon
                         size="medium"
@@ -385,13 +385,15 @@ const PresenceMapExample = () => {
                         type="checkbox"
                         label="Traffic"
                         onClick={handleShowTraffic}
-                        checked={showTrafficState} />
+                        checked={showTrafficState}
+                    />
                     <RegularControl
                         className="rainbow-m-right_medium"
                         type="checkbox"
                         label="Transit"
                         onClick={handleShowTransit}
-                        checked={showTransitState} />
+                        checked={showTransitState}
+                    />
                     <MenuControl
                         id="picklist-mapstyle-1"
                         onChange={handleMapStyle}
@@ -410,5 +412,5 @@ const PresenceMapExample = () => {
     );
 }
 
-<PresenceMapExample />
+    <PresenceMapExample />
 ```

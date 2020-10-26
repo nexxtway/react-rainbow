@@ -1,4 +1,4 @@
-import { decomposeColor } from '.';
+import decomposeColor from './decomposeColor';
 
 export default function isHsvColor(color) {
     if (typeof color === 'string' && color !== '') {

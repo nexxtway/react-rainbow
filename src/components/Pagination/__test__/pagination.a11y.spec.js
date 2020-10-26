@@ -1,7 +1,7 @@
 import ReactDOMServer from 'react-dom/server';
-import { axe } from 'jest-axe';
 import React from 'react';
-import Pagination from '../';
+import axe from '../../../../axe';
+import Pagination from '..';
 
 describe('<Pagination/>', () => {
     it('should be accessible', async () => {

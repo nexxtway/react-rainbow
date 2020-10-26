@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 export default function getWorkBookParams() {
     return {
         SheetNames: ['Sheet1'],

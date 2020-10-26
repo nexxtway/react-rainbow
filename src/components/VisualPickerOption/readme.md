@@ -36,10 +36,11 @@ class SimpleVisualPicker extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <VisualPicker
                 label="Select Option"
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
             >
                 <VisualPickerOption name="option-1">
@@ -59,12 +60,12 @@ class SimpleVisualPicker extends React.Component {
     }
 }
 
-<div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
-    <StyledHeader className="rainbow-m-bottom_medium">
-        What are you doing?
-    </StyledHeader>
-    <SimpleVisualPicker />
-</div>
+    <div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
+        <StyledHeader className="rainbow-m-bottom_medium">
+            What are you doing?
+        </StyledHeader>
+        <SimpleVisualPicker />
+    </div>
 ```
 
 ##### VisualPickerOption with option disabled:
@@ -105,10 +106,11 @@ class SimpleVisualPicker extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <VisualPicker
                 label="Select Option"
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
             >
                 <VisualPickerOption name="option-1">
@@ -128,12 +130,12 @@ class SimpleVisualPicker extends React.Component {
     }
 }
 
-<div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
-    <StyledHeader className="rainbow-m-bottom_medium">
-        What are you doing?
-    </StyledHeader>
-    <SimpleVisualPicker />
-</div>
+    <div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
+        <StyledHeader className="rainbow-m-bottom_medium">
+            What are you doing?
+        </StyledHeader>
+        <SimpleVisualPicker />
+    </div>
 ```
 
 ##### VisualPickerOption with footer:
@@ -185,10 +187,11 @@ class SimpleVisualPickerWithFooter extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
             <VisualPicker
                 label="Our Rainbow Options"
-                value={this.state.value}
+                value={value}
                 onChange={this.handleOnChange}
             >
                 <VisualPickerOption
@@ -232,10 +235,10 @@ class SimpleVisualPickerWithFooter extends React.Component {
     }
 }
 
-<div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
-    <StyledHeader className="rainbow-m-bottom_medium">
-        Select plan
-    </StyledHeader>
-    <SimpleVisualPickerWithFooter />
-</div>
+    <div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
+        <StyledHeader className="rainbow-m-bottom_medium">
+            Select plan
+        </StyledHeader>
+        <SimpleVisualPickerWithFooter />
+    </div>
 ```

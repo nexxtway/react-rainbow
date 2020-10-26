@@ -14,12 +14,12 @@ const Container = styled.div`
     height: 150px;
 `;
 
-<Container>
-    <HelpText
-        title="Message Title"
-        text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>}
-    />
-</Container>
+    <Container>
+        <HelpText
+            title="Message Title"
+            text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>}
+        />
+    </Container>
 ```
 
 ##### HelpText error
@@ -38,13 +38,13 @@ const Container = styled.div`
     height: 150px;
 `;
 
-<Container>
-    <HelpText
-        variant="error"
-        title="Message Title"
-        text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>}
-    />
-</Container>
+    <Container>
+        <HelpText
+            variant="error"
+            title="Message Title"
+            text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>}
+        />
+    </Container>
 ```
 
 ##### HelpText warning
@@ -63,13 +63,13 @@ const Container = styled.div`
 
 const style = { width: '250px' };
 
-<Container>
-    <HelpText
-        variant="warning"
-        title="Message Title"
-        text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>} 
-    />
-</Container>
+    <Container>
+        <HelpText
+            variant="warning"
+            title="Message Title"
+            text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>}
+        />
+    </Container>
 ```
 
 ##### HelpText question
@@ -88,11 +88,11 @@ const Container = styled.div`
 
 const style = { width: '250px' };
 
-<Container>
-    <HelpText
-        variant="question"
-        title="Message Title"
-        text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>}
-    />
-</Container>
+    <Container>
+        <HelpText
+            variant="question"
+            title="Message Title"
+            text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>}
+        />
+    </Container>
 ```

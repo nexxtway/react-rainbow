@@ -3,7 +3,7 @@ import {
     getChildTabNodes,
     getItemIndex,
     getCarouselCardContainerStyles,
-} from './../utils';
+} from '../utils';
 
 describe('<CarouselCard/> utils', () => {
     describe('insertChildOrderly', () => {

@@ -182,34 +182,37 @@ const initialState = {
     selectedDate: undefined,
 };
 
-<div
-    className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
->
-    <Card className="rainbow-p-horizontal_medium rainbow-p-vertical_large">
-        <MonthlyCalendar
-            id="monthly-calendar-1"
-            currentMonth={state.currentMonth}
-            selectedDate={state.selectedDate}
-            onSelectDate={({ date }) => (setState({ selectedDate: date }), onSelectDate(date, tasksList))}
-            onMonthChange={({ month }) => setState({ currentMonth: month })}
-            minDate={new Date('01/04/2018')}
-            maxDate={new Date('01/04/2020')}
-            dateComponent={date => (
-                <DailyTasks
-                    availableTasksCount={getAvailableTasksCountForDate(date, tasksList)}
-                    assignedTasksCount={getAssignedTasksCountForDate(date, tasksList)}
-                />
+    <div
+        className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
+    >
+        <Card className="rainbow-p-horizontal_medium rainbow-p-vertical_large">
+            <MonthlyCalendar
+                id="monthly-calendar-1"
+                currentMonth={state.currentMonth}
+                selectedDate={state.selectedDate}
+                onSelectDate={({ date }) => {
+                    setState({ selectedDate: date });
+                    onSelectDate(date, tasksList);
+                }}
+                onMonthChange={({ month }) => setState({ currentMonth: month })}
+                minDate={new Date('01/04/2018')}
+                maxDate={new Date('01/04/2020')}
+                dateComponent={date => (
+                    <DailyTasks
+                        availableTasksCount={getAvailableTasksCountForDate(date, tasksList)}
+                        assignedTasksCount={getAssignedTasksCountForDate(date, tasksList)}
+                    />
             )}
-        />
-    </Card>
-</div>
+            />
+        </Card>
+    </div>
 ```
 
 ##### MonthlyCalendar interacting with events
 
 ```js
 import React from 'react';
-import { Card, MonthlyCalendar, Drawer, Avatar, Button, Badge } from 'react-rainbow-components';
+import { Card, MonthlyCalendar, Drawer, Avatar, Badge } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div
@@ -377,12 +380,12 @@ function getFormattedDate(selectedDate) {
 }
 
 const TasksBasicInformation = ({ count, name, title }) => count ? (
-    <StyledStatisticsContainer> 
+    <StyledStatisticsContainer>
         {name}
         <Badge className="rainbow-m-around_medium" label={count} title={title} />
     </StyledStatisticsContainer> ) : null;
 
-const TaskInformation = ({hour, description, isConfirmed}) => (
+const TaskInformation = ({ hour, description, isConfirmed }) => (
     <StyledInformationContainer>
         <StyledHeaderContainer>
             <Avatar icon={<CalendarIcon />} size="medium" backgroundColor="#f4f6f9" />
@@ -415,17 +418,21 @@ const DrawerTasks = props => {
                 name="ASSIGNED"
                 title="AssignedTasks"
             />
-            {assignedTasks.map(task => (
-                <TaskInformation {...task} />
-            ))}
+            {assignedTasks.map((task, index) => {
+                const key = `task-${index}`;
+                // eslint-disable-next-line react/jsx-props-no-spreading
+                return <TaskInformation {...task} key={key} />;
+            })}
             <TasksBasicInformation
                 count={availableTasks.length}
                 name="AVAILABLE"
                 title="AvailableTasks"
             />
-            {availableTasks.map(task => (
-                <TaskInformation {...task} />
-            ))}
+            {availableTasks.map((task, index) => {
+                const key = `task-${index}`;
+                // eslint-disable-next-line react/jsx-props-no-spreading
+                return <TaskInformation {...task} key={key} />;
+            })}
         </div>
     );
 }
@@ -517,38 +524,38 @@ const initialState = {
     isOpen: false,
 };
 
-<div
-    className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
->
-    <Card className="rainbow-p-horizontal_medium rainbow-p-vertical_large">
-        <MonthlyCalendar
-            id="monthly-calendar-3"
-            currentMonth={state.currentMonth}
-            selectedDate={state.selectedDate}
-            onSelectDate={({ date }) => setState({ selectedDate: date, isOpen: true})}
-            onMonthChange={({ month }) => setState({ currentMonth: month })}
-            minDate={new Date('01/04/2018')}
-            maxDate={new Date('01/04/2020')}
-            dateComponent={date => (
-                <DailyTasks
-                    availableTasksCount={getAvailableTasksCountForDate(date, tasksList)}
-                    assignedTasksCount={getAssignedTasksCountForDate(date, tasksList)}
-                />
+    <div
+        className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
+    >
+        <Card className="rainbow-p-horizontal_medium rainbow-p-vertical_large">
+            <MonthlyCalendar
+                id="monthly-calendar-3"
+                currentMonth={state.currentMonth}
+                selectedDate={state.selectedDate}
+                onSelectDate={({ date }) => setState({ selectedDate: date, isOpen: true })}
+                onMonthChange={({ month }) => setState({ currentMonth: month })}
+                minDate={new Date('01/04/2018')}
+                maxDate={new Date('01/04/2020')}
+                dateComponent={date => (
+                    <DailyTasks
+                        availableTasksCount={getAvailableTasksCountForDate(date, tasksList)}
+                        assignedTasksCount={getAssignedTasksCountForDate(date, tasksList)}
+                    />
             )}
-        />
-    </Card>
-    <div>
-        <Drawer
-            slideFrom="right"
-            header={<StyledTitle>{getFormattedDate(state.selectedDate)}</StyledTitle>}
-            isOpen={state.isOpen}
-            onRequestClose={() => setState({ isOpen : false })}
-        >
-            <DrawerTasks
-                date={state.selectedDate}
-                tasks={tasksList}
             />
-        </Drawer>
+        </Card>
+        <div>
+            <Drawer
+                slideFrom="right"
+                header={<StyledTitle>{getFormattedDate(state.selectedDate)}</StyledTitle>}
+                isOpen={state.isOpen}
+                onRequestClose={() => setState({ isOpen : false })}
+            >
+                <DrawerTasks
+                    date={state.selectedDate}
+                    tasks={tasksList}
+                />
+            </Drawer>
+        </div>
     </div>
-</div>
 ```

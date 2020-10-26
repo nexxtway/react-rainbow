@@ -1,14 +1,15 @@
+/* eslint-disable react/no-unused-prop-types */
 import React, { useImperativeHandle, useRef } from 'react';
 import PropTypes from 'prop-types';
 import valuePropValidation from './helpers/valuePropValidation';
 import getNormalizedValue from './helpers/getNormalizedValue';
 import { useLocale, useUniqueIdentifier } from '../../libs/hooks';
-import useReduxForm from './../../libs/hooks/useReduxForm';
-import RequiredAsterisk from '../RequiredAsterisk';
+import useReduxForm from '../../libs/hooks/useReduxForm';
 import RenderIf from '../RenderIf';
+import Label from '../Input/label';
 import WeekDayItems from './weekDayItems';
 import StyledTextError from '../Input/styled/errorText';
-import { StyledFieldset, StyledHelpText, StyledLabel } from './styled';
+import { StyledFieldset, StyledHelpText } from './styled';
 
 /**
  * A WeekDayPicker allows to select the days of the week
@@ -20,6 +21,8 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
         name,
         value,
         label,
+        labelAlignment,
+        hideLabel,
         bottomHelpText,
         availableDates,
         locale: localeProp,
@@ -50,9 +53,9 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
         },
     }));
 
-    const handleOnChange = e => {
-        const weekDayValue = e.target.value;
-        const isChecked = e.target.checked;
+    const handleOnChange = event => {
+        const weekDayValue = event.target.value;
+        const isChecked = event.target.checked;
 
         if (!disabled && !readOnly) {
             onChange(getNormalizedValue(weekDayValue, isChecked, multiple, value));
@@ -62,10 +65,13 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
     return (
         <StyledFieldset className={className} style={style} id={id}>
             <RenderIf isTrue={label}>
-                <StyledLabel>
-                    <RequiredAsterisk required={required} />
-                    {label}
-                </StyledLabel>
+                <Label
+                    label={label}
+                    labelAlignment={labelAlignment}
+                    hideLabel={hideLabel}
+                    required={required}
+                    as="legend"
+                />
             </RenderIf>
             <WeekDayItems
                 name={fieldsetName}
@@ -110,6 +116,11 @@ WeekDayPicker.propTypes = {
     ]),
     /** The WeekDayPicker label. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Describes the position of the WeekDayPicker label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** A boolean to hide the WeekDayPicker label. */
+    hideLabel: PropTypes.bool,
     /** Shows the help message below the WeekDayPicker */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies the available days from the week for selection. */
@@ -139,6 +150,8 @@ WeekDayPicker.defaultProps = {
     name: undefined,
     value: undefined,
     label: undefined,
+    labelAlignment: 'center',
+    hideLabel: false,
     bottomHelpText: undefined,
     availableDates: [],
     locale: undefined,

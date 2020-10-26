@@ -19,11 +19,11 @@ const LoadingShape = props => {
     const isAvatar = variant === 'avatar';
 
     useEffect(() => {
-        const el = shapeRef.current;
+        const element = shapeRef.current;
         if (shape === 'square' || shape === 'circle') {
-            el.style.width = `${el.offsetHeight}px`;
+            element.style.width = `${element.offsetHeight}px`;
         } else {
-            el.style.width = '100%';
+            element.style.width = '100%';
         }
     });
 

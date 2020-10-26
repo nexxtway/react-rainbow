@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withReduxForm from './../../libs/hocs/withReduxForm';
-import { uniqueId } from './../../libs/utils';
+import withReduxForm from '../../libs/hocs/withReduxForm';
+import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import Options from './options';
 import StyledContainer from './styled/container';
-import Label from './../Input/label';
+import Label from '../Input/label';
 import StyledInnerContainer from './styled/innerContainer';
 import StyledSelect from './styled/select';
-import ErrorText from '../../components/Input/styled/errorText';
-import HelpText from '../../components/Input/styled/helpText';
+import ErrorText from '../Input/styled/errorText';
+import HelpText from '../Input/styled/helpText';
 
 /**
  * Select element presents a menu of options.

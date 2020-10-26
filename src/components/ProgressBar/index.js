@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AsistiveText from './../AssistiveText';
+import AsistiveText from '../AssistiveText';
 import normalizeValue from './normalizeValue';
 import StyledContainer from './styled/container';
 import StyledBar from './styled/bar';

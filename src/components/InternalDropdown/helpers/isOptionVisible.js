@@ -1,5 +1,5 @@
-export default function isOptionVisible(el, container) {
-    const { top: elTop, bottom: elBottom } = el.getBoundingClientRect();
+export default function isOptionVisible(elem, container) {
+    const { top: elTop, bottom: elBottom } = elem.getBoundingClientRect();
     const { top: containerTop, bottom: containerBottom } = container.getBoundingClientRect();
 
     return (

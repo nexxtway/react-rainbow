@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import AssistiveText from './../index';
+import AssistiveText from '../index';
 
 describe('<AssistiveText/>', () => {
     it('should render the span element when the text is passed', () => {

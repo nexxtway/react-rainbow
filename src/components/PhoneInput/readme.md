@@ -1,7 +1,7 @@
 ##### PhoneInput base
 
 ```js
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PhoneInput } from 'react-rainbow-components';
 
@@ -24,16 +24,15 @@ const Form = () => {
     );
 };
 
-<Container>
-    <Form />
-</Container>
-
+    <Container>
+        <Form />
+    </Container>
 ```
 
 ##### PhoneInput single country selection
 
 ```js
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PhoneInput } from 'react-rainbow-components';
 
@@ -57,8 +56,7 @@ const Form = () => {
     );
 };
 
-<Container>
-    <Form />
-</Container>
-
+    <Container>
+        <Form />
+    </Container>
 ```
