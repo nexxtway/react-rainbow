@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
 import manageTab from '../../libs/manageTab';
+import CounterManager from '../../libs/counterManager';
 import RenderIf from '../RenderIf';
 import StyledBackDrop from './styled/backDrop';
 import StyledContainer from './styled/container';
@@ -45,19 +46,20 @@ export default function Drawer(props) {
     const contentId = useUniqueIdentifier('drawer-content');
     const triggerRef = useRef(null);
     const drawerRef = useRef(null);
-    const contentRef = useRef(null);
     const [drawerState, setDrawerState] = useState(
         isOpen ? DrawerState.OPENED : DrawerState.CLOSED,
     );
 
     useEffect(() => {
         if (isOpen) {
+            CounterManager.increment();
             triggerRef.current = document.activeElement;
             setDrawerState(DrawerState.OPENING);
         }
 
         return () => {
             if (isOpen) {
+                CounterManager.decrement();
                 if (triggerRef.current) triggerRef.current.focus();
                 setDrawerState(DrawerState.CLOSING);
             }
@@ -134,9 +136,7 @@ export default function Drawer(props) {
                             onClick={closeDrawer}
                         />
                     </RenderIf>
-                    <StyledContent id={contentId} ref={contentRef}>
-                        {children}
-                    </StyledContent>
+                    <StyledContent id={contentId}>{children}</StyledContent>
                     <RenderIf isTrue={footer}>
                         <StyledDivider />
                         <StyledFooter>{footer}</StyledFooter>
