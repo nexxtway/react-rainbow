@@ -270,7 +270,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 
 # Table with row actions
 ##### Performing action per row is a common use case. There is a `Column` type= "action" that will allow you to pass `MenuItem` in the body. It will render a ButtonMenu with those actions per row, so you can easily add the implementation for every item in the menu.
-##### Notice this feature will provide the same actions for every row. If your use case needs dynamic actions based on the row data then you have to create your own custom column component.
+##### Note this feature will provide the same actions for every row. If your use case needs dynamic actions based on the row data then you have to create your own custom column component.
 
 ```js
 import React from 'react';
@@ -950,7 +950,10 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ```
 
 # Table with inline editable columns
-##### This example shows a table whose first column is editable. You can inline editing the information of the columns by adding `isEditable` prop.
+##### This example shows a table whose first column is editable. You can inline editing the information of the columns by adding `isEditable` prop. 
+##### When you edit the contents of a cell and press the ENTER key or click outside the cell, those changes will be preserved. If you press the ESC key instead, the changes will be discarded.
+##### Note that the column doesn't behave in the same way when is editable and receives a component. But you can implement the logic of `isEditable` within the component as you wish.
+
 ```js
 import React, { useState } from 'react';
 import styled from 'styled-components';
