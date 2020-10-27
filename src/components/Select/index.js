@@ -154,7 +154,7 @@ Select.propTypes = {
     hideLabel: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    /** The variant changes the appearance of the Input. Accepted variants include default
+    /** The variant changes the appearance of the Select. Accepted variants include default
      * and shaded. This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'shaded']),
 };
