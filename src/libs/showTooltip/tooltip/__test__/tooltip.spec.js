@@ -44,17 +44,12 @@ describe('<Tooltip />', () => {
     });
 
     it('should have top as default position', () => {
-        const component = mount(<Tooltip />);
+        const component = mount(<Tooltip triggerElementRef={triggerElement} />);
         expect(component.prop('preferredPosition')).toBe('top');
     });
 
-    it('should be initially hidden by default', () => {
-        const component = mount(<Tooltip />);
-        expect(component.prop('isVisible')).toBe(false);
-    });
-
     it('should set the position after onOpen', () => {
-        const component = mount(<Tooltip triggerElementRef={triggerElement} isVisible />);
+        const component = mount(<Tooltip triggerElementRef={triggerElement} />);
         jest.runAllTimers();
         expect(
             component
