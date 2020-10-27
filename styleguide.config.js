@@ -187,6 +187,5 @@ module.exports = {
                 reactVersion: JSON.stringify(require('./package.json').devDependencies.react),
             }),
         ],
-        devtool: 'inline-source-maps',
     },
 };
