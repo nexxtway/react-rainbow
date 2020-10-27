@@ -66,6 +66,7 @@ class Select extends Component {
             labelAlignment,
             hideLabel,
             tabIndex,
+            variant,
         } = this.props;
 
         return (
@@ -90,6 +91,7 @@ class Select extends Component {
                         tabIndex={tabIndex}
                         required={required}
                         disabled={disabled}
+                        variant={variant}
                         ref={this.selectRef}
                     >
                         <Options options={options} />
@@ -152,6 +154,9 @@ Select.propTypes = {
     hideLabel: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** The variant changes the appearance of the Input. Accepted variants include default
+     * and shaded. This value defaults to default. */
+    variant: PropTypes.oneOf(['default', 'shaded']),
 };
 
 Select.defaultProps = {
@@ -173,6 +178,7 @@ Select.defaultProps = {
     labelAlignment: 'center',
     hideLabel: false,
     tabIndex: undefined,
+    variant: 'default',
 };
 
 export default withReduxForm(Select);
