@@ -160,6 +160,14 @@ class OptionItem extends Component {
             currentValues,
             activeChildrenMap,
             showCheckbox,
+            multiple,
+            privateOnClick,
+            privateOnHover,
+            privateRegisterChild,
+            privateUnregisterChild,
+            value,
+            component,
+            ...rest
         } = this.props;
         const isSelected = currentValues && currentValues.includes(name);
         const isActive = activeOptionName === name;
@@ -182,6 +190,8 @@ class OptionItem extends Component {
 
         if (showOption) {
             const hasLeftIcon = !!(icon && iconPosition === 'left');
+            const hasComponent = !!component;
+            const OptionComponent = component || (() => null);
 
             return (
                 <li
@@ -201,21 +211,41 @@ class OptionItem extends Component {
                         isSelected={isSelected}
                         isActive={isActive}
                     >
-                        <StyledIconContainer title={title}>
-                            <RenderIf isTrue={showCheckbox}>
-                                <StyledInput type="checkbox" checked={isSelected} tabIndex="-1" />
-                            </RenderIf>
+                        <RenderIf isTrue={!hasComponent}>
+                            <StyledIconContainer title={title}>
+                                <RenderIf isTrue={showCheckbox}>
+                                    <StyledInput
+                                        type="checkbox"
+                                        checked={isSelected}
+                                        tabIndex="-1"
+                                    />
+                                </RenderIf>
 
-                            <Icon
-                                data-id="menu-item-left-icon"
+                                <Icon
+                                    data-id="menu-item-left-icon"
+                                    icon={icon}
+                                    isVisible={hasLeftIcon}
+                                    position={iconPosition}
+                                />
+
+                                {label}
+                            </StyledIconContainer>
+                            {this.renderRightIcon()}
+                        </RenderIf>
+                        <RenderIf isTrue={hasComponent}>
+                            <OptionComponent
+                                // eslint-disable-next-line react/jsx-props-no-spreading
+                                {...rest}
+                                disabled={disabled}
                                 icon={icon}
-                                isVisible={hasLeftIcon}
-                                position={iconPosition}
+                                iconPosition={iconPosition}
+                                label={label}
+                                value={value}
+                                isSelected={isSelected}
+                                isActive={isActive}
+                                variant={variant}
                             />
-
-                            {label}
-                        </StyledIconContainer>
-                        {this.renderRightIcon()}
+                        </RenderIf>
                     </StyledItem>
                 </li>
             );
@@ -255,6 +285,11 @@ Option.propTypes = {
     title: PropTypes.string,
     /** The value of the PicklistOption. */
     value: PropTypes.any,
+    /**
+     * The component class or function that is going to be use to render
+     * the content of each option. This is used in case of needed further customization.
+     */
+    component: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -269,7 +304,8 @@ Option.defaultProps = {
     iconPosition: 'left',
     disabled: false,
     title: undefined,
+    value: undefined,
+    component: null,
     className: undefined,
     style: undefined,
-    value: undefined,
 };

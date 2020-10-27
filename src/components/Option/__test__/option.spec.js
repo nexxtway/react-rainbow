@@ -1,9 +1,10 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { OptionItem as Option } from '../index';
+import { OptionItem as Option } from '..';
 import StyledHeader from '../styled/header';
 import StyledItem from '../styled/item';
 import CheckmarkIcon from '../checkmark';
+import StyledIconContainer from '../styled/iconContainer';
 
 describe('<Option />', () => {
     let optionRegisterFn;
@@ -125,5 +126,37 @@ describe('<Option />', () => {
         component.unmount();
         expect(privateUnregisterChildMockFn).toHaveBeenCalledTimes(1);
         expect(privateUnregisterChildMockFn.mock.calls[0][0]).not.toBeFalsy();
+    });
+    it('should render a default option', () => {
+        const component = mount(<Option name="option-1" />);
+        expect(component.find(StyledIconContainer).exists()).toBe(true);
+    });
+    it('should render the component option passed', () => {
+        const CustomOption = () => <div />;
+        const component = mount(<Option name="option-1" component={CustomOption} />);
+        expect(component.find(CustomOption).exists()).toBe(true);
+    });
+    it('should pass the right props to the component option passed', () => {
+        const CustomOption = () => <div />;
+        const component = mount(
+            <Option
+                label="Option 1"
+                name="option-1"
+                disabled
+                customProp="123"
+                component={CustomOption}
+            />,
+        );
+        expect(component.find(CustomOption).props()).toStrictEqual({
+            customProp: '123',
+            disabled: true,
+            icon: undefined,
+            iconPosition: undefined,
+            isActive: false,
+            isSelected: undefined,
+            label: 'Option 1',
+            value: undefined,
+            variant: undefined,
+        });
     });
 });
