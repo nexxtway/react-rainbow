@@ -48,6 +48,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         value,
         onChange,
         enableSearch,
+        onSearch,
         id,
         className,
         style,
@@ -69,10 +70,11 @@ const InternalDropdown = forwardRef((props, reference) => {
     const scrollingTimer = useRef();
     const searchRef = useRef();
     const showEmptyMessage = isEmptyObject(activeChildrenMap);
+    const hasSearch = enableSearch || typeof onSearch === 'function';
 
     useImperativeHandle(reference, () => ({
         focus: () => {
-            if (enableSearch) {
+            if (hasSearch) {
                 return searchRef.current.focus();
             }
             return containerRef.current.focus();
@@ -235,7 +237,7 @@ const InternalDropdown = forwardRef((props, reference) => {
     };
 
     const handleKeyPressed = event => {
-        if (event.keyCode === SPACE_KEY && !enableSearch) {
+        if (event.keyCode === SPACE_KEY && !hasSearch) {
             event.preventDefault();
         }
         if (preventDefaultKeys[event.keyCode]) event.preventDefault();
@@ -245,6 +247,9 @@ const InternalDropdown = forwardRef((props, reference) => {
     };
 
     const handleSearch = event => {
+        if (typeof onSearch === 'function') {
+            return onSearch(event.target.value);
+        }
         if (!allActiveChildren.current) {
             allActiveChildren.current = [...activeChildren.current];
         }
@@ -266,7 +271,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         if (firstActiveChild) {
             setActiveOptionName(firstActiveChild.name);
         }
-        setTimeout(() => updateScrollingArrows(), 0);
+        return setTimeout(() => updateScrollingArrows(), 0);
     };
 
     const handleTopOptionClick = () => {
@@ -322,7 +327,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             tabIndex="-1"
             ref={containerRef}
         >
-            <RenderIf isTrue={enableSearch}>
+            <RenderIf isTrue={hasSearch}>
                 <SearchContainer isLoading={isLoading}>
                     <Icon />
                     <InputSearch onChange={handleSearch} ref={searchRef} type="search" />
@@ -404,6 +409,10 @@ InternalDropdown.propTypes = {
     onChange: PropTypes.func,
     /** If is set to true, then a search input to filter is showed. */
     enableSearch: PropTypes.bool,
+    /** The action triggered for every key stroke when the customer is typing in the input.
+     * It sent the value/query of the input. This value is normally used for filter/search
+     * for more options. */
+    onSearch: PropTypes.func,
     /** Specifies that multiple items can be selected */
     multiple: PropTypes.bool,
     /** Show checkbox */
@@ -421,6 +430,7 @@ InternalDropdown.defaultProps = {
     value: undefined,
     onChange: () => {},
     enableSearch: false,
+    onSearch: undefined,
     multiple: false,
     showCheckbox: false,
     placeholder: undefined,

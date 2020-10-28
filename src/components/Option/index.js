@@ -210,6 +210,7 @@ class OptionItem extends Component {
                         ref={this.itemRef}
                         isSelected={isSelected}
                         isActive={isActive}
+                        hasComponent={hasComponent}
                     >
                         <RenderIf isTrue={!hasComponent}>
                             <StyledIconContainer title={title}>
