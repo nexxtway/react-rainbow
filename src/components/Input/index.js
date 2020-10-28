@@ -109,8 +109,6 @@ Input.propTypes = {
     pattern: PropTypes.string,
     /** Specifies that an input text will be centered. This value defaults to false. */
     isCentered: PropTypes.bool,
-    /** Specifies that an input will not have border. This value defaults to false. */
-    isBare: PropTypes.bool,
     /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input element should be disabled. This value defaults to false. */
@@ -166,7 +164,6 @@ Input.defaultProps = {
     required: false,
     pattern: undefined,
     isCentered: false,
-    isBare: false,
     error: null,
     disabled: false,
     readOnly: false,
