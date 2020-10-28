@@ -203,6 +203,7 @@ class Picklist extends Component {
             name,
             value: valueInProps,
             enableSearch,
+            onSearch,
         } = this.props;
         const { label: valueLabel, icon } = getNormalizeValue(valueInProps);
         const value = valueLabel || '';
@@ -279,6 +280,7 @@ class Picklist extends Component {
                                 value={valueInProps}
                                 onChange={this.handleChange}
                                 enableSearch={enableSearch}
+                                onSearch={onSearch}
                                 ref={this.dropdownRef}
                             >
                                 {children}
@@ -352,6 +354,10 @@ Picklist.propTypes = {
     variant: PropTypes.oneOf(['default', 'shaded']),
     /** If is set to true, then a search input to filter is showed. */
     enableSearch: PropTypes.bool,
+    /** The action triggered for every key stroke when the customer is typing in the input.
+     * It sent the value/query of the input. This value is normally used for filter/search
+     * for more options. */
+    onSearch: PropTypes.func,
 };
 
 Picklist.defaultProps = {
@@ -377,6 +383,7 @@ Picklist.defaultProps = {
     style: undefined,
     variant: 'default',
     enableSearch: false,
+    onSearch: undefined,
 };
 
 export default withReduxForm(Picklist);
