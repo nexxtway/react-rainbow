@@ -201,27 +201,4 @@ describe('InternalDropdown', () => {
         const divListbox = component.find('div[role="listbox"]');
         expect(divListbox.prop('aria-activedescendant')).toBe('option2');
     });
-    it('should render svg and input elements when onSearch function is passed', () => {
-        const component = mount(
-            <InternalDropdown label="Picklist" onSearch={() => {}}>
-                <Option label="Option 1" name="option1" />
-                <Option label="Option 2" name="option2" />
-                <Option label="Option 3" name="option3" />
-            </InternalDropdown>,
-        );
-        expect(component.find('SearchIcon').exists()).toBe(true);
-        expect(component.find('input[type="search"]').exists()).toBe(true);
-    });
-    it('should fire onSearch when type in search input', () => {
-        const onSearchFn = jest.fn();
-        const component = mount(
-            <InternalDropdown label="Picklist" onSearch={onSearchFn}>
-                <Option label="Option 1" name="option1" />
-                <Option label="Option 2" name="option2" />
-                <Option label="Option 3" name="option3" />
-            </InternalDropdown>,
-        );
-        component.find('input[type="search"]').simulate('change', { target: { value: 'abc' } });
-        expect(onSearchFn).toHaveBeenCalledWith('abc');
-    });
 });

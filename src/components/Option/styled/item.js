@@ -9,6 +9,7 @@ const StyledItem = attachThemeAttrs(styled.div)`
     justify-content: space-between;
     align-items: center;
     padding: 0 0.75rem;
+    height: 45px;
     color: ${props => props.palette.text.main};
     white-space: nowrap;
     cursor: pointer;
@@ -23,12 +24,6 @@ const StyledItem = attachThemeAttrs(styled.div)`
             background-color: transparent;
         }
     }
-
-    ${props =>
-        !props.hasComponent &&
-        `
-        height: 45px;
-    `}
 
     ${props =>
         props.isActive &&
