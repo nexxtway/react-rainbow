@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import LeftArrow from './leftArrow';
 import RightArrow from './rightArrow';
 import NavigationButton from './navigationButton';
-import PageButtons from './pageButtons';
 import PageButtonsContainer from './pageButtonsContainer';
 import StyledNav from './styled/nav';
 import StyledPaginationContainer from './styled/paginationContainer';
@@ -34,14 +33,6 @@ export default function Pagination(props) {
                     activePage={activePage}
                     variant={variant}
                 />
-
-                {/* <PageButtons
-                    onChange={onChange}
-                    pages={pages}
-                    activePage={activePage}
-                    variant={variant}
-                /> */}
-
                 <NavigationButton
                     dataId="next-page-button"
                     icon={<RightArrow />}
