@@ -135,7 +135,7 @@ Input.propTypes = {
     style: PropTypes.object,
     /** The variant changes the appearance of the Input. Accepted variants include default,
      * and shaded. This value defaults to default. */
-    variant: PropTypes.oneOf(['default', 'shaded']),
+    variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
     /** The id of the outer element. */
     id: PropTypes.string,
     /** A string indicating the type of autocomplete functionality.
