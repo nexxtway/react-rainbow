@@ -6,7 +6,7 @@ import StyledPageButton from './styled/pageButton';
 import StyledButton from './styled/button';
 
 export default function PageButtons(props) {
-    const { pages, activePage, onChange } = props;
+    const { pages, activePage, onChange, variant } = props;
 
     const getAriaCurrent = page => {
         if (page === activePage) {
@@ -27,12 +27,13 @@ export default function PageButtons(props) {
                 const isActivePage = activePage === page;
 
                 return (
-                    <StyledPageButton key={key} pages={pages}>
+                    <StyledPageButton key={key} pages={pages} variant={variant}>
                         <StyledButton
                             isActivePage={isActivePage}
                             onClick={event => onChange(event, page)}
                             aria-current={getAriaCurrent(page)}
                             aria-label={ariaLabel}
+                            variant={variant}
                         >
                             <span>{page}</span>
                         </StyledButton>
@@ -48,8 +49,10 @@ PageButtons.propTypes = {
     activePage: PropTypes.number,
     pages: PropTypes.number.isRequired,
     onChange: PropTypes.func.isRequired,
+    variant: PropTypes.oneOf(['default', 'shaded']),
 };
 
 PageButtons.defaultProps = {
     activePage: undefined,
+    variant: 'default',
 };

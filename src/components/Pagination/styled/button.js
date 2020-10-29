@@ -27,6 +27,7 @@ const StyledButton = attachThemeAttrs(styled.button)`
     appearance: button;
     box-sizing: border-box;
     color: ${props => props.palette.text.label};
+    z-index: 0;
 
     :focus,
     :active {
@@ -54,6 +55,14 @@ const StyledButton = attachThemeAttrs(styled.button)`
     }
 
     ${props =>
+        props.variant === 'shaded' &&
+        !props.disabled &&
+        `
+        box-shadow:${props.disabled ? '' : props.shadows.shadow_10};
+        border: 1px solid transparent;
+    `}
+
+    ${props =>
         props.isActivePage &&
         `
             font-size: ${FONT_SIZE_TEXT_LARGE};
@@ -67,6 +76,7 @@ const StyledButton = attachThemeAttrs(styled.button)`
                 color: ${props.palette.text.main};
             }
         `};
+
     ${props =>
         props.disabled &&
         `
