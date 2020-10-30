@@ -77,6 +77,10 @@ const InternalDropdown = forwardRef((props, reference) => {
             }
             return containerRef.current.focus();
         },
+        getSize: () => ({
+            width: containerRef.current.clientWidth,
+            height: containerRef.current.clientHeight,
+        }),
         contains: element => containerRef.current.contains(element),
     }));
 

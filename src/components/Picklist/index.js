@@ -18,22 +18,6 @@ import StyledIndicator from './styled/indicator';
 import InternalDropdown from '../InternalDropdown';
 import InternalOverlay from '../InternalOverlay';
 
-function positionResolver(opts) {
-    const { trigger, viewport, content } = opts;
-    const newOpts = {
-        trigger,
-        viewport,
-        content: {
-            ...content,
-            width: trigger.width,
-        },
-    };
-    return {
-        ...InternalOverlay.defaultPositionResolver(newOpts),
-        width: trigger.width,
-    };
-}
-
 /**
  * A Picklist provides a user with an read-only input field that is accompanied with
  *  a listbox of pre-defined options.
@@ -55,11 +39,13 @@ class Picklist extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.closeAndFocusInput = this.closeAndFocusInput.bind(this);
         this.handleWindowScroll = this.handleWindowScroll.bind(this);
+        this.getResolver = this.getResolver.bind(this);
         this.outsideClick = new OutsideClick();
         this.windowScrolling = new WindowScrolling();
         this.activeChildren = [];
         this.state = {
             isOpen: false,
+            dropdownSize: null,
         };
         this.keyHandlerMap = {
             [ESCAPE_KEY]: this.closeAndFocusInput,
@@ -68,11 +54,15 @@ class Picklist extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { isOpen: wasOpen } = prevState;
+        const { isOpen: wasOpen, dropdownSize } = prevState;
         const { isOpen } = this.state;
         if (!wasOpen && isOpen) {
             this.outsideClick.startListening(this.containerRef.current, () => this.closeMenu());
             this.windowScrolling.startListening(this.handleWindowScroll);
+        }
+        const currentSize = this.dropdownRef.current && this.dropdownRef.current.getSize();
+        if (isOpen && JSON.stringify(dropdownSize) !== JSON.stringify(currentSize)) {
+            this.updateDropdownSize(this.dropdownRef.current.getSize());
         }
     }
 
@@ -87,6 +77,28 @@ class Picklist extends Component {
             return this.errorMessageId;
         }
         return undefined;
+    }
+
+    getResolver() {
+        const { dropdownSize } = this.state;
+        const height = dropdownSize && dropdownSize.height;
+        return opts => {
+            const { trigger, viewport, content } = opts;
+            const newOpts = {
+                trigger,
+                viewport,
+                content: {
+                    ...content,
+                    width: trigger.width,
+                    height: height || content.height,
+                },
+            };
+            return {
+                ...InternalOverlay.defaultPositionResolver(newOpts),
+                width: trigger.width,
+                height: height || content.height,
+            };
+        };
     }
 
     handleKeyPressed(event) {
@@ -157,6 +169,12 @@ class Picklist extends Component {
             this.focus();
             return onChange({ label, name, icon, value });
         }, 0);
+    }
+
+    updateDropdownSize(dropdownSize) {
+        this.setState({
+            dropdownSize,
+        });
     }
 
     /**
@@ -269,23 +287,23 @@ class Picklist extends Component {
                         variant={variant}
                     />
                     <InternalOverlay
+                        ref={this.overlayRef}
                         isVisible={isOpen}
-                        positionResolver={positionResolver}
+                        positionResolver={this.getResolver()}
                         onOpened={() => this.dropdownRef.current.focus()}
-                        render={() => (
-                            <InternalDropdown
-                                id={this.listboxId}
-                                isLoading={isLoading}
-                                value={valueInProps}
-                                onChange={this.handleChange}
-                                enableSearch={enableSearch}
-                                ref={this.dropdownRef}
-                            >
-                                {children}
-                            </InternalDropdown>
-                        )}
                         triggerElementRef={() => this.triggerRef}
-                    />
+                    >
+                        <InternalDropdown
+                            id={this.listboxId}
+                            isLoading={isLoading}
+                            value={valueInProps}
+                            onChange={this.handleChange}
+                            enableSearch={enableSearch}
+                            ref={this.dropdownRef}
+                        >
+                            {children}
+                        </InternalDropdown>
+                    </InternalOverlay>
                 </StyledInnerContainer>
                 <RenderIf isTrue={error}>
                     <StyledError id={errorMessageId}>{error}</StyledError>
