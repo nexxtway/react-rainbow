@@ -601,7 +601,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
     </div>
 ```
 
-# Table variant "listview"
+# Table "listview" variant
 ##### The `listview` variant is just a different presentation of the table, as you can see in the following example.
 
 ```js
@@ -761,7 +761,7 @@ function TableListView() {
     <TableListView />;
 ```
 
-# Table "listview" variant, selectable and enumerated rows.
+# Table "listview" variant, selectable and enumerated rows
 ##### The following example shows a version of the `listview` variant, where rows can be selectable and enumerated.
 
 ```js
