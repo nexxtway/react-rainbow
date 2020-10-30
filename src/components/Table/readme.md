@@ -270,7 +270,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 
 # Table with row actions
 ##### Performing action per row is a common use case. There is a `Column` type= "action" that will allow you to pass `MenuItem` in the body. It will render a ButtonMenu with those actions per row, so you can easily add the implementation for every item in the menu.
-##### Notice this feature will provide the same actions for every row. If your use case needs dynamic actions based on the row data then you have to create your own custom column component.
+##### Note this feature will provide the same actions for every row. If your use case needs dynamic actions based on the row data then you have to create your own custom column component.
 
 ```js
 import React from 'react';
@@ -947,4 +947,154 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
             <Column header="Email" field="email" />
         </Table>
     </div>
+```
+
+# Table with inline editable columns
+##### This example shows a table whose first column is editable. You can inline editing the information of the columns by adding `isEditable` prop. 
+##### When you edit the contents of a cell and press the ENTER key or click outside the cell, those changes will be preserved. If you press the ESC key instead, the changes will be discarded.
+##### Note that the column doesn't behave in the same way when is editable and receives a component. But you can implement the logic of `isEditable` within the component as you wish.
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Table, Column, ButtonGroup, ButtonIcon, Avatar } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+
+const Container = styled.div`
+    padding: 0 2rem;
+`;
+
+const StyledPriority = styled.div`
+    text-transform: capitalize;
+    color: #ffffff;
+
+    ${props =>
+        props.priority === 'hight' &&
+        `
+            background-color: #fc5e5f;
+        `};
+    ${props =>
+        props.priority === 'medium' &&
+        `
+            background-color: #fc9c44;
+        `};
+    ${props =>
+        props.priority === 'low' &&
+        `
+            background-color: #ffd86a;
+        `};
+`;
+
+const StyledConstributor = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+`;
+
+const StyleCoin = styled(Coin)`
+    margin-right: 10px;
+    width: 20px;
+`;
+
+const Coins = ({ value }) => (
+    <>
+        <StyleCoin />
+        {value} coins
+    </>
+);
+
+const Constributor = () => (
+    <StyledConstributor>
+        <Avatar src="images/user/user3.jpg" variant="circle" size="small" />
+    </StyledConstributor>
+);
+
+const priorityMap = ['low', 'medium', 'hight'];
+const Priority = ({ value }) => {
+    const priority = priorityMap[value];
+    return <StyledPriority priority={priority}>{priority}</StyledPriority>;
+};
+
+function TableListView() {
+    const [data, setData] = useState(ListviewDataTable);
+    const [sortedBy, setSortedBy] = useState();
+    const [sortDirection, setSortDirection] = useState('asc');
+
+    function handleSort(event, field, nextSortDirection) {
+        const newData = [...data];
+        const key = value => value[field];
+        const reverse = nextSortDirection === 'asc' ? 1 : -1;
+
+        const sortedData = newData.sort((aItem, bItem) => {
+            const aValue = key(aItem);
+            const bValue = key(bItem);
+            return reverse * ((aValue > bValue) - (bValue > aValue));
+        });
+
+        setData(sortedData);
+        setSortedBy(field);
+        setSortDirection(nextSortDirection);
+    }
+
+    const handleTaskOnChange = ({ value, row }) => {
+        const index = data.findIndex(item => item.id === row.id)
+        const newData = [...data];
+        newData[index].task = value;
+        setData(newData);
+    }
+
+    return (
+        <div className="rainbow-p-bottom_xx-large">
+            <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+                <ButtonGroup className="rainbow-m-right_medium">
+                    <ButtonIcon
+                        variant="border-filled"
+                        disabled
+                        icon={<FontAwesomeIcon icon={faCog} />}
+                    />
+                    <ButtonIcon
+                        variant="border-filled"
+                        disabled
+                        icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                    />
+                </ButtonGroup>
+            </GlobalHeader>
+            <Container>
+                <Table
+                    data={data}
+                    keyField="id"
+                    variant="listview"
+                    onSort={handleSort}
+                    sortDirection={sortDirection}
+                    sortedBy={sortedBy}
+                >
+                    <Column
+                        header="Task"
+                        field="task"
+                        isEditable
+                        onChange={handleTaskOnChange}
+                    />
+                    <Column header="Coins" field="coins" component={Coins} defaultWidth={200} />
+                    <Column
+                        header="Constributor"
+                        field="constributor"
+                        component={Constributor}
+                        defaultWidth={200}
+                    />
+                    <Column
+                        header="Priority"
+                        field="priority"
+                        component={Priority}
+                        defaultWidth={200}
+                        sortable
+                    />
+                </Table>
+            </Container>
+        </div>
+    );
+}
+
+    <TableListView />;
 ```

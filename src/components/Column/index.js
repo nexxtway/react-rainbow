@@ -46,6 +46,10 @@ Column.propTypes = {
     defaultWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The data type to be used for data formatting in cell. */
     type: PropTypes.oneOf(['text', 'action']),
+    /** A boolean that specifies whether a column is editable or not. Its default value is false.  */
+    isEditable: PropTypes.bool,
+    /** The action triggered when a value attribute changes. */
+    onChange: PropTypes.func,
 };
 
 Column.defaultProps = {
@@ -56,4 +60,6 @@ Column.defaultProps = {
     width: undefined,
     defaultWidth: undefined,
     type: 'text',
+    isEditable: false,
+    onChange: () => {},
 };

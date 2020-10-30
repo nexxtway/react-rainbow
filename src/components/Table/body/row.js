@@ -21,6 +21,8 @@ export default function Row(props) {
             type: columnType,
             isFirstDataColumn,
             children,
+            isEditable,
+            onChange,
             ...restColumnProps
         } = column;
         const key = `cell-${index}`;
@@ -40,6 +42,9 @@ export default function Row(props) {
                 isFirst={isFirstDataColumn}
                 isSelected={isSelected}
                 columnChildren={children}
+                isEditable={isEditable}
+                onChange={onChange}
+                field={field}
             />
         );
     });

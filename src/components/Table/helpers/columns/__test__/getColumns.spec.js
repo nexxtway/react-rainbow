@@ -27,22 +27,26 @@ describe('getColumns', () => {
         const children = [<Column field="a" header="header" component={<span />} />];
         const showCheckboxColumn = false;
         const showRowNumberColumn = false;
-        expect(getColumns({ children, showCheckboxColumn, showRowNumberColumn })).toEqual([
+        const columnsProps = getColumns({ children, showCheckboxColumn, showRowNumberColumn });
+        expect(columnsProps).toEqual([
             {
+                component: <span />,
                 field: 'a',
                 header: 'header',
-                component: <span />,
-                sortable: false,
-                type: 'text',
                 isFirstDataColumn: true,
+                type: 'text',
+                sortable: false,
                 width: undefined,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ]);
     });
     it('should return an array with the columns props, plus the selectable column when showCheckboxColumn is true', () => {
         const children = [<Column field="a" header="header" component={<span />} />];
         const showCheckboxColumn = true;
-        expect(getColumns({ children, showCheckboxColumn })).toEqual([
+        const columnsProps = getColumns({ children, showCheckboxColumn });
+        expect(columnsProps).toEqual([
             {
                 type: 'SELECTABLE_CHECKBOX',
                 width: 52,
@@ -55,6 +59,8 @@ describe('getColumns', () => {
                 type: 'text',
                 isFirstDataColumn: true,
                 width: undefined,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ]);
     });
@@ -62,7 +68,8 @@ describe('getColumns', () => {
         const children = [<Column field="a" header="header" component={<span />} />];
         const showRowNumberColumn = true;
         const rowNumberOffset = 333;
-        expect(getColumns({ children, showRowNumberColumn, rowNumberOffset })).toEqual([
+        const columnsProps = getColumns({ children, showRowNumberColumn, rowNumberOffset });
+        expect(columnsProps).toEqual([
             {
                 type: 'WITH_ENUMERABLE',
                 rowNumberOffset: 333,
@@ -76,6 +83,8 @@ describe('getColumns', () => {
                 type: 'text',
                 isFirstDataColumn: true,
                 width: undefined,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ]);
     });
@@ -84,9 +93,13 @@ describe('getColumns', () => {
         const showCheckboxColumn = true;
         const showRowNumberColumn = true;
         const rowNumberOffset = 0;
-        expect(
-            getColumns({ children, showCheckboxColumn, showRowNumberColumn, rowNumberOffset }),
-        ).toEqual([
+        const columnsProps = getColumns({
+            children,
+            showCheckboxColumn,
+            showRowNumberColumn,
+            rowNumberOffset,
+        });
+        expect(columnsProps).toEqual([
             {
                 type: 'WITH_ENUMERABLE',
                 rowNumberOffset: 0,
@@ -104,6 +117,8 @@ describe('getColumns', () => {
                 type: 'text',
                 isFirstDataColumn: true,
                 width: undefined,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ]);
     });
@@ -113,7 +128,8 @@ describe('getColumns', () => {
             <Column type="action" />,
         ];
         const showCheckboxColumn = false;
-        expect(getColumns({ children, showCheckboxColumn })).toEqual([
+        const columnsProps = getColumns({ children, showCheckboxColumn });
+        expect(columnsProps).toEqual([
             {
                 field: 'a',
                 header: 'header',
@@ -122,11 +138,15 @@ describe('getColumns', () => {
                 type: 'text',
                 isFirstDataColumn: true,
                 width: undefined,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
             {
                 sortable: false,
                 type: 'action',
                 width: 75,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ]);
     });
@@ -143,7 +163,8 @@ describe('getColumns', () => {
         ];
         const showCheckboxColumn = false;
         const minColumnWidth = 150;
-        expect(getColumns({ children, showCheckboxColumn, minColumnWidth })).toEqual([
+        const columnsProps = getColumns({ children, showCheckboxColumn, minColumnWidth });
+        expect(columnsProps).toEqual([
             {
                 field: 'a',
                 header: 'header a',
@@ -153,6 +174,8 @@ describe('getColumns', () => {
                 isFirstDataColumn: true,
                 defaultWidth: 160,
                 width: 30,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
             {
                 field: 'b',
@@ -161,6 +184,8 @@ describe('getColumns', () => {
                 type: 'text',
                 isFirstDataColumn: false,
                 defaultWidth: 150,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ]);
     });
@@ -172,14 +197,13 @@ describe('getColumns', () => {
         const showCheckboxColumn = false;
         const minColumnWidth = 50;
         const maxColumnWidth = 150;
-        expect(
-            getColumns({
-                children,
-                showCheckboxColumn,
-                minColumnWidth,
-                maxColumnWidth,
-            }),
-        ).toEqual([
+        const columnsProps = getColumns({
+            children,
+            showCheckboxColumn,
+            minColumnWidth,
+            maxColumnWidth,
+        });
+        expect(columnsProps).toEqual([
             {
                 field: 'a',
                 header: 'header a',
@@ -188,6 +212,8 @@ describe('getColumns', () => {
                 type: 'text',
                 isFirstDataColumn: true,
                 defaultWidth: 150,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
             {
                 field: 'b',
@@ -196,6 +222,8 @@ describe('getColumns', () => {
                 type: 'text',
                 isFirstDataColumn: false,
                 defaultWidth: 50,
+                isEditable: false,
+                onChange: expect.any(Function),
             },
         ]);
     });
