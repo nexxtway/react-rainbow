@@ -1,4 +1,5 @@
-##### simple Column
+# The basic Column
+##### This example shows a simple performance of a column that belongs to a table. You can name each column using the `header` prop, and just by passing the `field` prop the data of this field will be displayed. 
 
 ```js
 import React from 'react';
@@ -63,7 +64,9 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
     </div>
 ```
 
-##### Column with fix width and defaultWidth
+# Column width
+##### The width of each column is the same by default. For instance, if the width of the table is 500px and it has 5 columns, then each column will have 100px approximately.  If you want to, you can modify it using the `width` prop or the `defaultWidth` prop. 
+##### If you have a use case where you don't want the user to modify the column width, use the `width` prop. Instead, if what you want is that the user can modify the column width, use the `defaultWidth` prop. 
 
 ```js
 import React from 'react';
