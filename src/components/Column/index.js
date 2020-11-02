@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * A column is a vertical element of a table that contains data. 
- * The Column component is an abstraction that allows us to represent data of the same data type. 
+ * A column is a vertical element of a table that contains data.
+ * The Column component is an abstraction that allows us to represent data of the same data type.
  * Both components (Table and Column) are related and should be implemented together.
  * @category DataView
  */
