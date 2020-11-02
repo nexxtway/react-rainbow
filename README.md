@@ -30,7 +30,7 @@ React Rainbow is a collection of components that will reliably help you build yo
 
 ### ✨ Features
 
--   80+ components built on top of React.
+-   90+ components built on top of React.
 -   Interactive Examples.
 -   First class testing.
 -   Wdio page objects.
