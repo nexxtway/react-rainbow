@@ -128,7 +128,7 @@ class PaginationExample extends React.Component {
 ##### Pagination shaded:
 
 ```js
-import React from 'react';
+import React, {useState} from 'react';
 import { Card, Pagination } from 'react-rainbow-components';
 import styled from 'styled-components';
 
@@ -149,14 +149,7 @@ const StyledTitle = styled.span.attrs(props => {
     color: ${props => props.text.title};
 `;
 
-class PaginationExample extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            activePage: 1,
-        };
-        this.handleOnChange = this.handleOnChange.bind(this);
-        this.content = [
+const content = [
             {
                 title: 'Rainbow',
                 src: 'images/illustrations/Illustration-rainbow-3.svg',
@@ -202,13 +195,17 @@ class PaginationExample extends React.Component {
                 src: 'images/illustrations/Illustration-rainbow-2.svg',
             },
         ];
-    }
 
-    getContent() {
-        const { activePage } = this.state;
+
+
+const PaginationShadedExample = () => {
+    const [state, setState] = useState({ activePage: 1 })
+
+    const getContent = () => {
+        const { activePage } = state;
         const lastItem = activePage * 2;
         const firstItem = lastItem - 2;
-        return this.content.slice(firstItem, lastItem).map(({ title, src }) => (
+        return content.slice(firstItem, lastItem).map(({ title, src }) => (
             <Card
                 key={title}
                 style={cardStyles}
@@ -224,31 +221,30 @@ class PaginationExample extends React.Component {
         ));
     }
 
-    handleOnChange(event, page) {
-        this.setState({ activePage: page });
+    const handleOnChange = (event, page) => {
+        setState({ activePage: page });
     }
 
-    render() {
-        const { activePage } = this.state;
-        return (
+    const { activePage } = state;
+
+    return (
             <div>
                 <GlobalHeader src="images/user/user3.jpg" />
                 <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
                     <div className="rainbow-flex rainbow-justify_space-around rainbow-flex_wrap">
-                        {this.getContent()}
+                        {getContent()}
                     </div>
                     <Pagination
                         className="rainbow-m_auto"
                         pages={6}
                         activePage={activePage}
-                        onChange={this.handleOnChange}
+                        onChange={handleOnChange}
                         variant="shaded"
                     />
                 </div>
             </div>
-        );
-    }
+        );  
 }
 
-    <PaginationExample />;
+    <PaginationShadedExample />;
 ```
