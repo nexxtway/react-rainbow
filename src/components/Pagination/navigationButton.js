@@ -5,7 +5,7 @@ import StyledButton from './styled/button';
 import StyledLi from './styled/li';
 
 export default function NavigationButton(props) {
-    const { onClick, icon, disabled, dataId, ariaLabel } = props;
+    const { onClick, icon, disabled, dataId, ariaLabel, variant } = props;
 
     const handleOnClick = event => {
         if (!disabled) {
@@ -29,6 +29,7 @@ export default function NavigationButton(props) {
                 aria-disabled={!!disabled}
                 tabIndex={getTabIndex()}
                 aria-label={ariaLabel}
+                variant={variant}
             >
                 {icon}
             </StyledButton>
@@ -42,10 +43,12 @@ NavigationButton.propTypes = {
     disabled: PropTypes.bool,
     dataId: PropTypes.string,
     ariaLabel: PropTypes.string,
+    variant: PropTypes.oneOf(['default', 'shaded']),
 };
 
 NavigationButton.defaultProps = {
     disabled: false,
     dataId: undefined,
     ariaLabel: undefined,
+    variant: 'default',
 };
