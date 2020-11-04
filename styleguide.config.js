@@ -180,7 +180,6 @@ module.exports = {
                 },
             ],
         },
-        devtool: 'inline-source-map',
         plugins: [
             new CopyWebpackPlugin([{ from: './assets/' }]),
             new webpack.DefinePlugin(envKeys),
