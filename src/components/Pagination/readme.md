@@ -128,7 +128,7 @@ class PaginationExample extends React.Component {
 ##### Pagination shaded:
 
 ```js
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Card, Pagination } from 'react-rainbow-components';
 import styled from 'styled-components';
 
@@ -228,22 +228,22 @@ const PaginationShadedExample = () => {
     const { activePage } = state;
 
     return (
-            <div>
-                <GlobalHeader src="images/user/user3.jpg" />
-                <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
-                    <div className="rainbow-flex rainbow-justify_space-around rainbow-flex_wrap">
-                        {getContent()}
-                    </div>
-                    <Pagination
-                        className="rainbow-m_auto"
-                        pages={6}
-                        activePage={activePage}
-                        onChange={handleOnChange}
-                        variant="shaded"
-                    />
+        <div>
+            <GlobalHeader src="images/user/user3.jpg" />
+            <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
+                <div className="rainbow-flex rainbow-justify_space-around rainbow-flex_wrap">
+                    {getContent()}
                 </div>
+                <Pagination
+                    className="rainbow-m_auto"
+                    pages={6}
+                    activePage={activePage}
+                    onChange={handleOnChange}
+                    variant="shaded"
+                />
             </div>
-        );  
+        </div>
+    );  
 }
 
     <PaginationShadedExample />;
