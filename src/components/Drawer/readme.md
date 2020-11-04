@@ -314,6 +314,7 @@ function ConfigButtonMenu(){
                     menuSize="x-small"
                     buttonVariant="border-filled"
                     label="C"
+                    id="edit-profile-photo"
                 >
                     <MenuItem label="Upload a new photo" />
                     <MenuItem label="Open gallery" />

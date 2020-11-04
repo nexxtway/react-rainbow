@@ -101,14 +101,8 @@ export default function Drawer(props) {
             return null;
         }
         return closeDrawer();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    // const handleBackDropClick = event => {
-    //     if (isOpen && drawerRef.current.contains(event.target)) {
-    //         return null;
-    //     }
-    //     return closeDrawer();
-    // };
 
     useEffect(() => {
         const node = containerRef.current;
@@ -140,7 +134,6 @@ export default function Drawer(props) {
                 id={id}
                 role="presentation"
                 ref={containerRef}
-                // onClick={handleBackDropClick}
                 onKeyDown={handleKeyPressed}
             >
                 <StyledContainer
