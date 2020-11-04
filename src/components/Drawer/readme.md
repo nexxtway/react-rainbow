@@ -164,6 +164,7 @@ import {
 } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
+import { Camera } from "@rainbow-modules/icons"
 
 const countries = [
     { value: 'ca', label: 'Canada' },
@@ -312,8 +313,9 @@ function ConfigButtonMenu(){
             <StyledButtonMenu
                     menuAlignment="right"
                     menuSize="x-small"
+                    buttonSize="small"
                     buttonVariant="border-filled"
-                    label="C"
+                    icon={<Camera />}
                     id="edit-profile-photo"
                 >
                     <MenuItem label="Upload a new photo" />
@@ -346,11 +348,10 @@ function EditContactForm(props) {
                         src={contactInfo.avatar}
                         assistiveText={contactInfo.name}
                         title={contactInfo.name}
-                        className="rainbow-m-right_medium"
                     />
                     <ConfigButtonMenu/>
                 </StyledAvatarContainer>
-                <div className="rainbow-flex_column">
+                <div className="rainbow-flex_column rainbow-m-left_medium">
                     <FormNameLabel className="rainbow-m-top_small">
                         {contactInfo.name}
                     </FormNameLabel>
