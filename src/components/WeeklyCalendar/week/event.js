@@ -14,7 +14,7 @@ import RenderIf from '../../RenderIf';
 
 export default function Event(props) {
     const { onEventClick, locale, ...event } = props;
-    const { title, startDate, endDate } = event;
+    const { title, startDate, endDate, color, backgroundColor } = event;
     const eventId = useUniqueIdentifier('calendar-event');
     const duration = useEventDuration(startDate, endDate);
     const style = useEventStyle(startDate, duration);
@@ -22,7 +22,13 @@ export default function Event(props) {
     const formattedStartDate = useFormattedEventStartDate(startDate, locale);
 
     return (
-        <StyledEvent id={eventId} style={style} onClick={() => onEventClick(event)}>
+        <StyledEvent
+            id={eventId}
+            style={style}
+            color={color}
+            backgroundColor={backgroundColor}
+            onClick={() => onEventClick(event)}
+        >
             <StyledEventItem>
                 <StyledEventTitle>{title}</StyledEventTitle>
                 <RenderIf isTrue={duration < 60}>
@@ -41,6 +47,8 @@ Event.propTypes = {
     title: PropTypes.string.isRequired,
     startDate: PropTypes.instanceOf(Date).isRequired,
     endDate: PropTypes.instanceOf(Date).isRequired,
+    color: PropTypes.string,
+    backgroundColor: PropTypes.string,
     onEventClick: PropTypes.func,
     locale: PropTypes.string,
 };
@@ -48,4 +56,6 @@ Event.propTypes = {
 Event.defaultProps = {
     onEventClick: () => {},
     locale: undefined,
+    color: undefined,
+    backgroundColor: undefined,
 };

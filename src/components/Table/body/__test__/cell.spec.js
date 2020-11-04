@@ -66,6 +66,8 @@ describe('<Cell /> when isFirst is not passed', () => {
         );
         expect(component.find('CellComponent').props()).toEqual({
             otherData: 'qwerty1234',
+            isEditable: false,
+            onChange: expect.any(Function),
             row: {
                 emai: 'john@gmail.com',
                 name: 'John',

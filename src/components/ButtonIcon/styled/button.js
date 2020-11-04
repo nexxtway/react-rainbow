@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { COLOR_WHITE, COLOR_GRAY_3, COLOR_DARK_1 } from '../../../styles/colors';
-import { lighten } from '../../../styles/helpers/color';
+import { lighten, colorToRgba, replaceAlpha } from '../../../styles/helpers/color';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
@@ -269,58 +269,66 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
                 background-color: transparent;
             }
         `};
-    ${props =>
-        props.variant === 'inverse' &&
-        `
-            background-color: transparent;
-            border: 1px solid transparent;
-            color: ${props.inverse.text};
-        
-            &:hover,
-            &:focus,
-            &:active {
-                color: ${props.inverse.active};
-            }
-        
-            &:focus {
-                outline: none;
-                box-shadow: ${props.shadows.shadow_5};
-            }
-        
-            &[disabled] {
+    ${props => {
+        const inverseBackgroundColor = replaceAlpha(colorToRgba(props.inverse.active), 0.1);
+
+        if (props.variant === 'inverse') {
+            return `
+                    background-color: transparent;
+                    border: 1px solid transparent;
+                    color: ${props.inverse.text};
+                
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        color: ${props.inverse.active};
+                        background-color: ${inverseBackgroundColor}
+                    }
+                
+                    &:focus {
+                        outline: none;
+                        box-shadow: ${props.shadows.shadow_5};
+                    }
+                
+                    &[disabled] {
+                        background-color: transparent;
+                        color: ${props.inverse.disabled};
+                    }
+                `;
+        }
+        return (
+            props.variant === 'border-inverse' &&
+            `
                 background-color: transparent;
-                color: ${props.inverse.disabled};
-            }
-        `};
-    ${props =>
-        props.variant === 'border-inverse' &&
-        `
-            background-color: transparent;
-            border: 1px solid ${props.inverse.border};
-            color: ${props.inverse.text};
-        
-            &:hover,
-            &:focus,
-            &:active {
-                border-color: ${props.inverse.active};
-                color: ${props.inverse.active};
-            }
-        
-            &:focus {
-                outline: none;
-                box-shadow: ${props.shadows.shadow_5};
-            }
-        
-            &[disabled] {
-                background-color: transparent;
-                border-color: ${props.inverse.disabled};
-                color: ${props.inverse.disabled};
-            }
-        `};
+                border: 1px solid ${props.inverse.border};
+                color: ${props.inverse.text};
+            
+                &:hover,
+                &:focus,
+                &:active {
+                    border-color: ${props.inverse.active};
+                    color: ${props.inverse.active};
+                    background-color: ${inverseBackgroundColor}
+                }
+            
+                &:focus {
+                    outline: none;
+                    box-shadow: ${props.shadows.shadow_5};
+                }
+            
+                &[disabled] {
+                    background-color: transparent;
+                    border-color: ${props.inverse.disabled};
+                    color: ${props.inverse.disabled};
+                }
+            `
+        );
+    }};
     ${props =>
         props.shaded &&
         `
-            box-shadow: ${props.shadows.shadow_3};
+            box-shadow: ${props.shadows.shadow_10};
+            border: 1px solid transparent;
         `};
     ${props =>
         props.size === 'xx-small' &&

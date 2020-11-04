@@ -3,8 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
+ * A column is a vertical element of a table that contains data.
+ * The Column component is an abstraction that allows us to represent data of the same data type.
+ * Both components (Table and Column) are related and should be implemented together.
  * @category DataView
  */
+
 export default function Column() {
     return <div />;
 }
@@ -46,6 +50,10 @@ Column.propTypes = {
     defaultWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The data type to be used for data formatting in cell. */
     type: PropTypes.oneOf(['text', 'action']),
+    /** A boolean that specifies whether a column is editable or not. Its default value is false.  */
+    isEditable: PropTypes.bool,
+    /** The action triggered when a value attribute changes. */
+    onChange: PropTypes.func,
 };
 
 Column.defaultProps = {
@@ -56,4 +64,6 @@ Column.defaultProps = {
     width: undefined,
     defaultWidth: undefined,
     type: 'text',
+    isEditable: false,
+    onChange: () => {},
 };

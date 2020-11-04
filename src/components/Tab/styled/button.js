@@ -3,7 +3,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { PADDING_X_SMALL } from '../../../styles/paddings';
 import { FONT_SIZE_TEXT_SMALL, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
-const variants = ['card', 'line'];
+const variantMap = { card: 'card', line: 'line' };
 const StyledAnchor = attachThemeAttrs(styled.button)`
     font: inherit;
     background: none;
@@ -54,7 +54,7 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
     }
 
     ${props =>
-        (props.variant === 'card' || !variants.includes(props.variant)) &&
+        (variantMap[props.variant] === 'card' || !variantMap[props.variant]) &&
         `
             &:hover {
                 background-color: ${props.palette.action.hover};
@@ -110,7 +110,7 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
     
     ${props =>
         props.isActive &&
-        (props.variant === 'card' || !variants.includes(props.variant)) &&
+        (variantMap[props.variant] === 'card' || !variantMap[props.variant]) &&
         `
             z-index: 2;
             background-color: ${props.palette.background.main};

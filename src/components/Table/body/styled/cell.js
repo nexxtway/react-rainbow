@@ -44,9 +44,9 @@ const StyledCell = attachThemeAttrs(styled.th)`
             overflow: hidden;
             padding-left: 0.75rem;
         }
-    `}
 
-    
+
+    `}
 
     :focus {
         outline: none;
@@ -55,6 +55,19 @@ const StyledCell = attachThemeAttrs(styled.th)`
             border-color: ${props => props.palette.brand.main};
         }
     }
+
+    ${props =>
+        props.isEditable &&
+        `
+        :focus {
+            outline: none;
+            > div {
+                border-color: transparent;
+            }
+        }
+    `}
+
+    
 `;
 
 export default StyledCell;

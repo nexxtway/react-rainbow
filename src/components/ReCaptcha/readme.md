@@ -153,7 +153,7 @@ class ReCaptchaExample extends React.Component {
                     <div className="rainbow-flex rainbow-align-content_space-between">
                         <ReCaptcha
                             siteKey={LIBRARY_RECAPTCHA_APIKEY}
-                            ref={this.reCaptchaRef} 
+                            ref={this.reCaptchaRef}
                             error={recaptchaError}
                             onChange={this.handleReCaptchaSuccess}
                         />
@@ -165,13 +165,13 @@ class ReCaptchaExample extends React.Component {
     }
 }
 
-<ReCaptchaExample />;
+    <ReCaptchaExample />;
 ```
 
 ##### dark recaptcha with redux form
 
 ```js
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import { ReCaptcha, Input, Textarea, Button } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -278,5 +278,5 @@ function ReCaptchaExample() {
     );
 }
 
-<ReCaptchaExample />;
+    <ReCaptchaExample />;
 ```

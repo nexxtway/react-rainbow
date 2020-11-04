@@ -16,7 +16,7 @@ export interface MultiSelectProps extends BaseProps {
     required?: boolean;
     disabled?: boolean;
     readOnly?: boolean;
-    variant?: 'default' | 'chip';
+    variant?: 'default' | 'chip' | 'bare';
     chipVariant?: 'base' | 'neutral' | 'outline-brand' | 'brand';
     isBare?: boolean;
     labelAlignment?: LabelAlignment;

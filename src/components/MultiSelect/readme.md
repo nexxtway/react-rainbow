@@ -1,14 +1,14 @@
 ##### MultiSelect base
 
 ```js
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { MultiSelect, Option } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
 };
 
-const MultiSelectExample = props => {
+const MultiSelectExample = () => {
     const [value, setValue] = useState([]);
 
     return (
@@ -32,24 +32,24 @@ const MultiSelectExample = props => {
             <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
             <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
             <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
-        </MultiSelect>          
+        </MultiSelect>
     )
 }
 
-<MultiSelectExample />
+    <MultiSelectExample />
 ```
 
 ##### MultiSelect with chip variant
 
 ```js
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { MultiSelect, Option } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
 };
 
-const MultiSelectExample = props => {
+const MultiSelectExample = () => {
     const [value, setValue] = useState([]);
 
     return (
@@ -74,11 +74,11 @@ const MultiSelectExample = props => {
             <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
             <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
             <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
-        </MultiSelect>          
+        </MultiSelect>
     )
 }
 
-<MultiSelectExample />
+    <MultiSelectExample />
 ```
 
 ##### MultiSelect bare
@@ -91,7 +91,7 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-const MultiSelectExample = props => {
+const MultiSelectExample = () => {
     const [value, setValue] = useState([]);
 
     return (
@@ -103,7 +103,7 @@ const MultiSelectExample = props => {
             value={value}
             onChange={setValue}
             bottomHelpText="You can select several options"
-            isBare
+            variant='bare'
         >
             <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
             <Option name="option-2" label="New Building" icon={<AddFilledIcon />} />
@@ -118,7 +118,7 @@ const MultiSelectExample = props => {
     )
 }
 
-<MultiSelectExample />
+    <MultiSelectExample />
 ```
 
 ##### MultiSelect with error
@@ -131,7 +131,7 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-const MultiSelectExample = props => {
+const MultiSelectExample = () => {
     const [value, setValue] = useState([]);
 
     const handleChange = val => {
@@ -157,17 +157,17 @@ const MultiSelectExample = props => {
             <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
             <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
             <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
-        </MultiSelect>          
+        </MultiSelect>
     )
 }
 
-<MultiSelectExample />
+    <MultiSelectExample />
 ```
 
 ##### MultiSelect readOnly
 
 ```js
-import React, { useState } from 'react';
+import React from 'react';
 import { MultiSelect, Option } from 'react-rainbow-components';
 
 const containerStyles = {
@@ -179,7 +179,7 @@ const value = [{
     name: 'all',
 }];
 
-const MultiSelectExample = props => {  
+const MultiSelectExample = () => {
     return (
         <div>
             <MultiSelect
@@ -200,8 +200,8 @@ const MultiSelectExample = props => {
                 <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
                 <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
                 <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
-            </MultiSelect>  
-            
+            </MultiSelect>
+
             <MultiSelect
                 id="multiselect-component-9"
                 label="MultiSelect Label"
@@ -221,12 +221,12 @@ const MultiSelectExample = props => {
                 <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
                 <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
                 <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
-            </MultiSelect>  
+            </MultiSelect>
         </div>
     )
 }
 
-<MultiSelectExample />
+    <MultiSelectExample />
 ```
 
 ##### MultiSelect disabled
@@ -239,12 +239,8 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-const MultiSelectExample = props => {
+const MultiSelectExample = () => {
     const [value, setValue] = useState([]);
-
-    const handleChange = val => {
-        setValue(val);
-    }
 
     return (
         <MultiSelect
@@ -254,7 +250,7 @@ const MultiSelectExample = props => {
             style={containerStyles}
             className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
             value={value}
-            onChange={handleChange}
+            onChange={setValue}
             disabled
         >
             <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
@@ -266,9 +262,9 @@ const MultiSelectExample = props => {
             <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
             <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
             <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
-        </MultiSelect>          
+        </MultiSelect>
     )
 }
 
-<MultiSelectExample />
+    <MultiSelectExample />
 ```

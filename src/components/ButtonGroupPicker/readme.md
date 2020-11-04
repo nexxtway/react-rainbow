@@ -19,13 +19,13 @@ class ButtonGroupPickerTry extends React.Component {
         const { value } = this.state;
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-                <ButtonGroupPicker 
+                <ButtonGroupPicker
                     id="button-group-picker-component-1"
-                    label="Select view type" 
-                    value={value} 
-                    onChange={this.handleOnChange} 
-                    name="filter" 
-                    size="medium" 
+                    label="Select view type"
+                    value={value}
+                    onChange={this.handleOnChange}
+                    name="filter"
+                    size="medium"
                     bottomHelpText="Select one option"
                 >
                     <ButtonOption label="Month" name="month" />
@@ -37,7 +37,7 @@ class ButtonGroupPickerTry extends React.Component {
     }
 }
 
-<ButtonGroupPickerTry />;
+    <ButtonGroupPickerTry />;
 
 ```
 
@@ -55,7 +55,7 @@ class ButtonGroupPickerTry extends React.Component {
         this.state = { values: [
             'bold',
             'italic',
-        ]};
+        ] };
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
@@ -67,13 +67,13 @@ class ButtonGroupPickerTry extends React.Component {
         const { values } = this.state;
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-                <ButtonGroupPicker 
+                <ButtonGroupPicker
                     id="button-group-picker-component-3"
-                    className="rainbow-m-around_medium" 
-                    value={values} 
-                    onChange={this.handleOnChange} 
+                    className="rainbow-m-around_medium"
+                    value={values}
+                    onChange={this.handleOnChange}
                     name="text-options-multiple"
-                    multiple 
+                    multiple
                 >
                     <ButtonOption label={<FontAwesomeIcon icon={faBold} />} name="bold" />
                     <ButtonOption label={<FontAwesomeIcon icon={faItalic} />} name="italic" />
@@ -85,7 +85,7 @@ class ButtonGroupPickerTry extends React.Component {
     }
 }
 
-<ButtonGroupPickerTry />;
+    <ButtonGroupPickerTry />;
 
 ```
 
@@ -100,7 +100,7 @@ import { faAlignLeft, faAlignCenter, faAlignRight } from '@fortawesome/free-soli
 class ButtonGroupPickerTry extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { value: ''};
+        this.state = { value: '' };
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
@@ -112,11 +112,11 @@ class ButtonGroupPickerTry extends React.Component {
         const { value } = this.state;
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-                <ButtonGroupPicker 
+                <ButtonGroupPicker
                     id="button-group-picker-component-5"
-                    className="rainbow-m-around_medium" 
-                    value={value} 
-                    onChange={this.handleOnChange} 
+                    className="rainbow-m-around_medium"
+                    value={value}
+                    onChange={this.handleOnChange}
                     name="text-options"
                 >
                     <ButtonOption label={<FontAwesomeIcon icon={faAlignLeft} />} name="left" disabled />
@@ -128,7 +128,7 @@ class ButtonGroupPickerTry extends React.Component {
     }
 }
 
-<ButtonGroupPickerTry />;
+    <ButtonGroupPickerTry />;
 
 ```
 
@@ -141,7 +141,7 @@ import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
 class ButtonGroupPickerTry extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { value: ''};
+        this.state = { value: '' };
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
@@ -153,11 +153,11 @@ class ButtonGroupPickerTry extends React.Component {
         const { value } = this.state;
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-                <ButtonGroupPicker 
-                    label="Select view type" 
-                    value={value} 
-                    onChange={this.handleOnChange} 
-                    name="date-filter" 
+                <ButtonGroupPicker
+                    label="Select view type"
+                    value={value}
+                    onChange={this.handleOnChange}
+                    name="date-filter"
                     error="This field is required"
                     required
                 >
@@ -170,6 +170,6 @@ class ButtonGroupPickerTry extends React.Component {
     }
 }
 
-<ButtonGroupPickerTry />;
+    <ButtonGroupPickerTry />;
 
 ```

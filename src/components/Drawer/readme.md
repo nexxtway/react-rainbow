@@ -8,28 +8,28 @@ const initialState = {
     isOpen: false,
 };
 
-<div
-    className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
->
-    <div className="rainbow-flex rainbow-flex_row">
-        <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
-            <Button
-                id="button-1"
-                className="rainbow-m-around_medium"
-                label="Open Drawer"
-                onClick={() => setState({
+    <div
+        className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
+    >
+        <div className="rainbow-flex rainbow-flex_row">
+            <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
+                <Button
+                    id="button-1"
+                    className="rainbow-m-around_medium"
+                    label="Open Drawer"
+                    onClick={() => setState({
                     isOpen: true,
                 })}
-            />
+                />
+            </div>
         </div>
+        <Drawer
+            id="drawer-1"
+            header="This is a drawer"
+            isOpen={state.isOpen}
+            onRequestClose={() => setState({ isOpen : false })}
+        />
     </div>
-    <Drawer
-        id="drawer-1"
-        header="This is a drawer"
-        isOpen={state.isOpen}
-        onRequestClose={() => setState({ isOpen : false })}
-    />
-</div>
 ```
 
 ##### Drawer example with position:
@@ -43,41 +43,41 @@ const initialState = {
     isOpenLeft: false,
 };
 
-<div
-    className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
->
-    <div className="rainbow-flex rainbow-flex_row">
-        <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
-            <Button
-                className="rainbow-m-around_medium"
-                label="Slide from left"
-                onClick={() => setState({
-                    isOpenLeft: true,
-                })}
-            />
+    <div
+        className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
+    >
+        <div className="rainbow-flex rainbow-flex_row">
+            <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
+                <Button
+                    className="rainbow-m-around_medium"
+                    label="Slide from left"
+                    onClick={() => setState({
+                        isOpenLeft: true,
+                    })}
+                />
+            </div>
+            <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
+                <Button
+                    className="rainbow-m-around_medium"
+                    label="Slide from right"
+                    onClick={() => setState({
+                        isOpenRight: true,
+                    })}
+                />
+            </div>
         </div>
-        <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
-            <Button
-                className="rainbow-m-around_medium"
-                label="Slide from right"
-                onClick={() => setState({
-                    isOpenRight: true,
-                })}
-            />
-        </div>
+        <Drawer
+            header="This is a drawer"
+            slideFrom="right"
+            isOpen={state.isOpenRight}
+            onRequestClose={() => setState({ isOpenRight : false })}
+        />
+        <Drawer
+            header="This is a drawer"
+            isOpen={state.isOpenLeft}
+            onRequestClose={() => setState({ isOpenLeft : false })}
+        />
     </div>
-    <Drawer
-        header="This is a drawer"
-        slideFrom="right"
-        isOpen={state.isOpenRight}
-        onRequestClose={() => setState({ isOpenRight : false })}
-    />
-    <Drawer
-        header="This is a drawer"
-        isOpen={state.isOpenLeft}
-        onRequestClose={() => setState({ isOpenLeft : false })}
-    />
-</div>
 ```
 
 ##### Drawer with different sizes:
@@ -91,59 +91,59 @@ const initialState = {
     size: null,
 };
 
-<div
-    className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
->
-    <div className="rainbow-flex rainbow-flex_row">
-        <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
-            <Button
-                className="rainbow-m-around_medium"
-                label="Drawer small"
-                onClick={() => setState({
+    <div
+        className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
+    >
+        <div className="rainbow-flex rainbow-flex_row">
+            <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
+                <Button
+                    className="rainbow-m-around_medium"
+                    label="Drawer small"
+                    onClick={() => setState({
                     isOpen: true,
                     size: 'small',
                 })}
-            />
-        </div>
-        <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
-            <Button
-                className="rainbow-m-around_medium"
-                label="Drawer medium"
-                onClick={() => setState({
+                />
+            </div>
+            <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
+                <Button
+                    className="rainbow-m-around_medium"
+                    label="Drawer medium"
+                    onClick={() => setState({
                     isOpen: true,
                     size: 'medium',
                 })}
-            />
-        </div>
-        <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
-            <Button
-                className="rainbow-m-around_medium"
-                label="Drawer large"
-                onClick={() => setState({
+                />
+            </div>
+            <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
+                <Button
+                    className="rainbow-m-around_medium"
+                    label="Drawer large"
+                    onClick={() => setState({
                     isOpen: true,
                     size: 'large',
                 })}
-            />
-        </div>
-                <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
-            <Button
-                className="rainbow-m-around_medium"
-                label="Drawer Full"
-                onClick={() => setState({
+                />
+            </div>
+            <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
+                <Button
+                    className="rainbow-m-around_medium"
+                    label="Drawer Full"
+                    onClick={() => setState({
                     isOpen: true,
                     size: 'full',
                 })}
-            />
+                />
+            </div>
         </div>
+        <Drawer
+            id="drawer-3"
+            header="This is a drawer"
+            size={state.size}
+            isOpen={state.isOpen}
+            onRequestClose={() => setState({ isOpen : false })}
+        />
     </div>
-    <Drawer
-        id="drawer-3"
-        header="This is a drawer"
-        size={state.size}
-        isOpen={state.isOpen}
-        onRequestClose={() => setState({ isOpen : false })}
-    />
-</div>
 ```
 
 ##### Drawer:
@@ -191,14 +191,6 @@ const StyledExampleHeader = styled.h3.attrs(props => {
     font-style: normal;
     line-height: normal;
     letter-spacing: 1.19px;
-    text-align: center;
-    color: ${props => props.text.main};
-`;
-
-const StyledHeader = styled.div.attrs(props => {
-    return props.theme.rainbow.palette;
-})
-`
     text-align: center;
     color: ${props => props.text.main};
 `;
@@ -304,7 +296,7 @@ function Contact({ id, avatar, name, email, onShowDetails }) {
 }
 
 function EditContactForm(props) {
-    const { contactInfo, handleSubmit, reset } = props;
+    const { contactInfo, handleSubmit } = props;
     const [countriesList, setCountriesList] = useState(countries);
 
     if (!contactInfo) return null;
@@ -456,28 +448,28 @@ const users = [{
 
 const initialState = { isOpen: false, info: null };
 
-<div className="rainbow-m-around_xx-large rainbow-flex_column rainbow-align-content_center">
-    <StyledExampleHeader className="rainbow-p-bottom_small">Contributors</StyledExampleHeader>
-    <div className="rainbow-flex rainbow-flex_wrap">
-        <UsersList values={users} />
-    </div>
-    <Drawer
-        id="drawer-7"
-        header="Edit Information"
-        slideFrom="right"
-        footer={
-            <DrawerFooter
-                onCancel={() => closeDrawer()}
-                onSave={() => closeDrawer()}
-            />
+    <div className="rainbow-m-around_xx-large rainbow-flex_column rainbow-align-content_center">
+        <StyledExampleHeader className="rainbow-p-bottom_small">Contributors</StyledExampleHeader>
+        <div className="rainbow-flex rainbow-flex_wrap">
+            <UsersList values={users} />
+        </div>
+        <Drawer
+            id="drawer-7"
+            header="Edit Information"
+            slideFrom="right"
+            footer={
+                <DrawerFooter
+                    onCancel={() => closeDrawer()}
+                    onSave={() => closeDrawer()}
+                />
             }
-        isOpen={state.isOpen}
-        onRequestClose={() => closeDrawer()}
-    >
-        <Form
-            contactInfo={state.info}
-            initialValues={state.info}
-        />
-    </Drawer>
-</div>
+            isOpen={state.isOpen}
+            onRequestClose={() => closeDrawer()}
+        >
+            <Form
+                contactInfo={state.info}
+                initialValues={state.info}
+            />
+        </Drawer>
+    </div>
 ```

@@ -1,6 +1,7 @@
 ##### Basic:
 
 ```js
+/* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
 import { PicklistOption } from 'react-rainbow-components';
 
@@ -23,12 +24,13 @@ function BasicInternalDropdown() {
     );
 }
 
-<BasicInternalDropdown />
+    <BasicInternalDropdown />
 ```
 
 ##### With search input:
 
 ```js
+/* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
 import { PicklistOption } from 'react-rainbow-components';
 
@@ -51,12 +53,13 @@ function InternalDropdownWithSearch() {
     );
 }
 
-<InternalDropdownWithSearch />
+    <InternalDropdownWithSearch />
 ```
 
 ##### With multiple selection:
 
 ```js
+/* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
 import { PicklistOption } from 'react-rainbow-components';
 
@@ -79,5 +82,5 @@ function InternalDropdownWithMultipleSelection() {
     );
 }
 
-<InternalDropdownWithMultipleSelection />
+    <InternalDropdownWithMultipleSelection />
 ```

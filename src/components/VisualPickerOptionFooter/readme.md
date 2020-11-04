@@ -24,8 +24,9 @@ class SimpleVisualPicker extends React.Component {
     }
 
     render() {
+        const { value } = this.state;
         return (
-            <VisualPicker value={this.state.value} onChange={this.handleOnChange}>
+            <VisualPicker value={value} onChange={this.handleOnChange}>
                 <VisualPickerOption
                     name="option-1"
                     footer={
@@ -39,7 +40,7 @@ class SimpleVisualPicker extends React.Component {
     }
 }
 
-<div className="rainbow-align-content_center rainbow-m-around_xx-large">
-    <SimpleVisualPicker />
-</div>
+    <div className="rainbow-align-content_center rainbow-m-around_xx-large">
+        <SimpleVisualPicker />
+    </div>
 ```
