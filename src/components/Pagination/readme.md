@@ -243,7 +243,7 @@ const PaginationShadedExample = () => {
                 />
             </div>
         </div>
-    );  
+    );
 }
 
     <PaginationShadedExample />;
