@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
@@ -51,6 +51,7 @@ export default function Drawer(props) {
     const contentId = useUniqueIdentifier('drawer-content');
     const triggerRef = useRef(null);
     const drawerRef = useRef(null);
+    const containerRef = useRef(null);
     const contentRef = useRef(null);
     const [drawerState, setDrawerState] = useState(
         isOpen ? DrawerState.OPENED : DrawerState.CLOSED,
@@ -95,12 +96,31 @@ export default function Drawer(props) {
 
     const closeDrawer = () => onRequestClose();
 
-    const handleBackDropClick = event => {
-        if (isOpen && drawerRef.current.contains(event.target)) {
+    const handleBackDropClick = useCallback(event => {
+        if (drawerRef.current.contains(event.target)) {
             return null;
         }
         return closeDrawer();
-    };
+    }, []);
+
+    // const handleBackDropClick = event => {
+    //     if (isOpen && drawerRef.current.contains(event.target)) {
+    //         return null;
+    //     }
+    //     return closeDrawer();
+    // };
+
+    useEffect(() => {
+        const node = containerRef.current;
+        if (drawerState === 1) {
+            node.addEventListener('click', handleBackDropClick);
+        }
+        return () => {
+            if (node) {
+                node.removeEventListener('click', handleBackDropClick);
+            }
+        };
+    }, [drawerState, handleBackDropClick]);
 
     const handleKeyPressed = event => {
         event.stopPropagation();
@@ -119,7 +139,8 @@ export default function Drawer(props) {
             <StyledBackDrop
                 id={id}
                 role="presentation"
-                onClick={handleBackDropClick}
+                ref={containerRef}
+                // onClick={handleBackDropClick}
                 onKeyDown={handleKeyPressed}
             >
                 <StyledContainer
