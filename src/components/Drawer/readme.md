@@ -311,15 +311,15 @@ function Contact({ id, avatar, name, email, onShowDetails }) {
 function ConfigButtonMenu(){
     return (
         <StyledButtonMenu
-                menuAlignment="right"
-                menuSize="x-small"
-                buttonSize="small"
-                buttonVariant="border-filled"
-                icon={<Camera />}
-                id="edit-profile-photo"
+            menuAlignment="right"
+            menuSize="x-small"
+            buttonSize="small"
+            buttonVariant="border-filled"
+            icon={<Camera />}
+            id="edit-profile-photo"
         >
-                <MenuItem label="Upload a new photo" />
-                <MenuItem label="Open gallery" />
+            <MenuItem label="Upload a new photo" />
+            <MenuItem label="Open gallery" />
         </StyledButtonMenu>
     )
 }
