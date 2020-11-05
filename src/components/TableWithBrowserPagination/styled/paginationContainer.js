@@ -21,6 +21,13 @@ const StyledPaginationContainer = attachThemeAttrs(styled.div)`
         `
             justify-content: flex-start;
         `};
+    ${props =>
+        props.variant === 'shaded' &&
+        `
+        background-color: transparent;
+        border-top: none;
+        border-bottom: none;
+    `}
 `;
 
 export default StyledPaginationContainer;

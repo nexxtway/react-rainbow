@@ -107,3 +107,41 @@ const StatusBadge = ({ value }) => <StyledBadge label={value} variant="lightest"
         </TableWithBrowserPagination>
     </div>
 ```
+
+##### A table with pagination and variant listview:
+
+```js
+import React from 'react';
+import { TableWithBrowserPagination, Column, Badge } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const StyledBadge = styled(Badge)`
+    color: #1de9b6;
+`;
+
+const StyledContainer = styled('div')`
+    margin: 0 20px;
+`;
+
+const StatusBadge = ({ value }) => <StyledBadge label={value} variant="lightest" />;
+
+const ShadedTableWithBrowserPagination = () => {
+    return(
+        <div className="rainbow-m-bottom_xx-large">
+            <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg" />
+            <StyledContainer>
+                <TableWithBrowserPagination pageSize={5} data={Users} keyField="id" variant="listview">
+                    <Column header="Name" field="name" />
+                    <Column header="Status" field="status" component={StatusBadge} />
+                    <Column header="Company" field="company" />
+                    <Column header="Email" field="email" />
+                    <Column header="Date of Birth" field="dob" />
+                    <Column header="City" field="city" />
+                </TableWithBrowserPagination>
+            </StyledContainer>
+        </div>
+    )
+}
+
+    <ShadedTableWithBrowserPagination />
+```
