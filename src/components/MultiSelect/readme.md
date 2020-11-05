@@ -103,7 +103,7 @@ const MultiSelectExample = () => {
             value={value}
             onChange={setValue}
             bottomHelpText="You can select several options"
-            isBare
+            variant='bare'
         >
             <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
             <Option name="option-2" label="New Building" icon={<AddFilledIcon />} />
