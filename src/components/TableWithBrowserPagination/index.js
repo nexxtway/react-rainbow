@@ -141,7 +141,7 @@ TableWithBrowserPagination.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The variant changes the appearance of the button. Accepted variants include default and listview. */
+    /** The variant changes the appearance of the table. Accepted variants include default and listview. */
     variant: PropTypes.oneOf(['default', 'listview']),
     /**
      * This prop that should not be visible in the documentation.
