@@ -108,7 +108,7 @@ const StatusBadge = ({ value }) => <StyledBadge label={value} variant="lightest"
     </div>
 ```
 
-##### A table with pagination and variant listview:
+##### A table with shaded pagination and variant listview:
 
 ```js
 import React from 'react';
@@ -125,7 +125,7 @@ const StyledContainer = styled('div')`
 
 const StatusBadge = ({ value }) => <StyledBadge label={value} variant="lightest" />;
 
-const ShadedTableWithBrowserPagination = () => {
+const ListviewTableWithBrowserPagination = () => {
     return(
         <div className="rainbow-m-bottom_xx-large">
             <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg" />
@@ -143,5 +143,5 @@ const ShadedTableWithBrowserPagination = () => {
     )
 }
 
-    <ShadedTableWithBrowserPagination />
+    <ListviewTableWithBrowserPagination />
 ```
