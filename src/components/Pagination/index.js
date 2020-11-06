@@ -8,6 +8,8 @@ import StyledNav from './styled/nav';
 import StyledPaginationContainer from './styled/paginationContainer';
 
 /**
+ * The Pagination component shows you the pagination options for dividing content into pages. 
+ * It is very useful when you want to display a large recordset on multiple pages. 
  * @category Layout
  */
 export default function Pagination(props) {
