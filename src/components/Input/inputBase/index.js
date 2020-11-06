@@ -206,7 +206,7 @@ InputBase.propTypes = {
     onKeyDown: PropTypes.func,
     className: PropTypes.string,
     style: PropTypes.object,
-    variant: PropTypes.oneOf(['default', 'shaded']),
+    variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
     id: PropTypes.string,
     autoComplete: PropTypes.string,
     labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
