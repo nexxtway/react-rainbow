@@ -82,7 +82,7 @@ describe('<TimePicker/>', () => {
             expect(component.find('Modal').prop('isOpen')).toBe(false);
         });
     });
-    it('should call to focusHourInput when the modal is open', () => {
+    it('should focus hour input when modal is open', () => {
         const wrapper = mount(<TimePicker label="unit-testing-timePicker" />);
         wrapper.find('input').simulate('click');
         expect(

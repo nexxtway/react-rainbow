@@ -6,7 +6,6 @@ import Input from '../Input/pickerInput';
 import TimeSelect from './timeSelect';
 import get12HourTime from './helpers/get12HourTime';
 import getInputValue from './helpers/getInputValue';
-import withReduxForm from '../../libs/hocs/withReduxForm';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import StyledContainer from './styled/container';
 import StyledModal from './styled/modal';
@@ -150,7 +149,6 @@ TimePicker.propTypes = {
     /** Sets the date for the TimePicker programmatically. */
     value: PropTypes.string,
     /** Override the label of the 'Cancel' button. */
-    // eslint-disable-next-line react/no-unused-prop-types
     cancelLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Override the label of the 'OK' button. */
     okLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -225,4 +223,4 @@ TimePicker.defaultProps = {
     hour24: false,
 };
 
-export default withReduxForm(TimePicker);
+export default TimePicker;
