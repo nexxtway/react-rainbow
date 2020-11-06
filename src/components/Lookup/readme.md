@@ -70,6 +70,152 @@ const initialState = { options: null };
     />;
 ```
 
+##### Lookup using shaded variant
+
+```js
+import React from 'react';
+import { Lookup } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+const data = [
+    { label: 'Paris' },
+    { label: 'New York' },
+    { label: 'San Fransisco' },
+    { label: 'Madrid' },
+    { label: 'Miami' },
+    { label: 'London' },
+    { label: 'Tokyo' },
+    { label: 'Barcelona' },
+    { label: 'La Habana' },
+    { label: 'Buenos Aires' },
+    { label: 'Sao Paulo' },
+    { label: 'Toronto' },
+];
+
+function filter(query, options) {
+    if (query) {
+        return options.filter(item => {
+            const regex = new RegExp(query, 'i');
+            return regex.test(item.label);
+        });
+    }
+    return [];
+}
+
+function search(value) {
+    if (state.options && state.value && value.length > state.value.length) {
+        setState({
+            options: filter(value, state.options),
+            value,
+        });
+    } else if (value) {
+        setState({
+            value,
+        });
+        setState({
+            options: filter(value, data),
+            value,
+        });
+    } else {
+        setState({
+            value: '',
+            options: null,
+        });
+    }
+}
+
+const initialState = { options: null };
+
+    <Lookup
+        id="lookup-1"
+        label="Lookup Label"
+        placeholder="Find"
+        options={state.options}
+        value={state.option}
+        onChange={option => setState({ option })}
+        onSearch={search}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        variant='shaded'
+    />;
+```
+
+##### Lookup using bare variant
+
+```js
+import React from 'react';
+import { Lookup } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+const data = [
+    { label: 'Paris' },
+    { label: 'New York' },
+    { label: 'San Fransisco' },
+    { label: 'Madrid' },
+    { label: 'Miami' },
+    { label: 'London' },
+    { label: 'Tokyo' },
+    { label: 'Barcelona' },
+    { label: 'La Habana' },
+    { label: 'Buenos Aires' },
+    { label: 'Sao Paulo' },
+    { label: 'Toronto' },
+];
+
+function filter(query, options) {
+    if (query) {
+        return options.filter(item => {
+            const regex = new RegExp(query, 'i');
+            return regex.test(item.label);
+        });
+    }
+    return [];
+}
+
+function search(value) {
+    if (state.options && state.value && value.length > state.value.length) {
+        setState({
+            options: filter(value, state.options),
+            value,
+        });
+    } else if (value) {
+        setState({
+            value,
+        });
+        setState({
+            options: filter(value, data),
+            value,
+        });
+    } else {
+        setState({
+            value: '',
+            options: null,
+        });
+    }
+}
+
+const initialState = { options: null };
+
+    <Lookup
+        id="lookup-1"
+        label="Lookup Label"
+        placeholder="Find"
+        options={state.options}
+        value={state.option}
+        onChange={option => setState({ option })}
+        onSearch={search}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        variant='bare'
+    />;
+```
+
 ##### Lookup small with icon and description
 
 ```js
