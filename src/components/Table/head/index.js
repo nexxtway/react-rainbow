@@ -51,7 +51,6 @@ Head.propTypes = {
     sortDirection: PropTypes.string,
     defaultSortDirection: PropTypes.string,
     sortedBy: PropTypes.string,
-    hasScroll: PropTypes.bool,
 };
 
 Head.defaultProps = {
@@ -59,5 +58,4 @@ Head.defaultProps = {
     sortDirection: undefined,
     defaultSortDirection: 'asc',
     sortedBy: undefined,
-    hasScroll: false,
 };
