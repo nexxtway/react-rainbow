@@ -18,6 +18,7 @@ export interface ButtonMenuProps extends BaseProps {
     onFocus?: (event: FocusEvent<HTMLElement>) => void;
     onBlur?: (event: FocusEvent<HTMLElement>) => void;
     id?: string;
+    label?: ReactNode;
 }
 
 export default function(props: ButtonMenuProps): JSX.Element | null;
