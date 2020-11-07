@@ -205,7 +205,7 @@ export const StyledButtonIcon = styled(ButtonIcon)`
     pointer-events: auto;
     margin-right: 6px;
     ${props =>
-        props.variant === 'multiline' &&
+        props.pickerVariant === 'multiline' &&
         `
         position: absolute;
         top: 12px;

@@ -58,7 +58,7 @@ const StyledButton = attachThemeAttrs(styled.button)`
         props.variant === 'shaded' &&
         !props.disabled &&
         `
-        box-shadow:${props.disabled ? '' : props.shadows.shadow_10};
+        box-shadow:${props.shadows.shadow_10};
         border: 1px solid transparent;
     `}
 
