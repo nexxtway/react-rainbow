@@ -181,18 +181,14 @@ import React, { useState } from 'react';
 import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
 
 const ButtonGroupPickerTry = () => {
-    const [state, setState] = useState('');
-
-    const handleOnChange = value => {
-        setState( value );
-    }
+    const [value, setValue] = useState('');
 
     return (
         <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
             <ButtonGroupPicker
                 label="Select view type"
-                value={state}
-                onChange={handleOnChange}
+                value={value}
+                onChange={() => setValue(value)}
                 name="filter"
                 size="medium"
                 bottomHelpText="Select one option"
