@@ -72,8 +72,21 @@ const Input = attachThemeAttrs(styled.input)`
         ${props =>
             props.variant === 'bare' &&
             `
-            background: transparent;
-            border-color: transparent;
+            background-color: transparent;
+            border: 0;
+            padding: 0 0.75rem;
+            color: ${props.palette.text.main};
+            line-height: 2.5rem;
+            transition: none;
+
+            &:focus,
+            &:active {
+                outline: 0;
+                box-shadow: none;
+                padding: 0 0.75rem;
+                background-color: transparent;
+                border: 0;
+            }
             `}
     
     ${props =>
