@@ -188,7 +188,7 @@ const ButtonGroupPickerTry = () => {
             <ButtonGroupPicker
                 label="Select view type"
                 value={value}
-                onChange={() => setValue(value)}
+                onChange={setValue}
                 name="filter"
                 size="medium"
                 bottomHelpText="Select one option"
