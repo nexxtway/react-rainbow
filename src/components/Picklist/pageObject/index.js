@@ -137,6 +137,14 @@ class PagePicklist {
     getOption(optionIndex) {
         return this[privateGetMenu]().getOption(optionIndex);
     }
+
+    /**
+     * Clicks the search element
+     * @method
+     */
+    clickSearch() {
+        return this[privateGetMenu]().clickSearch();
+    }
 }
 
 module.exports = PagePicklist;
