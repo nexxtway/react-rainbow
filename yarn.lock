@@ -1580,10 +1580,10 @@
   resolved "https://registry.yarnpkg.com/@rainbow-modules/hooks/-/hooks-0.1.4.tgz#87940e81a81ac7dda599bbd266d928bfa3043b77"
   integrity sha512-S0zn26xH5RRIoDKevDq1A6S17c9c/n5pPZeYVtRBzvUd2IYb9ZtR3/X25sKZwqugGnD6MSpS7SnImQJW7X1OnA==
 
-"@rainbow-modules/icons@^0.1.5":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@rainbow-modules/icons/-/icons-0.1.6.tgz#940141c91c3a4fe32e2fcba0ef9c9f83c5b587bf"
-  integrity sha512-ak3MMDS17jtbR1YvTW5SA1aVZknltasdLPJd9s48QIPLlVL4vNtCurO84ByvM3lRuduGmzB9mRR4i/yeTJx6Cw==
+"@rainbow-modules/icons@^0.10.1-canary.4":
+  version "0.10.1-canary.4"
+  resolved "https://registry.yarnpkg.com/@rainbow-modules/icons/-/icons-0.10.1-canary.4.tgz#9c1149d9222dfd881f4c5b1561bb86489f18679c"
+  integrity sha512-wkxfDuCo5SNGpmcpLvA4V3hUFriwjUhTjyRmUmS+sbRqcQRdeC9DGUO9eGYJ+igpg2DSyGsv3g74BANUUVlKag==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
