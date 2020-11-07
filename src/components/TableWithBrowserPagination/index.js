@@ -102,7 +102,7 @@ export default class TableWithBrowserPagination extends Component {
                 <RenderIf isTrue={showPagination}>
                     <StyledPaginationContainer
                         paginationAlignment={paginationAlignment}
-                        variant={paginationVariant}
+                        variant={variant}
                     >
                         <Pagination
                             pages={pages}
@@ -115,7 +115,7 @@ export default class TableWithBrowserPagination extends Component {
                                 <StyledSelect
                                     onChange={this.handleSelectChange}
                                     value={activePage}
-                                    variant={paginationVariant}
+                                    variant={variant}
                                 >
                                     <Options pages={pages} />
                                 </StyledSelect>

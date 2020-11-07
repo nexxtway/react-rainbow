@@ -22,7 +22,7 @@ const StyledPaginationContainer = attachThemeAttrs(styled.div)`
             justify-content: flex-start;
         `};
     ${props =>
-        props.variant === 'shaded' &&
+        props.variant === 'listview' &&
         `
         background-color: transparent;
         border-top: none;
