@@ -6,9 +6,10 @@ import ButtonsContainer from './styled/buttonsContainer';
 
 export default function PageButtonsContainer(props) {
     const { pages, activePage, onChange, variant } = props;
+    const isShaded = variant === 'shaded';
     return (
         <>
-            <RenderIf isTrue={variant === 'shaded'}>
+            <RenderIf isTrue={isShaded}>
                 <ButtonsContainer>
                     <PageButtons
                         onChange={onChange}
@@ -18,7 +19,7 @@ export default function PageButtonsContainer(props) {
                     />
                 </ButtonsContainer>
             </RenderIf>
-            <RenderIf isTrue={variant !== 'shaded'}>
+            <RenderIf isTrue={!isShaded}>
                 <PageButtons
                     onChange={onChange}
                     pages={pages}
