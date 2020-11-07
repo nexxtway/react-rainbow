@@ -72,7 +72,9 @@ describe('TimePicker base example', () => {
         timePicker.clickTimeInput();
         timePicker.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
+        timePicker.waitUntilClose();
         browser.keys(SPACE_KEY);
+        timePicker.waitUntilOpen();
         expect(timePicker.isOpen()).toBe(true);
     });
     it('should open the time selector when enter key is pressed while TimePicker is focused', () => {
