@@ -25,7 +25,7 @@ const StyledButtonGroup = attachThemeAttrs(styled.div)`
         `
         box-shadow:${props.shadows.shadow_10};
         border: 1px solid transparent;
-        background-color: ${props.theme.rainbow.palette.background.main};
+        background-color: ${props.palette.background.main};
         border-radius: 100px;
         > label:last-child > div {
             display: none;
