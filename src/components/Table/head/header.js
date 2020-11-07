@@ -9,7 +9,6 @@ import StyledTh from './styled/th';
 import StyledWrapper from './styled/wrapper';
 import StyledHeaderContainer from './styled/headerContainer';
 import StyledContent from './styled/content';
-import StyledScrollShadow from './styled/scrollShadow';
 
 export default class Header extends Component {
     constructor(props) {
@@ -66,8 +65,6 @@ export default class Header extends Component {
             tableId,
             maxRowSelection,
             bulkSelection,
-            hasScroll,
-            variant,
         } = this.props;
 
         const headerStyles = {
@@ -75,8 +72,6 @@ export default class Header extends Component {
         };
 
         const isResizable = this.isResizable();
-
-        const isListView = variant === 'listview';
 
         if (type === SELECTABLE_CHECKBOX) {
             return (
@@ -86,8 +81,6 @@ export default class Header extends Component {
                     tableId={tableId}
                     maxRowSelection={maxRowSelection}
                     bulkSelection={bulkSelection}
-                    hasScroll={hasScroll}
-                    isListView={isListView}
                     style={headerStyles}
                 />
             );
@@ -127,9 +120,6 @@ export default class Header extends Component {
                         onResize={this.handleResize}
                         headerWidth={computedWidth}
                     />
-                    <RenderIf isTrue={!isListView}>
-                        <StyledScrollShadow hasScroll={hasScroll} />
-                    </RenderIf>
                 </StyledWrapper>
             </StyledTh>
         );
@@ -156,8 +146,6 @@ Header.propTypes = {
     tableId: PropTypes.string.isRequired,
     maxRowSelection: PropTypes.number,
     bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
-    hasScroll: PropTypes.bool,
-    variant: PropTypes.oneOf(['default', 'listview']),
 };
 
 Header.defaultProps = {
@@ -178,6 +166,4 @@ Header.defaultProps = {
     onDeselectAllRows: () => {},
     maxRowSelection: undefined,
     bulkSelection: 'none',
-    hasScroll: false,
-    variant: 'default',
 };
