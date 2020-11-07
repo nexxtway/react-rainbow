@@ -1,5 +1,5 @@
 # The basic Pagination
-##### This example represents a pagination section with a simple style and functionality, where the user can move between pages of content such as search results. Notice there is a required prop `pages` that you need to pass for indicating the total number of pages you want to show. 
+##### This example represents a pagination section with a simple style and functionality, where the user can move between pages of content such as search results. Notice there is a required prop `pages` that you need to pass for indicating the total number of pages you want to show.
 
 ```js
 import React from 'react';
