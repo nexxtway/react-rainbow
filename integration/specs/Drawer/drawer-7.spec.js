@@ -2,6 +2,7 @@ const PageDrawer = require('../../../src/components/Drawer/pageObject');
 const PageLookup = require('../../../src/components/Lookup/pageObject');
 const PagePicklist = require('../../../src/components/Picklist/pageObject');
 const PageDatePicker = require('../../../src/components/DatePicker/pageObject');
+const PageButtonMenu = require('../../../src/components/ButtonMenu/pageObject');
 const { ESCAPE_KEY, TAB_KEY } = require('../../constants');
 
 const BUTTON = '#contact-1';
@@ -10,6 +11,7 @@ const LOOKUP = '#contact-country-input';
 const PICKLIST = '#contact-role-input';
 const DATEPICKER = '#contact-birthday-input';
 const CONTACT_NAME_LABEL = '#contact-name-label';
+const BUTTONMENU = '#edit-profile-photo';
 
 describe('Drawer advanced example', () => {
     beforeAll(() => {
@@ -26,6 +28,7 @@ describe('Drawer advanced example', () => {
         const triggerButton = $(BUTTON);
         triggerButton.click();
         drawer.waitUntilOpen();
+        browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);
@@ -111,5 +114,15 @@ describe('Drawer advanced example', () => {
         picklist.waitUntilOpen();
         picklist.getOption(picklist.getOptionsLength() - 1).hover();
         expect(picklist.isMenuOpen()).toBe(true);
+    it('should not close the drawer when click in the MenuItem of ButtonMenu', () => {
+        const drawer = new PageDrawer(DRAWER);
+        const buttonMenu = new PageButtonMenu(BUTTONMENU);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        drawer.waitUntilOpen();
+        buttonMenu.click();
+        const menuItem = buttonMenu.getItem(0);
+        menuItem.click();
+        expect(drawer.isOpen()).toBe(true);
     });
 });

@@ -122,16 +122,6 @@ describe('<Drawer />', () => {
             done();
         }, 300);
     });
-    it('should fire an event when the drawer backdrop is clicked and the drawer is open', () => {
-        const closeMockFn = jest.fn();
-        const component = mount(
-            <Drawer isOpen onRequestClose={closeMockFn}>
-                <p />
-            </Drawer>,
-        );
-        component.find('div[role="presentation"]').simulate('click');
-        expect(closeMockFn).toHaveBeenCalledTimes(1);
-    });
     it('should fire an event when the ESC key is pressed and the drawer is open', () => {
         const closeMockFn = jest.fn();
         const component = mount(

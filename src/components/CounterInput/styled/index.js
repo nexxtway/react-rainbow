@@ -80,6 +80,13 @@ export const StyledInput = attachThemeAttrs(styled.input)`
     `}
 
     ${props =>
+        props.variant === 'bare' &&
+        `
+        background: transparent;
+        border-color: transparent;
+        `}
+
+    ${props =>
         props.error &&
         `
         background-color: ${props.palette.background.main};
