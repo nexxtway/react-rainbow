@@ -185,7 +185,7 @@ const FileSelector = React.forwardRef((props, ref) => {
                                 size="xx-small"
                                 icon={<CancelIcon />}
                                 onClick={handleCancel}
-                                variant={variant}
+                                pickerVariant={variant}
                             />
                         </StyledIconContainer>
                     </RenderIf>
