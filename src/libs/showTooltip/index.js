@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ThemeProvider } from 'styled-components';
 import Tooltip from './tooltip';
 import { WindowScrolling } from '../scrollController';
 
@@ -7,7 +8,7 @@ const rainbowTooltipContainer = document.createElement('div');
 let hasRainbowTooltip = false;
 
 export default function showTooltip(props) {
-    const { triggerElementRef, content, preferredPosition } = props;
+    const { content, theme, ...rest } = props;
     if (hasRainbowTooltip) {
         ReactDOM.unmountComponentAtNode(rainbowTooltipContainer);
     }
@@ -20,10 +21,9 @@ export default function showTooltip(props) {
         hasRainbowTooltip = false;
     });
 
-    const tooltipProps = {
-        triggerElementRef,
-        preferredPosition,
-    };
-    const tooltip = React.createElement(Tooltip, tooltipProps, content);
-    ReactDOM.render(tooltip, rainbowTooltipContainer);
+    const tooltip = React.createElement(Tooltip, { ...rest }, content);
+    ReactDOM.render(
+        <ThemeProvider theme={theme}>{tooltip}</ThemeProvider>,
+        rainbowTooltipContainer,
+    );
 }

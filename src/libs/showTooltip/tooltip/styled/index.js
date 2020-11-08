@@ -3,7 +3,7 @@ import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledTooltip = attachThemeAttrs(styled.div)`
     background-color: ${props => props.palette.text.main};
-    color: #fff;
+    color: ${props => props.palette.getContrastText(props.palette.text.main)};
     text-align: center;
     padding: 6px 12px;
     border-radius: 6px;
