@@ -5,7 +5,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 const StyledText = attachThemeAttrs(styled.span)`
     font: inherit;
     align-items: center;
-    display: inline-flex;
+    display: flex;
     font-size: ${FONT_SIZE_HEADING_SMALL};
     justify-content: center;
     position: relative;
@@ -25,7 +25,7 @@ const StyledText = attachThemeAttrs(styled.span)`
     box-sizing: border-box;
     border-radius: 0;
     border-width: 1px;
-    margin-left: -1px;
+    margin-left: ${props => (props.variant === 'shaded' ? '0' : '-1px')};
     height: 2.5rem;
     line-height: 2.5;
 
@@ -125,6 +125,13 @@ const StyledText = attachThemeAttrs(styled.span)`
                 border-color: ${props.palette.border.divider};
             }
         `};
+
+    ${props =>
+        props.variant === 'shaded' &&
+        `
+        box-shadow:none;
+        border: 1px solid transparent;
+    `}
 `;
 
 export default StyledText;

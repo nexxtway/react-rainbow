@@ -13,6 +13,7 @@ export interface ButtonGroupPickerProps extends BaseProps {
     children?: ReactNode;
     name?: string;
     size?: 'x-small' | 'small' | 'medium' | 'large';
+    variant?: 'default' | 'shaded';
     error?: ReactNode;
     bottomHelpText?: ReactNode;
 }

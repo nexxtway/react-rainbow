@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import RenderIf from '../RenderIf';
 import { ButtonGroupPickerContext } from '../ButtonGroupPicker/context';
 import HiddenElement from '../Structural/hiddenElement';
-import { StyledLabel, StyledText } from './styled';
+import { StyledLabel, StyledText, StyledDivider } from './styled';
 import isOptionSelected from './helpers/isOptionSelected';
 import { useUniqueIdentifier } from '../../libs/hooks';
 
@@ -13,12 +14,18 @@ export default function ButtonOption(props) {
     const inputId = useUniqueIdentifier('button-option');
     const { className, style, name, label, disabled, onClick } = props;
 
-    const { type, values, name: contextName, onChange, ariaDescribedBy, size } = useContext(
-        ButtonGroupPickerContext,
-    );
+    const {
+        type,
+        values,
+        name: contextName,
+        onChange,
+        ariaDescribedBy,
+        size,
+        variant,
+    } = useContext(ButtonGroupPickerContext);
     const checked = isOptionSelected(values, name);
-
     const handleClick = () => onClick({ isSelected: checked });
+    const isShaded = variant === 'shaded';
 
     return (
         <StyledLabel
@@ -27,6 +34,7 @@ export default function ButtonOption(props) {
             onClick={handleClick}
             checked={checked}
             htmlFor={inputId}
+            variant={variant}
         >
             <HiddenElement
                 id={inputId}
@@ -39,9 +47,12 @@ export default function ButtonOption(props) {
                 onChange={onChange}
                 disabled={disabled}
             />
-            <StyledText size={size} disabled={disabled} checked={checked}>
+            <StyledText size={size} disabled={disabled} checked={checked} variant={variant}>
                 {label}
             </StyledText>
+            <RenderIf isTrue={isShaded}>
+                <StyledDivider />
+            </RenderIf>
         </StyledLabel>
     );
 }
