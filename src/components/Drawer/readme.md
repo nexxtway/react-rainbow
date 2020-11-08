@@ -160,13 +160,12 @@ import {
     Lookup,
     Picklist,
     Option,
-    Select,
     ButtonMenu,
     MenuItem,
 } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
-import { Camera } from "@rainbow-modules/icons"
+import { Camera } from '@rainbow-modules/icons';
 
 const countries = [
     { value: 'ca', label: 'Canada' },

@@ -114,6 +114,7 @@ describe('Drawer advanced example', () => {
         picklist.waitUntilOpen();
         picklist.getOption(picklist.getOptionsLength() - 1).hover();
         expect(picklist.isMenuOpen()).toBe(true);
+    });
     it('should not close the drawer when click in the MenuItem of ButtonMenu', () => {
         const drawer = new PageDrawer(DRAWER);
         const buttonMenu = new PageButtonMenu(BUTTONMENU);
