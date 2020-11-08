@@ -22,6 +22,13 @@ const StyledSelect = attachThemeAttrs(styled.select)`
         border: 1px solid ${props => props.palette.brand.main};
         box-shadow: ${props => props.shadows.brand};
     }
+
+    ${props =>
+        props.variant === 'listview' &&
+        `
+        box-shadow:${props.disabled ? '' : props.shadows.shadow_10};
+        border: 1px solid transparent;
+    `}
 `;
 
 export default StyledSelect;
