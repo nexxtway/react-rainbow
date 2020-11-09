@@ -73,12 +73,7 @@ class Picklist extends Component {
         const { isOpen } = this.state;
         if (!wasOpen && isOpen) {
             // eslint-disable-next-line id-length
-            this.outsideClick.startListening(this.containerRef.current, (_, event) => {
-                const { eventTarget } = this.state;
-                if (eventTarget !== event.target) {
-                    this.closeMenu();
-                }
-            });
+            this.outsideClick.startListening(this.containerRef.current, () => this.closeMenu());
             this.windowScrolling.startListening(this.handleWindowScroll);
         }
     }
@@ -167,7 +162,10 @@ class Picklist extends Component {
     }
 
     handleContainerClick(event) {
-        this.setState({ eventTarget: event.target });
+        const { isOpen } = this.state;
+        if (isOpen) {
+            event.nativeEvent.stopImmediatePropagation();
+        }
     }
 
     /**
