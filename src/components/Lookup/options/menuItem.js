@@ -49,7 +49,7 @@ export default class MenuItem extends Component {
 }
 
 MenuItem.propTypes = {
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     icon: PropTypes.node,
     onClick: PropTypes.func,
