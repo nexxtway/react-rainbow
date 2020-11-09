@@ -49,13 +49,8 @@ describe('<Tooltip />', () => {
     });
 
     it('should set the position after onOpen', () => {
-        const component = mount(<Tooltip triggerElementRef={triggerElement} />);
+        const component = mount(<Tooltip triggerElementRef={triggerElement} isVisible />);
         jest.runAllTimers();
-        expect(
-            component
-                .find('InternalOverlay')
-                .find(StyledTooltip)
-                .prop('position'),
-        ).not.toBeNull();
+        expect(component.find(StyledTooltip).prop('position')).not.toBeNull();
     });
 });

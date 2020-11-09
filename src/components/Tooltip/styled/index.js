@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledTooltip = attachThemeAttrs(styled.div)`
     background-color: ${props => props.palette.text.main};

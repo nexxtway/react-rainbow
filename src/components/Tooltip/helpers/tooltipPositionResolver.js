@@ -1,7 +1,7 @@
-import resolverUpCenter from '../../../../components/InternalOverlay/helpers/resolverUpCenter';
-import resolverBottomCenter from '../../../../components/InternalOverlay/helpers/resolverBottomCenter';
-import resolverCenterLeft from '../../../../components/InternalOverlay/helpers/resolverCenterLeft';
-import resolverCenterRight from '../../../../components/InternalOverlay/helpers/resolverCenterRight';
+import resolverUpCenter from '../../InternalOverlay/helpers/resolverUpCenter';
+import resolverBottomCenter from '../../InternalOverlay/helpers/resolverBottomCenter';
+import resolverCenterLeft from '../../InternalOverlay/helpers/resolverCenterLeft';
+import resolverCenterRight from '../../InternalOverlay/helpers/resolverCenterRight';
 import resolverCenter from './resolverCenter';
 
 const DEFAULT_MARGIN = 5;
