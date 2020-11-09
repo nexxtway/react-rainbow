@@ -6,7 +6,7 @@ export default function resolverUpCenter(opts, margin = 0) {
         trigger.rightUpAnchor.y - margin - content.height >= 0
     ) {
         return {
-            top: trigger.leftUpAnchor.y - margin - content.height,
+            bottom: viewport.height - trigger.leftUpAnchor.y + margin,
             left: trigger.rightUpAnchor.x - content.width / 2 - trigger.width / 2,
         };
     }
