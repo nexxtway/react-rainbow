@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import ContentMetaResolver from './ContentMetaResolver';
 import defaultPositionResolver from './helpers/defaultPositionResolver';
 import { disableBodyScroll, enableBodyScroll } from '../../libs/scrollController';
+import resolveElement from './helpers/resolveElement';
 
 const Container = styled.div`
     position: fixed;
@@ -19,14 +20,6 @@ const Container = styled.div`
             width: ${props.position.width}px;
         `};
 `;
-
-const resolveElement = ref => {
-    if (typeof ref === 'function') {
-        const ret = ref();
-        return ret && ret.current;
-    }
-    return ref && ref.current;
-};
 
 const resolveTriggerMeta = ref => {
     const element = resolveElement(ref);
