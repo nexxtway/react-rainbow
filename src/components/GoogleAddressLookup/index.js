@@ -11,7 +11,7 @@ const googleMapApiUrl = 'https://maps.googleapis.com/maps/api/js';
  * @category Form
  */
 export default function GoogleAddressLookup(props) {
-    const { apiKey, ...rest } = props;
+    const { apiKey, variant, ...rest } = props;
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const Component = useCallback(
@@ -20,7 +20,7 @@ export default function GoogleAddressLookup(props) {
     );
 
     // eslint-disable-next-line react/jsx-props-no-spreading
-    return <Component {...rest} />;
+    return <Component variant={variant} {...rest} />;
 }
 
 GoogleAddressLookup.propTypes = {
@@ -84,6 +84,9 @@ GoogleAddressLookup.propTypes = {
      *  }
      */
     searchOptions: CustomPropTypes.searchOptionsShape,
+    /** The variant changes the appearance of the Input. Accepted variants include default,
+     *shaded and bare. This value defaults to default. */
+    variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
 };
 
 GoogleAddressLookup.defaultProps = {
@@ -106,4 +109,5 @@ GoogleAddressLookup.defaultProps = {
     labelAlignment: 'center',
     hideLabel: false,
     searchOptions: {},
+    variant: 'default',
 };
