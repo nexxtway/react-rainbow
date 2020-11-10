@@ -15,6 +15,7 @@ import Header from './header';
 import CloseIcon from './closeIcon';
 import { useUniqueIdentifier, useScrollLock } from '../../libs/hooks';
 import getSlideFrom from './helpers/getSlideFrom';
+import { clearAllBodyScrollLocks } from '../../libs/scrollController';
 
 const DrawerState = {
     OPENING: 0,
@@ -61,6 +62,7 @@ export default function Drawer(props) {
             if (isOpen) {
                 CounterManager.decrement();
                 if (triggerRef.current) triggerRef.current.focus();
+                clearAllBodyScrollLocks();
                 setDrawerState(DrawerState.CLOSING);
             }
         };
