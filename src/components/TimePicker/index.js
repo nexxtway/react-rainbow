@@ -38,12 +38,12 @@ const TimePicker = React.forwardRef((props, ref) => {
         onClick,
         onBlur,
         onFocus,
+        value: valueProp,
     } = useReduxForm(props);
     const [isOpen, setIsOpen] = useState(false);
-    const [value, setValue] = useState(hour24 ? props.value : get12HourTime(props.value));
+    const [value, setValue] = useState(hour24 ? valueProp : get12HourTime(valueProp));
     const inputRef = useRef();
     const timeSelectRef = useRef();
-    const prevValue = useRef(value);
     useImperativeHandle(ref, () => ({
         focus: () => {
             inputRef.current.focus();
@@ -64,10 +64,6 @@ const TimePicker = React.forwardRef((props, ref) => {
         timeSelectRef.current.focusHourInput();
     };
 
-    const updateValue = () => {
-        setValue(hour24 ? props.value : get12HourTime(props.value));
-    };
-
     const handleKeyDown = event => {
         const { keyCode } = event;
         const shouldOpenModal = (keyCode === ENTER_KEY || keyCode === SPACE_KEY) && !readOnly;
@@ -84,21 +80,19 @@ const TimePicker = React.forwardRef((props, ref) => {
     };
 
     const handleBlur = () => {
-        onBlur(props.value);
+        onBlur(valueProp);
     };
 
     const handleFocus = () => {
-        onFocus(props.value);
+        onFocus(valueProp);
     };
 
     const closeModal = () => {
         setIsOpen(false);
     };
     useEffect(() => {
-        if (prevValue !== props.value) {
-            updateValue();
-        }
-    });
+        setValue(hour24 ? valueProp : get12HourTime(valueProp));
+    }, [valueProp, hour24]);
 
     return (
         <StyledContainer id={id} className={className} style={style}>
