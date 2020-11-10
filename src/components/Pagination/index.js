@@ -21,28 +21,43 @@ export default function Pagination(props) {
     return (
         <StyledNav className={className} aria-label="pagination" style={style}>
             <StyledPaginationContainer>
-                <NavigationButton
-                    dataId="previous-page-button"
-                    icon={<LeftArrow />}
-                    onClick={event => onChange(event, activePage - 1)}
-                    disabled={isFirstItemSelected}
-                    ariaLabel="Goto Previous Page"
-                    variant={variant}
-                />
-                <PageButtonsContainer
-                    onChange={onChange}
-                    pages={pages}
-                    activePage={activePage}
-                    variant={variant}
-                />
-                <NavigationButton
-                    dataId="next-page-button"
-                    icon={<RightArrow />}
-                    onClick={event => onChange(event, activePage + 1)}
-                    disabled={isLastItemSelected}
-                    ariaLabel="Goto Next Page"
-                    variant={variant}
-                />
+                {
+                    pages === 1 ? (
+                        <>
+                            <NavigationButton
+                                dataId="previous-page-button"
+                                icon={<LeftArrow />}
+                                onClick={event => onChange(event, activePage - 1)}
+                                disabled={isFirstItemSelected}
+                                ariaLabel="Goto Previous Page"
+                                variant={variant}
+                            />
+                            <PageButtonsContainer
+                                onChange={onChange}
+                                pages={pages}
+                                activePage={activePage}
+                                variant={variant}
+                            />
+                            <NavigationButton
+                                dataId="next-page-button"
+                                icon={<RightArrow />}
+                                onClick={event => onChange(event, activePage + 1)}
+                                disabled={isLastItemSelected}
+                                ariaLabel="Goto Next Page"
+                                variant={variant}
+                            />
+                        </>
+                    ) : (
+                        <>
+                            <PageButtonsContainer
+                                onChange={onChange}
+                                pages={pages}
+                                activePage={activePage}
+                                variant={variant}
+                            />
+                        </>
+                    )
+                }
             </StyledPaginationContainer>
         </StyledNav>
     );

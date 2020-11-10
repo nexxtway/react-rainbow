@@ -37,7 +37,7 @@ const StyledPageButton = styled.li`
             border-radius: 0;
         }
         :nth-child(1) > button {
-            border-radius: 100px 0 0 100px;
+            border-radius: 100px;
         }
 
         :nth-last-child(1) > button {
