@@ -85,28 +85,38 @@ export default class TableWithBrowserPagination extends Component {
             pageSize,
             data,
             children,
+            variant,
             ...rest
         } = this.props;
         const { activePage, pageItems } = this.state;
         const pages = Math.ceil(data.length / pageSize);
         const showPagination = pages > 1;
+        const paginationVariant = variant === 'listview' ? 'shaded' : 'default';
 
         return (
             <StyledContainer className={className} style={style}>
                 {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                <Table data={pageItems} {...rest} ref={this.table}>
+                <Table data={pageItems} {...rest} ref={this.table} variant={variant}>
                     {children}
                 </Table>
                 <RenderIf isTrue={showPagination}>
-                    <StyledPaginationContainer paginationAlignment={paginationAlignment}>
+                    <StyledPaginationContainer
+                        paginationAlignment={paginationAlignment}
+                        variant={variant}
+                    >
                         <Pagination
                             pages={pages}
                             activePage={activePage}
                             onChange={this.handleChange}
+                            variant={paginationVariant}
                         />
                         <RenderIf isTrue={pages > 6}>
                             <StyledSelectContainer>
-                                <StyledSelect onChange={this.handleSelectChange} value={activePage}>
+                                <StyledSelect
+                                    onChange={this.handleSelectChange}
+                                    value={activePage}
+                                    variant={variant}
+                                >
                                     <Options pages={pages} />
                                 </StyledSelect>
                             </StyledSelectContainer>
@@ -131,6 +141,8 @@ TableWithBrowserPagination.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The variant changes the appearance of the table. Accepted variants include default and listview. */
+    variant: PropTypes.oneOf(['default', 'listview']),
     /**
      * This prop that should not be visible in the documentation.
      * @ignore
@@ -145,4 +157,5 @@ TableWithBrowserPagination.defaultProps = {
     pageSize: Infinity,
     data: [],
     children: undefined,
+    variant: 'default',
 };

@@ -19,7 +19,7 @@ export default function Icon({ files, error, isDragOver, value, uploadIcon }) {
     return uploadIcon || <UploadIcon />;
 }
 Icon.propTypes = {
-    files: PropTypes.array,
+    files: PropTypes.instanceOf(FileList),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     isDragOver: PropTypes.bool,
     value: PropTypes.object,

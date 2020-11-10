@@ -159,9 +159,12 @@ import {
     GoogleAddressLookup,
     Lookup,
     Select,
+    ButtonMenu,
+    MenuItem,
 } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
+import { Camera } from '@rainbow-modules/icons';
 
 const countries = [
     { value: 'ca', label: 'Canada' },
@@ -202,6 +205,10 @@ const StyledAvatar = styled(Avatar)`
     display: block;
     margin-left: auto;
     margin-right: auto;
+`;
+
+const StyledAvatarContainer = styled.div`
+    position: relative;
 `;
 
 const NameLabel = styled.label.attrs(props => props.theme.rainbow)`
@@ -252,6 +259,12 @@ const FormEmailLabel = styled.span.attrs(props => props.theme.rainbow)`
 const StyledFooterButton = styled(Button)
 `
     width: 100px;
+`;
+const StyledButtonMenu = styled(ButtonMenu)
+`
+    position: absolute;
+    bottom: 0;
+    right: 0;
 `;
 
 const closeDrawer = () => setState({ isOpen : false });
@@ -314,13 +327,25 @@ function EditContactForm(props) {
     return (
         <div className="rainbow-p-around_small rainbow-flex rainbow-flex_wrap  rainbow-align-content_center">
             <div className="rainbow-flex rainbow-flex_wrap">
-                <StyledAvatar
-                    src={contactInfo.avatar}
-                    assistiveText={contactInfo.name}
-                    title={contactInfo.name}
-                    className="rainbow-m-right_medium"
-                />
-                <div className="rainbow-flex_column">
+                <StyledAvatarContainer>
+                    <StyledAvatar
+                        src={contactInfo.avatar}
+                        assistiveText={contactInfo.name}
+                        title={contactInfo.name}
+                    />
+                    <StyledButtonMenu
+                        menuAlignment="right"
+                        menuSize="x-small"
+                        buttonSize="small"
+                        buttonVariant="border-filled"
+                        icon={<Camera />}
+                        id="edit-profile-photo"
+                    >
+                        <MenuItem label="Upload a new photo" />
+                        <MenuItem label="Open gallery" />
+                    </StyledButtonMenu>
+                </StyledAvatarContainer>
+                <div className="rainbow-flex_column rainbow-m-left_medium">
                     <FormNameLabel className="rainbow-m-top_small">
                         {contactInfo.name}
                     </FormNameLabel>
@@ -329,7 +354,7 @@ function EditContactForm(props) {
                     </FormEmailLabel>
                 </div>
             </div>
-            <div className="rainbow-flex_column">
+            <div className="rainbow-flex_column rainbow-m-top_x-large">
                 <form id="redux-form-id" noValidate onSubmit={handleSubmit}>
                     <Field
                         id="contact-birthday-input"

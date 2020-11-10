@@ -173,3 +173,35 @@ class ButtonGroupPickerTry extends React.Component {
     <ButtonGroupPickerTry />;
 
 ```
+
+##### ButtonGroupPicker with shaded variant
+
+```js
+import React, { useState } from 'react';
+import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
+
+const ButtonGroupPickerTry = () => {
+    const [value, setValue] = useState('');
+
+    return (
+        <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+            <ButtonGroupPicker
+                label="Select view type"
+                value={value}
+                onChange={setValue}
+                name="filter"
+                size="medium"
+                bottomHelpText="Select one option"
+                variant="shaded"
+            >
+                <ButtonOption label="Month" name="month" />
+                <ButtonOption label="Week" name="week" />
+                <ButtonOption label="Day" name="day" />
+            </ButtonGroupPicker>
+        </div>
+    );
+}
+
+    <ButtonGroupPickerTry />;
+
+```

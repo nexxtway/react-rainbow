@@ -211,6 +211,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                 onKeyDown={handleKeyDown}
                 ref={comboboxRef}
                 aria-labelledby={labelId}
+                variant={variant}
             >
                 <StyledInput
                     id={inputId}
@@ -317,11 +318,9 @@ MultiSelect.propTypes = {
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** Specifies the variant for the input. */
-    variant: PropTypes.oneOf(['default', 'chip']),
+    variant: PropTypes.oneOf(['default', 'chip', 'bare']),
     /** Specifies the variant for the chips. */
     chipVariant: PropTypes.oneOf(['base', 'neutral', 'outline-brand', 'brand']),
-    /** Specifies that an input will not have border. This value defaults to false. */
-    isBare: PropTypes.bool,
     /** Specifies the value of an input element. */
     value: PropTypes.arrayOf(
         PropTypes.shape({
@@ -358,7 +357,6 @@ MultiSelect.defaultProps = {
     tabIndex: 0,
     variant: 'default',
     chipVariant: 'base',
-    isBare: false,
     value: undefined,
     onChange: () => {},
     onFocus: () => {},

@@ -22,7 +22,7 @@ export interface CounterInputProps extends BaseProps {
     isBare?: boolean;
     error?: ReactNode;
     step?: number;
-    variant?: 'default' | 'shaded';
+    variant?: 'default' | 'shaded' | 'bare';
     onChange?: (value: number) => void;
     onFocus?: (value: number) => void;
     onBlur?: (value: number) => void;

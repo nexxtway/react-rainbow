@@ -421,6 +421,7 @@ class Lookup extends Component {
             hideLabel,
             isLoading,
             icon,
+            variant,
         } = this.props;
         const { searchValue, focusedItemIndex, options } = this.state;
         const onDeleteValue = disabled || readOnly ? undefined : this.handleRemoveValue;
@@ -508,6 +509,7 @@ class Lookup extends Component {
                             icon={icon}
                             error={error}
                             isLoading={isLoading}
+                            variant={variant}
                         />
                         <RenderIf isTrue={isLookupOpen}>
                             <StyledOptionsMenu id={this.listboxId} role="listbox">
@@ -567,7 +569,7 @@ Lookup.propTypes = {
     /** An array of matched options to show in a menu. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            label: PropTypes.string,
+            label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
             description: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
             icon: PropTypes.node,
         }),
@@ -617,6 +619,9 @@ Lookup.propTypes = {
     style: PropTypes.object,
     /** The index of the option that is visual-focus initially */
     preferredSelectedOption: PropTypes.number,
+    /** The variant changes the appearance of the Input. Accepted variants include default,
+     * shaded and bare. This value defaults to default. */
+    variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
 };
 
 Lookup.defaultProps = {
@@ -645,6 +650,7 @@ Lookup.defaultProps = {
     onSearch: () => {},
     debounce: false,
     preferredSelectedOption: 0,
+    variant: 'default',
 };
 
 export default withReduxForm(Lookup);

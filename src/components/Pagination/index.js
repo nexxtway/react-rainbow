@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import LeftArrow from './leftArrow';
 import RightArrow from './rightArrow';
 import NavigationButton from './navigationButton';
-import PageButtons from './pageButtons';
+import PageButtonsContainer from './pageButtonsContainer';
 import StyledNav from './styled/nav';
 import StyledPaginationContainer from './styled/paginationContainer';
 
 /**
+ * The Pagination component shows you the pagination options for dividing content into pages.
+ * It is very useful when you want to display a large recordset on multiple pages.
  * @category Layout
  */
 export default function Pagination(props) {
-    const { pages, activePage, onChange, className, style } = props;
+    const { pages, activePage, onChange, className, style, variant } = props;
 
     const isFirstItemSelected = activePage === 1;
     const isLastItemSelected = activePage === pages;
@@ -25,16 +27,21 @@ export default function Pagination(props) {
                     onClick={event => onChange(event, activePage - 1)}
                     disabled={isFirstItemSelected}
                     ariaLabel="Goto Previous Page"
+                    variant={variant}
                 />
-
-                <PageButtons onChange={onChange} pages={pages} activePage={activePage} />
-
+                <PageButtonsContainer
+                    onChange={onChange}
+                    pages={pages}
+                    activePage={activePage}
+                    variant={variant}
+                />
                 <NavigationButton
                     dataId="next-page-button"
                     icon={<RightArrow />}
                     onClick={event => onChange(event, activePage + 1)}
                     disabled={isLastItemSelected}
                     ariaLabel="Goto Next Page"
+                    variant={variant}
                 />
             </StyledPaginationContainer>
         </StyledNav>
@@ -53,6 +60,9 @@ Pagination.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The variant changes the appearance of the Input. Accepted variants include default
+     * and shaded. This value defaults to default. */
+    variant: PropTypes.oneOf(['default', 'shaded']),
 };
 
 Pagination.defaultProps = {
@@ -60,4 +70,5 @@ Pagination.defaultProps = {
     onChange: () => {},
     className: undefined,
     style: undefined,
+    variant: 'default',
 };

@@ -22,8 +22,8 @@ export default function FeatureList(props) {
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<Components />}
-                title="80+ components"
-                description="More than 80 components built on top of React."
+                title="90+ components"
+                description="More than 90 components built on top of React."
             />
 
             <Item
