@@ -6,7 +6,6 @@ import NavigationButton from './navigationButton';
 import PageButtonsContainer from './pageButtonsContainer';
 import StyledNav from './styled/nav';
 import StyledPaginationContainer from './styled/paginationContainer';
-import RenderIf from '../RenderIf';
 
 /**
  * The Pagination component shows you the pagination options for dividing content into pages.
