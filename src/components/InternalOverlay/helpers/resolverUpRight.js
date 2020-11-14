@@ -1,11 +1,11 @@
 export default function resolverUpRight(opts, margin = 0) {
-    const { trigger, content } = opts;
+    const { trigger, content, viewport } = opts;
     if (
         trigger.rightUpAnchor.x - content.width >= 0 &&
         trigger.rightUpAnchor.y - margin - content.height >= 0
     ) {
         return {
-            top: trigger.leftUpAnchor.y - margin - content.height,
+            bottom: viewport.height - trigger.leftUpAnchor.y + margin,
             left: trigger.rightUpAnchor.x - content.width,
         };
     }

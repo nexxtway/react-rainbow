@@ -12,6 +12,7 @@ const Container = styled.div`
     z-index: 999999999;
     top: ${props => props.position && props.position.top}px;
     left: ${props => props.position && props.position.left}px;
+    bottom: ${props => props.position && props.position.bottom}px;
     ${props =>
         props.position &&
         props.position.width &&
@@ -102,6 +103,7 @@ const InternalOverlay = props => {
             enableBodyScroll();
         };
     }, [isVisible, contentMeta, onOpened]);
+
     if (isVisible) {
         const content = children || <ContentComponent />;
         if (contentMeta) {
