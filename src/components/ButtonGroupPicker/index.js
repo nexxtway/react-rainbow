@@ -29,7 +29,7 @@ class ButtonGroupPicker extends Component {
     }
 
     getContext() {
-        const { multiple, size, value } = this.props;
+        const { multiple, size, value, variant } = this.props;
         return {
             onChange: this.handleOnChange,
             values: value,
@@ -37,6 +37,7 @@ class ButtonGroupPicker extends Component {
             name: this.groupNameId,
             ariaDescribedBy: this.getErrorMessageId(),
             size,
+            variant,
         };
     }
 
@@ -69,6 +70,7 @@ class ButtonGroupPicker extends Component {
             required,
             labelAlignment,
             hideLabel,
+            variant,
         } = this.props;
         const context = this.getContext();
 
@@ -83,7 +85,7 @@ class ButtonGroupPicker extends Component {
                         as="legend"
                     />
                 </RenderIf>
-                <StyledButtonGroup>
+                <StyledButtonGroup variant={variant}>
                     <Provider value={context}>{children}</Provider>
                 </StyledButtonGroup>
                 <RenderIf isTrue={bottomHelpText}>
@@ -139,6 +141,9 @@ ButtonGroupPicker.propTypes = {
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Shows the help message below the ButtonGroupPicker. */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** The variant changes the appearance of the ButtonGroupPicker. Accepted variants include default,
+     * and shaded. This value defaults to default. */
+    variant: PropTypes.oneOf(['default', 'shaded']),
 };
 
 ButtonGroupPicker.defaultProps = {
@@ -156,6 +161,7 @@ ButtonGroupPicker.defaultProps = {
     bottomHelpText: undefined,
     children: undefined,
     labelAlignment: 'center',
+    variant: 'default',
     hideLabel: false,
 };
 

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import StyledText from './text';
+import StyledDivider from './divider';
 
 const StyledLabel = attachThemeAttrs(styled.label)`
     input:focus + span {
@@ -35,6 +36,15 @@ const StyledLabel = attachThemeAttrs(styled.label)`
         `
         z-index: 10;
         `}
+
+    ${props =>
+        props.variant === 'shaded' &&
+        `
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    `}
+
 `;
 
-export { StyledLabel, StyledText };
+export { StyledLabel, StyledText, StyledDivider };
