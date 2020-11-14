@@ -1,185 +1,143 @@
-import React, { Component } from 'react';
+/* eslint-disable react/no-unused-prop-types */
+import React, { useEffect, useRef, useState, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import ClockIcon from './icons/clock';
 import Input from '../Input/pickerInput';
 import TimeSelect from './timeSelect';
 import get12HourTime from './helpers/get12HourTime';
 import getInputValue from './helpers/getInputValue';
-import withReduxForm from '../../libs/hocs/withReduxForm';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import StyledContainer from './styled/container';
 import StyledModal from './styled/modal';
+import { useReduxForm } from '../../libs/hooks';
 
 /**
  * A TimePicker is used to input a time by displaying an interface the user can interact with.
  * @category Form
  */
-class TimePicker extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: false,
-            value: props.hour24 ? props.value : get12HourTime(props.value),
-        };
-        this.inputRef = React.createRef();
-        this.timeSelectRef = React.createRef();
-        this.handleKeyDown = this.handleKeyDown.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-        this.closeModal = this.closeModal.bind(this);
-        this.setFocusToHourInput = this.setFocusToHourInput.bind(this);
-        this.handleBlur = this.handleBlur.bind(this);
-        this.handleFocus = this.handleFocus.bind(this);
-    }
+const TimePicker = React.forwardRef((props, ref) => {
+    const {
+        placeholder,
+        label,
+        required,
+        style,
+        className,
+        hideLabel,
+        name,
+        bottomHelpText,
+        isCentered,
+        error,
+        readOnly,
+        disabled,
+        tabIndex,
+        id,
+        cancelLabel,
+        okLabel,
+        onChange,
+        hour24,
+        onClick,
+        onBlur,
+        onFocus,
+        value: valueProp,
+    } = useReduxForm(props);
+    const [isOpen, setIsOpen] = useState(false);
+    const [value, setValue] = useState(hour24 ? valueProp : get12HourTime(valueProp));
+    const inputRef = useRef();
+    const timeSelectRef = useRef();
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            inputRef.current.focus();
+        },
+        click: () => {
+            inputRef.current.click();
+        },
+        blur: () => {
+            inputRef.current.blur();
+        },
+    }));
 
-    componentDidUpdate({ value: prevValue }) {
-        const { value } = this.props;
-        if (prevValue !== value) {
-            this.updateValue();
-        }
-    }
-
-    getTriggerInputValue() {
-        const { value } = this.state;
-        const { placeholder, hour24 } = this.props;
+    const getTriggerInputValue = () => {
         return getInputValue(value, placeholder, hour24);
-    }
+    };
 
-    setFocusToHourInput() {
-        this.timeSelectRef.current.focusHourInput();
-    }
+    const setFocusToHourInput = () => {
+        timeSelectRef.current.focusHourInput();
+    };
 
-    updateValue() {
-        const { value, hour24 } = this.props;
-        this.setState({
-            value: hour24 ? value : get12HourTime(value),
-        });
-    }
-
-    handleKeyDown(event) {
+    const handleKeyDown = event => {
         const { keyCode } = event;
-        const { readOnly } = this.props;
         const shouldOpenModal = (keyCode === ENTER_KEY || keyCode === SPACE_KEY) && !readOnly;
         if (shouldOpenModal) {
-            this.setState({ isOpen: true });
+            setIsOpen(true);
         }
-    }
+    };
 
-    handleClick(event) {
-        const { onClick, readOnly } = this.props;
+    const handleClick = event => {
         if (!readOnly) {
-            this.setState({ isOpen: true });
+            setIsOpen(true);
             onClick(event);
         }
-    }
+    };
 
-    handleBlur() {
-        const { onBlur, value } = this.props;
-        onBlur(value);
-    }
+    const handleBlur = () => {
+        onBlur(valueProp);
+    };
 
-    handleFocus() {
-        const { onFocus, value } = this.props;
-        onFocus(value);
-    }
+    const handleFocus = () => {
+        onFocus(valueProp);
+    };
 
-    closeModal() {
-        this.setState({ isOpen: false });
-    }
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+    useEffect(() => {
+        setValue(hour24 ? valueProp : get12HourTime(valueProp));
+    }, [valueProp, hour24]);
 
-    /**
-     * Sets focus on the element.
-     * @public
-     */
-    focus() {
-        this.inputRef.current.focus();
-    }
+    return (
+        <StyledContainer id={id} className={className} style={style}>
+            <Input
+                id="time-picker_time-input"
+                ref={inputRef}
+                label={label}
+                placeholder={placeholder}
+                icon={<ClockIcon />}
+                iconPosition="right"
+                required={required}
+                value={getTriggerInputValue()}
+                onKeyDown={handleKeyDown}
+                onClick={handleClick}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                hideLabel={hideLabel}
+                name={name}
+                bottomHelpText={bottomHelpText}
+                isCentered={isCentered}
+                error={error}
+                readOnly={readOnly}
+                disabled={disabled}
+                tabIndex={tabIndex}
+            />
 
-    /**
-     * Sets click on the element.
-     * @public
-     */
-    click() {
-        this.inputRef.current.click();
-    }
-
-    /**
-     * Sets blur on the element.
-     * @public
-     */
-    blur() {
-        this.inputRef.current.blur();
-    }
-
-    render() {
-        const {
-            placeholder,
-            label,
-            required,
-            style,
-            className,
-            labelAlignment,
-            hideLabel,
-            name,
-            bottomHelpText,
-            isCentered,
-            error,
-            readOnly,
-            disabled,
-            tabIndex,
-            id,
-            cancelLabel,
-            okLabel,
-            onChange,
-            hour24,
-        } = this.props;
-        const { isOpen, value } = this.state;
-
-        return (
-            <StyledContainer id={id} className={className} style={style}>
-                <Input
-                    id="time-picker_time-input"
-                    ref={this.inputRef}
-                    label={label}
-                    placeholder={placeholder}
-                    icon={<ClockIcon />}
-                    iconPosition="right"
-                    required={required}
-                    value={this.getTriggerInputValue()}
-                    onKeyDown={this.handleKeyDown}
-                    onClick={this.handleClick}
-                    onFocus={this.handleFocus}
-                    onBlur={this.handleBlur}
-                    labelAlignment={labelAlignment}
-                    hideLabel={hideLabel}
-                    name={name}
-                    bottomHelpText={bottomHelpText}
-                    isCentered={isCentered}
-                    error={error}
-                    readOnly={readOnly}
-                    disabled={disabled}
-                    tabIndex={tabIndex}
+            <StyledModal
+                id="time-picker_modal"
+                isOpen={isOpen}
+                onRequestClose={closeModal}
+                onOpened={setFocusToHourInput}
+            >
+                <TimeSelect
+                    onCloseModal={closeModal}
+                    onChange={onChange}
+                    cancelLabel={cancelLabel}
+                    okLabel={okLabel}
+                    value={value}
+                    ref={timeSelectRef}
+                    hour24={hour24}
                 />
-
-                <StyledModal
-                    id="time-picker_modal"
-                    isOpen={isOpen}
-                    onRequestClose={this.closeModal}
-                    onOpened={this.setFocusToHourInput}
-                >
-                    <TimeSelect
-                        onCloseModal={this.closeModal}
-                        onChange={onChange}
-                        cancelLabel={cancelLabel}
-                        okLabel={okLabel}
-                        value={value}
-                        ref={this.timeSelectRef}
-                        hour24={hour24}
-                    />
-                </StyledModal>
-            </StyledContainer>
-        );
-    }
-}
+            </StyledModal>
+        </StyledContainer>
+    );
+});
 
 TimePicker.propTypes = {
     /** Sets the date for the TimePicker programmatically. */
@@ -259,4 +217,4 @@ TimePicker.defaultProps = {
     hour24: false,
 };
 
-export default withReduxForm(TimePicker);
+export default TimePicker;

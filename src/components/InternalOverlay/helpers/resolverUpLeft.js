@@ -5,7 +5,7 @@ export default function resolverUpLeft(opts, margin = 0) {
         trigger.leftUpAnchor.y - margin - content.height >= 0
     ) {
         return {
-            top: trigger.leftUpAnchor.y - margin - content.height,
+            bottom: viewport.height - trigger.leftUpAnchor.y + margin,
             left: trigger.leftBottomAnchor.x,
         };
     }
