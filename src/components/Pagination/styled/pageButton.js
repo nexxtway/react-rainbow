@@ -21,6 +21,14 @@ const StyledPageButton = styled.li`
     }
 
     ${props =>
+        props.pages === 1 &&
+        `
+            :nth-child(1) > button {
+                border-radius: 100px;
+            } 
+        `}
+
+    ${props =>
         props.variant === 'shaded' &&
         `
         > button {
