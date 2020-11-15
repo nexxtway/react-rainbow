@@ -5,7 +5,12 @@ import InternalOverlay from '../InternalOverlay';
 import tooltipPositionResolver from './helpers/tooltipPositionResolver';
 import resolveElement from '../InternalOverlay/helpers/resolveElement';
 
-const Tooltip = React.forwardRef((props, ref) => {
+/**
+ * A Tooltip is a small piece of contextual information about an element on the screen, which is displayed when a user hovers or focuses on the element it is describing.
+ * @category Internal
+ */
+
+const InternalTooltip = React.forwardRef((props, ref) => {
     const [pos, setPos] = useState();
     const { className, style, children, isVisible, preferredPosition, triggerElementRef } = props;
     const tooltipRef = useRef();
@@ -52,7 +57,7 @@ const Tooltip = React.forwardRef((props, ref) => {
     );
 });
 
-Tooltip.propTypes = {
+InternalTooltip.propTypes = {
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -69,7 +74,7 @@ Tooltip.propTypes = {
     children: PropTypes.node,
 };
 
-Tooltip.defaultProps = {
+InternalTooltip.defaultProps = {
     className: undefined,
     style: undefined,
     isVisible: false,
@@ -77,4 +82,4 @@ Tooltip.defaultProps = {
     children: undefined,
 };
 
-export default Tooltip;
+export default InternalTooltip;

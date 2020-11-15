@@ -13,7 +13,6 @@ const StyledTooltip = attachThemeAttrs(styled.div)`
     transition-duration: 1s;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     width: auto;
-    white-space: nowrap;
     
     ${props =>
         props.position === 'top' &&

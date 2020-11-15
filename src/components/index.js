@@ -78,7 +78,6 @@ export { default as TableWithBrowserPagination } from './TableWithBrowserPaginat
 export { default as Textarea } from './Textarea';
 export { default as TimelineMarker } from './TimelineMarker';
 export { default as TimePicker } from './TimePicker';
-export { default as Tooltip } from './Tooltip';
 export { default as Tree } from './Tree';
 export { default as VerticalItem } from './VerticalItem';
 export { default as VerticalNavigation } from './VerticalNavigation';
