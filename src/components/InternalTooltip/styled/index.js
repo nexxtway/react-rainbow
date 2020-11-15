@@ -23,8 +23,8 @@ const StyledTooltip = attachThemeAttrs(styled.div)`
             position: absolute;
             top: 100%;
             left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
+            margin-left: -6px;
+            border-width: 6px;
             border-style: solid;
             border-color: ${props.palette.text.main} transparent transparent transparent;
         }
@@ -39,8 +39,8 @@ const StyledTooltip = attachThemeAttrs(styled.div)`
             position: absolute;
             bottom: 100%;
             left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
+            margin-left: -6px;
+            border-width: 6px;
             border-style: solid;
             border-color: transparent transparent ${props.palette.text.main} transparent;
         }
@@ -55,8 +55,8 @@ const StyledTooltip = attachThemeAttrs(styled.div)`
             position: absolute;
             top: 50%;
             left: 100%; /* To the right of the tooltip */
-            margin-top: -5px;
-            border-width: 5px;
+            margin-top: -6px;
+            border-width: 6px;
             border-style: solid;
             border-color: transparent transparent transparent ${props.palette.text.main};
         }
@@ -71,8 +71,8 @@ const StyledTooltip = attachThemeAttrs(styled.div)`
             position: absolute;
             top: 50%;
             right: 100%; /* To the left of the tooltip */
-            margin-top: -5px;
-            border-width: 5px;
+            margin-top: -6px;
+            border-width: 6px;
             border-style: solid;
             border-color: transparent ${props.palette.text.main} transparent transparent;
         }

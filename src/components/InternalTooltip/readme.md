@@ -337,13 +337,15 @@ const InputLabel = styled.div`
     align-items: center;
 `;
 
-const StyledDot = styled.div`
+const StyledDot = styled.button`
     width: 8px;
     height: 8px;
     background: red;
     border-radius: 8px;
     margin-left: 8px;
     background: ${props => props.theme.rainbow.palette.error.main};
+    border: none;
+    padding: 0;
 `;
 
 const StyledInput = styled(Input)`
