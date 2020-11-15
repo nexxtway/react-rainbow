@@ -5,14 +5,15 @@ import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import ContentMetaResolver from './ContentMetaResolver';
 import defaultPositionResolver from './helpers/defaultPositionResolver';
-import { disableBodyScroll, enableBodyScroll } from '../../libs/scrollController';
 import resolveElement from './helpers/resolveElement';
+import useDisableScroll from './hooks/useDisableScroll';
 
 const Container = styled.div`
     position: fixed;
     z-index: 999999999;
     top: ${props => props.position && props.position.top}px;
     left: ${props => props.position && props.position.left}px;
+    bottom: ${props => props.position && props.position.bottom}px;
     ${props =>
         props.position &&
         props.position.width &&
@@ -84,17 +85,18 @@ const InternalOverlay = props => {
         positionResolver,
         onOpened,
         children,
+        keepScrollEnabled,
     } = props;
     const [contentMeta, updateContentMeta] = useState(false);
     useEffect(() => {
         if (isVisible && contentMeta) {
             onOpened();
-            disableBodyScroll(undefined, { reserveScrollBarGap: true });
         }
-        return () => {
-            enableBodyScroll();
-        };
-    }, [isVisible, contentMeta, onOpened]);
+    }, [isVisible && contentMeta]);
+
+    const shouldDisableScroll = isVisible && contentMeta && !keepScrollEnabled;
+    useDisableScroll(shouldDisableScroll);
+
     if (isVisible) {
         const content = children || <ContentComponent />;
         if (contentMeta) {
@@ -134,6 +136,10 @@ InternalOverlay.propTypes = {
      */
     onOpened: PropTypes.func,
     /**
+     *  When true it wont disable scroll on the window when the overlay is open.
+     */
+    keepScrollEnabled: PropTypes.bool,
+    /**
      * @ignore
      */
     children: PropTypes.node,
@@ -145,6 +151,7 @@ InternalOverlay.defaultProps = {
     positionResolver: undefined,
     onOpened: () => {},
     children: undefined,
+    keepScrollEnabled: false,
 };
 
 InternalOverlay.defaultPositionResolver = defaultPositionResolver;

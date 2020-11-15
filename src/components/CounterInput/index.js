@@ -194,13 +194,11 @@ CounterInput.propTypes = {
     min: PropTypes.number,
     /** Specifies the maximum value allowed in the field. */
     max: PropTypes.number,
-    /** Specifies that an input will not have border. This value defaults to false. */
-    isBare: PropTypes.bool,
     /** Specifies the error that the input contains. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The variant changes the appearance of the Input. Accepted variants include default
      * and shaded. This value defaults to default. */
-    variant: PropTypes.oneOf(['default', 'shaded']),
+    variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
     /** A number that specifies the granularity that the value must adhere to. */
     step: PropTypes.number,
     /** Text label for the Input. */
@@ -228,7 +226,6 @@ CounterInput.defaultProps = {
     required: false,
     min: undefined,
     max: undefined,
-    isBare: false,
     error: null,
     step: 1,
     variant: 'default',

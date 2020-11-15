@@ -3,16 +3,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
+ * A column is a vertical element of a table that contains data.
+ * The Column component is an abstraction that allows us to represent data of the same data type.
+ * Both components (Table and Column) are related and should be implemented together.
  * @category DataView
  */
+
 export default function Column() {
     return <div />;
 }
 
 Column.propTypes = {
     /**
-     * The header of the column. it could just an String with text is going
-     * to be rendered or component with a desired content.
+     * The header of the column. It could be just a `String` with text or a component with a desired content.
      */
     header: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     /**
@@ -23,10 +26,10 @@ Column.propTypes = {
     component: PropTypes.func,
     /**
      * The field value is used to compute/map the value is going to be render
-     * for each cell. it's the name of a property in the data objects.
+     * for each cell. It's the name of a property in the data objects.
      *
      * e.g `data = [{ name: 'Max', ... }, {...}]`;
-     * field could be 'name' for a column that want to represent names on a collection of people.
+     * field could be 'name' for a column that wants to represent names on a collection of people.
      */
     field: PropTypes.string,
     /**

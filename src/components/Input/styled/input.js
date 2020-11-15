@@ -68,6 +68,27 @@ const Input = attachThemeAttrs(styled.input)`
         box-shadow:${props.disabled || props.readOnly ? '' : props.shadows.shadow_10};
         border: 1px solid transparent;
         `}
+
+        ${props =>
+            props.variant === 'bare' &&
+            `
+            background-color: transparent;
+            border: 0;
+            padding: 0 0.75rem;
+            color: ${props.palette.text.main};
+            line-height: 2.5rem;
+            transition: none;
+
+            &:focus,
+            &:active {
+                outline: 0;
+                box-shadow: none;
+                padding: 0 0.75rem;
+                background-color: transparent;
+                border: 0;
+            }
+            `}
+    
     ${props =>
         props.error &&
         `

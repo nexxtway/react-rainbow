@@ -338,7 +338,12 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             }
         `};   
     
-    ${props => props.shaded && `box-shadow: ${props.shadows.shadow_1};`};
+    ${props =>
+        props.shaded &&
+        `
+        box-shadow: ${props.shadows.shadow_10};
+        border: 1px solid transparent;
+    `};
 `;
 
 export default StyledButton;

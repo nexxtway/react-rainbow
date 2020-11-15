@@ -46,6 +46,13 @@ export const StyledCombobox = attachThemeAttrs(styled.div)`
         border-color: transparent;
         `}
 
+    ${props =>
+        props.variant === 'bare' &&
+        `
+        background: transparent;
+        border-color: transparent;
+        `}
+
     :focus,
     :active,
     :focus-within {
