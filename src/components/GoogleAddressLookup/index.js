@@ -11,7 +11,7 @@ const googleMapApiUrl = 'https://maps.googleapis.com/maps/api/js';
  * @category Form
  */
 export default function GoogleAddressLookup(props) {
-    const { apiKey, variant, ...rest } = props;
+    const { apiKey, ...rest } = props;
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const Component = useCallback(
@@ -20,7 +20,7 @@ export default function GoogleAddressLookup(props) {
     );
 
     // eslint-disable-next-line react/jsx-props-no-spreading
-    return <Component variant={variant} {...rest} />;
+    return <Component {...rest} />;
 }
 
 GoogleAddressLookup.propTypes = {
