@@ -6,7 +6,7 @@ const StyledTooltip = attachThemeAttrs(styled.div)`
     color: ${props => props.palette.getContrastText(props.palette.text.main)};
     text-align: center;
     padding: 6px 12px;
-    border-radius: 6px;
+    border-radius: 10px;
     z-index: 1;
     opacity: 0;
     transition-property: opacity;

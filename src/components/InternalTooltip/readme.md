@@ -17,7 +17,7 @@ const Container = styled.div`
 `;
 
 const TooltipContainer = styled.div`
-    width: 340px;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
 `;
@@ -36,30 +36,11 @@ const Text = styled.p`
     margin-bottom: 4px;
 `;
 
-const Link = styled.a`
-    font-size: 14px;
-    text-align: start;
-    color: ${props => props.theme.rainbow.palette.background.main};
-    text-decoration: underline;
-
-    :hover, :active, :focus {
-        color: ${props => props.theme.rainbow.palette.background.main};
-    }
-`;
-
 const options = [
-    { value: 'topLeft', label: 'Top Left' },
     { value: 'topCenter', label: 'Top Center' },
-    { value: 'topRight', label: 'Top Right' },
-    { value: 'rightTop', label: 'Right Top' },
     { value: 'rightCenter', label: 'Right Center' },
-    { value: 'rightBottom', label: 'Right Bottom' },
-    { value: 'leftTop', label: 'Left Top' },
     { value: 'leftCenter', label: 'Left Center' },
-    { value: 'leftBottom', label: 'Left Bottom' },
-    { value: 'rightTop', label: 'Right Top' },
     { value: 'rightCenter', label: 'Right Center' },
-    { value: 'rightBottom', label: 'Right Bottom' },
 ];
 
 function Example() {
@@ -103,15 +84,11 @@ function Example() {
                 <TooltipContainer>
                     <Header>What’s do you know about rainbow?</Header>
                     <Text>
-                        Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+                        Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt.
                     </Text>
-                    <Link
-                        href="https://react-rainbow.io"
-                        rel="noopener"
-                        target="_blank"
-                    >
-                        Link to rainbow
-                    </Link>
+                    <Text>
+                        Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Sit nulla est ex deserunt exercitation anim.
+                    </Text>
                 </TooltipContainer>
             </InternalTooltip>
             <RadioGroup label="Preferred Position" options={options} />
