@@ -37,6 +37,7 @@ React Rainbow is a collection of components that will reliably help you build yo
 -   Redux-Form integration.
 -   We designed each component with i18n in mind.
 -   Accessibility is part of our definition of done.
+-   Components with out-of-the-box Typescript typing.
 
 <br/>
 
@@ -50,7 +51,7 @@ React Rainbow is a collection of components that will reliably help you build yo
 
 ### 📦 Installation
 
-React Rainbow components is available as an [npm package](https://www.npmjs.com/package/react-rainbow-components).
+React Rainbow Components is available as an [npm package](https://www.npmjs.com/package/react-rainbow-components).
 
 ```bash
 $ yarn add react-rainbow-components
@@ -66,7 +67,7 @@ $ npm install react-rainbow-components --save
 
 ### ⌨️ Usage
 
-Here is a quick example to get you started, **it's all you need**:
+Here is a quick example to get you started. **It's all you need**:
 
 ```js
 import React from 'react';
@@ -132,9 +133,9 @@ Are you looking for an example project to get started?
 
 We are excited that you are interested in contributing to this project!
 
-You can help us improve React Rainbow Components, the first step to begin collaborate is to create an issue before submitting a pull request, it's always good to file an issue, so we can discuss the details of your approach or suggestion.
+You can help us improve React Rainbow Components, the first step to begin collaboration is to create an issue before submitting a pull request. It's always good to file an issue, so we can discuss the details of your approach or suggestion.
 
-[See more details about how to collaborate?](https://github.com/nexxtway/react-rainbow/blob/master/CONTRIBUTING.md)
+[See more details about how to collaborate](https://github.com/nexxtway/react-rainbow/blob/master/CONTRIBUTING.md)
 
 <br/>
 
