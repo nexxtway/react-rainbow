@@ -73,7 +73,11 @@ class Picklist extends Component {
         const { isOpen } = this.state;
         if (!wasOpen && isOpen) {
             // eslint-disable-next-line id-length
-            this.outsideClick.startListening(this.containerRef.current, () => this.closeMenu());
+            this.outsideClick.startListening(this.containerRef.current, (_, event) => {
+                if (this.eventTarget !== event.target) {
+                    this.closeMenu();
+                }
+            });
             this.windowScrolling.startListening(this.handleWindowScroll);
         }
     }
@@ -162,10 +166,7 @@ class Picklist extends Component {
     }
 
     handleContainerClick(event) {
-        const { isOpen } = this.state;
-        if (isOpen) {
-            event.nativeEvent.stopImmediatePropagation();
-        }
+        this.eventTarget = event.target;
     }
 
     /**
@@ -282,20 +283,19 @@ class Picklist extends Component {
                         isVisible={isOpen}
                         positionResolver={positionResolver}
                         onOpened={() => this.dropdownRef.current.focus()}
-                        render={() => (
-                            <InternalDropdown
-                                id={this.listboxId}
-                                isLoading={isLoading}
-                                value={valueInProps}
-                                onChange={this.handleChange}
-                                enableSearch={enableSearch}
-                                ref={this.dropdownRef}
-                            >
-                                {children}
-                            </InternalDropdown>
-                        )}
                         triggerElementRef={() => this.triggerRef}
-                    />
+                    >
+                        <InternalDropdown
+                            id={this.listboxId}
+                            isLoading={isLoading}
+                            value={valueInProps}
+                            onChange={this.handleChange}
+                            enableSearch={enableSearch}
+                            ref={this.dropdownRef}
+                        >
+                            {children}
+                        </InternalDropdown>
+                    </InternalOverlay>
                 </StyledInnerContainer>
                 <RenderIf isTrue={error}>
                     <StyledError id={errorMessageId}>{error}</StyledError>
