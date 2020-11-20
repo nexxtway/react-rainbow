@@ -1,4 +1,5 @@
-##### Sidebar simple
+# The basic Sidebar
+##### This example represents a sidebar with icons and links, where the user can easily navigate through the pages. 
 
 ```js
 import React from 'react';
@@ -49,7 +50,8 @@ class SimpleSidebar extends React.Component {
     </div>
 ```
 
-##### Sidebar with dynamic content
+# Sidebar with dynamic content
+##### This example shows the use case of a sidebar where the user interacting with the icons dynamically changes the content of the page.
 
 ```js
 import React, { useState } from 'react';
