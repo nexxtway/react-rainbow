@@ -5,8 +5,9 @@ import StyledNav from './styled/nav';
 import StyledUl from './styled/ul';
 
 /**
- * Sidebar represents a list of links that either take the user to another
- * page or parts of the page the user is in.
+ * The Sidebar component is a vertical bar that holds a list of links. Also, you can position it in any layout. 
+ * It helps users jump from one site section to another quickly while not interfering with the content on the page. 
+ * Note that you have to compose the `Sidebar` with the `SidebarItem` component.
  * @category Layout
  */
 export default function Sidebar(props) {
