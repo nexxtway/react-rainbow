@@ -34,7 +34,7 @@ describe('resolverUpCenter', () => {
             },
         };
         const expected = {
-            top: param.trigger.leftUpAnchor.y - param.content.height,
+            bottom: param.viewport.height - param.trigger.leftUpAnchor.y,
             left: param.trigger.rightUpAnchor.x - param.content.width / 2 - param.trigger.width / 2,
         };
         expect(resolverUpCenter(param)).toEqual(expected);

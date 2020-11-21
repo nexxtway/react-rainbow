@@ -429,6 +429,7 @@ class Lookup extends Component {
         const errorMessageId = this.getErrorMessageId();
         const currentValue = this.getValue();
         const { showScrollUpArrow, showScrollDownArrow } = this.state;
+        const errorValue = isLoading ? null : error;
 
         return (
             <StyledContainer
@@ -458,7 +459,7 @@ class Lookup extends Component {
                         tabIndex={tabIndex}
                         onClick={onClick}
                         disabled={disabled}
-                        error={error}
+                        error={errorValue}
                         required={required}
                         readOnly={readOnly}
                         errorMessageId={errorMessageId}
@@ -483,7 +484,7 @@ class Lookup extends Component {
                             showCloseButton={!!searchValue}
                             onClear={this.clearInput}
                             icon={icon}
-                            error={error}
+                            error={errorValue}
                         />
                         <StyledInput
                             id={this.inputId}
@@ -507,7 +508,7 @@ class Lookup extends Component {
                             ref={this.inputRef}
                             iconPosition="right"
                             icon={icon}
-                            error={error}
+                            error={errorValue}
                             isLoading={isLoading}
                             variant={variant}
                         />
@@ -541,7 +542,7 @@ class Lookup extends Component {
                         </RenderIf>
                     </StyledInputContainer>
                 </RenderIf>
-                <RenderIf isTrue={error}>
+                <RenderIf isTrue={errorValue}>
                     <StyledTextError id={errorMessageId}>{error}</StyledTextError>
                 </RenderIf>
             </StyledContainer>
@@ -569,7 +570,7 @@ Lookup.propTypes = {
     /** An array of matched options to show in a menu. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            label: PropTypes.string,
+            label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
             description: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
             icon: PropTypes.node,
         }),

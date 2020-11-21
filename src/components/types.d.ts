@@ -24,7 +24,7 @@ export type IconPosition = 'left' | 'right';
 export type LabelAlignment = 'left' | 'center' | 'right';
 
 export interface LookupValue {
-    label?: string;
+    label?: ReactNode;
     description?: ReactNode;
     icon?: ReactNode;
 }

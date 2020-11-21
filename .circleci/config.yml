@@ -1,9 +1,13 @@
-version: 2
+version: 2.1
+
+orbs:
+    browser-tools: circleci/browser-tools@1.1.0
 
 defaults: &defaults
     working_directory: ~/repo
     docker:
-        - image: circleci/node:12.9.1-stretch-browsers
+        - image: cimg/node:12.19.0-browsers
+    resource_class: medium+
 
 jobs:
     build_and_test:
@@ -53,13 +57,8 @@ jobs:
 
             - run: yarn install
 
-            - run:
-                  name: Install Chrome
-                  command: |
-                      curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-                      sudo dpkg -i google-chrome.deb
-                      sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
-                      rm google-chrome.deb
+            - browser-tools/install-chrome:
+                  chrome-version: 85.0.4183.102
 
             - run:
                   command: yarn start

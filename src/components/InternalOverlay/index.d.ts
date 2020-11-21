@@ -36,6 +36,7 @@ export interface InternalOverlayProps {
     triggerElementRef?: RefObject<HTMLElement> | TriggerElementRefFunction;
     positionResolver?: (opts: PositionResolverOpts) => Position;
     onOpened?: () => void;
+    keepScrollEnabled?: boolean;
 }
 
 export default function(props: InternalOverlayProps): JSX.Element | null;
