@@ -4,6 +4,7 @@ defaults: &defaults
     working_directory: ~/repo
     docker:
         - image: circleci/node:12.9.1-stretch-browsers
+    resource_class: medium+
 
 jobs:
     build_and_test:
