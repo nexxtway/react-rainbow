@@ -116,3 +116,17 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
         </Badge>
     </div>
 ```
+
+# Badges of different sizes
+##### If you need to resize your badge, you can do so using the `size` prop.
+
+```js
+import React from 'react';
+import { Badge } from 'react-rainbow-components';
+
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+        <Badge size="small" variant="inverse" title="the badge title" className="rainbow-m-around_medium" label="Badge Small" />
+        <Badge size="medium" variant="inverse" title="the badge title" className="rainbow-m-around_medium" label="Badge Medium" />
+        <Badge size="large" variant="inverse" title="the badge title" className="rainbow-m-around_medium" label="Badge Large" />
+    </div>
+```
