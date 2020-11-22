@@ -1,5 +1,5 @@
 # The basic Sidebar
-##### This example represents a sidebar with icons and links, where the user can easily navigate through the pages. 
+##### This example represents a `Sidebar` and how you can change the selected `SidebarItem` by implementing the onSelect handler.
 
 ```js
 import React from 'react';
@@ -51,7 +51,7 @@ class SimpleSidebar extends React.Component {
 ```
 
 # Sidebar with dynamic content
-##### This example shows the use case of a sidebar where the user interacting with the icons dynamically changes the content of the page.
+##### This example shows how you can witch content dynamically when a SidebarItem was clicked.
 
 ```js
 import React, { useState } from 'react';
