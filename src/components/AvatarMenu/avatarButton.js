@@ -56,6 +56,7 @@ export default class AvatarButton extends Component {
             icon,
             avatarSize,
             initialsVariant,
+            avatarBackgroundColor,
         } = this.props;
 
         return (
@@ -81,6 +82,7 @@ export default class AvatarButton extends Component {
                     ariaHaspopup
                     onFocus={onFocus}
                     onBlur={onBlur}
+                    backgroundColor={avatarBackgroundColor}
                 />
             </StyledButton>
         );
@@ -101,6 +103,8 @@ AvatarButton.propTypes = {
     icon: PropTypes.node,
     avatarSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
     initialsVariant: PropTypes.oneOf(['default', 'inverse']),
+    /** A valid background color to customize the avatar. */
+    avatarBackgroundColor: PropTypes.string,
 };
 
 AvatarButton.defaultProps = {
@@ -117,4 +121,5 @@ AvatarButton.defaultProps = {
     icon: null,
     avatarSize: 'medium',
     initialsVariant: 'default',
+    avatarBackgroundColor: '',
 };
