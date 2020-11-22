@@ -97,6 +97,7 @@
                 "EmailIcon": true,
                 "ShoppingCartIcon": true,
                 "UserAvatarIcon": true,
+                "AvatarIcon": true,
                 "UserVerifiedIcon": true,
                 "AdvancedSettingsIcon": true,
                 "SettingsIcon": true,

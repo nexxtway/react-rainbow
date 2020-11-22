@@ -16,6 +16,8 @@ const StyledButton = attachThemeAttrs(styled.button)`
     overflow: visible;
     text-transform: none;
     appearance: button;
+    width: 100%;
+    height: 100%;
 
     ::-moz-focus-inner {
         border: 0;
