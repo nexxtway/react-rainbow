@@ -122,6 +122,7 @@ export interface GoogleAddressLookupProps extends BaseProps {
     onClick?: (event: MouseEvent<HTMLElement>) => void;
     onBlur?: (event: null | LookupValue) => void;
     searchOptions?: SearchOptionsShape;
+    variant?: 'default' | 'shaded' | 'bare';
 }
 
 export default function(props: GoogleAddressLookupProps): JSX.Element | null;

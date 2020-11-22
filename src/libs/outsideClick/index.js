@@ -8,7 +8,7 @@ class OutsideClick {
     }
 
     [privateHandleClick](event) {
-        if (!this.containerRef.contains(event.target)) this.callback(this);
+        if (!this.containerRef.contains(event.target)) this.callback(this, event);
     }
 
     startListening(containerRef, callback) {
