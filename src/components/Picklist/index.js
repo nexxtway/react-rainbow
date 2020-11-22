@@ -53,6 +53,7 @@ class Picklist extends Component {
         this.handleBlur = this.handleBlur.bind(this);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleContainerClick = this.handleContainerClick.bind(this);
         this.closeAndFocusInput = this.closeAndFocusInput.bind(this);
         this.handleWindowScroll = this.handleWindowScroll.bind(this);
         this.outsideClick = new OutsideClick();
@@ -71,7 +72,12 @@ class Picklist extends Component {
         const { isOpen: wasOpen } = prevState;
         const { isOpen } = this.state;
         if (!wasOpen && isOpen) {
-            this.outsideClick.startListening(this.containerRef.current, () => this.closeMenu());
+            // eslint-disable-next-line id-length
+            this.outsideClick.startListening(this.containerRef.current, (_, event) => {
+                if (this.eventTarget !== event.target) {
+                    this.closeMenu();
+                }
+            });
             this.windowScrolling.startListening(this.handleWindowScroll);
         }
     }
@@ -159,6 +165,10 @@ class Picklist extends Component {
         }, 0);
     }
 
+    handleContainerClick(event) {
+        this.eventTarget = event.target;
+    }
+
     /**
      * Sets focus on the element.
      * @public
@@ -219,6 +229,7 @@ class Picklist extends Component {
                 onKeyDown={this.handleKeyPressed}
                 ref={this.containerRef}
                 readOnly={readOnly}
+                onClick={this.handleContainerClick}
             >
                 <RenderIf isTrue={pickListLabel}>
                     <Label
@@ -272,20 +283,19 @@ class Picklist extends Component {
                         isVisible={isOpen}
                         positionResolver={positionResolver}
                         onOpened={() => this.dropdownRef.current.focus()}
-                        render={() => (
-                            <InternalDropdown
-                                id={this.listboxId}
-                                isLoading={isLoading}
-                                value={valueInProps}
-                                onChange={this.handleChange}
-                                enableSearch={enableSearch}
-                                ref={this.dropdownRef}
-                            >
-                                {children}
-                            </InternalDropdown>
-                        )}
                         triggerElementRef={() => this.triggerRef}
-                    />
+                    >
+                        <InternalDropdown
+                            id={this.listboxId}
+                            isLoading={isLoading}
+                            value={valueInProps}
+                            onChange={this.handleChange}
+                            enableSearch={enableSearch}
+                            ref={this.dropdownRef}
+                        >
+                            {children}
+                        </InternalDropdown>
+                    </InternalOverlay>
                 </StyledInnerContainer>
                 <RenderIf isTrue={error}>
                     <StyledError id={errorMessageId}>{error}</StyledError>
