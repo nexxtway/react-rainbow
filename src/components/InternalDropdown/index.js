@@ -80,6 +80,13 @@ const InternalDropdown = forwardRef((props, reference) => {
         contains: element => containerRef.current.contains(element),
     }));
 
+    const isComponentMounted = useRef(true);
+    useEffect(() => {
+        return () => {
+            isComponentMounted.current = false;
+        };
+    }, []);
+
     const updateScrollingArrows = () => {
         const menu = menuRef.current;
         setShowScrollUpArrow(menu.scrollTop > 0);
@@ -96,6 +103,7 @@ const InternalDropdown = forwardRef((props, reference) => {
     }, []);
 
     const registerChild = useCallback((childRef, childProps) => {
+        if (!isComponentMounted.current) return;
         if (isChildRegistered(childProps.name, activeChildren.current)) return;
         if (!firstChild.current) {
             firstChild.current = childProps;
@@ -114,6 +122,7 @@ const InternalDropdown = forwardRef((props, reference) => {
     }, []);
 
     const unregisterChild = useCallback((childRef, name) => {
+        if (!isComponentMounted.current) return;
         if (!isChildRegistered(name, activeChildren.current)) return;
         const newChildren = activeChildren.current.filter(child => child.name !== name);
         activeChildren.current = newChildren;
