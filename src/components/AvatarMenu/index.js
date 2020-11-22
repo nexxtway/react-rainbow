@@ -61,6 +61,8 @@ AvatarMenu.propTypes = {
      * It take precedence over the icon.
      * This value defaults to medium. */
     avatarSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+    /** A valid background color to customize the avatar. */
+    avatarBackgroundColor: PropTypes.string,
     /** The variant of the initials. Only make sense when initials is used. */
     initialsVariant: PropTypes.oneOf(['default', 'inverse']),
     /** The content of the AvatarMenu. Used to render the menuItem elements
@@ -110,6 +112,7 @@ AvatarMenu.defaultProps = {
     initials: undefined,
     icon: null,
     avatarSize: 'medium',
+    avatarBackgroundColor: '',
     initialsVariant: 'default',
     title: undefined,
     assistiveText: undefined,
