@@ -80,7 +80,7 @@ const StyledUserAvatarIcon = styled(UserAvatarIcon)`
     height: 50%;
 `;
 
-    <div className="rainbow-m-bottom_xx-large rainbow-m-vertical_large rainbow-align-content_center">
+    <div className="rainbow-m-vertical_xx-large rainbow-p-vertical_large rainbow-align-content_center">
         <AvatarMenu
             className="rainbow-m-horizontal_large"
             id="avatar-menu"
