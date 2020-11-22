@@ -170,6 +170,7 @@ class PlacesLookupComponent extends Component {
             onClick,
             // onFocus,
             onBlur,
+            variant,
         } = this.props;
         const { isSearching, suggestions } = this.state;
         const options = suggestions.length > 0 ? suggestions : null;
@@ -199,6 +200,7 @@ class PlacesLookupComponent extends Component {
                     error={error}
                     icon={<LocationIcon />}
                     preferredSelectedOption={1}
+                    variant={variant}
                 />
                 <RenderIf isTrue={!error}>
                     <StyledPoweredByGoogleContainer>
@@ -237,6 +239,7 @@ PlacesLookupComponent.propTypes = {
     onClick: PropTypes.func,
     // onFocus: PropTypes.func,
     onBlur: PropTypes.func,
+    variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
 };
 
 PlacesLookupComponent.defaultProps = {
@@ -259,6 +262,7 @@ PlacesLookupComponent.defaultProps = {
     id: undefined,
     labelAlignment: 'center',
     hideLabel: false,
+    variant: 'default',
 };
 
 export default withReduxForm(PlacesLookupComponent);
