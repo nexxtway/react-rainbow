@@ -14,7 +14,6 @@ const SearchIcon = props => {
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
         >
-            <title>search</title>
             <g id="layout" stroke="none" strokeWidth="1" fillRule="evenodd">
                 <g id="results" transform="translate(-1029.000000, -169.000000)" fillRule="nonzero">
                     <g id="Group-8" transform="translate(375.000000, 156.000000)">
