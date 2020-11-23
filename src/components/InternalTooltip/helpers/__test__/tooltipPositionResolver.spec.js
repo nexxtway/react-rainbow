@@ -66,11 +66,11 @@ describe('tooltipPositionResolver', () => {
             },
         };
 
-        const { trigger, content } = param;
-        const margin = 5;
+        const { trigger, content, viewport } = param;
+        const margin = 12;
         const expectedPositions = {
             top: {
-                top: trigger.leftUpAnchor.y - margin - content.height,
+                bottom: viewport.height - trigger.leftUpAnchor.y + margin,
                 left: trigger.rightUpAnchor.x - content.width / 2 - trigger.width / 2,
             },
             bottom: {
