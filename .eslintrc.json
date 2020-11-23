@@ -101,7 +101,8 @@
                 "UserVerifiedIcon": true,
                 "AdvancedSettingsIcon": true,
                 "SettingsIcon": true,
-                "CompanyIcon": true
+                "CompanyIcon": true,
+                "InfoIcon": true
             }
         }
     ],

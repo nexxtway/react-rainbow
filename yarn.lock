@@ -1575,10 +1575,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
-"@rainbow-modules/hooks@^0.1.2":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@rainbow-modules/hooks/-/hooks-0.1.4.tgz#87940e81a81ac7dda599bbd266d928bfa3043b77"
-  integrity sha512-S0zn26xH5RRIoDKevDq1A6S17c9c/n5pPZeYVtRBzvUd2IYb9ZtR3/X25sKZwqugGnD6MSpS7SnImQJW7X1OnA==
+"@rainbow-modules/hooks@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@rainbow-modules/hooks/-/hooks-0.12.0.tgz#d1293691aff4d94202b694d5004254fb25900824"
+  integrity sha512-ndpr7Hazm+np5wYwPPGKsxFMKwFyfxiYQTy/cMo/nQyi7orcYR8myU2/qsHcNJXLPA4UQl6s1la3rQnVIQ4NFA==
 
 "@rainbow-modules/icons@^0.10.1-canary.4":
   version "0.10.1-canary.4"

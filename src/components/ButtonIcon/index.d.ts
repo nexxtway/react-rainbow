@@ -12,6 +12,8 @@ export interface ButtonIconProps extends BaseProps {
     tabIndex?: number | string;
     onClick?: (event: MouseEvent<HTMLElement>) => void;
     onMouseDown?: (event: MouseEvent<HTMLElement>) => void;
+    onMouseEnter?: (event: MouseEvent<HTMLElement>) => void;
+    onMouseLeave?: (event: MouseEvent<HTMLElement>) => void;
     onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void;
     onFocus?: (event: FocusEvent<HTMLElement>) => void;
     onBlur?: (event: FocusEvent<HTMLElement>) => void;

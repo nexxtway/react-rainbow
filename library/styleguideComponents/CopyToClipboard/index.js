@@ -31,7 +31,8 @@ export default class CopyToClipboard extends Component {
                 assistiveText="copy to clipboard"
                 size="medium"
                 variant={variant}
-                icon={<FontAwesomeIcon icon={icon} />} />
+                icon={<FontAwesomeIcon icon={icon} />}
+            />
         );
     }
 }

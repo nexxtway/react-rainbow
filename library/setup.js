@@ -80,6 +80,7 @@ import ExportFilledIcon from './exampleComponents/Icons/exportFilled';
 import ArrowDownIcon from './exampleComponents/Icons/arrowDown';
 import PictureIcon from './exampleComponents/Icons/picture';
 import Coin from './exampleComponents/Icons/coin';
+import InfoIcon from './exampleComponents/Icons/info';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -164,3 +165,4 @@ global.ExportFilledIcon = ExportFilledIcon;
 global.ArrowDownIcon = ArrowDownIcon;
 global.PictureIcon = PictureIcon;
 global.Coin = Coin;
+global.InfoIcon = InfoIcon;
