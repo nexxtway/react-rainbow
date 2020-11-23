@@ -19,6 +19,7 @@ import InteractiveExampleIcon from './icons/interactiveExampleIcon';
 import ListIcon from './icons/listIcon';
 import UtilsTab from './utilsTab';
 import DescriptionLink from './descriptionLink';
+import EmptyTest from './icons/emptyTest';
 import Query from './query';
 import './styles.css';
 import './media-queries.css';
@@ -144,11 +145,25 @@ export default class ReactComponent extends Component {
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'utils'}>
                         <div className="react-rainbow-utils_container">
-                            <Query value="page-object" name={name} />
-                            <Query value="tutorials" name={name} />
+                            <Query value="related-component" name={name} />
                         </div>
                         <div className="react-rainbow-utils_container">
                             <Query value="experience-examples" name={name} />
+                        </div>
+                        <div>
+                            <div className="react-rainbow-utils_text rainbow-m-around_medium">
+                                <h1 className="react-rainbow-utils_text-header">Testing</h1>
+                            </div>
+                            {/* <div className="react-rainbow-utils_empty-test-container">
+                                <EmptyTest />
+                                <span className="react-rainbow-utils_text-empty">
+                                    This component is not test infected.
+                                </span>
+                            </div> */}
+                        </div>
+                        <div className="rainbow-flex rainbow-flex_wrap">
+                            <Query value="tutorials" name={name} />
+                            <Query value="page-object" name={name} />
                         </div>
                     </RenderIf>
                 </div>
