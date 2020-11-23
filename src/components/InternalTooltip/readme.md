@@ -6,8 +6,7 @@ import React, { useRef, useState } from 'react';
 import { ButtonIcon, RadioGroup } from 'react-rainbow-components';
 import styled from 'styled-components';
 import  InternalTooltip from '../InternalTooltip';
-import { useOutsideClick } from '../../libs/hooks';
-import { WindowScrolling } from '../../libs/scrollController';
+import useDefaultTooltipConnector from './hooks/useDefaultTooltipConnector';
 
 const Container = styled.div`
     display: flex;
@@ -37,48 +36,41 @@ const Text = styled.p`
 `;
 
 const options = [
-    { value: 'topCenter', label: 'Top Center' },
-    { value: 'rightCenter', label: 'Right Center' },
-    { value: 'leftCenter', label: 'Left Center' },
-    { value: 'rightCenter', label: 'Right Center' },
+    { value: 'top', label: 'Top Center' },
+    { value: 'right', label: 'Right Center' },
+    { value: 'left', label: 'Left Center' },
+    { value: 'bottom', label: 'Bottom Center' },
 ];
 
 function Example() {
-    const ref = useRef();
+    const triggerRef = useRef();
     const tooltipRef = useRef();
-    const [isOpen, setIsOpen] = useState(false);
+    const [preferredPosition, setPreferredPosition] = useState('top');
 
-    useOutsideClick(
-        tooltipRef,
-        () => {
-            setIsOpen(false);
-        },
-        isOpen,
-    );
-
-    const windowScrolling = new WindowScrolling();
-    windowScrolling.startListening(() => {
-        windowScrolling.stopListening();
-        setIsOpen(false);
-    });
-
-    const show = () => {
-        // setIsOpen(true);
-        setIsOpen(true);
-    }
+    const {
+        onFocus,
+        onBlur,
+        onMouseEnter,
+        onMouseLeave,
+        isVisible,
+    } = useDefaultTooltipConnector({ tooltipRef, triggerRef: () => triggerRef.current.htmlElementRef });
 
     return (
         <Container>
             <ButtonIcon
-                onClick={show}
-                ref={ref}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                ref={triggerRef}
                 variant="brand"
                 size="small"
                 icon={<InfoIcon />}
             />
             <InternalTooltip
-                triggerElementRef={() => ref.current.htmlElementRef}
-                isVisible={isOpen}
+                triggerElementRef={() => triggerRef.current.htmlElementRef}
+                isVisible={isVisible}
+                preferredPosition={preferredPosition}
                 ref={tooltipRef}
             >
                 <TooltipContainer>
@@ -91,7 +83,12 @@ function Example() {
                     </Text>
                 </TooltipContainer>
             </InternalTooltip>
-            <RadioGroup label="Preferred Position" options={options} />
+            <RadioGroup
+                label="Preferred Position"
+                options={options}
+                onChange={event => setPreferredPosition(event.target.value)}
+                value={preferredPosition}
+            />
         </Container>
     )
 }
@@ -104,14 +101,13 @@ function Example() {
 
 ```js
 /* eslint-disable import/extensions, import/no-unresolved */
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboard } from '@fortawesome/free-solid-svg-icons';
+import useScrollingIntent from '@rainbow-modules/hooks/lib/useScrollingIntent';
 import  InternalTooltip from '../InternalTooltip';
-import { useOutsideClick } from '../../libs/hooks';
-import { WindowScrolling } from '../../libs/scrollController';
 
 const Container = styled.div`
     display: flex;
@@ -128,40 +124,50 @@ const Text = styled.p`
 `;
 
 function Example() {
-    const ref = useRef();
+    const [isCopied, setCopied] = useState(false);
+    const triggerRef = useRef();
     const tooltipRef = useRef();
-    const [isOpen, setIsOpen] = useState(false);
+    const [isVisible, setVisible] = useState(false);
+    const text = isCopied ? 'Copied' : 'Click to copy';
 
-    useOutsideClick(
-        tooltipRef,
-        () => {
-            setIsOpen(false);
-        },
-        isOpen,
-    );
+    useEffect(() => {
+        if (isCopied) {
+            setTimeout(() => {
+                setVisible(false);
+                setCopied(false);
+            }, 3000);
+        }
+    }, [isCopied]);
 
-    const windowScrolling = new WindowScrolling();
-    windowScrolling.startListening(() => {
-        windowScrolling.stopListening();
-        setIsOpen(false);
+    useScrollingIntent({
+        callback: () => setVisible(false),
+        isListening: isVisible,
+        triggerElementRef: () => triggerRef.current.htmlElementRef,
     });
 
-    const show = () => {
-        // setIsOpen(true);
-        setIsOpen(true);
-    }
+    const onMouseEnter = () => {
+        setVisible(true);
+    };
+
+    const onMouseLeave = () => {
+        if (!isCopied) {
+            setVisible(false);
+        }
+    };
 
     return (
         <Container>
             <ButtonIcon
-                onClick={show}
-                ref={ref}
+                onClick={() => setCopied(true)}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                ref={triggerRef}
                 variant="border-filled"
                 icon={<FontAwesomeIcon icon={faClipboard} />}
             />
-            <InternalTooltip triggerElementRef={() => ref.current.htmlElementRef} isVisible={isOpen} ref={tooltipRef}>
+            <InternalTooltip triggerElementRef={() => triggerRef.current.htmlElementRef} isVisible={isVisible} ref={tooltipRef}>
                 <Text>
-                    Copy to Clipboard
+                    {text}
                 </Text>
             </InternalTooltip>
         </Container>
@@ -176,12 +182,11 @@ function Example() {
 
 ```js
 /* eslint-disable import/extensions, import/no-unresolved */
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
 import styled from 'styled-components';
 import  InternalTooltip from '../InternalTooltip';
-import { useOutsideClick } from '../../libs/hooks';
-import { WindowScrolling } from '../../libs/scrollController';
+import useDefaultTooltipConnector from './hooks/useDefaultTooltipConnector';
 
 const Container = styled.div`
     display: flex;
@@ -228,42 +233,33 @@ const Link = styled.a`
 `;
 
 function Example() {
-    const ref = useRef();
+    const triggerRef = useRef();
     const tooltipRef = useRef();
-    const [isOpen, setIsOpen] = useState(false);
 
-    useOutsideClick(
-        tooltipRef,
-        () => {
-            setIsOpen(false);
-        },
-        isOpen,
-    );
-
-    const windowScrolling = new WindowScrolling();
-    windowScrolling.startListening(() => {
-        windowScrolling.stopListening();
-        setIsOpen(false);
-    });
-
-    const show = () => {
-        // setIsOpen(true);
-        setIsOpen(true);
-    }
+    const {
+        onFocus,
+        onBlur,
+        onMouseEnter,
+        onMouseLeave,
+        isVisible,
+    } = useDefaultTooltipConnector({ tooltipRef, triggerRef: () => triggerRef.current.htmlElementRef });
 
     return (
         <Container>
             <Title>Rainbow Comunity</Title>
             <ButtonIcon
-                onClick={show}
-                ref={ref}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                ref={triggerRef}
                 variant="brand"
                 size="small"
                 icon={<InfoIcon />}
             />
             <InternalTooltip
-                triggerElementRef={() => ref.current.htmlElementRef}
-                isVisible={isOpen}
+                triggerElementRef={() => triggerRef.current.htmlElementRef}
+                isVisible={isVisible}
                 ref={tooltipRef}
             >
                 <TooltipContainer>
@@ -293,12 +289,11 @@ function Example() {
 
 ```js
 /* eslint-disable import/extensions, import/no-unresolved */
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Input, Button } from 'react-rainbow-components';
 import styled from 'styled-components';
 import  InternalTooltip from '../InternalTooltip';
-import { useOutsideClick } from '../../libs/hooks';
-import { WindowScrolling } from '../../libs/scrollController';
+import useDefaultTooltipConnector from './hooks/useDefaultTooltipConnector';
 
 const Container = styled.div`
     display: flex;
@@ -341,28 +336,26 @@ const TooltipContainer = styled.div`
 `;
 
 function Example() {
-    const ref = useRef();
-    const tooltipRef = useRef();
-    const [isOpen, setIsOpen] = useState(false);
+    const companyDotRef = useRef();
+    const employeesDotRef = useRef();
+    const companyTooltipRef = useRef();
+    const employeesTooltipRef = useRef();
 
-    useOutsideClick(
-        tooltipRef,
-        () => {
-            setIsOpen(false);
-        },
-        isOpen,
-    );
+    const {
+        onFocus: onFocusCompanyDot,
+        onBlur: onBlurCompanyDot,
+        onMouseEnter: onMouseEnterCompanyDot,
+        onMouseLeave: onMouseLeaveCompanyDot,
+        isVisible: isVisibleCompanyTooltip,
+    } = useDefaultTooltipConnector({ tooltipRef: companyTooltipRef, triggerRef: () => companyDotRef });
 
-    const windowScrolling = new WindowScrolling();
-    windowScrolling.startListening(() => {
-        windowScrolling.stopListening();
-        setIsOpen(false);
-    });
-
-    const show = () => {
-        // setIsOpen(true);
-        setIsOpen(true);
-    }
+    const {
+        onFocus: onFocusEmployeesDot,
+        onBlur: onBlurEmployeesDot,
+        onMouseEnter: onMouseEnterEmployeesDot,
+        onMouseLeave: onMouseLeaveEmployeesDot,
+        isVisible: isVisibleEmployeesTooltip,
+    } = useDefaultTooltipConnector({ tooltipRef: employeesTooltipRef, triggerRef: () => employeesDotRef });
 
     return (
         <Container>
@@ -372,8 +365,11 @@ function Example() {
                     <InputLabel>
                         Company Name
                         <StyledDot
-                            onClick={show}
-                            ref={ref}
+                            onFocus={onFocusCompanyDot}
+                            onBlur={onBlurCompanyDot}
+                            onMouseEnter={onMouseEnterCompanyDot}
+                            onMouseLeave={onMouseLeaveCompanyDot}
+                            ref={companyDotRef}
                         />
                     </InputLabel>
                 }
@@ -384,8 +380,11 @@ function Example() {
                     <InputLabel>
                         Number of Employees
                         <StyledDot
-                            onClick={show}
-                            ref={ref}
+                            onFocus={onFocusEmployeesDot}
+                            onBlur={onBlurEmployeesDot}
+                            onMouseEnter={onMouseEnterEmployeesDot}
+                            onMouseLeave={onMouseLeaveEmployeesDot}
+                            ref={employeesDotRef}
                         />
                     </InputLabel>
                 }
@@ -395,9 +394,18 @@ function Example() {
                 variant="brand"
             />
             <InternalTooltip
-                triggerElementRef={() => ref.current.htmlElementRef}
-                isVisible={isOpen}
-                ref={tooltipRef}
+                triggerElementRef={() => companyDotRef}
+                isVisible={isVisibleCompanyTooltip}
+                ref={companyTooltipRef}
+            >
+                <TooltipContainer>
+                    <p>This field is required</p>
+                </TooltipContainer>
+            </InternalTooltip>
+            <InternalTooltip
+                triggerElementRef={() => employeesDotRef}
+                isVisible={isVisibleEmployeesTooltip}
+                ref={employeesTooltipRef}
             >
                 <TooltipContainer>
                     <p>This field is required</p>

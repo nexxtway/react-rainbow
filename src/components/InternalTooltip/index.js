@@ -34,12 +34,14 @@ const InternalTooltip = React.forwardRef((props, ref) => {
     if (!isVisible && pos !== null) {
         setPos(null);
     }
+
     return (
         <InternalOverlay
             isVisible={isVisible}
             triggerElementRef={triggerElementRef}
             positionResolver={opts => tooltipPositionResolver(opts, preferredPosition)}
             onOpened={handleOpen}
+            keepScrollEnabled
         >
             <div ref={ref}>
                 <StyledTooltip

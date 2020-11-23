@@ -4,7 +4,7 @@ import resolverCenterLeft from '../../InternalOverlay/helpers/resolverCenterLeft
 import resolverCenterRight from '../../InternalOverlay/helpers/resolverCenterRight';
 import resolverCenter from './resolverCenter';
 
-const DEFAULT_MARGIN = 5;
+const DEFAULT_MARGIN = 12;
 
 const resolverMap = {
     top: [
