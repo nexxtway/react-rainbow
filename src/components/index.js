@@ -51,6 +51,8 @@ export { default as MultiSelect } from './MultiSelect';
 export { default as Notification } from './Notification';
 export { default as Option } from './Option';
 export { default as Pagination } from './Pagination';
+export { default as Path } from './Path';
+export { default as PathStep } from './PathStep';
 export { default as PhoneInput } from './PhoneInput';
 export { default as Picklist } from './Picklist';
 export { default as PicklistOption } from './PicklistOption';
