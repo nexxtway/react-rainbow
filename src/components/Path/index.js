@@ -65,8 +65,7 @@ Path.propTypes = {
     currentStepName: PropTypes.string,
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
-    /** The content of the Picklist. Used to render the options
-     * when the Picklist is open. */
+    /** The content of the Path. */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     /** The id of the outer element. */
     id: PropTypes.string,
