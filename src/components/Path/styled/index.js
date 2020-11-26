@@ -32,7 +32,7 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
     padding-left: 3.5rem;
     padding-right: 2.5rem;
     background: ${props => props.palette.background.highlight};
-    color: ${props => props.palette.text.label};
+    color: ${props => props.palette.text.header};
     border-radius: 20px;
     border-right: 2px solid ${props => props.palette.background.main};
     z-index: ${props => props.index};
@@ -44,7 +44,7 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
         background: ${props => props.palette.brand.main};
         color: ${props => props.palette.getContrastText(props.palette.brand.main)};
         border-right: 2px solid ${props => props.palette.brand.main};
-        box-shadow: 0 0 5px 0 ${props => replaceAlpha(props.palette.brand.dark, 0.1)};
+        box-shadow: 0 0 5px 0 ${props => replaceAlpha(props.palette.brand.light, 0.1)};
         padding-right: 2.5rem;
     }
 
@@ -64,7 +64,7 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
         background: ${props.palette.background.main};
         border-right: 2px solid ${props.palette.background.main};
         color: ${props.palette.brand.main};
-        box-shadow: 0 0 5px 0 ${replaceAlpha(props.palette.brand.dark, 0.1)};
+        box-shadow: 0 0 5px 2px ${replaceAlpha(props.palette.brand.dark, 0.1)};
         padding-right: 0.5rem;
         `};
 

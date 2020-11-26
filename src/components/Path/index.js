@@ -4,6 +4,7 @@ import RenderIf from '../RenderIf';
 import CheckMark from './icons/checkMark';
 import Exclamation from './icons/exclamation';
 import { StyledContainer, StyledStepsList, StyledStepItem } from './styled';
+import { isStepSelected, getActiveStepIndex } from './helpers';
 
 export default function Path(props) {
     const { currentStepName, onClick, children, id, className, style } = props;
@@ -12,22 +13,29 @@ export default function Path(props) {
     const steps = useMemo(() => {
         const selectedIndex = children.findIndex(child => child.props.name === currentStepName);
         const hoveredIndex = children.findIndex(child => child.props.name === hoveredStepName);
-        const someChildHasError = children.some(child => child.props.hasError);
+        const someStepHasError = children.some(child => child.props.hasError);
 
         return React.Children.map(children, (child, index) => {
             const { name, label, hasError } = child.props;
             const zIndex = children.length - index;
-            const currentIndex =
-                hoveredIndex !== -1 ? hoveredIndex : !someChildHasError ? selectedIndex : -1;
-            const isChecked = currentIndex > index;
-            const isSelected =
-                hoveredIndex !== -1 ? false : !someChildHasError && selectedIndex === index;
+            const activeStepIndex = getActiveStepIndex({
+                hoveredIndex,
+                selectedIndex,
+                someStepHasError,
+            });
+            const isChecked = index !== hoveredIndex && activeStepIndex > index;
+            const isSelected = isStepSelected({
+                index,
+                hoveredIndex,
+                selectedIndex,
+                someStepHasError,
+            });
             return (
                 <StyledStepItem
                     index={zIndex}
                     isSelected={isSelected}
                     hasError={hasError}
-                    isChecked={isChecked && index !== hoveredIndex}
+                    isChecked={isChecked}
                     key={name}
                     onMouseEnter={() => setHoveredStepName(name)}
                     onMouseLeave={() => setHoveredStepName(null)}
