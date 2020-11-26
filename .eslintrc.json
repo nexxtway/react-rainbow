@@ -97,10 +97,12 @@
                 "EmailIcon": true,
                 "ShoppingCartIcon": true,
                 "UserAvatarIcon": true,
+                "AvatarIcon": true,
                 "UserVerifiedIcon": true,
                 "AdvancedSettingsIcon": true,
                 "SettingsIcon": true,
-                "CompanyIcon": true
+                "CompanyIcon": true,
+                "InfoIcon": true
             }
         }
     ],

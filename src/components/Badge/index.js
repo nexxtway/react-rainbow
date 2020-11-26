@@ -7,14 +7,20 @@ import Content from './content';
  * Badges are labels that hold small amounts of information.
  */
 export default function Badge(props) {
-    const { className, style, label, title, children, variant } = props;
+    const { className, style, label, title, children, variant, size } = props;
 
     if (children === null && label === null) {
         return null;
     }
 
     return (
-        <StyledContainer className={className} style={style} variant={variant} title={title}>
+        <StyledContainer
+            className={className}
+            style={style}
+            variant={variant}
+            title={title}
+            size={size}
+        >
             <Content label={label}>{children}</Content>
         </StyledContainer>
     );
@@ -40,6 +46,9 @@ Badge.propTypes = {
         'success',
         'error',
     ]),
+    /** The size of the badge. Valid values are small, and large.
+     * This value defaults to medium. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -51,6 +60,7 @@ Badge.defaultProps = {
     title: undefined,
     children: null,
     variant: 'default',
+    size: 'medium',
     className: undefined,
     style: undefined,
 };

@@ -84,6 +84,9 @@ GoogleAddressLookup.propTypes = {
      *  }
      */
     searchOptions: CustomPropTypes.searchOptionsShape,
+    /** The variant changes the appearance of the Input. Accepted variants include default,
+     *shaded and bare. This value defaults to default. */
+    variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
 };
 
 GoogleAddressLookup.defaultProps = {
@@ -106,4 +109,5 @@ GoogleAddressLookup.defaultProps = {
     labelAlignment: 'center',
     hideLabel: false,
     searchOptions: {},
+    variant: 'default',
 };

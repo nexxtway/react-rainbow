@@ -13,17 +13,31 @@ const StyledContainer = attchThemeAttrs(styled.span).attrs(props => {
     justify-content: center;
     align-content: center;
     align-items: center;
-    font-size: 0.75rem;
     line-height: normal;
     text-transform: uppercase;
     letter-spacing: 0.0625em;
-    padding: 0.25rem 0.75rem;
     border-radius: 12rem;
     overflow: hidden;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
 
     & + & {
         margin-left: 0.5rem;
     }
+
+    ${props =>
+        props.size === 'large' &&
+        `
+            padding: 0.65rem 0.9rem;
+            font-size: 0.9rem;
+        `};
+
+    ${props =>
+        props.size === 'small' &&
+        `
+            padding: 0.15rem 0.4rem;
+            font-size: 0.7rem;
+        `};
 
     ${props =>
         props.variant === 'lightest' &&

@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import ContentMetaResolver from './ContentMetaResolver';
 import defaultPositionResolver from './helpers/defaultPositionResolver';
+import resolveElement from './helpers/resolveElement';
 import useDisableScroll from './hooks/useDisableScroll';
 
 const Container = styled.div`
@@ -20,14 +21,6 @@ const Container = styled.div`
             width: ${props.position.width}px;
         `};
 `;
-
-const resolveElement = ref => {
-    if (typeof ref === 'function') {
-        const ret = ref();
-        return ret && ret.current;
-    }
-    return ref && ref.current;
-};
 
 const resolveTriggerMeta = ref => {
     const element = resolveElement(ref);
