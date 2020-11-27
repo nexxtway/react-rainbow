@@ -18,7 +18,8 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
     text-transform: none;
     appearance: button;
     border: 1px solid transparent;
-
+    position: relative;
+    
     ${props =>
         !props.isHovered &&
         `
@@ -39,6 +40,41 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
         border: 1px solid ${props => props.palette.brand.main};
         line-height: 36px;
     }
+
+    ${props =>
+        props.isToday &&
+        `
+        &::after {
+            content: '';
+            height: 3px;
+            width: 3px;
+            position: absolute;
+            top: 28px;
+            left: 17px;
+            border-radius: 50%;
+            background: ${
+                props.isSelected || props.isHovered
+                    ? props.palette.getContrastText(props.palette.brand.main)
+                    : props.palette.brand.main
+            };
+        }
+
+        
+    `}
+
+    ${props =>
+        props.isSelected &&
+        props.isToday &&
+        `
+            &:hover,
+            &:focus,
+            &:active {
+                &::after {
+                    top: 27px;
+                    left: 16px;
+                }
+            }
+        `};
 
     ${props =>
         props.isSelected &&
