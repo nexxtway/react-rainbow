@@ -37,12 +37,21 @@ export default class ProgressIndicator extends Component {
     }
 
     render() {
-        const { style, className, children, currentStepName, onClick } = this.props;
+        const { style, className, variant, children, currentStepName, onClick } = this.props;
+        const numbersMap = React.Children.toArray(children).reduce((map, child, index) => {
+            if (child.props && child.props.name) {
+                // eslint-disable-next-line no-param-reassign
+                map[child.props.name] = index + 1;
+            }
+            return map;
+        }, {});
         const context = {
             currentStepName,
             privateRegisterStep: this.registerStep,
             privateOnClick: onClick,
             setChildrenState: this.setChildrenState,
+            numbersMap,
+            variant,
         };
 
         return (
@@ -63,6 +72,8 @@ ProgressIndicator.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The variant of the ProgressIndicator */
+    variant: PropTypes.oneOf(['default', 'numeric']),
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
     /**
@@ -76,6 +87,7 @@ ProgressIndicator.defaultProps = {
     currentStepName: '',
     className: undefined,
     style: undefined,
+    variant: 'default',
     onClick: () => {},
     children: null,
 };

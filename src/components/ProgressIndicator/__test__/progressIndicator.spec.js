@@ -12,6 +12,7 @@ describe('<ProgressIndicator/>', () => {
         const component = mount(<ProgressIndicator>ProgressStep</ProgressIndicator>);
         expect(component.text()).toBe('ProgressStep');
     });
+
     it('should set the right icon when currentStepName is step-2 and the step-3 has an error', () => {
         const component = mount(
             <ProgressIndicator currentStepName="step-2">
@@ -32,6 +33,7 @@ describe('<ProgressIndicator/>', () => {
         expect(item3.find('ErrorIcon').exists()).toBe(true);
         expect(item4.find(StyledInactiveIcon).exists()).toBe(true);
     });
+
     it('should set the right assistiveText to the ButtonIcon component when currentStepName is step-2 and the step-3 has an error ', () => {
         const component = mount(
             <ProgressIndicator currentStepName="step-2">
@@ -52,6 +54,7 @@ describe('<ProgressIndicator/>', () => {
         expect(item3.prop('assistiveText')).toBe('Step 3 - Error');
         expect(item4.prop('assistiveText')).toBe('Step 4');
     });
+
     it('should fire an event with the right data when the step is clicked', () => {
         const onClickMockFn = jest.fn();
         const component = mount(
@@ -66,5 +69,14 @@ describe('<ProgressIndicator/>', () => {
             .find('ButtonIcon')
             .simulate('click');
         expect(onClickMockFn).toHaveBeenCalledWith(expect.any(Object), 'step-2');
+    });
+
+    it('should have "default" as default value for variant prop', () => {
+        const component = mount(
+            <ProgressIndicator currentStepName="step-1">
+                <ProgressStep name="step-1" />
+            </ProgressIndicator>,
+        );
+        expect(component.prop('variant')).toBe('default');
     });
 });
