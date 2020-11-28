@@ -29,7 +29,10 @@ export default function Util(props) {
                         <ExperienceExampleCards results={response.results} />
                     </div>
                 </RenderIf>
-                <RenderIf isTrue={type === 'page-object' || type === 'tutorials'}>
+                <RenderIf isTrue={Array.isArray(type)}>
+                    <div className="react-rainbow-utils_text rainbow-m-around_medium">
+                        <h1 className="react-rainbow-utils_text-header">Testing</h1>
+                    </div>
                     <div className="rainbow-flex rainbow-flex_wrap">
                         <PageObjectCard results={response.results} type={type} />
                     </div>
@@ -42,7 +45,7 @@ export default function Util(props) {
 
 Util.propTypes = {
     response: PropTypes.object,
-    type: PropTypes.string,
+    type: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]),
 };
 
 Util.defaultProps = {

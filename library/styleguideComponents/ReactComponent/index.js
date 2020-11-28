@@ -5,11 +5,11 @@ import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { Prismic } from 'react-prismic-cms';
-import Pathline from './../Pathline';
+import Pathline from '../Pathline';
 import Tabset from '../../../src/components/Tabset';
 import Tab from '../../../src/components/Tab';
 import RenderIf from '../../../src/components/RenderIf';
-import Card from './../../../src/components/Card';
+import Card from '../../../src/components/Card';
 import Breadcrumbs from '../../../src/components/Breadcrumbs';
 import Breadcrumb from '../../../src/components/Breadcrumb';
 import CarbonAds from '../../pages/components/CarbonAds';
@@ -151,9 +151,6 @@ export default class ReactComponent extends Component {
                             <Query value="experience-examples" name={name} />
                         </div>
                         <div>
-                            <div className="react-rainbow-utils_text rainbow-m-around_medium">
-                                <h1 className="react-rainbow-utils_text-header">Testing</h1>
-                            </div>
                             {/* <div className="react-rainbow-utils_empty-test-container">
                                 <EmptyTest />
                                 <span className="react-rainbow-utils_text-empty">
@@ -161,9 +158,8 @@ export default class ReactComponent extends Component {
                                 </span>
                             </div> */}
                         </div>
-                        <div className="rainbow-flex rainbow-flex_wrap">
-                            <Query value="tutorials" name={name} />
-                            <Query value="page-object" name={name} />
+                        <div className="react-rainbow-utils_container">
+                            <Query value={['tutorials', 'page-object']} name={name} />
                         </div>
                     </RenderIf>
                 </div>
