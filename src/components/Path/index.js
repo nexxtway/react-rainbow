@@ -30,6 +30,10 @@ export default function Path(props) {
                 selectedIndex,
                 someStepHasError,
             });
+
+            const renderCheckIcon = isChecked && index !== hoveredIndex;
+            const renderErrorIcon = hasError && index !== hoveredIndex;
+
             return (
                 <StyledStepItem
                     index={zIndex}
@@ -42,10 +46,10 @@ export default function Path(props) {
                     onClick={() => onClick(name)}
                 >
                     {label}
-                    <RenderIf isTrue={isChecked && index !== hoveredIndex}>
+                    <RenderIf isTrue={renderCheckIcon}>
                         <CheckMark />
                     </RenderIf>
-                    <RenderIf isTrue={hasError && index !== hoveredIndex}>
+                    <RenderIf isTrue={renderErrorIcon}>
                         <Exclamation />
                     </RenderIf>
                 </StyledStepItem>

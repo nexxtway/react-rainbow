@@ -1,8 +1,9 @@
+import { ReactNode } from 'react';
 import { BaseProps } from '../types';
 
 export interface PathStepProps extends BaseProps {
-    label?: string;
-    name?: string | number;
+    name?: string;
+    label?: ReactNode;
     hasError?: boolean;
 }
 
