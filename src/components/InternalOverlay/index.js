@@ -6,12 +6,14 @@ import styled from 'styled-components';
 import ContentMetaResolver from './ContentMetaResolver';
 import defaultPositionResolver from './helpers/defaultPositionResolver';
 import { useScrollLock } from '../../libs/hooks';
+import resolveElement from './helpers/resolveElement';
 
 const Container = styled.div`
     position: fixed;
     z-index: 999999999;
     top: ${props => props.position && props.position.top}px;
     left: ${props => props.position && props.position.left}px;
+    bottom: ${props => props.position && props.position.bottom}px;
     ${props =>
         props.position &&
         props.position.width &&
@@ -19,14 +21,6 @@ const Container = styled.div`
             width: ${props.position.width}px;
         `};
 `;
-
-const resolveElement = ref => {
-    if (typeof ref === 'function') {
-        const ret = ref();
-        return ret && ret.current;
-    }
-    return ref && ref.current;
-};
 
 const resolveTriggerMeta = ref => {
     const element = resolveElement(ref);
@@ -91,6 +85,7 @@ const InternalOverlay = props => {
         positionResolver,
         onOpened,
         children,
+        keepScrollEnabled,
     } = props;
     const [contentMeta, updateContentMeta] = useState(false);
 
@@ -100,7 +95,9 @@ const InternalOverlay = props => {
         }
     }, [isVisible, contentMeta, onOpened]);
 
-    useScrollLock(isVisible && contentMeta);
+    const shouldDisableScroll = isVisible && contentMeta && !keepScrollEnabled;
+    // useDisableScroll(shouldDisableScroll);
+    useScrollLock(shouldDisableScroll);
 
     if (isVisible) {
         const content = children || <ContentComponent />;
@@ -141,6 +138,10 @@ InternalOverlay.propTypes = {
      */
     onOpened: PropTypes.func,
     /**
+     *  When true it wont disable scroll on the window when the overlay is open.
+     */
+    keepScrollEnabled: PropTypes.bool,
+    /**
      * @ignore
      */
     children: PropTypes.node,
@@ -152,6 +153,7 @@ InternalOverlay.defaultProps = {
     positionResolver: undefined,
     onOpened: () => {},
     children: undefined,
+    keepScrollEnabled: false,
 };
 
 InternalOverlay.defaultPositionResolver = defaultPositionResolver;

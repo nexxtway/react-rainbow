@@ -32,7 +32,7 @@ describe('resolverUpRight', () => {
             },
         };
         const expected = {
-            top: param.trigger.leftUpAnchor.y - param.content.height,
+            bottom: param.viewport.height - param.trigger.leftUpAnchor.y,
             left: param.trigger.rightUpAnchor.x - param.content.width,
         };
 

@@ -60,4 +60,11 @@ describe('Picklist with multiple options', () => {
         firstOption.waitUntilIsVisible();
         expect(firstOption.isVisible()).toBe(true);
     });
+    it('should not close when click on search input', () => {
+        const picklist = new PagePicklist(PICKLIST);
+        picklist.clickInput();
+        picklist.waitUntilOpen();
+        picklist.clickSearch();
+        expect(picklist.isMenuOpen()).toBe(true);
+    });
 });

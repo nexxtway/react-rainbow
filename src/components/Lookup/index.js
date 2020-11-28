@@ -15,13 +15,13 @@ import {
 import { uniqueId } from '../../libs/utils';
 import { UP_KEY, DOWN_KEY, ENTER_KEY, ESCAPE_KEY } from '../../libs/constants';
 import withReduxForm from '../../libs/hocs/withReduxForm';
-import SearchIcon from './icons/searchIcon';
 import Label from '../Input/label';
 import StyledInput from './styled/input';
 import StyledContainer from './styled/container';
 import StyledInputContainer from './styled/inputContainer';
 import StyledSpinner from './styled/spinner';
 import StyledOptionsMenu from './styled/optionsMenu';
+import StyledSearchIcon from './styled/searchIcon';
 import StyledTextError from '../Input/styled/errorText';
 import isScrollPositionAtMenuBottom from './helpers/isScrollPositionAtMenuBottom';
 import MenuArrowButton from './menuArrowButton';
@@ -429,6 +429,7 @@ class Lookup extends Component {
         const errorMessageId = this.getErrorMessageId();
         const currentValue = this.getValue();
         const { showScrollUpArrow, showScrollDownArrow } = this.state;
+        const errorValue = isLoading ? null : error;
 
         return (
             <StyledContainer
@@ -458,7 +459,7 @@ class Lookup extends Component {
                         tabIndex={tabIndex}
                         onClick={onClick}
                         disabled={disabled}
-                        error={error}
+                        error={errorValue}
                         required={required}
                         readOnly={readOnly}
                         errorMessageId={errorMessageId}
@@ -483,7 +484,7 @@ class Lookup extends Component {
                             showCloseButton={!!searchValue}
                             onClear={this.clearInput}
                             icon={icon}
-                            error={error}
+                            error={errorValue}
                         />
                         <StyledInput
                             id={this.inputId}
@@ -507,7 +508,7 @@ class Lookup extends Component {
                             ref={this.inputRef}
                             iconPosition="right"
                             icon={icon}
-                            error={error}
+                            error={errorValue}
                             isLoading={isLoading}
                             variant={variant}
                         />
@@ -541,7 +542,7 @@ class Lookup extends Component {
                         </RenderIf>
                     </StyledInputContainer>
                 </RenderIf>
-                <RenderIf isTrue={error}>
+                <RenderIf isTrue={errorValue}>
                     <StyledTextError id={errorMessageId}>{error}</StyledTextError>
                 </RenderIf>
             </StyledContainer>
@@ -633,7 +634,7 @@ Lookup.defaultProps = {
     error: null,
     disabled: false,
     readOnly: false,
-    icon: <SearchIcon />,
+    icon: <StyledSearchIcon />,
     size: 'medium',
     onChange: () => {},
     tabIndex: undefined,

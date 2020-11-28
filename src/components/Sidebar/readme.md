@@ -1,4 +1,5 @@
-##### Sidebar simple
+# The basic Sidebar
+##### This example represents a `Sidebar` and how you can change the selected `SidebarItem` by implementing the `onSelect` handler.
 
 ```js
 import React from 'react';
@@ -32,7 +33,7 @@ class SimpleSidebar extends React.Component {
         return (
             <Sidebar selectedItem={selectedItem} onSelect={this.handleOnSelect} id="sidebar-1">
                 <SidebarItem icon={<DashboardPurpleIcon />} name="Dashboard" label="Dashboard" />
-                <SidebarItem icon={<ApplicationIcon />} name="Aplications" label="Aplications" />
+                <SidebarItem icon={<ApplicationIcon />} name="Aplications" label="Applications" />
                 <SidebarItem icon={<PuzzleIcon />} name="Components" label="Components" />
                 <SidebarItem icon={<MessagesIcon />} name="Messages" label="Messages" />
                 <SidebarItem icon={<ChartsIcon />} name="Charts" label="Charts" />
@@ -49,7 +50,8 @@ class SimpleSidebar extends React.Component {
     </div>
 ```
 
-##### Sidebar with dynamic content
+# Sidebar with dynamic content
+##### This example shows how you can switch content dynamically when a `SidebarItem` is clicked.
 
 ```js
 import React, { useState } from 'react';
@@ -90,7 +92,7 @@ function SimpleSidebar() {
             <div>
                 <Sidebar selectedItem={selectedItem} onSelect={handleOnSelect} id="sidebar-1">
                     <SidebarItem icon={<DashboardPurpleIcon />} name="Dashboard" label="Dashboard" />
-                    <SidebarItem icon={<ApplicationIcon />} name="Aplications" label="Aplications" />
+                    <SidebarItem icon={<ApplicationIcon />} name="Aplications" label="Applications" />
                     <SidebarItem icon={<PuzzleIcon />} name="Components" label="Components" />
                     <SidebarItem icon={<MessagesIcon />} name="Messages" label="Messages" />
                     <SidebarItem icon={<ChartsIcon />} name="Charts" label="Charts" />

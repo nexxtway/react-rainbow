@@ -62,9 +62,11 @@ export default class ButtonIcon extends Component {
             ariaControls,
             ariaExpanded,
             icon,
-            onKeyDown,
             form,
+            onKeyDown,
             onMouseDown,
+            onMouseEnter,
+            onMouseLeave,
             className,
             shaded,
             variant,
@@ -93,6 +95,8 @@ export default class ButtonIcon extends Component {
                 aria-expanded={ariaExpanded}
                 aria-pressed={ariaPressed}
                 onKeyDown={onKeyDown}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
                 form={form}
                 ref={this.buttonRef}
             >
@@ -144,6 +148,10 @@ ButtonIcon.propTypes = {
     onClick: PropTypes.func,
     /** The action that will be run when the user presses the mouse button. */
     onMouseDown: PropTypes.func,
+    /** The action triggered when moving the mouse pointer into the button. */
+    onMouseEnter: PropTypes.func,
+    /** The action triggered when moving the mouse pointer out of the button. */
+    onMouseLeave: PropTypes.func,
     /** The action triggered when a keyboard key is pressed. */
     onKeyDown: PropTypes.func,
     /** The action triggered when the element receives focus. */
@@ -183,6 +191,8 @@ ButtonIcon.defaultProps = {
     tabIndex: undefined,
     onClick: () => {},
     onMouseDown: () => {},
+    onMouseEnter: () => {},
+    onMouseLeave: () => {},
     onKeyDown: () => {},
     onFocus: () => {},
     onBlur: () => {},

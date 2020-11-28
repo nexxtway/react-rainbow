@@ -6,6 +6,7 @@ export interface AvatarMenuProps extends BaseProps {
     initials?: string;
     icon?: ReactNode;
     avatarSize?: AvatarSize;
+    avatarBackgroundColor?: string;
     initialsVariant?: 'default' | 'inverse';
     children?: ReactNode;
     menuSize?: MenuSize;

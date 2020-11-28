@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Lookup from '..';
 import StyledTextError from '../../Input/styled/errorText';
+import StyledInput from '../styled/input';
 
 describe('<Lookup />', () => {
     it('should set an id in the input element', () => {
@@ -365,5 +366,17 @@ describe('<Lookup />', () => {
         );
         component.find('input').simulate('focus');
         expect(component.find('Options').prop('focusedItemIndex')).toBe(0);
+    });
+    it('should show error when isLoading is not passed', () => {
+        const component = mount(<Lookup label="custom label" error="wrong value" />);
+        expect(component.find('RightElement').prop('error')).toBe('wrong value');
+        expect(component.find(StyledInput).prop('error')).toBe('wrong value');
+        expect(component.find(StyledTextError).exists()).toBe(true);
+    });
+    it('should not show error when isLoading is passed', () => {
+        const component = mount(<Lookup label="custom label" error="wrong value" isLoading />);
+        expect(component.find('RightElement').prop('error')).toBe(null);
+        expect(component.find(StyledInput).prop('error')).toBe(null);
+        expect(component.find(StyledTextError).exists()).toBe(false);
     });
 });

@@ -1,41 +1,42 @@
 /* eslint-disable id-length */
-import resolverUpLeft from '../resolverUpLeft';
+import resolverCenter from '../resolverCenter';
 
-describe('resolverUpLeft', () => {
-    it('should return the correct topLeft position', () => {
+describe('resolverCenter', () => {
+    it('should return the correct center position', () => {
         const param = {
             trigger: {
                 leftUpAnchor: {
-                    x: 209,
+                    x: 109,
                     y: 658,
                 },
                 leftBottomAnchor: {
-                    x: 209,
+                    x: 109,
                     y: 698,
                 },
                 rightUpAnchor: {
-                    x: 249,
+                    x: 149,
                     y: 658,
                 },
                 rightBottomAnchor: {
-                    x: 249,
+                    x: 149,
                     y: 698,
                 },
+                width: 40,
+                height: 40,
             },
             viewport: {
-                width: 1100,
+                width: 240,
                 height: 761,
             },
             content: {
-                height: 220,
+                height: 110,
                 width: 220,
             },
         };
         const expected = {
-            bottom: param.viewport.height - param.trigger.leftUpAnchor.y,
-            left: param.trigger.leftBottomAnchor.x,
+            top: param.trigger.leftUpAnchor.y - param.content.height / 2,
+            left: param.trigger.rightUpAnchor.x - param.content.width / 2 - param.trigger.width / 2,
         };
-
-        expect(resolverUpLeft(param)).toEqual(expected);
+        expect(resolverCenter(param)).toEqual(expected);
     });
 });
