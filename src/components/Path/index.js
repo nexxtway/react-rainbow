@@ -1,65 +1,87 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import RenderIf from '../RenderIf';
-import CheckMark from './icons/checkMark';
-import Exclamation from './icons/exclamation';
-import { StyledContainer, StyledStepsList, StyledStepItem } from './styled';
-import { isStepSelected, getActiveStepIndex } from './helpers';
+import { Provider } from './context';
+import isChildRegistered from '../InternalDropdown/helpers/isChildRegistered';
+import insertChildOrderly from '../InternalDropdown/helpers/insertChildOrderly';
+import { getChildStepsNodes } from './helpers';
+import { StyledContainer, StyledStepsList } from './styled';
 
 export default function Path(props) {
     const { currentStepName, onClick, children, id, className, style } = props;
     const [hoveredStepName, setHoveredStepName] = useState(null);
+    const [stepsCount, setStepsCount] = useState(0);
+    const [hasErrors, setHasErrors] = useState(false);
+    const registeredSteps = useRef([]);
+    const containerRef = useRef();
 
-    const steps = useMemo(() => {
-        const selectedIndex = children.findIndex(child => child.props.name === currentStepName);
-        const hoveredIndex = children.findIndex(child => child.props.name === hoveredStepName);
-        const someStepHasError = children.some(child => child.props.hasError);
+    const privateRegisterStep = useCallback((stepRef, stepProps) => {
+        if (isChildRegistered(stepProps.name, registeredSteps.current)) return;
+        const [...nodes] = getChildStepsNodes(containerRef.current);
+        const newStepsList = insertChildOrderly(
+            registeredSteps.current,
+            {
+                ref: stepRef,
+                ...stepProps,
+            },
+            nodes,
+        );
+        registeredSteps.current = newStepsList;
+        setStepsCount(registeredSteps.current.length);
+        setHasErrors(stepProps.hasError);
+    }, []);
 
-        return React.Children.map(children, (child, index) => {
-            const { name, label, hasError } = child.props;
-            const zIndex = children.length - index;
-            const activeStepIndex = getActiveStepIndex({
-                hoveredIndex,
-                selectedIndex,
-                someStepHasError,
-            });
-            const isChecked = index !== hoveredIndex && activeStepIndex > index;
-            const isSelected = isStepSelected({
-                index,
-                hoveredIndex,
-                selectedIndex,
-                someStepHasError,
-            });
+    const privateUnregisterStep = useCallback((stepRef, stepName) => {
+        if (!isChildRegistered(stepName, registeredSteps.current)) return;
+        registeredSteps.current = registeredSteps.current.filter(step => step.name !== stepName);
+        setStepsCount(registeredSteps.current.length);
+    }, []);
 
-            const renderCheckIcon = isChecked && index !== hoveredIndex;
-            const renderErrorIcon = hasError && index !== hoveredIndex;
+    const getStepIndex = useCallback(
+        name => registeredSteps.current.findIndex(step => step.name === name),
+        [],
+    );
 
-            return (
-                <StyledStepItem
-                    index={zIndex}
-                    isSelected={isSelected}
-                    hasError={hasError}
-                    isChecked={isChecked}
-                    key={name}
-                    onMouseEnter={() => setHoveredStepName(name)}
-                    onMouseLeave={() => setHoveredStepName(null)}
-                    onClick={() => onClick(name)}
-                >
-                    {label}
-                    <RenderIf isTrue={renderCheckIcon}>
-                        <CheckMark />
-                    </RenderIf>
-                    <RenderIf isTrue={renderErrorIcon}>
-                        <Exclamation />
-                    </RenderIf>
-                </StyledStepItem>
-            );
-        });
-    }, [children, currentStepName, hoveredStepName, onClick]);
+    const privateGetStepZIndex = useCallback(name => stepsCount - getStepIndex(name), [
+        getStepIndex,
+        stepsCount,
+    ]);
+
+    const privateUpdateStepProps = useCallback(stepProps => {
+        if (!isChildRegistered(stepProps.name, registeredSteps.current)) return;
+        const index = registeredSteps.current.findIndex(
+            registeredStep => registeredStep.name === stepProps.name,
+        );
+        const updatedStep = registeredSteps.current[index];
+        registeredSteps.current[index] = {
+            ...updatedStep,
+            ...stepProps,
+        };
+        setHasErrors(registeredSteps.current.some(step => step.hasError));
+    }, []);
+
+    const selectedIndex = registeredSteps.current.findIndex(step => step.name === currentStepName);
+    const hoveredIndex = registeredSteps.current.findIndex(step => step.name === hoveredStepName);
 
     return (
-        <StyledContainer id={id} className={className} style={style}>
-            <StyledStepsList>{steps}</StyledStepsList>
+        <StyledContainer id={id} className={className} style={style} ref={containerRef}>
+            <StyledStepsList>
+                <Provider
+                    value={{
+                        selectedIndex,
+                        hoveredIndex,
+                        someStepHasError: hasErrors,
+                        privateGetStepIndex: getStepIndex,
+                        privateGetStepZIndex,
+                        privateRegisterStep,
+                        privateUnregisterStep,
+                        privateUpdateStepProps,
+                        privateOnClick: onClick,
+                        privateUpdateHoveredStep: setHoveredStepName,
+                    }}
+                >
+                    {children}
+                </Provider>
+            </StyledStepsList>
         </StyledContainer>
     );
 }
