@@ -3,7 +3,7 @@ import { BaseProps } from '../types';
 
 export interface PathProps extends BaseProps {
     currentStepName?: string;
-    onClick?: (event: string) => void;
+    onClick?: (stepName: string) => void;
     children?: ReactNode;
     id?: string;
 }
