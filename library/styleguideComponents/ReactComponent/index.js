@@ -19,7 +19,6 @@ import InteractiveExampleIcon from './icons/interactiveExampleIcon';
 import ListIcon from './icons/listIcon';
 import UtilsTab from './utilsTab';
 import DescriptionLink from './descriptionLink';
-import EmptyTest from './icons/emptyTest';
 import Query from './query';
 import './styles.css';
 import './media-queries.css';
@@ -149,14 +148,6 @@ export default class ReactComponent extends Component {
                         </div>
                         <div className="react-rainbow-utils_container">
                             <Query value="experience-examples" name={name} />
-                        </div>
-                        <div>
-                            {/* <div className="react-rainbow-utils_empty-test-container">
-                                <EmptyTest />
-                                <span className="react-rainbow-utils_text-empty">
-                                    This component is not test infected.
-                                </span>
-                            </div> */}
                         </div>
                         <div className="react-rainbow-utils_container">
                             <Query value={['tutorials', 'page-object']} name={name} />

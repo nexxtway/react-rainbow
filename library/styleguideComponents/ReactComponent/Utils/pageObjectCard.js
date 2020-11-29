@@ -13,23 +13,23 @@ function getTypeText(type) {
     return 'Page Object Tutorial';
 }
 
+const FooterIcon = props => {
+    const { type } = props;
+    if (type === 'page-object') {
+        return <FlaskIcon />;
+    }
+    return <GraduationCapIcon />;
+};
+
+const Image = props => {
+    const { type } = props;
+    if (type === 'page-object') {
+        return <PageObjectImage />;
+    }
+    return <TutorialImage />;
+};
+
 export default function PageObjectCard({ results }) {
-    const FooterIcon = props => {
-        const { type } = props;
-        if (type === 'page-object') {
-            return <FlaskIcon />;
-        }
-        return <GraduationCapIcon />;
-    };
-
-    const Image = props => {
-        const { type } = props;
-        if (type === 'page-object') {
-            return <PageObjectImage />;
-        }
-        return <TutorialImage />;
-    };
-
     return results.map(({ data, type, id }) => (
         <a
             key={id}
