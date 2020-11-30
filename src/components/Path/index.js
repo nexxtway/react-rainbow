@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from './context';
 import isChildRegistered from '../InternalDropdown/helpers/isChildRegistered';
@@ -59,28 +59,42 @@ export default function Path(props) {
         setHasErrors(registeredSteps.current.some(step => step.hasError));
     }, []);
 
-    const selectedIndex = registeredSteps.current.findIndex(step => step.name === currentStepName);
-    const hoveredIndex = registeredSteps.current.findIndex(step => step.name === hoveredStepName);
+    const context = useMemo(() => {
+        const selectedIndex = registeredSteps.current.findIndex(
+            step => step.name === currentStepName,
+        );
+        const hoveredIndex = registeredSteps.current.findIndex(
+            step => step.name === hoveredStepName,
+        );
+
+        return {
+            selectedIndex,
+            hoveredIndex,
+            someStepHasError: hasErrors,
+            privateGetStepIndex: getStepIndex,
+            privateGetStepZIndex,
+            privateRegisterStep,
+            privateUnregisterStep,
+            privateUpdateStepProps,
+            privateOnClick: onClick,
+            privateUpdateHoveredStep: setHoveredStepName,
+        };
+    }, [
+        currentStepName,
+        getStepIndex,
+        hasErrors,
+        hoveredStepName,
+        onClick,
+        privateGetStepZIndex,
+        privateRegisterStep,
+        privateUnregisterStep,
+        privateUpdateStepProps,
+    ]);
 
     return (
         <StyledContainer id={id} className={className} style={style} ref={containerRef}>
             <StyledStepsList>
-                <Provider
-                    value={{
-                        selectedIndex,
-                        hoveredIndex,
-                        someStepHasError: hasErrors,
-                        privateGetStepIndex: getStepIndex,
-                        privateGetStepZIndex,
-                        privateRegisterStep,
-                        privateUnregisterStep,
-                        privateUpdateStepProps,
-                        privateOnClick: onClick,
-                        privateUpdateHoveredStep: setHoveredStepName,
-                    }}
-                >
-                    {children}
-                </Provider>
+                <Provider value={context}>{children}</Provider>
             </StyledStepsList>
         </StyledContainer>
     );

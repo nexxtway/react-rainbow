@@ -27,7 +27,6 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
         color: ${props => props.palette.getContrastText(props.palette.brand.main)};
         border-right: 2px solid ${props => props.palette.brand.main};
         box-shadow: 0 0 5px 0 ${props => replaceAlpha(props.palette.brand.light, 0.1)};
-        padding-right: 2.5rem;
     }
 
     ${props =>
@@ -37,7 +36,6 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
         color: ${props.palette.getContrastText(props.palette.brand.main)};
         border-right: 2px solid ${props.palette.brand.main};
         box-shadow: 0 0 5px 0 ${replaceAlpha(props.palette.brand.dark, 0.1)};
-        padding-right: 2.5rem;
         `};
 
     ${props =>
@@ -47,7 +45,6 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
         border-right: 2px solid ${props.palette.background.main};
         color: ${props.palette.brand.main};
         box-shadow: 0 0 5px 2px ${replaceAlpha(props.palette.brand.dark, 0.1)};
-        padding-right: 0.5rem;
         `};
 
     ${props =>
@@ -57,11 +54,11 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
         border-right: 2px solid ${props.palette.background.main};
         color: ${props.palette.error.main};
         box-shadow: 0 0 5px 0 ${replaceAlpha(props.palette.error.dark, 0.1)};
-        padding-right: 0.5rem;
         `};
 
     &> svg {
-        margin-left: 1rem;
+        position: absolute;
+        right: 0.5rem;
         width: 1.25rem;
         height: 1.25rem;
         box-sizing: border-box;
