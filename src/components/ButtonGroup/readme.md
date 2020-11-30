@@ -322,3 +322,17 @@ const socials = [
         </Content>
     </Container>
 ```
+##### button group with shaded variant
+
+```js
+import React from 'react';
+import { ButtonGroup, Button } from 'react-rainbow-components';
+
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+        <ButtonGroup className="rainbow-m-around_medium" variant='shaded'>
+            <Button label="Refresh" variant="neutral" />
+            <Button label="Edit" variant="neutral" />
+            <Button label="Save" variant="neutral" />
+        </ButtonGroup>
+    </div>
+```
