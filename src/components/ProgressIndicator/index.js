@@ -12,6 +12,7 @@ export default class ProgressIndicator extends Component {
     constructor(props) {
         super(props);
         this.stepChildren = [];
+        this.numbersMap = {};
         this.registerStep = this.registerStep.bind(this);
         this.setChildrenState = this.setChildrenState.bind(this);
     }
@@ -33,24 +34,19 @@ export default class ProgressIndicator extends Component {
     registerStep(step) {
         const newChildrenRefs = this.stepChildren.concat([step]);
         this.stepChildren = newChildrenRefs;
+        const { name } = step;
+        this.numbersMap[name] = newChildrenRefs.length;
         this.setChildrenState(step);
     }
 
     render() {
         const { style, className, variant, children, currentStepName, onClick } = this.props;
-        const numbersMap = React.Children.toArray(children).reduce((map, child, index) => {
-            if (child.props && child.props.name) {
-                // eslint-disable-next-line no-param-reassign
-                map[child.props.name] = index + 1;
-            }
-            return map;
-        }, {});
         const context = {
             currentStepName,
             privateRegisterStep: this.registerStep,
             privateOnClick: onClick,
             setChildrenState: this.setChildrenState,
-            numbersMap,
+            numbersMap: this.numbersMap,
             variant,
         };
 

@@ -26,10 +26,26 @@ describe('<ProgressStep/>', () => {
                 <ProgressStep name="step-3" />
             </ProgressIndicator>,
         );
+        jest.runAllTimers();
         const step2 = component.find('ProgressStep[name="step-2"]');
         const number = step2.find(StyledStepNumberButton);
         expect(number.exists()).toBe(true);
         expect(number.text()).toBe('2');
+    });
+
+    it('should render the right number on each step', () => {
+        const component = mount(
+            <ProgressIndicator currentStepName="step-1" variant="numeric">
+                <ProgressStep name="step-1" testNumber="1" />
+                <ProgressStep name="step-2" testNumber="2" />
+                <ProgressStep name="step-3" testNumber="3" />
+            </ProgressIndicator>,
+        );
+        jest.runAllTimers();
+        const steps = component.find('ProgressStep');
+        steps.forEach(step => {
+            expect(step.text()).toBe(step.prop('testNumber'));
+        });
     });
 
     it('should show a checkmark icon when marked as completed', () => {
