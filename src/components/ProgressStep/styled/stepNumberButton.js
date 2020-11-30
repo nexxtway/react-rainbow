@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledStepNumberButton = attachThemeAttrs(styled.button).attrs(props => {
