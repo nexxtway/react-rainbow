@@ -44,13 +44,15 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
     ${props =>
         props.isToday &&
         `
+        font-weight: 900;
+
         &::after {
             content: '';
-            height: 3px;
-            width: 3px;
+            height: 4px;
+            width: 4px;
             position: absolute;
             top: 28px;
-            left: 17px;
+            left: 16px;
             border-radius: 50%;
             background: ${
                 props.isSelected || props.isHovered
