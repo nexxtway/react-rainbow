@@ -21,6 +21,12 @@ const StyledRangeHighlight = attachThemeAttrs(styled.div).attrs(props => {
     }
 
     ${props =>
+        props.isToday &&
+        `
+        color: ${props.palette.brand.main};
+    `}
+
+    ${props =>
         props.isVisible &&
         `
         background: ${props.gradientStart};
