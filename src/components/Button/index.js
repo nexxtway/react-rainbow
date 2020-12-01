@@ -58,6 +58,8 @@ export default class Button extends Component {
             onFocus,
             onBlur,
             onClick,
+            onMouseEnter,
+            onMouseLeave,
             title,
             type,
             ariaHaspopup,
@@ -87,6 +89,8 @@ export default class Button extends Component {
                 onFocus={onFocus}
                 onBlur={onBlur}
                 onClick={onClick}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
                 title={title}
                 type={type}
                 aria-haspopup={ariaHaspopup}
@@ -145,6 +149,10 @@ Button.propTypes = {
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
+    /** The action triggered when moving the mouse pointer into the button. */
+    onMouseEnter: PropTypes.func,
+    /** The action triggered when moving the mouse pointer out of the button. */
+    onMouseLeave: PropTypes.func,
     /** Indicates that the element has a popup context menu or sub-level menu. */
     ariaHaspopup: PropTypes.bool,
     /** A space-separated list of element IDs that
@@ -180,6 +188,8 @@ Button.defaultProps = {
     onKeyDown: () => {},
     onFocus: () => {},
     onBlur: () => {},
+    onMouseEnter: () => {},
+    onMouseLeave: () => {},
     ariaHaspopup: undefined,
     className: undefined,
     style: undefined,

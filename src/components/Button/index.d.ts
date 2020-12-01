@@ -22,6 +22,8 @@ export interface ButtonProps extends BaseProps {
     onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void;
     onFocus?: (event: FocusEvent<HTMLElement>) => void;
     onBlur?: (event: FocusEvent<HTMLElement>) => void;
+    onMouseEnter?: (event: MouseEvent<HTMLElement>) => void;
+    onMouseLeave?: (event: MouseEvent<HTMLElement>) => void;
     ariaHaspopup?: boolean;
     ariaControls?: string;
     ariaExpanded?: boolean;
