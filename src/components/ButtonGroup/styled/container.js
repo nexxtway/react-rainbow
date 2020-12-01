@@ -1,7 +1,8 @@
 /* stylelint-disable no-descending-specificity */
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledContainer = styled.div`
+const StyledContainer = attachThemeAttrs(styled.div)`
     display: inline-flex;
 
     button {
@@ -32,6 +33,34 @@ const StyledContainer = styled.div`
     > div:only-child > button {
         border-radius: 100px;
     }
+
+    ${props =>
+        props.variant === 'shaded' &&
+        `
+        box-shadow: ${props.shadows.shadow_10};
+        background-color: ${props.palette.background.main};
+        border-radius: 100px;
+        > label:last-child > div {
+            display: none;
+        }
+        button {
+            border: none;
+            &::after {
+                content: '';
+                position: absolute;
+                right: 1px;
+                height: 20px;
+                width: 1px;
+                background-color: ${props.palette.border.divider};
+                box-sizing: border-box;
+            }
+        }
+        button:last-of-type {
+            &::after {
+                content: none;
+            }
+        }
+    `}
 `;
 
 export default StyledContainer;
