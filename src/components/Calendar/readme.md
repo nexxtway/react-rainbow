@@ -154,28 +154,3 @@ const calendarContainerStyles = {
         </div>
     </div>
 ```
-
-##### Today
-
-```js
-import React from 'react';
-import { Card, Calendar } from 'react-rainbow-components';
-
-const initialState = { date: new Date() };
-const calendarContainerStyles = {
-    width: '28rem',
-    height: '27rem',
-};
-
-    <div>
-        <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
-            <Card style={calendarContainerStyles} className="rainbow-p-around_large">
-                <Calendar
-                    id="calendar-11"
-                    value={state.date}
-                    onChange={value => setState({ date: value })}
-                />
-            </Card>
-        </div>
-    </div>
-```
