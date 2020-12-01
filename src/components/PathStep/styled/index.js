@@ -2,13 +2,12 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
-import { replaceAlpha } from '../../../styles/helpers/color';
 
 export const StyledStepItem = attachThemeAttrs(styled.li)`
     display: inline-flex;
     align-items: center;
     position: relative;
-    margin-left: -2rem;
+    margin-left: -2.5rem;
     box-sizing: border-box;
     height: 2.5rem;
     padding-left: 3.5rem;
@@ -26,7 +25,7 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
         background: ${props => props.palette.brand.main};
         color: ${props => props.palette.getContrastText(props.palette.brand.main)};
         border-right: 2px solid ${props => props.palette.brand.main};
-        box-shadow: 0 0 5px 0 ${props => replaceAlpha(props.palette.brand.light, 0.1)};
+        box-shadow: ${props => props.shadows.shadow_10};
     }
 
     ${props =>
@@ -35,7 +34,7 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
         background: ${props.palette.brand.main};
         color: ${props.palette.getContrastText(props.palette.brand.main)};
         border-right: 2px solid ${props.palette.brand.main};
-        box-shadow: 0 0 5px 0 ${replaceAlpha(props.palette.brand.dark, 0.1)};
+        box-shadow: ${props.shadows.shadow_10};
         `};
 
     ${props =>
@@ -44,7 +43,7 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
         background: ${props.palette.background.main};
         border-right: 2px solid ${props.palette.background.main};
         color: ${props.palette.brand.main};
-        box-shadow: 0 0 5px 2px ${replaceAlpha(props.palette.brand.dark, 0.1)};
+        box-shadow: ${props.shadows.shadow_11};
         `};
 
     ${props =>
@@ -53,7 +52,7 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
         background: ${props.palette.background.main};
         border-right: 2px solid ${props.palette.background.main};
         color: ${props.palette.error.main};
-        box-shadow: 0 0 5px 0 ${replaceAlpha(props.palette.error.dark, 0.1)};
+        box-shadow: ${props.shadows.shadow_11};
         `};
 
     &> svg {
@@ -66,7 +65,7 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
 
     &:first-child {
         margin-left: 0;
-        padding-left: 2.5rem;
+        padding-left: 1.5rem;
     }
 
     &:last-child {
