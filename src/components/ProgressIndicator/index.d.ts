@@ -5,6 +5,7 @@ export interface ProgressIndicatorProps extends BaseProps {
     currentStepName?: string;
     onClick?: (event: MouseEvent<HTMLElement>, name: string) => void;
     children?: ReactNode;
+    variant?: 'default' | 'numeric';
 }
 
 declare const ProgressIndicator: ComponentType<ProgressIndicatorProps>;
