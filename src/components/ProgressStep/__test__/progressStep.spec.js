@@ -57,7 +57,7 @@ describe('<ProgressStep/>', () => {
             </ProgressIndicator>,
         );
         jest.runOnlyPendingTimers();
-        component.setState({ key: Date.now() });
+        component.update();
         const step1 = component.find('ProgressStep[name="step-1"]').find('ButtonIcon');
         expect(step1.find('DoneIcon').exists()).toBe(true);
     });
@@ -71,7 +71,7 @@ describe('<ProgressStep/>', () => {
             </ProgressIndicator>,
         );
         jest.runOnlyPendingTimers();
-        component.setState({ key: Date.now() });
+        component.update();
         const step2 = component.find('ProgressStep[name="step-2"]').find('ButtonIcon');
         expect(step2.find('ErrorIcon').exists()).toBe(true);
     });

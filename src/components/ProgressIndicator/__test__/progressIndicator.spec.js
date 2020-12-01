@@ -70,13 +70,4 @@ describe('<ProgressIndicator/>', () => {
             .simulate('click');
         expect(onClickMockFn).toHaveBeenCalledWith(expect.any(Object), 'step-2');
     });
-
-    it('should have "default" as default value for variant prop', () => {
-        const component = mount(
-            <ProgressIndicator currentStepName="step-1">
-                <ProgressStep name="step-1" />
-            </ProgressIndicator>,
-        );
-        expect(component.prop('variant')).toBe('default');
-    });
 });
