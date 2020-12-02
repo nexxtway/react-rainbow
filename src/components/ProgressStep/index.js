@@ -9,6 +9,10 @@ import StyledStepButton from './styled/stepButton';
 import StyledInactiveIcon from './styled/inactiveIcon';
 import StyledActiveIcon from './styled/activeIcon';
 import StyledLabel from './styled/label';
+import RenderIf from '../RenderIf';
+import StyledStepNumberButton from './styled/stepNumberButton';
+import InternalTooltip from '../InternalTooltip';
+import { WindowScrolling } from '../../libs/scrollController';
 
 const iconMap = {
     Error: () => <ErrorIcon />,
@@ -22,6 +26,10 @@ class StepItem extends Component {
         super(props);
         this.handleOnClick = this.handleOnClick.bind(this);
         this.setStepState = this.setStepState.bind(this);
+        this.showTooltip = this.showTooltip.bind(this);
+        this.hideTooltip = this.hideTooltip.bind(this);
+        this.windowScrolling = new WindowScrolling();
+        this.triggerRef = React.createRef();
         this.state = {
             stepState: 'Inactive',
         };
@@ -82,24 +90,69 @@ class StepItem extends Component {
         return null;
     }
 
+    showTooltip() {
+        this.windowScrolling.startListening(this.hideTooltip);
+        this.setState({
+            isTooltipVisible: true,
+        });
+    }
+
+    hideTooltip() {
+        const { isTooltipVisible } = this.state;
+        this.windowScrolling.stopListening();
+        if (isTooltipVisible) {
+            this.setState({
+                isTooltipVisible: false,
+            });
+        }
+    }
+
     handleOnClick(event) {
         const { privateOnClick, name } = this.props;
         return privateOnClick(event, name);
     }
 
     render() {
-        const { label, className } = this.props;
-        const { stepState } = this.state;
+        const { label, className, variant, name, numbersMap, tooltip } = this.props;
+        const { stepState, isTooltipVisible } = this.state;
+
+        const shouldRenderNumber =
+            variant === 'numeric' && (stepState === 'Inactive' || stepState === 'Active');
 
         return (
-            <StyledStep className={className}>
-                <StyledStepButton
-                    stepState={stepState}
-                    icon={this.getIcon()}
-                    onClick={this.handleOnClick}
-                    assistiveText={this.getAssistiveText()}
-                />
+            <StyledStep
+                className={className}
+                onMouseEnter={this.showTooltip}
+                onMouseLeave={this.hideTooltip}
+                ref={this.triggerRef}
+            >
+                <RenderIf isTrue={!shouldRenderNumber}>
+                    <StyledStepButton
+                        stepState={stepState}
+                        icon={this.getIcon()}
+                        onClick={this.handleOnClick}
+                        assistiveText={this.getAssistiveText()}
+                    />
+                </RenderIf>
+                <RenderIf isTrue={shouldRenderNumber}>
+                    <StyledStepNumberButton
+                        stepState={stepState}
+                        onClick={this.handleOnClick}
+                        assistiveText={this.getAssistiveText()}
+                    >
+                        {numbersMap[name]}
+                    </StyledStepNumberButton>
+                </RenderIf>
                 <StyledLabel stepState={stepState}>{label}</StyledLabel>
+                <RenderIf isTrue={tooltip}>
+                    <InternalTooltip
+                        triggerElementRef={() => this.triggerRef}
+                        isVisible={isTooltipVisible}
+                        preferredPosition="top"
+                    >
+                        {tooltip}
+                    </InternalTooltip>
+                </RenderIf>
             </StyledStep>
         );
     }
@@ -122,6 +175,8 @@ ProgressStep.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** Text to show when pointer is over the step */
+    tooltip: PropTypes.string,
 };
 
 ProgressStep.defaultProps = {
@@ -130,4 +185,5 @@ ProgressStep.defaultProps = {
     hasError: false,
     className: undefined,
     style: undefined,
+    tooltip: undefined,
 };

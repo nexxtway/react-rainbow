@@ -23,7 +23,7 @@ const StyledStepButton = attachThemeAttrs(styled(ButtonIcon)).attrs(props => {
             background-color: ${props.palette.brand.main};
             
 
-            &:hover, &:focus, &active {
+            &:hover, &:focus, &:active {
                 color: ${props.contrastText};
             }
 
@@ -42,7 +42,7 @@ const StyledStepButton = attachThemeAttrs(styled(ButtonIcon)).attrs(props => {
         `
             color: ${props.palette.error.main};
 
-            &:hover, &:focus, &active {
+            &:hover, &:focus, &:active {
                 color: ${props.palette.error.main};
             }
 
