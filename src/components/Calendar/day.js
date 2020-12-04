@@ -35,6 +35,7 @@ function DayComponent(props) {
     const buttonRef = useRef();
     const isRangeStartDate = useRangeStartDate(date, currentRange);
     const isRangeEndDate = useRangeEndDate(date, currentRange);
+    const isToday = isSameDay(date, new Date());
 
     useEffect(() => {
         if (useAutoFocus && buttonRef.current && tabIndex !== -1) {
@@ -58,6 +59,7 @@ function DayComponent(props) {
                 isLastInRange={isRangeEndDate}
                 isFirstDayOfWeek={isFirstDayOfWeek}
                 isLastDayOfWeek={isLastDayOfWeek}
+                isToday={isToday}
             >
                 <StyledDayButton
                     ref={buttonRef}
@@ -71,6 +73,7 @@ function DayComponent(props) {
                     onFocus={privateOnFocus}
                     onBlur={privateOnBlur}
                     isWithinRange={isWithinRange}
+                    isToday={isToday}
                 >
                     {day}
                 </StyledDayButton>

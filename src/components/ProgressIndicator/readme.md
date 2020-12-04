@@ -5,12 +5,8 @@ import React from 'react';
 import {
     ProgressIndicator,
     ProgressStep,
-    ButtonGroup,
-    ButtonIcon,
     Button,
 } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
 const StyledIndicatorText = styled.div.attrs(props => {
@@ -68,24 +64,7 @@ class SimpleProgressIndicator extends React.Component {
     render() {
         const { currentStepIndex } = this.state;
         return (
-            <div className="rainbow-m-bottom_large rainbow-p-bottom_large">
-                <GlobalHeader
-                    src="images/user/user3.jpg"
-                    className="rainbow-p-bottom_medium rainbow-m-bottom_medium"
-                >
-                    <ButtonGroup>
-                        <ButtonIcon
-                            icon={<FontAwesomeIcon icon={faPlus} />}
-                            variant="border-filled"
-                            disabled
-                        />
-                        <ButtonIcon
-                            icon={<FontAwesomeIcon icon={faEllipsisV} />}
-                            variant="border-filled"
-                            disabled
-                        />
-                    </ButtonGroup>
-                </GlobalHeader>
+            <div className="rainbow-m-bottom_large rainbow-m-top_xx-large rainbow-p-bottom_large">
                 <ProgressIndicator currentStepName={stepNames[currentStepIndex]}>
                     <ProgressStep name="step-1" />
                     <ProgressStep name="step-2" />
@@ -127,12 +106,8 @@ import React from 'react';
 import {
     ProgressIndicator,
     ProgressStep,
-    ButtonGroup,
-    ButtonIcon,
     Button,
 } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'];
@@ -190,24 +165,7 @@ class ProgressIndicatorWithLabel extends React.Component {
     render() {
         const { currentStepIndex } = this.state;
         return (
-            <div className="rainbow-m-bottom_large rainbow-p-bottom_large">
-                <GlobalHeader
-                    src="images/user/user3.jpg"
-                    className="rainbow-p-bottom_medium rainbow-m-bottom_medium"
-                >
-                    <ButtonGroup>
-                        <ButtonIcon
-                            icon={<FontAwesomeIcon icon={faPlus} />}
-                            variant="border-filled"
-                            disabled
-                        />
-                        <ButtonIcon
-                            icon={<FontAwesomeIcon icon={faEllipsisV} />}
-                            variant="border-filled"
-                            disabled
-                        />
-                    </ButtonGroup>
-                </GlobalHeader>
+            <div className="rainbow-m-bottom_large rainbow-m-top_xx-large rainbow-p-bottom_large">
                 <ProgressIndicator currentStepName={stepNames[currentStepIndex]}>
                     <ProgressStep name="step-1" label="Step 1" />
                     <ProgressStep name="step-2" label="Step 2" />
@@ -249,12 +207,8 @@ import React from 'react';
 import {
     ProgressIndicator,
     ProgressStep,
-    ButtonGroup,
-    ButtonIcon,
     Button,
 } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'];
@@ -312,24 +266,7 @@ class ProgressIndicatorWithError extends React.Component {
     render() {
         const { currentStepIndex } = this.state;
         return (
-            <div className="rainbow-m-bottom_large rainbow-p-bottom_large">
-                <GlobalHeader
-                    src="images/user/user3.jpg"
-                    className="rainbow-p-bottom_medium rainbow-m-bottom_medium"
-                >
-                    <ButtonGroup>
-                        <ButtonIcon
-                            icon={<FontAwesomeIcon icon={faPlus} />}
-                            variant="border-filled"
-                            disabled
-                        />
-                        <ButtonIcon
-                            icon={<FontAwesomeIcon icon={faEllipsisV} />}
-                            variant="border-filled"
-                            disabled
-                        />
-                    </ButtonGroup>
-                </GlobalHeader>
+            <div className="rainbow-m-bottom_large rainbow-m-top_xx-large rainbow-p-bottom_large">
                 <ProgressIndicator currentStepName={stepNames[currentStepIndex]}>
                     <ProgressStep name="step-1" label="Step 1" />
                     <ProgressStep name="step-2" label="Step 2" />
@@ -368,9 +305,7 @@ class ProgressIndicatorWithError extends React.Component {
 
 ```js
 import React from 'react';
-import { ProgressIndicator, ProgressStep, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { ProgressIndicator, ProgressStep } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const steps = {
@@ -403,24 +338,7 @@ class OnClickProgressIndicator extends React.Component {
     render() {
         const { currentStepName } = this.state;
         return (
-            <div className="rainbow-m-bottom_large rainbow-p-bottom_large">
-                <GlobalHeader
-                    src="images/user/user3.jpg"
-                    className="rainbow-p-bottom_medium rainbow-m-bottom_medium"
-                >
-                    <ButtonGroup>
-                        <ButtonIcon
-                            icon={<FontAwesomeIcon icon={faPlus} />}
-                            variant="border-filled"
-                            disabled
-                        />
-                        <ButtonIcon
-                            icon={<FontAwesomeIcon icon={faEllipsisV} />}
-                            variant="border-filled"
-                            disabled
-                        />
-                    </ButtonGroup>
-                </GlobalHeader>
+            <div className="rainbow-m-bottom_large rainbow-m-top_xx-large rainbow-p-bottom_large">
                 <ProgressIndicator currentStepName={currentStepName} onClick={this.handleOnClick}>
                     <ProgressStep name="step-1" label="Step 1" />
                     <ProgressStep name="step-2" label="Step 2" />
@@ -437,4 +355,52 @@ class OnClickProgressIndicator extends React.Component {
 }
 
     <OnClickProgressIndicator />;
+```
+
+##### numeric variant
+
+```js
+import React, { useState } from 'react';
+import { ProgressIndicator, ProgressStep } from 'react-rainbow-components';
+
+const NumericProgressIndicator = () => {
+    const [currentStepName, setCurrentStepName] = useState('step-1');
+
+    const handleOnClick = (event, name) => setCurrentStepName(name);
+
+    return (
+        <div className="rainbow-m-bottom_large rainbow-m-top_xx-large rainbow-p-bottom_large">
+            <ProgressIndicator currentStepName={currentStepName} variant="numeric" onClick={handleOnClick}>
+                <ProgressStep name="step-1" label="Step 1" />
+                <ProgressStep name="step-2" label="Step 2" />
+                <ProgressStep name="step-3" label="Step 3" />
+                <ProgressStep name="step-4" label="Step 4" />
+                <ProgressStep name="step-5" label="Step 5" />
+            </ProgressIndicator>
+        </div>
+    );
+}
+
+    <NumericProgressIndicator />;
+```
+
+##### progress indicator with tooltip
+
+```js
+import React from 'react';
+import { ProgressIndicator, ProgressStep } from 'react-rainbow-components';
+
+const TooltipProgressIndicator = () => (
+    <div className="rainbow-m-bottom_large rainbow-m-top_xx-large rainbow-p-bottom_large">
+        <ProgressIndicator currentStepName="step-3">
+            <ProgressStep name="step-1" label="Step 1" tooltip="Step 1" />
+            <ProgressStep name="step-2" label="Step 2" tooltip="Step 2" />
+            <ProgressStep name="step-3" label="Step 3" tooltip="Step 3" />
+            <ProgressStep name="step-4" label="Step 4" tooltip="Step 4" />
+            <ProgressStep name="step-5" label="Step 5" tooltip="Step 5" />
+        </ProgressIndicator>
+    </div>
+);
+
+    <TooltipProgressIndicator />;
 ```
