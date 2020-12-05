@@ -23,7 +23,6 @@ caret-color: transparent;
 
     &[disabled] {
         box-shadow: none;
-        color: ${props => props.palette.background.disabled};
 
         &:focus,
         &:active {
