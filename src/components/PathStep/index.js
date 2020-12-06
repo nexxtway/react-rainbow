@@ -12,7 +12,6 @@ export default function PathStep(props) {
     const {
         selectedIndex,
         hoveredIndex,
-        someStepHasError,
         privateGetStepIndex,
         privateGetStepZIndex,
         privateRegisterStep,
@@ -35,9 +34,10 @@ export default function PathStep(props) {
     useEffect(() => {
         privateUpdateStepProps({
             name,
+            label,
             hasError,
         });
-    }, [name, hasError, privateUpdateStepProps]);
+    }, [name, label, hasError, privateUpdateStepProps]);
 
     const index = privateGetStepIndex(name);
 
@@ -46,21 +46,19 @@ export default function PathStep(props) {
             getActiveStepIndex({
                 hoveredIndex,
                 selectedIndex,
-                someStepHasError,
             }),
-        [hoveredIndex, selectedIndex, someStepHasError],
+        [hoveredIndex, selectedIndex],
     );
 
-    const isChecked = index !== hoveredIndex && activeStepIndex > index;
+    const isChecked = index !== hoveredIndex && activeStepIndex > index && !hasError;
     const isSelected = useMemo(
         () =>
             isStepSelected({
                 index,
                 hoveredIndex,
                 selectedIndex,
-                someStepHasError,
             }),
-        [hoveredIndex, index, selectedIndex, someStepHasError],
+        [hoveredIndex, index, selectedIndex],
     );
 
     const renderErrorIcon = hasError && index !== hoveredIndex;

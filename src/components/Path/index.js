@@ -10,7 +10,6 @@ export default function Path(props) {
     const { currentStepName, onClick, children, id, className, style } = props;
     const [hoveredStepName, setHoveredStepName] = useState(null);
     const [stepsCount, setStepsCount] = useState(0);
-    const [hasErrors, setHasErrors] = useState(false);
     const registeredSteps = useRef([]);
     const containerRef = useRef();
 
@@ -27,7 +26,6 @@ export default function Path(props) {
         );
         registeredSteps.current = newStepsList;
         setStepsCount(registeredSteps.current.length);
-        setHasErrors(stepProps.hasError);
     }, []);
 
     const privateUnregisterStep = useCallback((stepRef, stepName) => {
@@ -56,7 +54,6 @@ export default function Path(props) {
             ...updatedStep,
             ...stepProps,
         };
-        setHasErrors(registeredSteps.current.some(step => step.hasError));
     }, []);
 
     const context = useMemo(() => {
@@ -70,7 +67,6 @@ export default function Path(props) {
         return {
             selectedIndex,
             hoveredIndex,
-            someStepHasError: hasErrors,
             privateGetStepIndex: getStepIndex,
             privateGetStepZIndex,
             privateRegisterStep,
@@ -82,7 +78,6 @@ export default function Path(props) {
     }, [
         currentStepName,
         getStepIndex,
-        hasErrors,
         hoveredStepName,
         onClick,
         privateGetStepZIndex,

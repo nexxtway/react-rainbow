@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 
-export const StyledStepItem = attachThemeAttrs(styled.li)`
+export const StyledStepItem = attachThemeAttrs(styled.button)`
     display: inline-flex;
     align-items: center;
     position: relative;
@@ -12,6 +12,7 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
     height: 2.5rem;
     padding-left: 3.5rem;
     padding-right: 2.5rem;
+    border: none;
     background: ${props => props.palette.background.highlight};
     color: ${props => props.palette.text.header};
     border-radius: 20px;
@@ -20,6 +21,7 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
     cursor: pointer;
     font-size: ${FONT_SIZE_TEXT_LARGE};
     font-weight: 400;
+    transition: all 0.3s linear;
 
     &:hover {
         background: ${props => props.palette.brand.main};
