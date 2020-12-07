@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 
+const getBgColor = props => {
+    if (props.hasError) return props.palette.error.main;
+    return props.palette.brand.main;
+};
+
 export const StyledStepItem = attachThemeAttrs(styled.button)`
     display: inline-flex;
     align-items: center;
@@ -24,18 +29,18 @@ export const StyledStepItem = attachThemeAttrs(styled.button)`
     transition: all 0.3s linear;
 
     &:hover {
-        background: ${props => props.palette.brand.main};
-        color: ${props => props.palette.getContrastText(props.palette.brand.main)};
-        border-right: 2px solid ${props => props.palette.brand.main};
+        background: ${props => getBgColor(props)};
+        color: ${props => props.palette.getContrastText(getBgColor(props))};
+        border-right: 2px solid ${props => getBgColor(props)};
         box-shadow: ${props => props.shadows.shadow_10};
     }
 
     ${props =>
         props.isSelected &&
         `
-        background: ${props.palette.brand.main};
-        color: ${props.palette.getContrastText(props.palette.brand.main)};
-        border-right: 2px solid ${props.palette.brand.main};
+        background: ${getBgColor(props)};
+        color: ${props.palette.getContrastText(getBgColor(props))};
+        border-right: 2px solid ${getBgColor(props)};
         box-shadow: ${props.shadows.shadow_10};
         `};
 

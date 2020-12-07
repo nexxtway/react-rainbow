@@ -50,7 +50,7 @@ export default function PathStep(props) {
         [hoveredIndex, selectedIndex],
     );
 
-    const isChecked = index !== hoveredIndex && activeStepIndex > index && !hasError;
+    const isChecked = activeStepIndex > index;
     const isSelected = useMemo(
         () =>
             isStepSelected({
@@ -61,7 +61,7 @@ export default function PathStep(props) {
         [hoveredIndex, index, selectedIndex],
     );
 
-    const renderErrorIcon = hasError && index !== hoveredIndex;
+    const renderCheckIcon = !hasError && (isChecked || isSelected || activeStepIndex === index);
 
     return (
         <StyledStepItem
@@ -78,10 +78,10 @@ export default function PathStep(props) {
             onMouseLeave={() => privateUpdateHoveredStep(null)}
         >
             {label}
-            <RenderIf isTrue={isChecked}>
+            <RenderIf isTrue={renderCheckIcon}>
                 <CheckMark />
             </RenderIf>
-            <RenderIf isTrue={renderErrorIcon}>
+            <RenderIf isTrue={hasError}>
                 <Exclamation />
             </RenderIf>
         </StyledStepItem>
