@@ -132,4 +132,18 @@ describe('<Picklist />', () => {
         expect(component.find('[aria-expanded=true]').exists()).toBe(false);
         expect(component.find(InternalOverlay).prop('isVisible')).toBe(false);
     });
+    it('should not open menu when is readOnly and click the picklist label', () => {
+        const component = mount(
+            <Picklist label="Picklist" readOnly>
+                <PicklistOption label="Option 1" name="option1" />
+                <PicklistOption label="Option 2" name="option2" />
+                <PicklistOption label="Option 3" name="option3" />
+            </Picklist>,
+        );
+        expect(component.find('[aria-expanded=true]').exists()).toBe(false);
+        expect(component.find(InternalOverlay).prop('isVisible')).toBe(false);
+        component.find('label').simulate('click');
+        expect(component.find('[aria-expanded=true]').exists()).toBe(false);
+        expect(component.find(InternalOverlay).prop('isVisible')).toBe(false);
+    });
 });

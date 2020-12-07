@@ -120,9 +120,12 @@ class Picklist extends Component {
     }
 
     openMenu() {
-        this.setState({
-            isOpen: true,
-        });
+        const { readOnly } = this.props;
+        if (!readOnly) {
+            this.setState({
+                isOpen: true,
+            });
+        }
     }
 
     closeMenu() {
