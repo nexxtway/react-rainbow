@@ -1,5 +1,5 @@
-##### DatePicker base:
-
+# The basic DatePicker
+##### Our DatePicker component comes, of course, with our rainbow styles out of the box, as you can see in the example below.
 ```js
 import React from 'react';
 import { Picklist, PicklistOption, DatePicker } from 'react-rainbow-components';
@@ -39,8 +39,9 @@ const containerStyles = {
     </div>
 ```
 
-##### DatePicker with date constraints:
-
+# DatePicker with date constraints
+##### In our DatePicker, you can also restrict the date range using the props `minDate` and `maxDate`. An example of how to
+##### use it can be seen below.
 ```js
 import React from 'react';
 import { DatePicker } from 'react-rainbow-components';
@@ -65,8 +66,9 @@ const initialState = { date: new Date() };
     </div>
 ```
 
-##### DatePicker with different date formats:
-
+# DatePicker with different date formats
+##### You can also modify the style of the selected date with the prop `formatStyle`. So far we have 3 formats: small, medium,
+##### and large.
 ```js
 import React from 'react';
 import { DatePicker } from 'react-rainbow-components';
@@ -101,8 +103,9 @@ const initialState = { date: new Date() };
     </div>
 ```
 
-##### DatePicker required:
-
+# DatePicker required
+##### If you need the DatePicker to be a required field in a form, the only thing you have to do is to pass it the
+##### `required` prop and it will be marked as required using a red asterisk in the upper right corner of the label.
 ```js
 import React from 'react';
 import { DatePicker } from 'react-rainbow-components';
@@ -126,7 +129,10 @@ const initialState = { date: new Date() };
     </div>
 ```
 
-##### DatePicker with error:
+# DatePicker with error
+##### Another thing that you may need is to show an error message in case of failure of some validation in a form.
+##### You can do it by simply passing this message to the `error` prop. The error will also be indicated on the DatePicker
+##### with a red border to highlight that there was an error.
 
 ```js
 import React from 'react';
@@ -153,8 +159,8 @@ const initialState = { date: undefined };
     </div>
 ```
 
-##### DatePicker disabled:
-
+# DatePicker disabled
+##### The DatePicker can be displayed as disabled. With the `disabled` prop, all the functionalities will be deactivated.
 ```js
 import React from 'react';
 import { DatePicker } from 'react-rainbow-components';
@@ -171,8 +177,8 @@ const containerStyles = {
     </div>;
 ```
 
-##### DatePicker readOnly:
-
+# DatePicker with readOnly
+##### Another way to acquire an effect similar to disabled is with the `readOnly` prop, as you can see in the example below.
 ```js
 import React from 'react';
 import { DatePicker } from 'react-rainbow-components';
@@ -189,8 +195,9 @@ const containerStyles = {
     </div>
 ```
 
-##### DatePicker with range selection:
-
+# DatePicker with range selection
+##### An additional cool feature is the ability to choose a date range and not a specific one.
+##### You can do this with `selectionType` prop, as you can see below.
 ```js
 import React from 'react';
 import { DatePicker } from 'react-rainbow-components';
@@ -219,8 +226,9 @@ const containerStyles = {
     </div>
 ```
 
-##### DatePicker with variant double:
-
+# DatePicker with double variant
+##### Finally, if you need to choose date ranges in two different months, you could use the `variant` prop to
+##### show two consecutive months at the same time.
 ```js
 import React from 'react';
 import { DatePicker } from 'react-rainbow-components';
@@ -247,8 +255,8 @@ const containerStyles = {
     </div>
 ```
 
-##### DatePicker select date:
-
+# Example of a DatePicker usage
+##### The example below shows a real use case with most DatePicker functionalities.
 ```js
 import React from 'react';
 import { DatePicker, Input, Avatar } from 'react-rainbow-components';
