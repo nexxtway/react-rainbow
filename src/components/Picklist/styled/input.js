@@ -50,6 +50,12 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
         padding-right: 0;
         outline: 0;
 
+        ${props.icon &&
+            `
+            border: 1px solid transparent;
+            padding-left: 2.35rem;
+        `};        
+
         &::-ms-expand {
             display: none;
         }
@@ -62,6 +68,12 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
             box-shadow: none;
             border-color: transparent;
             background-color: transparent;
+
+            ${props.icon &&
+                `
+                border: 1px solid transparent;
+                padding-left: 2.35rem;
+            `}
         }
     `}
 `;
