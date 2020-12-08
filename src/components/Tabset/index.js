@@ -89,11 +89,15 @@ export default class Tabset extends Component {
     }
 
     updateButtonsVisibility() {
-        const { tabsetChildren } = this.state;
+        const { tabsetChildren, areButtonsVisible, variant } = this.state;
         const tabset = this.tabsetRef.current;
+        const { offsetWidth: resizeWidth } = this.resizeTarget.current;
         const { scrollWidth, scrollLeft, offsetWidth: tabsetWidth } = tabset;
         const childrenTotalWidth = getChildrenTotalWidth(tabsetChildren);
-        const showButtons = childrenTotalWidth > tabsetWidth;
+        const buttonWidth = areButtonsVisible ? 94 : 0;
+        const padding = resizeWidth - tabsetWidth - buttonWidth;
+        const delta = variant === 'line' ? 0 : 1;
+        const showButtons = childrenTotalWidth > resizeWidth - padding + delta;
         this.screenWidth = window.innerWidth;
         this.scrollLeft = scrollLeft;
         this.maxScroll = scrollWidth - tabsetWidth;
@@ -238,10 +242,9 @@ export default class Tabset extends Component {
         return (
             <StyledContainer variant={variant} className={className} style={style} id={id}>
                 <StyledObserver ref={this.resizeTarget} />
-                <StyledTabset>
+                <StyledTabset variant={variant}>
                     <StyledInnerContainer
                         fullWidth={fullWidth}
-                        variant={variant}
                         role="tablist"
                         onKeyDown={this.handleKeyPressed}
                         onScroll={this.updateButtonsVisibility}
