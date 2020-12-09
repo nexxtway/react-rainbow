@@ -28,11 +28,22 @@ export const StyledStepItem = attachThemeAttrs(styled.button)`
     font-weight: 400;
     transition: all 0.3s linear;
 
+    ::-moz-focus-inner,
+    ::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
     &:hover {
         background: ${props => getBgColor(props)};
         color: ${props => props.palette.getContrastText(getBgColor(props))};
         border-right: 2px solid ${props => getBgColor(props)};
         box-shadow: ${props => props.shadows.shadow_10};
+    }
+
+    &:focus,
+    &:active {
+        outline: 0;
     }
 
     ${props =>
