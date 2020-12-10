@@ -6,6 +6,11 @@ import insertChildOrderly from '../InternalDropdown/helpers/insertChildOrderly';
 import { getChildStepsNodes } from './helpers';
 import { StyledContainer, StyledStepsList } from './styled';
 
+/**
+ * Path component is a navigation bar that guides users through the steps of a task.
+ * When a given task is complicated or has a certain sequence in the series of subtasks,
+ * we can decompose it into several steps to make things easier.
+ */
 export default function Path(props) {
     const { currentStepName, onClick, children, id, className, style } = props;
     const [hoveredStepName, setHoveredStepName] = useState(null);

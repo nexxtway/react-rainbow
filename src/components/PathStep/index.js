@@ -1,12 +1,15 @@
 import React, { useRef, useMemo, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { PathContext } from '../Path/context';
-import { StyledStepItem } from './styled';
-import { getActiveStepIndex, isStepSelected } from './helpers';
 import RenderIf from '../RenderIf';
+import { PathContext } from '../Path/context';
+import { getActiveStepIndex, isStepSelected } from './helpers';
+import { StyledStepItem } from './styled';
 import CheckMark from './icons/checkMark';
 import Exclamation from './icons/exclamation';
 
+/**
+ * PathStep represents a task within a path.
+ */
 export default function PathStep(props) {
     const { name, label, hasError, className, style } = props;
     const {
@@ -90,7 +93,7 @@ export default function PathStep(props) {
 
 PathStep.propTypes = {
     /** The name of the PathStep. */
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
     /** The label of the PathStep. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Boolean indicating whether the PathStep has error. */
@@ -102,7 +105,6 @@ PathStep.propTypes = {
 };
 
 PathStep.defaultProps = {
-    name: undefined,
     label: undefined,
     hasError: false,
     className: undefined,
