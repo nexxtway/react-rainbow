@@ -1,5 +1,5 @@
-# Basic Path usage
-##### Using the component is quite simple, just add some `PathStep` components within `Path`.
+# The basic Path
+##### Using the component is quite simple. As you can see in the code below, you just have to add some `PathStep` components within `Path` to make it work.
 
 ```js
 import React, { useState } from 'react';
@@ -24,8 +24,9 @@ const BasicPath = () => {
     <BasicPath />
 ```
 
-# Path with error in some step
-##### To indicate that an error has ocurr while executing some task, just set the prop `hasError` to corresponding `PathStep`
+# Path with error in step
+##### To indicate that an error has occurred while executing a task, just set the prop `hasError` to the corresponding `PathStep`.
+
 
 ```js
 import React, { useState, useCallback } from 'react';

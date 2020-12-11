@@ -1,6 +1,6 @@
-# PathStep basic example
-##### PathStep component cannot be used in isolation. Instead use it to compose a `Path`.
-##### Notice there is a required prop `name` to identify the step within containing path.
+# The basic PathStep
+##### PathStep component cannot be used in isolation. Instead, use it to compose a `Path`.
+##### Notice there is a required prop `name` to identify the step within the containing path.
 
 ```js
 

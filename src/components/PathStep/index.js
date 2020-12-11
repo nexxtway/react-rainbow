@@ -8,7 +8,9 @@ import CheckMark from './icons/checkMark';
 import Exclamation from './icons/exclamation';
 
 /**
- * PathStep represents a task within a path.
+ * The PathStep component displays progress through a sequence of
+ * logical and numbered steps. Path and PathStep components are
+ * related and should be implemented together.
  */
 export default function PathStep(props) {
     const { name, label, hasError, className, style } = props;
