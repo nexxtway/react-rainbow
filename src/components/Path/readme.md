@@ -45,8 +45,8 @@ const PathWithErrorInStep = () => {
             <Path currentStepName={currentStep} onClick={handleClick}>
                 <PathStep name="scheduled" label="Scheduled" />
                 <PathStep name="in-progress" label="InProgress" hasError />
-                <PathStep name="arrived" label="Arrived" />
-                <PathStep name="delivered" label="Delivered" />
+                <PathStep name="arrived" label="Arrived" hasError />
+                <PathStep name="delivered" label="Delivered" hasError />
             </Path>
         </div>
     );

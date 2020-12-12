@@ -33,9 +33,9 @@ import { Path, PathStep } from 'react-rainbow-components';
 const PathWithErrorInStep = () => {
     return (
         <div className="rainbow-p-around_x-large rainbow-align-content_center">
-            <Path currentStepName="scheduled">
+            <Path currentStepName="in-progress">
                 <PathStep name="scheduled" label="Scheduled" hasError />
-                <PathStep name="in-progress" label="InProgress" />
+                <PathStep name="in-progress" label="InProgress" hasError />
                 <PathStep name="arrived" label="Arrived" />
                 <PathStep name="delivered" label="Delivered" hasError />
             </Path>
