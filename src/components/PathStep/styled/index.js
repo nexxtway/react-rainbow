@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 
-const getBgColor = props => {
+const getBackgroundgColor = props => {
     if (props.hasError) return props.palette.error.main;
     return props.palette.brand.main;
 };
@@ -35,9 +35,9 @@ export const StyledStepItem = attachThemeAttrs(styled.button)`
     }
 
     &:hover {
-        background: ${props => getBgColor(props)};
-        color: ${props => props.palette.getContrastText(getBgColor(props))};
-        border-right: 2px solid ${props => getBgColor(props)};
+        background: ${props => getBackgroundgColor(props)};
+        color: ${props => props.palette.getContrastText(getBackgroundgColor(props))};
+        border-right: 2px solid ${props => getBackgroundgColor(props)};
         box-shadow: ${props => props.shadows.shadow_10};
     }
 
@@ -47,11 +47,18 @@ export const StyledStepItem = attachThemeAttrs(styled.button)`
     }
 
     ${props =>
+        props.hasError &&
+        `
+        border-right: 2px solid ${props.palette.background.main};
+        color: ${props.palette.error.main};
+        `};
+
+    ${props =>
         props.isSelected &&
         `
-        background: ${getBgColor(props)};
-        color: ${props.palette.getContrastText(getBgColor(props))};
-        border-right: 2px solid ${getBgColor(props)};
+        background: ${getBackgroundgColor(props)};
+        color: ${props.palette.getContrastText(getBackgroundgColor(props))};
+        border-right: 2px solid ${getBackgroundgColor(props)};
         box-shadow: ${props.shadows.shadow_10};
         `};
 
@@ -63,8 +70,9 @@ export const StyledStepItem = attachThemeAttrs(styled.button)`
         color: ${props.palette.brand.main};
         box-shadow: ${props.shadows.shadow_11};
         `};
-
+    
     ${props =>
+        props.isChecked &&
         props.hasError &&
         `
         background: ${props.palette.background.main};
@@ -73,7 +81,7 @@ export const StyledStepItem = attachThemeAttrs(styled.button)`
         box-shadow: ${props.shadows.shadow_11};
         `};
 
-    &> svg {
+    & > svg {
         position: absolute;
         right: 0.5rem;
         width: 1.25rem;
