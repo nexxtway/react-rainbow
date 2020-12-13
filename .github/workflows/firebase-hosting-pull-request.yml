@@ -8,6 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
+            - run: 'yarn install'
             - run: 'yarn build:library'
             - uses: FirebaseExtended/action-hosting-deploy@v0
               with:
