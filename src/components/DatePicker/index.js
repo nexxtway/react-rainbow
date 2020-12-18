@@ -9,7 +9,8 @@ import DatePickerModal from '../DatePickerModal';
 import { StyledContainer, StyledInput } from './styled';
 
 /**
- * The DatePicker is used to select a specific day or a range of days on a calendar.
+ * The DatePicker is a component that is used to select a specific day or a range of days on a calendar. The selected day
+ * is indicated by a filled circle. The current day is indicated by a different color in the font and a dot under the day.
  * @category Form
  */
 const DatePicker = React.forwardRef((props, ref) => {
