@@ -3,7 +3,12 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 
-export const StyledStepItem = attachThemeAttrs(styled.li)`
+const getBackgroundgColor = props => {
+    if (props.hasError) return props.palette.error.main;
+    return props.palette.brand.main;
+};
+
+export const StyledStepItem = attachThemeAttrs(styled.button)`
     display: inline-flex;
     align-items: center;
     position: relative;
@@ -12,6 +17,7 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
     height: 2.5rem;
     padding-left: 3.5rem;
     padding-right: 2.5rem;
+    border: none;
     background: ${props => props.palette.background.highlight};
     color: ${props => props.palette.text.header};
     border-radius: 20px;
@@ -20,20 +26,39 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
     cursor: pointer;
     font-size: ${FONT_SIZE_TEXT_LARGE};
     font-weight: 400;
+    transition: all 0.3s linear;
+
+    ::-moz-focus-inner,
+    ::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
 
     &:hover {
-        background: ${props => props.palette.brand.main};
-        color: ${props => props.palette.getContrastText(props.palette.brand.main)};
-        border-right: 2px solid ${props => props.palette.brand.main};
+        background: ${props => getBackgroundgColor(props)};
+        color: ${props => props.palette.getContrastText(getBackgroundgColor(props))};
+        border-right: 2px solid ${props => getBackgroundgColor(props)};
         box-shadow: ${props => props.shadows.shadow_10};
     }
+
+    &:focus,
+    &:active {
+        outline: 0;
+    }
+
+    ${props =>
+        props.hasError &&
+        `
+        border-right: 2px solid ${props.palette.background.main};
+        color: ${props.palette.error.main};
+        `};
 
     ${props =>
         props.isSelected &&
         `
-        background: ${props.palette.brand.main};
-        color: ${props.palette.getContrastText(props.palette.brand.main)};
-        border-right: 2px solid ${props.palette.brand.main};
+        background: ${getBackgroundgColor(props)};
+        color: ${props.palette.getContrastText(getBackgroundgColor(props))};
+        border-right: 2px solid ${getBackgroundgColor(props)};
         box-shadow: ${props.shadows.shadow_10};
         `};
 
@@ -45,8 +70,9 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
         color: ${props.palette.brand.main};
         box-shadow: ${props.shadows.shadow_11};
         `};
-
+    
     ${props =>
+        props.isChecked &&
         props.hasError &&
         `
         background: ${props.palette.background.main};
@@ -55,7 +81,7 @@ export const StyledStepItem = attachThemeAttrs(styled.li)`
         box-shadow: ${props.shadows.shadow_11};
         `};
 
-    &> svg {
+    & > svg {
         position: absolute;
         right: 0.5rem;
         width: 1.25rem;

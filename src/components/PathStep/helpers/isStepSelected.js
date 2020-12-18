@@ -1,5 +1,5 @@
 export default function isStepSelected(params) {
-    const { hoveredIndex, someStepHasError, selectedIndex, index } = params;
-    if (hoveredIndex !== -1 || someStepHasError) return false;
+    const { hoveredIndex, selectedIndex, index } = params;
+    if (hoveredIndex !== -1) return false;
     return selectedIndex === index;
 }

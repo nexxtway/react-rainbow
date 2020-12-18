@@ -1,17 +1,16 @@
-##### PathStep basic example
+# The basic PathStep
+##### PathStep component cannot be used in isolation. Instead, use it to compose a `Path`.
+##### Notice there is a required prop `name` to identify the step within the containing path.
 
 ```js
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Path, PathStep } from 'react-rainbow-components';
 
-
 const BasicPath = () => {
-    const [currentStep, setCurrentStep] = useState('arrived');
-
     return (
         <div className="rainbow-p-around_x-large rainbow-align-content_center">
-            <Path currentStepName={currentStep} onClick={setCurrentStep}>
+            <Path currentStepName="arrived">
                 <PathStep name="scheduled" label="Scheduled" />
                 <PathStep name="in-progress" label="InProgress" />
                 <PathStep name="arrived" label="Arrived" />
@@ -24,29 +23,21 @@ const BasicPath = () => {
     <BasicPath />
 ```
 
-##### PathStep with error in step
+# PathStep with error
+##### Set the prop `hasError` to indicate that step is in error state.
 
 ```js
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { Path, PathStep } from 'react-rainbow-components';
 
-
 const PathWithErrorInStep = () => {
-    const [currentStep, setCurrentStep] = useState('delivered');
-    const [stepHasError, setStepHasError] = useState(true);
-
-    const handleClick = useCallback(stepName => {
-        setCurrentStep(stepName);
-        setStepHasError(stepName === 'delivered');
-    }, []);
-
     return (
         <div className="rainbow-p-around_x-large rainbow-align-content_center">
-            <Path currentStepName={currentStep} onClick={handleClick}>
-                <PathStep name="scheduled" label="Scheduled" />
-                <PathStep name="in-progress" label="InProgress" />
+            <Path currentStepName="in-progress">
+                <PathStep name="scheduled" label="Scheduled" hasError />
+                <PathStep name="in-progress" label="InProgress" hasError />
                 <PathStep name="arrived" label="Arrived" />
-                <PathStep name="delivered" label="Delivered" hasError={stepHasError} />
+                <PathStep name="delivered" label="Delivered" hasError />
             </Path>
         </div>
     );

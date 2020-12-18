@@ -1,18 +1,22 @@
 import React, { useRef, useMemo, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { PathContext } from '../Path/context';
-import { StyledStepItem } from './styled';
-import { getActiveStepIndex, isStepSelected } from './helpers';
 import RenderIf from '../RenderIf';
+import { PathContext } from '../Path/context';
+import { getActiveStepIndex, isStepSelected } from './helpers';
+import { StyledStepItem } from './styled';
 import CheckMark from './icons/checkMark';
 import Exclamation from './icons/exclamation';
 
+/**
+ * The PathStep component displays progress through a sequence of
+ * logical and numbered steps. Path and PathStep components are
+ * related and should be implemented together.
+ */
 export default function PathStep(props) {
     const { name, label, hasError, className, style } = props;
     const {
         selectedIndex,
         hoveredIndex,
-        someStepHasError,
         privateGetStepIndex,
         privateGetStepZIndex,
         privateRegisterStep,
@@ -35,9 +39,10 @@ export default function PathStep(props) {
     useEffect(() => {
         privateUpdateStepProps({
             name,
+            label,
             hasError,
         });
-    }, [name, hasError, privateUpdateStepProps]);
+    }, [name, label, hasError, privateUpdateStepProps]);
 
     const index = privateGetStepIndex(name);
 
@@ -46,24 +51,22 @@ export default function PathStep(props) {
             getActiveStepIndex({
                 hoveredIndex,
                 selectedIndex,
-                someStepHasError,
             }),
-        [hoveredIndex, selectedIndex, someStepHasError],
+        [hoveredIndex, selectedIndex],
     );
 
-    const isChecked = index !== hoveredIndex && activeStepIndex > index;
+    const isChecked = activeStepIndex > index;
     const isSelected = useMemo(
         () =>
             isStepSelected({
                 index,
                 hoveredIndex,
                 selectedIndex,
-                someStepHasError,
             }),
-        [hoveredIndex, index, selectedIndex, someStepHasError],
+        [hoveredIndex, index, selectedIndex],
     );
 
-    const renderErrorIcon = hasError && index !== hoveredIndex;
+    const renderCheckIcon = !hasError && (isChecked || isSelected || activeStepIndex === index);
 
     return (
         <StyledStepItem
@@ -80,10 +83,10 @@ export default function PathStep(props) {
             onMouseLeave={() => privateUpdateHoveredStep(null)}
         >
             {label}
-            <RenderIf isTrue={isChecked}>
+            <RenderIf isTrue={renderCheckIcon}>
                 <CheckMark />
             </RenderIf>
-            <RenderIf isTrue={renderErrorIcon}>
+            <RenderIf isTrue={hasError}>
                 <Exclamation />
             </RenderIf>
         </StyledStepItem>
@@ -92,7 +95,7 @@ export default function PathStep(props) {
 
 PathStep.propTypes = {
     /** The name of the PathStep. */
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
     /** The label of the PathStep. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Boolean indicating whether the PathStep has error. */
@@ -104,7 +107,6 @@ PathStep.propTypes = {
 };
 
 PathStep.defaultProps = {
-    name: undefined,
     label: undefined,
     hasError: false,
     className: undefined,
