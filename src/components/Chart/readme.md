@@ -1078,3 +1078,121 @@ const containerStyles = {
         </div>
     </div>
 ```
+
+##### Bar chart with options object:
+
+```js
+import React from 'react';
+import { Chart, Dataset } from 'react-rainbow-components';
+import datalabels from 'chartjs-plugin-datalabels';
+import colorschemes from 'chartjs-plugin-colorschemes';
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function getRandomValues(len, min, max) {
+    return Array(len)
+        .fill(0)
+        .map(() => getRandomInt(min, max));
+}
+
+const ChartWithOptionsObjectExample = () => {
+    const labels = [
+        '07/21',
+        '07/22',
+        '07/23',
+        '07/24',
+        '07/25',
+        '07/26',
+        '07/27',
+        '07/28',
+        '07/29',
+        '07/30',
+        '08/01',
+        '08/02',
+    ];
+    const options = {
+        maintainAspectRatio: true,
+        scales: {
+            xAxes: [
+                {
+                    id: 'axis1',
+                    stacked: true,
+                    type: 'category',
+                    barThickness: 27,
+                    gridLines: {
+                        display: false,
+                    }
+                },
+                {
+                    id: 'axis2',
+                    stacked: true,
+                    type: 'category',
+                    gridLines: {
+                        display: false,
+                    },
+                    display: false,
+                }
+            ],
+            yAxes: [{
+                gridLines: {
+                    display: false,
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'SMS',
+                    fontFamily: 'Lato',
+                    fontSize: 14,
+                    fontStyle: 'bold',
+                    fontColor: '#000',
+                },
+                ticks: {
+                    suggestedMin: 0,
+                    suggestedMax: 50,
+                }
+            }]
+        }
+    }
+    const plugins = [datalabels, colorschemes];
+    const containerStyles = {
+        maxWidth: 800,
+    };
+
+    return (
+        <div className="rainbow-p-vertical_large rainbow-m_auto" style={containerStyles}>
+            <div className="rainbow-align-content_center">
+                <Chart
+                    plugins={plugins}
+                    datalabels={ { anchor: 'end', align: 'top' } }
+                    labels={labels}
+                    type="bar"
+                    className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
+                    disableXAxisGridLines
+                    disableYAxisGridLines
+                    options={options}
+                >
+                    <Dataset
+                        id="data1"
+                        title="SMS Delivered"
+                        values={getRandomValues(12, 10, 30)}
+                        backgroundColor="#68c4e4"
+                        xAxisId="axis1"
+                        datalabels={{ color: '#68c4e4' }}
+                    />
+                    <Dataset
+                        id="data2"
+                        title="SMS Sent"
+                        values={getRandomValues(12, 30, 40)}
+                        backgroundColor="#dce5e4"
+                        xAxisId="axis2"
+                        datalabels={{ color: '#cad5d5' }}
+                    />
+                </Chart>
+            </div>
+        </div>
+    )
+}
+
+ChartWithOptionsObjectExample();
+```
