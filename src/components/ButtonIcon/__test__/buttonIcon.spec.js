@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import ButtonIcon from '../index';
+import InternalTooltip from '../../InternalTooltip';
 
 describe('<ButtonIcon/>', () => {
     it('should focus the button when the focus method is called', () => {
@@ -59,5 +60,9 @@ describe('<ButtonIcon/>', () => {
     it('should pass assistiveText to the prop text of AssistiveText component', () => {
         const component = mount(<ButtonIcon assistiveText="for screen readers" />);
         expect(component.find('AssistiveText').prop('text')).toBe('for screen readers');
+    });
+    it('should render a tooltip when `tooltip` prop is valid', () => {
+        const component = mount(<ButtonIcon tooltip="Test tooltip" />);
+        expect(component.find(InternalTooltip).exists()).toBe(true);
     });
 });

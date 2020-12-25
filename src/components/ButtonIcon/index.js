@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AssistiveText from '../AssistiveText';
 import StyledButton from './styled/button';
+import RenderIf from '../RenderIf';
+import InternalTooltip from '../InternalTooltip';
+import { WindowScrolling } from '../../libs/scrollController';
 
 /**
  * Buttons Icons provide the user with visual iconography that
@@ -11,6 +14,14 @@ export default class ButtonIcon extends Component {
     constructor(props) {
         super(props);
         this.buttonRef = React.createRef();
+        this.showTooltip = this.showTooltip.bind(this);
+        this.hideTooltip = this.hideTooltip.bind(this);
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
+        this.windowScrolling = new WindowScrolling();
+        this.state = {
+            isTooltipVisible: false,
+        };
     }
 
     /**
@@ -45,6 +56,35 @@ export default class ButtonIcon extends Component {
         this.buttonRef.current.blur();
     }
 
+    showTooltip() {
+        this.windowScrolling.startListening(this.hideTooltip);
+        this.setState({
+            isTooltipVisible: true,
+        });
+    }
+
+    hideTooltip() {
+        const { isTooltipVisible } = this.state;
+        this.windowScrolling.stopListening();
+        if (isTooltipVisible) {
+            this.setState({
+                isTooltipVisible: false,
+            });
+        }
+    }
+
+    handleMouseEnter(event) {
+        const { onMouseEnter } = this.props;
+        this.showTooltip();
+        onMouseEnter(event);
+    }
+
+    handleMouseLeave(event) {
+        const { onMouseLeave } = this.props;
+        this.hideTooltip();
+        onMouseLeave(event);
+    }
+
     render() {
         const {
             title,
@@ -65,13 +105,13 @@ export default class ButtonIcon extends Component {
             form,
             onKeyDown,
             onMouseDown,
-            onMouseEnter,
-            onMouseLeave,
             className,
             shaded,
             variant,
             size,
+            tooltip,
         } = this.props;
+        const { isTooltipVisible } = this.state;
 
         return (
             <StyledButton
@@ -95,13 +135,22 @@ export default class ButtonIcon extends Component {
                 aria-expanded={ariaExpanded}
                 aria-pressed={ariaPressed}
                 onKeyDown={onKeyDown}
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
+                onMouseEnter={this.handleMouseEnter}
+                onMouseLeave={this.handleMouseLeave}
                 form={form}
                 ref={this.buttonRef}
             >
                 {icon}
                 <AssistiveText text={assistiveText} />
+                <RenderIf isTrue={tooltip}>
+                    <InternalTooltip
+                        triggerElementRef={() => this.buttonRef}
+                        isVisible={isTooltipVisible}
+                        preferredPosition="top"
+                    >
+                        {tooltip}
+                    </InternalTooltip>
+                </RenderIf>
             </StyledButton>
         );
     }
@@ -144,6 +193,8 @@ ButtonIcon.propTypes = {
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** Text to show when pointer is over the button */
+    tooltip: PropTypes.node,
     /** The action that will be run when the button is clicked. */
     onClick: PropTypes.func,
     /** The action that will be run when the user presses the mouse button. */
@@ -189,6 +240,7 @@ ButtonIcon.defaultProps = {
     type: 'button',
     disabled: false,
     tabIndex: undefined,
+    tooltip: undefined,
     onClick: () => {},
     onMouseDown: () => {},
     onMouseEnter: () => {},
