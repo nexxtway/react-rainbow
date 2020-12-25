@@ -36,7 +36,13 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
             box-shadow: none;
         `}
     `}
-
+    ${props =>
+        props.variant === 'bare' &&
+        `
+        :hover {
+            box-shadow: ${props.shadows.shadow_10};
+        }
+    `}
     ${props =>
         props.isReadOnly &&
         !props.disabled &&

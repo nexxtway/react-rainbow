@@ -454,3 +454,51 @@ const initialState = { value: { name: 'option 2', label: 'Empire State' } };
         </GlobalHeader>
     </div>;
 ```
+
+##### Picklist bare
+
+```js
+import React, { useState } from 'react';
+import { Picklist, Option } from 'react-rainbow-components';
+
+const containerStyles = {
+    width: '200px',
+};
+
+function PicklistExample() {
+    const [picklistValue, setPicklistValue] = useState({ name: 'option 3', label: 'Central Park' });
+
+    const handleOnChange = value => {
+        setPicklistValue(value);
+    };
+
+    return (
+        <GlobalHeader
+            src="images/user/user3.jpg"
+            className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
+            variant="neutral"
+        >
+            <div className="rainbow-flex rainbow-align_right">
+                <Picklist
+                    id="picklist-16"
+                    style={containerStyles}
+                    onChange={handleOnChange}
+                    value={picklistValue}
+                    label="Select Building"
+                    hideLabel
+                    variant="bare"
+                >
+                    <Option name="header" label="Your Buildings" variant="header" />
+                    <Option name="option 1" label="Experimental Building" />
+                    <Option name="option 2" label="Empire State" />
+                    <Option name="option 3" label="Central Park" />
+                </Picklist>
+            </div>
+        </GlobalHeader>
+    );
+}
+
+    <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+        <PicklistExample />
+    </div>;
+```
