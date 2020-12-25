@@ -4,7 +4,7 @@ import AssistiveText from '../AssistiveText';
 import StyledButton from './styled/button';
 import RenderIf from '../RenderIf';
 import InternalTooltip from '../InternalTooltip';
-import { WindowScrolling } from '../../libs/scrollController';
+import WindowScrolling from '../../libs/scrollController/windowScrolling';
 
 /**
  * Buttons Icons provide the user with visual iconography that
