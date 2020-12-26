@@ -41,6 +41,7 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
         `
         :hover {
             box-shadow: ${props.shadows.shadow_10};
+            background-color: ${props.palette.background.main};
         }
     `}
     ${props =>
