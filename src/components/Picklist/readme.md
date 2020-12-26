@@ -468,10 +468,6 @@ const containerStyles = {
 function PicklistExample() {
     const [picklistValue, setPicklistValue] = useState({ name: 'option 3', label: 'Central Park' });
 
-    const handleOnChange = value => {
-        setPicklistValue(value);
-    };
-
     return (
         <GlobalHeader
             src="images/user/user3.jpg"
@@ -482,7 +478,7 @@ function PicklistExample() {
                 <Picklist
                     id="picklist-16"
                     style={containerStyles}
-                    onChange={handleOnChange}
+                    onChange={setPicklistValue}
                     value={picklistValue}
                     label="Select Building"
                     hideLabel
