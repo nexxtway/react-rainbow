@@ -5,16 +5,17 @@ import InternalTooltip from '../../InternalTooltip';
 
 describe('<ButtonIcon/>', () => {
     it('should focus the button when the focus method is called', () => {
-        const component = mount(<ButtonIcon />);
-
-        component.instance().focus();
+        const ref = {};
+        const component = mount(<ButtonIcon ref={ref} />);
+        ref.current.focus();
         const focusedElementDataId = document.activeElement.getAttribute('data-id');
         const buttonDataId = component.find('button').prop('data-id');
         expect(focusedElementDataId).toBe(buttonDataId);
     });
     it('should blur the button when the blur method is called', () => {
-        const component = mount(<ButtonIcon />);
-        const instance = component.instance();
+        const ref = {};
+        const component = mount(<ButtonIcon ref={ref} />);
+        const instance = ref.current;
         const buttonDataId = component.find('button').prop('data-id');
 
         instance.focus();

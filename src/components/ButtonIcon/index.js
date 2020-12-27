@@ -1,160 +1,115 @@
-import React, { Component } from 'react';
+import React, { useImperativeHandle, useRef } from 'react';
 import PropTypes from 'prop-types';
 import AssistiveText from '../AssistiveText';
 import StyledButton from './styled/button';
 import RenderIf from '../RenderIf';
 import InternalTooltip from '../InternalTooltip';
-import WindowScrolling from '../../libs/scrollController/windowScrolling';
+import useDefaultTooltipConnector from '../InternalTooltip/hooks/useDefaultTooltipConnector';
 
 /**
  * Buttons Icons provide the user with visual iconography that
  * is typically used to invoke an event or action.
  */
-export default class ButtonIcon extends Component {
-    constructor(props) {
-        super(props);
-        this.buttonRef = React.createRef();
-        this.showTooltip = this.showTooltip.bind(this);
-        this.hideTooltip = this.hideTooltip.bind(this);
-        this.handleMouseEnter = this.handleMouseEnter.bind(this);
-        this.handleMouseLeave = this.handleMouseLeave.bind(this);
-        this.windowScrolling = new WindowScrolling();
-        this.state = {
-            isTooltipVisible: false,
-        };
-    }
+const ButtonIcon = React.forwardRef((props, ref) => {
+    const buttonRef = useRef();
+    const tooltipRef = useRef();
 
-    /**
-     * Returns the ref of the HTML button element.
-     * @public
-     */
-    get htmlElementRef() {
-        return this.buttonRef;
-    }
+    useImperativeHandle(ref, () => ({
+        htmlElementRef: buttonRef.current.htmlElementRef,
+        focus: () => {
+            buttonRef.current.focus();
+        },
+        click: () => {
+            buttonRef.current.click();
+        },
+        blur: () => {
+            buttonRef.current.blur();
+        },
+    }));
 
-    /**
-     * Sets focus on the element.
-     * @public
-     */
-    focus() {
-        this.buttonRef.current.focus();
-    }
+    const {
+        title,
+        type,
+        disabled,
+        tabIndex,
+        onClick,
+        onFocus,
+        onBlur,
+        assistiveText,
+        ariaHaspopup,
+        ariaPressed,
+        style,
+        id,
+        ariaControls,
+        ariaExpanded,
+        icon,
+        form,
+        onKeyDown,
+        onMouseDown,
+        onMouseEnter: mouseEnterInProps,
+        onMouseLeave: mouseLeaveInProps,
+        className,
+        shaded,
+        variant,
+        size,
+        tooltip,
+    } = props;
+    const { onMouseEnter, onMouseLeave, isVisible: isTooltipVisible } = useDefaultTooltipConnector({
+        tooltipRef,
+        triggerRef: () => buttonRef,
+    });
 
-    /**
-     * Sets click on the element.
-     * @public
-     */
-    click() {
-        this.buttonRef.current.click();
-    }
+    const handleMouseEnter = event => {
+        onMouseEnter();
+        mouseEnterInProps(event);
+    };
 
-    /**
-     * Sets blur on the element.
-     * @public
-     */
-    blur() {
-        this.buttonRef.current.blur();
-    }
+    const handleMouseLeave = event => {
+        onMouseLeave();
+        mouseLeaveInProps(event);
+    };
 
-    showTooltip() {
-        this.windowScrolling.startListening(this.hideTooltip);
-        this.setState({
-            isTooltipVisible: true,
-        });
-    }
-
-    hideTooltip() {
-        const { isTooltipVisible } = this.state;
-        this.windowScrolling.stopListening();
-        if (isTooltipVisible) {
-            this.setState({
-                isTooltipVisible: false,
-            });
-        }
-    }
-
-    handleMouseEnter(event) {
-        const { onMouseEnter } = this.props;
-        this.showTooltip();
-        onMouseEnter(event);
-    }
-
-    handleMouseLeave(event) {
-        const { onMouseLeave } = this.props;
-        this.hideTooltip();
-        onMouseLeave(event);
-    }
-
-    render() {
-        const {
-            title,
-            type,
-            disabled,
-            tabIndex,
-            onClick,
-            onFocus,
-            onBlur,
-            assistiveText,
-            ariaHaspopup,
-            ariaPressed,
-            style,
-            id,
-            ariaControls,
-            ariaExpanded,
-            icon,
-            form,
-            onKeyDown,
-            onMouseDown,
-            className,
-            shaded,
-            variant,
-            size,
-            tooltip,
-        } = this.props;
-        const { isTooltipVisible } = this.state;
-
-        return (
-            <StyledButton
-                onMouseDown={onMouseDown}
-                data-id="button-icon-element"
-                id={id}
-                className={className}
-                shaded={shaded}
-                variant={variant}
-                size={size}
-                style={style}
-                disabled={disabled}
-                tabIndex={tabIndex}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                onClick={onClick}
-                title={title}
-                type={type}
-                aria-haspopup={ariaHaspopup}
-                aria-controls={ariaControls}
-                aria-expanded={ariaExpanded}
-                aria-pressed={ariaPressed}
-                onKeyDown={onKeyDown}
-                onMouseEnter={this.handleMouseEnter}
-                onMouseLeave={this.handleMouseLeave}
-                form={form}
-                ref={this.buttonRef}
-            >
-                {icon}
-                <AssistiveText text={assistiveText} />
-                <RenderIf isTrue={tooltip}>
-                    <InternalTooltip
-                        triggerElementRef={() => this.buttonRef}
-                        isVisible={isTooltipVisible}
-                        preferredPosition="top"
-                    >
-                        {tooltip}
-                    </InternalTooltip>
-                </RenderIf>
-            </StyledButton>
-        );
-    }
-}
+    return (
+        <StyledButton
+            onMouseDown={onMouseDown}
+            data-id="button-icon-element"
+            id={id}
+            className={className}
+            shaded={shaded}
+            variant={variant}
+            size={size}
+            style={style}
+            disabled={disabled}
+            tabIndex={tabIndex}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            onClick={onClick}
+            title={title}
+            type={type}
+            aria-haspopup={ariaHaspopup}
+            aria-controls={ariaControls}
+            aria-expanded={ariaExpanded}
+            aria-pressed={ariaPressed}
+            onKeyDown={onKeyDown}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            form={form}
+            ref={buttonRef}
+        >
+            {icon}
+            <AssistiveText text={assistiveText} />
+            <RenderIf isTrue={tooltip}>
+                <InternalTooltip
+                    triggerElementRef={() => buttonRef}
+                    isVisible={isTooltipVisible}
+                    preferredPosition="top"
+                >
+                    {tooltip}
+                </InternalTooltip>
+            </RenderIf>
+        </StyledButton>
+    );
+});
 
 ButtonIcon.propTypes = {
     /** The icon to show if it is passed.
@@ -258,3 +213,7 @@ ButtonIcon.defaultProps = {
     ariaExpanded: undefined,
     form: undefined,
 };
+
+ButtonIcon.displayName = 'ButtonIcon';
+
+export default ButtonIcon;
