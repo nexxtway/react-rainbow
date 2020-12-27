@@ -9,12 +9,11 @@ export const StyledContainer = styled.nav`
     padding: 0.25rem;
 `;
 
-export const StyledStepsList = styled.ol`
+export const StyledStepsList = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     margin: 0;
     padding: 0;
-    list-style: none;
     box-sizing: border-box;
 `;

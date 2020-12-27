@@ -1,5 +1,6 @@
 {
   "projects": {
-    "react-rainbow": "react-rainbow"
+    "react-rainbow": "react-rainbow",
+    "default": "react-rainbow"
   }
 }
