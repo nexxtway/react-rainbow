@@ -120,7 +120,8 @@ Chart.propTypes = {
     /** Plugins to customize the Chart. */
     plugins: PropTypes.arrayOf(PropTypes.object),
     /** An object with options to pass to Chart.js; Options in this object
-     * will have precedence over any other option
+     * will have precedence over any other option.
+     * See: https://www.chartjs.org/docs/2.7.3/general/
      */
     options: PropTypes.object,
     /** A CSS class for the outer element, in addition to the component's base classes. */
