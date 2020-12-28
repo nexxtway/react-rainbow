@@ -12,8 +12,8 @@ import StyledSelect from './styled/select';
 
 /**
  * This component implements a client-side pagination experience. Basically,
- * it wires up the `Table` and the `Pagination` components in a composed manner,
- * and keeps the internal state of the active page based on a new prop `pageSize`.
+ * it wires up the Table and the Pagination components in a composed manner
+ * and keeps the internal state of the active page based on a new prop pageSize.
  * @category DataView
  */
 export default class TableWithBrowserPagination extends Component {
