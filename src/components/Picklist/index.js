@@ -362,7 +362,7 @@ Picklist.propTypes = {
     style: PropTypes.object,
     /** The variant changes the appearance of the Picklist. Accepted variants include default,
      * and shaded. This value defaults to default. */
-    variant: PropTypes.oneOf(['default', 'shaded']),
+    variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
     /** If is set to true, then a search input to filter is showed. */
     enableSearch: PropTypes.bool,
 };

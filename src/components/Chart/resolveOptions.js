@@ -1,6 +1,7 @@
 import { replaceAlpha } from '../../styles/helpers/color';
 import defaultTheme from '../../styles/defaultTheme';
 import getPluginsConf from './helpers/getPluginsConf';
+import merge from './helpers/merge';
 
 export default function resolveOptions(conditions) {
     const {
@@ -20,6 +21,7 @@ export default function resolveOptions(conditions) {
         theme,
         type,
         plugins,
+        options: nativeOptions,
         ...rest
     } = conditions;
     const palette = theme ? theme.rainbow.palette : defaultTheme.palette;
@@ -161,5 +163,5 @@ export default function resolveOptions(conditions) {
         };
     }
 
-    return options;
+    return merge(options, nativeOptions);
 }
