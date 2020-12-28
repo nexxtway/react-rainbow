@@ -35,8 +35,8 @@ const ButtonIcon = React.forwardRef((props, ref) => {
         disabled,
         tabIndex,
         onClick,
-        onFocus,
-        onBlur,
+        onFocus: focusInProps,
+        onBlur: blurInProps,
         assistiveText,
         ariaHaspopup,
         ariaPressed,
@@ -56,7 +56,13 @@ const ButtonIcon = React.forwardRef((props, ref) => {
         size,
         tooltip,
     } = props;
-    const { onMouseEnter, onMouseLeave, isVisible: isTooltipVisible } = useDefaultTooltipConnector({
+    const {
+        onMouseEnter,
+        onMouseLeave,
+        onFocus,
+        onBlur,
+        isVisible: isTooltipVisible,
+    } = useDefaultTooltipConnector({
         tooltipRef,
         triggerRef: () => buttonRef,
     });
@@ -71,6 +77,16 @@ const ButtonIcon = React.forwardRef((props, ref) => {
         mouseLeaveInProps(event);
     };
 
+    const handleOnFocus = event => {
+        onFocus();
+        focusInProps(event);
+    };
+
+    const handleOnBlur = event => {
+        onBlur();
+        blurInProps(event);
+    };
+
     return (
         <StyledButton
             onMouseDown={onMouseDown}
@@ -83,8 +99,8 @@ const ButtonIcon = React.forwardRef((props, ref) => {
             style={style}
             disabled={disabled}
             tabIndex={tabIndex}
-            onFocus={onFocus}
-            onBlur={onBlur}
+            onFocus={handleOnFocus}
+            onBlur={handleOnBlur}
             onClick={onClick}
             title={title}
             type={type}
@@ -105,6 +121,7 @@ const ButtonIcon = React.forwardRef((props, ref) => {
                     triggerElementRef={() => buttonRef}
                     isVisible={isTooltipVisible}
                     preferredPosition="top"
+                    ref={tooltipRef}
                 >
                     {tooltip}
                 </InternalTooltip>
