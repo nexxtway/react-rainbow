@@ -26,7 +26,7 @@
         "test": "jest ./src --verbose",
         "test:integration": "wdio",
         "generate:pageObjectDocs": "jsdoc -c jsdoc.conf.js",
-        "deploy:library": "yarn build:library && yarn generate:pageObjectDocs && firebase deploy",
+        "deploy:library": "yarn build:library && yarn generate:pageObjectDocs && firebase deploy -P default",
         "format": "prettier --write '{src,examples, library, tutorials}/**/*.{js,json,md}'",
         "prepare:canary": "node scripts/prepare-canary.js"
     },
