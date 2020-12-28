@@ -15,7 +15,9 @@ const ButtonIcon = React.forwardRef((props, ref) => {
     const tooltipRef = useRef();
 
     useImperativeHandle(ref, () => ({
-        htmlElementRef: buttonRef.current.htmlElementRef,
+        get htmlElementRef() {
+            return buttonRef;
+        },
         focus: () => {
             buttonRef.current.focus();
         },
