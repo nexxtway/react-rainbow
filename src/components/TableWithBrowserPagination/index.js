@@ -133,7 +133,7 @@ TableWithBrowserPagination.propTypes = {
      * Available options are: center, left, and right.
      * This value defaults to center. */
     paginationAlignment: PropTypes.oneOf(['center', 'left', 'right']),
-    /** Indicates the amount of data that will be showed per page. */
+    /** Indicates the amount of data that will be shown per page. */
     pageSize: PropTypes.number,
     /** An array containing the objects(rows) to be displayed. */
     data: PropTypes.array,
