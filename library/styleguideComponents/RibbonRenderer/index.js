@@ -2,14 +2,17 @@
 import React from 'react';
 import GitHubButton from 'react-github-btn';
 import StackoverflowIcon from './stackoverflowIcon';
+import YouTubeIcon from './youtubeIcon';
 import GlobalSearch from '../GlobalSearch';
+import MediumIcon from './mediumIcon';
 import {
     StyledContainer,
     StyledGitHubContianer,
-    StyledGithubIcon,
-    StyledGithubLink,
+    StyledIcon,
+    StyledLink,
     StyledHeading,
-    StyledStackoverflowLink,
+    StyledTwitterIcon,
+    StyledGithubIcon,
 } from './styled';
 
 export default function RibbonRenderer() {
@@ -28,22 +31,46 @@ export default function RibbonRenderer() {
                         Star
                     </GitHubButton>
                 </StyledGitHubContianer>
-                <StyledGithubLink
+                <StyledLink
                     href="https://github.com/nexxtway/react-rainbow"
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Github repository"
                 >
                     <StyledGithubIcon />
-                </StyledGithubLink>
-                <StyledStackoverflowLink
+                </StyledLink>
+                <StyledLink
                     href="https://stackoverflow.com/questions/tagged/react-rainbow+or+react-rainbow-components+or+rainbow-components"
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Stackoverflow"
                 >
-                    <StyledGithubIcon as={StackoverflowIcon} />
-                </StyledStackoverflowLink>
+                    <StyledIcon as={StackoverflowIcon} />
+                </StyledLink>
+                <StyledLink
+                    href="https://medium.com/react-rainbow"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Medium Blog"
+                >
+                    <StyledIcon as={MediumIcon} />
+                </StyledLink>
+                <StyledLink
+                    href="https://twitter.com/ReactRainbow"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Twitter"
+                >
+                    <StyledIcon as={StyledTwitterIcon} />
+                </StyledLink>
+                <StyledLink
+                    href="https://www.youtube.com/channel/UCvJHgfOlJc8-aEkZbQV9O3w"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="YouTube Channel"
+                >
+                    <StyledIcon as={YouTubeIcon} />
+                </StyledLink>
             </StyledContainer>
         </StyledHeading>
     );
