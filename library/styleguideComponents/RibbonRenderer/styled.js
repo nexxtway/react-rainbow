@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import GithubIcon from './githubIcon';
-import GlobalSearch from '../GlobalSearch';
 import TwitterIcon from '../../exampleComponents/Icons/twitter';
 
 export const StyledHeading = styled.header`
