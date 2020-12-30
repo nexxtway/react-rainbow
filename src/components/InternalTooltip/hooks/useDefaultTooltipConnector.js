@@ -36,6 +36,7 @@ export default function useDefaultTooltipConnector({ tooltipRef, triggerRef }) {
 
     const onBlur = useCallback(() => {
         isFocused.current = false;
+        setVisible(false);
     }, []);
 
     const onMouseEnter = useCallback(() => {
