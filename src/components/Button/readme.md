@@ -1,4 +1,5 @@
-##### base buttons
+# Buttons variant
+##### Buttons change color according to the variant applied to them. In the examples below, you can find all the variants that we offer you.
 
 ```js
 import React from 'react';
@@ -26,7 +27,8 @@ import { Button } from 'react-rainbow-components';
     </div>
 ```
 
-##### button shaded
+# Buttons with shaded variant
+##### The appearance of a button can be changed by implementing the shaded variant, so the whole section will appear with a shadow around it.
 
 ```js
 import React from 'react';
@@ -56,7 +58,8 @@ import { Button } from 'react-rainbow-components';
     </div>
 ```
 
-##### buttons with icon
+# Buttons with icons
+##### Icons can be added to buttons and combined or not with text, as you can see in the examples below.
 
 ```js
 import React from 'react';
@@ -82,7 +85,8 @@ import { faCoffee, faCheck, faArrowRight } from '@fortawesome/free-solid-svg-ico
     </div>
 ```
 
-##### disabled buttons
+# Buttons disabled
+##### Buttons can be displayed as disabled. With the `disabled` prop, all the functionalities will be deactivated.
 
 ```js
 import React from 'react';
@@ -105,7 +109,8 @@ import { Button } from 'react-rainbow-components';
     </div>
 ```
 
-##### buttons inverse
+# Buttons inverse
+##### If you want to use a button on a dark background, we suggest you implement the inverse variant.
 
 ```js
 import React from 'react';
@@ -124,7 +129,8 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
     </InverseContainer>
 ```
 
-##### buttons loadings
+# Buttons with loading state
+##### The loading state is build-in in the button. Use `isLoading` prop.
 
 ```js
 import React from 'react';
@@ -147,7 +153,8 @@ import { Button } from 'react-rainbow-components';
     </div>
 ```
 
-##### button width size
+# Buttons of different sizes
+##### If you need to resize your button, you can do so using the `size` prop.
 
 ```js
 import React from 'react';
