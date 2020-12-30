@@ -155,7 +155,7 @@ import { Button } from 'react-rainbow-components';
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <Button variant="brand" label="Button Small" className="rainbow-m-around_medium" size='small'/>
-        <Button label="Button Medium" variant="brand" className="rainbow-m-around_medium" />
+        <Button label="Button Medium" variant="brand" className="rainbow-m-around_medium" size="medium"/>
         <Button label="Button Large" variant="brand" className="rainbow-m-around_medium" size='large'/>
     </div>
 ```

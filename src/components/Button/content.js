@@ -16,8 +16,9 @@ const variantMap = {
     'border-filled': 'base',
 };
 
+const spinnerMap = { small: 'x-small', medium: 'small', large: 'medium' };
+
 export default function Content({ label, children, variant, isLoading, size }) {
-    const spinnerMap = { small: 'x-small', medium: 'small', large: 'medium' };
     if (isLoading) {
         return (
             <StyledContent>
