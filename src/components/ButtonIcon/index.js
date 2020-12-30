@@ -18,6 +18,12 @@ const ButtonIcon = React.forwardRef((props, ref) => {
         get htmlElementRef() {
             return buttonRef;
         },
+        /**
+         * @deprecated Backward compatibility only. Use `htmlElementRef` instead.
+         */
+        get buttonRef() {
+            return buttonRef;
+        },
         focus: () => {
             buttonRef.current.focus();
         },
