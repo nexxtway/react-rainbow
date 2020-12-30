@@ -1,6 +1,10 @@
 /* eslint-disable indent */
 import styled from 'styled-components';
-import { FONT_SIZE_HEADING_SMALL } from '../../../styles/fontSizes';
+import {
+    FONT_SIZE_HEADING_SMALL,
+    FONT_SIZE_TEXT_MEDIUM,
+    FONT_SIZE_HEADING_MEDIUM,
+} from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { COLOR_WHITE, COLOR_GRAY_3, COLOR_DARK_1 } from '../../../styles/colors';
 import { lighten } from '../../../styles/helpers/color';
@@ -62,6 +66,22 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
     &:visited {
         text-decoration: none;
     }
+
+    ${props =>
+        props.size === 'large' &&
+        `
+            padding: 0 1.2rem;
+            line-height: 3.275rem;
+            font-size: ${FONT_SIZE_HEADING_MEDIUM};;
+        `};
+
+    ${props =>
+        props.size === 'small' &&
+        `
+            padding: 0 0.8rem;
+            line-height: 1.775rem;
+            font-size: ${FONT_SIZE_TEXT_MEDIUM};
+        `};
 
     &:hover,
     &:focus {

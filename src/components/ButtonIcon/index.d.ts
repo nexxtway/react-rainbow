@@ -10,6 +10,7 @@ export interface ButtonIconProps extends BaseProps {
     type?: ButtonType;
     disabled?: boolean;
     tabIndex?: number | string;
+    tooltip?: ReactNode;
     onClick?: (event: MouseEvent<HTMLElement>) => void;
     onMouseDown?: (event: MouseEvent<HTMLElement>) => void;
     onMouseEnter?: (event: MouseEvent<HTMLElement>) => void;

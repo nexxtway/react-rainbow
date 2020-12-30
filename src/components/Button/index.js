@@ -73,6 +73,7 @@ export default class Button extends Component {
             onKeyDown,
             form,
             className,
+            size,
         } = this.props;
 
         return (
@@ -100,8 +101,9 @@ export default class Button extends Component {
                 onKeyDown={onKeyDown}
                 form={form}
                 ref={this.buttonRef}
+                size={size}
             >
-                <Content variant={variant} label={label} isLoading={isLoading}>
+                <Content variant={variant} label={label} isLoading={isLoading} size={size}>
                     {children}
                 </Content>
             </StyledButton>
@@ -173,6 +175,8 @@ Button.propTypes = {
     id: PropTypes.string,
     /** If it is set to true, then a loading symbol is displayed. */
     isLoading: PropTypes.bool,
+    /** The size of the button. Valid values are small, and large. This value defaults to medium. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 Button.defaultProps = {
@@ -199,4 +203,5 @@ Button.defaultProps = {
     ariaControls: undefined,
     ariaExpanded: undefined,
     form: undefined,
+    size: 'medium',
 };

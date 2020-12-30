@@ -3,15 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import classnames from 'classnames';
-import Application from './../../../src/components/Application';
-import ReactGA from '.././../ga';
+import Application from '../../../src/components/Application';
+import ReactGA from '../../ga';
 import RenderIf from '../../../src/components/RenderIf';
 import ButtonIcon from '../../../src/components/ButtonIcon';
 import ComponentsPage from '../../pages/ComponentsPage';
 import ProjectSelector from '../ProjectSelector';
 import GitterChat from '../GitterChat';
 import ChatIcon from '../../exampleComponents/Icons/chat';
-import TwitterIcon from '../../exampleComponents/Icons/twitter';
 import Ribbon from '../RibbonRenderer';
 import BarsIcon from './barsIcon';
 import './styles.css';
@@ -20,12 +19,6 @@ import './styles.css';
 function trackPageview() {
     ReactGA.pageview(window.location.hash);
 }
-
-const twitterIconStyle = {
-    width: '18px',
-    height: '15px',
-    color: '#ffffff',
-};
 
 const StyleButtonIcon = styled(ButtonIcon)`
     svg {
@@ -89,23 +82,13 @@ class StyleGuide extends React.Component {
 
     render() {
         const { children, toc } = this.props;
-        const components = toc.props.sections[1].components;
+        const { components } = toc.props.sections[1];
 
         return (
             <div className="react-rainbow-styleguide-container rainbow-position-align_start">
                 <ProjectSelector />
                 <Ribbon />
-                <aside className={this.getSideBarClassNames()}>
-                    {toc}
-                    <a
-                        href="https://twitter.com/ReactRainbow"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="react-rainbow-styleguide_twitter-link"
-                    >
-                        <TwitterIcon style={twitterIconStyle} />
-                    </a>
-                </aside>
+                <aside className={this.getSideBarClassNames()}>{toc}</aside>
                 <div
                     className={this.getBackdropClassNames()}
                     role="presentation"

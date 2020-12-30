@@ -16,12 +16,18 @@ const variantMap = {
     'border-filled': 'base',
 };
 
-export default function Content({ label, children, variant, isLoading }) {
+const spinnerMap = { small: 'x-small', medium: 'small', large: 'medium' };
+
+export default function Content({ label, children, variant, isLoading, size }) {
     if (isLoading) {
         return (
             <StyledContent>
                 <ButtonContent label={label}>{children}</ButtonContent>
-                <StyledSpinner isVisible={isLoading} variant={variantMap[variant]} size="small" />
+                <StyledSpinner
+                    isVisible={isLoading}
+                    variant={variantMap[variant]}
+                    size={spinnerMap[size]}
+                />
             </StyledContent>
         );
     }
@@ -43,6 +49,7 @@ Content.propTypes = {
         'border-filled',
     ]),
     isLoading: PropTypes.bool,
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 Content.defaultProps = {
@@ -50,4 +57,5 @@ Content.defaultProps = {
     children: null,
     variant: 'neutral',
     isLoading: false,
+    size: 'medium',
 };
