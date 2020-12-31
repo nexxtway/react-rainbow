@@ -91,3 +91,4 @@ export { default as VisualPickerOptionFooter } from './VisualPickerOptionFooter'
 export { default as WeekDayPicker } from './WeekDayPicker';
 export { default as WeeklyCalendar } from './WeeklyCalendar';
 export { default as withDebounce } from '../libs/hocs/withDebounce';
+export { default as DraggableList } from './DraggableList';
