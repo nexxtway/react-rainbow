@@ -1,5 +1,5 @@
 import React from 'react';
-import { ItemContainer } from './styled';
+import { ItemContainer, StyledIcon } from './styled';
 
 const Item = props => {
     const { row, field, component: CustomItem } = props;
@@ -7,11 +7,17 @@ const Item = props => {
     if (CustomItem) {
         return (
             <ItemContainer>
+                <StyledIcon />
                 <CustomItem value={value} row={row} />
             </ItemContainer>
         );
     }
-    return <ItemContainer>{value}</ItemContainer>;
+    return (
+        <ItemContainer>
+            <StyledIcon />
+            {value}
+        </ItemContainer>
+    );
 };
 
 export default Item;

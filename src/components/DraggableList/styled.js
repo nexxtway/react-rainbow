@@ -1,9 +1,40 @@
 import styled from 'styled-components';
+import Icon from './icon';
 
-// eslint-disable-next-line import/prefer-default-export
-export const Container = styled.div``;
+export const Container = styled.ul`
+    list-style-type: none;
+`;
 
-export const ItemContainer = styled.div`
-    border: 1px solid #ccc;
-    border-radius: 4px;
+export const ItemContainer = styled.li`
+    display: flex;
+    align-items: center;
+    border: 1px solid ${props => props.theme.rainbow.palette.background.main};
+    border-radius: 12px;
+    padding: 8px 12px;
+    background: ${props => props.theme.rainbow.palette.background.main};
+    box-shadow: ${props => props.theme.rainbow.shadows.shadow_3};
+    font-size: 1rem;
+    color: ${props => props.theme.rainbow.palette.text.main};
+
+    :not(:last-child) {
+        margin-bottom: 6px;
+    }
+
+    :hover {
+        cursor: move;
+        box-shadow: ${props => props.theme.rainbow.shadows.shadow_2};
+        transition: all 0.2s ease;
+    }
+`;
+
+export const StyledIcon = styled(Icon)`
+    color: ${props => props.theme.rainbow.palette.text.header};
+    width: 8px;
+    height: 16px;
+    margin-right: 12px;
+    ${props =>
+        props.component &&
+        `
+            margin-right: 0;
+        `}
 `;
