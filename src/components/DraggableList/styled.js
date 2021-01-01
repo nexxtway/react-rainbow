@@ -32,9 +32,4 @@ export const StyledIcon = styled(Icon)`
     width: 8px;
     height: 16px;
     margin-right: 12px;
-    ${props =>
-        props.component &&
-        `
-            margin-right: 0;
-        `}
 `;
