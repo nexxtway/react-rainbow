@@ -28,6 +28,7 @@ import StyledFooter from './styled/footer';
 export default class Modal extends Component {
     constructor(props) {
         super(props);
+        this.containerRef = React.createRef();
         this.buttonRef = React.createRef();
         this.modalRef = React.createRef();
         this.contentRef = React.createRef();
@@ -36,6 +37,8 @@ export default class Modal extends Component {
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.addBackdropClickListener = this.addBackdropClickListener.bind(this);
+        this.removeBackdropClickListener = this.removeBackdropClickListener.bind(this);
     }
 
     componentDidMount() {
@@ -46,6 +49,7 @@ export default class Modal extends Component {
             disableBodyScroll(this.contentRef.current);
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
+            this.addBackdropClickListener();
         }
     }
 
@@ -62,10 +66,13 @@ export default class Modal extends Component {
             disableBodyScroll(this.contentRef.current);
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
+            this.addBackdropClickListener();
+
             onOpened();
         }
 
         if (wasClosed) {
+            this.removeBackdropClickListener();
             CounterManager.decrement();
             if (this.modalTriggerElement) {
                 this.modalTriggerElement.focus();
@@ -86,6 +93,7 @@ export default class Modal extends Component {
             enableBodyScroll(this.contentElement);
             clearAllBodyScrollLocks();
         }
+        this.removeBackdropClickListener();
     }
 
     handleKeyPressed(event) {
@@ -119,6 +127,20 @@ export default class Modal extends Component {
         return onRequestClose();
     }
 
+    addBackdropClickListener() {
+        const node = this.containerRef.current;
+        if (node) {
+            node.addEventListener('click', this.handleClick);
+        }
+    }
+
+    removeBackdropClickListener() {
+        const node = this.containerRef.current;
+        if (node) {
+            node.removeEventListener('click', this.handleClick);
+        }
+    }
+
     render() {
         const {
             title,
@@ -138,7 +160,7 @@ export default class Modal extends Component {
                     role="presentation"
                     isOpen={isOpen}
                     id={id}
-                    onClick={this.handleClick}
+                    ref={this.containerRef}
                     onKeyDown={this.handleKeyPressed}
                 >
                     <StyledModalContainer

@@ -156,8 +156,6 @@ const MultiSelect = React.forwardRef((props, ref) => {
         }
     };
 
-    const handleContainerClick = event => event.stopPropagation();
-
     useOutsideClick(
         dropdownContainerRef,
         event => {
@@ -192,7 +190,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
     const dropdownWidth = comboboxRef.current ? comboboxRef.current.offsetWidth : 0;
 
     return (
-        <StyledContainer id={id} className={className} style={style} onClick={handleContainerClick}>
+        <StyledContainer id={id} className={className} style={style}>
             <Label
                 id={labelId}
                 label={label}
