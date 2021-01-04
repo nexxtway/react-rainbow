@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import Chip from '..';
 
 describe('<Chip/>', () => {
@@ -14,7 +14,7 @@ describe('<Chip/>', () => {
         expect(onDeleteMockFn).toHaveBeenCalledWith(expect.any(Object));
     });
     it('should set isTrue in RenderIf to true when onDelete is passed', () => {
-        const component = mount(<Chip onDelete={() => {}} />);
+        const component = shallow(<Chip onDelete={() => {}} />);
         expect(component.find('RenderIf').prop('isTrue')).toBeTruthy();
     });
     it(' should set isTrue in RenderIf to false when onDelete is not passed', () => {

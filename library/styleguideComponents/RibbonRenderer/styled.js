@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import GithubIcon from './githubIcon';
-import GlobalSearch from '../GlobalSearch';
+import TwitterIcon from '../../exampleComponents/Icons/twitter';
 
 export const StyledHeading = styled.header`
     position: fixed;
@@ -24,11 +24,7 @@ export const StyledContainer = styled.div`
     margin-right: 32px;
 
     @media (max-width: 800px) {
-        margin-right: 24px;
-    }
-
-    @media (max-width: 600px) {
-        margin-right: 8px;
+        display: none;
     }
 `;
 
@@ -41,7 +37,7 @@ export const StyledGitHubContianer = styled.div`
     }
 `;
 
-export const StyledGithubLink = styled.a`
+export const StyledLink = styled.a`
     width: 40px;
     height: 40px;
     border-radius: 40px;
@@ -49,38 +45,26 @@ export const StyledGithubLink = styled.a`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 6px;
 
     :hover {
         background: rgba(1, 1, 1, 0.05);
         color: #000;
     }
+`;
 
-    @media (max-width: 800px) {
-        margin-right: 54px;
-        width: 28px;
-        height: 28px;
-    }
+export const StyledIcon = styled(GithubIcon)`
+    width: 22px;
+    height: 22px;
 `;
 
 export const StyledGithubIcon = styled(GithubIcon)`
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
 `;
 
-export const StyledStackoverflowLink = styled.a`
-    width: 40px;
-    height: 40px;
-    border-radius: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 8px;
-
-    :hover {
-        background: rgba(1, 1, 1, 0.05);
-    }
-
-    @media (max-width: 800px) {
-        display: none;
-    }
+export const StyledTwitterIcon = styled(TwitterIcon)`
+    width: 22px;
+    height: 22px;
+    color: #1ca2f1;
 `;
