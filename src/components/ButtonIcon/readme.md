@@ -161,6 +161,37 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
     </div>
 ```
 
+##### button icon with tooltip
+
+```js
+import React from 'react';
+import { ButtonIcon } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
+import {
+    faTrashAlt,
+    faPencilAlt,
+    faLocationArrow,
+    faArrowDown,
+} from '@fortawesome/free-solid-svg-icons';
+
+    <div className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center">
+        <div className="rainbow-p-right_large">
+            <ButtonIcon variant="border-filled" size="medium" tooltip="Star" icon={<FontAwesomeIcon icon={faStar} />} />
+        </div>
+        <div className="rainbow-p-right_large">
+            <ButtonIcon variant="border-filled" size="medium" tooltip="Navigate" icon={<FontAwesomeIcon icon={faLocationArrow} />}/>
+        </div>
+        <div className="rainbow-p-right_large">
+            <ButtonIcon variant="border-filled" size="medium" tooltip="Edit" icon={<FontAwesomeIcon icon={faPencilAlt} />} />
+        </div>
+        <div className="rainbow-p-right_large">
+            <ButtonIcon variant="border-filled" size="medium" tooltip="Delete" icon={<FontAwesomeIcon icon={faTrashAlt} />} />
+        </div>
+        <ButtonIcon variant="border-filled" size="medium" tooltip="Arrow down" icon={<FontAwesomeIcon icon={faArrowDown} />} />
+    </div>
+```
+
 ##### button icon inverse
 
 ```js

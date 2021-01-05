@@ -1,19 +1,21 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import ButtonIcon from '../index';
+import InternalTooltip from '../../InternalTooltip';
 
 describe('<ButtonIcon/>', () => {
     it('should focus the button when the focus method is called', () => {
-        const component = mount(<ButtonIcon />);
-
-        component.instance().focus();
+        const ref = {};
+        const component = mount(<ButtonIcon ref={ref} />);
+        ref.current.focus();
         const focusedElementDataId = document.activeElement.getAttribute('data-id');
         const buttonDataId = component.find('button').prop('data-id');
         expect(focusedElementDataId).toBe(buttonDataId);
     });
     it('should blur the button when the blur method is called', () => {
-        const component = mount(<ButtonIcon />);
-        const instance = component.instance();
+        const ref = {};
+        const component = mount(<ButtonIcon ref={ref} />);
+        const instance = ref.current;
         const buttonDataId = component.find('button').prop('data-id');
 
         instance.focus();
@@ -59,5 +61,9 @@ describe('<ButtonIcon/>', () => {
     it('should pass assistiveText to the prop text of AssistiveText component', () => {
         const component = mount(<ButtonIcon assistiveText="for screen readers" />);
         expect(component.find('AssistiveText').prop('text')).toBe('for screen readers');
+    });
+    it('should render a tooltip when `tooltip` prop is valid', () => {
+        const component = mount(<ButtonIcon tooltip="Test tooltip" />);
+        expect(component.find(InternalTooltip).exists()).toBe(true);
     });
 });
