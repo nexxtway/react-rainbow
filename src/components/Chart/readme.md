@@ -1,4 +1,36 @@
-##### Chart basic:
+# Bar chart
+
+##### A bar chart uses bars to show comparisons between categories of data
+
+```js
+import React from 'react';
+import { Chart, Dataset } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 600,
+};
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const values = [18, 42, 58, 50, 19, 0, 24, 50, 33, 20, 5, 35]
+
+const BarChartExample = () => (
+    <div className="rainbow-p-vertical_large">
+        <div
+            style={containerStyles}
+            className="rainbow-align-content_center rainbow-m-vertical_large rainbow-m_auto"
+        >
+            <Chart labels={labels} type="bar">
+                <Dataset key="Sales" title="Sales" values={values} backgroundColor="#01b6f5" />
+            </Chart>
+        </div>
+    </div>
+);
+
+    <BarChartExample />;
+```
+
+# Horizontal bar chart
+
+##### Horizontal bar charts represent the data horizontally. It is a good way to present data with long labels that would be hard to display below a vertical bar
 
 ```js
 import React from 'react';
@@ -8,480 +40,140 @@ const containerStyles = {
     maxWidth: 600,
 };
 
-    <div className="rainbow-p-vertical_medium rainbow-m_auto" style={containerStyles}>
-        <div className="rainbow-align-content_center">
-            <Chart
-                labels={['A', 'B', 'C', 'D']}
-                type="line"
-                className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
-            >
-                <Dataset
-                    title="Dataset 1"
-                    values={[23, 45, 123, 56]}
-                    backgroundColor="#1de9b6"
-                    borderColor="#1de9b6"
-                />
-                <Dataset
-                    title="Dataset 2"
-                    values={[66, 100, 30, 156]}
-                    backgroundColor="#01b6f5"
-                    borderColor="#01b6f5"
-                />
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const values = [18, 42, 58, 50, 19, 0, 24, 50, 33, 20, 5, 35]
+
+const HorizontalBarChartExample = () => (
+    <div className="rainbow-p-vertical_large">
+        <div
+            style={containerStyles}
+            className="rainbow-align-content_center rainbow-m-vertical_large rainbow-m_auto"
+        >
+            <Chart labels={labels} type="horizontalBar">
+                <Dataset key="Sales" title="Sales" values={values} backgroundColor="#01b6f5" />
             </Chart>
         </div>
     </div>
+);
+
+    <HorizontalBarChartExample />;
 ```
 
-##### Bar chart vertical:
+# Line chart
+
+##### A line chart is often used to visualize a trend in data over intervals of time
 
 ```js
 import React from 'react';
-import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { Chart, Dataset } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 600,
 };
-
-class BarChartExample extends React.Component {
-    constructor(props) {
-        super(props);
-        this.titles = ['Data-Blue', 'Data-Purple', 'Data-Dark'];
-        this.colors = ['#01b6f5', '#663398', '#061c3f'];
-        this.months = ['July', 'August', 'September', 'October', 'November', 'December'];
-        this.state = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-            datasets: [
-                {
-                    title: 'Data-Red',
-                    backgroundColor: '#fe4849',
-                    values: [18, 42, 58, 50, 19, undefined],
-                },
-                {
-                    title: 'Data-Orange',
-                    backgroundColor: '#ff6837',
-                    values: [undefined, 40, undefined, 45, 95, 33],
-                },
-                {
-                    title: 'Data-Yellow',
-                    backgroundColor: '#ffcc00',
-                    values: [undefined, 30, 80, undefined, 65, 50],
-                },
-                {
-                    title: 'Data-Green',
-                    backgroundColor: '#1ad1a3',
-                    values: [undefined, 15, undefined, 60, 45, 85],
-                },
-            ],
-        };
-    }
-
-    addDataset() {
-        const { labels, datasets } = this.state;
-        const newValues = labels.map(() => Math.round(Math.random() * 100));
-        const newDatasets = datasets.concat({
-            title: this.titles.shift(),
-            values: newValues,
-            backgroundColor: this.colors.shift(),
-        });
-        this.setState({ datasets: newDatasets });
-    }
-
-    removeDataset() {
-        const { datasets } = this.state;
-        const dataset = datasets[datasets.length - 1];
-        this.titles.unshift(dataset.title);
-        this.colors.unshift(dataset.backgroundColor);
-        const newDatasets = datasets.filter(set => set.title !== dataset.title);
-        this.setState({ datasets: newDatasets });
-    }
-
-    addMonth() {
-        const { labels, datasets } = this.state;
-        const newlabels = labels.concat(this.months.shift());
-        const newDatasets = datasets.map(dataset => {
-            const { values, ...rest } = dataset;
-            const newValues = values.concat(Math.round(Math.random() * 100));
-            return {
-                ...rest,
-                values: newValues,
-            };
-        });
-        this.setState({ labels: newlabels, datasets: newDatasets });
-    }
-
-    removeMonth() {
-        const { labels, datasets } = this.state;
-        const label = labels[labels.length - 1];
-        this.months.unshift(label);
-        const newLabels = labels.filter(item => item !== label);
-        const newDatasets = datasets.map(dataset => {
-            const { values, ...rest } = dataset;
-            const newValues = values.slice(0, values.length - 1);
-            return {
-                ...rest,
-                values: newValues,
-            };
-        });
-        this.setState({ labels: newLabels, datasets: newDatasets });
-    }
-
-    renderDatasets() {
-        const { datasets } = this.state;
-        return datasets.map(({ title, values, backgroundColor }) => (
-            <Dataset key={title} title={title} values={values} backgroundColor={backgroundColor} />
-        ));
-    }
-
-    render() {
-        const { labels, datasets } = this.state;
-
-        const noMoreTitles = this.titles.length === 0;
-        const noMoreDatasets = datasets.length === 0;
-        const noMoreMonths = this.months.length === 0;
-        const noMoreLabels = labels.length === 0;
-
-        return (
-            <div className="rainbow-p-vertical_large">
-                <div className="rainbow-align-content_center rainbow-flex_wrap">
-                    <ButtonGroup className="rainbow-m-horizontal_large rainbow-m-vertical_small">
-                        <Button onClick={() => this.addDataset()} disabled={noMoreTitles}>
-                            <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" />{' '}
-                            Data
-                        </Button>
-                        <Button onClick={() => this.removeDataset()} disabled={noMoreDatasets}>
-                            <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" />{' '}
-                            Data
-                        </Button>
-                    </ButtonGroup>
-                    <ButtonGroup className="rainbow-m-horizontal_large rainbow-m-vertical_small">
-                        <Button onClick={() => this.addMonth()} disabled={noMoreMonths}>
-                            <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" />{' '}
-                            Month
-                        </Button>
-                        <Button onClick={() => this.removeMonth()} disabled={noMoreLabels}>
-                            <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" />{' '}
-                            Month
-                        </Button>
-                    </ButtonGroup>
-                </div>
-                <div
-                    style={containerStyles}
-                    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-m_auto"
-                >
-                    <Chart labels={labels} type="bar">
-                        {this.renderDatasets()}
-                    </Chart>
-                </div>
-            </div>
-        );
-    }
+const labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'];
+const datasets = [
+    {
+        title: 'Sales',
+        borderColor: '#fe4849',
+        values: [37, 15, 90, 57, 80, 14],
+    },
+    {
+        title: 'Profits',
+        borderColor: '#01b6f5',
+        values: [18, 39, 15, 38, 15, 35],
+    },
+];
+function renderDatasets() {
+    return datasets.map(({ title, values, borderColor }) => (
+        <Dataset
+            key={title}
+            title={title}
+            values={values}
+            borderColor={borderColor}
+            backgroundColor={borderColor}
+        />
+    ));
 }
 
-    <BarChartExample />;
-```
-
-##### Bar chart horizontal:
-
-```js
-import React from 'react';
-import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-
-const containerStyles = {
-    maxWidth: 600,
-};
-
-class BarChartExample extends React.Component {
-    constructor(props) {
-        super(props);
-        this.titles = ['Data-Blue', 'Data-Purple', 'Data-Dark'];
-        this.colors = ['#01b6f5', '#663398', '#061c3f'];
-        this.months = ['July', 'August', 'September', 'October', 'November', 'December'];
-        this.state = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-            datasets: [
-                {
-                    title: 'Data-Red',
-                    backgroundColor: '#fe4849',
-                    values: [18, 42, 58, 50, 19, undefined],
-                },
-                {
-                    title: 'Data-Orange',
-                    backgroundColor: '#ff6837',
-                    values: [undefined, 40, undefined, 45, 95, 33],
-                },
-                {
-                    title: 'Data-Yellow',
-                    backgroundColor: '#ffcc00',
-                    values: [undefined, 30, 80, undefined, 65, 50],
-                },
-                {
-                    title: 'Data-Green',
-                    backgroundColor: '#1ad1a3',
-                    values: [undefined, 15, undefined, 60, 45, 85],
-                },
-            ],
-        };
-    }
-
-    addDataset() {
-        const { labels, datasets } = this.state;
-        const newValues = labels.map(() => Math.round(Math.random() * 100));
-        const newDatasets = datasets.concat({
-            title: this.titles.shift(),
-            values: newValues,
-            backgroundColor: this.colors.shift(),
-        });
-        this.setState({ datasets: newDatasets });
-    }
-
-    removeDataset() {
-        const { datasets } = this.state;
-        const dataset = datasets[datasets.length - 1];
-        this.titles.unshift(dataset.title);
-        this.colors.unshift(dataset.backgroundColor);
-        const newDatasets = datasets.filter(set => set.title !== dataset.title);
-        this.setState({ datasets: newDatasets });
-    }
-
-    addMonth() {
-        const { labels, datasets } = this.state;
-        const newlabels = labels.concat(this.months.shift());
-        const newDatasets = datasets.map(dataset => {
-            const { values, ...rest } = dataset;
-            const newValues = values.concat(Math.round(Math.random() * 100));
-            return {
-                ...rest,
-                values: newValues,
-            };
-        });
-        this.setState({ labels: newlabels, datasets: newDatasets });
-    }
-
-    removeMonth() {
-        const { labels, datasets } = this.state;
-        const label = labels[labels.length - 1];
-        this.months.unshift(label);
-        const newLabels = labels.filter(item => item !== label);
-        const newDatasets = datasets.map(dataset => {
-            const { values, ...rest } = dataset;
-            const newValues = values.slice(0, values.length - 1);
-            return {
-                ...rest,
-                values: newValues,
-            };
-        });
-        this.setState({ labels: newLabels, datasets: newDatasets });
-    }
-
-    renderDatasets() {
-        const { datasets } = this.state;
-        return datasets.map(({ title, values, backgroundColor }) => (
-            <Dataset key={title} title={title} values={values} backgroundColor={backgroundColor} />
-        ));
-    }
-
-    render() {
-        const { labels, datasets } = this.state;
-
-        const noMoreTitles = this.titles.length === 0;
-        const noMoreDatasets = datasets.length === 0;
-        const noMoreMonths = this.months.length === 0;
-        const noMoreLabels = labels.length === 0;
-
-        return (
-            <div className="rainbow-p-vertical_large">
-                <div className="rainbow-align-content_center rainbow-flex_wrap">
-                    <ButtonGroup className="rainbow-m-horizontal_large rainbow-m-vertical_small">
-                        <Button onClick={() => this.addDataset()} disabled={noMoreTitles}>
-                            <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" />{' '}
-                            Data
-                        </Button>
-                        <Button onClick={() => this.removeDataset()} disabled={noMoreDatasets}>
-                            <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" />{' '}
-                            Data
-                        </Button>
-                    </ButtonGroup>
-                    <ButtonGroup className="rainbow-m-horizontal_large rainbow-m-vertical_small">
-                        <Button onClick={() => this.addMonth()} disabled={noMoreMonths}>
-                            <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" />{' '}
-                            Month
-                        </Button>
-                        <Button onClick={() => this.removeMonth()} disabled={noMoreLabels}>
-                            <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" />{' '}
-                            Month
-                        </Button>
-                    </ButtonGroup>
-                </div>
-                <div
-                    style={containerStyles}
-                    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-m_auto"
-                >
-                    <Chart labels={labels} type="horizontalBar">
-                        {this.renderDatasets()}
-                    </Chart>
-                </div>
-            </div>
-        );
-    }
-}
-
-    <BarChartExample />;
-```
-
-##### Line chart:
-
-```js
-import React from 'react';
-import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-
-const containerStyles = {
-    maxWidth: 600,
-};
-
-class LineChartExample extends React.Component {
-    constructor(props) {
-        super(props);
-        this.titles = ['Data-Yellow', 'Data-Green', 'Data-Orange', 'Data-Purple', 'Data-Dark'];
-        this.colors = ['#ffcc00', '#1ad1a3', '#ff6837', '#663398', '#061c3f'];
-        this.months = ['July', 'August', 'September', 'October', 'November', 'December'];
-        this.state = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-            datasets: [
-                {
-                    title: 'Data-Red',
-                    borderColor: '#fe4849',
-                    values: [37, 15, 90, 57, 80, 14],
-                },
-                {
-                    title: 'Data-Blue',
-                    borderColor: '#01b6f5',
-                    values: [18, 39, 15, 38, 15, 35],
-                },
-            ],
-        };
-    }
-
-    addDataset() {
-        const { labels, datasets } = this.state;
-        const newValues = labels.map(() => Math.round(Math.random() * 100));
-        const newDatasets = datasets.concat({
-            title: this.titles.shift(),
-            values: newValues,
-            borderColor: this.colors.shift(),
-        });
-        this.setState({ datasets: newDatasets });
-    }
-
-    removeDataset() {
-        const { datasets } = this.state;
-        const dataset = datasets[datasets.length - 1];
-        this.titles.unshift(dataset.title);
-        this.colors.unshift(dataset.borderColor);
-        const newDatasets = datasets.filter(set => set.title !== dataset.title);
-        this.setState({ datasets: newDatasets });
-    }
-
-    addMonth() {
-        const { labels, datasets } = this.state;
-        const newlabels = labels.concat(this.months.shift());
-        const newDatasets = datasets.map(dataset => {
-            const { values, ...rest } = dataset;
-            const newValues = values.concat(Math.round(Math.random() * 100));
-            return {
-                ...rest,
-                values: newValues,
-            };
-        });
-        this.setState({ labels: newlabels, datasets: newDatasets });
-    }
-
-    removeMonth() {
-        const { labels, datasets } = this.state;
-        const label = labels[labels.length - 1];
-        this.months.unshift(label);
-        const newLabels = labels.filter(item => item !== label);
-        const newDatasets = datasets.map(dataset => {
-            const { values, ...rest } = dataset;
-            const newValues = values.slice(0, values.length - 1);
-            return {
-                ...rest,
-                values: newValues,
-            };
-        });
-        this.setState({ labels: newLabels, datasets: newDatasets });
-    }
-
-    renderDatasets() {
-        const { datasets } = this.state;
-        return datasets.map(({ title, values, borderColor }) => (
-            <Dataset
-                key={title}
-                title={title}
-                values={values}
-                borderColor={borderColor}
-                backgroundColor={borderColor}
-            />
-        ));
-    }
-
-    render() {
-        const { labels, datasets } = this.state;
-
-        const noMoreTitles = this.titles.length === 0;
-        const noMoreDatasets = datasets.length === 0;
-        const noMoreMonths = this.months.length === 0;
-        const noMoreLabels = labels.length === 0;
-
-        return (
-            <div className="rainbow-p-vertical_large rainbow-m-bottom_large">
-                <div className="rainbow-align-content_center rainbow-flex_wrap">
-                    <ButtonGroup className="rainbow-m-horizontal_large rainbow-m-vertical_small">
-                        <Button onClick={() => this.addDataset()} disabled={noMoreTitles}>
-                            <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" />{' '}
-                            Data
-                        </Button>
-                        <Button onClick={() => this.removeDataset()} disabled={noMoreDatasets}>
-                            <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" />{' '}
-                            Data
-                        </Button>
-                    </ButtonGroup>
-                    <ButtonGroup className="rainbow-m-horizontal_large rainbow-m-vertical_small">
-                        <Button onClick={() => this.addMonth()} disabled={noMoreMonths}>
-                            <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" />{' '}
-                            Month
-                        </Button>
-                        <Button onClick={() => this.removeMonth()} disabled={noMoreLabels}>
-                            <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" />{' '}
-                            Month
-                        </Button>
-                    </ButtonGroup>
-                </div>
-                <div
-                    style={containerStyles}
-                    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-m_auto"
-                >
-                    <Chart labels={labels} type="line">
-                        {this.renderDatasets()}
-                    </Chart>
-                </div>
-            </div>
-        );
-    }
-}
+const LineChartExample = () => (
+    <div className="rainbow-p-vertical_large rainbow-m-bottom_large">
+        <div
+            style={containerStyles}
+            className="rainbow-align-content_center rainbow-m-vertical_large rainbow-m_auto"
+        >
+            <Chart labels={labels} type="line">
+                {renderDatasets()}
+            </Chart>
+        </div>
+    </div>
+);
 
     <LineChartExample />;
 ```
 
-##### Line chart fill:
+# Pie chart
+
+##### A Pie Chart is a type of graph that displays data in a circular graph. The pieces of the graph are proportional to the fraction of the whole in each category
 
 ```js
 import React from 'react';
+import { Chart, Dataset } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 600,
+};
+const labels = ['Data-Red', 'Data-Orange', 'Data-Yellow', 'Data-Green'];
+const dataset = [
+    {
+        value: 10,
+        color: '#fe4849',
+    },
+    {
+        value: 15,
+        color: '#ff6837',
+    },
+    {
+        value: 42,
+        color: '#ffcc00',
+    },
+    {
+        value: 33,
+        color: '#1ad1a3',
+    },
+];
+function renderDataset() {
+    const data = [];
+    const colors = [];
+    dataset.forEach(set => {
+        data.push(set.value);
+        colors.push(set.color);
+    });
+
+    return <Dataset title="Data" values={data} backgroundColor={colors} />;
+}
+
+const PieChartExample = () => (
+    <div className="rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
+        <div
+            style={containerStyles}
+            className="rainbow-align-content_center rainbow-m-vertical_large rainbow-m_auto"
+        >
+            <Chart labels={labels} type="pie" legendPosition="right">
+                {renderDataset()}
+            </Chart>
+        </div>
+    </div>
+);
+
+    <PieChartExample />;
+```
+
+# Chart with interactive data
+
+##### Data can be added or removed from the chart and it will update accordingly
+
+```js
+import React, { useState } from 'react';
 import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
@@ -489,68 +181,62 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 const containerStyles = {
     maxWidth: 600,
 };
+const titles = [
+    'Data-Red',
+    'Data-Yellow',
+    'Data-Green',
+    'Data-Orange',
+    'Data-Purple',
+    'Data-Dark',
+];
+const colors = ['#fe4849', '#ffcc00', '#1ad1a3', '#ff6837', '#663398', '#061c3f'];
+const backgrounds = [
+    'rgba(254, 72, 73, 0.80)',
+    'rgba(255, 204, 0, 0.80)',
+    'rgba(26, 209, 163, 0.80)',
+    'rgba(255, 104, 55, 0.80)',
+    undefined,
+    undefined,
+];
+const months = ['July', 'August', 'September', 'October', 'November', 'December'];
 
-class LineChartExample extends React.Component {
-    constructor(props) {
-        super(props);
-        this.titles = [
-            'Data-Red',
-            'Data-Yellow',
-            'Data-Green',
-            'Data-Orange',
-            'Data-Purple',
-            'Data-Dark',
-        ];
-        this.colors = ['#fe4849', '#ffcc00', '#1ad1a3', '#ff6837', '#663398', '#061c3f'];
-        this.backgrounds = [
-            'rgba(254, 72, 73, 0.80)',
-            'rgba(255, 204, 0, 0.80)',
-            'rgba(26, 209, 163, 0.80)',
-            'rgba(255, 104, 55, 0.80)',
-            undefined,
-            undefined,
-        ];
-        this.months = ['July', 'August', 'September', 'October', 'November', 'December'];
-        this.state = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-            datasets: [
-                {
-                    title: 'Data-Blue',
-                    borderColor: '#01b6f5',
-                    backgroundColor: 'rgba(1, 182, 245, 0.80)',
-                    values: [37, 18, 90, 56, 80, 14],
-                },
-            ],
-        };
-    }
+const InteractiveDataChartExample = () => {
+    const [labels, setLabels] = useState(['January', 'February', 'March', 'April', 'May', 'June']);
+    const [datasets, setDatasets] = useState(
+        [
+            {
+                title: 'Data-Blue',
+                borderColor: '#01b6f5',
+                backgroundColor: 'rgba(1, 182, 245, 0.80)',
+                values: [37, 18, 90, 56, 80, 14],
+            },
+        ]
+    );
 
-    addDataset() {
-        const { labels, datasets } = this.state;
+    const addDataset = () => {
         const newValues = labels.map(() => Math.round(Math.random() * 100));
         const newDatasets = datasets.concat({
-            title: this.titles.shift(),
+            title: titles.shift(),
             values: newValues,
-            borderColor: this.colors.shift(),
-            backgroundColor: this.backgrounds.shift(),
+            borderColor: colors.shift(),
+            backgroundColor: backgrounds.shift(),
         });
-        this.setState({ datasets: newDatasets });
+        setDatasets(newDatasets);
     }
 
-    removeDataset() {
-        const { datasets } = this.state;
+    const removeDataset = () => {
         if (datasets.length > 0) {
             const dataset = datasets[datasets.length - 1];
-            this.titles.unshift(dataset.title);
-            this.colors.unshift(dataset.borderColor);
-            this.backgrounds.unshift(dataset.backgroundColor);
+            titles.unshift(dataset.title);
+            colors.unshift(dataset.borderColor);
+            backgrounds.unshift(dataset.backgroundColor);
             const newDatasets = datasets.filter(set => set.title !== dataset.title);
-            this.setState({ datasets: newDatasets });
+            setDatasets(newDatasets);
         }
     }
 
-    addMonth() {
-        const { labels, datasets } = this.state;
-        const newlabels = labels.concat(this.months.shift());
+    const addMonth = () => {
+        const newLabels = labels.concat(months.shift());
         const newDatasets = datasets.map(dataset => {
             const { values, ...rest } = dataset;
             const newValues = values.concat(Math.round(Math.random() * 100));
@@ -559,13 +245,13 @@ class LineChartExample extends React.Component {
                 values: newValues,
             };
         });
-        this.setState({ labels: newlabels, datasets: newDatasets });
+        setLabels(newLabels);
+        setDatasets(newDatasets);
     }
 
-    removeMonth() {
-        const { labels, datasets } = this.state;
+    const removeMonth = () => {
         const label = labels[labels.length - 1];
-        this.months.unshift(label);
+        months.unshift(label);
         const newLabels = labels.filter(item => item !== label);
         const newDatasets = datasets.map(dataset => {
             const { values, ...rest } = dataset;
@@ -575,11 +261,11 @@ class LineChartExample extends React.Component {
                 values: newValues,
             };
         });
-        this.setState({ labels: newLabels, datasets: newDatasets });
+        setLabels(newLabels);
+        setDatasets(newDatasets);
     }
 
-    renderDatasets() {
-        const { datasets } = this.state;
+    const renderDatasets = () => {
         return datasets.map(({ title, values, borderColor, backgroundColor }) => (
             <Dataset
                 key={title}
@@ -592,269 +278,53 @@ class LineChartExample extends React.Component {
         ));
     }
 
-    render() {
-        const { labels, datasets } = this.state;
+    const noMoreTitles = titles.length === 0;
+    const noMoreDatasets = datasets.length === 0;
+    const noMoreMonths = months.length === 0;
+    const noMoreLabels = labels.length === 0;
 
-        const noMoreTitles = this.titles.length === 0;
-        const noMoreDatasets = datasets.length === 0;
-        const noMoreMonths = this.months.length === 0;
-        const noMoreLabels = labels.length === 0;
-
-        return (
-            <div className="rainbow-p-vertical_large rainbow-m-bottom_x-large">
-                <div className="rainbow-align-content_center rainbow-flex_wrap">
-                    <ButtonGroup className="rainbow-m-horizontal_large rainbow-m-vertical_small">
-                        <Button onClick={() => this.addDataset()} disabled={noMoreTitles}>
-                            <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" />{' '}
-                            Data
-                        </Button>
-                        <Button onClick={() => this.removeDataset()} disabled={noMoreDatasets}>
-                            <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" />{' '}
-                            Data
-                        </Button>
-                    </ButtonGroup>
-                    <ButtonGroup className="rainbow-m-horizontal_large rainbow-m-vertical_small">
-                        <Button onClick={() => this.addMonth()} disabled={noMoreMonths}>
-                            <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" />{' '}
-                            Month
-                        </Button>
-                        <Button onClick={() => this.removeMonth()} disabled={noMoreLabels}>
-                            <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" />{' '}
-                            Month
-                        </Button>
-                    </ButtonGroup>
-                </div>
-                <div
-                    style={containerStyles}
-                    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-m_auto"
-                >
-                    <Chart labels={labels} type="line" disableCurves>
-                        {this.renderDatasets()}
-                    </Chart>
-                </div>
-            </div>
-        );
-    }
-}
-
-    <LineChartExample />;
-```
-
-##### Pie chart:
-
-```js
-import React from 'react';
-import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-
-const containerStyles = {
-    maxWidth: 600,
-};
-
-class PieChartExample extends React.Component {
-    constructor(props) {
-        super(props);
-        this.titles = ['Data-Blue', 'Data-Purple', 'Data-Dark'];
-        this.colors = ['#01b6f5', '#663398', '#061c3f'];
-        this.state = {
-            labels: ['Data-Red', 'Data-Orange', 'Data-Yellow', 'Data-Green'],
-            dataset: [
-                {
-                    value: 10,
-                    color: '#fe4849',
-                },
-                {
-                    value: 15,
-                    color: '#ff6837',
-                },
-                {
-                    value: 42,
-                    color: '#ffcc00',
-                },
-                {
-                    value: 33,
-                    color: '#1ad1a3',
-                },
-            ],
-        };
-    }
-
-    addData() {
-        const { labels, dataset } = this.state;
-        const newLabels = labels.concat(this.titles.shift());
-        const newDataset = dataset.concat({
-            value: Math.round(Math.random() * 100),
-            color: this.colors.shift(),
-        });
-        this.setState({ labels: newLabels, dataset: newDataset });
-    }
-
-    removeData() {
-        const { labels, dataset } = this.state;
-        const lastLabel = labels[labels.length - 1];
-        this.titles.unshift(lastLabel);
-        const newLabels = labels.filter(item => item !== lastLabel);
-        const lastData = dataset[dataset.length - 1];
-        this.colors.unshift(lastData.color);
-        const newDataset = dataset.slice(0, dataset.length - 1);
-        this.setState({ labels: newLabels, dataset: newDataset });
-    }
-
-    renderDataset() {
-        const data = [];
-        const colors = [];
-        const { dataset } = this.state;
-        dataset.forEach(set => {
-            data.push(set.value);
-            colors.push(set.color);
-        });
-
-        return <Dataset title="Data" values={data} backgroundColor={colors} />;
-    }
-
-    render() {
-        const { labels } = this.state;
-
-        const noMoreTitles = this.titles.length === 0;
-        const noMoreLabels = labels.length === 0;
-
-        return (
-            <div className="rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
-                <ButtonGroup className="rainbow-align-content_center rainbow-flex_wrap">
-                    <Button onClick={() => this.addData()} disabled={noMoreTitles}>
-                        <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Data
+    return (
+        <div className="rainbow-p-vertical_large rainbow-m-bottom_x-large">
+            <div className="rainbow-align-content_center rainbow-flex_wrap">
+                <ButtonGroup className="rainbow-m-horizontal_large rainbow-m-vertical_small">
+                    <Button onClick={() => addDataset()} disabled={noMoreTitles}>
+                        <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" />{' '}
+                        Data
                     </Button>
-                    <Button onClick={() => this.removeData()} disabled={noMoreLabels}>
-                        <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" /> Data
+                    <Button onClick={() => removeDataset()} disabled={noMoreDatasets}>
+                        <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" />{' '}
+                        Data
                     </Button>
                 </ButtonGroup>
-                <div
-                    style={containerStyles}
-                    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-m_auto"
-                >
-                    <Chart labels={labels} type="pie" legendPosition="right" disableCurves>
-                        {this.renderDataset()}
-                    </Chart>
-                </div>
+                <ButtonGroup className="rainbow-m-horizontal_large rainbow-m-vertical_small">
+                    <Button onClick={() => addMonth()} disabled={noMoreMonths}>
+                        <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" />{' '}
+                        Month
+                    </Button>
+                    <Button onClick={() => removeMonth()} disabled={noMoreLabels}>
+                        <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" />{' '}
+                        Month
+                    </Button>
+                </ButtonGroup>
             </div>
-        );
-    }
+            <div
+                style={containerStyles}
+                className="rainbow-align-content_center rainbow-m-vertical_large rainbow-m_auto"
+            >
+                <Chart labels={labels} type="line">
+                    {renderDatasets()}
+                </Chart>
+            </div>
+        </div>
+    );
 }
 
-    <PieChartExample />;
+    <InteractiveDataChartExample />;
 ```
 
-##### Doughnut chart:
+# Chart with interactive type
 
-```js
-import React from 'react';
-import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-
-const containerStyles = {
-    maxWidth: 600,
-};
-
-class DoughnutChartExample extends React.Component {
-    constructor(props) {
-        super(props);
-        this.titles = ['Data-Blue', 'Data-Purple', 'Data-Dark'];
-        this.colors = ['#01b6f5', '#663398', '#061c3f'];
-        this.state = {
-            labels: ['Data-Red', 'Data-Orange', 'Data-Yellow', 'Data-Green'],
-            dataset: [
-                {
-                    value: 10,
-                    color: '#fe4849',
-                },
-                {
-                    value: 15,
-                    color: '#ff6837',
-                },
-                {
-                    value: 42,
-                    color: '#ffcc00',
-                },
-                {
-                    value: 33,
-                    color: '#1ad1a3',
-                },
-            ],
-        };
-    }
-
-    addData() {
-        const { labels, dataset } = this.state;
-        const newLabels = labels.concat(this.titles.shift());
-        const newDataset = dataset.concat({
-            value: Math.round(Math.random() * 100),
-            color: this.colors.shift(),
-        });
-        this.setState({ labels: newLabels, dataset: newDataset });
-    }
-
-    removeData() {
-        const { labels, dataset } = this.state;
-        const lastLabel = labels[labels.length - 1];
-        this.titles.unshift(lastLabel);
-        const newLabels = labels.filter(item => item !== lastLabel);
-        const lastData = dataset[dataset.length - 1];
-        this.colors.unshift(lastData.color);
-        const newDataset = dataset.slice(0, dataset.length - 1);
-        this.setState({ labels: newLabels, dataset: newDataset });
-    }
-
-    renderDataset() {
-        const data = [];
-        const colors = [];
-        const { dataset } = this.state;
-        dataset.forEach(set => {
-            data.push(set.value);
-            colors.push(set.color);
-        });
-
-        return <Dataset title="Data" values={data} backgroundColor={colors} />;
-    }
-
-    render() {
-        const { labels } = this.state;
-
-        const noMoreTitles = this.titles.length === 0;
-        const noMoreLabels = labels.length === 0;
-
-        return (
-            <div className="rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
-                <div>
-                    <ButtonGroup className="rainbow-m-vertical_large">
-                        <Button onClick={() => this.addData()} disabled={noMoreTitles}>
-                            <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" />{' '}
-                            Data
-                        </Button>
-                        <Button onClick={() => this.removeData()} disabled={noMoreLabels}>
-                            <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" />{' '}
-                            Data
-                        </Button>
-                    </ButtonGroup>
-                </div>
-                <div
-                    style={containerStyles}
-                    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-m_auto"
-                >
-                    <Chart labels={labels} type="doughnut" legendPosition="right" disableCurves>
-                        {this.renderDataset()}
-                    </Chart>
-                </div>
-            </div>
-        );
-    }
-}
-
-    <DoughnutChartExample />;
-```
-
-##### Interactive chart:
+##### The type of the chart also can be changed dinamically, and it will update to reflect the changes
 
 ```js
 import React, { useState } from 'react';
@@ -908,7 +378,7 @@ const CurrentChartType = styled.span.attrs(props => {
     color: ${props => props.text.header}
 `;
 
-const InteractiveChart = () => {
+const InteractiveTypeChartExample = () => {
     const [chartType, setChartType] = useState('line');
 
     return (
@@ -960,11 +430,13 @@ const InteractiveChart = () => {
     );
 };
 
-    <InteractiveChart />
+    <InteractiveTypeChartExample />
 
 ```
 
-##### Chart without grid lines:
+# Chart without grid lines
+
+##### Grid lines can be hidden
 
 ```js
 import React from 'react';
@@ -1000,7 +472,9 @@ const containerStyles = {
     </div>
 ```
 
-##### Chart with minimalist design:
+# Chart with minimalist design
+
+##### Axes labels and ticks can be disabled too, what gives us a minimalist design
 
 ```js
 import React from 'react';
@@ -1034,7 +508,9 @@ const containerStyles = {
     </div>
 ```
 
-##### Bar chart with integrated plugins:
+# Bar chart with integrated plugins
+
+##### There are a number of available plugins that can be integrated into your charts. You can see a list of the plugins here: https://github.com/chartjs/awesome#plugins
 
 ```js
 import React from 'react';
@@ -1079,7 +555,9 @@ const containerStyles = {
     </div>
 ```
 
-##### Bar chart with options object:
+# Bar chart with options object
+
+##### In addition to the available props, you can pass an `options` object to fully customize your charts. You can see all the options here: https://www.chartjs.org/docs/2.7.3/general/
 
 ```js
 import React from 'react';
