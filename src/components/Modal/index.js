@@ -230,7 +230,7 @@ Modal.propTypes = {
      * @ignore
      */
     children: PropTypes.node,
-    /** If true, hide the close button in the modal */
+    /** If true, hide the close button in the modal. */
     hideCloseButton: PropTypes.bool,
 };
 
