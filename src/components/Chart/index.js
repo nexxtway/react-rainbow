@@ -8,7 +8,7 @@ import StyledContainer from './styled/container';
 import unregisterGlobalPlugins from './helpers/unregisterGlobalPlugins';
 
 /**
- * A chart is a graphical representation of data. Charts allows users to better understand
+ * A chart is a graphical representation of data. Charts allow users to better understand
  * and predict current and future data. The Chart component is based on Charts.js,
  * an open source HTML5 based charting library.
  * You can learn more about it here:
