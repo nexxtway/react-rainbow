@@ -1,6 +1,6 @@
 # Bar chart
 
-##### A bar chart uses bars to show comparisons between categories of data
+##### A bar chart uses bars to show comparisons between categories of data.
 
 ```js
 import React from 'react';
@@ -30,7 +30,7 @@ const BarChartExample = () => (
 
 # Horizontal bar chart
 
-##### Horizontal bar charts represent the data horizontally. It is a good way to present data with long labels that would be hard to display below a vertical bar
+##### Horizontal bar charts represent the data horizontally. It is a good way to present data with more or long labels that would be difficult to be included in the horizontal axis.
 
 ```js
 import React from 'react';
@@ -61,7 +61,7 @@ const HorizontalBarChartExample = () => (
 
 # Line chart
 
-##### A line chart is often used to visualize a trend in data over intervals of time
+##### A line chart is often used to visualize a trend in data over time intervals.
 
 ```js
 import React from 'react';
@@ -113,7 +113,7 @@ const LineChartExample = () => (
 
 # Pie chart
 
-##### A Pie Chart is a type of graph that displays data in a circular graph. The pieces of the graph are proportional to the fraction of the whole in each category
+##### A pie chart is a type of graph that displays data in a circular graph. The pieces of the graph are proportional to the fraction of the total in each category.
 
 ```js
 import React from 'react';
@@ -170,7 +170,7 @@ const PieChartExample = () => (
 
 # Chart with interactive data
 
-##### Data can be added or removed from the chart and it will update accordingly
+##### Data can be added to or removed from the chart and will be updated accordingly.
 
 ```js
 import React, { useState } from 'react';
@@ -324,7 +324,7 @@ const InteractiveDataChartExample = () => {
 
 # Chart with interactive type
 
-##### The type of the chart also can be changed dinamically, and it will update to reflect the changes
+##### The chart type can also be changed dynamically and will update to reflect the changes.
 
 ```js
 import React, { useState } from 'react';
@@ -436,7 +436,7 @@ const InteractiveTypeChartExample = () => {
 
 # Chart without grid lines
 
-##### Grid lines can be hidden
+##### Grid lines can be hidden, as you can see in the following example.
 
 ```js
 import React from 'react';
@@ -474,7 +474,7 @@ const containerStyles = {
 
 # Chart with minimalist design
 
-##### Axes labels and ticks can be disabled too, what gives us a minimalist design
+##### The axis and tick labels can also be disabled, giving us a minimalist design.
 
 ```js
 import React from 'react';
@@ -510,7 +510,8 @@ const containerStyles = {
 
 # Bar chart with integrated plugins
 
-##### There are a number of available plugins that can be integrated into your charts. You can see a list of the plugins here: https://github.com/chartjs/awesome#plugins
+##### There are many available plugins that can be integrated into your charts. You can see a list of the plugins here:
+##### https://github.com/chartjs/awesome#plugins
 
 ```js
 import React from 'react';
@@ -555,7 +556,7 @@ const containerStyles = {
     </div>
 ```
 
-# Bar chart with options object
+# Bar chart with `options` object
 
 ##### In addition to the available props, you can pass an `options` object to fully customize your charts. You can see all the options here: https://www.chartjs.org/docs/2.7.3/general/
 
