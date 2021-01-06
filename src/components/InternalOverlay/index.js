@@ -88,13 +88,15 @@ const InternalOverlay = props => {
         keepScrollEnabled,
     } = props;
     const [contentMeta, updateContentMeta] = useState(false);
+    const shouldOpen = isVisible && contentMeta;
     useEffect(() => {
-        if (isVisible && contentMeta) {
+        if (shouldOpen) {
             onOpened();
         }
-    }, [isVisible && contentMeta]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [shouldOpen]);
 
-    const shouldDisableScroll = isVisible && contentMeta && !keepScrollEnabled;
+    const shouldDisableScroll = shouldOpen && !keepScrollEnabled;
     useDisableScroll(shouldDisableScroll);
 
     if (isVisible) {

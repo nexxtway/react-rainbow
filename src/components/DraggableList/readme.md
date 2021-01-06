@@ -4,36 +4,41 @@ By default the component will render the value that map the `field` prop value o
 
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import { DraggableList } from 'react-rainbow-components';
 
-const data = [
+const initialData = [
     { id: 'id1', name: 'Maxx Greene' },
     { id: 'id2', name: 'Leandro Torres' },
     { id: 'id3', name: 'Tahimi Leon' },
 ];
 
+const List = () => {
+    const [data, setData] = useState(initialData);
+    return <DraggableList keyField="id" data={data} field="name" onDragEnd={setData} />;
+}
+
     <div
         className="rainbow-m-vertical_large rainbow-p-horizontal_xx-large rainbow-m_auto rainbow-flex_wrap"
     >
-        <DraggableList keyField="id" data={data} field="name" />
+        <List />
     </div>
 ```
 
 #### Custom item component example:
 
-There are use cases where you want to render your custom UI for every item in the list. In that case, you can use the `component` prop that is a Function | Class Component, when internally the draggable component instantiates the component, it will pass down as properties the `value`  and entire `item` object plus any other prop passed to the DragglableList.
+There are use cases where you want to render your custom UI for every item in the list. In that case, you can use the `component` prop that is a Function | Class Component, when internally the draggable component instantiates the component, it will pass down as properties the `value`  and entire item object as `row` plus any other prop passed to the DragglableList.
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { DraggableList } from 'react-rainbow-components';
 
-const data = [
+const initialData = [
     { id: 'id1', name: 'Text', description: 'Single line or multiline text area.', icon: <TextIcon /> },
     { id: 'id2', name: 'Select from List', description: 'Choose one or more options form a list.', icon: <ListIcon /> },
     { id: 'id3', name: 'Numeric', description: 'It accepts only numbers.', icon: <OneIcon /> },
-    { id: 'id3', name: 'Upload', description: 'Send files via Documents and Media.', icon: <UploadIcon /> },
+    { id: 'id4', name: 'Upload', description: 'Send files via Documents and Media.', icon: <UploadIcon /> },
 ];
 
 const Container = styled.div`
@@ -87,7 +92,12 @@ const Item = ({ value, row }) => (
     </Container>
 );
 
+const List = () => {
+    const [data, setData] = useState(initialData);
+    return <DraggableList keyField="id" data={data} field="name" component={Item} onDragEnd={setData} />;
+}
+
     <div className="rainbow-m-vertical_large rainbow-p-horizontal_xx-large rainbow-m_auto rainbow-flex_wrap">
-        <DraggableList keyField="id" data={data} field="name" component={Item} />
+        <List />
     </div>
 ```
