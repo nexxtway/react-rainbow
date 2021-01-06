@@ -32,7 +32,7 @@ export default function RibbonRenderer() {
                     </GitHubButton>
                 </StyledGitHubContianer>
                 <StyledLink
-                    href="https://github.com/nexxtway/react-rainbow"
+                    href="http://bit.ly/3pQjabO"
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Github repository"
@@ -40,7 +40,7 @@ export default function RibbonRenderer() {
                     <StyledGithubIcon />
                 </StyledLink>
                 <StyledLink
-                    href="https://stackoverflow.com/questions/tagged/react-rainbow+or+react-rainbow-components+or+rainbow-components"
+                    href="http://bit.ly/2Xunfql"
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Stackoverflow"
@@ -48,7 +48,7 @@ export default function RibbonRenderer() {
                     <StyledIcon as={StackoverflowIcon} />
                 </StyledLink>
                 <StyledLink
-                    href="https://medium.com/react-rainbow"
+                    href="http://bit.ly/2XgMqwj"
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Medium Blog"
@@ -56,15 +56,15 @@ export default function RibbonRenderer() {
                     <StyledIcon as={MediumIcon} />
                 </StyledLink>
                 <StyledLink
-                    href="https://twitter.com/ReactRainbow"
+                    href="https://bit.ly/3nrVOYM"
                     target="_blank"
                     rel="noopener noreferrer"
-                    title="Twitter"
+                    title="Twitter Page"
                 >
                     <StyledIcon as={StyledTwitterIcon} />
                 </StyledLink>
                 <StyledLink
-                    href="https://www.youtube.com/channel/UCvJHgfOlJc8-aEkZbQV9O3w"
+                    href="http://bit.ly/3rY0skt"
                     target="_blank"
                     rel="noopener noreferrer"
                     title="YouTube Channel"
