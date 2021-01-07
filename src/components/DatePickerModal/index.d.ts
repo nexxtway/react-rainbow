@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { BaseProps } from '../types';
 
 export interface DatePickerModalProps extends BaseProps {
@@ -14,4 +15,4 @@ export interface DatePickerModalProps extends BaseProps {
     locale?: string;
 }
 
-export default function(props: DatePickerModalPropsProps): JSX.Element | null;
+export default function(props: DatePickerModalProps): JSX.Element | null;

@@ -102,7 +102,10 @@
                 "AdvancedSettingsIcon": true,
                 "SettingsIcon": true,
                 "CompanyIcon": true,
-                "InfoIcon": true
+                "InfoIcon": true,
+                "TextIcon": true,
+                "ListIcon": true,
+                "OneIcon": true
             }
         }
     ],
