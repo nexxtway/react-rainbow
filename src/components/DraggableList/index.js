@@ -12,6 +12,11 @@ const reorder = (list, startIndex, endIndex) => {
     return result;
 };
 
+/**
+ * A DraggableList lists a collection of data that
+ * @category DataView
+ */
+
 const DraggableList = props => {
     const { className, style, onDragEnd, data, ...rest } = props;
 
@@ -48,13 +53,31 @@ const DraggableList = props => {
 };
 
 DraggableList.propTypes = {
-    className: PropTypes.string,
-    style: PropTypes.object,
+    /** It is required to associate each item with a unique ID. Must be one of the data key.
+     * If it is not passed the component will not render.
+     */
     keyField: PropTypes.string.isRequired,
+    /** An array containing the objects(items) to be displayed. */
     data: PropTypes.arrayOf(PropTypes.object),
+    /**
+     * The field value is used to compute/map the value is going to be render
+     * for each item. It's the name of a property in the data objects.
+     *
+     * e.g `data = [{ name: 'Max', ... }, {...}]`;
+     * field could be 'name' for represent names on a collection of people.
+     */
     field: PropTypes.string,
     onDragEnd: PropTypes.func,
+    /**
+     * The component class or function that is going to be use to render
+     * the content of each item. By default the item is
+     * going to render the computed value(`data[field]`) for each item.
+     */
     component: PropTypes.func,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied for the outer element. */
+    style: PropTypes.object,
 };
 
 DraggableList.defaultProps = {
