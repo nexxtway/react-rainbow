@@ -13,7 +13,7 @@ const reorder = (list, startIndex, endIndex) => {
 };
 
 /**
- * A DraggableList lists a collection of data that
+ * A DraggableList lists a collection of data.
  * @category DataView
  */
 
