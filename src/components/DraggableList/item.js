@@ -17,11 +17,12 @@ const Item = props => {
 
     return (
         <Draggable draggableId={id} index={index}>
-            {provided => (
+            {(provided, snapshot) => (
                 <ItemContainer
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
+                    isDragging={snapshot.isDragging}
                 >
                     <StyledIcon />
                     <Content {...rest} component={component} value={value} row={row} />

@@ -25,6 +25,22 @@ export const ItemContainer = styled.li`
         box-shadow: ${props => props.theme.rainbow.shadows.shadow_2};
         transition: all 0.2s ease;
     }
+
+    :focus {
+        cursor: move;
+        box-shadow: ${props => props.theme.rainbow.shadows.shadow_2};
+        transition: all 0.2s ease;
+        border: 1px solid ${props => props.theme.rainbow.palette.brand.light};
+        outline: none;
+    }
+
+    ${props =>
+        props.isDragging &&
+        `
+        box-shadow: ${props.theme.rainbow.shadows.shadow_6};
+        border: 1px solid ${props.theme.rainbow.palette.border.divider};
+        transition: all 0.2s ease;
+    `}
 `;
 
 export const StyledIcon = styled(Icon)`
