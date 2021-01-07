@@ -106,7 +106,10 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-        component.find('div[role="presentation"]').simulate('click');
+        component
+            .find('div[role="presentation"]')
+            .instance()
+            .dispatchEvent(new Event('click'));
         expect(closeMockFn).toHaveBeenCalledTimes(1);
     });
     it('should fire an event when the ESC key is pressed and the modal is open', () => {
