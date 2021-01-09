@@ -9,7 +9,7 @@ const getBackgroundgColor = props => {
 };
 
 export const StyledStepItem = attachThemeAttrs(styled.button)`
-    display: inline-flex;
+    display: inline-block;
     align-items: center;
     position: relative;
     margin-left: -2.5rem;
@@ -27,6 +27,9 @@ export const StyledStepItem = attachThemeAttrs(styled.button)`
     font-size: ${FONT_SIZE_TEXT_LARGE};
     font-weight: 400;
     transition: all 0.3s linear;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
 
     ::-moz-focus-inner,
     ::-moz-focus-inner {
