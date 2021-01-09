@@ -3,6 +3,9 @@ const PageLookup = require('../../../src/components/Lookup/pageObject');
 const PageDatePicker = require('../../../src/components/DatePicker/pageObject');
 const PageTimePicker = require('../../../src/components/TimePicker/pageObject');
 const { ESCAPE_KEY, ENTER_KEY, ARROW_DOWN_KEY } = require('../../constants');
+const PageMultiSelect = require('../../../src/components/MultiSelect/pageObject');
+const PageOption = require('../../../src/components/Option/pageObject');
+const PagePicklist = require('../../../src/components/Picklist/pageObject');
 
 const BUTTON = '#button-11';
 const MODAL = '#modal-11';
@@ -10,6 +13,8 @@ const DATE_PICKER_INPUT = '#modal-datepicker-11';
 const TITLE_INPUT = '#modal-11 input[placeholder="Enter company name"]';
 const TIME_PICKER_INPUT = '#modal-timepicker-11';
 const MODAL_LOOKUP = '#modal-lookup-11';
+const MULTI_SELECT = '#multiselect-component-13';
+const PICKLIST = '#picklist-13';
 
 const getScrollTopPosition = () => {
     return browser.execute(() => {
@@ -127,6 +132,21 @@ describe('Modal with redux form example', () => {
         browser.keys(ENTER_KEY);
         browser.keys(ESCAPE_KEY);
         expect(modal.isOpen()).toBe(false);
+    });
+    it('should not close when dropdown item is clicked', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const multiSelect = new PageMultiSelect(MULTI_SELECT);
+        multiSelect.clickTrigger();
+        const option = new PageOption($('#option-1'));
+        option.click();
+        const picklist = new PagePicklist(PICKLIST);
+        picklist.clickInput();
+        picklist.waitUntilOpen();
+        picklist.getOption(0).click();
+        expect(modal.isOpen()).toBe(true);
     });
     it.skip('should have scroll enabled after closing modal', () => {
         const modal = new PageModal(MODAL);

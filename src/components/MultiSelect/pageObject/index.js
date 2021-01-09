@@ -33,6 +33,16 @@ class PageMultiSelect {
     }
 
     /**
+     * Clicks the trigger button
+     * @method
+     */
+    clickTrigger() {
+        $(this.rootElement)
+            .$('[data-id="button-icon-element"]')
+            .click();
+    }
+
+    /**
      * Returns true when the Add button has focus.
      * @method
      * @returns {bool}
