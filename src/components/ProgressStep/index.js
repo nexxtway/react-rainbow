@@ -158,6 +158,9 @@ class StepItem extends Component {
     }
 }
 
+/**
+ * A progress step represents one step of the progress indicator.
+ */
 export default function ProgressStep(props) {
     // eslint-disable-next-line react/jsx-props-no-spreading
     return <Consumer>{context => <StepItem {...props} {...context} />}</Consumer>;
