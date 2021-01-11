@@ -140,8 +140,8 @@ describe('Modal with redux form example', () => {
         modal.waitUntilOpen();
         const multiSelect = new PageMultiSelect(MULTI_SELECT);
         multiSelect.clickTrigger();
-        const option = new PageOption($('#option-1'));
-        option.click();
+        multiSelect.waitUntilOpen();
+        multiSelect.getOption(0).click();
         const picklist = new PagePicklist(PICKLIST);
         picklist.clickInput();
         picklist.waitUntilOpen();

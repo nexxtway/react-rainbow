@@ -1,3 +1,7 @@
+const PageInternalDropdown = require('../../InternalDropdown/pageObject');
+
+const privateGetMenu = Symbol('privateGetMenu');
+
 /**
  * MultiSelect page object class.
  * @class
@@ -43,6 +47,19 @@ class PageMultiSelect {
     }
 
     /**
+     * Returns true when the options menu is open, false otherwise.
+     * @method
+     * @returns {bool}
+     */
+    isMenuOpen() {
+        return (
+            $(this.rootElement)
+                .$('div[role="combobox"]')
+                .getAttribute('aria-expanded') === 'true'
+        );
+    }
+
+    /**
      * Returns true when the Add button has focus.
      * @method
      * @returns {bool}
@@ -62,6 +79,37 @@ class PageMultiSelect {
         return $(this.rootElement)
             .$('[role="textbox"]')
             .isFocused();
+    }
+
+    /**
+     * Returns a new InternalDropdown page object for the element with the supplied id.
+     * @method
+     */
+    [privateGetMenu]() {
+        const menuId = `#${$(this.rootElement)
+            .$('[role="combobox"]')
+            .getAttribute('aria-controls')}`;
+        if (this.isMenuOpen()) {
+            return new PageInternalDropdown(menuId);
+        }
+        return null;
+    }
+
+    /**
+     * Returns a new Option page object of the element in item position.
+     * @method
+     * @param {number} optionIndex - The base 0 index of the Option.
+     */
+    getOption(optionIndex) {
+        return this[privateGetMenu]().getOption(optionIndex);
+    }
+
+    /**
+     * Wait until the dropdown is open.
+     * @method
+     */
+    waitUntilOpen() {
+        browser.waitUntil(() => this.isMenuOpen());
     }
 }
 
