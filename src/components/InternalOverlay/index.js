@@ -1,5 +1,5 @@
 /* eslint-disable id-length */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
@@ -87,6 +87,7 @@ const InternalOverlay = props => {
         children,
         keepScrollEnabled,
     } = props;
+    const containerRef = useRef();
     const [contentMeta, updateContentMeta] = useState(false);
     const shouldOpen = isVisible && contentMeta;
     useEffect(() => {
@@ -98,6 +99,16 @@ const InternalOverlay = props => {
 
     const shouldDisableScroll = shouldOpen && !keepScrollEnabled;
     useDisableScroll(shouldDisableScroll);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useLayoutEffect(() => {
+        if (contentMeta && containerRef.current) {
+            const { width, height } = containerRef.current.getBoundingClientRect();
+            if (width !== contentMeta.width || height !== contentMeta.height) {
+                updateContentMeta({ width, height });
+            }
+        }
+    });
 
     if (isVisible) {
         const content = children || <ContentComponent />;
@@ -111,7 +122,9 @@ const InternalOverlay = props => {
                 positionResolver,
             });
             return createPortal(
-                <Container position={position}>{content}</Container>,
+                <Container position={position} ref={containerRef}>
+                    {content}
+                </Container>,
                 document.body,
             );
         }
