@@ -1,5 +1,5 @@
 # The basic ProgressIndicator
-##### This example shows a basic progress indicator that displays the steps of your process, ideal for a minimalistic design.
+##### This example shows a simple progress indicator that displays the steps of your process. It is ideal for a minimalistic design.
 
 ```js
 import React, { useState } from 'react';
@@ -86,8 +86,8 @@ const SimpleProgressIndicator = () => {
     <SimpleProgressIndicator />;
 ```
 
-# Progress indicator with click
-##### You can add a handler to the `onClick` event to allow users to navigate to a specific step.
+# Clickable ProgressIndicator
+##### You can add a handler to the `onClick` event so that users can select the specific step they want.
 
 ```js
 import React, { useState } from 'react';
@@ -134,7 +134,7 @@ const OnClickProgressIndicator = () => {
     <OnClickProgressIndicator />;
 ```
 
-# Numeric variant
+# ProgressIndicator with numeric variant
 ##### If you want to show each step number, set the `variant` prop to 'numeric'.
 
 ```js
