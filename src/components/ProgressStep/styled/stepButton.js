@@ -14,6 +14,7 @@ const StyledStepButton = attachThemeAttrs(styled(ButtonIcon)).attrs(props => {
         `
             width: 0.75rem;
             height: 0.75rem;
+            margin: 0.25rem;
             background-color: ${props.palette.background.highlight};
         `};
     ${props =>

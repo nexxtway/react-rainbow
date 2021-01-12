@@ -457,6 +457,9 @@ import {
     DatePicker,
     Lookup,
     Textarea,
+    MultiSelect,
+    Picklist,
+    Option,
 } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 
@@ -532,6 +535,34 @@ function SimpleForm(props) {
                     required
                     label="Select a Time"
                 />
+            </div>
+
+            <div className="rainbow-flex rainbow-justify_spread">
+                <Field
+                    id="multiselect-component-13"
+                    style={styles.inputColumn}
+                    component={MultiSelect}
+                    name="extras"
+                    label="Extras"
+                    placeholder="Select your extras"
+                    showCheckbox
+                >
+                    <Option name="option-1" label="Air conditioner" />
+                    <Option name="option-2" label="Drinks" />
+                    <Option name="option-3" label="WiFi" />
+                </Field>
+
+                <Field
+                    id="picklist-13"
+                    style={styles.inputColumn}
+                    component={Picklist}
+                    name="building"
+                    label="Select Building"
+                >
+                    <Option name="option 1" label="Experimental Building" />
+                    <Option name="option 2" label="Empire State" />
+                    <Option name="option 3" label="Central Park" />
+                </Field>
             </div>
 
             <Field
@@ -814,6 +845,7 @@ function ReservationForm(props) {
         <form id="redux-form-id" noValidate onSubmit={handleSubmit(submit)}>
             <div className="rainbow-flex rainbow-justify_spread">
                 <Field
+                    id="modal-datepicker-13"
                     style={styles.inputColumn}
                     component={DatePicker}
                     name="date"
@@ -880,13 +912,13 @@ const FormModal = () => {
     return (
         <div>
             <Button
-                id="button-12"
+                id="button-13"
                 label="Book Now!!"
                 onClick={() => setOpenStatus(true)}
                 variant="brand"
             />
             <Modal
-                id="modal-12"
+                id="modal-13"
                 title="Add your reservation"
                 isOpen={isOpen}
                 onRequestClose={() => setOpenStatus(false)}

@@ -6,7 +6,8 @@ import StyledIndicatorList from './styled/indicatorList';
 import StyledIndicatorBar from './styled/indicatorBar';
 
 /**
- * A progress indicator component communicates to the user the progress of a particular process.
+ * The ProgressIndicator is a visual representation of a user's progress through a set of steps.
+ * To add the steps, you will need to implement the `ProgressStep` component.
  */
 export default class ProgressIndicator extends Component {
     constructor(props) {
