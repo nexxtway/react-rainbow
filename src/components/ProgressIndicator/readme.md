@@ -139,6 +139,7 @@ const OnClickProgressIndicator = () => {
 
 ```js
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import {
     ProgressIndicator,
     ProgressStep,
@@ -151,9 +152,21 @@ import { Field, reduxForm } from 'redux-form';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'];
 
-const formContainerStyle = {
-    height: 150,
-};
+const FormContainer = styled.div`
+    max-width: 360px;
+    margin: 16px auto;
+`
+
+const Title = styled.h1`
+    font-size: 20px;
+    color: ${props => props.theme.rainbow.palette.text.main};
+`
+
+const Description = styled.h2`
+    font-size: 16px;
+    color: ${props => props.theme.rainbow.palette.text.header};
+    margin-top: 4px;
+`
 
 const StepForm = props => {
     const { handleSubmit, reset, onSubmit, stepIndex } = props;
@@ -172,13 +185,14 @@ const StepForm = props => {
                     required
                     label="Name"
                     placeholder="Enter your name"
+                    className="rainbow-p-bottom_x-large"
                 />
                 <Field
                     component={Input}
                     name="lastName"
                     required
-                    label="Lastname"
-                    placeholder="Enter your lastname"
+                    label="Last Name"
+                    placeholder="Enter your last name"
                 />
             </RenderIf>
             <RenderIf isTrue={stepIndex === 1}>
@@ -188,6 +202,7 @@ const StepForm = props => {
                     label="Email"
                     placeholder="Enter your email"
                     required
+                    className="rainbow-p-bottom_x-large"
                 />
                 <Field
                     component={Input}
@@ -203,8 +218,9 @@ const StepForm = props => {
                     component={DatePicker}
                     name="birthday"
                     label="Birthday"
-                    placeholder="Select a date"
+                    placeholder="Select your date of birth"
                     required
+                    className="rainbow-p-bottom_x-large"
                 />
             </RenderIf>
             <RenderIf isTrue={stepIndex === 3}>
@@ -214,6 +230,7 @@ const StepForm = props => {
                     label="Username"
                     placeholder="Enter your username"
                     required
+                    className="rainbow-p-bottom_x-large"
                 />
                 <Field
                     component={Input}
@@ -225,8 +242,8 @@ const StepForm = props => {
             </RenderIf>
             <RenderIf isTrue={stepIndex === 4}>
                 <div style={{ textAlign: 'center' }}>
-                    <p>Your data is good</p>
-                    <small>Press submit to complete registration</small>
+                    <Title>This looks great</Title>
+                    <Description>Press submit to complete registration.</Description>
                 </div>
             </RenderIf>
         </form>
@@ -281,9 +298,9 @@ const NumericProgressIndicator = () => {
                 </ProgressIndicator>
             </div>
 
-            <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap"  style={formContainerStyle}>
+            <FormContainer>
                 <Form stepIndex={currentStepIndex} />
-            </div>
+            </FormContainer>
 
             <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap">
                 <Button
