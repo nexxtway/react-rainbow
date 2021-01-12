@@ -56,10 +56,16 @@ class CheckboxToggle extends Component {
             onBlur,
             onClick,
             id,
+            labelAlignment,
         } = this.props;
 
         return (
-            <StyledLabelContainer id={id} className={className} style={style}>
+            <StyledLabelContainer
+                labelAlignment={labelAlignment}
+                id={id}
+                className={className}
+                style={style}
+            >
                 <HiddenElement
                     as="input"
                     type="checkbox"
@@ -83,7 +89,7 @@ class CheckboxToggle extends Component {
                     <span className="rainbow-checkbox-toggle_faux" />
                 </span>
                 <RenderIf isTrue={label}>
-                    <StyledLabel>{label}</StyledLabel>
+                    <StyledLabel labelAlignment={labelAlignment}>{label}</StyledLabel>
                 </RenderIf>
             </StyledLabelContainer>
         );
@@ -113,6 +119,9 @@ CheckboxToggle.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** Describes the position of the Input label. Options include left, center and right.
+     * This value defaults to center. */
+    labelAlignment: PropTypes.oneOf(['left', 'right']),
 };
 
 CheckboxToggle.defaultProps = {
@@ -127,6 +136,7 @@ CheckboxToggle.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    labelAlignment: 'right',
 };
 
 export default withReduxForm(CheckboxToggle);

@@ -7,6 +7,12 @@ const StyledLabel = attachThemeAttrs(styled.span)`
     color: ${props => props.palette.text.main};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     margin-left: ${MARGIN_SMALL};
+
+    ${props =>
+        props.labelAlignment === 'left' &&
+        `
+            margin-right: 12px;
+        `};
 `;
 
 export default StyledLabel;
