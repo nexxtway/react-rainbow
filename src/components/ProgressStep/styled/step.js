@@ -5,6 +5,8 @@ const StyledStep = styled.li`
     align-self: center;
     justify-content: center;
     box-sizing: border-box;
+    flex-grow: 1;
+    position: relative;
 `;
 
 export default StyledStep;
