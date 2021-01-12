@@ -119,8 +119,8 @@ CheckboxToggle.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** Describes the position of the Input label. Options include left, center and right.
-     * This value defaults to center. */
+    /** Describes the position of the Toggle label. Options include left and right.
+     * This value defaults to right. */
     labelAlignment: PropTypes.oneOf(['left', 'right']),
 };
 
