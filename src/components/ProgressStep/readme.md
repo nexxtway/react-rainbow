@@ -1,5 +1,6 @@
 # The basic ProgressStep
-##### This example shows the default look of the progress steps.
+##### This example represents a progress step with a simple style and functionality,
+##### where the user can move between steps using the Back/Next buttons.
 
 ```js
 import React, { useState } from 'react';
@@ -87,7 +88,8 @@ const SimpleProgressStep = () => {
 ```
 
 # ProgressStep with label
-##### You can show a label on each step to comunicate users what is it about. You can do so using the `label` prop.
+##### You can show a label on each step to keep the user informed of where they currently are
+##### within the process or task. You can do so by using the `label` prop.
 
 ```js
 import React, { useState } from 'react';
