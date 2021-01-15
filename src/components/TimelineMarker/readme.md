@@ -1,4 +1,5 @@
-##### TimeLineMarker base:
+# The basic TimelineMarker
+##### This example represents a TimelineMarker with a simple style and functionality. As you can see in the code section, you can add some information using the properties `label`, `icon`, `datetime`, and  `description`.
 
 ```js
 import React from 'react';
@@ -18,7 +19,8 @@ const iconStyles = { width: 32, height: 32 };
     </div>
 ```
 
-##### TimeLineMarker with content and description:
+# TimelineMarker with image
+##### In addition to the descriptive information of the item in the TimelineMarker, you can add an image, as you can see in the example below.
 
 ```js
 import React from 'react';
