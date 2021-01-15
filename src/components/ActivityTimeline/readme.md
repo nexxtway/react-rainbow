@@ -40,7 +40,7 @@ const container = { width: 500, margin: 'auto', marginTop: 36, };
 ```
 
 # ActivityTimeline as accordion
-##### ActivityTimeline can be used as accordion. You can do so by implementing the `variant` prop.
+##### ActivityTimeline can be used as an accordion. You can do so by implementing the `variant` prop.
 
 ```js
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
