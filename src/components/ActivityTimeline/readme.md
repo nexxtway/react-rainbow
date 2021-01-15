@@ -118,7 +118,7 @@ const AccordionActivityTimeline =  ({ eventsList }) => {
                 datetime={datetime}
                 description={description}
             >
-                <EventDetails uid={details.uid} birthdate={details.birdate} />
+                <EventDetails uid={details.uid} birthdate={details.birthdate} />
             </TimelineMarker>
         );
     }), [eventsList, loading]);
@@ -152,7 +152,7 @@ const events = [
         user: 'Tahimi Leon',
         datetime: '11:00 AM, Today',
         details: {
-            UID: '1610482374420',
+            uid: '1610482374420',
             birthdate: 'January 12, 2021',
         },
     },
@@ -162,7 +162,7 @@ const events = [
         user: 'Tahimi Leon',
         datetime: '11:00 AM, Today',
         details: {
-            UID: '1610482374420',
+            uid: '1610482374420',
             birthdate: 'January 12, 2021',
         },
     }
