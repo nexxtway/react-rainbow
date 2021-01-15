@@ -18,7 +18,7 @@ import removeItemFromArray from '../AccordionSection/removeItemFromArray';
 import isInArray from '../AccordionSection/isInArray';
 
 /**
- * The TimelineMarker displays one event of an item timeline.
+ * The TimelineMarker displays one event of an item's timeline. It's generally used to compose the ActivityTimeline component.
  * @category Layout
  */
 export default function TimelineMarker(props) {
