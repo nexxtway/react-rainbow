@@ -8,7 +8,6 @@ const StyledUl = styled.ul`
     padding: 0;
     list-style: none;
     box-sizing: border-box;
-
     ${props =>
         props.variant === 'accordion' &&
         `
