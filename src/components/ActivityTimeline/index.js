@@ -7,7 +7,7 @@ import { Provider } from './context';
 import StyledUl from './styled/ul';
 
 /**
- * The ActivityTimeline displays each of any item upcoming, current, and past activities.
+ * The ActivityTimeline displays each of any item upcoming, current, and past activities in cronological order (ascending or descending).
  * @category Layout
  */
 export default function ActivityTimeline(props) {
