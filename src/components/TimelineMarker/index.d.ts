@@ -5,6 +5,8 @@ export interface TimelineMarkerProps extends BaseProps {
     label?: ReactNode;
     description?: ReactNode;
     datetime?: ReactNode;
+    isLoading?: boolean;
+    name?: string;
     icon?: ReactNode;
     children?: ReactNode;
 }
