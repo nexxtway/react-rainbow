@@ -3,10 +3,14 @@ import { BaseProps } from '../types';
 
 type Names = string[] | string;
 
+interface onToggleSectionEventShape {
+    name: Names;
+}
+
 export interface ActivityTimelineProps extends BaseProps {
     children?: ReactNode;
     multiple?: boolean;
-    onToggleSection?: (event: MouseEvent<HTMLElement>, name: Names) => void;
+    onToggleSection?: (value: onToggleSectionEventShape) => void;
     activeSectionNames?: Names;
 }
 
