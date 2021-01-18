@@ -47,7 +47,7 @@ ActivityTimeline.propTypes = {
         PropTypes.string,
     ]),
     /** Action fired when a TimelineMarker is selected.
-     * The event params include the `name` of the selected TimelineMarker.
+     * The event params include the `activeSectionNames` and `toggledSection`.
      * Important: this prop is only to use when variant is `accordion`. */
     onToggleSection: PropTypes.func,
 };
