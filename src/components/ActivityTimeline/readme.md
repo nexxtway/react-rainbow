@@ -127,9 +127,8 @@ const AccordionActivityTimeline =  ({ eventsList }) => {
         setTimeout(() => setLoading(false), 3000);
     }, []);
 
-    const handleToggleEvent = useCallback(({ name }) => {
-        console.log(name);
-        setActiveEvents(name);
+    const handleToggleEvent = useCallback(({ activeSectionNames }) => {
+        setActiveEvents(activeSectionNames);
     }, []);
 
     return (

@@ -70,8 +70,9 @@ export default function AccordionTimelineMarker(props) {
     }, [currentName, multiple, activeNames, resolveActiveNamesWhenMultiple]);
 
     const handleToggleMarker = useCallback(
-        () => privateOnToggleMarker({ name: resolveActiveNames() }),
-        [privateOnToggleMarker, resolveActiveNames],
+        () =>
+            privateOnToggleMarker({ activeSectionNames: resolveActiveNames(), name: currentName }),
+        [currentName, privateOnToggleMarker, resolveActiveNames],
     );
 
     const isExpanded = useMemo(() => {

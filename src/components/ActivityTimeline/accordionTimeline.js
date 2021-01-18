@@ -45,11 +45,11 @@ export default function AccordionTimeline(props) {
     }, []);
 
     const privateOnToggleMarker = useCallback(
-        ({ name }) => {
+        ({ activeSectionNames: names, name }) => {
             if (typeof onToggleSection === 'function') {
-                return onToggleSection({ name });
+                return onToggleSection({ activeSectionNames: names, name });
             }
-            return setActiveNames(name);
+            return setActiveNames(names);
         },
         [onToggleSection],
     );
