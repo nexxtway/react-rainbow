@@ -71,7 +71,10 @@ export default function AccordionTimelineMarker(props) {
 
     const handleToggleMarker = useCallback(
         () =>
-            privateOnToggleMarker({ activeSectionNames: resolveActiveNames(), name: currentName }),
+            privateOnToggleMarker({
+                activeSectionNames: resolveActiveNames(),
+                toggledSection: currentName,
+            }),
         [currentName, privateOnToggleMarker, resolveActiveNames],
     );
 

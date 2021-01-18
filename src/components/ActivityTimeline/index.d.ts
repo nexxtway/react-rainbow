@@ -4,7 +4,8 @@ import { BaseProps } from '../types';
 type Names = string[] | string;
 
 interface onToggleSectionEventShape {
-    name: Names;
+    activeSectionNames: Names;
+    toggledSection: string;
 }
 
 export interface ActivityTimelineProps extends BaseProps {
