@@ -1,10 +1,7 @@
-import React, { useRef, useState, useCallback, useMemo, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import isChildRegistered from '../InternalDropdown/helpers/isChildRegistered';
-import insertChildOrderly from '../InternalDropdown/helpers/insertChildOrderly';
-import { getChildTimelineMarkersNodes } from './helpers';
-import { Provider } from './context';
-import StyledUl from './styled/ul';
+import AccordionTimeline from './accordionTimeline';
+import BasicTimeline from './basicTimeline';
 
 /**
  * The ActivityTimeline displays each of any item's upcoming, current, and past activities in chronological order (ascending or descending).
@@ -12,85 +9,13 @@ import StyledUl from './styled/ul';
  * @category Layout
  */
 export default function ActivityTimeline(props) {
-    const {
-        id,
-        children,
-        className,
-        style,
-        variant,
-        multiple,
-        activeSectionNames,
-        onToggleSection,
-    } = props;
-    const registeredTimelineMarkers = useRef([]);
-    const [activeNames, setActiveNames] = useState(activeSectionNames);
-    const containerRef = useRef();
-
-    useEffect(() => {
-        if (
-            activeSectionNames &&
-            activeSectionNames !== activeNames &&
-            typeof onToggleSection === 'function'
-        ) {
-            setActiveNames(activeSectionNames);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [activeSectionNames, onToggleSection]);
-
-    const privateRegisterMarker = useCallback((stepRef, stepProps) => {
-        if (isChildRegistered(stepProps.name, registeredTimelineMarkers.current)) return;
-        const [...nodes] = getChildTimelineMarkersNodes(containerRef.current);
-        const newStepsList = insertChildOrderly(
-            registeredTimelineMarkers.current,
-            {
-                ref: stepRef,
-                ...stepProps,
-            },
-            nodes,
-        );
-        registeredTimelineMarkers.current = newStepsList;
-    }, []);
-
-    const privateUnregisterMarker = useCallback((stepRef, stepName) => {
-        if (!isChildRegistered(stepName, registeredTimelineMarkers.current)) return;
-        registeredTimelineMarkers.current = registeredTimelineMarkers.current.filter(
-            step => step.name !== stepName,
-        );
-    }, []);
-
-    const privateOnToggleMarker = useCallback(
-        (event, name) => {
-            if (typeof onToggleSection === 'function') {
-                return onToggleSection(event, name);
-            }
-            return setActiveNames(name);
-        },
-        [onToggleSection],
-    );
-
-    const context = useMemo(() => {
-        return {
-            activeNames,
-            multiple,
-            isVariantAccordion: variant === 'accordion',
-            privateRegisterMarker,
-            privateUnregisterMarker,
-            privateOnToggleMarker,
-        };
-    }, [
-        variant,
-        activeNames,
-        multiple,
-        privateRegisterMarker,
-        privateUnregisterMarker,
-        privateOnToggleMarker,
-    ]);
-
-    return (
-        <StyledUl id={id} className={className} style={style} ref={containerRef} variant={variant}>
-            <Provider value={context}>{children}</Provider>
-        </StyledUl>
-    );
+    const { variant, ...rest } = props;
+    if (variant === 'accordion') {
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        return <AccordionTimeline {...rest} />;
+    }
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    return <BasicTimeline {...rest} />;
 }
 
 ActivityTimeline.propTypes = {
@@ -106,7 +31,8 @@ ActivityTimeline.propTypes = {
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
     /** If true, expands multiples TimelineMarkers.
-     * This value defaults to false. */
+     * This value defaults to false.
+     * Important: this prop is only to use when variant is `accordion`. */
     multiple: PropTypes.bool,
     /** The variant changes the appearance of the timeline. Accepted variants include
      * default and accordion. */
@@ -114,13 +40,15 @@ ActivityTimeline.propTypes = {
     /** It contain the name of the TimelineMarker that is expanded.
      * It is an array of string when multiple is true,
      * or a string when when multiple is false.
-     * It must match the name of the TimelineMarker. */
+     * It must match the name of the TimelineMarker.
+     * Important: this prop is only to use when variant is `accordion`. */
     activeSectionNames: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.string),
         PropTypes.string,
     ]),
     /** Action fired when a TimelineMarker is selected.
-     * The event params include the `name` of the selected TimelineMarker. */
+     * The event params include the `activeSectionNames` and `toggledSection`.
+     * Important: this prop is only to use when variant is `accordion`. */
     onToggleSection: PropTypes.func,
 };
 
