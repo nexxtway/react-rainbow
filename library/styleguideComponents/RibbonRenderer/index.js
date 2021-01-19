@@ -4,6 +4,7 @@ import GitHubButton from 'react-github-btn';
 import StackoverflowIcon from './stackoverflowIcon';
 import YouTubeIcon from './youtubeIcon';
 import GlobalSearch from '../GlobalSearch';
+import UniversalSearch from '../UniversalSearch';
 import MediumIcon from './mediumIcon';
 import {
     StyledContainer,
@@ -14,11 +15,12 @@ import {
     StyledTwitterIcon,
     StyledGithubIcon,
 } from './styled';
-
+// TODO: universal search es usado aqui
 export default function RibbonRenderer() {
     return (
         <StyledHeading>
-            <GlobalSearch />
+            {/* <GlobalSearch /> */}
+            <UniversalSearch />
             <StyledContainer>
                 <StyledGitHubContianer>
                     <GitHubButton
