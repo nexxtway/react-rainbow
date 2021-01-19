@@ -1,5 +1,5 @@
 import React from 'react';
-import DesignDetails from './../../components/DesignDetails';
+import DesignDetails from '../../components/DesignDetails';
 import './styles.css';
 
 export default function RainbowComponents() {
@@ -27,7 +27,7 @@ export default function RainbowComponents() {
                     Add the Sketch document from Sketch Cloud as a Shared Library.
                 </li>
                 <a href="https://sketch.cloud/s/14L3p" rel="noopener noreferrer" target="_blank">
-                    https://sketch.cloud/s/14L3p
+                    https://www.sketch.com/s/72677939-04a3-4ed3-bc2b-d89fa8ca2680
                 </a>
             </ol>
         </DesignDetails>

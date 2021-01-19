@@ -1,22 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledUl from './styled/ul';
+import AccordionTimeline from './accordionTimeline';
+import BasicTimeline from './basicTimeline';
 
 /**
- * The ActivityTimeline displays each of any item upcoming, current, and past activities.
+ * The ActivityTimeline displays each of any item's upcoming, current, and past activities in chronological order (ascending or descending).
+ * Notice that ActivityTimeline and TimelineMarker components are related and should be implemented together.
  * @category Layout
  */
 export default function ActivityTimeline(props) {
-    const { children, className, style } = props;
-
-    return (
-        <StyledUl className={className} style={style}>
-            {children}
-        </StyledUl>
-    );
+    const { variant, ...rest } = props;
+    if (variant === 'accordion') {
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        return <AccordionTimeline {...rest} />;
+    }
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    return <BasicTimeline {...rest} />;
 }
 
 ActivityTimeline.propTypes = {
+    /** The id of the outer element. */
+    id: PropTypes.string,
     /**
      * This prop that should not be visible in the documentation.
      * @ignore
@@ -26,10 +30,35 @@ ActivityTimeline.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** If true, expands multiples TimelineMarkers.
+     * This value defaults to false.
+     * Important: this prop is only to use when variant is `accordion`. */
+    multiple: PropTypes.bool,
+    /** The variant changes the appearance of the timeline. Accepted variants include
+     * default and accordion. */
+    variant: PropTypes.oneOf(['default', 'accordion']),
+    /** It contain the name of the TimelineMarker that is expanded.
+     * It is an array of string when multiple is true,
+     * or a string when when multiple is false.
+     * It must match the name of the TimelineMarker.
+     * Important: this prop is only to use when variant is `accordion`. */
+    activeSectionNames: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.string),
+        PropTypes.string,
+    ]),
+    /** Action fired when a TimelineMarker is selected.
+     * The event params include the `activeSectionNames` and `toggledSection`.
+     * Important: this prop is only to use when variant is `accordion`. */
+    onToggleSection: PropTypes.func,
 };
 
 ActivityTimeline.defaultProps = {
+    id: undefined,
     children: null,
     className: undefined,
     style: undefined,
+    variant: 'default',
+    multiple: false,
+    onToggleSection: undefined,
+    activeSectionNames: undefined,
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ErrorIcon, FileIcon, FilesIcon, UploadIcon } from './icons';
+import { FileListType } from './types';
 
 export default function Icon({ files, error, isDragOver, value, uploadIcon }) {
     if (value !== null) {
@@ -19,7 +20,7 @@ export default function Icon({ files, error, isDragOver, value, uploadIcon }) {
     return uploadIcon || <UploadIcon />;
 }
 Icon.propTypes = {
-    files: PropTypes.instanceOf(FileList),
+    files: PropTypes.instanceOf(FileListType),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     isDragOver: PropTypes.bool,
     value: PropTypes.object,
