@@ -10,6 +10,7 @@ interface onToggleSectionEventShape {
 
 export interface ActivityTimelineProps extends BaseProps {
     children?: ReactNode;
+    variant?: 'default' | 'accordion';
     multiple?: boolean;
     onToggleSection?: (value: onToggleSectionEventShape) => void;
     activeSectionNames?: Names;
