@@ -77,9 +77,11 @@ const run = () => {
             searchIndex.push(...examples);
         }
     });
+    return searchIndex;
 };
 
-run();
+module.exports = run;
+// run();
 
 // eslint-disable-next-line no-console
-console.log(JSON.stringify(searchIndex));
+// console.log(JSON.stringify(searchIndex));
