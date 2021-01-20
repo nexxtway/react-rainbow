@@ -148,6 +148,11 @@ module.exports = {
         },
     ],
     webpackConfig: {
+        resolve: {
+            alias: {
+                'react-rainbow-components': path.resolve(__dirname, './src/components'),
+            },
+        },
         module: {
             rules: [
                 {
