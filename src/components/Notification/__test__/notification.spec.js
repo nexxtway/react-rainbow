@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import ButtonIcon from '../../ButtonIcon';
 import Notification from '../index';
 
 describe('<Notification/>', () => {
@@ -13,10 +14,10 @@ describe('<Notification/>', () => {
     });
     it('should set the prop size as "small" in ButtonIcon', () => {
         const component = mount(<Notification title="Notification test" />);
-        expect(component.find('ButtonIcon').prop('size')).toBe('small');
+        expect(component.find(ButtonIcon).prop('size')).toBe('small');
     });
     it('should not display the close button when hideCloseButton props is true', () => {
         const component = mount(<Notification title="Notification test" hideCloseButton />);
-        expect(component.find('ButtonIcon').exists()).toBe(false);
+        expect(component.find(ButtonIcon).exists()).toBe(false);
     });
 });
