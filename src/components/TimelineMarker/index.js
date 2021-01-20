@@ -1,40 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { ActivityTimelineContext } from '../ActivityTimeline/context';
 import CalendarIcon from './calendarIcon';
-import StyledLi from './styled/li';
-import StyledColumnLeft from './styled/columnLeft';
-import StyledIconContainer from './styled/iconContainer';
-import StyledContentContainer from './styled/contentContainer';
-import StyledHeader from './styled/header';
-import StyledLabel from './styled/label';
-import StyledDatetime from './styled/datetime';
-import StyledDescription from './styled/description';
-import StyledBody from './styled/body';
+import AccordionTimelineMarker from './accordionMarker';
+import BasicTimelineMarker from './basicMarker';
 
 /**
- * The TimelineMarker displays one event of an item timeline.
+ * The TimelineMarker displays one event of an item's timeline. It's generally used to compose the ActivityTimeline component.
  * @category Layout
  */
 export default function TimelineMarker(props) {
-    const { icon, label, description, datetime, children, className, style } = props;
-
-    return (
-        <StyledLi className={className} style={style}>
-            <StyledColumnLeft>
-                <StyledIconContainer>{icon}</StyledIconContainer>
-            </StyledColumnLeft>
-            <StyledContentContainer>
-                <div>
-                    <StyledHeader>
-                        <StyledLabel>{label}</StyledLabel>
-                        <StyledDatetime>{datetime}</StyledDatetime>
-                    </StyledHeader>
-                    <StyledDescription>{description}</StyledDescription>
-                </div>
-                <StyledBody>{children}</StyledBody>
-            </StyledContentContainer>
-        </StyledLi>
-    );
+    const context = useContext(ActivityTimelineContext);
+    if (context) {
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        return <AccordionTimelineMarker {...props} />;
+    }
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    return <BasicTimelineMarker {...props} />;
 }
 
 TimelineMarker.propTypes = {
@@ -56,6 +38,11 @@ TimelineMarker.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The name is used to determine which TimelineMarker was clicked.
+     * If `name` is not passed it will be generated. */
+    name: PropTypes.string,
+    /** Set to true to show a loading symbol. Defaults to false */
+    isLoading: PropTypes.bool,
 };
 
 TimelineMarker.defaultProps = {
@@ -66,4 +53,6 @@ TimelineMarker.defaultProps = {
     children: null,
     className: undefined,
     style: undefined,
+    name: undefined,
+    isLoading: false,
 };

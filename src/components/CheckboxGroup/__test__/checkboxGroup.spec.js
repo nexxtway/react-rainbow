@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import CheckboxGroup from '../index';
 import StyledLabel from '../styled/label';
+import CheckboxGroupStyledContentContainer from '../styled/contentContainer';
 
 describe('<CheckboxGroup />', () => {
     it('should set an empty array when the values passed is a "string"', () => {
@@ -24,7 +25,7 @@ describe('<CheckboxGroup />', () => {
         const options = [{ value: 'admin', label: 'Admin' }, { value: 'user', label: 'User' }];
 
         const component = mount(<CheckboxGroup options={options} />);
-        const elem = component.find('CheckboxGroupStyledContentContainer');
+        const elem = component.find(CheckboxGroupStyledContentContainer);
 
         expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('flex-direction')).toBe(
             'column',
@@ -35,7 +36,7 @@ describe('<CheckboxGroup />', () => {
         const options = [{ value: 'admin', label: 'Admin' }, { value: 'user', label: 'User' }];
 
         const component = mount(<CheckboxGroup options={options} orientation="vertical" />);
-        const elem = component.find('CheckboxGroupStyledContentContainer');
+        const elem = component.find(CheckboxGroupStyledContentContainer);
 
         expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('flex-direction')).toBe(
             'column',
@@ -46,7 +47,7 @@ describe('<CheckboxGroup />', () => {
         const options = [{ value: 'admin', label: 'Admin' }, { value: 'user', label: 'User' }];
 
         const component = mount(<CheckboxGroup options={options} orientation="horizontal" />);
-        const elem = component.find('CheckboxGroupStyledContentContainer');
+        const elem = component.find(CheckboxGroupStyledContentContainer);
 
         expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('flex-direction')).toBe('row');
     });

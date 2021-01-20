@@ -239,6 +239,4 @@ ButtonIcon.defaultProps = {
     form: undefined,
 };
 
-ButtonIcon.displayName = 'ButtonIcon';
-
 export default ButtonIcon;

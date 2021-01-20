@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import ButtonIcon from '../../ButtonIcon';
 import Calendar, { Component } from '..';
 
 describe('Calendar', () => {
@@ -18,14 +19,14 @@ describe('Calendar', () => {
     it('should render the prev month', () => {
         const value = new Date('04/24/2019');
         const component = mount(<Calendar value={value} />);
-        const prevMonthButton = component.find('ButtonIcon').at(0);
+        const prevMonthButton = component.find(ButtonIcon).at(0);
         prevMonthButton.simulate('click');
         expect(component.find('h3[data-id="month"]').text()).toBe('March');
     });
     it('should render the next month', () => {
         const value = new Date('04/24/2019');
         const component = mount(<Calendar value={value} />);
-        const nextMonthButton = component.find('ButtonIcon').at(1);
+        const nextMonthButton = component.find(ButtonIcon).at(1);
         nextMonthButton.simulate('click');
         expect(component.find('h3[data-id="month"]').text()).toBe('May');
     });
@@ -33,14 +34,14 @@ describe('Calendar', () => {
         const value = new Date('04/24/2019');
         const minDate = new Date('04/01/2019');
         const component = mount(<Calendar value={value} minDate={minDate} />);
-        const prevMonthButton = component.find('ButtonIcon').at(0);
+        const prevMonthButton = component.find(ButtonIcon).at(0);
         expect(prevMonthButton.prop('disabled')).toBe(true);
     });
     it('should set to disable the next month button when maxDate is less than next month date', () => {
         const value = new Date('04/24/2019');
         const maxDate = new Date('04/30/2019');
         const component = mount(<Calendar value={value} maxDate={maxDate} />);
-        const prevMonthButton = component.find('ButtonIcon').at(1);
+        const prevMonthButton = component.find(ButtonIcon).at(1);
         expect(prevMonthButton.prop('disabled')).toBe(true);
     });
     it('should render the right month when value is updated', () => {

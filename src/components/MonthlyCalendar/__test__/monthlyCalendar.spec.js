@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import MonthlyCalendar from '..';
+import ButtonIcon from '../../ButtonIcon';
 
 describe('MonthlyCalendar', () => {
     it('should render the component when pass falsy values', () => {
@@ -19,14 +20,14 @@ describe('MonthlyCalendar', () => {
         const value = new Date('04/24/2019');
         const minDate = new Date('04/01/2019');
         const component = mount(<MonthlyCalendar currentMonth={value} minDate={minDate} />);
-        const prevMonthButton = component.find('ButtonIcon').at(0);
+        const prevMonthButton = component.find(ButtonIcon).at(0);
         expect(prevMonthButton.prop('disabled')).toBe(true);
     });
     it('should set to disable the next month button when maxDate is less than next month date', () => {
         const value = new Date('04/24/2019');
         const maxDate = new Date('04/30/2019');
         const component = mount(<MonthlyCalendar currentMonth={value} maxDate={maxDate} />);
-        const prevMonthButton = component.find('ButtonIcon').at(1);
+        const prevMonthButton = component.find(ButtonIcon).at(1);
         expect(prevMonthButton.prop('disabled')).toBe(true);
     });
     it('should render the right month when value is updated', async done => {
@@ -48,7 +49,7 @@ describe('MonthlyCalendar', () => {
         const component = mount(
             <MonthlyCalendar currentMonth={month} onMonthChange={onMonthChangeMockFn} />,
         );
-        const prevMonthButton = component.find('ButtonIcon').at(0);
+        const prevMonthButton = component.find(ButtonIcon).at(0);
         prevMonthButton.simulate('click');
         expect(onMonthChangeMockFn).toHaveBeenCalledWith({ month: prevMonth });
     });
@@ -59,7 +60,7 @@ describe('MonthlyCalendar', () => {
         const component = mount(
             <MonthlyCalendar currentMonth={month} onMonthChange={onMonthChangeMockFn} />,
         );
-        const nextMonthButton = component.find('ButtonIcon').at(1);
+        const nextMonthButton = component.find(ButtonIcon).at(1);
         nextMonthButton.simulate('click');
         expect(onMonthChangeMockFn).toHaveBeenCalledWith({ month: nextMonth });
     });
