@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import ButtonIcon from '../../ButtonIcon';
 import RightElement from '../rightElement';
 import StyledInputIcon from '../styled/inputIcon';
 
@@ -10,12 +11,12 @@ describe('<RightElement />', () => {
     });
     it('should render a close button when showCloseButton is passed', () => {
         const component = mount(<RightElement showCloseButton />);
-        expect(component.find('ButtonIcon').exists()).toBe(true);
+        expect(component.find(ButtonIcon).exists()).toBe(true);
     });
     it('should fire an event when click the button', () => {
         const onClearMockFn = jest.fn();
         const component = mount(<RightElement showCloseButton onClear={onClearMockFn} />);
-        component.find('ButtonIcon').simulate('click');
+        component.find(ButtonIcon).simulate('click');
         expect(onClearMockFn).toHaveBeenCalledTimes(1);
     });
 });

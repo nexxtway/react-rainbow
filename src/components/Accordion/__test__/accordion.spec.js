@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import ButtonIcon from '../../ButtonIcon';
 import Accordion from '../index';
 import AccordionSection from '../../AccordionSection';
 import StyledContent from '../../AccordionSection/styled/content';
@@ -13,7 +14,7 @@ describe('<Accordion />', () => {
                 </AccordionSection>
             </Accordion>,
         );
-        const buttonComponent = component.find('ButtonIcon');
+        const buttonComponent = component.find(ButtonIcon);
         buttonComponent.simulate('click');
 
         expect(component.state('activeNames')).toEqual('accordion-test-1');
@@ -31,7 +32,7 @@ describe('<Accordion />', () => {
             </Accordion>,
         );
         const secondAccordionSection = component.find('ul').childAt(1);
-        const secondAccordionSectionButton = secondAccordionSection.find('ButtonIcon');
+        const secondAccordionSectionButton = secondAccordionSection.find(ButtonIcon);
         secondAccordionSectionButton.simulate('click');
 
         expect(component.state('activeNames')).toEqual(['accordion-test-1', 'accordion-test-2']);
@@ -45,7 +46,7 @@ describe('<Accordion />', () => {
                 </AccordionSection>
             </Accordion>,
         );
-        const buttonComponent = component.find('ButtonIcon');
+        const buttonComponent = component.find(ButtonIcon);
         buttonComponent.simulate('click');
 
         expect(handleToggleSectionMockFn).toHaveBeenCalledTimes(0);
@@ -59,7 +60,7 @@ describe('<Accordion />', () => {
                 </AccordionSection>
             </Accordion>,
         );
-        const buttonComponent = component.find('ButtonIcon');
+        const buttonComponent = component.find(ButtonIcon);
         buttonComponent.simulate('click');
 
         expect(handleToggleSectionMockFn).toHaveBeenCalledWith(
@@ -85,7 +86,7 @@ describe('<Accordion />', () => {
             </Accordion>,
         );
         const secondAccordionSection = component.find('ul').childAt(1);
-        const secondAccordionSectionButton = secondAccordionSection.find('ButtonIcon');
+        const secondAccordionSectionButton = secondAccordionSection.find(ButtonIcon);
         secondAccordionSectionButton.simulate('click');
 
         expect(handleToggleSectionMockFn).toHaveBeenCalledWith(expect.any(Object), [
@@ -107,7 +108,7 @@ describe('<Accordion />', () => {
             </Accordion>,
         );
         const firstAccordionSection = component.find('ul').childAt(0);
-        const firstAccordionSectionButton = firstAccordionSection.find('ButtonIcon');
+        const firstAccordionSectionButton = firstAccordionSection.find(ButtonIcon);
         firstAccordionSectionButton.simulate('click');
 
         expect(handleToggleSectionMockFn.mock.calls[0][1]).toEqual('');
@@ -130,7 +131,7 @@ describe('<Accordion />', () => {
             </Accordion>,
         );
         const secondAccordionSection = component.find('ul').childAt(1);
-        const secondAccordionSectionButton = secondAccordionSection.find('ButtonIcon');
+        const secondAccordionSectionButton = secondAccordionSection.find(ButtonIcon);
         secondAccordionSectionButton.simulate('click');
 
         expect(handleToggleSectionMockFn.mock.calls[0][1]).toEqual(['accordion-test-1']);
@@ -148,7 +149,7 @@ describe('<Accordion />', () => {
             </Accordion>,
         );
         const secondAccordionSection = component.find('ul').childAt(1);
-        const secondAccordionSectionButton = secondAccordionSection.find('ButtonIcon');
+        const secondAccordionSectionButton = secondAccordionSection.find(ButtonIcon);
         secondAccordionSectionButton.simulate('click');
 
         expect(handleToggleSectionMockFn.mock.calls[0][1]).toEqual(['accordion-test-2']);
@@ -162,7 +163,7 @@ describe('<Accordion />', () => {
                 </AccordionSection>
             </Accordion>,
         );
-        const button = component.find('ButtonIcon');
+        const button = component.find(ButtonIcon);
 
         expect(button.prop('ariaExpanded')).toBe(true);
     });
@@ -172,7 +173,7 @@ describe('<Accordion />', () => {
                 <AccordionSection label="Rainbow Accordion">AccordionSection-1</AccordionSection>
             </Accordion>,
         );
-        const button = component.find('ButtonIcon');
+        const button = component.find(ButtonIcon);
 
         expect(button.prop('ariaExpanded')).toBe(false);
     });

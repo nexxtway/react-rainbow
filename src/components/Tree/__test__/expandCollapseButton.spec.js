@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import ExpandCollapseButton from '../expandCollapseButton';
+import ButtonIcon from '../../ButtonIcon';
 
 describe('<ExpandCollapseButton/>', () => {
     it('should return the Spinner component when isLoading prop is true', () => {
@@ -9,13 +10,13 @@ describe('<ExpandCollapseButton/>', () => {
     });
     it('should return the ButtonIcon component when hasChildren prop is true', () => {
         const component = mount(<ExpandCollapseButton hasChildren />);
-        expect(component.find('ButtonIcon').exists()).toBe(true);
+        expect(component.find(ButtonIcon).exists()).toBe(true);
     });
     it('should set the right icon when isExpanded prop is true', () => {
         const component = mount(<ExpandCollapseButton isExpanded hasChildren />);
         expect(
             component
-                .find('ButtonIcon')
+                .find(ButtonIcon)
                 .find('DownArrow')
                 .exists(),
         ).toBe(true);
@@ -24,7 +25,7 @@ describe('<ExpandCollapseButton/>', () => {
         const component = mount(<ExpandCollapseButton isExpanded={false} hasChildren />);
         expect(
             component
-                .find('ButtonIcon')
+                .find(ButtonIcon)
                 .find('RightArrow')
                 .exists(),
         ).toBe(true);
@@ -34,7 +35,7 @@ describe('<ExpandCollapseButton/>', () => {
         const component = mount(
             <ExpandCollapseButton isExpanded hasChildren onClick={onClickMock} />,
         );
-        component.find('ButtonIcon').simulate('click');
+        component.find(ButtonIcon).simulate('click');
         expect(onClickMock).toHaveBeenCalledTimes(1);
     });
 });

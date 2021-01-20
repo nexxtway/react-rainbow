@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import copyFn from 'clipboard-copy';
+import ButtonIcon from '../../ButtonIcon';
 import SelectedValue from '../selectedValue';
 import StyledSelectedValueIcon from '../styled/selectedValueIcon';
 
@@ -29,21 +30,21 @@ describe('<SelectedValue />', () => {
     });
     it('should render a close button', () => {
         const component = mount(<SelectedValue />);
-        expect(component.find('ButtonIcon').exists()).toBe(true);
+        expect(component.find(ButtonIcon).exists()).toBe(true);
     });
     it('should fire an event when the close button is clicked', () => {
         const onClearMockFn = jest.fn();
         const component = mount(<SelectedValue onClearValue={onClearMockFn} />);
-        component.find('ButtonIcon').simulate('click');
+        component.find(ButtonIcon).simulate('click');
         expect(onClearMockFn).toHaveBeenCalledTimes(1);
     });
     it('should not render the close button when readOnly is passed', () => {
         const component = mount(<SelectedValue readOnly />);
-        expect(component.find('ButtonIcon').exists()).toBe(false);
+        expect(component.find(ButtonIcon).exists()).toBe(false);
     });
     it('should not render the close button when disabled is passed', () => {
         const component = mount(<SelectedValue disabled />);
-        expect(component.find('ButtonIcon').exists()).toBe(false);
+        expect(component.find(ButtonIcon).exists()).toBe(false);
     });
     it('should copy value label to clipboard when input gets focus', () => {
         copyFn.mockReset();

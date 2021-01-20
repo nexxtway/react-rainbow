@@ -9,6 +9,7 @@ import {
     DELETE_KEY,
     ENTER_KEY,
 } from '../../../libs/constants';
+import ButtonIcon from '../../ButtonIcon';
 
 jest.mock('./../helpers/getDefaultAmPm', () => jest.fn(() => 'AM'));
 
@@ -129,7 +130,7 @@ describe('<TimeSelect/>', () => {
     });
     it('should set hour value to "01" when hour input is focused and click up button', () => {
         const component = mount(<TimeSelect />);
-        const upButton = component.find('ButtonIcon').at(0);
+        const upButton = component.find(ButtonIcon).at(0);
         const hourInput = component.find('input').at(0);
         hourInput.simulate('focus');
         upButton.simulate('click');
@@ -142,7 +143,7 @@ describe('<TimeSelect/>', () => {
     });
     it('should set hour value to "02" when hour input is focused, click up button and then type "2"', () => {
         const component = mount(<TimeSelect />);
-        const upButton = component.find('ButtonIcon').at(0);
+        const upButton = component.find(ButtonIcon).at(0);
         const hourInput = component.find('input').at(0);
         hourInput.simulate('focus');
         upButton.simulate('click');
@@ -156,7 +157,7 @@ describe('<TimeSelect/>', () => {
     });
     it('should set hour value to "12" when hour input is focused and click down button', () => {
         const component = mount(<TimeSelect />);
-        const downButton = component.find('ButtonIcon').at(1);
+        const downButton = component.find(ButtonIcon).at(1);
         const hourInput = component.find('input').at(0);
         hourInput.simulate('focus');
         downButton.simulate('click');
@@ -169,7 +170,7 @@ describe('<TimeSelect/>', () => {
     });
     it('should set hour value to "02" when hour input is focused, click down button and then type "2"', () => {
         const component = mount(<TimeSelect />);
-        const downButton = component.find('ButtonIcon').at(1);
+        const downButton = component.find(ButtonIcon).at(1);
         const hourInput = component.find('input').at(0);
         hourInput.simulate('focus');
         downButton.simulate('click');
@@ -314,7 +315,7 @@ describe('<TimeSelect/>', () => {
     });
     it('should set minutes value to "00" when minutes input is focused and click up button', () => {
         const component = mount(<TimeSelect />);
-        const upButton = component.find('ButtonIcon').at(0);
+        const upButton = component.find(ButtonIcon).at(0);
         const minutesInput = component.find('input').at(1);
         minutesInput.simulate('focus');
         upButton.simulate('click');
@@ -327,7 +328,7 @@ describe('<TimeSelect/>', () => {
     });
     it('should set minutes value to "02" when minutes input is focused and click up button and then type "2"', () => {
         const component = mount(<TimeSelect />);
-        const upButton = component.find('ButtonIcon').at(0);
+        const upButton = component.find(ButtonIcon).at(0);
         const minutesInput = component.find('input').at(1);
         minutesInput.simulate('focus');
         upButton.simulate('click');
@@ -341,7 +342,7 @@ describe('<TimeSelect/>', () => {
     });
     it('should set minutes value to "59" when minutes input is focused and click down button', () => {
         const component = mount(<TimeSelect />);
-        const downButton = component.find('ButtonIcon').at(1);
+        const downButton = component.find(ButtonIcon).at(1);
         const minutesInput = component.find('input').at(1);
         minutesInput.simulate('focus');
         downButton.simulate('click');
@@ -354,7 +355,7 @@ describe('<TimeSelect/>', () => {
     });
     it('should set minutes value to "02" when minutes input is focused and click down button and then type "2"', () => {
         const component = mount(<TimeSelect />);
-        const downButton = component.find('ButtonIcon').at(1);
+        const downButton = component.find(ButtonIcon).at(1);
         const minutesInput = component.find('input').at(1);
         minutesInput.simulate('focus');
         downButton.simulate('click');
