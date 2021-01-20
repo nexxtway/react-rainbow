@@ -150,7 +150,7 @@ module.exports = {
     webpackConfig: {
         resolve: {
             alias: {
-                'react-rainbow-components': path.resolve(__dirname, './src/components'),
+                'react-rainbow-components': path.resolve(__dirname, './src'),
             },
         },
         module: {
