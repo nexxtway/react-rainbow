@@ -15,6 +15,4 @@ const StyledContentContainer = styled.div`
         `}
 `;
 
-StyledContentContainer.displayName = 'RadioGroupStyledContentContainer';
-
 export default StyledContentContainer;
