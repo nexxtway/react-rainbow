@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
-import { ButtonMenu } from '../../../src/components/index';
+import ButtonMenu from '../../../src/components/ButtonMenu';
 import { COLOR_BRAND } from '../../../src/styles/colors';
 import attachThemeAttrs from '../../../src/styles/helpers/attachThemeAttrs';
 import CheckmarkIcon from '../../exampleComponents/Icons/checkmark';
