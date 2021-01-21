@@ -12,7 +12,7 @@ export const StyledHeading = styled.header`
     height: 68px;
     background-color: #fff;
     width: 100vw;
-    z-index: 3000;
+    z-index: 100;
     border-bottom: 1px solid #f4f6f9;
 `;
 

@@ -1612,11 +1612,6 @@
     "@rainbow-modules/app" "^0.23.0"
     styled-components "^4.3.2"
 
-"@rainbow-modules/icons@^0.10.1-canary.4":
-  version "0.10.1-canary.4"
-  resolved "https://registry.yarnpkg.com/@rainbow-modules/icons/-/icons-0.10.1-canary.4.tgz#9c1149d9222dfd881f4c5b1561bb86489f18679c"
-  integrity sha512-wkxfDuCo5SNGpmcpLvA4V3hUFriwjUhTjyRmUmS+sbRqcQRdeC9DGUO9eGYJ+igpg2DSyGsv3g74BANUUVlKag==
-
 "@rainbow-modules/icons@^0.23.0":
   version "0.23.0"
   resolved "https://registry.yarnpkg.com/@rainbow-modules/icons/-/icons-0.23.0.tgz#2d46666a7ff2fc6ec9c74a07814301b967129b15"

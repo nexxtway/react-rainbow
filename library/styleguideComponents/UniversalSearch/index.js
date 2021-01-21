@@ -1,47 +1,57 @@
 import React from 'react';
 import styled from 'styled-components';
-import algoliasearch from 'algoliasearch/lite';
 import { GlobalSearch, SearchEntity } from '@rainbow-modules/search';
+import { Component, Function } from '@rainbow-modules/icons';
+import universalSearchAlgolia from './universalSearchAlgolia';
+import YouTubeIcon from '../RibbonRenderer/youtubeIcon';
+import { StyledIcon } from './styled';
+import {
+    searchIndexComponents,
+    searchIndexExamples,
+    searchIndexYoutube,
+    searchIndexMediums,
+} from './algoliaIndexes';
 
 const StyledGlobalSearch = styled(GlobalSearch)`
     width: 400px;
-    margin: 64px auto;
+    margin: 64px 20px 64px auto;
+    z-index: 1000;
 `;
 
-const searchClient = algoliasearch(
-    process.env.REACT_APP_ALGOLIA_APP_ID,
-    process.env.REACT_APP_ALGOLIA_SEARCH_KEY,
-);
-
-const indexName = process.env.REACT_APP_ALGOLIA_SEARCH_INDEX || '';
-const searchIndex = searchClient.initIndex(indexName);
-
-const universalSearchAlgolia = async ({ query, page = 1 }) => {
-    const result = await searchIndex.search(query, {
-        page: page - 1,
-    });
-    const { hits, page: searchPage, nbHits, nbPages, query: searchQuery } = result;
-    return {
-        hits,
-        page: searchPage + 1,
-        totalHits: nbHits,
-        totalPages: nbPages,
-        query: searchQuery,
-    };
+const navigateTo = item => {
+    window.location.assign(item.url);
 };
-// TODO: universal serach es creado aqui
+
 const UniversalSearch = () => {
     return (
         <StyledGlobalSearch
-            variant="shaded"
             placeholder="Search"
             // eslint-disable-next-line no-alert
-            onSelect={item => alert(JSON.stringify(item))}
+            onSelect={navigateTo}
         >
             <SearchEntity
-                name="Books"
-                onAutocomplete={universalSearchAlgolia}
-                onSearch={universalSearchAlgolia}
+                name="Components"
+                onAutocomplete={universalSearchAlgolia(searchIndexComponents)}
+                onSearch={universalSearchAlgolia(searchIndexComponents)}
+                icon={<Component />}
+            />
+            <SearchEntity
+                name="Examples"
+                onAutocomplete={universalSearchAlgolia(searchIndexExamples)}
+                onSearch={universalSearchAlgolia(searchIndexExamples)}
+                icon={<Function />}
+            />
+            <SearchEntity
+                name="Medium"
+                onAutocomplete={universalSearchAlgolia(searchIndexMediums)}
+                onSearch={universalSearchAlgolia(searchIndexMediums)}
+                icon={<StyledIcon />}
+            />
+            <SearchEntity
+                name="Youtube"
+                onAutocomplete={universalSearchAlgolia(searchIndexYoutube)}
+                onSearch={universalSearchAlgolia(searchIndexYoutube)}
+                icon={<StyledIcon as={YouTubeIcon} />}
             />
         </StyledGlobalSearch>
     );
