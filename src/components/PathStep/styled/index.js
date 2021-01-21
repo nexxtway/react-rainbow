@@ -10,6 +10,9 @@ const getBackgroundgColor = props => {
 
 export const StyledStepItem = attachThemeAttrs(styled.button)`
     display: inline-block;
+    flex: 1;
+    min-width: 12px;
+    max-width: max-content;
     align-items: center;
     position: relative;
     margin-left: -2.5rem;
@@ -86,6 +89,7 @@ export const StyledStepItem = attachThemeAttrs(styled.button)`
 
     & > svg {
         position: absolute;
+        top: 0.6rem;
         right: 0.5rem;
         width: 1.25rem;
         height: 1.25rem;
