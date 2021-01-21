@@ -50,7 +50,7 @@
         "react": ">=16.8.0",
         "react-dom": ">=16.8.0"
     },
-    "main": "components/index.js",
+    "main": "index.js",
     "files": [
         "components",
         "styles",

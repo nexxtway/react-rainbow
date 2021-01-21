@@ -9,6 +9,7 @@ import {
     clearAllBodyScrollLocks,
 } from '../../../libs/scrollController';
 import Drawer from '..';
+import ButtonIcon from '../../ButtonIcon';
 import StyledFooter from '../styled/footer';
 import StyledContent from '../styled/content';
 import StyledCloseButton from '../styled/closeButton';
@@ -106,7 +107,7 @@ describe('<Drawer />', () => {
                 <p />
             </Drawer>,
         );
-        component.find('ButtonIcon').simulate('click');
+        component.find(ButtonIcon).simulate('click');
         expect(closeMockFn).toHaveBeenCalledTimes(1);
     });
     it('should fire an event when the drawer is opened', async done => {

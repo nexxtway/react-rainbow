@@ -6,6 +6,7 @@ import {
     enableBodyScroll,
     clearAllBodyScrollLocks,
 } from '../../../libs/scrollController';
+import ButtonIcon from '../../ButtonIcon';
 import Modal from '..';
 import StyledContent from '../styled/content';
 import StyledCloseButton from '../styled/closeButton';
@@ -96,7 +97,7 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-        component.find('ButtonIcon').simulate('click');
+        component.find(ButtonIcon).simulate('click');
         expect(closeMockFn).toHaveBeenCalledTimes(1);
     });
     it('should fire an event when the modal backdrop is clicked and the modal is open', () => {

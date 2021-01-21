@@ -56,7 +56,7 @@ describe('<PrimitiveMenu/>', () => {
                 <span />
             </PrimitiveMenu>,
         );
-        component.find('ButtonIcon').simulate('click');
+        component.find(ButtonIcon).simulate('click');
         expect(component.find('MenuContent').prop('isLoading')).toBe(true);
     });
     it('should render the children passed', () => {
@@ -66,7 +66,7 @@ describe('<PrimitiveMenu/>', () => {
             </PrimitiveMenu>,
         );
         expect(component.find('span[data-id="menu-children"]').exists()).toBe(false);
-        component.find('ButtonIcon').simulate('click');
+        component.find(ButtonIcon).simulate('click');
         expect(component.find('span[data-id="menu-children"]').exists()).toBe(true);
         expect(component.find('span[data-id="menu-children"]').text()).toBe('menu content');
     });
@@ -76,7 +76,7 @@ describe('<PrimitiveMenu/>', () => {
                 <span />
             </PrimitiveMenu>,
         );
-        component.find('ButtonIcon').simulate('click');
+        component.find(ButtonIcon).simulate('click');
         expect(component.find('ul').prop('role')).toBe('menu');
     });
     it('should set the title passed as the aria-label in the ul element', () => {
@@ -89,7 +89,7 @@ describe('<PrimitiveMenu/>', () => {
                 <span />
             </PrimitiveMenu>,
         );
-        component.find('ButtonIcon').simulate('click');
+        component.find(ButtonIcon).simulate('click');
         expect(component.find('ul').prop('aria-label')).toBe('button title');
     });
     it('should set the assistiveText passed as the aria-label in the ul element when the title is not passed', () => {
@@ -98,7 +98,7 @@ describe('<PrimitiveMenu/>', () => {
                 <span />
             </PrimitiveMenu>,
         );
-        component.find('ButtonIcon').simulate('click');
+        component.find(ButtonIcon).simulate('click');
         expect(component.find('ul').prop('aria-label')).toBe('assistive description');
     });
 });

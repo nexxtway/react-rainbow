@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import ProgressIndicator from '../index';
 import ProgressStep from '../../ProgressStep';
+import ButtonIcon from '../../ButtonIcon';
 import StyledActiveIcon from '../../ProgressStep/styled/activeIcon';
 import StyledInactiveIcon from '../../ProgressStep/styled/inactiveIcon';
 
@@ -24,10 +25,10 @@ describe('<ProgressIndicator/>', () => {
         );
         jest.runOnlyPendingTimers();
         component.setState({ key: Date.now() });
-        const item1 = component.find('ProgressStep[name="step-1"]').find('ButtonIcon');
-        const item2 = component.find('ProgressStep[name="step-2"]').find('ButtonIcon');
-        const item3 = component.find('ProgressStep[name="step-3"]').find('ButtonIcon');
-        const item4 = component.find('ProgressStep[name="step-4"]').find('ButtonIcon');
+        const item1 = component.find('ProgressStep[name="step-1"]').find(ButtonIcon);
+        const item2 = component.find('ProgressStep[name="step-2"]').find(ButtonIcon);
+        const item3 = component.find('ProgressStep[name="step-3"]').find(ButtonIcon);
+        const item4 = component.find('ProgressStep[name="step-4"]').find(ButtonIcon);
         expect(item1.find('DoneIcon').exists()).toBe(true);
         expect(item2.find(StyledActiveIcon).exists()).toBe(true);
         expect(item3.find('ErrorIcon').exists()).toBe(true);
@@ -45,10 +46,10 @@ describe('<ProgressIndicator/>', () => {
         );
         jest.runOnlyPendingTimers();
         component.setState({ key: Date.now() });
-        const item1 = component.find('ProgressStep[name="step-1"]').find('ButtonIcon');
-        const item2 = component.find('ProgressStep[name="step-2"]').find('ButtonIcon');
-        const item3 = component.find('ProgressStep[name="step-3"]').find('ButtonIcon');
-        const item4 = component.find('ProgressStep[name="step-4"]').find('ButtonIcon');
+        const item1 = component.find('ProgressStep[name="step-1"]').find(ButtonIcon);
+        const item2 = component.find('ProgressStep[name="step-2"]').find(ButtonIcon);
+        const item3 = component.find('ProgressStep[name="step-3"]').find(ButtonIcon);
+        const item4 = component.find('ProgressStep[name="step-4"]').find(ButtonIcon);
         expect(item1.prop('assistiveText')).toBe('Step 1 - Completed');
         expect(item2.prop('assistiveText')).toBe('Step 2 - Active');
         expect(item3.prop('assistiveText')).toBe('Step 3 - Error');
@@ -66,7 +67,7 @@ describe('<ProgressIndicator/>', () => {
         );
         component
             .find('ProgressStep[name="step-2"]')
-            .find('ButtonIcon')
+            .find(ButtonIcon)
             .simulate('click');
         expect(onClickMockFn).toHaveBeenCalledWith(expect.any(Object), 'step-2');
     });
