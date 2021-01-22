@@ -70,7 +70,8 @@ export default class ProjectSelector extends Component {
         const { childFocusedIndex } = this.state;
         if (this.references.length < 2) {
             return null;
-        } else if (childFocusedIndex === 0) {
+        }
+        if (childFocusedIndex === 0) {
             return this.focusChild(this.references.length - 1);
         }
         return this.focusChild(childFocusedIndex - 1);
@@ -80,7 +81,8 @@ export default class ProjectSelector extends Component {
         const { childFocusedIndex } = this.state;
         if (this.references.length < 2) {
             return null;
-        } else if (childFocusedIndex === this.references.length - 1) {
+        }
+        if (childFocusedIndex === this.references.length - 1) {
             return this.focusChild(0);
         }
         return this.focusChild(childFocusedIndex + 1);

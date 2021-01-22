@@ -13,6 +13,9 @@ const universalSearchAlgolia = indexName => {
                 // eslint-disable-next-line dot-notation
                 description: getAlgoliaHighlightParts(item['_highlightResult'].description),
                 url: item.url,
+                image: item.image,
+                date: item.pubDate,
+                author: item.author,
             })),
             page: searchPage + 1,
             totalHits: nbHits,

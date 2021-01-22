@@ -1,22 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
-import { GlobalSearch, SearchEntity } from '@rainbow-modules/search';
+import { SearchEntity } from '@rainbow-modules/search';
 import { Component, Function } from '@rainbow-modules/icons';
 import universalSearchAlgolia from './universalSearchAlgolia';
 import YouTubeIcon from '../RibbonRenderer/youtubeIcon';
-import { StyledIcon } from './styled';
+import { StyledGlobalSearch, StyledIcon } from './styled';
+import ItemSearchResult from './ItemSearchResult';
 import {
     searchIndexComponents,
     searchIndexExamples,
     searchIndexYoutube,
     searchIndexMediums,
 } from './algoliaIndexes';
-
-const StyledGlobalSearch = styled(GlobalSearch)`
-    width: 400px;
-    margin: 64px 20px 64px auto;
-    z-index: 1000;
-`;
 
 const navigateTo = item => {
     window.location.assign(item.url);
@@ -46,12 +40,14 @@ const UniversalSearch = () => {
                 onAutocomplete={universalSearchAlgolia(searchIndexMediums)}
                 onSearch={universalSearchAlgolia(searchIndexMediums)}
                 icon={<StyledIcon />}
+                component={ItemSearchResult}
             />
             <SearchEntity
                 name="Youtube"
                 onAutocomplete={universalSearchAlgolia(searchIndexYoutube)}
                 onSearch={universalSearchAlgolia(searchIndexYoutube)}
                 icon={<StyledIcon as={YouTubeIcon} />}
+                component={ItemSearchResult}
             />
         </StyledGlobalSearch>
     );
