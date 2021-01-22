@@ -55,7 +55,8 @@
     "files": [
         "components",
         "styles",
-        "libs"
+        "libs",
+        "index.d.ts"
     ],
     "repository": {
         "type": "git",
