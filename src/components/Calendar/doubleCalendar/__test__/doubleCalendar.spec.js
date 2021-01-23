@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import ButtonIcon from '../../../ButtonIcon';
 import DoubleCalendar from '..';
 
 describe('DoubleCalendar', () => {
@@ -29,7 +30,7 @@ describe('DoubleCalendar', () => {
     it('should render right months when click prev month button', () => {
         const value = new Date('04/24/2019');
         const component = mount(<DoubleCalendar value={value} />);
-        const prevMonthButton = component.find('ButtonIcon').at(0);
+        const prevMonthButton = component.find(ButtonIcon).at(0);
         prevMonthButton.simulate('click');
         expect(
             component
@@ -47,7 +48,7 @@ describe('DoubleCalendar', () => {
     it('should render right months when click next month button', () => {
         const value = new Date('04/24/2019');
         const component = mount(<DoubleCalendar value={value} />);
-        const prevMonthButton = component.find('ButtonIcon').at(1);
+        const prevMonthButton = component.find(ButtonIcon).at(1);
         prevMonthButton.simulate('click');
         expect(
             component
@@ -66,14 +67,14 @@ describe('DoubleCalendar', () => {
         const value = new Date('04/24/2019');
         const minDate = new Date('04/01/2019');
         const component = mount(<DoubleCalendar value={value} minDate={minDate} />);
-        const prevMonthButton = component.find('ButtonIcon').at(0);
+        const prevMonthButton = component.find(ButtonIcon).at(0);
         expect(prevMonthButton.prop('disabled')).toBe(true);
     });
     it('should set to disable the nextMonthButton when maxDate is less than next month date', () => {
         const value = new Date('04/24/2019');
         const maxDate = new Date('04/30/2019');
         const component = mount(<DoubleCalendar value={value} maxDate={maxDate} />);
-        const prevMonthButton = component.find('ButtonIcon').at(1);
+        const prevMonthButton = component.find(ButtonIcon).at(1);
         expect(prevMonthButton.prop('disabled')).toBe(true);
     });
     it('should render the right month when value is updated', () => {

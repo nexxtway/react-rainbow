@@ -1071,6 +1071,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.5.5":
+  version "7.12.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
+  integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.10.4", "@babel/template@^7.4.0":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.10.4.tgz#3251996c4200ebc71d1a8fc405fba940f36ba278"
@@ -1575,15 +1582,54 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
+"@rainbow-modules/app@^0.23.0":
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/@rainbow-modules/app/-/app-0.23.0.tgz#f1c7f88ee72af04ba5aaae251ee868fd3ed7d761"
+  integrity sha512-AHp59efey4MlKhz1sm6/bvD3eQJOgeIy5fWd2W23/q5f+vtfMTjlC+KlpTp71d4VF0vvALVFVdJqJgSRyk+3EA==
+  dependencies:
+    "@rainbow-modules/firebase-hooks" "^0.23.0"
+    "@rainbow-modules/icons" "^0.23.0"
+    redux-thunk "^2.3.0"
+    styled-components "^4.3.2"
+
+"@rainbow-modules/firebase-hooks@^0.23.0":
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/@rainbow-modules/firebase-hooks/-/firebase-hooks-0.23.0.tgz#383a5b35922eb0df125d25d03e967caf303e70ba"
+  integrity sha512-s1dtNlkIs/yn+eSC8H4WKbvqjwpjCTQ+eVYB67Jp85QQvFSuR5UHqUyxPqv9cYioPhrmQxkFAGFSq00243v7wg==
+  dependencies:
+    react-query "^3.5.5"
+
 "@rainbow-modules/hooks@^0.12.0":
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/@rainbow-modules/hooks/-/hooks-0.12.0.tgz#d1293691aff4d94202b694d5004254fb25900824"
   integrity sha512-ndpr7Hazm+np5wYwPPGKsxFMKwFyfxiYQTy/cMo/nQyi7orcYR8myU2/qsHcNJXLPA4UQl6s1la3rQnVIQ4NFA==
 
+"@rainbow-modules/hooks@^0.23.1":
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/@rainbow-modules/hooks/-/hooks-0.23.1.tgz#bb5229f207793a821ab6de49c25f22e60b763ad1"
+  integrity sha512-Cn+LpPzrY0FUYvfoVAM+PV3J2q9w/bX/RWZjWH+z9oCcILPNxd4w6BzdGrGj4ErGG/03i7F5OLRETFuhTCtV4g==
+  dependencies:
+    "@rainbow-modules/app" "^0.23.0"
+    styled-components "^4.3.2"
+
 "@rainbow-modules/icons@^0.10.1-canary.4":
   version "0.10.1-canary.4"
   resolved "https://registry.yarnpkg.com/@rainbow-modules/icons/-/icons-0.10.1-canary.4.tgz#9c1149d9222dfd881f4c5b1561bb86489f18679c"
   integrity sha512-wkxfDuCo5SNGpmcpLvA4V3hUFriwjUhTjyRmUmS+sbRqcQRdeC9DGUO9eGYJ+igpg2DSyGsv3g74BANUUVlKag==
+
+"@rainbow-modules/icons@^0.23.0":
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/@rainbow-modules/icons/-/icons-0.23.0.tgz#2d46666a7ff2fc6ec9c74a07814301b967129b15"
+  integrity sha512-yH1PonNAxEl7bbkfLK4znNpx2Xvnj06Os4ypWyknk7+xtG5wePxzCPllqnYH4dgU1HK8sbJ1tbqx2FJU/p7D0Q==
+
+"@rainbow-modules/search@^0.23.1":
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/@rainbow-modules/search/-/search-0.23.1.tgz#cb45b9a15f2e9ae34f9130e997773edee5a82430"
+  integrity sha512-hDGxNCu4IWMLt4OzqwQHIUYbR21xgQ/1Vya3pWaoZ8KxFpCSeoJGNQUqm7TxGwgwSAthfAGJg57L6/Us2lvDCA==
+  dependencies:
+    "@rainbow-modules/hooks" "^0.23.1"
+    "@rainbow-modules/icons" "^0.23.0"
+    styled-components "^4.3.2"
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
@@ -10126,6 +10172,14 @@ marky@^1.2.0:
   resolved "https://registry.yarnpkg.com/marky/-/marky-1.2.1.tgz#a3fcf82ffd357756b8b8affec9fdbf3a30dc1b02"
   integrity sha512-md9k+Gxa3qLH6sUKpeC2CNkJK/Ld+bEz5X96nYwloqphQE0CKCVEKco/6jxEZixinqNdz5RFi/KaCyfbMDMAXQ==
 
+match-sorter@^6.0.2:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/match-sorter/-/match-sorter-6.1.0.tgz#7fec6808d94311a35fef7fd842a11634f2361bd7"
+  integrity sha512-sKPMf4kbF7Dm5Crx0bbfLpokK68PUJ/0STUIOPa1ZmTZEA3lCaPK3gapQR573oLmvdkTfGojzySkIwuq6Z6xRQ==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    remove-accents "0.4.2"
+
 math-expression-evaluator@^1.2.14:
   version "1.2.22"
   resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.22.tgz#c14dcb3d8b4d150e5dcea9c68c8dad80309b0d5e"
@@ -12690,6 +12744,14 @@ react-prismic-cms@^0.3.1:
     react-json-view "^1.19.1"
     react-rainbow-components "^0.5.0"
 
+react-query@^3.5.5:
+  version "3.5.16"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.5.16.tgz#172771a8cdb83b85c353ac32f1e30bfca27893d7"
+  integrity sha512-zOJimWPC0o2h8fta0uMc+pmFIBgfVkfCvEAeUbrlsbA6m42CFPgyRBJt6kiYjsZ/WRuJl+WIaAh/P27oUXETNw==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    match-sorter "^6.0.2"
+
 react-rainbow-components@^0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/react-rainbow-components/-/react-rainbow-components-0.5.1.tgz#3df489baf3d7ef83eb12d91262e5b12483bcadcd"
@@ -12702,6 +12764,27 @@ react-rainbow-components@^0.5.0:
     react-async-script-loader "^0.3.0"
     react-dom "^16.4.2"
     react-ga "^2.5.3"
+
+react-rainbow-components@^1.24.0:
+  version "1.24.0"
+  resolved "https://registry.yarnpkg.com/react-rainbow-components/-/react-rainbow-components-1.24.0.tgz#ecb8495140ec7d5e399a636dac9dd1f7629dc618"
+  integrity sha512-3KiJro6EG5Cv6YlOKfbM3mXBF/WeFJht08nQK+meCm3BFLgdkawsXnq4suLzAuI+fFXY+MQ668t01af5dhzB1w==
+  dependencies:
+    "@rainbow-modules/hooks" "^0.12.0"
+    autosize "^4.0.2"
+    chart.js "2.7.3"
+    clipboard-copy "^2.0.0"
+    prop-types "^15.6.2"
+    react-async-script-loader "^0.3.0"
+    react-typeform-embed "^0.2.1"
+    rehype-highlight "^4.0.0"
+    rehype-minify-whitespace "^4.0.4"
+    rehype-react "^6.1.0"
+    remark-parse "^8.0.2"
+    remark-rehype "^7.0.0"
+    styled-components "^4.3.2"
+    unified "^9.0.0"
+    xlsx "^0.14.4"
 
 react-redux@^5.1.0:
   version "5.1.2"
@@ -13032,6 +13115,11 @@ redux-form@^7.4.2:
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
+redux-thunk@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
+  integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
+
 redux@^4.0.1:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
@@ -13281,6 +13369,11 @@ remark@^10.0.1:
     remark-parse "^6.0.0"
     remark-stringify "^6.0.0"
     unified "^7.0.0"
+
+remove-accents@0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/remove-accents/-/remove-accents-0.4.2.tgz#0a43d3aaae1e80db919e07ae254b285d9e1c7bb5"
+  integrity sha1-CkPTqq4egNuRngeuJUsoXZ4ce7U=
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"

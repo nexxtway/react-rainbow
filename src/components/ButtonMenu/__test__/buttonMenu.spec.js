@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import ButtonMenu from '..';
 import ButtonTrigger from '../buttonTrigger';
+import ButtonIcon from '../../ButtonIcon';
 
 describe('<ButtonMenu/>', () => {
     it('should pass the icon passed to the ButtonIcon', () => {
@@ -10,7 +11,7 @@ describe('<ButtonMenu/>', () => {
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').prop('icon')).toEqual(<svg />);
+        expect(component.find(ButtonIcon).prop('icon')).toEqual(<svg />);
     });
     it('should set the title passed in the ButtonIcon', () => {
         const component = mount(
@@ -18,7 +19,7 @@ describe('<ButtonMenu/>', () => {
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').prop('title')).toBe('my title');
+        expect(component.find(ButtonIcon).prop('title')).toBe('my title');
     });
     it('should set the buttonVariant passed as variant in the ButtonIcon', () => {
         const component = mount(
@@ -26,7 +27,7 @@ describe('<ButtonMenu/>', () => {
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').prop('variant')).toBe('brand');
+        expect(component.find(ButtonIcon).prop('variant')).toBe('brand');
     });
     it('should set the buttonSize passed in the ButtonIcon', () => {
         const component = mount(
@@ -34,7 +35,7 @@ describe('<ButtonMenu/>', () => {
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').prop('size')).toBe('small');
+        expect(component.find(ButtonIcon).prop('size')).toBe('small');
     });
     it('should set the disabled passed in the ButtonIcon', () => {
         const component = mount(
@@ -42,7 +43,7 @@ describe('<ButtonMenu/>', () => {
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').prop('disabled')).toBe(true);
+        expect(component.find(ButtonIcon).prop('disabled')).toBe(true);
     });
     it('should set the buttonShaded passed in the ButtonIcon', () => {
         const component = mount(
@@ -50,7 +51,7 @@ describe('<ButtonMenu/>', () => {
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').prop('shaded')).toBe(true);
+        expect(component.find(ButtonIcon).prop('shaded')).toBe(true);
     });
     it('should set the tabIndex passed in the ButtonIcon', () => {
         const component = mount(
@@ -58,7 +59,7 @@ describe('<ButtonMenu/>', () => {
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').prop('tabIndex')).toBe(0);
+        expect(component.find(ButtonIcon).prop('tabIndex')).toBe(0);
     });
     it('should render a ButtonIcon when no label is passed', () => {
         const component = mount(
@@ -66,7 +67,7 @@ describe('<ButtonMenu/>', () => {
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').exists()).toBe(true);
+        expect(component.find(ButtonIcon).exists()).toBe(true);
     });
     it('should render a Button when label is passed', () => {
         const component = mount(

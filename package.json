@@ -1,6 +1,6 @@
 {
     "name": "react-rainbow-components",
-    "version": "1.24.0",
+    "version": "1.24.1",
     "description": "React Rainbow Components",
     "keywords": [
         "react",
@@ -15,9 +15,8 @@
         "start": "./node_modules/.bin/styleguidist server",
         "build:library": "./node_modules/.bin/styleguidist build",
         "build:components": "npx babel ./src --out-dir ./",
-        "build:fonts": "npx babel src/components/Application/fonts --out-dir components/Application/fonts --copy-files",
         "build:copy-ts-files": "node ./scripts/copy-files.js",
-        "build": "npm-run-all --parallel build:components build:fonts --serial build:copy-ts-files",
+        "build": "npm-run-all --parallel build:components --serial build:copy-ts-files",
         "prepublishOnly": "yarn clean && yarn build",
         "clean": "rm -Rf components && rm -Rf libs && rm -Rf styles",
         "lint:js": "eslint src",
@@ -51,11 +50,13 @@
         "react": ">=16.8.0",
         "react-dom": ">=16.8.0"
     },
-    "main": "components/index.js",
+    "main": "index.js",
+    "types": "index.d.ts",
     "files": [
         "components",
         "styles",
-        "libs"
+        "libs",
+        "index.d.ts"
     ],
     "repository": {
         "type": "git",
@@ -111,6 +112,7 @@
         "@fortawesome/react-fontawesome": "^0.1.2",
         "@mdx-js/mdx": "^1.6.18",
         "@rainbow-modules/icons": "^0.10.1-canary.4",
+        "@rainbow-modules/search": "^0.23.1",
         "@stripe/stripe-js": "^1.3.0",
         "@testing-library/react-hooks": "^3.2.1",
         "@wdio/allure-reporter": "^6.5.2",
@@ -173,6 +175,7 @@
         "react-instantsearch-dom": "^6.7.0",
         "react-is": "16.8.6",
         "react-prismic-cms": "^0.3.1",
+        "react-rainbow-components": "^1.24.0",
         "react-redux": "^5.1.0",
         "react-styleguidist": "^9.2.0",
         "react-test-renderer": "^16.8.6",

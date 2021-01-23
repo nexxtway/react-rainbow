@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import ButtonIcon from '../../ButtonIcon';
 import Lookup from '..';
 import StyledTextError from '../../Input/styled/errorText';
 import StyledInput from '../styled/input';
@@ -143,7 +144,7 @@ describe('<Lookup />', () => {
         );
         component
             .find('SelectedValue')
-            .find('ButtonIcon')
+            .find(ButtonIcon)
             .simulate('click');
         expect(onChangeMockFn).toHaveBeenCalledWith(null);
         expect(onSearchMockFn).toHaveBeenCalledWith('');
@@ -160,7 +161,7 @@ describe('<Lookup />', () => {
         expect(component.find('input').prop('value')).toBe('london');
         component
             .find('RightElement')
-            .find('ButtonIcon')
+            .find(ButtonIcon)
             .simulate('click');
         expect(component.find('input').prop('value')).toBe('');
         expect(onSearchMockFn.mock.calls[0][0]).toBe('london');

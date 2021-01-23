@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-script-url */
 import React, { Component } from 'react';
 import classnames from 'classnames';
@@ -51,14 +52,6 @@ export default class ProjectSelector extends Component {
         return classnames('react-rainbow-selector', { 'react-rainbow-selector--open': isOpen });
     }
 
-    getTabIndex() {
-        const { isOpen } = this.state;
-        if (isOpen) {
-            return -1;
-        }
-        return 0;
-    }
-
     handleKeyPressed(event) {
         if (this.keyHandlerMap[event.keyCode]) {
             return this.keyHandlerMap[event.keyCode]();
@@ -70,7 +63,8 @@ export default class ProjectSelector extends Component {
         const { childFocusedIndex } = this.state;
         if (this.references.length < 2) {
             return null;
-        } else if (childFocusedIndex === 0) {
+        }
+        if (childFocusedIndex === 0) {
             return this.focusChild(this.references.length - 1);
         }
         return this.focusChild(childFocusedIndex - 1);
@@ -80,7 +74,8 @@ export default class ProjectSelector extends Component {
         const { childFocusedIndex } = this.state;
         if (this.references.length < 2) {
             return null;
-        } else if (childFocusedIndex === this.references.length - 1) {
+        }
+        if (childFocusedIndex === this.references.length - 1) {
             return this.focusChild(0);
         }
         return this.focusChild(childFocusedIndex + 1);
@@ -136,13 +131,9 @@ export default class ProjectSelector extends Component {
                 <li
                     className="react-rainbow-selector_selected-item-section"
                     onClick={this.toggleMenu}
-                    role="menuitem"
+                    role="presentation"
                 >
-                    <a
-                        href="javascript:void(0);"
-                        className="react-rainbow-selector_item"
-                        tabIndex={this.getTabIndex()}
-                    >
+                    <span className="react-rainbow-selector_item">
                         <img
                             src={rainbowLogo}
                             alt="react-rainbow"
@@ -156,7 +147,7 @@ export default class ProjectSelector extends Component {
                                 version {componentLibraryVersion}
                             </span>
                         </div>
-                    </a>
+                    </span>
                     <RightArrow isExpanded={isOpen} />
                 </li>
                 <RenderIf isTrue={isOpen}>

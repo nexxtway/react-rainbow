@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Tree from '../index';
+import ButtonIcon from '../../ButtonIcon';
 
 const data = [
     { label: 'Tree Item', isChecked: false },
@@ -43,7 +44,7 @@ describe('<Tree/>', () => {
         const onNodeExpandMock = jest.fn();
         const component = mount(<Tree data={data} onNodeExpand={onNodeExpandMock} />);
         component
-            .find('ButtonIcon')
+            .find(ButtonIcon)
             .at(1)
             .simulate('click');
         expect(onNodeExpandMock).toHaveBeenCalledTimes(1);
@@ -123,9 +124,9 @@ describe('<Tree/>', () => {
     });
     it('should set tabIndex to -1 in expand collapse button', () => {
         const component = mount(<Tree data={data} />);
-        const firstExpandButton = component.find('ButtonIcon').at(0);
+        const firstExpandButton = component.find(ButtonIcon).at(0);
         expect(firstExpandButton.prop('tabIndex')).toBe(-1);
-        const fourthExpandButton = component.find('ButtonIcon').at(2);
+        const fourthExpandButton = component.find(ButtonIcon).at(2);
         expect(fourthExpandButton.prop('tabIndex')).toBe(-1);
     });
     it('should pass right aria-level number', () => {

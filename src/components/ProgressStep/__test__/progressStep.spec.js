@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import ProgressStep from '..';
+import ButtonIcon from '../../ButtonIcon';
 import InternalTooltip from '../../InternalTooltip';
 import ProgressIndicator from '../../ProgressIndicator';
 import StyledStepNumberButton from '../styled/stepNumberButton';
@@ -58,7 +59,7 @@ describe('<ProgressStep/>', () => {
         );
         jest.runOnlyPendingTimers();
         component.update();
-        const step1 = component.find('ProgressStep[name="step-1"]').find('ButtonIcon');
+        const step1 = component.find('ProgressStep[name="step-1"]').find(ButtonIcon);
         expect(step1.find('DoneIcon').exists()).toBe(true);
     });
 
@@ -72,7 +73,7 @@ describe('<ProgressStep/>', () => {
         );
         jest.runOnlyPendingTimers();
         component.update();
-        const step2 = component.find('ProgressStep[name="step-2"]').find('ButtonIcon');
+        const step2 = component.find('ProgressStep[name="step-2"]').find(ButtonIcon);
         expect(step2.find('ErrorIcon').exists()).toBe(true);
     });
 
