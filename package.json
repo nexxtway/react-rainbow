@@ -1,6 +1,6 @@
 {
     "name": "react-rainbow-components",
-    "version": "1.24.0",
+    "version": "1.24.1",
     "description": "React Rainbow Components",
     "keywords": [
         "react",
@@ -15,9 +15,8 @@
         "start": "./node_modules/.bin/styleguidist server",
         "build:library": "./node_modules/.bin/styleguidist build",
         "build:components": "npx babel ./src --out-dir ./",
-        "build:fonts": "npx babel src/components/Application/fonts --out-dir components/Application/fonts --copy-files",
         "build:copy-ts-files": "node ./scripts/copy-files.js",
-        "build": "npm-run-all --parallel build:components build:fonts --serial build:copy-ts-files",
+        "build": "npm-run-all --parallel build:components --serial build:copy-ts-files",
         "prepublishOnly": "yarn clean && yarn build",
         "clean": "rm -Rf components && rm -Rf libs && rm -Rf styles",
         "lint:js": "eslint src",
@@ -52,10 +51,12 @@
         "react-dom": ">=16.8.0"
     },
     "main": "index.js",
+    "types": "index.d.ts",
     "files": [
         "components",
         "styles",
-        "libs"
+        "libs",
+        "index.d.ts"
     ],
     "repository": {
         "type": "git",

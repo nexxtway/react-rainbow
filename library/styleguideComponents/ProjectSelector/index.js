@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-script-url */
 import React, { Component } from 'react';
 import classnames from 'classnames';
@@ -49,14 +50,6 @@ export default class ProjectSelector extends Component {
     getContainerClassNames() {
         const { isOpen } = this.state;
         return classnames('react-rainbow-selector', { 'react-rainbow-selector--open': isOpen });
-    }
-
-    getTabIndex() {
-        const { isOpen } = this.state;
-        if (isOpen) {
-            return -1;
-        }
-        return 0;
     }
 
     handleKeyPressed(event) {
@@ -138,13 +131,9 @@ export default class ProjectSelector extends Component {
                 <li
                     className="react-rainbow-selector_selected-item-section"
                     onClick={this.toggleMenu}
-                    role="menuitem"
+                    role="presentation"
                 >
-                    <a
-                        href="javascript:void(0);"
-                        className="react-rainbow-selector_item"
-                        tabIndex={this.getTabIndex()}
-                    >
+                    <span className="react-rainbow-selector_item">
                         <img
                             src={rainbowLogo}
                             alt="react-rainbow"
@@ -158,7 +147,7 @@ export default class ProjectSelector extends Component {
                                 version {componentLibraryVersion}
                             </span>
                         </div>
-                    </a>
+                    </span>
                     <RightArrow isExpanded={isOpen} />
                 </li>
                 <RenderIf isTrue={isOpen}>
