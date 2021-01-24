@@ -7,7 +7,7 @@
     width: 104px;
     height: calc(100vh - 68px);
     position: fixed;
-    z-index: 3000;
+    z-index: 1000;
     overflow-y: scroll;
     margin-top: 68px;
     padding-top: 12px;
