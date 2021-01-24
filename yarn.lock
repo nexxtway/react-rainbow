@@ -1617,6 +1617,11 @@
   resolved "https://registry.yarnpkg.com/@rainbow-modules/icons/-/icons-0.23.0.tgz#2d46666a7ff2fc6ec9c74a07814301b967129b15"
   integrity sha512-yH1PonNAxEl7bbkfLK4znNpx2Xvnj06Os4ypWyknk7+xtG5wePxzCPllqnYH4dgU1HK8sbJ1tbqx2FJU/p7D0Q==
 
+"@rainbow-modules/icons@^0.24.1-canary.2":
+  version "0.24.1-canary.2"
+  resolved "https://registry.yarnpkg.com/@rainbow-modules/icons/-/icons-0.24.1-canary.2.tgz#c64513b4349f34efd8810814514fb951af8d589c"
+  integrity sha512-knFMFiPdEn94tVqVaSDqU9oxvrXScpHM/6ghBT3U4qyumcp9sMx7Y6EaljS82xDyyB7ZURrxc58n+cMDKnt2dw==
+
 "@rainbow-modules/search@^0.23.1":
   version "0.23.1"
   resolved "https://registry.yarnpkg.com/@rainbow-modules/search/-/search-0.23.1.tgz#cb45b9a15f2e9ae34f9130e997773edee5a82430"

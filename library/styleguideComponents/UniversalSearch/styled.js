@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { GlobalSearch } from '@rainbow-modules/search';
-import MediumIcon from '../RibbonRenderer/mediumIcon';
+import { MediumIcon } from '@rainbow-modules/icons';
 
 export const StyledGlobalSearch = styled(GlobalSearch)`
     width: 400px;
@@ -12,8 +12,8 @@ export const StyledGlobalSearch = styled(GlobalSearch)`
 `;
 
 export const StyledIcon = styled(MediumIcon)`
-    width: 22px;
-    height: 22px;
+    width: 30px;
+    height: 30px;
 `;
 
 export const ResultItemContainer = styled.div`
@@ -39,17 +39,18 @@ export const IconContainer = styled.span`
     width: 44px;
     min-width: 44px;
     height: 44px;
-    background: ${props => props.theme.rainbow.palette.background.secondary};
     color: ${props => props.theme.rainbow.palette.border.divider};
     border-radius: 44px;
 `;
 
 export const OptionText = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     margin-left: 16px;
-    width: 100%;
+    margin-right: 20px;
+    width: calc(100%);
 `;
 
 export const Label = styled.span`
@@ -84,16 +85,29 @@ export const Information = styled.p`
 export const Description = styled.span`
     font-size: 14px;
     color: ${props => props.theme.rainbow.palette.text.header};
-    line-height: 1.5;
+    line-height: 1.2;
+`;
+
+export const DescriptionHit = styled.span`
+    font-size: 14px;
+    font-weight: 900;
+    font-family: 'Lato Bold';
+    color: ${props => props.theme.rainbow.palette.text.main};
+    line-height: 1.2;
 `;
 
 export const PostContainer = styled.div`
     display: flex;
-    margin-top: 10px;
+    margin-top: 20px;
 `;
 
-export const StyledImage = styled.img`
-    width: 100px;
+export const StyledImage = styled.div`
+    background-image: url(${props => props.url});
+    width: 120px;
+    height: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 5px;
 `;
 

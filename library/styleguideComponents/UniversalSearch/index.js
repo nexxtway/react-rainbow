@@ -1,10 +1,10 @@
 import React from 'react';
-import { SearchEntity } from '@rainbow-modules/search';
-import { Component, Function } from '@rainbow-modules/icons';
+import { SearchEntity, useLocalRecentSearches } from '@rainbow-modules/search';
+import { Component, InteractiveExamples, YoutubeIcon } from '@rainbow-modules/icons';
 import universalSearchAlgolia from './universalSearchAlgolia';
-import YouTubeIcon from '../RibbonRenderer/youtubeIcon';
 import { StyledGlobalSearch, StyledIcon } from './styled';
-import ItemSearchResult from './ItemSearchResult';
+import PostItemSearchResult from './PostItemSearchResult';
+import RainbowItemSearchResult from './RainbowItemSearchResult';
 import {
     searchIndexComponents,
     searchIndexExamples,
@@ -17,37 +17,41 @@ const navigateTo = item => {
 };
 
 const UniversalSearch = () => {
+    const [recents, addRecents] = useLocalRecentSearches('rainbow-algolia-recent-searches');
     return (
         <StyledGlobalSearch
             placeholder="Search"
-            // eslint-disable-next-line no-alert
             onSelect={navigateTo}
+            recents={recents}
+            onSearch={({ query }) => addRecents(query)}
         >
             <SearchEntity
                 name="Components"
                 onAutocomplete={universalSearchAlgolia(searchIndexComponents)}
                 onSearch={universalSearchAlgolia(searchIndexComponents)}
-                icon={<Component />}
+                icon={<StyledIcon as={Component} />}
+                component={RainbowItemSearchResult}
             />
             <SearchEntity
                 name="Examples"
                 onAutocomplete={universalSearchAlgolia(searchIndexExamples)}
                 onSearch={universalSearchAlgolia(searchIndexExamples)}
-                icon={<Function />}
+                icon={<StyledIcon as={InteractiveExamples} />}
+                component={RainbowItemSearchResult}
             />
             <SearchEntity
                 name="Medium"
                 onAutocomplete={universalSearchAlgolia(searchIndexMediums)}
                 onSearch={universalSearchAlgolia(searchIndexMediums)}
                 icon={<StyledIcon />}
-                component={ItemSearchResult}
+                component={PostItemSearchResult}
             />
             <SearchEntity
                 name="Youtube"
                 onAutocomplete={universalSearchAlgolia(searchIndexYoutube)}
                 onSearch={universalSearchAlgolia(searchIndexYoutube)}
-                icon={<StyledIcon as={YouTubeIcon} />}
-                component={ItemSearchResult}
+                icon={<StyledIcon as={YoutubeIcon} />}
+                component={PostItemSearchResult}
             />
         </StyledGlobalSearch>
     );

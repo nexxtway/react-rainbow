@@ -15,8 +15,10 @@ import {
 const ItemSearchResult = props => {
     const { icon, title, description, image, date, author } = props;
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedPostDate = new Intl.DateTimeFormat(undefined, options).format(new Date(date));
-
+    const formattedPostDate = date
+        ? new Intl.DateTimeFormat(undefined, options).format(new Date(date))
+        : '';
+    console.log(image);
     return (
         <ResultItemContainer>
             <IconContainer>{icon}</IconContainer>
@@ -24,7 +26,7 @@ const ItemSearchResult = props => {
                 <LabelText value={title} />
                 <DescriptionText value={description} />
                 <PostContainer>
-                    <StyledImage src={image} alt="post" />
+                    <StyledImage url={image} alt="post" />
                     <PostText>
                         <LabelText value={title} variant="small" />
                         <Information>Publication Date: {formattedPostDate}</Information>
