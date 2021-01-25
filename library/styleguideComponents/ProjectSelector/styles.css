@@ -10,7 +10,7 @@
     position: fixed;
     top: 5px;
     left: 8px;
-    z-index: 3050;
+    z-index: 1000;
 }
 
 .react-rainbow-selector:hover {
