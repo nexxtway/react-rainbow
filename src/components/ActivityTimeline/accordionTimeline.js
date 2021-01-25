@@ -47,9 +47,9 @@ export default function AccordionTimeline(props) {
     const privateOnToggleMarker = useCallback(
         ({ activeSectionNames: names, toggledSection }) => {
             if (typeof onToggleSection === 'function') {
-                return onToggleSection({ activeSectionNames: names, toggledSection });
+                onToggleSection({ activeSectionNames: names, toggledSection });
             }
-            return setActiveNames(names);
+            setActiveNames(names);
         },
         [onToggleSection],
     );
