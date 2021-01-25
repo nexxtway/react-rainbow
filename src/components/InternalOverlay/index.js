@@ -1,8 +1,9 @@
 /* eslint-disable id-length */
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
+import usePrivateLayoutEffect from '../../libs/hooks/usePrivateLayooutEffect';
 import ContentMetaResolver from './ContentMetaResolver';
 import defaultPositionResolver from './helpers/defaultPositionResolver';
 import resolveElement from './helpers/resolveElement';
@@ -101,7 +102,7 @@ const InternalOverlay = props => {
     useDisableScroll(shouldDisableScroll);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useLayoutEffect(() => {
+    usePrivateLayoutEffect(() => {
         if (contentMeta && containerRef.current) {
             const { width, height } = containerRef.current.getBoundingClientRect();
             if (width !== contentMeta.width || height !== contentMeta.height) {
