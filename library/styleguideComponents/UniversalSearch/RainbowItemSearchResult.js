@@ -4,7 +4,7 @@ import LabelText from './labelText';
 import DescriptionText from './descriptionText';
 import { ResultItemContainer, IconContainer, OptionText } from './styled';
 
-const ItemSearchResult = props => {
+const RainbowItemSearchResult = props => {
     const { icon, title, description } = props;
 
     return (
@@ -18,16 +18,16 @@ const ItemSearchResult = props => {
     );
 };
 
-ItemSearchResult.propTypes = {
+RainbowItemSearchResult.propTypes = {
     icon: PropTypes.node,
     title: PropTypes.array,
     description: PropTypes.array,
 };
 
-ItemSearchResult.defaultProps = {
+RainbowItemSearchResult.defaultProps = {
     icon: undefined,
     title: undefined,
     description: undefined,
 };
 
-export default ItemSearchResult;
+export default RainbowItemSearchResult;

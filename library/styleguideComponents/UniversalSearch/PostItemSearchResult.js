@@ -12,13 +12,13 @@ import {
     Information,
 } from './styled';
 
-const ItemSearchResult = props => {
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+const PostItemSearchResult = props => {
     const { icon, title, description, image, date, author } = props;
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const formattedPostDate = date
         ? new Intl.DateTimeFormat(undefined, options).format(new Date(date))
         : '';
-    console.log(image);
     return (
         <ResultItemContainer>
             <IconContainer>{icon}</IconContainer>
@@ -38,7 +38,7 @@ const ItemSearchResult = props => {
     );
 };
 
-ItemSearchResult.propTypes = {
+PostItemSearchResult.propTypes = {
     icon: PropTypes.node,
     title: PropTypes.array,
     description: PropTypes.array,
@@ -47,7 +47,7 @@ ItemSearchResult.propTypes = {
     author: PropTypes.string,
 };
 
-ItemSearchResult.defaultProps = {
+PostItemSearchResult.defaultProps = {
     icon: undefined,
     title: undefined,
     description: undefined,
@@ -56,4 +56,4 @@ ItemSearchResult.defaultProps = {
     author: undefined,
 };
 
-export default ItemSearchResult;
+export default PostItemSearchResult;
