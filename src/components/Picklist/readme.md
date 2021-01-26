@@ -77,6 +77,82 @@ const initialState = { value: null };
     </div>;
 ```
 
+##### Picklist with custom search
+
+```js
+import React, {useState, useEffect} from 'react';
+import { Picklist, Option } from 'react-rainbow-components';
+
+const containerStyles = {
+    width: '200px',
+};
+
+function debounce(f, ms) {
+    let timer = null;
+    return function (...args) {
+        const onComplete = () => {
+            f.apply(this, args);
+            timer = null;
+        }
+        if (timer) {
+            clearTimeout(timer);
+        }
+        timer = setTimeout(onComplete, ms);
+    };
+}
+
+function InternalDropdownWithSearch() {
+    const [value, setValue] = useState();
+    const [movies, setMovies] = useState([]);
+    const onSearch = debounce((params) => {
+        const { query } = params;
+        fetchMovies(query);
+        console.log(params)
+    }, 500)
+
+    const fetchMovies = async (query) => {
+        const ENDPOINT_URL = 'https://express-atlas-search.herokuapp.com';
+        const response = await fetch(`${ENDPOINT_URL}/movies/search?query=${query}`);
+        setMovies(await response.json())
+    }
+
+    useEffect(() => {
+        fetchMovies('Initial');
+    }, [])
+
+    return (
+        <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+            <GlobalHeader
+                src="images/user/user1.jpg"
+                className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
+            >
+                <div className="rainbow-flex rainbow-align_right">
+                    <Picklist
+                        id="picklist-3"
+                        style={containerStyles}
+                        placeholder="Choose Building"
+                        onChange={value => setState({ value })}
+                        value={state.value}
+                        label="Select Building"
+                        hideLabel
+                        enableSearch
+                        onSearch={onSearch}
+                    >
+                        {movies.map((movie, index) => <Option key={index} name={movie.title} label={movie.title} />)}
+                    </Picklist>
+                </div>
+            </GlobalHeader>
+        </div>
+    );
+}
+
+    <InternalDropdownWithSearch />
+
+const initialState = { value: null };
+
+    
+```
+
 ##### Picklist disabled
 
 ```js

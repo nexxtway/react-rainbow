@@ -54,6 +54,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         multiple,
         showCheckbox,
         placeholder,
+        onSearch,
     } = props;
     const [showScrollUpArrow, setShowScrollUpArrow] = useState(false);
     const [showScrollDownArrow, setShowScrollDownArrow] = useState(false);
@@ -257,6 +258,14 @@ const InternalDropdown = forwardRef((props, reference) => {
         if (!allActiveChildren.current) {
             allActiveChildren.current = [...activeChildren.current];
         }
+
+        if (onSearch) {
+            return onSearch({
+                query: event.target.value,
+                data: allActiveChildren.current,
+            });
+        }
+
         const filteredOptions = searchFilter({
             query: event.target.value,
             data: allActiveChildren.current,
@@ -419,6 +428,7 @@ InternalDropdown.propTypes = {
     showCheckbox: PropTypes.bool,
     /** The text to show on the header when showCheckbox is true */
     placeholder: PropTypes.string,
+    onSearch: PropTypes.func,
 };
 
 InternalDropdown.defaultProps = {
@@ -433,6 +443,7 @@ InternalDropdown.defaultProps = {
     multiple: false,
     showCheckbox: false,
     placeholder: undefined,
+    onSearch: undefined,
 };
 
 export default InternalDropdown;

@@ -56,6 +56,58 @@ function InternalDropdownWithSearch() {
     <InternalDropdownWithSearch />
 ```
 
+##### With search input and custom search:
+
+```js
+/* eslint-disable react/jsx-no-undef */
+import React, { useState, useEffect } from 'react';
+import { PicklistOption } from 'react-rainbow-components';
+
+function debounce(f, ms) {
+    let timer = null;
+    return function (...args) {
+        const onComplete = () => {
+            f.apply(this, args);
+            timer = null;
+        }
+        if (timer) {
+            clearTimeout(timer);
+        }
+        timer = setTimeout(onComplete, ms);
+    };
+}
+
+function InternalDropdownWithSearch() {
+    const [value, setValue] = useState();
+    const [movies, setMovies] = useState([]);
+    const onSearch = debounce((params) => {
+        const { query } = params;
+        fetchMovies(query);
+        console.log(params)
+    }, 500)
+
+    const fetchMovies = async (query) => {
+        const ENDPOINT_URL = 'https://express-atlas-search.herokuapp.com';
+        const response = await fetch(`${ENDPOINT_URL}/movies/search?query=${query}`);
+        setMovies(await response.json())
+    }
+
+    useEffect(() => {
+        fetchMovies('Initial');
+    }, [])
+
+    return (
+        <div className="rainbow-m-around_xx-large">
+            <InternalDropdown id="internal-dropdown-3" value={value} onChange={setValue} enableSearch onSearch={onSearch}>
+                {movies.map((movie, index) => <PicklistOption key={index} name={movie.title} label={movie.title} />)}
+            </InternalDropdown>
+        </div>
+    );
+}
+
+    <InternalDropdownWithSearch />
+```
+
 ##### With multiple selection:
 
 ```js

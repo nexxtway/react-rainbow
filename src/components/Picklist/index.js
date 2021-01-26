@@ -216,6 +216,7 @@ class Picklist extends Component {
             name,
             value: valueInProps,
             enableSearch,
+            onSearch,
         } = this.props;
         const { label: valueLabel, icon } = getNormalizeValue(valueInProps);
         const value = valueLabel || '';
@@ -294,6 +295,7 @@ class Picklist extends Component {
                             value={valueInProps}
                             onChange={this.handleChange}
                             enableSearch={enableSearch}
+                            onSearch={onSearch}
                             ref={this.dropdownRef}
                         >
                             {children}
@@ -365,6 +367,8 @@ Picklist.propTypes = {
     variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
     /** If is set to true, then a search input to filter is showed. */
     enableSearch: PropTypes.bool,
+    /** Action triggeres when search query changes */
+    onSearch: PropTypes.func,
 };
 
 Picklist.defaultProps = {
@@ -390,6 +394,7 @@ Picklist.defaultProps = {
     style: undefined,
     variant: 'default',
     enableSearch: false,
+    onSearch: undefined,
 };
 
 export default withReduxForm(Picklist);
