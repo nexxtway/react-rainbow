@@ -120,7 +120,10 @@ jobs:
                       echo REACT_APP_STRIPE_APIKEY=$REACT_APP_STRIPE_APIKEY >> .env;
                       echo REACT_APP_ALGOLIA_APP_ID=$REACT_APP_ALGOLIA_APP_ID >> .env;
                       echo REACT_APP_ALGOLIA_SEARCH_KEY=$REACT_APP_ALGOLIA_SEARCH_KEY >> .env;
-                      echo REACT_APP_ALGOLIA_SEARCH_INDEX=$REACT_APP_ALGOLIA_SEARCH_INDEX >> .env;
+                      echo REACT_APP_ALGOLIA_SEARCH_COMPONENTS_INDEX=$REACT_APP_ALGOLIA_SEARCH_COMPONENTS_INDEX >> .env;
+                      echo REACT_APP_ALGOLIA_SEARCH_EXAMPLES_INDEX=$REACT_APP_ALGOLIA_SEARCH_EXAMPLES_INDEX >> .env;
+                      echo REACT_APP_ALGOLIA_SEARCH_MEDIUMS_INDEX=$REACT_APP_ALGOLIA_SEARCH_MEDIUMS_INDEX >> .env;
+                      echo REACT_APP_ALGOLIA_SEARCH_YOUTUBE_INDEX=$REACT_APP_ALGOLIA_SEARCH_YOUTUBE_INDEX >> .env;
 
             - run: yarn install
             - run: yarn deploy:library --token=$FIREBASE_TOKEN
