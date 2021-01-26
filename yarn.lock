@@ -1612,15 +1612,15 @@
     "@rainbow-modules/app" "^0.23.0"
     styled-components "^4.3.2"
 
-"@rainbow-modules/icons@^0.10.1-canary.4":
-  version "0.10.1-canary.4"
-  resolved "https://registry.yarnpkg.com/@rainbow-modules/icons/-/icons-0.10.1-canary.4.tgz#9c1149d9222dfd881f4c5b1561bb86489f18679c"
-  integrity sha512-wkxfDuCo5SNGpmcpLvA4V3hUFriwjUhTjyRmUmS+sbRqcQRdeC9DGUO9eGYJ+igpg2DSyGsv3g74BANUUVlKag==
-
 "@rainbow-modules/icons@^0.23.0":
   version "0.23.0"
   resolved "https://registry.yarnpkg.com/@rainbow-modules/icons/-/icons-0.23.0.tgz#2d46666a7ff2fc6ec9c74a07814301b967129b15"
   integrity sha512-yH1PonNAxEl7bbkfLK4znNpx2Xvnj06Os4ypWyknk7+xtG5wePxzCPllqnYH4dgU1HK8sbJ1tbqx2FJU/p7D0Q==
+
+"@rainbow-modules/icons@^0.24.1-canary.2":
+  version "0.24.1-canary.2"
+  resolved "https://registry.yarnpkg.com/@rainbow-modules/icons/-/icons-0.24.1-canary.2.tgz#c64513b4349f34efd8810814514fb951af8d589c"
+  integrity sha512-knFMFiPdEn94tVqVaSDqU9oxvrXScpHM/6ghBT3U4qyumcp9sMx7Y6EaljS82xDyyB7ZURrxc58n+cMDKnt2dw==
 
 "@rainbow-modules/search@^0.23.1":
   version "0.23.1"

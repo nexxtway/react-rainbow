@@ -1,18 +1,10 @@
 import { ReactNode, MouseEvent, FocusEvent, KeyboardEvent, ComponentType } from 'react';
-import { BaseProps, ButtonType } from '../types';
+import { BaseProps, ButtonType, ButtonIconVariant } from '../types';
 
 export interface ButtonProps extends BaseProps {
     label?: ReactNode;
     children?: ReactNode;
-    variant?:
-        | 'base'
-        | 'neutral'
-        | 'brand'
-        | 'outline-brand'
-        | 'destructive'
-        | 'success'
-        | 'inverse'
-        | 'border-inverse';
+    variant?: ButtonIconVariant;
     shaded?: boolean;
     title?: string;
     type?: ButtonType;
