@@ -5,6 +5,7 @@ import { replaceAlpha } from '../../../../styles/helpers/color';
 const StyledRow = attachThemeAttrs(styled.tr)`
     counter-increment: rowCounter;
     box-sizing: border-box;
+    height: 100%;
     ${props =>
         props.theme.variant === 'default' &&
         `

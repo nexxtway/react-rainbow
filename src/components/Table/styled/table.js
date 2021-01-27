@@ -7,6 +7,7 @@ const StyledTable = attachThemeAttrs(styled.table)`
     background-color: ${props => props.palette.background.main};
     border-spacing: 0;
     width: 100%;
+    height: 100%;
     box-sizing: border-box;
 
     ${props =>

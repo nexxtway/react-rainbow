@@ -5,6 +5,7 @@ const StyledCell = attachThemeAttrs(styled.th)`
     padding: 0;
     text-align: left;
     box-sizing: border-box;
+    height: 100%;
 
     :first-child > div {
         padding-left: 18px;

@@ -42,7 +42,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 
-const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem' };
+const badgeStyles = { color: '#1de9b6', marginLeft: '0.5rem', width: '100px' };
 const tableContainerStyles = { height: 300 };
 
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
@@ -623,6 +623,10 @@ const StyledTaskHeader = styled.span`
 const StyledPriority = styled.div`
     text-transform: capitalize;
     color: #ffffff;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     ${props =>
         props.priority === 'hight' &&
@@ -652,6 +656,7 @@ const StyledTask = styled.div`
     text-align: left;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+    margin: 10px;
 `;
 
 const StyleCoin = styled(Coin)`
@@ -663,10 +668,10 @@ const StyleCoin = styled(Coin)`
 const Task = ({ value }) => <StyledTask>{value}</StyledTask>;
 
 const Coins = ({ value }) => (
-    <>
+    <div>
         <StyleCoin />
         {value} coins
-    </>
+    </div>
 );
 
 const Constributor = () => (
@@ -743,7 +748,6 @@ function TableListView() {
                     <Column
                         header={<StyledTaskHeader>Task</StyledTaskHeader>}
                         field="task"
-                        component={Task}
                     />
                     <Column
                         header="Priority"
@@ -999,10 +1003,10 @@ const StyleCoin = styled(Coin)`
 `;
 
 const Coins = ({ value }) => (
-    <>
+    <div>
         <StyleCoin />
         {value} coins
-    </>
+    </div>
 );
 
 const Constributor = () => (
