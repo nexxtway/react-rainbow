@@ -7,7 +7,7 @@ import InternalTooltip from '../InternalTooltip';
 import useDefaultTooltipConnector from '../InternalTooltip/hooks/useDefaultTooltipConnector';
 
 /**
- * Buttons Icons provide the user with visual iconography that
+ * ButtonIcons provide the user with visual iconography that
  * is typically used to invoke an event or action.
  */
 const ButtonIcon = React.forwardRef((props, ref) => {
