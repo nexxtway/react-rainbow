@@ -56,6 +56,86 @@ function InternalDropdownWithSearch() {
     <InternalDropdownWithSearch />
 ```
 
+##### With search input and custom search:
+
+```js
+/* eslint-disable react/jsx-no-undef */
+import React, { useState } from 'react';
+import { Option } from 'react-rainbow-components';
+
+const initialOptions = [
+    {
+        name: 'option-1',
+        label: 'Experimental'
+    },
+    {
+        name: 'option-2',
+        label: 'Bennet Towers'
+    },
+    {
+        name: 'option-3',
+        label: 'Empire State'
+    },
+    {
+        name: 'option-4',
+        label: 'Central Park'
+    },
+    {
+        name: 'option-5',
+        label: 'Chrysler'
+    },
+    {
+        name: 'option-6',
+        label: 'Empire State'
+    },
+    {
+        name: 'option-7',
+        label: 'Empire State'
+    },
+    {
+        name: 'option-8',
+        label: 'Empire State'
+    },
+    {
+        name: 'option-9',
+        label: 'Empire State'
+    },
+    {
+        name: 'option-10',
+        label: 'Empire State'
+    },
+    {
+        name: 'option-11',
+        label: 'Empire State'
+    },
+    {
+        name: 'option-12',
+        label: 'Empire State'
+    },
+]
+
+function InternalDropdownWithSearch() {
+    const [value, setValue] = useState();
+    const [options, setOptions] = useState(initialOptions);
+    const onSearch = query => {
+        if (query) {
+            return setOptions(initialOptions.filter(opt => opt.label.startsWith(query)));
+        }
+        return setOptions(initialOptions);
+    }
+
+    return (
+        <div className="rainbow-m-around_xx-large">
+            <InternalDropdown id="internal-dropdown-5" value={value} onChange={setValue} enableSearch onSearch={onSearch}>
+                {options.map(option => <Option key={option.name} name={option.name} label={option.label} />)}
+            </InternalDropdown>
+        </div>
+    );
+}
+
+    <InternalDropdownWithSearch />
+```
+
 ##### With multiple selection:
 
 ```js

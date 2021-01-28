@@ -177,6 +177,20 @@ describe('InternalDropdown', () => {
         expect(component.find('SearchIcon').exists()).toBe(false);
         expect(component.find('input[type="search"]').exists()).toBe(false);
     });
+
+    it('should call onSearch when passed and enableSearch is true', () => {
+        const onSearchFn = jest.fn();
+        const component = mount(
+            <InternalDropdown label="Picklist" enableSearch onSearch={onSearchFn}>
+                <Option label="Option 1" name="option1" />
+                <Option label="Option 2" name="option2" />
+                <Option label="Option 3" name="option3" />
+            </InternalDropdown>,
+        );
+        component.find('input[type="search"]').simulate('change', { target: { value: 'Test' } });
+        expect(onSearchFn).toHaveBeenCalledWith('Test');
+    });
+
     it('should render loading icon when isLoading is passed', () => {
         const component = mount(
             <InternalDropdown label="Picklist" isLoading>
