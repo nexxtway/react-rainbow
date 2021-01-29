@@ -69,7 +69,8 @@ const InternalDropdown = forwardRef((props, reference) => {
     const containerRef = useRef();
     const scrollingTimer = useRef();
     const searchRef = useRef();
-    const showEmptyMessage = searchValue && isEmptyObject(activeChildrenMap);
+    const showEmptyMessage =
+        enableSearch && (React.Children.count(children) === 0 || isEmptyObject(activeChildrenMap));
 
     useImperativeHandle(reference, () => ({
         focus: () => {
