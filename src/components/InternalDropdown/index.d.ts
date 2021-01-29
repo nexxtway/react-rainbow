@@ -10,26 +10,26 @@ interface DropdownValue {
 
 export interface InternalDropdownProps extends BaseProps {
     /** The id of the outer element. */
-    id: string;
+    id?: string;
     /** If is set to true, then is showed a loading symbol. */
-    isLoading: boolean;
+    isLoading?: boolean;
     /** The content of the InternalDropdown. Used to render the options
      * passed. */
-    children: ReactNode;
+    children?: ReactNode;
     /** Specifies the selected value of the InternalDropdown. Must have a name which identifies de selected option.
      * Also it can have whatever other key value pairs you want.
      */
-    value: DropdownValue | Array<DropdownValue>;
+    value?: DropdownValue | Array<DropdownValue>;
     /** The action triggered when click/select an option. */
-    onChange: (value: DropdownValue | Array<DropdownValue>) => void;
+    onChange?: (value: DropdownValue | Array<DropdownValue>) => void;
     /** If is set to true, then a search input to filter is showed. */
-    enableSearch: boolean;
+    enableSearch?: boolean;
     /** Specifies that multiple items can be selected */
-    multiple: boolean;
+    multiple?: boolean;
     /** Show checkbox */
-    showCheckbox: boolean;
+    showCheckbox?: boolean;
     /** The text to show on the header when showCheckbox is true */
-    placeholder: string;
+    placeholder?: string;
     /** Action triggered when search query changes */
-    onSearch: (query: string) => void;
+    onSearch?: (query: string) => void;
 }
