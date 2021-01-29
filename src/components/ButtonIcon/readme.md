@@ -1,5 +1,5 @@
-# ButtonIcon variants
-##### ButtonIcons change color according to the variant provided. This is an example with the variants we offer.
+# ButtonIcons variants
+##### ButtonIcons change color according to the variant provided. In the examples below, you can find all the variants that we offer you.
 
 ```js
 import React from 'react';
@@ -34,8 +34,8 @@ import { faSlidersH, faSignal, faRedo, faTimes } from '@fortawesome/free-solid-s
     </div>
 ```
 
-# ButtonIcon shaded
-##### You can add a shadow under the ButtonIcon by aplying the shaded variant, just pass the `shaded` prop.
+# ButtonIcons with shaded variant
+##### The appearance of a ButtonIcon can be changed by implementing the shaded variant, so the whole section will appear with a shadow around it.
 
 ```js
 import React from 'react';
@@ -62,8 +62,8 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
     </div>
 ```
 
-# ButtonIcon inverse
-##### The inverse variant is useful when using ButtonIcon on a dark background. 
+# ButtonIcons inverse
+##### If you want to use a ButtonIcon on a dark background, we suggest you implement the inverse variant.
 
 ```js
 import React from 'react';
@@ -79,7 +79,7 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
     </InverseContainer>
 ```
 
-# ButtonIcon size
+# ButtonIcons of different sizes
 ##### If you need to resize your ButtonIcon, you can do so using the `size` prop.
 
 ```js
@@ -113,8 +113,8 @@ import {
     </div>
 ```
 
-# ButtonIcon disabled
-##### Pass the `disabled` prop to render the ButtonIcon as disabled. When disabled, all the functionalities will be deactivated.
+# ButtonIcons disabled
+##### ButtonIcons can be displayed as disabled. With the `disabled` prop, all the functionalities will be deactivated.
 
 ```js
 import React from 'react';
@@ -133,8 +133,8 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
     </div>
 ```
 
-# ButtonIcon with tooltip
-##### If you want to show a tooltip with additional information about your ButtonIcon just set the `tooltip` prop to your desired content.
+# ButtonIcons with tooltip
+##### If you want to show a tooltip with additional information about your ButtonIcon, just set the `tooltip` prop with the content you want.
 
 ```js
 import React from 'react';
