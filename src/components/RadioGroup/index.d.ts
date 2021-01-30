@@ -7,7 +7,7 @@ export interface RadioGroupProps extends BaseProps {
     hideLabel?: boolean;
     name?: string;
     value?: string;
-    onChange?: (event: ChangeEvent<HTMLElement>) => void;
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     required?: boolean;
     options?: RadioOption[];
     error?: ReactNode;
