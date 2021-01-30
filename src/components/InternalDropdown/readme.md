@@ -59,81 +59,57 @@ function InternalDropdownWithSearch() {
 ##### With search input and custom search:
 
 ```js
-/* eslint-disable react/jsx-no-undef */
-import React, { useState } from 'react';
-import { Option } from 'react-rainbow-components';
+/* eslint-disable no-undef */
+import React, { useState, useRef } from 'react';
+import algoliasearch from 'algoliasearch/lite';
+import { InternalDropdown, Option } from 'react-rainbow-components';
 
-const initialOptions = [
-    {
-        name: 'option-1',
-        label: 'Experimental'
-    },
-    {
-        name: 'option-2',
-        label: 'Bennet Towers'
-    },
-    {
-        name: 'option-3',
-        label: 'Empire State'
-    },
-    {
-        name: 'option-4',
-        label: 'Central Park'
-    },
-    {
-        name: 'option-5',
-        label: 'Chrysler'
-    },
-    {
-        name: 'option-6',
-        label: 'Empire State'
-    },
-    {
-        name: 'option-7',
-        label: 'Empire State'
-    },
-    {
-        name: 'option-8',
-        label: 'Empire State'
-    },
-    {
-        name: 'option-9',
-        label: 'Empire State'
-    },
-    {
-        name: 'option-10',
-        label: 'Empire State'
-    },
-    {
-        name: 'option-11',
-        label: 'Empire State'
-    },
-    {
-        name: 'option-12',
-        label: 'Empire State'
-    },
-]
+const client = algoliasearch(LIBRARY_ALGOLIA_APP_ID, LIBRARY_ALGOLIA_SEARCH_KEY);
+const index = client.initIndex(LIBRARY_ALGOLIA_SEARCH_COMPONENTS_INDEX);
 
-function InternalDropdownWithSearch() {
+const search = async ({ query, page = 1 }) => {
+    const result = await index.search(query, {
+        page: page - 1,
+    });
+    const { hits } = result;
+    return hits.map(hit => ({
+        label: hit.text,
+        name: hit.objectID,
+    }));
+};
+
+function InternalDropdownWithAlgoliaSearch() {
     const [value, setValue] = useState();
-    const [options, setOptions] = useState(initialOptions);
-    const onSearch = query => {
-        if (query) {
-            return setOptions(initialOptions.filter(opt => opt.label.startsWith(query)));
+    const [isLoading, setIsLoading] = useState();
+    const [options, setOptions] = useState([]);
+    const timeout = useRef();
+    const onSearch = async query => {
+        if (!query) {
+            setOptions([]);
+            return;
         }
-        return setOptions(initialOptions);
-    }
+        setIsLoading(true);
+        if (timeout.current) {
+            clearTimeout(timeout.current);
+        }
+        timeout.current = setTimeout(async () => {
+            const result = await search({ query });
+            setOptions(result);
+            setIsLoading(false);
+        }, 500);
+    };
 
     return (
         <div className="rainbow-m-around_xx-large">
-            <InternalDropdown id="internal-dropdown-5" value={value} onChange={setValue} enableSearch onSearch={onSearch}>
+            <InternalDropdown id="internal-dropdown-5" isLoading={isLoading} value={value} onChange={setValue} enableSearch onSearch={onSearch}>
                 {options.map(option => <Option key={option.name} name={option.name} label={option.label} />)}
             </InternalDropdown>
         </div>
     );
 }
 
-    <InternalDropdownWithSearch />
+    <InternalDropdownWithAlgoliaSearch />
+
 ```
 
 ##### With multiple selection:

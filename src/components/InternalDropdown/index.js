@@ -69,8 +69,9 @@ const InternalDropdown = forwardRef((props, reference) => {
     const containerRef = useRef();
     const scrollingTimer = useRef();
     const searchRef = useRef();
-    const showEmptyMessage =
-        enableSearch && (React.Children.count(children) === 0 || isEmptyObject(activeChildrenMap));
+    const showEmptyMessage = enableSearch
+        ? !isLoading && React.Children.count(children) === 0
+        : isEmptyObject(activeChildrenMap);
 
     useImperativeHandle(reference, () => ({
         focus: () => {
@@ -115,10 +116,6 @@ const InternalDropdown = forwardRef((props, reference) => {
     const registerChild = useCallback((childRef, childProps) => {
         if (!isComponentMounted.current) return;
         if (isChildRegistered(childProps.name, activeChildren.current)) return;
-        if (!firstChild.current) {
-            firstChild.current = childProps;
-            setActiveOptionName(childProps.name);
-        }
         const [...nodes] = getChildMenuItemNodes(containerRef.current);
         const newChildren = insertChildOrderly(
             activeChildren.current,
@@ -129,6 +126,16 @@ const InternalDropdown = forwardRef((props, reference) => {
             nodes,
         );
         activeChildren.current = newChildren;
+
+        if (onSearch) {
+            setActiveOptionIndex(0);
+            setActiveOptionName(newChildren[0].name);
+            firstChild.current = newChildren[0].name;
+        } else if (!firstChild.current) {
+            firstChild.current = childProps;
+            setActiveOptionName(childProps.name);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const unregisterChild = useCallback((childRef, name) => {
@@ -138,10 +145,11 @@ const InternalDropdown = forwardRef((props, reference) => {
         activeChildren.current = newChildren;
         if (activeChildren.current.length === 0) {
             firstChild.current = undefined;
-            setActiveChildrenMap({});
-        } else {
+        }
+        if (onSearch && firstChild.current === name) {
             resetActiveChild();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const hoverChild = useCallback((event, name) => {
@@ -277,13 +285,8 @@ const InternalDropdown = forwardRef((props, reference) => {
         setSearchValue(event.target.value);
 
         if (onSearch) {
+            setActiveChildrenMap();
             onSearch(event.target.value);
-            setActiveChildrenMap(
-                allActiveChildren.current.reduce((acc, option) => {
-                    acc[option.name] = true;
-                    return acc;
-                }, {}),
-            );
         } else {
             const filteredOptions = searchFilter({
                 query: event.target.value,

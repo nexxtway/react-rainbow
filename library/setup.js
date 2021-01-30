@@ -172,3 +172,7 @@ global.InfoIcon = InfoIcon;
 global.OneIcon = OneIcon;
 global.ListIcon = ListIcon;
 global.TextIcon = TextIcon;
+global.LIBRARY_ALGOLIA_APP_ID = process.env.LIBRARY_ALGOLIA_APP_ID;
+global.LIBRARY_ALGOLIA_SEARCH_KEY = process.env.LIBRARY_ALGOLIA_SEARCH_KEY;
+global.LIBRARY_ALGOLIA_SEARCH_COMPONENTS_INDEX =
+    process.env.LIBRARY_ALGOLIA_SEARCH_COMPONENTS_INDEX;
