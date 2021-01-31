@@ -1,29 +1,21 @@
 import { ReactNode, MouseEvent, FocusEvent, KeyboardEvent, ComponentType } from 'react';
-import { BaseProps, ButtonType } from '../types';
+import { BaseProps, ButtonType, ButtonIconVariant } from '../types';
 
 export interface ButtonProps extends BaseProps {
     label?: ReactNode;
     children?: ReactNode;
-    variant?:
-        | 'base'
-        | 'neutral'
-        | 'brand'
-        | 'outline-brand'
-        | 'destructive'
-        | 'success'
-        | 'inverse'
-        | 'border-inverse';
+    variant?: ButtonIconVariant;
     shaded?: boolean;
     title?: string;
     type?: ButtonType;
     disabled?: boolean;
     tabIndex?: number | string;
-    onClick?: (event: MouseEvent<HTMLElement>) => void;
-    onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void;
-    onFocus?: (event: FocusEvent<HTMLElement>) => void;
-    onBlur?: (event: FocusEvent<HTMLElement>) => void;
-    onMouseEnter?: (event: MouseEvent<HTMLElement>) => void;
-    onMouseLeave?: (event: MouseEvent<HTMLElement>) => void;
+    onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+    onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>) => void;
+    onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLButtonElement>) => void;
+    onMouseEnter?: (event: MouseEvent<HTMLButtonElement>) => void;
+    onMouseLeave?: (event: MouseEvent<HTMLButtonElement>) => void;
     ariaHaspopup?: boolean;
     ariaControls?: string;
     ariaExpanded?: boolean;

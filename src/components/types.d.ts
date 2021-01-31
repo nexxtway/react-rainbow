@@ -13,12 +13,15 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 export type ButtonIconSize = 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
 export type ButtonIconVariant =
     | 'base'
+    | 'neutral'
     | 'brand'
+    | 'outline-brand'
+    | 'destructive'
     | 'success'
     | 'border'
     | 'border-filled'
-    | 'border-inverse'
-    | 'inverse';
+    | 'inverse'
+    | 'border-inverse';
 export type VisualPickerSize = 'small' | 'medium' | 'large';
 export type IconPosition = 'left' | 'right';
 export type LabelAlignment = 'left' | 'center' | 'right';
