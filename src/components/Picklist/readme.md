@@ -498,3 +498,72 @@ function PicklistExample() {
         <PicklistExample />
     </div>;
 ```
+
+##### Picklist with custom search:
+
+```js
+/* eslint-disable no-undef */
+import React, { useState, useRef } from 'react';
+import algoliasearch from 'algoliasearch/lite';
+import { Picklist, Option } from 'react-rainbow-components';
+
+const client = algoliasearch(LIBRARY_ALGOLIA_APP_ID, LIBRARY_ALGOLIA_SEARCH_KEY);
+const index = client.initIndex(LIBRARY_ALGOLIA_SEARCH_COMPONENTS_INDEX);
+
+const search = async ({ query, page = 1 }) => {
+    const result = await index.search(query, {
+        page: page - 1,
+    });
+    const { hits } = result;
+    return hits.map(hit => ({
+        label: hit.text,
+        name: hit.objectID,
+    }));
+};
+
+function PicklistCustomSearch() {
+    const [value, setValue] = useState();
+    const [isLoading, setIsLoading] = useState();
+    const [options, setOptions] = useState([]);
+    const timeout = useRef();
+    const onSearch = async query => {
+        if (!query) {
+            setOptions([]);
+            return;
+        }
+        setIsLoading(true);
+        if (timeout.current) {
+            clearTimeout(timeout.current);
+        }
+        timeout.current = setTimeout(async () => {
+            const result = await search({ query });
+            setOptions(result);
+            setIsLoading(false);
+        }, 500);
+    };
+
+    return (
+        <GlobalHeader
+            src="images/user/user3.jpg"
+            className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
+            variant="neutral"
+        >
+            <div className="rainbow-flex rainbow-align_right">
+                <Picklist 
+                    placeholder="Pick a component"
+                    isLoading={isLoading}
+                    value={value}
+                    onChange={setValue}
+                    onSearch={onSearch}
+                    enableSearch>
+                    {options.map(option => <Option key={option.name} name={option.name} label={option.label} />)}
+                </Picklist>
+            </div>
+        </GlobalHeader>
+    );
+}
+
+    <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+        <PicklistCustomSearch />
+    </div>;
+```
