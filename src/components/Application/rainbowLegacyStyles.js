@@ -1020,7 +1020,7 @@ const legacyStyles = `
 `;
 
 const GlobalStyles = createGlobalStyle`
-  ${legacyStyles}
+    ${legacyStyles}
 `;
 
 const RainbowLegacyStyles = () => {
