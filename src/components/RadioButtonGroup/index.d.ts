@@ -8,7 +8,7 @@ export interface RadioButtonGroupProps extends BaseProps {
     name?: string;
     value?: string;
     variant?: 'default' | 'inverse' | 'brand';
-    onChange?: (event: ChangeEvent<HTMLElement>) => void;
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     required?: boolean;
     options?: RadioOption[];
     error?: ReactNode;

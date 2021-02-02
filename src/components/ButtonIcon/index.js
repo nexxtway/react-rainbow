@@ -7,7 +7,7 @@ import InternalTooltip from '../InternalTooltip';
 import useDefaultTooltipConnector from '../InternalTooltip/hooks/useDefaultTooltipConnector';
 
 /**
- * Buttons Icons provide the user with visual iconography that
+ * ButtonIcons provide the user with a visual iconography that
  * is typically used to invoke an event or action.
  */
 const ButtonIcon = React.forwardRef((props, ref) => {
@@ -173,7 +173,7 @@ ButtonIcon.propTypes = {
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    /** Text to show when pointer is over the button */
+    /** Text to show when pointer is over the button. */
     tooltip: PropTypes.node,
     /** The action that will be run when the button is clicked. */
     onClick: PropTypes.func,

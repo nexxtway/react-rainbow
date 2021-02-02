@@ -6,10 +6,10 @@ export interface CheckboxToggleProps extends BaseProps {
     name?: string;
     value?: boolean;
     disabled?: boolean;
-    onChange?: (event: ChangeEvent<HTMLElement>) => void;
-    onClick?: (event: MouseEvent<HTMLElement>) => void;
-    onFocus?: (event: FocusEvent<HTMLElement>) => void;
-    onBlur?: (event: FocusEvent<HTMLElement>) => void;
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+    onClick?: (event: MouseEvent<HTMLInputElement>) => void;
+    onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
     id?: string;
     labelAlignment?: 'left' | 'right';
 }
