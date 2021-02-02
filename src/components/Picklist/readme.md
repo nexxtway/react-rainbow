@@ -549,13 +549,14 @@ function PicklistCustomSearch() {
             variant="neutral"
         >
             <div className="rainbow-flex rainbow-align_right">
-                <Picklist 
+                <Picklist
                     placeholder="Pick a component"
                     isLoading={isLoading}
                     value={value}
                     onChange={setValue}
                     onSearch={onSearch}
-                    enableSearch>
+                    enableSearch
+                >
                     {options.map(option => <Option key={option.name} name={option.name} label={option.label} />)}
                 </Picklist>
             </div>
