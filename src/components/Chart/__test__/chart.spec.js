@@ -8,6 +8,10 @@ jest.mock('../helpers/unregisterGlobalPlugins', () => jest.fn());
 
 jest.mock('../chart', () =>
     jest.fn(() => ({
+        data: {
+            labels: [],
+            datasets: [],
+        },
         update: jest.fn(),
         config: {},
     })),
@@ -25,18 +29,13 @@ describe('<Chart />', () => {
             type: 'line',
             data: {
                 labels: ['A', 'B', 'C', 'D'],
-                datasets: [expect.any(Object)],
             },
             plugins: null,
             options: expect.any(Object),
         });
     });
     it('should call ChartJS update method to update the chart when the component changes', () => {
-        const component = mount(
-            <Chart labels={['A', 'B', 'C', 'D']} type="line">
-                <Dataset values={[34, 345, 234, 234]} title="Dataset 1" />
-            </Chart>,
-        );
+        const component = mount(<Chart labels={['A', 'B', 'C', 'D']} type="line" />);
         const { chartInstance } = component.instance();
         component.setProps({
             labels: ['A', 'B', 'C', 'D', 'E'],
@@ -46,16 +45,12 @@ describe('<Chart />', () => {
     });
 
     it('should call ChartJS update method to update the chart when the children changes', () => {
-        const component = mount(
-            <Chart labels={['A', 'B', 'C', 'D']} type="line">
-                <Dataset values={[34, 345, 234, 234]} title="Dataset 1" />
-            </Chart>,
-        );
+        const component = mount(<Chart labels={['A', 'B', 'C', 'D']} type="line" />);
         const { chartInstance } = component.instance();
         component.setProps({
             children: [<Dataset values={[34, 345, 234, 234, 90]} title="Dataset 1" />],
         });
-        expect(chartInstance.update).toHaveBeenCalledTimes(1);
+        expect(chartInstance.update).toHaveBeenCalledTimes(2);
     });
 
     it('should update the chart type when changed dynamically', () => {
