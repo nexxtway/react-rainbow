@@ -60,7 +60,7 @@ function InternalDropdownWithSearch() {
 
 ```js
 /* eslint-disable no-undef, react/jsx-no-undef */
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { Option } from 'react-rainbow-components';
 
@@ -82,21 +82,15 @@ function InternalDropdownWithAlgoliaSearch() {
     const [value, setValue] = useState();
     const [isLoading, setIsLoading] = useState();
     const [options, setOptions] = useState([]);
-    const timeout = useRef();
     const onSearch = async query => {
         if (!query) {
             setOptions([]);
             return;
         }
         setIsLoading(true);
-        if (timeout.current) {
-            clearTimeout(timeout.current);
-        }
-        timeout.current = setTimeout(async () => {
-            const result = await search({ query });
-            setOptions(result);
-            setIsLoading(false);
-        }, 500);
+        const result = await search({ query });
+        setOptions(result);
+        setIsLoading(false);
     };
 
     return (

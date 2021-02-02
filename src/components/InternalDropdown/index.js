@@ -55,6 +55,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         showCheckbox,
         placeholder,
         onSearch,
+        debounce,
     } = props;
     const [showScrollUpArrow, setShowScrollUpArrow] = useState(false);
     const [showScrollDownArrow, setShowScrollDownArrow] = useState(false);
@@ -69,8 +70,9 @@ const InternalDropdown = forwardRef((props, reference) => {
     const containerRef = useRef();
     const scrollingTimer = useRef();
     const searchRef = useRef();
+    const searchTimeout = useRef();
     const showEmptyMessage = enableSearch
-        ? !isLoading && React.Children.count(children) === 0
+        ? !isLoading && React.Children.count(children) === 0 && !searchTimeout.current
         : isEmptyObject(activeChildrenMap);
 
     useImperativeHandle(reference, () => ({
@@ -196,6 +198,26 @@ const InternalDropdown = forwardRef((props, reference) => {
         }
     };
 
+    const resetTimeout = () => {
+        if (searchTimeout.current) {
+            clearTimeout(searchTimeout.current);
+            searchTimeout.current = undefined;
+        }
+    };
+
+    const fireSearch = query => {
+        resetTimeout();
+        if (debounce) {
+            searchTimeout.current = setTimeout(() => {
+                resetTimeout();
+                onSearch(query);
+            }, 500);
+        } else {
+            onSearch(query);
+        }
+        setSearchValue(query);
+    };
+
     const handleChange = useCallback(
         option => {
             const { icon, name, label, value: optionValue, only } = option;
@@ -282,11 +304,9 @@ const InternalDropdown = forwardRef((props, reference) => {
             allActiveChildren.current = [...activeChildren.current];
         }
 
-        setSearchValue(event.target.value);
-
         if (onSearch) {
             setActiveChildrenMap();
-            onSearch(event.target.value);
+            fireSearch(event.target.value);
         } else {
             const filteredOptions = searchFilter({
                 query: event.target.value,
@@ -344,13 +364,14 @@ const InternalDropdown = forwardRef((props, reference) => {
 
     const isPlaceholderOptionChecked = isChecked(value, activeChildren.current);
     const shouldRenderPlaceholderOption = placeholder && showCheckbox;
+    const shouldShowSpinner = isLoading || searchTimeout.current !== undefined;
 
     return (
         <Dropdown
             id={id}
             role="listbox"
             aria-activedescendant={activeOptionName}
-            isLoading={isLoading}
+            isLoading={shouldShowSpinner}
             className={className}
             style={style}
             onKeyDown={handleKeyPressed}
@@ -358,7 +379,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             ref={containerRef}
         >
             <RenderIf isTrue={enableSearch}>
-                <SearchContainer isLoading={isLoading}>
+                <SearchContainer isLoading={shouldShowSpinner}>
                     <Icon />
                     <InputSearch onChange={handleSearch} ref={searchRef} type="search" />
                 </SearchContainer>
@@ -379,7 +400,7 @@ const InternalDropdown = forwardRef((props, reference) => {
                     style={menuContainerStyles}
                     showEmptyMessage={showEmptyMessage}
                 >
-                    <Content isLoading={isLoading}>
+                    <Content isLoading={shouldShowSpinner}>
                         <Provider value={context}>
                             <RenderIf isTrue={shouldRenderPlaceholderOption}>
                                 <PlaceholderOption
@@ -447,6 +468,8 @@ InternalDropdown.propTypes = {
     placeholder: PropTypes.string,
     /** Action triggered when search query changes */
     onSearch: PropTypes.func,
+    /** When true, the onSearch callback will be debounced */
+    debounce: PropTypes.bool,
 };
 
 InternalDropdown.defaultProps = {
@@ -462,6 +485,7 @@ InternalDropdown.defaultProps = {
     showCheckbox: false,
     placeholder: undefined,
     onSearch: undefined,
+    debounce: false,
 };
 
 export default InternalDropdown;

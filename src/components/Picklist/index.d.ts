@@ -30,6 +30,7 @@ export interface PicklistProps extends BaseProps {
     disabled?: boolean;
     readOnly?: boolean;
     id?: string;
+    debounce: boolean;
 }
 
 declare const Picklist: ComponentType<PicklistProps>;
