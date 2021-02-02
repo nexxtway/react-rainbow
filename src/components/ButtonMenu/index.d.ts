@@ -3,6 +3,7 @@ import { BaseProps, ButtonIconVariant, ButtonIconSize, MenuSize, MenuAlignment }
 
 export interface ButtonMenuProps extends BaseProps {
     icon?: ReactNode;
+    iconPosition?: string;
     children?: ReactNode;
     buttonVariant?: ButtonIconVariant;
     buttonSize?: ButtonIconSize;
