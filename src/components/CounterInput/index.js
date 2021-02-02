@@ -168,7 +168,7 @@ CounterInput.propTypes = {
     /** The name of the input. */
     name: PropTypes.string,
     /** Specifies the value of an input element. */
-    value: PropTypes.number,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** The action triggered when a value attribute changes. */

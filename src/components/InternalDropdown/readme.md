@@ -59,10 +59,10 @@ function InternalDropdownWithSearch() {
 ##### With search input and custom search:
 
 ```js
-/* eslint-disable no-undef */
+/* eslint-disable no-undef, react/jsx-no-undef */
 import React, { useState, useRef } from 'react';
 import algoliasearch from 'algoliasearch/lite';
-import { InternalDropdown, Option } from 'react-rainbow-components';
+import { Option } from 'react-rainbow-components';
 
 const client = algoliasearch(LIBRARY_ALGOLIA_APP_ID, LIBRARY_ALGOLIA_SEARCH_KEY);
 const index = client.initIndex(LIBRARY_ALGOLIA_SEARCH_COMPONENTS_INDEX);
@@ -123,7 +123,7 @@ function InternalDropdownWithMultipleSelection() {
     const [value, setValue] = useState();
     return (
         <div className="rainbow-m-around_xx-large">
-            <InternalDropdown value={value} onChange={setValue} enableSearch multiple='true'>
+            <InternalDropdown value={value} onChange={setValue} enableSearch multiple>
                 <PicklistOption name="option-1" label="All Buildings" icon={<DashboardIcon />} />
                 <PicklistOption name="option-2" label="New Building" icon={<AddFilledIcon />} />
                 <PicklistOption name="header" label="Your Buildings" variant="header" />
