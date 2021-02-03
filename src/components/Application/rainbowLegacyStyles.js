@@ -1019,15 +1019,8 @@ const legacyStyles = `
     font-size: 1rem; }  
 `;
 
-const GlobalStyles = createGlobalStyle`
-    ${legacyStyles}
-`;
-
-const RainbowLegacyStyles = () => {
-    if (isServer) {
-        return <GlobalStyles />;
-    }
-    return <style>{legacyStyles}</style>;
-};
+const RainbowLegacyStyles = isServer
+    ? createGlobalStyle`${legacyStyles}`
+    : () => <style>{legacyStyles}</style>;
 
 export default RainbowLegacyStyles;
