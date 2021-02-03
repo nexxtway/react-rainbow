@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unused-prop-types */
-import React, { useState, useRef, useImperativeHandle, useCallback } from 'react';
+import React, { useState, useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import Label from '../Input/label';
 import RenderIf from '../RenderIf';
@@ -67,67 +67,52 @@ const FileSelector = React.forwardRef((props, ref) => {
         },
     }));
 
-    const handleDragEnter = useCallback(() => {
+    const handleDragEnter = () => {
         if (disabled) {
             return;
         }
         setIsDragOver(true);
-    }, [disabled]);
+    };
 
-    const handleDragLeave = useCallback(
-        event => {
-            if (!event.relatedTarget || event.relatedTarget.id !== buttonId) {
-                setIsDragOver(false);
-            }
-        },
-        [buttonId],
-    );
+    const handleDragLeave = event => {
+        if (!event.relatedTarget || event.relatedTarget.id !== buttonId) {
+            setIsDragOver(false);
+        }
+    };
 
-    const handleDrop = useCallback(event => {
+    const handleDrop = event => {
         setIsDragOver(false);
         setFiles(event.nativeEvent.dataTransfer.files);
-    }, []);
+    };
 
-    const handleChange = useCallback(
-        event => {
-            const eventFiles = event.target.files;
-            setFiles(eventFiles);
-            if (onChange) {
-                onChange(eventFiles);
-            }
-        },
-        [onChange],
-    );
+    const handleChange = event => {
+        const eventFiles = event.target.files;
+        setFiles(eventFiles);
+        if (onChange) {
+            onChange(eventFiles);
+        }
+    };
 
-    const handleCancel = useCallback(
-        event => {
-            event.preventDefault();
-            event.stopPropagation();
+    const handleCancel = event => {
+        event.preventDefault();
+        event.stopPropagation();
 
-            const list = new DataTransfer();
-            setFiles(list.files);
-            if (onChange) {
-                onChange(list.files);
-            }
-        },
-        [onChange],
-    );
+        const list = new DataTransfer();
+        setFiles(list.files);
+        if (onChange) {
+            onChange(list.files);
+        }
+    };
 
-    const handleFocus = useCallback(
-        event => {
-            setHasFocus(true);
-            onFocus(event);
-        },
-        [onFocus],
-    );
+    const handleFocus = event => {
+        setHasFocus(true);
+        onFocus(event);
+    };
 
-    const handleBlur = useCallback(
-        event => {
-            setHasFocus(false);
-            onBlur(event);
-        },
-        [onBlur],
-    );
+    const handleBlur = event => {
+        setHasFocus(false);
+        onBlur(event);
+    };
 
     const text = getText(files, placeholder, value);
     const isFileSelected = files && files.length > 0;
