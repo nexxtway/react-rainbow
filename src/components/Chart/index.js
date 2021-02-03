@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import ChartJS from './chart';
 import resolveOptions from './resolveOptions';
-import resolveDatasets from './resolveDatasets';
 import StyledContainer from './styled/container';
+import DatasetContainer from './styled/datasetContainer';
 import unregisterGlobalPlugins from './helpers/unregisterGlobalPlugins';
+import ChartContext from './context';
 
 /**
  * A chart is a graphical representation of data. Charts allow users to better understand
@@ -18,34 +19,46 @@ export class Chart extends Component {
     constructor(props) {
         super(props);
         this.chartRef = React.createRef();
-        this.datasets = [];
+        this.datasets = {};
+        this.registerDataset = this.registerDataset.bind(this);
+        this.unregisterDataset = this.unregisterDataset.bind(this);
+        this.updateDataset = this.updateDataset.bind(this);
     }
 
     componentDidMount() {
-        const { children } = this.props;
-        this.datasets = resolveDatasets(children);
         this.renderChart();
     }
 
     componentDidUpdate() {
-        const { children } = this.props;
-        this.datasets = resolveDatasets(children);
         this.updateChart();
     }
 
     updateChart() {
         const { labels, type, ...conditions } = this.props;
-        this.chartInstance.data = {
-            labels,
-            datasets: this.datasets,
-        };
-
-        if (type && this.chartInstance.config && type !== this.chartInstance.config.type) {
-            this.chartInstance.config.type = type;
-        }
-
+        this.chartInstance.config.type = type;
+        this.chartInstance.data.labels = labels;
+        this.chartInstance.data.datasets = Object.values(this.datasets);
         this.chartInstance.options = resolveOptions({ type, ...conditions });
         this.chartInstance.update();
+    }
+
+    registerDataset(id, dataset) {
+        this.datasets[id] = dataset;
+        this.updateChart();
+    }
+
+    unregisterDataset(id) {
+        const { [id]: remove, ...rest } = this.datasets;
+        this.datasets = rest;
+        this.chartInstance.update();
+    }
+
+    updateDataset(id, dataset) {
+        const keys = Object.keys(dataset);
+        keys.forEach(key => {
+            this.datasets[id][key] = dataset[key];
+        });
+        this.updateChart();
     }
 
     renderChart() {
@@ -57,7 +70,6 @@ export class Chart extends Component {
             type,
             data: {
                 labels,
-                datasets: this.datasets,
             },
             plugins: plugins || null,
             options: resolveOptions({ type, plugins, ...conditions }),
@@ -65,12 +77,20 @@ export class Chart extends Component {
     }
 
     render() {
-        const { style, className } = this.props;
+        const { style, className, children } = this.props;
+        const context = {
+            registerDataset: this.registerDataset,
+            unregisterDataset: this.unregisterDataset,
+            updateDataset: this.updateDataset,
+        };
 
         return (
-            <StyledContainer className={className} style={style}>
-                <canvas ref={this.chartRef} />
-            </StyledContainer>
+            <ChartContext.Provider value={context}>
+                <StyledContainer className={className} style={style}>
+                    <canvas ref={this.chartRef} />
+                    <DatasetContainer>{children}</DatasetContainer>
+                </StyledContainer>
+            </ChartContext.Provider>
         );
     }
 }
