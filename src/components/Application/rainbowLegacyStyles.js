@@ -1020,7 +1020,9 @@ const legacyStyles = `
 `;
 
 const RainbowLegacyStyles = isServer
-    ? createGlobalStyle`${legacyStyles}`
+    ? createGlobalStyle`
+          ${legacyStyles}
+      `
     : () => <style>{legacyStyles}</style>;
 
 export default RainbowLegacyStyles;
