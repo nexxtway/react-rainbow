@@ -67,6 +67,14 @@ const FileSelector = React.forwardRef((props, ref) => {
         },
     }));
 
+    const clearInput = () => {
+        inputRef.current.value = '';
+        if (!/safari/i.test(navigator.userAgent)) {
+            inputRef.current.type = '';
+            inputRef.current.type = 'file';
+        }
+    };
+
     const handleDragEnter = () => {
         if (disabled) {
             return;
@@ -99,6 +107,7 @@ const FileSelector = React.forwardRef((props, ref) => {
 
         const list = new DataTransfer();
         setFiles(list.files);
+        clearInput();
         if (onChange) {
             onChange(list.files);
         }
