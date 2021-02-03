@@ -1,10 +1,44 @@
 /* eslint-disable react/no-unused-prop-types */
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import ChartContext from '../Chart/context';
+import { useUniqueIdentifier } from '../../libs/hooks';
 
 /** @category DataView */
-export default function Dataset() {
-    return <div />;
+export default function Dataset(props) {
+    const datasetId = useUniqueIdentifier('dataset');
+    const { title: label, values: data, ...rest } = props;
+    const { registerDataset, unregisterDataset, updateDataset } = React.useContext(ChartContext);
+    const isRegistered = useRef();
+
+    useEffect(() => {
+        if (isRegistered.current) {
+            updateDataset(datasetId, {
+                label,
+                data,
+                ...rest,
+            });
+        }
+    });
+
+    useEffect(() => {
+        registerDataset(datasetId, {
+            label,
+            data,
+            ...rest,
+        });
+        isRegistered.current = true;
+
+        return () => {
+            if (isRegistered.current) {
+                unregisterDataset(datasetId);
+                isRegistered.current = false;
+            }
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    return <></>;
 }
 
 Dataset.propTypes = {

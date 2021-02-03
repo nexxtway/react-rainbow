@@ -17,7 +17,7 @@ interface Size {
     height: number;
 }
 
-interface TriggerMeta {
+interface TriggerMeta extends Size {
     leftUpAnchor: Coordinates;
     leftBottomAnchor: Coordinates;
     rightUpAnchor: Coordinates;
