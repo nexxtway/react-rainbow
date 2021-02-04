@@ -72,8 +72,8 @@ const InternalDropdown = forwardRef((props, reference) => {
     const searchRef = useRef();
     const searchTimeout = useRef();
     const showEmptyMessage = enableSearch
-        ? !isLoading && React.Children.count(children) === 0 && !searchTimeout.current
-        : isEmptyObject(activeChildrenMap);
+        ? !isLoading && React.Children.count(children) === 0
+        : !isLoading && isEmptyObject(activeChildrenMap);
 
     useImperativeHandle(reference, () => ({
         focus: () => {
@@ -364,14 +364,13 @@ const InternalDropdown = forwardRef((props, reference) => {
 
     const isPlaceholderOptionChecked = isChecked(value, activeChildren.current);
     const shouldRenderPlaceholderOption = placeholder && showCheckbox;
-    const shouldShowSpinner = isLoading || searchTimeout.current !== undefined;
 
     return (
         <Dropdown
             id={id}
             role="listbox"
             aria-activedescendant={activeOptionName}
-            isLoading={shouldShowSpinner}
+            isLoading={isLoading}
             className={className}
             style={style}
             onKeyDown={handleKeyPressed}
@@ -379,7 +378,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             ref={containerRef}
         >
             <RenderIf isTrue={enableSearch}>
-                <SearchContainer isLoading={shouldShowSpinner}>
+                <SearchContainer isLoading={isLoading}>
                     <Icon />
                     <InputSearch onChange={handleSearch} ref={searchRef} type="search" />
                 </SearchContainer>
@@ -400,7 +399,7 @@ const InternalDropdown = forwardRef((props, reference) => {
                     style={menuContainerStyles}
                     showEmptyMessage={showEmptyMessage}
                 >
-                    <Content isLoading={shouldShowSpinner}>
+                    <Content isLoading={isLoading}>
                         <Provider value={context}>
                             <RenderIf isTrue={shouldRenderPlaceholderOption}>
                                 <PlaceholderOption
@@ -416,7 +415,7 @@ const InternalDropdown = forwardRef((props, reference) => {
                     </Content>
                 </Ul>
                 <RenderIf isTrue={showEmptyMessage}>
-                    <EmptyMessage searchValue={searchValue} />
+                    <EmptyMessage searchValue={searchValue} hasTimeout={!!searchTimeout.current} />
                 </RenderIf>
                 <RenderIf isTrue={showScrollDownArrow}>
                     <Arrow
