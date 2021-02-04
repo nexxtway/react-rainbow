@@ -79,6 +79,7 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
         props.variant === 'line' &&
         `
             border-radius: 0;
+            font-size: 14px;
         `};
 
     @media (max-width: 600px) {
