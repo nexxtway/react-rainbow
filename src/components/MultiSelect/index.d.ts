@@ -26,6 +26,7 @@ export interface MultiSelectProps extends BaseProps {
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
     children?: ReactNode;
+    showCheckbox?: Boolean;
 }
 
 export default function(props: MultiSelectProps): JSX.Element | null;

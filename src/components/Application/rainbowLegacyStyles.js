@@ -1,3 +1,7 @@
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
+import { isServer } from '../../libs/utils';
+
 const fontsCDN = 'https://fonts.react-rainbow.io';
 
 const LatoBlackEot = `${fontsCDN}/Lato-Black/Lato-Black.eot`;
@@ -60,7 +64,7 @@ const LatoRegularTtf = `${fontsCDN}/Lato-Regular/Lato-Regular.ttf`;
 const LatoRegularWoff = `${fontsCDN}/Lato-Regular/Lato-Regular.woff`;
 const LatoRegularWoff2 = `${fontsCDN}/Lato-Regular/Lato-Regular.woff2`;
 
-export default `
+const legacyStyles = `
 @font-face {
     font-family: 'Lato Black';
     src: url(${LatoBlackEot});
@@ -1014,3 +1018,11 @@ export default `
   .rainbow-font-size-text_large {
     font-size: 1rem; }  
 `;
+
+const RainbowLegacyStyles = isServer
+    ? createGlobalStyle`
+          ${legacyStyles}
+      `
+    : () => <style>{legacyStyles}</style>;
+
+export default RainbowLegacyStyles;
