@@ -33,5 +33,5 @@ export interface InternalDropdownProps extends BaseProps {
     /** Action triggered when search query changes */
     onSearch?: (query: string) => void;
     /** When true, the onSearch callback will be debounced */
-    debounce: boolean;
+    debounce?: boolean;
 }
