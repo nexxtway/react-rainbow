@@ -1,7 +1,7 @@
 import { ReactNode, MouseEvent, ComponentType } from 'react';
 import { BaseProps, LabelAlignment } from '../types';
 
-type Value = string | Date;
+type Value = string | Date | Date[];
 
 export interface DatePickerProps extends BaseProps {
     value?: Value;
