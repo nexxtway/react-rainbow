@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { PADDING_X_SMALL } from '../../../styles/paddings';
+import { PADDING_X_SMALL, PADDING_SMALL } from '../../../styles/paddings';
 import { FONT_SIZE_TEXT_SMALL, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
 const variantMap = { card: 'card', line: 'line' };
@@ -18,7 +18,7 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
     padding: ${PADDING_X_SMALL} 1.75rem;
     border-radius: 14px 14px 0 0;
     line-height: 1rem;
-    letter-spacing: 0.9px;
+    letter-spacing: 1px;
     font-size: ${FONT_SIZE_TEXT_SMALL};
     font-weight: 600;
     color: ${props => props.palette.text.label};
@@ -75,11 +75,14 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
             }
         
         `};
+
     ${props =>
         props.variant === 'line' &&
         `
             border-radius: 0;
-            font-size: 14px;
+            font-size: 18px;
+            padding: ${PADDING_X_SMALL} ${PADDING_SMALL};
+            letter-spacing: 1.5px;
         `};
 
     @media (max-width: 600px) {
