@@ -95,7 +95,7 @@ function InternalDropdownWithAlgoliaSearch() {
 
     return (
         <div className="rainbow-m-around_xx-large">
-            <InternalDropdown id="internal-dropdown-5" isLoading={isLoading} value={value} onChange={setValue} enableSearch onSearch={onSearch}>
+            <InternalDropdown id="internal-dropdown-5" isLoading={isLoading} value={value} onChange={setValue} enableSearch onSearch={onSearch} debounce>
                 {options.map(option => <Option key={option.name} name={option.name} label={option.label} />)}
             </InternalDropdown>
         </div>

@@ -15,6 +15,7 @@ describe('InternalDropdown with custom search', () => {
         const internalDropdown = new PageInternalDropdown(INTERNALDROPDOWN);
         internalDropdown.clickSearch();
         internalDropdown.setQuery('Picklist');
+        browser.waitUntil(() => internalDropdown.isLoading());
         browser.waitUntil(() => !internalDropdown.isLoading());
         expect(internalDropdown.getOptionsLength()).toBe(2);
     });
@@ -22,6 +23,7 @@ describe('InternalDropdown with custom search', () => {
         const internalDropdown = new PageInternalDropdown(INTERNALDROPDOWN);
         internalDropdown.clickSearch();
         internalDropdown.setQuery('Picklist');
+        browser.waitUntil(() => internalDropdown.isLoading());
         browser.waitUntil(() => !internalDropdown.isLoading());
         expect(internalDropdown.getOptionsLength()).toBe(2);
         const option = internalDropdown.getOption(0);
@@ -31,6 +33,7 @@ describe('InternalDropdown with custom search', () => {
         const internalDropdown = new PageInternalDropdown(INTERNALDROPDOWN);
         internalDropdown.clickSearch();
         internalDropdown.setQuery('Xyz');
+        browser.waitUntil(() => internalDropdown.isLoading());
         browser.waitUntil(() => !internalDropdown.isLoading());
         expect(internalDropdown.emptyMessageExist()).toBe(true);
     });

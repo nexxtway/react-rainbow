@@ -71,9 +71,10 @@ const InternalDropdown = forwardRef((props, reference) => {
     const scrollingTimer = useRef();
     const searchRef = useRef();
     const searchTimeout = useRef();
-    const showEmptyMessage = enableSearch
-        ? !isLoading && React.Children.count(children) === 0
-        : !isLoading && isEmptyObject(activeChildrenMap);
+    const showEmptyMessage =
+        enableSearch && onSearch
+            ? !isLoading && React.Children.count(children) === 0
+            : !isLoading && isEmptyObject(activeChildrenMap);
 
     useImperativeHandle(reference, () => ({
         focus: () => {
@@ -320,6 +321,7 @@ const InternalDropdown = forwardRef((props, reference) => {
                 }, {}),
             );
             resetActiveChild();
+            setSearchValue(event.target.value);
         }
         setTimeout(() => updateScrollingArrows(), 0);
     };
