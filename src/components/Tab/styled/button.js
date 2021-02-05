@@ -75,6 +75,7 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
             }
         
         `};
+
     ${props =>
         props.variant === 'line' &&
         `
