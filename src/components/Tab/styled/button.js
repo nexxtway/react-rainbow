@@ -80,9 +80,8 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
         props.variant === 'line' &&
         `
             border-radius: 0;
-            font-size: 16px;
+            font-size: 14px;
             padding: ${PADDING_X_SMALL} ${PADDING_SMALL};
-            letter-spacing: 1.5px;
             line-height: 1.5; 
         `};
 
