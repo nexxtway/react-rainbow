@@ -1,11 +1,6 @@
 require('dotenv').config();
 const fetch = require('node-fetch');
-const algoliasearch = require('algoliasearch');
-
-const client = algoliasearch(
-    process.env.REACT_APP_ALGOLIA_APP_ID,
-    process.env.REACT_APP_ALGOLIA_ADMIN_KEY,
-);
+const client = require('./algoliaInitiation');
 
 const mediumsIndex = client.initIndex(process.env.REACT_APP_ALGOLIA_SEARCH_MEDIUMS_INDEX);
 

@@ -1,11 +1,7 @@
 require('dotenv').config();
-const algoliasearch = require('algoliasearch');
+const client = require('./algoliaInitiation');
 const run = require('./create-searchable-content');
 
-const client = algoliasearch(
-    process.env.REACT_APP_ALGOLIA_APP_ID,
-    process.env.REACT_APP_ALGOLIA_ADMIN_KEY,
-);
 const componentsIndex = client.initIndex(process.env.REACT_APP_ALGOLIA_SEARCH_COMPONENTS_INDEX);
 const examplesIndex = client.initIndex(process.env.REACT_APP_ALGOLIA_SEARCH_EXAMPLES_INDEX);
 

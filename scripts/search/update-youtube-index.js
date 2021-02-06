@@ -1,11 +1,6 @@
 require('dotenv').config();
 const fetch = require('node-fetch');
-const algoliasearch = require('algoliasearch');
-
-const client = algoliasearch(
-    process.env.REACT_APP_ALGOLIA_APP_ID,
-    process.env.REACT_APP_ALGOLIA_ADMIN_KEY,
-);
+const client = require('./algoliaInitiation');
 
 const youtubeIndex = client.initIndex(process.env.REACT_APP_ALGOLIA_SEARCH_YOUTUBE_INDEX);
 const youtubeApiUrl = `https://www.googleapis.com/youtube/v3/search?key=${
@@ -19,7 +14,7 @@ const getYoutubeVideos = async () => {
         const { items } = await resp.json();
         const videosFiltered = items.filter(item => item.id.kind === 'youtube#video');
 
-        const videos = videosFiltered.map(item => {
+        return videosFiltered.map(item => {
             const objectID = item.id.videoId;
             const { title, publishTime, description } = item.snippet;
             const thumbnail = item.snippet.thumbnails.default.url;
@@ -35,7 +30,6 @@ const getYoutubeVideos = async () => {
                 type: 'youtube',
             };
         });
-        return videos;
     } catch (error) {
         console.error(error);
     }
