@@ -11,7 +11,7 @@ describe('InternalDropdown with custom search', () => {
         const component = $(INTERNALDROPDOWN);
         component.waitForExist();
     });
-    it('should filter based on custom search', () => {
+    it.skip('should filter based on custom search', () => {
         const internalDropdown = new PageInternalDropdown(INTERNALDROPDOWN);
         internalDropdown.clickSearch();
         internalDropdown.setQuery('Picklist');
@@ -19,7 +19,7 @@ describe('InternalDropdown with custom search', () => {
         browser.waitUntil(() => !internalDropdown.isLoading());
         expect(internalDropdown.getOptionsLength()).toBe(2);
     });
-    it('should set first option as active after search', () => {
+    it.skip('should set first option as active after search', () => {
         const internalDropdown = new PageInternalDropdown(INTERNALDROPDOWN);
         internalDropdown.clickSearch();
         internalDropdown.setQuery('Picklist');
@@ -29,7 +29,7 @@ describe('InternalDropdown with custom search', () => {
         const option = internalDropdown.getOption(0);
         expect(option.isActive()).toBe(true);
     });
-    it('should render empty message when custom search has no results', () => {
+    it.skip('should render empty message when custom search has no results', () => {
         const internalDropdown = new PageInternalDropdown(INTERNALDROPDOWN);
         internalDropdown.clickSearch();
         internalDropdown.setQuery('Xyz');
