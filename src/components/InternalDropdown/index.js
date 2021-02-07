@@ -54,6 +54,8 @@ const InternalDropdown = forwardRef((props, reference) => {
         multiple,
         showCheckbox,
         placeholder,
+        onSearch,
+        debounce,
     } = props;
     const [showScrollUpArrow, setShowScrollUpArrow] = useState(false);
     const [showScrollDownArrow, setShowScrollDownArrow] = useState(false);
@@ -68,7 +70,11 @@ const InternalDropdown = forwardRef((props, reference) => {
     const containerRef = useRef();
     const scrollingTimer = useRef();
     const searchRef = useRef();
-    const showEmptyMessage = isEmptyObject(activeChildrenMap);
+    const searchTimeout = useRef();
+    const showEmptyMessage =
+        enableSearch && onSearch
+            ? !isLoading && React.Children.count(children) === 0
+            : !isLoading && isEmptyObject(activeChildrenMap);
 
     useImperativeHandle(reference, () => ({
         focus: () => {
@@ -93,6 +99,14 @@ const InternalDropdown = forwardRef((props, reference) => {
         setShowScrollDownArrow(!isScrollPositionAtMenuBottom(menu));
     };
 
+    const resetActiveChild = () => {
+        setActiveOptionIndex(0);
+        const firstActiveChild = activeChildren.current[0];
+        if (firstActiveChild) {
+            setActiveOptionName(firstActiveChild.name);
+        }
+    };
+
     const scrollBy = offset => {
         menuRef.current.scrollBy(0, offset);
     };
@@ -105,10 +119,6 @@ const InternalDropdown = forwardRef((props, reference) => {
     const registerChild = useCallback((childRef, childProps) => {
         if (!isComponentMounted.current) return;
         if (isChildRegistered(childProps.name, activeChildren.current)) return;
-        if (!firstChild.current) {
-            firstChild.current = childProps;
-            setActiveOptionName(childProps.name);
-        }
         const [...nodes] = getChildMenuItemNodes(containerRef.current);
         const newChildren = insertChildOrderly(
             activeChildren.current,
@@ -119,6 +129,16 @@ const InternalDropdown = forwardRef((props, reference) => {
             nodes,
         );
         activeChildren.current = newChildren;
+
+        if (onSearch) {
+            setActiveOptionIndex(0);
+            setActiveOptionName(newChildren[0].name);
+            firstChild.current = newChildren[0].name;
+        } else if (!firstChild.current) {
+            firstChild.current = childProps;
+            setActiveOptionName(childProps.name);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const unregisterChild = useCallback((childRef, name) => {
@@ -126,6 +146,13 @@ const InternalDropdown = forwardRef((props, reference) => {
         if (!isChildRegistered(name, activeChildren.current)) return;
         const newChildren = activeChildren.current.filter(child => child.name !== name);
         activeChildren.current = newChildren;
+        if (activeChildren.current.length === 0) {
+            firstChild.current = undefined;
+        }
+        if (onSearch && firstChild.current === name) {
+            resetActiveChild();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const hoverChild = useCallback((event, name) => {
@@ -170,6 +197,26 @@ const InternalDropdown = forwardRef((props, reference) => {
             const amount = nextFocusedOptionRef.offsetTop - currentFocusedOptionRef.offsetTop;
             scrollBy(amount);
         }
+    };
+
+    const resetTimeout = () => {
+        if (searchTimeout.current) {
+            clearTimeout(searchTimeout.current);
+            searchTimeout.current = undefined;
+        }
+    };
+
+    const fireSearch = query => {
+        resetTimeout();
+        if (debounce) {
+            searchTimeout.current = setTimeout(() => {
+                resetTimeout();
+                onSearch(query);
+            }, 500);
+        } else {
+            onSearch(query);
+        }
+        setSearchValue(query);
     };
 
     const handleChange = useCallback(
@@ -257,23 +304,24 @@ const InternalDropdown = forwardRef((props, reference) => {
         if (!allActiveChildren.current) {
             allActiveChildren.current = [...activeChildren.current];
         }
-        const filteredOptions = searchFilter({
-            query: event.target.value,
-            data: allActiveChildren.current,
-        });
 
-        setSearchValue(event.target.value);
+        if (onSearch) {
+            setActiveChildrenMap();
+            fireSearch(event.target.value);
+        } else {
+            const filteredOptions = searchFilter({
+                query: event.target.value,
+                data: allActiveChildren.current,
+            });
 
-        setActiveChildrenMap(
-            filteredOptions.reduce((acc, option) => {
-                acc[option.name] = true;
-                return acc;
-            }, {}),
-        );
-        setActiveOptionIndex(0);
-        const firstActiveChild = activeChildren.current[0];
-        if (firstActiveChild) {
-            setActiveOptionName(firstActiveChild.name);
+            setActiveChildrenMap(
+                filteredOptions.reduce((acc, option) => {
+                    acc[option.name] = true;
+                    return acc;
+                }, {}),
+            );
+            resetActiveChild();
+            setSearchValue(event.target.value);
         }
         setTimeout(() => updateScrollingArrows(), 0);
     };
@@ -369,7 +417,7 @@ const InternalDropdown = forwardRef((props, reference) => {
                     </Content>
                 </Ul>
                 <RenderIf isTrue={showEmptyMessage}>
-                    <EmptyMessage searchValue={searchValue} />
+                    <EmptyMessage searchValue={searchValue} hasTimeout={!!searchTimeout.current} />
                 </RenderIf>
                 <RenderIf isTrue={showScrollDownArrow}>
                     <Arrow
@@ -419,6 +467,10 @@ InternalDropdown.propTypes = {
     showCheckbox: PropTypes.bool,
     /** The text to show on the header when showCheckbox is true */
     placeholder: PropTypes.string,
+    /** Action triggered when search query changes */
+    onSearch: PropTypes.func,
+    /** When true, the onSearch callback will be debounced */
+    debounce: PropTypes.bool,
 };
 
 InternalDropdown.defaultProps = {
@@ -433,6 +485,8 @@ InternalDropdown.defaultProps = {
     multiple: false,
     showCheckbox: false,
     placeholder: undefined,
+    onSearch: undefined,
+    debounce: false,
 };
 
 export default InternalDropdown;

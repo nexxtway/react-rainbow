@@ -15,6 +15,7 @@ export interface PicklistProps extends BaseProps {
     children?: ReactNode;
     isLoading?: boolean;
     enableSearch?: boolean;
+    onSearch?: (query: string) => void;
     value?: PicklistValue;
     variant?: 'default' | 'shaded' | 'bare';
     onChange?: (value: PicklistValue) => void;
@@ -29,6 +30,7 @@ export interface PicklistProps extends BaseProps {
     disabled?: boolean;
     readOnly?: boolean;
     id?: string;
+    debounce?: boolean;
 }
 
 declare const Picklist: ComponentType<PicklistProps>;

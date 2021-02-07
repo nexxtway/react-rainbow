@@ -124,8 +124,9 @@ describe('<Option />', () => {
             />,
         );
         component.unmount();
+        jest.runAllTimers();
         expect(privateUnregisterChildMockFn).toHaveBeenCalledTimes(1);
-        expect(privateUnregisterChildMockFn.mock.calls[0][0]).not.toBeFalsy();
+        expect(privateUnregisterChildMockFn.mock.calls[0][1]).toBe('option1');
     });
     it('should render a default option', () => {
         const component = mount(<Option name="option-1" />);

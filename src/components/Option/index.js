@@ -96,23 +96,27 @@ class OptionItem extends Component {
 
     register() {
         const { privateRegisterChild, label, name, icon, value, variant } = this.props;
-        return setTimeout(
-            () =>
-                privateRegisterChild(this.itemRef.current, {
+
+        if (privateRegisterChild) {
+            return setTimeout(() => {
+                return privateRegisterChild(this.itemRef.current, {
                     label,
                     name,
                     icon,
                     value,
                     variant,
-                }),
-            0,
-        );
+                });
+            }, 0);
+        }
+        return null;
     }
 
     unregister() {
         const { privateUnregisterChild, name } = this.props;
         if (privateUnregisterChild) {
-            return privateUnregisterChild(this.itemRef.current, name);
+            return setTimeout(() => {
+                return privateUnregisterChild(this.itemRef.current, name);
+            }, 0);
         }
         return null;
     }

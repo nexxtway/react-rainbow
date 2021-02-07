@@ -111,6 +111,17 @@ class PageInternalDropdown {
     }
 
     /**
+     * Returns true when loading indicator is visible.
+     * @method
+     * @returns {bool}
+     */
+    isLoading() {
+        return $(this.rootElement)
+            .$('ul[role="presentation"] > div > div')
+            .isExisting();
+    }
+
+    /**
      * Clicks the input element.
      * @method
      */
