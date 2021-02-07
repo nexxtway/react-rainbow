@@ -1,5 +1,4 @@
-require('dotenv').config();
-const client = require('./algoliaInitiation');
+const client = require('./algoliaClient');
 const run = require('./create-searchable-content');
 
 const componentsIndex = client.initIndex(process.env.REACT_APP_ALGOLIA_SEARCH_COMPONENTS_INDEX);
