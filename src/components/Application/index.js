@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from './context';
 import { useLocale } from '../../libs/hooks';
-import legacyStyles from './rainbowLegacyStyles';
+import RainbowLegacyStyles from './rainbowLegacyStyles';
 import normalizeTheme from '../../styles/helpers/normalizeTheme';
 
 /**
@@ -27,7 +27,7 @@ export default function Application(props) {
         <Provider value={contextValue}>
             <ThemeProvider theme={normalizedTheme}>
                 <div className={className} style={style}>
-                    <style>{legacyStyles}</style>
+                    <RainbowLegacyStyles />
                     {children}
                 </div>
             </ThemeProvider>
