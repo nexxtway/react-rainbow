@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { zindexSpinner } from '../../../styles/z-index';
 
 const StyledSpinnerContainer = styled.div`
     box-sizing: border-box;
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 5000;
+    z-index: ${zindexSpinner};
     transform: translate(-50%, -50%);
     display: inline-flex;
     justify-content: center;

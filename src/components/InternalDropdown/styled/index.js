@@ -8,7 +8,6 @@ import StyledHeader from '../../Option/styled/header';
 export const Dropdown = attachThemeAttrs(styled.div)`
     position: relative;
     overflow: hidden;
-    z-index: 1999;
     width: 100%;
     border: solid 1px ${props => props.palette.border.divider};
     border-radius: 0.875rem;

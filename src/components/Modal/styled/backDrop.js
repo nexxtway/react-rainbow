@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { replaceAlpha } from '../../../styles/helpers/color';
+import { zindexModal } from '../../../styles/z-index';
 
 const StyledBackDrop = attachThemeAttrs(styled.div)`
     z-index: -1;
@@ -22,7 +23,7 @@ const StyledBackDrop = attachThemeAttrs(styled.div)`
         props.isOpen &&
         `
             visibility: visible;
-            z-index: 1000000;
+            z-index: ${zindexModal};
             opacity: 1;
             backdrop-filter: blur(5px);
         `};
