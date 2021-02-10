@@ -1,6 +1,5 @@
-require('dotenv').config();
 const fetch = require('node-fetch');
-const client = require('./algoliaInitiation');
+const client = require('./algoliaClient');
 
 const mediumsIndex = client.initIndex(process.env.REACT_APP_ALGOLIA_SEARCH_MEDIUMS_INDEX);
 
