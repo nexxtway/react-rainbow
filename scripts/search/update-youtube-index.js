@@ -1,6 +1,5 @@
-require('dotenv').config();
 const fetch = require('node-fetch');
-const client = require('./algoliaInitiation');
+const client = require('./algoliaClient');
 
 const youtubeIndex = client.initIndex(process.env.REACT_APP_ALGOLIA_SEARCH_YOUTUBE_INDEX);
 const youtubeApiUrl = `https://www.googleapis.com/youtube/v3/search?key=${
