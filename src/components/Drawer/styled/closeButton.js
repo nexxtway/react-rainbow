@@ -5,7 +5,7 @@ const StyledCloseButton = styled(ButtonIcon)`
     position: absolute;
     top: 1rem;
     right: 1rem;
-    z-index: 1000002;
+    z-index: 1;
 `;
 
 export default StyledCloseButton;

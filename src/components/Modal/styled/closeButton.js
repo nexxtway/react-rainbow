@@ -6,7 +6,7 @@ const StyledCloseButton = attachThemeAttrs(styled(ButtonIcon))`
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    z-index: 1000002;
+    z-index: 1;
     color: ${props => props.palette.text.header};
 `;
 
