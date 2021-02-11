@@ -8,11 +8,11 @@ import ContentMetaResolver from './ContentMetaResolver';
 import defaultPositionResolver from './helpers/defaultPositionResolver';
 import resolveElement from './helpers/resolveElement';
 import useDisableScroll from './hooks/useDisableScroll';
-import { zindexOverlay } from '../../styles/z-index';
+import { ZINDEX_OVERLAY } from '../../styles/zIndex';
 
 const Container = styled.div`
     position: fixed;
-    z-index: ${zindexOverlay};
+    z-index: ${ZINDEX_OVERLAY};
     top: ${props => props.position && props.position.top}px;
     left: ${props => props.position && props.position.left}px;
     bottom: ${props => props.position && props.position.bottom}px;

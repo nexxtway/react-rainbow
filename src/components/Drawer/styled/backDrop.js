@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { replaceAlpha } from '../../../styles/helpers/color';
-import { zindexDrawer } from '../../../styles/z-index';
+import { ZINDEX_DRAWER } from '../../../styles/zIndex';
 
 const StyledBackDrop = attachThemeAttrs(styled.div)`
     top: 0;
@@ -15,7 +15,7 @@ const StyledBackDrop = attachThemeAttrs(styled.div)`
     justify-content: center;
     align-items: center;
     position: fixed;
-    z-index: ${zindexDrawer};
+    z-index: ${ZINDEX_DRAWER};
     opacity: 1;
     backdrop-filter: blur(5px);
 `;
