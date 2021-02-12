@@ -31,7 +31,7 @@ export interface PresenceMapProps extends BaseProps {
     showTransit?: boolean;
     children?: ReactNode;
     type?: 'roadmap' | 'satellite' | 'hybrid' | 'terrain';
-    onMarkerClick: function;
+    onMarkerClick: (marker: IMarker, index: number) => void;
 }
 
 export default function(props: PresenceMapProps): JSX.Element | null;

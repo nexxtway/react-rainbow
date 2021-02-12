@@ -46,6 +46,7 @@ export default function withReduxForm(WrappedComponent) {
                     {...rest}
                     {...input}
                     error={this.getErrorMessage()}
+                    dirty={meta && meta.dirty}
                     ref={this.fieldRef}
                 />
             );
