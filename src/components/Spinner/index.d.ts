@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { BaseProps } from '../types';
 
 export interface SpinnerProps extends BaseProps {

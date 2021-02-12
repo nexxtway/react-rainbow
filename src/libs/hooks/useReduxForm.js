@@ -18,5 +18,6 @@ export default function useReduxForm(props) {
         ...rest,
         ...input,
         error,
+        dirty: meta && meta.dirty,
     };
 }
