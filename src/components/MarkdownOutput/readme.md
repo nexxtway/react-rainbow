@@ -1,4 +1,95 @@
-##### MarkdownOutput base:
+# MarkdownOutput base
+##### MarkdownOutput allows to parse Markdown text and render as HTML. In the example below you can see the basic elements.
+```js
+import React from 'react';
+import styled from 'styled-components';
+import { Card, MarkdownOutput } from 'react-rainbow-components';
+
+const StyledCard = styled(Card)`
+    padding: 1rem 2rem;
+    box-shadow: none;
+
+    &:hover {
+        box-shadow: none;
+    }
+`;
+
+const StyledHeading = styled.h1`
+    font-size: 1.25rem;
+    color: #2A3039;
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+`;
+
+const headings = "# # Heading level 1\n ## ## Heading level 2\n ### ### Heading level 3\n #### #### Heading level 4\n ##### ##### Heading level 5\n ###### ###### Heading level 6";
+const paragraph = "I think I'll use it to format all of my documents from now on."
+const bold = "I just love **&#42;&#42;bold text&#42;&#42;**.	";
+const italic = "Italicized text is the *&#42;cat's meow&#42;*."
+const link = "[[Link](http://react-rainbow.io)](http://react-rainbow.io)";
+const blockquotes = "> To create a blockquote, add a > in front of a paragraph.";
+const orderedList = "1. First item\n 2. Second item\n 3. Third item\n 4. Fourth item";
+const nestedOrderedList = "1. First item\n 2. Second item\n 3. Third item\n     1. First item\n     2. Second item\n 4. Fourth item";
+const unorderedList = "- First item\n - Second item\n - Third item\n - Fourth item";
+const nestedUnorderedList = "- First item\n - Second item\n - Third item\n     - First item\n     - Second item\n - Fourth item";
+const taskList = "- [x] First item\n - [ ] Second item\n - [ ] Third item\n - [ ] Fourth item\n ";
+const table = "| FirstName | LastName | Email |\n| ----------- | ----------- | ----------- |\n| Juan      | Perez       | juan@gmail.com |\n| Juan   | Perez        | juan@gmail.com |\n";
+
+const MarkdownEditor = () => {
+    return (
+        <div className="rainbow-m-vertical_large rainbow-p-horizontal_large rainbow-m_auto rainbow-flex_wrap">
+            <StyledHeading>Headings</StyledHeading>
+            <StyledCard>
+                <MarkdownOutput value={headings} />
+            </StyledCard>
+            <StyledHeading>Paragraph</StyledHeading>
+            <StyledCard>
+                <MarkdownOutput value={paragraph} />
+            </StyledCard>
+            <StyledHeading>Bold</StyledHeading>
+            <StyledCard>
+                <MarkdownOutput value={bold} />
+            </StyledCard>
+            <StyledHeading>Italic</StyledHeading>
+            <StyledCard>
+                <MarkdownOutput value={italic} />
+            </StyledCard>
+            <StyledHeading>Link</StyledHeading>
+            <StyledCard>
+                <MarkdownOutput value={link} />
+            </StyledCard>
+            <StyledHeading>Blockquotes</StyledHeading>
+            <StyledCard>
+                <MarkdownOutput value={blockquotes} />
+            </StyledCard>
+            <StyledHeading>Ordered list</StyledHeading>
+            <StyledCard>
+                <MarkdownOutput value={orderedList} />
+                <br />
+                <MarkdownOutput value={nestedOrderedList} />
+            </StyledCard>
+            <StyledHeading>Unordered list</StyledHeading>
+            <StyledCard>
+                <MarkdownOutput value={unorderedList} />
+                <br />
+                <MarkdownOutput value={nestedUnorderedList} />
+            </StyledCard>
+            <StyledHeading>Task list</StyledHeading>
+            <StyledCard>
+                <MarkdownOutput value={taskList} />
+            </StyledCard>
+            <StyledHeading>Table</StyledHeading>
+            <StyledCard>
+                <MarkdownOutput value={table} />
+            </StyledCard>
+        </div>
+    )
+}
+
+    <MarkdownEditor />
+```
+
+# Markdown editor:
+##### The following example allows to edit the Markdown content and see the result. Toggle between Edit and Preview to see it in action.
 
 ```js
 import React, { useState } from 'react';
@@ -143,7 +234,8 @@ const MarkdownCard = () => {
     </div>
 ```
 
-##### MarkdownOutput code:
+# MarkdownOutput with code blocks:
+##### You can render code snippets in multiple languages, including syntax highlighting with `highlight.js`.
 
 ```js
 import React, { useState } from 'react';
@@ -288,7 +380,8 @@ const MarkdownCard = () => {
     </div>
 ```
 
-##### MarkdownOutput code with Dracula highlight.js theme:
+# MarkdownOutput with code blocks with Dracula `highlight.js` theme:
+##### The example below shows how to apply a theme to your code blocks.
 
 ```js
 import React, { useState } from 'react';

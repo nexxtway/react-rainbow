@@ -1017,6 +1017,11 @@ const legacyStyles = `
   
   .rainbow-font-size-text_large {
     font-size: 1rem; }  
+
+  .task-list-item {
+    list-style: none;
+    margin-left: 0;
+  }
 `;
 
 const RainbowLegacyStyles = isServer

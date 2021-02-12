@@ -1,4 +1,6 @@
 // font sizes heading
+export const FONT_SIZE_HEADING_XX_SMALL = '0.75rem';
+export const FONT_SIZE_HEADING_X_SMALL = '0.875rem';
 export const FONT_SIZE_HEADING_SMALL = '1rem';
 export const FONT_SIZE_HEADING_MEDIUM = '1.25rem';
 export const FONT_SIZE_HEADING_LARGE = '1.5rem';

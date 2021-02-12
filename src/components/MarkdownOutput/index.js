@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import useMarkdownToReact from './hooks/useMarkdownToReact';
 
 /**
- * MarkdownOutput preview markdown text in web browser.
+ * MarkdownOutput renders Markdown text in browser.
  * It is based on highlight.js, to customize the code blocks you can use highlight.js themes.
  * @category Form
  */
