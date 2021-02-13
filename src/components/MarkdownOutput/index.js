@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import useMarkdownToReact from './hooks/useMarkdownToReact';
+import StyledContainer from './styled';
 
 /**
  * MarkdownOutput renders Markdown text in browser.
@@ -11,9 +12,9 @@ export default function MarkdownOutput(props) {
     const { id, className, style, value } = props;
     const result = useMarkdownToReact(value);
     return (
-        <div id={id} className={className} style={style}>
+        <StyledContainer id={id} className={className} style={style}>
             {result}
-        </div>
+        </StyledContainer>
     );
 }
 

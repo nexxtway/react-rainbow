@@ -8,6 +8,7 @@ import {
     FONT_SIZE_HEADING_X_SMALL,
     FONT_SIZE_HEADING_XX_SMALL,
     FONT_SIZE_TEXT_MEDIUM,
+    FONT_SIZE_TEXT_LARGE,
 } from '../../../styles/fontSizes';
 import { BORDER_RADIUS_3 } from '../../../styles/borderRadius';
 
@@ -44,8 +45,14 @@ export const StyledHeading = attachThemeAttrs(styled.h1)`
 `;
 
 export const StyledParagraph = attachThemeAttrs(styled.p)`
-    font-size: ${FONT_SIZE_TEXT_MEDIUM};
+    font-size: ${FONT_SIZE_TEXT_LARGE};
     color: ${props => props.palette.text.main};
+`;
+
+export const StyledLink = attachThemeAttrs(styled.a)`
+    font-size: ${FONT_SIZE_TEXT_LARGE};
+    color: ${props => props.palette.text.main};
+    text-decoration: underline;
 `;
 
 export const StyledCode = attachThemeAttrs(
@@ -114,7 +121,7 @@ export const StyledTableRow = attachThemeAttrs(styled.tr)`
 `;
 
 export const StyledTableHeadindCell = attachThemeAttrs(styled.td)`
-    font-size: ${FONT_SIZE_TEXT_MEDIUM};
+    font-size: ${FONT_SIZE_TEXT_LARGE};
     text-align: ${props => props.align};
     border: 1px solid transparent;
     box-sizing: border-box;
@@ -160,6 +167,7 @@ export const StyledOrderedList = styled.ol`
 export const StyledListItem = attachThemeAttrs(styled.li)`
     margin-left: 1rem;
     margin-bottom: 4px;
+    font-size: ${FONT_SIZE_TEXT_LARGE};
 
     input[type='checkbox'] {
         width: 18px;

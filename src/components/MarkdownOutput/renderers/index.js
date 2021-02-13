@@ -13,6 +13,7 @@ import {
     StyledOrderedList,
     StyledListItem,
     StyledBlockquote,
+    StyledLink,
 } from './styled';
 
 const Heading = ({ level, children }) => {
@@ -33,6 +34,7 @@ export default {
     code: StyledCode,
     blockquote: StyledBlockquote,
     p: StyledParagraph,
+    a: StyledLink,
     hr: StyledHR,
     ul: StyledList,
     ol: StyledOrderedList,

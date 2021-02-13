@@ -1016,12 +1016,7 @@ const legacyStyles = `
     font-size: 0.875rem; }
   
   .rainbow-font-size-text_large {
-    font-size: 1rem; }  
-
-  .task-list-item {
-    list-style: none;
-    margin-left: 0;
-  }
+    font-size: 1rem; }
 `;
 
 const RainbowLegacyStyles = isServer
