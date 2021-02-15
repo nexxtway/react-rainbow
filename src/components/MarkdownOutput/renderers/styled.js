@@ -9,39 +9,23 @@ import {
     FONT_SIZE_HEADING_XX_SMALL,
     FONT_SIZE_TEXT_MEDIUM,
     FONT_SIZE_TEXT_LARGE,
-} from '../../../styles/fontSizes';
+} from './fontSizes';
 import { BORDER_RADIUS_3 } from '../../../styles/borderRadius';
 
+const fontSizesMap = {
+    1: FONT_SIZE_HEADING_X_LARGE,
+    2: FONT_SIZE_HEADING_LARGE,
+    3: FONT_SIZE_HEADING_MEDIUM,
+    4: FONT_SIZE_HEADING_SMALL,
+    5: FONT_SIZE_HEADING_X_SMALL,
+    6: FONT_SIZE_HEADING_XX_SMALL,
+};
+
 export const StyledHeading = attachThemeAttrs(styled.h1)`
-    font-size: ${FONT_SIZE_HEADING_XX_SMALL};
+    font-size: ${props => fontSizesMap[props.level] || FONT_SIZE_HEADING_XX_SMALL};
     color: ${props => props.palette.text.main};
     margin-top: 1rem;
     margin-bottom: 0.75rem;
-    ${props =>
-        props.level === 1 &&
-        `
-        font-size: ${FONT_SIZE_HEADING_X_LARGE};
-        `};
-    ${props =>
-        props.level === 2 &&
-        `
-        font-size: ${FONT_SIZE_HEADING_LARGE};
-        `};
-    ${props =>
-        props.level === 3 &&
-        `
-        font-size: ${FONT_SIZE_HEADING_MEDIUM};
-        `};
-    ${props =>
-        props.level === 4 &&
-        `
-        font-size: ${FONT_SIZE_HEADING_SMALL};
-        `};
-    ${props =>
-        props.level === 5 &&
-        `
-        font-size: ${FONT_SIZE_HEADING_X_SMALL};
-        `};
 `;
 
 export const StyledParagraph = attachThemeAttrs(styled.p)`
