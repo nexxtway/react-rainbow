@@ -1016,7 +1016,7 @@ const legacyStyles = `
     font-size: 0.875rem; }
   
   .rainbow-font-size-text_large {
-    font-size: 1rem; }  
+    font-size: 1rem; }
 `;
 
 const RainbowLegacyStyles = isServer
