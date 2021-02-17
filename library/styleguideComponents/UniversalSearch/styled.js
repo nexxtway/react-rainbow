@@ -114,3 +114,9 @@ export const StyledImage = styled.div`
 export const PostText = styled.div`
     margin-left: 10px;
 `;
+
+export const SearchByText = styled.span`
+    font-size: 0.8rem;
+    color: #3a4570;
+    margin-right: 6px;
+`;
