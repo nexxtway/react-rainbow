@@ -118,7 +118,7 @@ export default function Drawer(props) {
 
     const handleKeyPressed = event => {
         event.stopPropagation();
-        if (isOpen && event.keyCode === ESCAPE_KEY) {
+        if (isOpen && event.keyCode === ESCAPE_KEY && containerRef.current.contains(event.target)) {
             closeDrawer();
         }
         if (event.keyCode === TAB_KEY) {
