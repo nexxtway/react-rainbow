@@ -77,6 +77,7 @@ class TabItem extends Component {
             >
                 <StyledButton
                     role="tab"
+                    type="button"
                     aria-selected={isActive}
                     onClick={this.handleSelect}
                     tabIndex={this.getTabIndex()}
