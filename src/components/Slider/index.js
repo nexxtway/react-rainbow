@@ -73,6 +73,7 @@ export default class Slider extends Component {
             labelAlignment,
             hideLabel,
         } = this.props;
+        const valueWidth = Math.max(`${max}`.length, `${min}`.length) + 1;
         return (
             <StyledContainer className={className} style={style}>
                 <RenderIf isTrue={label}>
@@ -100,7 +101,9 @@ export default class Slider extends Component {
                         onFocus={onFocus}
                         ref={this.sliderRef}
                     />
-                    <StyledValue aria-hidden>{value}</StyledValue>
+                    <StyledValue width={valueWidth} aria-hidden>
+                        {value}
+                    </StyledValue>
                 </StyledSlider>
                 <RenderIf isTrue={error}>
                     <ErrorText id={this.errorMessageId}>{error}</ErrorText>
