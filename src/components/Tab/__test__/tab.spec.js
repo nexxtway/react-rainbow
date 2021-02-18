@@ -93,4 +93,9 @@ describe('<Tab />', () => {
         component.setProps({ name: 'tab-1' });
         expect(privateUpdateTabMockFn).toHaveBeenCalledTimes(0);
     });
+    it('should set type to "button" in button element', () => {
+        const component = mount(<Tab name="tab-1" activeTabName="tab-2" />);
+        const button = component.find('button');
+        expect(button.prop('type')).toBe('button');
+    });
 });
