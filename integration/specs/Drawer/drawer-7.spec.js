@@ -39,6 +39,7 @@ describe('Drawer advanced example', () => {
         browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);
+        browser.keys(TAB_KEY);
         expect(drawer.hasFocusCloseButton()).toBe(true);
     });
 
