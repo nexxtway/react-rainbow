@@ -99,7 +99,11 @@ export default class Modal extends Component {
     handleKeyPressed(event) {
         event.stopPropagation();
         const { isOpen } = this.props;
-        if (isOpen && event.keyCode === ESCAPE_KEY) {
+        if (
+            isOpen &&
+            event.keyCode === ESCAPE_KEY &&
+            this.containerRef.current.contains(event.target)
+        ) {
             this.closeModal();
         }
         if (event.keyCode === TAB_KEY) {

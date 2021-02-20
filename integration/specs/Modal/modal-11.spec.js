@@ -33,6 +33,7 @@ describe('Modal with redux form example', () => {
     beforeAll(() => {
         browser.url('/#!/Modal/11');
     });
+
     beforeEach(() => {
         browser.refresh();
         const component = $(BUTTON);
@@ -53,6 +54,7 @@ describe('Modal with redux form example', () => {
         modal.waitUntilOpen();
         expect(titleInput.getValue()).toBe('React Rainbow');
     });
+
     it('should not close the modal when is opened and press ESC if the lookup has value typed', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -65,6 +67,7 @@ describe('Modal with redux form example', () => {
         browser.keys(ESCAPE_KEY);
         expect(modal.isOpen()).toBe(true);
     });
+
     it('should close the modal when is opened and press ESC if the lookup value typed was clear', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -79,6 +82,7 @@ describe('Modal with redux form example', () => {
         browser.keys(ESCAPE_KEY);
         expect(modal.isOpen()).toBe(false);
     });
+
     it('should close the modal when select an option and then press ESC', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -94,6 +98,19 @@ describe('Modal with redux form example', () => {
         browser.keys(ESCAPE_KEY);
         expect(modal.isOpen()).toBe(false);
     });
+
+    it('should not close when Picklist is open and press Esc key', () => {
+        const modal = new PageModal(MODAL);
+        const picklist = new PagePicklist(PICKLIST);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        picklist.clickInput();
+        picklist.waitUntilOpen();
+        browser.keys(ESCAPE_KEY);
+        expect(modal.isOpen()).toBe(true);
+    });
+
     it('should have scroll disabled when modal is opened', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -105,6 +122,7 @@ describe('Modal with redux form example', () => {
         const hasNotScrolled = finalScrollTop === initialScrollTop;
         expect(hasNotScrolled).toBe(true);
     });
+
     it('should have scroll disabled when modal is opened and another modal is opened above', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -119,6 +137,7 @@ describe('Modal with redux form example', () => {
         const hasNotScrolled = finalScrollTop === initialScrollTop;
         expect(hasNotScrolled).toBe(true);
     });
+
     it('should close the modal when select an option with keyboard and then press ESC', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -161,6 +180,7 @@ describe('Modal with redux form example', () => {
         const hasScrolled = finalScrollTop > initialScrollTop;
         expect(hasScrolled).toBe(true);
     });
+
     it.skip('should have scroll enabled when modal is opened and another modal is opened above and then all modals are closed', () => {
         const initialScrollTop = getScrollTopPosition();
         const modal = new PageModal(MODAL);
@@ -179,6 +199,7 @@ describe('Modal with redux form example', () => {
         const hasScrolled = finalScrollTop > initialScrollTop;
         expect(hasScrolled).toBe(true);
     });
+
     it.skip('should have scroll disabled when modal is opened and another modal is opened above and then closed', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -195,6 +216,7 @@ describe('Modal with redux form example', () => {
         const hasNotScrolled = finalScrollTop === initialScrollTop;
         expect(hasNotScrolled).toBe(true);
     });
+
     it.skip('should return focus to date picker input when both modals are opened and press esc key', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -207,6 +229,7 @@ describe('Modal with redux form example', () => {
         datePicker.waitUntilClose();
         expect(datePicker.hasFocusInput()).toBe(true);
     });
+
     it.skip('should return focus to time picker input when both modals are opened and select a time', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
