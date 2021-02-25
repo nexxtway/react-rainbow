@@ -17,6 +17,7 @@ function CellValue(props) {
         restColumnProps,
         onChange,
         field,
+        rowIndex,
     } = props;
 
     if (CellComponent) {
@@ -26,6 +27,7 @@ function CellValue(props) {
                 {...restColumnProps}
                 value={value}
                 row={rowData}
+                index={rowIndex}
                 isEditable={isEditable}
                 onChange={onChange}
             />
@@ -45,6 +47,7 @@ CellValue.propTypes = {
     isEditable: PropTypes.bool,
     onChange: PropTypes.func,
     field: PropTypes.string,
+    rowIndex: PropTypes.number.isRequired,
 };
 
 CellValue.defaultProps = {
@@ -131,6 +134,7 @@ export default function Cell(props) {
                         isEditable={isEditable}
                         onChange={onChange}
                         field={field}
+                        rowIndex={rowIndex}
                     />
                 </StyledCellContent>
             </StyledCell>
@@ -154,6 +158,7 @@ export default function Cell(props) {
                     isEditable={isEditable}
                     onChange={onChange}
                     field={field}
+                    rowIndex={rowIndex}
                 />
             </StyledCellContent>
         </StyledCell>

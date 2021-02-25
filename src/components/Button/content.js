@@ -37,19 +37,9 @@ export default function Content({ label, children, variant, isLoading, size }) {
 Content.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
-    variant: PropTypes.oneOf([
-        'base',
-        'neutral',
-        'brand',
-        'outline-brand',
-        'destructive',
-        'success',
-        'inverse',
-        'border-inverse',
-        'border-filled',
-    ]),
+    variant: PropTypes.string,
     isLoading: PropTypes.bool,
-    size: PropTypes.oneOf(['small', 'medium', 'large']),
+    size: PropTypes.string,
 };
 
 Content.defaultProps = {
