@@ -2,6 +2,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Cell from '../cell';
+import EditableCell from '../editableCell';
 
 const CellComponent = ({ value }) => <h1>{value}</h1>;
 
@@ -62,18 +63,33 @@ describe('<Cell /> when isFirst is not passed', () => {
                 rowData={rowData}
                 restColumnProps={columnProps}
                 component={CellComponent}
+                columnType="number"
+                isEditable
             />,
         );
         expect(component.find('CellComponent').props()).toEqual({
             otherData: 'qwerty1234',
-            isEditable: false,
+            isEditable: true,
             onChange: expect.any(Function),
             row: {
                 emai: 'john@gmail.com',
                 name: 'John',
             },
             value: 'cell-1',
+            type: 'number',
         });
+    });
+    it('should render EditableCell when pass isEditable to true', () => {
+        const component = mount(<Cell value="cell-1" isEditable />);
+        expect(component.find(EditableCell).exists()).toBe(true);
+    });
+    it('should render EditableCell when pass isEditable to function that returns true', () => {
+        const component = mount(<Cell value="cell-1" isEditable={() => true} />);
+        expect(component.find(EditableCell).exists()).toBe(true);
+    });
+    it('should not render EditableCell when pass isEditable to function that returns false', () => {
+        const component = mount(<Cell value="cell-1" isEditable={() => false} />);
+        expect(component.find(EditableCell).exists()).toBe(false);
     });
 });
 
