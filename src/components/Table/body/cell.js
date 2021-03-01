@@ -18,6 +18,7 @@ function CellValue(props) {
         onChange,
         field,
         rowIndex,
+        type,
     } = props;
 
     if (CellComponent) {
@@ -30,10 +31,17 @@ function CellValue(props) {
                 index={rowIndex}
                 isEditable={isEditable}
                 onChange={onChange}
+                type={type}
             />
         );
     }
-    if (isEditable) {
+
+    const editableResult =
+        typeof isEditable === 'function'
+            ? isEditable({ row: rowData, value, index: rowIndex })
+            : isEditable;
+
+    if (editableResult) {
         return <EditableCell value={value} onChange={onChange} row={rowData} field={field} />;
     }
     return <span title={value}>{value}</span>;
@@ -48,6 +56,7 @@ CellValue.propTypes = {
     onChange: PropTypes.func,
     field: PropTypes.string,
     rowIndex: PropTypes.number.isRequired,
+    type: PropTypes.string,
 };
 
 CellValue.defaultProps = {
@@ -57,6 +66,7 @@ CellValue.defaultProps = {
     isEditable: false,
     onChange: () => {},
     field: undefined,
+    type: undefined,
 };
 
 export default function Cell(props) {
@@ -135,6 +145,7 @@ export default function Cell(props) {
                         onChange={onChange}
                         field={field}
                         rowIndex={rowIndex}
+                        type={columnType}
                     />
                 </StyledCellContent>
             </StyledCell>
@@ -159,6 +170,7 @@ export default function Cell(props) {
                     onChange={onChange}
                     field={field}
                     rowIndex={rowIndex}
+                    type={columnType}
                 />
             </StyledCellContent>
         </StyledCell>

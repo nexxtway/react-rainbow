@@ -7,7 +7,9 @@ export interface ColumnProps<P> {
     sortable?: boolean;
     width?: number | string;
     defaultWidth?: number | string;
-    type?: 'text' | 'action';
+    type?: 'text' | 'action' | string;
+    isEditable?: boolean | (({ value: string, row: object, index: number }) => boolean);
+    onChange?: ({ value: string, row: object }) => void;
 }
 
 export default function<P>(props: ColumnProps<P> & P): JSX.Element | null;
