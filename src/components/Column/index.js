@@ -53,6 +53,11 @@ Column.propTypes = {
     isEditable: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
+    /** Determines the alignment of the text in each column cell.
+     * Available options are: left, right, center.
+     * This value defaults to `left` when the Table uses the `default` variant and defaults to `center` when uses the `listview` variant.
+     */
+    cellAlignment: PropTypes.oneOf(['left', 'right', 'center']),
 };
 
 Column.defaultProps = {
@@ -65,4 +70,5 @@ Column.defaultProps = {
     type: 'text',
     isEditable: false,
     onChange: () => {},
+    cellAlignment: undefined,
 };

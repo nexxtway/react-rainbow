@@ -3,7 +3,7 @@ import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledCell = attachThemeAttrs(styled.th)`
     padding: 0;
-    text-align: left;
+    text-align: ${props => props.cellAlignment || 'left'};
     box-sizing: border-box;
     height: 1px;
 
@@ -16,7 +16,7 @@ const StyledCell = attachThemeAttrs(styled.th)`
         `
         background-color: ${props.palette.background.main};
         border: none;
-        text-align: center;
+        text-align: ${props.cellAlignment || 'center'};
         border-top: 1px solid ${props.palette.border.divider};
         border-right: 1px solid ${props.palette.border.divider};
 
