@@ -119,13 +119,6 @@ const StyledTh = attachThemeAttrs(styled.th)`
             }
         `}
 
-        ${props =>
-            props.theme.variant === 'listview' &&
-            props.theme.isEmpty &&
-            `
-                border-bottom: 1px solid ${props.palette.border.divider};
-        `};
-
     ${props =>
         props.isSorted &&
         `

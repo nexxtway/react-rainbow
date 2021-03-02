@@ -434,7 +434,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
                 />
             </ButtonGroup>
         </GlobalHeader>
-        <Table isLoading data={data} keyField="id">
+        <Table isLoading data={data} keyField="id" variant="listview">
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />
@@ -464,7 +464,7 @@ const tableContainerStyles = { height: 300 };
                 />
             </ButtonGroup>
         </GlobalHeader>
-        <Table style={tableContainerStyles} keyField="id">
+        <Table style={tableContainerStyles} keyField="id" variant="listview">
             <Column header="Name" field="name" />
             <Column header="Company" field="company" />
             <Column header="Email" field="email" />
