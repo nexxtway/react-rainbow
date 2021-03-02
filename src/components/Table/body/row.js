@@ -23,6 +23,7 @@ export default function Row(props) {
             children,
             isEditable,
             onChange,
+            cellAlignment,
             ...restColumnProps
         } = column;
         const key = `cell-${index}`;
@@ -44,6 +45,7 @@ export default function Row(props) {
                 columnChildren={children}
                 isEditable={isEditable}
                 onChange={onChange}
+                cellAlignment={cellAlignment}
                 field={field}
             />
         );

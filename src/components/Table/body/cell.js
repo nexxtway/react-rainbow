@@ -19,6 +19,7 @@ function CellValue(props) {
         field,
         rowIndex,
         type,
+        cellAlignment,
     } = props;
 
     if (CellComponent) {
@@ -32,6 +33,7 @@ function CellValue(props) {
                 isEditable={isEditable}
                 onChange={onChange}
                 type={type}
+                cellAlignment={cellAlignment}
             />
         );
     }
@@ -42,7 +44,15 @@ function CellValue(props) {
             : isEditable;
 
     if (editableResult) {
-        return <EditableCell value={value} onChange={onChange} row={rowData} field={field} />;
+        return (
+            <EditableCell
+                value={value}
+                onChange={onChange}
+                row={rowData}
+                field={field}
+                cellAlignment={cellAlignment}
+            />
+        );
     }
     return <span title={value}>{value}</span>;
 }
@@ -57,6 +67,7 @@ CellValue.propTypes = {
     field: PropTypes.string,
     rowIndex: PropTypes.number.isRequired,
     type: PropTypes.string,
+    cellAlignment: PropTypes.string,
 };
 
 CellValue.defaultProps = {
@@ -67,6 +78,7 @@ CellValue.defaultProps = {
     onChange: () => {},
     field: undefined,
     type: undefined,
+    cellAlignment: undefined,
 };
 
 export default function Cell(props) {
@@ -89,6 +101,7 @@ export default function Cell(props) {
         restColumnProps,
         isEditable,
         onChange,
+        cellAlignment,
         field,
     } = props;
 
@@ -134,6 +147,7 @@ export default function Cell(props) {
                 tabIndex={-1}
                 data-label={getHeaderLabel()}
                 isEditable={isEditable}
+                cellAlignment={cellAlignment}
             >
                 <StyledCellContent component={component} isEditable={isEditable}>
                     <CellValue
@@ -146,6 +160,7 @@ export default function Cell(props) {
                         field={field}
                         rowIndex={rowIndex}
                         type={columnType}
+                        cellAlignment={cellAlignment}
                     />
                 </StyledCellContent>
             </StyledCell>
@@ -159,6 +174,7 @@ export default function Cell(props) {
             tabIndex={-1}
             data-label={getHeaderLabel()}
             isEditable={isEditable}
+            cellAlignment={cellAlignment}
         >
             <StyledCellContent component={component} isEditable={isEditable}>
                 <CellValue
@@ -171,6 +187,7 @@ export default function Cell(props) {
                     field={field}
                     rowIndex={rowIndex}
                     type={columnType}
+                    cellAlignment={cellAlignment}
                 />
             </StyledCellContent>
         </StyledCell>
@@ -196,6 +213,7 @@ Cell.propTypes = {
     restColumnProps: PropTypes.object.isRequired,
     isEditable: PropTypes.bool,
     onChange: PropTypes.func,
+    cellAlignment: PropTypes.string,
     field: PropTypes.string,
 };
 
@@ -216,5 +234,6 @@ Cell.defaultProps = {
     rowData: {},
     isEditable: false,
     onChange: () => {},
+    cellAlignment: undefined,
     field: undefined,
 };
