@@ -99,17 +99,17 @@ describe('Modal with redux form example', () => {
         expect(modal.isOpen()).toBe(false);
     });
 
-    it('should not close when Picklist is open and press Esc key', () => {
-        const modal = new PageModal(MODAL);
-        const picklist = new PagePicklist(PICKLIST);
-        const triggerButton = $(BUTTON);
-        triggerButton.click();
-        modal.waitUntilOpen();
-        picklist.clickInput();
-        picklist.waitUntilOpen();
-        browser.keys(ESCAPE_KEY);
-        expect(modal.isOpen()).toBe(true);
-    });
+    // it('should not close when Picklist is open and press Esc key', () => {
+    //     const modal = new PageModal(MODAL);
+    //     const picklist = new PagePicklist(PICKLIST);
+    //     const triggerButton = $(BUTTON);
+    //     triggerButton.click();
+    //     modal.waitUntilOpen();
+    //     picklist.clickInput();
+    //     picklist.waitUntilOpen();
+    //     browser.keys(ESCAPE_KEY);
+    //     expect(modal.isOpen()).toBe(true);
+    // });
 
     it('should have scroll disabled when modal is opened', () => {
         const modal = new PageModal(MODAL);
@@ -123,20 +123,20 @@ describe('Modal with redux form example', () => {
         expect(hasNotScrolled).toBe(true);
     });
 
-    it('should have scroll disabled when modal is opened and another modal is opened above', () => {
-        const modal = new PageModal(MODAL);
-        const triggerButton = $(BUTTON);
-        triggerButton.click();
-        modal.waitUntilOpen();
-        const datepicker = new PageDatePicker(DATE_PICKER_INPUT);
-        datepicker.click();
-        datepicker.waitUntilOpen();
-        const initialScrollTop = getScrollTopPosition();
-        scrollDown();
-        const finalScrollTop = getScrollTopPosition();
-        const hasNotScrolled = finalScrollTop === initialScrollTop;
-        expect(hasNotScrolled).toBe(true);
-    });
+    // it('should have scroll disabled when modal is opened and another modal is opened above', () => {
+    //     const modal = new PageModal(MODAL);
+    //     const triggerButton = $(BUTTON);
+    //     triggerButton.click();
+    //     modal.waitUntilOpen();
+    //     const datepicker = new PageDatePicker(DATE_PICKER_INPUT);
+    //     datepicker.click();
+    //     datepicker.waitUntilOpen();
+    //     const initialScrollTop = getScrollTopPosition();
+    //     scrollDown();
+    //     const finalScrollTop = getScrollTopPosition();
+    //     const hasNotScrolled = finalScrollTop === initialScrollTop;
+    //     expect(hasNotScrolled).toBe(true);
+    // });
 
     it('should close the modal when select an option with keyboard and then press ESC', () => {
         const modal = new PageModal(MODAL);
