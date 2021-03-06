@@ -101,7 +101,11 @@ export default function Child(props) {
                         onClick={handleNodeExpand}
                     />
                     <RenderIf isTrue={hasCheckbox}>
-                        <InputCheckbox checked={isChecked} onChange={handleNodeCheck} />
+                        <InputCheckbox
+                            label={label}
+                            checked={isChecked}
+                            onChange={handleNodeCheck}
+                        />
                     </RenderIf>
                 </InnerContainer>
                 <RenderIf isTrue={hasIcon}>
