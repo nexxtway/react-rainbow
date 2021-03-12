@@ -26,17 +26,24 @@ export const StyledHeading = attachThemeAttrs(styled.h1)`
     color: ${props => props.palette.text.main};
     margin-top: 1rem;
     margin-bottom: 0.75rem;
+    line-height: 1.5;
 `;
 
 export const StyledParagraph = attachThemeAttrs(styled.p)`
     font-size: ${FONT_SIZE_TEXT_LARGE};
     color: ${props => props.palette.text.main};
+    line-height: 1.5;
+    margin-bottom: 0.85rem;
 `;
 
 export const StyledLink = attachThemeAttrs(styled.a)`
     font-size: ${FONT_SIZE_TEXT_LARGE};
     color: ${props => props.palette.text.main};
     text-decoration: underline;
+
+    > p {
+        margin-bottom: 0;
+    }
 `;
 
 export const StyledCode = attachThemeAttrs(
@@ -51,6 +58,7 @@ export const StyledCode = attachThemeAttrs(
     border: 1px solid ${props => props.palette.border.divider};
     padding: 2px 6px;
     overflow-x: auto;
+    margin-bottom: 1rem;
 
     pre > & {
         display: block;
@@ -72,18 +80,25 @@ export const StyledBlockquote = attachThemeAttrs(styled.blockquote)`
     position: relative;    
     display: block;
     margin: 0;
-    padding: 1em;
-    border: solid 1px #e4e6eb;
-    background-color: #f9f9fc;
+    padding: 1em 1rem 1rem 1.5rem;
+    background-color: ${props => props.palette.background.secondary};
+    border-radius: 6px;
+    margin-bottom: 1rem;
+
+    > p {
+        margin-bottom: 0;
+        color: ${props => props.palette.text.label};
+    }
     
     :before {
         position: absolute;
         top: 0;
         left: 0;
-        background-color: #e4e6eb;
+        background-color: ${props => props.palette.border.disabled};
         content: '';
         width: 4px;
         height: 100%;
+        border-radius: 4px 0 0 4px;
     }
 `;
 
@@ -95,6 +110,7 @@ export const StyledTable = attachThemeAttrs(styled.table)`
     width: 100%;
     box-sizing: border-box;
     border: 1px solid ${props => props.palette.border.divider};
+    margin-bottom: 1rem;
 `;
 
 export const StyledTableRow = attachThemeAttrs(styled.tr)`
@@ -138,18 +154,21 @@ export const StyledTableCell = attachThemeAttrs(styled.td)`
 
 export const StyledList = styled.ul`
     list-style: disc;
+    margin-left: 8px;
 
     ul {
         list-style: circle;
+        margin-left: 8px;
     }
 `;
 
 export const StyledOrderedList = styled.ol`
     list-style: decimal;
+    margin-left: 8px;
 `;
 
 export const StyledListItem = attachThemeAttrs(styled.li)`
-    margin-left: 1rem;
+    margin-left: 2rem;
     margin-bottom: 4px;
     font-size: ${FONT_SIZE_TEXT_LARGE};
 
