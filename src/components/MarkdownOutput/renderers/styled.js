@@ -24,16 +24,24 @@ const fontSizesMap = {
 export const StyledHeading = attachThemeAttrs(styled.h1)`
     font-size: ${props => fontSizesMap[props.level] || FONT_SIZE_HEADING_XX_SMALL};
     color: ${props => props.palette.text.main};
-    margin-top: 1rem;
+    margin-top: 1.25rem;
     margin-bottom: 0.75rem;
     line-height: 1.5;
+
+    b, strong {
+        font-family: 'Lato Bold', Arial, Helvetica, sans-serif;
+    }
 `;
 
 export const StyledParagraph = attachThemeAttrs(styled.p)`
     font-size: ${FONT_SIZE_TEXT_LARGE};
     color: ${props => props.palette.text.main};
     line-height: 1.5;
-    margin-bottom: 0.85rem;
+    margin-bottom: 1rem;
+
+    b, strong {
+        font-family: 'Lato Bold', Arial, Helvetica, sans-serif;
+    }
 `;
 
 export const StyledLink = attachThemeAttrs(styled.a)`
@@ -56,13 +64,13 @@ export const StyledCode = attachThemeAttrs(
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     border-radius: 4px;
     border: 1px solid ${props => props.palette.border.divider};
-    padding: 2px 6px;
+    padding: 2px;
     overflow-x: auto;
     margin-bottom: 1rem;
 
     pre > & {
         display: block;
-        padding: 0.5rem 1rem;    
+        padding: 0.5rem;    
     }
 
     p > & {
@@ -155,6 +163,7 @@ export const StyledTableCell = attachThemeAttrs(styled.td)`
 export const StyledList = styled.ul`
     list-style: disc;
     margin-left: 8px;
+    margin-bottom: 1rem;
 
     ul {
         list-style: circle;
@@ -165,6 +174,7 @@ export const StyledList = styled.ul`
 export const StyledOrderedList = styled.ol`
     list-style: decimal;
     margin-left: 8px;
+    margin-bottom: 1rem;
 `;
 
 export const StyledListItem = attachThemeAttrs(styled.li)`
