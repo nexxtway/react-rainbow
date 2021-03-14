@@ -40,7 +40,15 @@ export const StyledParagraph = attachThemeAttrs(styled.p)`
     margin-bottom: 1rem;
 
     b, strong {
-        font-family: 'Lato Bold', Arial, Helvetica, sans-serif;
+        font-family: 'Lato Black', Arial, Helvetica, sans-serif;
+    }
+
+    code {
+        display: inline-block;
+        margin-bottom: -4px;
+        padding: 0 0.5rem;
+        line-height: 1.5;
+        font-size: 1rem;
     }
 `;
 
