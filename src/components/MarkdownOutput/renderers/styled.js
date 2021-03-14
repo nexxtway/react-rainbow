@@ -49,6 +49,10 @@ export const StyledLink = attachThemeAttrs(styled.a)`
     color: ${props => props.palette.text.main};
     text-decoration: underline;
 
+    :hover {
+        color: ${props => props.palette.text.main};
+    }
+
     > p {
         margin-bottom: 0;
     }
@@ -69,7 +73,6 @@ export const StyledCode = attachThemeAttrs(
     margin-bottom: 1rem;
 
     pre > & {
-        display: block;
         padding: 0.5rem;    
     }
 
