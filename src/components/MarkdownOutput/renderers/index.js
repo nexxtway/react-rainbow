@@ -14,6 +14,7 @@ import {
     StyledListItem,
     StyledBlockquote,
     StyledLink,
+    StyledPre,
 } from './styled';
 
 const Heading = ({ level, children }) => {
@@ -43,4 +44,5 @@ export default {
     th: StyledTableHeadindCell,
     tr: StyledTableRow,
     td: StyledTableCell,
+    pre: StyledPre,
 };
