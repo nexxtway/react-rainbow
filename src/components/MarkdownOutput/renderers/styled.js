@@ -103,6 +103,10 @@ export const StyledBlockquote = attachThemeAttrs(styled.blockquote)`
     border-radius: 6px;
     margin-bottom: 1rem;
 
+    b, strong {
+        font-family: 'Lato Black', Arial, Helvetica, sans-serif;
+    }
+
     > p {
         margin-bottom: 0;
         color: ${props => props.palette.text.label};
@@ -175,6 +179,11 @@ export const StyledList = styled.ul`
     margin-left: 8px;
     margin-bottom: 1rem;
 
+    b,
+    strong {
+        font-family: 'Lato Black', Arial, Helvetica, sans-serif;
+    }
+
     ul {
         list-style: circle;
         margin-left: 8px;
@@ -185,6 +194,11 @@ export const StyledOrderedList = styled.ol`
     list-style: decimal;
     margin-left: 8px;
     margin-bottom: 1rem;
+
+    b,
+    strong {
+        font-family: 'Lato Black', Arial, Helvetica, sans-serif;
+    }
 `;
 
 export const StyledListItem = attachThemeAttrs(styled.li)`
