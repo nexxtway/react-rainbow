@@ -66,6 +66,14 @@ export const StyledLink = attachThemeAttrs(styled.a)`
     }
 `;
 
+export const StyledPre = styled.pre`
+    display: block;
+
+    > code {
+        display: block;
+    }
+`;
+
 export const StyledCode = attachThemeAttrs(
     styled.code.attrs({
         className: 'hljs',
@@ -79,15 +87,6 @@ export const StyledCode = attachThemeAttrs(
     padding: 2px;
     overflow-x: auto;
     margin-bottom: 1rem;
-
-    pre > & {
-        padding: 0.5rem;    
-    }
-
-    p > & {
-        margin-left: 4px;
-        margin-right: 4px;
-    }
 `;
 
 export const StyledHR = attachThemeAttrs(styled.hr)`
