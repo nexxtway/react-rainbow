@@ -33,6 +33,10 @@ export const StyledHeading = attachThemeAttrs(styled.h1)`
     }
 `;
 
+export const StyledInlineHeading = styled(StyledHeading)`
+    margin: 0;
+`;
+
 export const StyledParagraph = attachThemeAttrs(styled.p)`
     font-size: ${FONT_SIZE_TEXT_LARGE};
     color: ${props => props.palette.text.main};
@@ -49,6 +53,15 @@ export const StyledParagraph = attachThemeAttrs(styled.p)`
         padding: 0 0.5rem;
         line-height: 1.5;
         font-size: 1rem;
+    }
+`;
+
+export const StyledInlineParagraph = styled(StyledParagraph)`
+    margin: 0;
+
+    code {
+        display: inline;
+        margin: 0;
     }
 `;
 
@@ -74,6 +87,15 @@ export const StyledPre = styled.pre`
     }
 `;
 
+export const StyledInlinePre = styled(StyledPre)`
+    display: inline;
+
+    > code {
+        display: inline-block;
+        padding: 0.2rem;
+    }
+`;
+
 export const StyledCode = attachThemeAttrs(
     styled.code.attrs({
         className: 'hljs',
@@ -87,6 +109,11 @@ export const StyledCode = attachThemeAttrs(
     padding: 2px;
     overflow-x: auto;
     margin-bottom: 1rem;
+`;
+
+export const StyledInlineCode = styled(StyledCode)`
+    padding: 0;
+    margin: 0;
 `;
 
 export const StyledHR = attachThemeAttrs(styled.hr)`
@@ -122,6 +149,12 @@ export const StyledBlockquote = attachThemeAttrs(styled.blockquote)`
         height: 100%;
         border-radius: 4px 0 0 4px;
     }
+`;
+
+export const StyledInlineBlockquote = styled(StyledBlockquote)`
+    padding: 0.2rem 0.2rem 0.2rem 1rem;
+    margin-bottom: 0;
+    display: inline: block;
 `;
 
 export const StyledTable = attachThemeAttrs(styled.table)`
