@@ -154,7 +154,7 @@ export const StyledBlockquote = attachThemeAttrs(styled.blockquote)`
 export const StyledInlineBlockquote = styled(StyledBlockquote)`
     padding: 0.2rem 0.2rem 0.2rem 1rem;
     margin-bottom: 0;
-    display: inline: block;
+    display: inline-block;
 `;
 
 export const StyledTable = attachThemeAttrs(styled.table)`
