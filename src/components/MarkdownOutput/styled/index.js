@@ -5,6 +5,16 @@ const StyledContainer = styled.div`
         list-style: none;
         margin-left: 0;
     }
+
+    ${props =>
+        props.variant === 'inline' &&
+        `
+        display: inline;
+
+        > div {
+            display: inline;
+        }
+    `}
 `;
 
 export default StyledContainer;

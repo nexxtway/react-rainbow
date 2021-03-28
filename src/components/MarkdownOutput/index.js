@@ -14,7 +14,7 @@ export default function MarkdownOutput(props) {
     const renderer = variant === 'inline' ? inlineRenderer : defaultRenderer;
     const result = useMarkdownToReact(value, renderer);
     return (
-        <StyledContainer id={id} className={className} style={style}>
+        <StyledContainer id={id} className={className} style={style} variant={variant}>
             {result}
         </StyledContainer>
     );
