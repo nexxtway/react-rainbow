@@ -35,6 +35,7 @@ export const StyledHeading = attachThemeAttrs(styled.h1)`
 
 export const StyledInlineHeading = styled(StyledHeading)`
     margin: 0;
+    display: inline;
 `;
 
 export const StyledParagraph = attachThemeAttrs(styled.p)`
@@ -58,6 +59,7 @@ export const StyledParagraph = attachThemeAttrs(styled.p)`
 
 export const StyledInlineParagraph = styled(StyledParagraph)`
     margin: 0;
+    display: inline;
 
     code {
         display: inline;
@@ -114,6 +116,7 @@ export const StyledCode = attachThemeAttrs(
 export const StyledInlineCode = styled(StyledCode)`
     padding: 0;
     margin: 0;
+    display: inline;
 `;
 
 export const StyledHR = attachThemeAttrs(styled.hr)`
