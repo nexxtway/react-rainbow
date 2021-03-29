@@ -3,6 +3,7 @@ import computeUniqueRowKey from '../computeUniqueRowKey';
 const row = {
     name: 'Pepe',
     id: 'qwerty1234',
+    numericId: 10,
 };
 
 describe('computeUniqueRowKey', () => {
@@ -40,5 +41,9 @@ describe('computeUniqueRowKey', () => {
         };
         const keyField = 'data';
         expect(computeUniqueRowKey(rowData, keyField)).toBe('row-3');
+    });
+    it('should return the right key when the keyField value is numeric', () => {
+        const keyField = 'numericId';
+        expect(computeUniqueRowKey(row, keyField)).toBe('row-10');
     });
 });
