@@ -5,9 +5,9 @@ import remark2rehype from 'remark-rehype';
 import minify from 'rehype-minify-whitespace';
 import highlight from 'rehype-highlight';
 import rehype2react from 'rehype-react';
-import defaultRenderers from '../renderers';
+import { defaultRenderer } from '../renderers';
 
-export default function useMarkdown2React(source) {
+export default function useMarkdown2React(source, renderer = defaultRenderer) {
     return useMemo(() => {
         return unified()
             .use(markdownParse)
@@ -17,9 +17,9 @@ export default function useMarkdown2React(source) {
             })
             .use(rehype2react, {
                 createElement: React.createElement,
-                components: defaultRenderers,
+                components: renderer,
             })
             .use(minify, { newlines: true })
             .processSync(source).result;
-    }, [source]);
+    }, [source, renderer]);
 }
