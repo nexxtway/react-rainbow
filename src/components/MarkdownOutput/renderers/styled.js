@@ -23,10 +23,8 @@ const fontSizesMap = {
 
 export const StyledHeading = attachThemeAttrs(styled.h1)`
     font-size: ${props => fontSizesMap[props.level] || FONT_SIZE_HEADING_XX_SMALL};
-    color: ${props => props.palette.text.main};
     margin-top: 1.25rem;
     margin-bottom: 0.75rem;
-    line-height: 1.5;
 
     b, strong {
         font-family: 'Lato Bold', Arial, Helvetica, sans-serif;
@@ -39,9 +37,6 @@ export const StyledInlineHeading = styled(StyledHeading)`
 `;
 
 export const StyledParagraph = attachThemeAttrs(styled.p)`
-    font-size: ${FONT_SIZE_TEXT_LARGE};
-    color: ${props => props.palette.text.main};
-    line-height: 1.5;
     margin-bottom: 1rem;
 
     b, strong {
@@ -68,7 +63,6 @@ export const StyledInlineParagraph = styled(StyledParagraph)`
 `;
 
 export const StyledLink = attachThemeAttrs(styled.a)`
-    font-size: ${FONT_SIZE_TEXT_LARGE};
     color: ${props => props.palette.text.main};
     text-decoration: underline;
 
@@ -104,7 +98,6 @@ export const StyledCode = attachThemeAttrs(
     }),
 )`
     background: ${props => props.palette.background.highlight};
-    color: ${props => props.palette.text.main};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     border-radius: 4px;
     border: 1px solid ${props => props.palette.border.divider};
