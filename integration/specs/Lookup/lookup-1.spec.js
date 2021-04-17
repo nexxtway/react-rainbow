@@ -20,70 +20,70 @@ describe('Lookup base example', () => {
         const component = $(LOOKUP);
         component.waitForExist();
     });
-    it('should open the menu with empty message when type a value that does not match any option', () => {
-        const lookup = new PageLookup(LOOKUP);
-        lookup.click();
-        lookup.setQuery('qwerty');
-        lookup.waitUntilOpen();
-        expect(lookup.isMenuOpen()).toBe(true);
-        expect(lookup.isMenuEmpty()).toBe(true);
-    });
-    it('should close menu when click outside it', () => {
-        const lookup = new PageLookup(LOOKUP);
-        const logoElement = $(REACT_LOGO);
-        lookup.click();
-        lookup.setQuery('qwerty');
-        lookup.waitUntilOpen();
-        expect(lookup.isMenuOpen()).toBe(true);
-        logoElement.click();
-        expect(lookup.isMenuOpen()).toBe(false);
-    });
-    it('should render the right amount of matches', () => {
-        const lookup = new PageLookup(LOOKUP);
-        lookup.click();
-        lookup.setQuery('lo');
-        lookup.waitUntilOpen();
-        expect(lookup.getOptionsLength()).toBe(3);
-    });
-    it('should close the menu, return focus to input and reset its value when click the close button while menu is open', () => {
-        const lookup = new PageLookup(LOOKUP);
-        lookup.click();
-        lookup.setQuery('qwerty');
-        lookup.waitUntilOpen();
-        lookup.clickCloseButton();
-        expect(lookup.isMenuOpen()).toBe(false);
-        expect(lookup.hasFocusInput()).toBe(true);
-        expect(lookup.getQuery()).toBe('');
-    });
-    it('should close the menu, return focus to input and reset its value when press esc key while menu is open', () => {
-        const lookup = new PageLookup(LOOKUP);
-        lookup.click();
-        lookup.setQuery('lo');
-        lookup.waitUntilOpen();
-        browser.keys(ESCAPE_KEY);
-        expect(lookup.isMenuOpen()).toBe(false);
-        expect(lookup.hasFocusInput()).toBe(true);
-        expect(lookup.getQuery()).toBe('');
-    });
-    it('should select Barcelona with keyboard', () => {
-        const lookup = new PageLookup(LOOKUP);
-        lookup.click();
-        lookup.setQuery('lo');
-        lookup.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
-        expect(lookup.getSelectedOptionLabel()).toBe('Barcelona');
-    });
-    it('should select London with keyboard', () => {
-        const lookup = new PageLookup(LOOKUP);
-        lookup.click();
-        lookup.setQuery('lo');
-        lookup.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_UP_KEY);
-        browser.keys(ENTER_KEY);
-        expect(lookup.getSelectedOptionLabel()).toBe('London');
-    });
+    // it('should open the menu with empty message when type a value that does not match any option', () => {
+    //     const lookup = new PageLookup(LOOKUP);
+    //     lookup.click();
+    //     lookup.setQuery('qwerty');
+    //     lookup.waitUntilOpen();
+    //     expect(lookup.isMenuOpen()).toBe(true);
+    //     expect(lookup.isMenuEmpty()).toBe(true);
+    // });
+    // it('should close menu when click outside it', () => {
+    //     const lookup = new PageLookup(LOOKUP);
+    //     const logoElement = $(REACT_LOGO);
+    //     lookup.click();
+    //     lookup.setQuery('qwerty');
+    //     lookup.waitUntilOpen();
+    //     expect(lookup.isMenuOpen()).toBe(true);
+    //     logoElement.click();
+    //     expect(lookup.isMenuOpen()).toBe(false);
+    // });
+    // it('should render the right amount of matches', () => {
+    //     const lookup = new PageLookup(LOOKUP);
+    //     lookup.click();
+    //     lookup.setQuery('lo');
+    //     lookup.waitUntilOpen();
+    //     expect(lookup.getOptionsLength()).toBe(3);
+    // });
+    // it('should close the menu, return focus to input and reset its value when click the close button while menu is open', () => {
+    //     const lookup = new PageLookup(LOOKUP);
+    //     lookup.click();
+    //     lookup.setQuery('qwerty');
+    //     lookup.waitUntilOpen();
+    //     lookup.clickCloseButton();
+    //     expect(lookup.isMenuOpen()).toBe(false);
+    //     expect(lookup.hasFocusInput()).toBe(true);
+    //     expect(lookup.getQuery()).toBe('');
+    // });
+    // it('should close the menu, return focus to input and reset its value when press esc key while menu is open', () => {
+    //     const lookup = new PageLookup(LOOKUP);
+    //     lookup.click();
+    //     lookup.setQuery('lo');
+    //     lookup.waitUntilOpen();
+    //     browser.keys(ESCAPE_KEY);
+    //     expect(lookup.isMenuOpen()).toBe(false);
+    //     expect(lookup.hasFocusInput()).toBe(true);
+    //     expect(lookup.getQuery()).toBe('');
+    // });
+    // it('should select Barcelona with keyboard', () => {
+    //     const lookup = new PageLookup(LOOKUP);
+    //     lookup.click();
+    //     lookup.setQuery('lo');
+    //     lookup.waitUntilOpen();
+    //     browser.keys(ARROW_DOWN_KEY);
+    //     browser.keys(ENTER_KEY);
+    //     expect(lookup.getSelectedOptionLabel()).toBe('Barcelona');
+    // });
+    // it('should select London with keyboard', () => {
+    //     const lookup = new PageLookup(LOOKUP);
+    //     lookup.click();
+    //     lookup.setQuery('lo');
+    //     lookup.waitUntilOpen();
+    //     browser.keys(ARROW_DOWN_KEY);
+    //     browser.keys(ARROW_UP_KEY);
+    //     browser.keys(ENTER_KEY);
+    //     expect(lookup.getSelectedOptionLabel()).toBe('London');
+    // });
     it('should set to active La Habana when hover the option', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();

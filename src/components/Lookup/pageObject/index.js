@@ -1,5 +1,7 @@
 const PageLookupMenuItem = require('./menuItem');
 
+const privateGetMenuElement = Symbol('privateGetMenuElement');
+
 /**
  * Lookup page object class.
  * @class
@@ -135,10 +137,7 @@ class PageLookup {
      * @returns {number}
      */
     getOptionsLength() {
-        const menuId = `#${$(this.rootElement)
-            .$('input[type="search"]')
-            .getAttribute('aria-controls')}`;
-        return $(menuId).$$('li[role="presentation"]').length;
+        return this[privateGetMenuElement]().$$('li[role="presentation"]').length;
     }
 
     /**
@@ -147,7 +146,7 @@ class PageLookup {
      * @param {number} itemPosition - The base 0 index of the LookupMenuItem.
      */
     getOption(itemPosition) {
-        const items = $(this.rootElement).$$('li[role="presentation"]');
+        const items = this[privateGetMenuElement]().$$('li[role="presentation"]');
         if (items[itemPosition]) {
             return new PageLookupMenuItem(items[itemPosition]);
         }
@@ -186,10 +185,7 @@ class PageLookup {
      * @returns {bool}
      */
     isMenuEmpty() {
-        const menuId = `#${$(this.rootElement)
-            .$('input[type="search"]')
-            .getAttribute('aria-controls')}`;
-        return $(menuId)
+        return this[privateGetMenuElement]()
             .$('[data-id="lookup-options-empty-container"]')
             .isDisplayed();
     }
@@ -262,6 +258,17 @@ class PageLookup {
         return $(this.rootElement)
             .$('[data-id="lookup-arrow-button-up"]')
             .isExisting();
+    }
+
+    /**
+     * Returns the options menu root element.
+     * @method
+     */
+    [privateGetMenuElement]() {
+        const menuId = `#${$(this.rootElement)
+            .$('input[type="search"]')
+            .getAttribute('aria-controls')}`;
+        return $(menuId);
     }
 }
 
