@@ -259,6 +259,7 @@ class Lookup extends Component {
         const { keyCode } = event;
         if (keyCode === ESCAPE_KEY && !!searchValue) {
             event.stopPropagation();
+            this.clearInput();
         }
         if (isNavigationKey(keyCode) && this.isLookupOpen()) {
             event.preventDefault();

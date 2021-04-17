@@ -40,7 +40,7 @@ class PageLookup {
      */
     clickSelectedOptionInput() {
         $(this.rootElement)
-            .$('input[type="search"]')
+            .$('input[type="text"]')
             .click();
     }
 
@@ -82,7 +82,7 @@ class PageLookup {
      */
     hasFocusSelectedOptionInput() {
         return $(this.rootElement)
-            .$('input[type="search"]')
+            .$('input[type="text"]')
             .isFocused();
     }
 
@@ -135,7 +135,10 @@ class PageLookup {
      * @returns {number}
      */
     getOptionsLength() {
-        return $(this.rootElement).$$('li[role="presentation"]').length;
+        const menuId = `#${$(this.rootElement)
+            .$('input[type="search"]')
+            .getAttribute('aria-controls')}`;
+        return $(menuId).$$('li[role="presentation"]').length;
     }
 
     /**
@@ -157,7 +160,7 @@ class PageLookup {
      * @returns {string}
      */
     getSelectedOptionLabel() {
-        const content = $(this.rootElement).$('input[type="search"]');
+        const content = $(this.rootElement).$('input[type="text"]');
         if (content) {
             return content.getValue();
         }
@@ -170,11 +173,6 @@ class PageLookup {
      * @returns {bool}
      */
     isMenuOpen() {
-        console.log(
-            $(this.rootElement)
-                .$('div[role="combobox"]')
-                .getAttribute('aria-expanded'),
-        );
         return (
             $(this.rootElement)
                 .$('div[role="combobox"]')
@@ -191,7 +189,6 @@ class PageLookup {
         const menuId = `#${$(this.rootElement)
             .$('input[type="search"]')
             .getAttribute('aria-controls')}`;
-        console.log(menuId);
         return $(menuId)
             .$('[data-id="lookup-options-empty-container"]')
             .isDisplayed();
@@ -221,7 +218,7 @@ class PageLookup {
      */
     mouseLeaveScrollUpArrow() {
         return $(this.rootElement)
-            .$('input[type="search"]')
+            .$('input[type="text"]')
             .moveTo();
     }
 
@@ -241,7 +238,7 @@ class PageLookup {
      */
     mouseLeaveScrollDownArrow() {
         return $(this.rootElement)
-            .$('input[type="search"]')
+            .$('input[type="text"]')
             .moveTo();
     }
 
