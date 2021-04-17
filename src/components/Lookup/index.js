@@ -25,6 +25,7 @@ import StyledSearchIcon from './styled/searchIcon';
 import StyledTextError from '../Input/styled/errorText';
 import isScrollPositionAtMenuBottom from './helpers/isScrollPositionAtMenuBottom';
 import MenuArrowButton from './menuArrowButton';
+import InternalOverlay from '../InternalOverlay';
 
 const OPTION_HEIGHT = 48;
 const visibleOptionsMap = {
@@ -32,6 +33,22 @@ const visibleOptionsMap = {
     medium: 5,
     large: 8,
 };
+
+function positionResolver(opts) {
+    const { trigger, viewport, content } = opts;
+    const newOpts = {
+        trigger,
+        viewport,
+        content: {
+            ...content,
+            width: trigger.width,
+        },
+    };
+    return {
+        ...InternalOverlay.defaultPositionResolver(newOpts),
+        width: trigger.width,
+    };
+}
 
 /**
  * A Lookup is an autocomplete text input that will search against a database object,
@@ -512,7 +529,11 @@ class Lookup extends Component {
                             isLoading={isLoading}
                             variant={variant}
                         />
-                        <RenderIf isTrue={isLookupOpen}>
+                        <InternalOverlay
+                            isVisible={isLookupOpen}
+                            positionResolver={positionResolver}
+                            triggerElementRef={() => this.inputRef}
+                        >
                             <StyledOptionsMenu id={this.listboxId} role="listbox">
                                 <RenderIf isTrue={showScrollUpArrow}>
                                     <MenuArrowButton
@@ -539,7 +560,35 @@ class Lookup extends Component {
                                     />
                                 </RenderIf>
                             </StyledOptionsMenu>
-                        </RenderIf>
+                        </InternalOverlay>
+                        {/* <RenderIf isTrue={isLookupOpen}>
+                            <StyledOptionsMenu id={this.listboxId} role="listbox">
+                                <RenderIf isTrue={showScrollUpArrow}>
+                                    <MenuArrowButton
+                                        arrow="up"
+                                        onMouseEnter={this.handleScrollUpArrowHover}
+                                        onMouseLeave={this.stopArrowScoll}
+                                    />
+                                </RenderIf>
+                                <Options
+                                    items={options}
+                                    value={searchValue}
+                                    onSelectOption={this.handleChange}
+                                    focusedItemIndex={focusedItemIndex}
+                                    onHoverOption={this.handleHover}
+                                    itemHeight={OPTION_HEIGHT}
+                                    ref={this.menuRef}
+                                    size={size}
+                                />
+                                <RenderIf isTrue={showScrollDownArrow}>
+                                    <MenuArrowButton
+                                        arrow="down"
+                                        onMouseEnter={this.handleScrollDownArrowHover}
+                                        onMouseLeave={this.stopArrowScoll}
+                                    />
+                                </RenderIf>
+                            </StyledOptionsMenu>
+                        </RenderIf> */}
                     </StyledInputContainer>
                 </RenderIf>
                 <RenderIf isTrue={errorValue}>

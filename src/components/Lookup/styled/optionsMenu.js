@@ -12,7 +12,6 @@ const ListOptionsMenu = keyframes`
 `;
 
 const StyledOptionsMenu = attachThemeAttrs(styled.div)`
-    position: absolute;
     width: 100%;
     border-radius: 12px;
     background-color: ${props => props.palette.background.main};
@@ -20,10 +19,10 @@ const StyledOptionsMenu = attachThemeAttrs(styled.div)`
     border: solid 1px ${props => props.palette.border.divider};
     overflow: hidden;
     margin-top: 0.2rem;
-    z-index: 2000;
     animation: ${ListOptionsMenu};
     animation-duration: 0.3s
     padding: 1.15rem 0;
+    box-sizing: border-box;
 `;
 
 export default StyledOptionsMenu;
