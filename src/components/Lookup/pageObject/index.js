@@ -40,7 +40,7 @@ class PageLookup {
      */
     clickSelectedOptionInput() {
         $(this.rootElement)
-            .$('input[type="text"]')
+            .$('input[type="search"]')
             .click();
     }
 
@@ -82,7 +82,7 @@ class PageLookup {
      */
     hasFocusSelectedOptionInput() {
         return $(this.rootElement)
-            .$('input[type="text"]')
+            .$('input[type="search"]')
             .isFocused();
     }
 
@@ -157,7 +157,7 @@ class PageLookup {
      * @returns {string}
      */
     getSelectedOptionLabel() {
-        const content = $(this.rootElement).$('input[type="text"]');
+        const content = $(this.rootElement).$('input[type="search"]');
         if (content) {
             return content.getValue();
         }
@@ -170,9 +170,16 @@ class PageLookup {
      * @returns {bool}
      */
     isMenuOpen() {
-        return $(this.rootElement)
-            .$('[role="listbox"]')
-            .isDisplayed();
+        console.log(
+            $(this.rootElement)
+                .$('div[role="combobox"]')
+                .getAttribute('aria-expanded'),
+        );
+        return (
+            $(this.rootElement)
+                .$('div[role="combobox"]')
+                .getAttribute('aria-expanded') === 'true'
+        );
     }
 
     /**
@@ -181,7 +188,11 @@ class PageLookup {
      * @returns {bool}
      */
     isMenuEmpty() {
-        return $(this.rootElement)
+        const menuId = `#${$(this.rootElement)
+            .$('input[type="search"]')
+            .getAttribute('aria-controls')}`;
+        console.log(menuId);
+        return $(menuId)
             .$('[data-id="lookup-options-empty-container"]')
             .isDisplayed();
     }
@@ -210,7 +221,7 @@ class PageLookup {
      */
     mouseLeaveScrollUpArrow() {
         return $(this.rootElement)
-            .$('input[type="text"]')
+            .$('input[type="search"]')
             .moveTo();
     }
 
@@ -230,7 +241,7 @@ class PageLookup {
      */
     mouseLeaveScrollDownArrow() {
         return $(this.rootElement)
-            .$('input[type="text"]')
+            .$('input[type="search"]')
             .moveTo();
     }
 
