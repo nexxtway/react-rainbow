@@ -561,34 +561,6 @@ class Lookup extends Component {
                                 </RenderIf>
                             </StyledOptionsMenu>
                         </InternalOverlay>
-                        {/* <RenderIf isTrue={isLookupOpen}>
-                            <StyledOptionsMenu id={this.listboxId} role="listbox">
-                                <RenderIf isTrue={showScrollUpArrow}>
-                                    <MenuArrowButton
-                                        arrow="up"
-                                        onMouseEnter={this.handleScrollUpArrowHover}
-                                        onMouseLeave={this.stopArrowScoll}
-                                    />
-                                </RenderIf>
-                                <Options
-                                    items={options}
-                                    value={searchValue}
-                                    onSelectOption={this.handleChange}
-                                    focusedItemIndex={focusedItemIndex}
-                                    onHoverOption={this.handleHover}
-                                    itemHeight={OPTION_HEIGHT}
-                                    ref={this.menuRef}
-                                    size={size}
-                                />
-                                <RenderIf isTrue={showScrollDownArrow}>
-                                    <MenuArrowButton
-                                        arrow="down"
-                                        onMouseEnter={this.handleScrollDownArrowHover}
-                                        onMouseLeave={this.stopArrowScoll}
-                                    />
-                                </RenderIf>
-                            </StyledOptionsMenu>
-                        </RenderIf> */}
                     </StyledInputContainer>
                 </RenderIf>
                 <RenderIf isTrue={errorValue}>

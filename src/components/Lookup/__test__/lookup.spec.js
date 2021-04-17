@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 import React from 'react';
 import { mount } from 'enzyme';
 import ButtonIcon from '../../ButtonIcon';
@@ -6,6 +7,22 @@ import StyledTextError from '../../Input/styled/errorText';
 import StyledInput from '../styled/input';
 
 describe('<Lookup />', () => {
+    beforeEach(() => {
+        Element.prototype.getClientRects = jest.fn(() => {
+            return [
+                {
+                    bottom: 0,
+                    height: 0,
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    width: 0,
+                    x: 0,
+                    y: 0,
+                },
+            ];
+        });
+    });
     it('should set an id in the input element', () => {
         const component = mount(<Lookup />);
         expect(component.find('input').prop('id')).toMatch(/lookup-input/);
