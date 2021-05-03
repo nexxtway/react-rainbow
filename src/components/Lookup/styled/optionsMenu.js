@@ -12,7 +12,6 @@ const ListOptionsMenu = keyframes`
 `;
 
 const StyledOptionsMenu = attachThemeAttrs(styled.div)`
-    position: absolute;
     width: 100%;
     border-radius: 12px;
     background-color: ${props => props.palette.background.main};
