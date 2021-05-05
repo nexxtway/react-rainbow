@@ -22,6 +22,7 @@ export default function RatingItems(props) {
                     isFilled={isFilled}
                     isHalf={isHalf}
                     readOnly={readOnly}
+                    starFillColor={props.starFillColor}
                 />
             );
         });
@@ -32,6 +33,7 @@ RatingItems.propTypes = {
     onChange: PropTypes.func,
     name: PropTypes.string,
     readOnly: PropTypes.bool,
+    starFillColor: PropTypes.string,
 };
 
 RatingItems.defaultProps = {
@@ -39,4 +41,5 @@ RatingItems.defaultProps = {
     onChange: () => {},
     name: undefined,
     readOnly: false,
+    starFillColor: '#FFB900',
 };

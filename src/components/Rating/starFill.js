@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function StarFill() {
+export default function StarFill(props) {
+    const { starFillColor } = props;
     return (
         <svg
             width="19px"
@@ -13,7 +15,7 @@ export default function StarFill() {
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g
                     transform="translate(-573.000000, -660.000000)"
-                    fill="#FFB900"
+                    fill={starFillColor}
                     fillRule="nonzero"
                     stroke="#FFB900"
                 >
@@ -27,3 +29,11 @@ export default function StarFill() {
         </svg>
     );
 }
+
+StarFill.propTypes = {
+    starFillColor: PropTypes.string,
+};
+
+StarFill.defaultProps = {
+    starFillColor: '#FFB900',
+};

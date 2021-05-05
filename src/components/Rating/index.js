@@ -48,6 +48,7 @@ export default class Rating extends Component {
             labelAlignment,
             hideLabel,
             readOnly,
+            starFillColor,
         } = this.props;
         const { value } = this.state;
         return (
@@ -70,6 +71,7 @@ export default class Rating extends Component {
                     value={value}
                     name={this.getName()}
                     readOnly={readOnly}
+                    starFillColor={starFillColor}
                 />
             </StyledFieldset>
         );
@@ -96,6 +98,8 @@ Rating.propTypes = {
     style: PropTypes.object,
     /** Specifies that the Rating is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
+    /** Defines the color of the stars in the rating. */
+    starFillColor: PropTypes.string,
 };
 
 Rating.defaultProps = {
@@ -108,4 +112,5 @@ Rating.defaultProps = {
     className: undefined,
     style: undefined,
     readOnly: false,
+    starFillColor: '#FFB900',
 };
