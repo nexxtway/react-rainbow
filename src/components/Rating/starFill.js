@@ -17,7 +17,7 @@ export default function StarFill(props) {
                     transform="translate(-573.000000, -660.000000)"
                     fill={starFillColor}
                     fillRule="nonzero"
-                    stroke="#FFB900"
+                    stroke={starFillColor}
                 >
                     <g transform="translate(484.000000, 421.000000)">
                         <g transform="translate(89.000000, 239.000000)">
