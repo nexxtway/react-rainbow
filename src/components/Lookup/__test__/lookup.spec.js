@@ -6,10 +6,7 @@ import StyledTextError from '../../Input/styled/errorText';
 import StyledInput from '../styled/input';
 
 jest.mock('../../InternalOverlay', () =>
-    jest.fn(props => (
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        <div data-id="internal-dropdown">{props.isVisible && props.children}</div>
-    )),
+    jest.fn(props => <div data-id="internal-dropdown">{props.isVisible && props.children}</div>),
 );
 
 describe('<Lookup />', () => {
