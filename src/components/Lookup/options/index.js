@@ -104,6 +104,7 @@ export default class Options extends React.PureComponent {
                 ref={this.containerRef}
                 role="presentation"
                 onMouseDown={preventDefault}
+                data-id="lookup-options-container"
             >
                 <MenuItems
                     items={items}

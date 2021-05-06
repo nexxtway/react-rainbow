@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 const PageLookupMenuItem = require('./menuItem');
 
 /**
@@ -135,7 +136,7 @@ class PageLookup {
      * @returns {number}
      */
     getOptionsLength() {
-        return $(this.rootElement).$$('li[role="presentation"]').length;
+        return $('[data-id="lookup-options-container"]').$$('li[role="presentation"]').length;
     }
 
     /**
@@ -144,7 +145,7 @@ class PageLookup {
      * @param {number} itemPosition - The base 0 index of the LookupMenuItem.
      */
     getOption(itemPosition) {
-        const items = $(this.rootElement).$$('li[role="presentation"]');
+        const items = $('[data-id="lookup-options-container"]').$$('li[role="presentation"]');
         if (items[itemPosition]) {
             return new PageLookupMenuItem(items[itemPosition]);
         }
@@ -170,9 +171,11 @@ class PageLookup {
      * @returns {bool}
      */
     isMenuOpen() {
-        return $(this.rootElement)
-            .$('[role="listbox"]')
-            .isDisplayed();
+        return (
+            $(this.rootElement)
+                .$('div[role="combobox"]')
+                .getAttribute('aria-expanded') === 'true'
+        );
     }
 
     /**
@@ -181,9 +184,7 @@ class PageLookup {
      * @returns {bool}
      */
     isMenuEmpty() {
-        return $(this.rootElement)
-            .$('[data-id="lookup-options-empty-container"]')
-            .isDisplayed();
+        return $('[data-id="lookup-options-empty-container"]').isDisplayed();
     }
 
     /**

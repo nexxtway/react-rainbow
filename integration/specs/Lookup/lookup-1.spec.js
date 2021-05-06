@@ -61,7 +61,7 @@ describe('Lookup base example', () => {
         lookup.click();
         lookup.setQuery('lo');
         lookup.waitUntilOpen();
-        browser.keys(ESCAPE_KEY);
+        browser.keys('Escape');
         expect(lookup.isMenuOpen()).toBe(false);
         expect(lookup.hasFocusInput()).toBe(true);
         expect(lookup.getQuery()).toBe('');
@@ -71,8 +71,8 @@ describe('Lookup base example', () => {
         lookup.click();
         lookup.setQuery('lo');
         lookup.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
+        browser.keys('ArrowDown');
+        browser.keys('Enter');
         expect(lookup.getSelectedOptionLabel()).toBe('Barcelona');
     });
     it('should select London with keyboard', () => {
@@ -80,9 +80,9 @@ describe('Lookup base example', () => {
         lookup.click();
         lookup.setQuery('lo');
         lookup.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_UP_KEY);
-        browser.keys(ENTER_KEY);
+        browser.keys('ArrowDown');
+        browser.keys('ArrowUp');
+        browser.keys('Enter');
         expect(lookup.getSelectedOptionLabel()).toBe('London');
     });
     it('should set to active La Habana when hover the option', () => {
@@ -124,11 +124,11 @@ describe('Lookup base example', () => {
         lookup.click();
         lookup.setQuery('a');
         lookup.waitUntilOpen();
-        const option7 = lookup.getOption(6);
+        const option7 = lookup.getOption(7);
         expect(option7.isVisible()).toBe(false);
-        lookup.getOption(4).hover();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
+        lookup.getOption(5).hover();
+        browser.keys('ArrowDown');
+        browser.keys('ArrowDown');
         expect(option7.isVisible()).toBe(true);
     });
     it('should scroll up to see the first option', () => {
@@ -138,11 +138,11 @@ describe('Lookup base example', () => {
         lookup.waitUntilOpen();
         const option1 = lookup.getOption(0);
         lookup.getOption(4).hover();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
+        browser.keys('ArrowDown');
         lookup.getOption(2).hover();
-        browser.keys(ARROW_UP_KEY);
-        browser.keys(ARROW_UP_KEY);
+        browser.keys('ArrowUp');
+        browser.keys('ArrowUp');
         expect(option1.isVisible()).toBe(true);
     });
     it('should set focus on input when it has an option selected and clicks the label', () => {
@@ -175,15 +175,15 @@ describe('Lookup base example', () => {
         const option1 = lookup.getOption(0);
         option1.click();
         expect(lookup.hasFocusSelectedOptionInput()).toBe(false);
-        browser.keys(TAB_KEY);
+        browser.keys('Tab');
         expect(lookup.hasFocusSelectedOptionInput()).toBe(true);
         expect(lookup.hasFocusRemoveSelectedOptionButton()).toBe(false);
-        browser.keys(TAB_KEY);
+        browser.keys('Tab');
         expect(lookup.hasFocusRemoveSelectedOptionButton()).toBe(true);
-        browser.keys(TAB_KEY);
+        browser.keys('Tab');
         expect(lookup.hasFocusSelectedOptionInput()).toBe(false);
         expect(lookup.hasFocusRemoveSelectedOptionButton()).toBe(false);
-        browser.keys([SHIFT_KEY, TAB_KEY]);
+        browser.keys(['Shift', 'Tab']);
         expect(lookup.hasFocusRemoveSelectedOptionButton()).toBe(true);
     });
     it('should clear input value when click remove selected option button', () => {
