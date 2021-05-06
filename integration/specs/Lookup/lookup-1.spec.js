@@ -1,12 +1,4 @@
 const PageLookup = require('../../../src/components/Lookup/pageObject');
-const {
-    ESCAPE_KEY,
-    ARROW_DOWN_KEY,
-    ARROW_UP_KEY,
-    ENTER_KEY,
-    SHIFT_KEY,
-    TAB_KEY,
-} = require('../../constants');
 
 const LOOKUP = '#lookup-1';
 const REACT_LOGO = 'img[alt="react-rainbow"]';

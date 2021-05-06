@@ -541,7 +541,11 @@ class Lookup extends Component {
                             positionResolver={lookupPositionResolver}
                             onOpened={this.handleOverlayOpened}
                         >
-                            <StyledOptionsMenu id={this.listboxId} role="listbox">
+                            <StyledOptionsMenu
+                                id={this.listboxId}
+                                role="listbox"
+                                data-id="lookup-options-container"
+                            >
                                 <RenderIf isTrue={showScrollUpArrow}>
                                     <MenuArrowButton
                                         arrow="up"

@@ -200,7 +200,9 @@ class PageLookup {
      * @method
      */
     hoverScrollUpArrow() {
-        const upArrow = $(this.rootElement).$('[data-id=lookup-arrow-button-up]');
+        const upArrow = $('[data-id="lookup-options-container"]').$(
+            '[data-id=lookup-arrow-button-up]',
+        );
         upArrow.scrollIntoView();
         return upArrow.moveTo();
     }
@@ -220,7 +222,9 @@ class PageLookup {
      * @method
      */
     hoverScrollDownArrow() {
-        const downArrow = $(this.rootElement).$('[data-id=lookup-arrow-button-down]');
+        const downArrow = $('[data-id="lookup-options-container"]').$(
+            '[data-id="lookup-arrow-button-down"]',
+        );
         downArrow.scrollIntoView();
         return downArrow.moveTo();
     }
@@ -241,7 +245,7 @@ class PageLookup {
      * @returns {bool}
      */
     arrowDownExists() {
-        return $(this.rootElement)
+        return $('[data-id="lookup-options-container"]')
             .$('[data-id="lookup-arrow-button-down"]')
             .isExisting();
     }
@@ -252,7 +256,7 @@ class PageLookup {
      * @returns {bool}
      */
     arrowUpExists() {
-        return $(this.rootElement)
+        return $('[data-id="lookup-options-container"]')
             .$('[data-id="lookup-arrow-button-up"]')
             .isExisting();
     }
