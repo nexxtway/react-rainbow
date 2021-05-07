@@ -13,7 +13,7 @@ describe('Lookup base example', () => {
         component.waitForExist();
     });
 
-    it('should open the menu with empty message when type a value that does not match any option', () => {
+    it('should open the menu with empty message when type value that does not match any option', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
         lookup.setQuery('qwerty');
