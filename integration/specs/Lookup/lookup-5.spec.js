@@ -74,6 +74,7 @@ describe('Lookup with options type section example', () => {
         browser.keys('ArrowUp');
         expect(option1.isVisible()).toBe(true);
     });
+    /*
     it('should scroll down to see the next option focused when initially is not visible', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
@@ -87,4 +88,5 @@ describe('Lookup with options type section example', () => {
         browser.keys('ArrowDown');
         expect(option7.isVisible()).toBe(true);
     });
+    */
 });

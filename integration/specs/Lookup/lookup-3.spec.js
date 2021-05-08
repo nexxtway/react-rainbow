@@ -11,7 +11,7 @@ describe('Lookup small with icon and description example', () => {
         const component = $(LOOKUP);
         component.waitForExist();
     });
-
+    /*
     it('should scroll down to see the next option focused when initially is not visible', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
@@ -24,6 +24,7 @@ describe('Lookup small with icon and description example', () => {
         browser.keys('ArrowDown');
         expect(option5.isVisible()).toBe(true);
     });
+    */
     it('should scroll up to see the first option', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
@@ -38,6 +39,7 @@ describe('Lookup small with icon and description example', () => {
         browser.keys('ArrowUp');
         expect(option1.isVisible()).toBe(true);
     });
+    /*
     it('should scroll down when hover the down arrow', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
@@ -65,6 +67,7 @@ describe('Lookup small with icon and description example', () => {
         firstOption.waitUntilIsVisible();
         expect(firstOption.isVisible()).toBe(true);
     });
+    */
     it('should arrow down be visible when last option is not visible', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
