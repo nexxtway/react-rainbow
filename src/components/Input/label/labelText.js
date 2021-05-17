@@ -3,6 +3,8 @@ import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import { MARGIN_MEDIUM } from '../../../styles/margins';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { COLOR_WHITE, COLOR_DARK_1 } from '../../../styles/colors';
+import { lighten, darken } from '../../../styles/helpers/color';
 
 const labelAlignmentMap = {
     left: 'flex-start',
@@ -10,7 +12,20 @@ const labelAlignmentMap = {
     right: 'flex-end',
 };
 
-const Label = attachThemeAttrs(styled.label)`
+const Label = attachThemeAttrs(styled.label).attrs(props => {
+    if (props.palette.isDark) {
+        return {
+            inverse: {
+                text: lighten(COLOR_DARK_1, 0.3),
+            },
+        };
+    }
+    return {
+        inverse: {
+            text: darken(COLOR_WHITE, 0.3),
+        },
+    };
+})`
     color: ${props => props.palette.text.label};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     line-height: 1.5;
@@ -50,6 +65,11 @@ const Label = attachThemeAttrs(styled.label)`
             align-self: flex-start;
             margin-left: 0;
         `};
+    ${props =>
+        props.variant === 'inverse' &&
+        `
+        color: ${props.inverse.text};
+    `}
 `;
 
 export default Label;

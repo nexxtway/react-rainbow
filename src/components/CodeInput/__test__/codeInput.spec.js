@@ -32,6 +32,7 @@ describe('<CodeInput />', () => {
             labelAlignment: 'center',
             hideLabel: false,
             as: 'legend',
+            variant: 'default',
         });
     });
     it('should have bottomHelpText rendered if is sent as param', () => {
