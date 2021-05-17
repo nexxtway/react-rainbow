@@ -244,6 +244,7 @@ class Picklist extends Component {
                         required={required}
                         inputId={this.inputId}
                         readOnly={isReadOnly}
+                        variant={variant}
                     />
                 </RenderIf>
 
@@ -365,8 +366,8 @@ Picklist.propTypes = {
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
     /** The variant changes the appearance of the Picklist. Accepted variants include default,
-     * and shaded. This value defaults to default. */
-    variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
+     * shaded, bare and inverse. This value defaults to default. */
+    variant: PropTypes.oneOf(['default', 'shaded', 'bare', 'inverse']),
     /** If is set to true, then a search input to filter is showed. */
     enableSearch: PropTypes.bool,
     /** Action triggered when search query changes */

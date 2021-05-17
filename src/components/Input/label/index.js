@@ -14,6 +14,7 @@ export default function Label(props) {
         id,
         labelAlignment,
         hideLabel,
+        variant,
         as,
     } = props;
     if (hideLabel) {
@@ -33,6 +34,7 @@ export default function Label(props) {
             htmlFor={inputId}
             as={as}
             id={id}
+            variant={variant}
         >
             <RequiredAsterisk required={required} />
             {label}
@@ -50,6 +52,7 @@ Label.propTypes = {
     labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     hideLabel: PropTypes.bool,
     as: PropTypes.string,
+    variant: PropTypes.oneOf(['default', 'inverse']),
 };
 
 Label.defaultProps = {
@@ -62,4 +65,5 @@ Label.defaultProps = {
     labelAlignment: 'center',
     hideLabel: false,
     as: undefined,
+    variant: 'default',
 };

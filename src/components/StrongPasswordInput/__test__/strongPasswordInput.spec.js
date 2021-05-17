@@ -79,6 +79,7 @@ describe('<StrongPasswordInput />', () => {
             hideLabel: false,
             inputId: expect.any(String),
             id: expect.any(String),
+            variant: 'default',
         });
     });
 

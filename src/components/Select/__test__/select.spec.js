@@ -38,6 +38,7 @@ describe('Select component', () => {
             labelAlignment: 'center',
             hideLabel: false,
             inputId: expect.any(String),
+            variant: 'default',
         });
     });
 });

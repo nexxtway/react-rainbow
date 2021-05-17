@@ -9,6 +9,7 @@ import {
     COLOR_GRAY_2,
     COLOR_GRAY_3,
     COLOR_GRAY_4,
+    COLOR_GRAY_TRANSPARENT_2,
     COLOR_GRAY_TRANSPARENT_3,
 } from './colors';
 import { darken, getContrastText, lighten } from './helpers/color';
@@ -68,7 +69,7 @@ const defaultTheme = {
         shadow_3: `0 0 1px 0 ${COLOR_GRAY_3}`,
         shadow_4: `0 1px 2px 0 ${COLOR_GRAY_2}`,
         shadow_5: `0 0 3px ${COLOR_GRAY_1}`,
-        shadow_6: `0 2px 12px 0 ${COLOR_GRAY_2}`,
+        shadow_6: `0 2px 16px 0 ${COLOR_GRAY_TRANSPARENT_2}`,
         shadow_7: `0 0 0 4px ${COLOR_GRAY_2}`,
         shadow_8: `0 1px 0 0 ${COLOR_GRAY_2}`,
         shadow_9: `0 1px 1px 0 ${COLOR_GRAY_2}`,
