@@ -562,3 +562,34 @@ function PicklistCustomSearch() {
         <PicklistCustomSearch />
     </div>;
 ```
+
+##### Picklist inverse
+
+```js
+import React from 'react';
+import { Picklist, Option } from 'react-rainbow-components';
+
+const picklistStyles = {
+    width: '200px',
+};
+
+const initialState = { value: { name: 'option 3', label: 'Central Park' } };
+
+    <InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+        <div className="rainbow-flex rainbow-align_right">
+            <Picklist
+                style={picklistStyles}
+                onChange={value => setState({ value })}
+                value={state.value}
+                label="Select Building"
+                hideLabel
+                variant="inverse"
+            >
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option 1" label="Experimental Building" />
+                <Option name="option 2" label="Empire State" />
+                <Option name="option 3" label="Central Park" />
+            </Picklist>
+        </div>
+    </InverseContainer>;
+```
