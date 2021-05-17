@@ -12,7 +12,7 @@ export const Dropdown = attachThemeAttrs(styled.div)`
     border-radius: 0.875rem;
     font-size: 0.75rem;
     background: ${props => props.palette.background.main};
-    box-shadow: ${props => props.shadows.shadow_6};
+    box-shadow: ${props => props.shadows.shadow_12};
     transition: opacity 0.1s linear, visibility 0.1s linear;
 
     &:focus,
