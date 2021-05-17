@@ -88,6 +88,7 @@ describe('<VisualPicker/>', () => {
             labelAlignment: 'center',
             hideLabel: false,
             as: 'legend',
+            variant: 'default',
         });
     });
 });
