@@ -93,10 +93,17 @@ export const SearchContainer = attachThemeAttrs(styled.div)`
     border-bottom: 1px solid ${props => props.palette.border.divider};
 `;
 
-export const Icon = styled(SearchIcon)`
+export const Icon = attachThemeAttrs(styled(SearchIcon))`
     width: 14px;
     height: 14px;
     margin-left: 12px;
+    color: ${props => props.palette.border.main};
+`;
+
+export const StyledSearchIcon = attachThemeAttrs(styled(SearchIcon))`
+    width: 32px;
+    height: 32px;
+    color: ${props => props.palette.border.main};
 `;
 
 export const InputSearch = attachThemeAttrs(styled.input)`

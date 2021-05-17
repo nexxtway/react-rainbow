@@ -574,7 +574,6 @@ const picklistStyles = {
 };
 
 const initialState = { value: { name: 'option 3', label: 'Central Park' } };
-
     <InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-flex rainbow-align_right">
             <Picklist
