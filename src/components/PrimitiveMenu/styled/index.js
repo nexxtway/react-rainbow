@@ -24,12 +24,11 @@ export const StyledDropdown = attachThemeAttrs(styled.div)`
     max-height: 372px;
     margin-top: 0.125rem;
     margin-bottom: 0.125rem;
-    border: solid 1px ${props => props.palette.border.divider};
     border-radius: 0.875rem;
     padding: 0.5rem 0;
     font-size: 0.75rem;
     background: ${props => props.palette.background.main};
-    box-shadow: ${props => props.shadows.shadow_2};
+    box-shadow: ${props => props.shadows.shadow_12};
     display: block;
     opacity: 1;
     transition: opacity 0.1s linear, visibility 0.1s linear;

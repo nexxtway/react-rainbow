@@ -63,6 +63,7 @@ export { default as ProgressIndicator } from './components/ProgressIndicator';
 export { default as ProgressStep } from './components/ProgressStep';
 export { default as RadioButtonGroup } from './components/RadioButtonGroup';
 export { default as RadioGroup } from './components/RadioGroup';
+export { default as RainbowThemeContainer } from './components/RainbowThemeContainer';
 export { default as Rating } from './components/Rating';
 export { default as ReCaptcha } from './components/ReCaptcha';
 export { default as RenderIf } from './components/RenderIf';
