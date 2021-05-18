@@ -13,10 +13,11 @@ export default function getTransform(rect) {
 
     const widthRatio = width / viewportWidth;
     const heightRatio = height / viewportHeight;
+    const scale = heightRatio > widthRatio ? viewportHeight / height : viewportWidth / width;
 
     return {
         translateX,
         translateY,
-        scale: heightRatio > widthRatio ? viewportHeight / height : viewportWidth / width,
+        scale: scale * 0.85,
     };
 }
