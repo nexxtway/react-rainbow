@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ZINDEX_OVERLAY } from '../../styles/zIndex';
+import attachThemeAttrs from '../../styles/helpers/attachThemeAttrs';
 
 export const StyledImage = styled.img`
     cursor: zoom-in;
@@ -15,13 +16,13 @@ export const StyledImageContainer = styled.div`
     z-index: ${ZINDEX_OVERLAY};
 `;
 
-export const StyledBackdrop = styled.div`
+export const StyledBackdrop = attachThemeAttrs(styled.div)`
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: ${props => props.palette.background.main};
     opacity: 0;
     transition: opacity 300ms ease 0s;
 
