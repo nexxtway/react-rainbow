@@ -6,7 +6,7 @@ import React from 'react';
 import { ZoomableImage } from 'react-rainbow-components';
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-        <ZoomableImage src="https://via.placeholder.com/450" width="150" height="150" />
+        <ZoomableImage src="images/illustrations/Illustration-zoomableImage.jpg" width="150" height="150" />
     </div>
 
 ```
