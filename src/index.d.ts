@@ -93,3 +93,4 @@ export { default as VisualPickerOption } from './components/VisualPickerOption';
 export { default as VisualPickerOptionFooter } from './components/VisualPickerOptionFooter';
 export { default as WeekDayPicker } from './components/WeekDayPicker';
 export { default as WeeklyCalendar } from './components/WeeklyCalendar';
+export { default as RainbowTheme } from './libs/RainbowTheme';
