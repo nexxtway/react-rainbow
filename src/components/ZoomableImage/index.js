@@ -40,9 +40,13 @@ const ZoomableImage = ({ src, alt, width, height }) => {
 };
 
 ZoomableImage.propTypes = {
+    /** The image URL. */
     src: PropTypes.string,
+    /** Defines an alternative text description of the image. */
     alt: PropTypes.string,
+    /** The intrinsic width of the image in pixels. Must be an integer without a unit. */
     width: PropTypes.number,
+    /** The intrinsic height of the image, in pixels. Must be an integer without a unit. */
     height: PropTypes.number,
 };
 
