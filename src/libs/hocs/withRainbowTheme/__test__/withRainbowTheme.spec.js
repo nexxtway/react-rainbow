@@ -1,9 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Button from '../../../components/Button';
-import RainbowTheme from '..';
+import Button from '../../../../components/Button';
+import withRainbowTheme from '..';
 
-describe('rainbowTheme', () => {
+describe('withRainbowTheme', () => {
     it('should return a function that renders the passed component inside RainbowThemeContainer', () => {
         const theme = {
             rainbow: {
@@ -13,7 +13,7 @@ describe('rainbowTheme', () => {
             },
         };
 
-        const FancyButton = RainbowTheme(Button, theme);
+        const FancyButton = withRainbowTheme(Button, theme);
         const component = mount(<FancyButton label="Fancy button" />);
         const themeContainer = component.find('RainbowThemeContainer');
         expect(themeContainer.exists()).toBe(true);

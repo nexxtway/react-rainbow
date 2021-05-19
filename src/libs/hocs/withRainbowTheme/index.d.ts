@@ -1,5 +1,5 @@
-declare function RainbowTheme<P>(
+declare function withRainbowTheme<P>(
     Component: React.ComponentType<P>,
     theme: object,
 ): React.FunctionComponent<P>;
-export default RainbowTheme;
+export default withRainbowTheme;
