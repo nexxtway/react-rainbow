@@ -1,4 +1,6 @@
-interface ZoomableImageProps {
+import { BaseProps } from '../types';
+
+interface ZoomableImageProps extends BaseProps {
     /** The image URL. */
     src: string;
     /** Defines an alternative text description of the image. */

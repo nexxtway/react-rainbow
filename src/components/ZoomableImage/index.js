@@ -7,7 +7,7 @@ import { StyledImage } from './styled';
 /**
  * ZoomableImage renders an image that is zoomed in when clicked
  */
-const ZoomableImage = ({ src, alt, width, height }) => {
+const ZoomableImage = ({ className, style, src, alt, width, height }) => {
     const ref = useRef();
     const imageRect = useRef({});
     const [isOpen, setIsOpen] = useState(false);
@@ -24,6 +24,8 @@ const ZoomableImage = ({ src, alt, width, height }) => {
     return (
         <>
             <StyledImage
+                className={className}
+                style={style}
                 src={src}
                 alt={alt}
                 width={width}
@@ -40,6 +42,10 @@ const ZoomableImage = ({ src, alt, width, height }) => {
 };
 
 ZoomableImage.propTypes = {
+    /** The class name of the root element. */
+    className: PropTypes.string,
+    /** It is an object with custom style applied to the root element. */
+    style: PropTypes.object,
     /** The image URL. */
     src: PropTypes.string,
     /** Defines an alternative text description of the image. */
@@ -51,6 +57,8 @@ ZoomableImage.propTypes = {
 };
 
 ZoomableImage.defaultProps = {
+    className: undefined,
+    style: undefined,
     src: '',
     alt: '',
     width: undefined,
