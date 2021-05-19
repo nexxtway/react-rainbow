@@ -30,15 +30,15 @@ export default class Star extends Component {
     }
 
     renderStar() {
-        const { isFilled, isHalf, starFillColor } = this.props;
+        const { isFilled, isHalf } = this.props;
         if (isFilled) {
-            return isHalf ? <StarHalf /> : <StarFill starFillColor={starFillColor} />;
+            return isHalf ? <StarHalf /> : <StarFill />;
         }
         return <StarBordered />;
     }
 
     render() {
-        const { value, name, readOnly, starFillColor } = this.props;
+        const { value, name, readOnly } = this.props;
 
         return (
             <StyledStartContainer readOnly={readOnly}>
@@ -51,7 +51,7 @@ export default class Star extends Component {
                     disabled={readOnly}
                 />
 
-                <label htmlFor={this.starId} starFillColor={starFillColor}>
+                <label htmlFor={this.starId}>
                     {this.renderStar()}
                     <AssistiveText text={this.getAssitiveText()} />
                 </label>
@@ -67,7 +67,6 @@ Star.propTypes = {
     isHalf: PropTypes.bool,
     name: PropTypes.string,
     readOnly: PropTypes.bool,
-    starFillColor: PropTypes.string,
 };
 
 Star.defaultProps = {
@@ -76,5 +75,4 @@ Star.defaultProps = {
     name: undefined,
     readOnly: false,
     isHalf: false,
-    starFillColor: '#FFB900',
 };

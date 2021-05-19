@@ -47,7 +47,7 @@ class SimpleRating extends React.Component {
 
     render() {
         const { value } = this.state;
-        return <Rating value={value} onChange={this.handleOnChange} starFillColor="#FFB900" />;
+        return <Rating value={value} onChange={this.handleOnChange} />;
     }
 }
 

@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import defaultTheme from '../../styles/defaultTheme';
 
-export default function StarFill(props) {
-    const { starFillColor } = props;
+export default function StarFill() {
     return (
         <svg
             width="19px"
@@ -15,9 +14,9 @@ export default function StarFill(props) {
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g
                     transform="translate(-573.000000, -660.000000)"
-                    fill={starFillColor}
+                    fill={defaultTheme.palette.warning.main}
                     fillRule="nonzero"
-                    stroke={starFillColor}
+                    stroke={defaultTheme.palette.warning.main}
                 >
                     <g transform="translate(484.000000, 421.000000)">
                         <g transform="translate(89.000000, 239.000000)">
@@ -29,11 +28,3 @@ export default function StarFill(props) {
         </svg>
     );
 }
-
-StarFill.propTypes = {
-    starFillColor: PropTypes.string,
-};
-
-StarFill.defaultProps = {
-    starFillColor: '#FFB900',
-};
