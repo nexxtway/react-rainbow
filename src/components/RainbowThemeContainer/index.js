@@ -17,7 +17,18 @@ const RainbowThemeContainer = ({ theme, children }) => {
 };
 
 RainbowThemeContainer.propTypes = {
-    theme: PropTypes.object,
+    /** The theme to replace the application theme. */
+    theme: PropTypes.shape({
+        rainbow: PropTypes.shape({
+            palette: PropTypes.shape({
+                brand: PropTypes.string,
+                success: PropTypes.string,
+                error: PropTypes.string,
+                warning: PropTypes.string,
+                mainBackground: PropTypes.string,
+            }),
+        }),
+    }),
     /**
      * This prop that should not be visible in the documentation.
      * @ignore
