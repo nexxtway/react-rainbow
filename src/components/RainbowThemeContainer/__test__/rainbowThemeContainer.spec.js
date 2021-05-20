@@ -11,7 +11,7 @@ describe('<RainbowThemeContainer />', () => {
                 },
             },
         };
-        const component = mount(<RainbowThemeContainer value={theme} />);
+        const component = mount(<RainbowThemeContainer theme={theme} />);
         const normalizedTheme = component.find('ThemeProvider').prop('theme');
         const { main } = normalizedTheme.rainbow.palette.brand;
         expect(main).toBe('rgba(92, 86, 182, 1)');

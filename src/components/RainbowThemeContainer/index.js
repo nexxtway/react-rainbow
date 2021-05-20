@@ -6,18 +6,29 @@ import normalizeTheme from '../../styles/helpers/normalizeTheme';
 /**
  * RainbowThemeContainer allows to overwrite the theme for specific parts of your tree.
  */
-const RainbowThemeContainer = ({ value, children }) => {
-    const [theme, setTheme] = useState(() => normalizeTheme(value));
+const RainbowThemeContainer = ({ theme, children }) => {
+    const [normalizedTheme, setTheme] = useState(() => normalizeTheme(theme));
 
     useEffect(() => {
-        setTheme(normalizeTheme(value));
-    }, [value]);
+        setTheme(normalizeTheme(theme));
+    }, [theme]);
 
-    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+    return <ThemeProvider theme={normalizedTheme}>{children}</ThemeProvider>;
 };
 
 RainbowThemeContainer.propTypes = {
-    value: PropTypes.object,
+    /** The theme to replace the application theme. */
+    theme: PropTypes.shape({
+        rainbow: PropTypes.shape({
+            palette: PropTypes.shape({
+                brand: PropTypes.string,
+                success: PropTypes.string,
+                error: PropTypes.string,
+                warning: PropTypes.string,
+                mainBackground: PropTypes.string,
+            }),
+        }),
+    }),
     /**
      * This prop that should not be visible in the documentation.
      * @ignore
@@ -26,7 +37,7 @@ RainbowThemeContainer.propTypes = {
 };
 
 RainbowThemeContainer.defaultProps = {
-    value: undefined,
+    theme: undefined,
     children: undefined,
 };
 

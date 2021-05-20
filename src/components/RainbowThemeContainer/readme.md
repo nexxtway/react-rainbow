@@ -27,7 +27,7 @@ const theme = {
         </div>
 
         <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-            <RainbowThemeContainer value={theme}>
+            <RainbowThemeContainer theme={theme}>
                 <Button variant="base" label="Button Base" className="rainbow-m-around_medium" />
                 <Button label="Button Outline Brand" variant="outline-brand" className="rainbow-m-around_medium" />
                 <Button label="Button Neutral" variant="neutral" className="rainbow-m-around_medium" />
