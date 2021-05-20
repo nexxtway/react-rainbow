@@ -38,7 +38,7 @@ export const StyledCenteredImage = styled.img`
     top: ${props => props.top}px;
     left: ${props => props.left}px;
     transition: transform 300ms ease 0s;
-    transform: translate3d(0px, 0px, 0px) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
     will-change: transform;
     transform-origin: center center;
     cursor: zoom-out;
@@ -47,7 +47,6 @@ export const StyledCenteredImage = styled.img`
         props.isCentered &&
         props.transform &&
         `
-
         transform: translate3d(${props.transform.translateX}px, ${
             props.transform.translateY
         }px, 0px) scale(${props.transform.scale});
