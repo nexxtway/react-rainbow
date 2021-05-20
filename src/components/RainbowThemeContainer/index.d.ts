@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactNode } from 'react';
 
 export interface RainbowThemeContainerProps {
-    value?: object;
+    theme?: object;
     children?: ReactNode;
 }
 

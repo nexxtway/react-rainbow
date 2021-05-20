@@ -92,3 +92,4 @@ export { default as VisualPickerOptionFooter } from './components/VisualPickerOp
 export { default as WeekDayPicker } from './components/WeekDayPicker';
 export { default as WeeklyCalendar } from './components/WeeklyCalendar';
 export { default as withDebounce } from './libs/hocs/withDebounce';
+export { default as withRainbowTheme } from './libs/hocs/withRainbowTheme';
