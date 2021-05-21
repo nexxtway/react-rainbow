@@ -42,7 +42,6 @@ export const StyledCenteredImage = styled.img`
     will-change: transform;
     transform-origin: center center;
     cursor: zoom-out;
-
     ${props =>
         props.isCentered &&
         props.transform &&
