@@ -15,7 +15,7 @@ describe('getTransform', () => {
         const expected = {
             translateX: 337,
             translateY: 209,
-            scale: 5.12,
+            scale: 4.352,
         };
         expect(getTransform(rect)).toEqual(expected);
     });
