@@ -1,6 +1,6 @@
-import { filler, legend, title } from 'chart.js/src/plugins';
+const exclude = ['filler', 'legend', 'title'];
 
 export default function unregisterGlobalPlugins(ChartJS) {
-    ChartJS.plugins.clear();
-    [filler, legend, title].forEach(plugin => ChartJS.plugins.register(plugin));
+    const plugins = ChartJS.plugins.getAll().filter(plugin => !exclude.includes(plugin.id));
+    ChartJS.plugins.unregister(plugins);
 }

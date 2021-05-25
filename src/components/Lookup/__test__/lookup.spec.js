@@ -5,6 +5,10 @@ import Lookup from '..';
 import StyledTextError from '../../Input/styled/errorText';
 import StyledInput from '../styled/input';
 
+jest.mock('../../InternalOverlay', () =>
+    jest.fn(props => <div data-id="internal-dropdown">{props.isVisible && props.children}</div>),
+);
+
 describe('<Lookup />', () => {
     it('should set an id in the input element', () => {
         const component = mount(<Lookup />);
@@ -28,6 +32,7 @@ describe('<Lookup />', () => {
             labelAlignment: 'center',
             hideLabel: false,
             inputId: expect.any(String),
+            variant: 'default',
         });
     });
     it('should render the Options menu when there are options and the input is focused', () => {

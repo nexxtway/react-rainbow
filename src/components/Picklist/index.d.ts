@@ -17,7 +17,7 @@ export interface PicklistProps extends BaseProps {
     enableSearch?: boolean;
     onSearch?: (query: string) => void;
     value?: PicklistValue;
-    variant?: 'default' | 'shaded' | 'bare';
+    variant?: 'default' | 'shaded' | 'bare' | 'inverse';
     onChange?: (value: PicklistValue) => void;
     onClick?: (event: MouseEvent<HTMLElement>) => void;
     onFocus?: (event: null | PicklistValue) => void;

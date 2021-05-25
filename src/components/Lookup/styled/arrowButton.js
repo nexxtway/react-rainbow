@@ -10,6 +10,7 @@ const StyledArrowButton = attachThemeAttrs(styled.div)`
     width: 100%;
     z-index: 10;
     background: ${props => props.palette.background.main};
+    border-radius: 12px;
 
     &::after {
         content: '';
@@ -28,7 +29,7 @@ const StyledArrowButton = attachThemeAttrs(styled.div)`
         props.arrow === 'up' &&
         `
             top: 0;
-            margin-top: 0.2rem;
+            margin-top: 0.4rem;
             cursor: pointer;
 
             &::after {

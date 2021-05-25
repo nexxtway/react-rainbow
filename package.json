@@ -32,7 +32,7 @@
     "dependencies": {
         "@rainbow-modules/hooks": "^0.12.0",
         "autosize": "^4.0.2",
-        "chart.js": "2.7.3",
+        "chart.js": "2.9.4",
         "clipboard-copy": "^2.0.0",
         "prop-types": "^15.6.2",
         "react-async-script-loader": "^0.3.0",

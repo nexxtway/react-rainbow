@@ -9,6 +9,7 @@ import { Chart, Dataset } from 'react-rainbow-components';
 const containerStyles = {
     maxWidth: 600,
 };
+
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const values = [18, 42, 58, 50, 19, 0, 24, 50, 33, 20, 5, 35]
 
