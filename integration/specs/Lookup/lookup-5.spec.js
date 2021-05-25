@@ -1,5 +1,4 @@
 const PageLookup = require('../../../src/components/Lookup/pageObject');
-const { ARROW_DOWN_KEY, ARROW_UP_KEY, ENTER_KEY } = require('../../constants');
 
 const LOOKUP = '#lookup-5';
 const REACT_LOGO = 'img[alt="react-rainbow"]';
@@ -26,9 +25,9 @@ describe('Lookup with options type section example', () => {
         lookup.click();
         lookup.setQuery('l');
         lookup.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
+        browser.keys('ArrowDown');
+        browser.keys('ArrowDown');
+        browser.keys('Enter');
         expect(lookup.getSelectedOptionLabel()).toBe('La Habana');
     });
     it('should select Barcelona with keyboard', () => {
@@ -36,10 +35,10 @@ describe('Lookup with options type section example', () => {
         lookup.click();
         lookup.setQuery('l');
         lookup.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_UP_KEY);
-        browser.keys(ENTER_KEY);
+        browser.keys('ArrowDown');
+        browser.keys('ArrowDown');
+        browser.keys('ArrowUp');
+        browser.keys('Enter');
         expect(lookup.getSelectedOptionLabel()).toBe('Barcelona');
     });
     it('should set as active the first option that is not a header when other is active and close the menu and open it again', () => {
@@ -65,16 +64,17 @@ describe('Lookup with options type section example', () => {
         lookup.waitUntilOpen();
         const option1 = lookup.getOption(0);
         lookup.getOption(7).hover();
-        browser.keys(ARROW_UP_KEY);
-        browser.keys(ARROW_UP_KEY);
-        browser.keys(ARROW_UP_KEY);
-        browser.keys(ARROW_UP_KEY);
-        browser.keys(ARROW_UP_KEY);
-        browser.keys(ARROW_UP_KEY);
-        browser.keys(ARROW_UP_KEY);
-        browser.keys(ARROW_UP_KEY);
+        browser.keys('ArrowUp');
+        browser.keys('ArrowUp');
+        browser.keys('ArrowUp');
+        browser.keys('ArrowUp');
+        browser.keys('ArrowUp');
+        browser.keys('ArrowUp');
+        browser.keys('ArrowUp');
+        browser.keys('ArrowUp');
         expect(option1.isVisible()).toBe(true);
     });
+    /*
     it('should scroll down to see the next option focused when initially is not visible', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
@@ -83,9 +83,10 @@ describe('Lookup with options type section example', () => {
         const option7 = lookup.getOption(6);
         expect(option7.isVisible()).toBe(false);
         lookup.getOption(3).hover();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
+        browser.keys('ArrowDown');
+        browser.keys('ArrowDown');
         expect(option7.isVisible()).toBe(true);
     });
+    */
 });

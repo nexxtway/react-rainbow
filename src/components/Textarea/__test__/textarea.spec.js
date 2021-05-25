@@ -55,6 +55,7 @@ describe('<Textarea/>', () => {
             labelAlignment: 'center',
             hideLabel: false,
             inputId: expect.any(String),
+            variant: 'default',
         });
     });
     it('should have a inside div with id="headerTest"', () => {

@@ -37,6 +37,7 @@ const StyledCellContainer = attachThemeAttrs(styled.td)`
             border-bottom-right-radius: 12px;
             border-top-right-radius: 12px;
             overflow: hidden;
+            padding: 2px 0;
         }
     `}
 
