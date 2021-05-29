@@ -6,12 +6,12 @@ const StyledTooltip = attachThemeAttrs(styled.div)`
     color: ${props => props.palette.getContrastText(props.palette.text.main)};
     text-align: center;
     padding: 6px 12px;
-    border-radius: 10px;
+    border-radius: 4px;
     z-index: 1;
     opacity: 0;
     transition-property: opacity;
     transition-duration: 1s;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     width: auto;
     
     ${props =>
@@ -23,8 +23,8 @@ const StyledTooltip = attachThemeAttrs(styled.div)`
             position: absolute;
             top: 100%;
             left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
+            margin-left: -7px;
+            border-width: 7px;
             border-style: solid;
             border-color: ${props.palette.text.main} transparent transparent transparent;
         }
@@ -39,8 +39,8 @@ const StyledTooltip = attachThemeAttrs(styled.div)`
             position: absolute;
             bottom: 100%;
             left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
+            margin-left: -7px;
+            border-width: 7px;
             border-style: solid;
             border-color: transparent transparent ${props.palette.text.main} transparent;
         }
@@ -55,8 +55,8 @@ const StyledTooltip = attachThemeAttrs(styled.div)`
             position: absolute;
             top: 50%;
             left: 100%; /* To the right of the tooltip */
-            margin-top: -5px;
-            border-width: 5px;
+            margin-top: -7px;
+            border-width: 7px;
             border-style: solid;
             border-color: transparent transparent transparent ${props.palette.text.main};
         }
@@ -71,8 +71,8 @@ const StyledTooltip = attachThemeAttrs(styled.div)`
             position: absolute;
             top: 50%;
             right: 100%; /* To the left of the tooltip */
-            margin-top: -5px;
-            border-width: 5px;
+            margin-top: -7px;
+            border-width: 7px;
             border-style: solid;
             border-color: transparent ${props.palette.text.main} transparent transparent;
         }
