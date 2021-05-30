@@ -57,7 +57,7 @@ export default class Accordion extends Component {
 
     setAsSelectAccordionSection(accordionSectionIndex) {
         const { childrenRegistered } = this.state;
-        childrenRegistered[accordionSectionIndex].focusButtonIcon();
+        childrenRegistered[accordionSectionIndex].focusButton();
     }
 
     handleToggleSection(event, name) {

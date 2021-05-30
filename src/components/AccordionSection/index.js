@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
 import { uniqueId } from '../../libs/utils';
 import { Consumer } from '../Accordion/context';
-import ButtonIcon from '../ButtonIcon';
 import RightArrow from './rightArrow';
 import isInArray from './isInArray';
 import removeItemFromArray from './removeItemFromArray';
@@ -13,6 +12,7 @@ import StyledSummary from './styled/summary';
 import StyledHeading from './styled/heading';
 import StyledIcon from './styled/icon';
 import StyledContent from './styled/content';
+import AssistiveText from '../AssistiveText';
 
 class AccordionItem extends Component {
     constructor(props) {
@@ -34,7 +34,7 @@ class AccordionItem extends Component {
                     privateRegisterAccordionSection({
                         name: this.getCurrentName(),
                         ref: this.containerRef.current,
-                        focusButtonIcon: this.buttonRef.current.focus.bind(this),
+                        focusButton: () => this.buttonRef.current.focus(),
                     }),
                 0,
             );
@@ -108,7 +108,16 @@ class AccordionItem extends Component {
     }
 
     render() {
-        const { style, disabled, children, label, icon, assistiveText, className } = this.props;
+        const {
+            style,
+            disabled,
+            children,
+            label,
+            icon,
+            assistiveText,
+            className,
+            variant,
+        } = this.props;
 
         const isExpanded = this.isExpanded();
 
@@ -118,41 +127,41 @@ class AccordionItem extends Component {
                 className={className}
                 style={style}
                 disabled={disabled}
+                variant={variant}
+                isExpanded={isExpanded}
                 ref={this.containerRef}
             >
-                <section>
-                    <StyledSummary data-id="accordion-section-summary">
-                        <StyledHeading disabled={disabled}>
-                            <RenderIf isTrue={icon}>
-                                <StyledIcon>{icon}</StyledIcon>
-                            </RenderIf>
-                            <RenderIf isTrue={label}>
-                                <span title="Accordion Label">{label}</span>
-                            </RenderIf>
-                        </StyledHeading>
-
-                        <ButtonIcon
-                            size="small"
-                            disabled={disabled}
-                            onClick={this.handleToggleSection}
-                            onFocus={this.handleFocusSection}
-                            onKeyDown={this.handleKeyPressed}
-                            assistiveText={assistiveText}
-                            ariaControls={this.accordionDetailsId}
-                            ariaExpanded={isExpanded}
-                            ref={this.buttonRef}
-                            icon={<RightArrow isExpanded={isExpanded} disabled={disabled} />}
-                        />
-                    </StyledSummary>
-                    <StyledContent
-                        data-id="accordion-section-content"
-                        aria-hidden={!isExpanded}
-                        isCollapsed={!isExpanded}
-                        id={this.accordionDetailsId}
-                    >
-                        {children}
-                    </StyledContent>
-                </section>
+                <StyledSummary
+                    data-id="accordion-section-summary"
+                    isExpanded={isExpanded}
+                    variant={variant}
+                    disabled={disabled}
+                    onClick={this.handleToggleSection}
+                    onFocus={this.handleFocusSection}
+                    onKeyDown={this.handleKeyPressed}
+                    aria-controls={this.accordionDetailsId}
+                    aria-expanded={isExpanded}
+                    ref={this.buttonRef}
+                >
+                    <RightArrow isExpanded={isExpanded} disabled={disabled} />
+                    <AssistiveText text={assistiveText} />
+                    <StyledHeading disabled={disabled}>
+                        <RenderIf isTrue={icon}>
+                            <StyledIcon>{icon}</StyledIcon>
+                        </RenderIf>
+                        <RenderIf isTrue={label}>
+                            <span title="Accordion Label">{label}</span>
+                        </RenderIf>
+                    </StyledHeading>
+                </StyledSummary>
+                <StyledContent
+                    data-id="accordion-section-content"
+                    aria-hidden={!isExpanded}
+                    isCollapsed={!isExpanded}
+                    id={this.accordionDetailsId}
+                >
+                    {children}
+                </StyledContent>
             </StyledLi>
         );
     }
@@ -189,6 +198,8 @@ AccordionSection.propTypes = {
     /** The name is used to determine which AccordionSection was clicked.
      * If `name` is not passed it will be generated. */
     name: PropTypes.string,
+    /** The variant changes the appearance of the AccordionSection. */
+    variant: PropTypes.oneOf(['default', 'error']),
 };
 
 AccordionSection.defaultProps = {
@@ -200,4 +211,5 @@ AccordionSection.defaultProps = {
     label: undefined,
     icon: null,
     name: undefined,
+    variant: 'default',
 };
