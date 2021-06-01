@@ -130,34 +130,36 @@ class AccordionExample extends React.Component {
 ```js
 import React from 'react';
 import { Accordion, AccordionSection } from 'react-rainbow-components';
-
+import styled from 'styled-components';
 // more details about how to use react-font-awesome
 // visit https://github.com/FortAwesome/react-fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
+const StyledHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    > span {
+        font-weight: normal;
+        color: red;
+        font-size: 14px;
+    }
+`;
+
+const Header = () => (
+    <StyledHeader>
+        General settings
+        <span>One error</span>
+    </StyledHeader>
+);
+
+const AccordionWithError = () => (
     <div className="rainbow-m-around_xx-large">
         <Accordion>
             <AccordionSection
                 icon={<FontAwesomeIcon icon={faExclamationCircle} className="rainbow-color_error" />}
-                label="General Settings"
-                variant="error"
-            >
-                A rainbow is a meteorological phenomenon that is caused by reflection, refraction
-                and dispersion of light in water droplets resulting in a spectrum of light appearing
-                in the sky.
-            </AccordionSection>
-            <AccordionSection
-                icon={<FontAwesomeIcon icon={faUsers} className="rainbow-color_brand" />}
-                label="Users"
-            >
-                A rainbow is a meteorological phenomenon that is caused by reflection, refraction
-                and dispersion of light in water droplets resulting in a spectrum of light appearing
-                in the sky.
-            </AccordionSection>
-            <AccordionSection
-                icon={<FontAwesomeIcon icon={faExclamationCircle} className="rainbow-color_error" />}
-                label="Personal data"
+                label={<Header />}
                 variant="error"
             >
                 A rainbow is a meteorological phenomenon that is caused by reflection, refraction
@@ -166,6 +168,9 @@ import { faUsers, faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
             </AccordionSection>
         </Accordion>
     </div>
+);
+
+    <AccordionWithError />
 ```
 
 ##### accordions disabled

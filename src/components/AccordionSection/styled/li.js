@@ -1,38 +1,13 @@
 import styled from 'styled-components';
+import { BORDER_RADIUS_3 } from '../../../styles/borderRadius';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { MARGIN_XX_SMALL } from '../../../styles/margins';
 
 const StyledLi = attachThemeAttrs(styled.li)`
     list-style: none;
     box-sizing: border-box;
-    border-radius: 8px;
-
-    &:first-child > button {
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-    }
-
-    &:last-child > button {
-        ${props =>
-            !props.isExpanded &&
-            `
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-        `}        
-    }
-
-    &:last-child > section {
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;     
-    }
-
-    &:not(:first-child) {
-        border-top-width: 1px;
-    }
-
-    &:not(:last-child) {
-        border-bottom-width: 1px;
-        margin-bottom: -1px;
-    }
+    border-radius: ${BORDER_RADIUS_3};
+    margin-bottom: ${MARGIN_XX_SMALL};
 
     ${props => props.disabled && 'pointer-events: none;'};
 

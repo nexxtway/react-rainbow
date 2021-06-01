@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import { BORDER_RADIUS_3 } from '../../../styles/borderRadius';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { replaceAlpha } from '../../../styles/helpers/color';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
 
 const StyledSummary = attachThemeAttrs(styled.button)`
+    position: relative;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -11,14 +13,13 @@ const StyledSummary = attachThemeAttrs(styled.button)`
     border: 1px solid ${props => props.palette.border.divider};
     background-color: ${props => props.palette.background.main};
     width: 100%;
+    border-radius: ${BORDER_RADIUS_3}
 
     &:hover {
-        box-shadow: ${props => props.shadows.shadow_1};
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
     }
 
     &:focus {
-        position: relative;
-        z-index: 1;
         outline: 0;
         box-shadow: ${props => props.shadows.brand};
     }
@@ -27,7 +28,9 @@ const StyledSummary = attachThemeAttrs(styled.button)`
         props.isExpanded &&
         `
         border-bottom: solid 1px ${props.palette.border.divider};
-        box-shadow: ${props.shadows.shadow_1};
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
 
         &:hover {
             background-color: ${props.palette.background.secondary};

@@ -4,6 +4,7 @@ import { FONT_SIZE_HEADING_SMALL } from '../../../styles/fontSizes';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
 
 const StyledHeading = attachThemeAttrs(styled.h3)`
+    display: flex;
     font-size: ${FONT_SIZE_HEADING_SMALL};
     font-weight: bold;
     line-height: 1.25;

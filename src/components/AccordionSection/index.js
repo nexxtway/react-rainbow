@@ -13,6 +13,7 @@ import StyledHeading from './styled/heading';
 import StyledIcon from './styled/icon';
 import StyledContent from './styled/content';
 import AssistiveText from '../AssistiveText';
+import StyledSpan from './styled/span';
 
 class AccordionItem extends Component {
     constructor(props) {
@@ -150,7 +151,7 @@ class AccordionItem extends Component {
                             <StyledIcon>{icon}</StyledIcon>
                         </RenderIf>
                         <RenderIf isTrue={label}>
-                            <span title="Accordion Label">{label}</span>
+                            <StyledSpan title="Accordion Label">{label}</StyledSpan>
                         </RenderIf>
                     </StyledHeading>
                 </StyledSummary>
