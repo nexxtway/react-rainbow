@@ -275,7 +275,7 @@ class AccordionExample extends React.Component {
                     />
                 </GlobalHeader>
                 <div className="rainbow-m-around_xx-large">
-                    <Accordion id="accordion-9">
+                    <Accordion id="accordion-11">
                         <AccordionSection
                             icon={<SettingsIcon/>}
                             label="General Settings"

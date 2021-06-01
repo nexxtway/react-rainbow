@@ -1,12 +1,12 @@
 const PageAccordion = require('../../../src/components/Accordion/pageObject');
 
-const ACCORDION = '#accordion-9';
+const ACCORDION = '#accordion-11';
 
 const addAdvancedSettings = () => $('#button-icon_add-new-advanced-settings').click();
 
 describe('Accordion with AccordionOption changed dynamically', () => {
     beforeAll(() => {
-        browser.url('/#!/Accordion/9');
+        browser.url('/#!/Accordion/11');
     });
     beforeEach(() => {
         browser.refresh();
