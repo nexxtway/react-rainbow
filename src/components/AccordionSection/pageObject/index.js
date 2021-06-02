@@ -16,9 +16,9 @@ class PageAccordionSection {
      * Clicks the button icon element.
      * @method
      */
-    clickButtonIcon() {
+    clickButton() {
         $(this.rootElement)
-            .$('[data-id="accordion-section-summary"] > button')
+            .$('[data-id="accordion-section-summary"]')
             .click();
     }
 
@@ -27,9 +27,9 @@ class PageAccordionSection {
      * @method
      * @returns {bool}
      */
-    hasFocusButtonIcon() {
+    hasFocusButton() {
         return $(this.rootElement)
-            .$('[data-id="accordion-section-summary"] > button')
+            .$('[data-id="accordion-section-summary"]')
             .isFocused();
     }
 
