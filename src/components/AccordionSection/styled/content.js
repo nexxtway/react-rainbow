@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BORDER_RADIUS_3 } from '../../../styles/borderRadius';
+import { BORDER_RADIUS_4 } from '../../../styles/borderRadius';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { PADDING_MEDIUM, PADDING_XX_LARGE } from '../../../styles/paddings';
 
@@ -16,8 +16,8 @@ const StyledContent = attachThemeAttrs(styled.section)`
     background-color: ${props => props.palette.background.main};
     border: 1px solid ${props => props.palette.border.divider};
     border-top: 0;
-    border-bottom-left-radius: ${BORDER_RADIUS_3};
-    border-bottom-right-radius: ${BORDER_RADIUS_3};
+    border-bottom-left-radius: ${BORDER_RADIUS_4};
+    border-bottom-right-radius: ${BORDER_RADIUS_4};
 `;
 
 export default StyledContent;

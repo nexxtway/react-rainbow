@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BORDER_RADIUS_3 } from '../../../styles/borderRadius';
+import { BORDER_RADIUS_4 } from '../../../styles/borderRadius';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { replaceAlpha } from '../../../styles/helpers/color';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
@@ -13,10 +13,11 @@ const StyledSummary = attachThemeAttrs(styled.button)`
     border: 1px solid ${props => props.palette.border.divider};
     background-color: ${props => props.palette.background.main};
     width: 100%;
-    border-radius: ${BORDER_RADIUS_3}
+    border-radius: ${BORDER_RADIUS_4}
 
     &:hover {
         box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+        background-color: ${props => props.palette.background.secondary};
     }
 
     &:focus {
