@@ -15,6 +15,7 @@ const StyledLi = attachThemeAttrs(styled.li)`
     }
 
     ${props =>
+        !props.hideSelectedItemIndicator &&
         props.isSelected &&
         `
             ::before {
