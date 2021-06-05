@@ -56,11 +56,6 @@ function SidebarItem(props) {
             className={className}
             style={style}
             hideSelectedItemIndicator={hideSelectedItemIndicator}
-            ref={triggerRef}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-            onFocus={onFocus}
-            onBlur={onBlur}
         >
             <RenderIf isTrue={href}>
                 <StyledAnchorContent
@@ -69,6 +64,11 @@ function SidebarItem(props) {
                     onClick={handleOnClick}
                     aria-current={getAriaCurrent()}
                     isSelected={isSelected}
+                    ref={triggerRef}
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
                 >
                     <ItemContent isSelected={isSelected} label={label} icon={currentIcon} />
                 </StyledAnchorContent>
@@ -79,6 +79,11 @@ function SidebarItem(props) {
                     onClick={handleOnClick}
                     aria-current={getAriaCurrent()}
                     isSelected={isSelected}
+                    ref={triggerRef}
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
                 >
                     <ItemContent isSelected={isSelected} label={label} icon={currentIcon} />
                 </StyledButtonContent>
