@@ -52,7 +52,7 @@ class SimpleSidebar extends React.Component {
 ##### SidebarItem with tooltip
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import { Sidebar, SidebarItem } from 'react-rainbow-components';
 import styled from 'styled-components';
 
@@ -64,38 +64,28 @@ const SideBarContainer = styled.div.attrs(props => {
     border-bottom-left-radius: 0.875rem;
 `;
 
-class SimpleSidebar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedItem: 'GettingStarted',
-        };
-        this.handleOnSelect = this.handleOnSelect.bind(this);
+const SidebarWithTooltip = () => {
+    const [selectedItem, setSelectedItem] = useState();
+
+    const handleOnSelect = (event, newSelectedItem) => {
+        setSelectedItem(newSelectedItem);
     }
 
-    handleOnSelect(event, selectedItem) {
-        return this.setState({ selectedItem });
-    }
-
-    render() {
-        const { selectedItem } = this.state;
-
-        return (
-            <Sidebar selectedItem={selectedItem} onSelect={this.handleOnSelect} id="sidebar-1">
-                <SidebarItem icon={<DashboardPurpleIcon />} name="Dashboard" tooltip="Dashboard" />
-                <SidebarItem icon={<ApplicationIcon />} name="Aplications" tooltip="Aplications" />
-                <SidebarItem icon={<PuzzleIcon />} name="Components" tooltip="Components" />
-                <SidebarItem icon={<MessagesIcon />} name="Messages" tooltip="Messages" />
-                <SidebarItem icon={<ChartsIcon />} name="Charts" tooltip="Charts" />
-            </Sidebar>
-        );
-    }
-}
+    return (
+        <Sidebar selectedItem={selectedItem} onSelect={handleOnSelect} id="sidebar-3">
+            <SidebarItem icon={<DashboardPurpleIcon />} name="Dashboard" tooltip="Dashboard" />
+            <SidebarItem icon={<ApplicationIcon />} name="Aplications" tooltip="Aplications" />
+            <SidebarItem icon={<PuzzleIcon />} name="Components" tooltip="Components" />
+            <SidebarItem icon={<MessagesIcon />} name="Messages" tooltip="Messages" />
+            <SidebarItem icon={<ChartsIcon />} name="Charts" tooltip="Charts" />
+        </Sidebar>
+    )
+};
 
     <div>
         <GlobalHeader src="images/user/user3.jpg" />
         <SideBarContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
-            <SimpleSidebar />
+            <SidebarWithTooltip />
         </SideBarContainer>
     </div>
 ```
@@ -132,7 +122,7 @@ class SimpleSidebar extends React.Component {
         const { selectedItem } = this.state;
 
         return (
-            <Sidebar selectedItem={selectedItem} onSelect={this.handleOnSelect} id="sidebar-3">
+            <Sidebar selectedItem={selectedItem} onSelect={this.handleOnSelect} id="sidebar-5">
                 <SidebarItem
                     icon={<HomeBorderIcon />}
                     selectedIcon={<HomeFilledIcon />}
