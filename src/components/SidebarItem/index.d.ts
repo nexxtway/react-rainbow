@@ -8,6 +8,7 @@ export interface SidebarItemProps extends BaseProps {
     selectedIcon?: ReactNode;
     href?: string;
     onClick?: (event: MouseEvent<HTMLElement>) => void;
+    tooltip?: ReactNode;
 }
 
 export default function(props: SidebarItemProps): JSX.Element | null;
