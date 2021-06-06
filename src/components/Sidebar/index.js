@@ -11,11 +11,21 @@ import StyledUl from './styled/ul';
  * @category Layout
  */
 export default function Sidebar(props) {
-    const { ariaLabel, style, selectedItem, onSelect, className, children, id } = props;
+    const {
+        ariaLabel,
+        style,
+        selectedItem,
+        onSelect,
+        className,
+        children,
+        id,
+        hideSelectedItemIndicator,
+    } = props;
 
     const context = {
         selectedItem,
         onSelect,
+        hideSelectedItemIndicator,
     };
 
     return (
@@ -46,6 +56,8 @@ Sidebar.propTypes = {
      * @ignore
      */
     children: PropTypes.node,
+    /** Controls if the selected item indicator should be hidden. */
+    hideSelectedItemIndicator: PropTypes.bool,
 };
 
 Sidebar.defaultProps = {
@@ -56,4 +68,5 @@ Sidebar.defaultProps = {
     style: undefined,
     children: null,
     id: undefined,
+    hideSelectedItemIndicator: false,
 };
