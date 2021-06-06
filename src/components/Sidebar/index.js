@@ -56,7 +56,7 @@ Sidebar.propTypes = {
      * @ignore
      */
     children: PropTypes.node,
-    /** Controls if the selected item indicator should be hidden */
+    /** Controls if the selected item indicator should be hidden. */
     hideSelectedItemIndicator: PropTypes.bool,
 };
 
