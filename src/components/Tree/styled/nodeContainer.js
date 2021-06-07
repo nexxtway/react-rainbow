@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
+const PADDING_LEFT = 16;
+
 function getMarginLeft(props) {
-    return `-${(props.ariaLevelValue - 1) * 20 + props.ariaLevelValue - 1}px`;
+    const marginLeft = props.ariaLevelValue === 1 ? 0 : PADDING_LEFT;
+    return `-${(props.ariaLevelValue - 1) * 20 + props.ariaLevelValue - 1 + marginLeft}px`;
 }
 
 function getPaddingLeft(props) {
     if (props.hasChildren) {
-        return `${(props.ariaLevelValue - 1) * 20 + props.ariaLevelValue - 1}px}`;
+        return `${(props.ariaLevelValue - 1) * 20 + props.ariaLevelValue - 1 + PADDING_LEFT}px}`;
     }
-    return `${(props.ariaLevelValue - 1) * 20 + props.ariaLevelValue - 1 + 28}px}`;
+    return `${(props.ariaLevelValue - 1) * 20 + props.ariaLevelValue - 1 + 28 + PADDING_LEFT}px}`;
 }
 
 const NodeContainer = attachThemeAttrs(styled.div)`

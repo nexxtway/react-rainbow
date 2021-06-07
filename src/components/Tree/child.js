@@ -116,7 +116,12 @@ export default function Child(props) {
                 </Label>
             </NodeContainer>
             <RenderIf isTrue={hasChildren && isExpanded}>
-                <ChildrenContainerUl icon={icon} isChecked={isChecked} role="group">
+                <ChildrenContainerUl
+                    icon={icon}
+                    isChecked={isChecked}
+                    ariaLevelValue={ariaLevelValue}
+                    role="group"
+                >
                     <TreeChildren
                         data={children}
                         onNodeCheck={onNodeCheck}
