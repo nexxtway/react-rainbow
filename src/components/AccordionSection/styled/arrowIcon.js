@@ -3,9 +3,10 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledArrowIcon = attachThemeAttrs(styled.svg)`
     transform: rotate(0deg);
-    fill: ${props => props.palette.brand.main};
+    fill: ${props => props.palette.text.main};
     transition: transform 0.15s linear;
     vertical-align: middle;
+    width: 1rem;
 
     :not(:root) {
         overflow: hidden;

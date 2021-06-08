@@ -1,8 +1,10 @@
 /* eslint-disable no-script-url, react/prop-types */
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { withContext } from '../Sidebar/context';
 import RenderIf from '../RenderIf';
+import InternalTooltip from '../InternalTooltip';
+import useDefaultTooltipConnector from '../InternalTooltip/hooks/useDefaultTooltipConnector';
 import StyledLi from './styled/li';
 import StyledAnchorContent from './styled/anchorContent';
 import StyledButtonContent from './styled/buttonContent';
@@ -22,9 +24,18 @@ function SidebarItem(props) {
         style,
         selectedItem,
         onSelect,
+        tooltip,
+        hideSelectedItemIndicator,
     } = props;
+    const triggerRef = useRef();
+    const tooltipRef = useRef();
     const isSelected = name === selectedItem;
     const currentIcon = isSelected && !!selectedIcon ? selectedIcon : icon;
+
+    const { onFocus, onBlur, onMouseEnter, onMouseLeave, isVisible } = useDefaultTooltipConnector({
+        tooltipRef,
+        triggerRef: () => triggerRef,
+    });
 
     const getAriaCurrent = () => {
         if (isSelected) {
@@ -33,7 +44,7 @@ function SidebarItem(props) {
         return undefined;
     };
 
-    function hanldeOnClick(event) {
+    function handleOnClick(event) {
         onClick(event);
         onSelect(event, name);
     }
@@ -44,14 +55,20 @@ function SidebarItem(props) {
             isSelected={isSelected}
             className={className}
             style={style}
+            hideSelectedItemIndicator={hideSelectedItemIndicator}
         >
             <RenderIf isTrue={href}>
                 <StyledAnchorContent
                     data-id="sidebar-item-clickable-element"
                     href={href}
-                    onClick={hanldeOnClick}
+                    onClick={handleOnClick}
                     aria-current={getAriaCurrent()}
                     isSelected={isSelected}
+                    ref={triggerRef}
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
                 >
                     <ItemContent isSelected={isSelected} label={label} icon={currentIcon} />
                 </StyledAnchorContent>
@@ -59,12 +76,27 @@ function SidebarItem(props) {
             <RenderIf isTrue={!href}>
                 <StyledButtonContent
                     data-id="sidebar-item-clickable-element"
-                    onClick={hanldeOnClick}
+                    onClick={handleOnClick}
                     aria-current={getAriaCurrent()}
                     isSelected={isSelected}
+                    ref={triggerRef}
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
                 >
                     <ItemContent isSelected={isSelected} label={label} icon={currentIcon} />
                 </StyledButtonContent>
+            </RenderIf>
+            <RenderIf isTrue={tooltip}>
+                <InternalTooltip
+                    triggerElementRef={() => triggerRef}
+                    isVisible={isVisible}
+                    preferredPosition="right"
+                    ref={tooltipRef}
+                >
+                    {tooltip}
+                </InternalTooltip>
             </RenderIf>
         </StyledLi>
     );
@@ -89,6 +121,8 @@ SidebarItem.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
+    /** A tooltip to show on hover */
+    tooltip: PropTypes.node,
 };
 
 SidebarItem.defaultProps = {
@@ -100,6 +134,7 @@ SidebarItem.defaultProps = {
     onClick: () => {},
     className: undefined,
     style: undefined,
+    tooltip: undefined,
 };
 
 export default withContext(SidebarItem);
