@@ -32,7 +32,7 @@ function SidebarItem(props) {
     const isSelected = name === selectedItem;
     const currentIcon = isSelected && !!selectedIcon ? selectedIcon : icon;
 
-    const { onFocus, onBlur, onMouseEnter, onMouseLeave, isVisible } = useDefaultTooltipConnector({
+    const { onMouseEnter, onMouseLeave, isVisible } = useDefaultTooltipConnector({
         tooltipRef,
         triggerRef: () => triggerRef,
     });
@@ -67,8 +67,6 @@ function SidebarItem(props) {
                     ref={triggerRef}
                     onMouseEnter={onMouseEnter}
                     onMouseLeave={onMouseLeave}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
                 >
                     <ItemContent isSelected={isSelected} label={label} icon={currentIcon} />
                 </StyledAnchorContent>
@@ -82,8 +80,6 @@ function SidebarItem(props) {
                     ref={triggerRef}
                     onMouseEnter={onMouseEnter}
                     onMouseLeave={onMouseLeave}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
                 >
                     <ItemContent isSelected={isSelected} label={label} icon={currentIcon} />
                 </StyledButtonContent>
