@@ -10,7 +10,7 @@ const StyledTooltip = attachThemeAttrs(styled.div)`
     z-index: 1;
     opacity: 0;
     transition-property: opacity;
-    transition-duration: 1s;
+    transition-duration: 250ms;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     width: auto;
     
