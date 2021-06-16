@@ -51,7 +51,7 @@ class PageAccordionSection {
      */
     getLabel() {
         return $(this.rootElement)
-            .$('[title="Accordion Label"]')
+            .$('[data-id="accordion-section-label"]')
             .getText();
     }
 }
