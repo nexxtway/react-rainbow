@@ -33,6 +33,8 @@ export const COLOR_DARK_1 = '#2A3039';
 // TODO: only warning const should remain
 export const COLOR_YELLOW_1 = '#fc0';
 export const COLOR_WARNING = COLOR_YELLOW_1;
+export const COLOR_WARNING_DARK = '#FFB900';
+export const COLOR_WARNING_LIGHT = '#FFDC7F';
 
 // purple colors
 export const COLOR_PURPLE = '#663398';

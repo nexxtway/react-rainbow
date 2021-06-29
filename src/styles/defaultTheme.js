@@ -34,6 +34,8 @@ const defaultTheme = {
         },
         warning: {
             main: COLOR_WARNING,
+            dark: darken(COLOR_WARNING),
+            light: lighten(COLOR_WARNING),
         },
         background: {
             main: COLOR_WHITE,

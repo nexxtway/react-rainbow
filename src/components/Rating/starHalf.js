@@ -2,20 +2,13 @@ import React from 'react';
 
 export default function StarHalf() {
     return (
-        <svg
-            width="19px"
-            height="18px"
-            viewBox="0 0 19 18"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-        >
+        <svg width="19px" height="18px" viewBox="0 0 19 18">
             <defs>
                 <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style={{ stopColor: '#FFB900', stopOpacity: 1 }} />
-                    <stop offset="50%" style={{ stopColor: '#FFB900', stopOpacity: 1 }} />
-                    <stop offset="50%" style={{ stopColor: '#FFB900', stopOpacity: 0 }} />
-                    <stop offset="100%" style={{ stopColor: '#FFB900', stopOpacity: 0 }} />
+                    <stop offset="0%" style={{ stopColor: 'currentColor', stopOpacity: 1 }} />
+                    <stop offset="50%" style={{ stopColor: 'currentColor', stopOpacity: 1 }} />
+                    <stop offset="50%" style={{ stopColor: 'currentColor', stopOpacity: 0 }} />
+                    <stop offset="100%" style={{ stopColor: 'currentColor', stopOpacity: 0 }} />
                 </linearGradient>
             </defs>
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -23,7 +16,7 @@ export default function StarHalf() {
                     transform="translate(-573.000000, -660.000000)"
                     fill="url(#grad1)"
                     fillRule="nonzero"
-                    stroke="#FFB900"
+                    stroke="currentColor"
                 >
                     <g transform="translate(484.000000, 421.000000)">
                         <g transform="translate(89.000000, 239.000000)">

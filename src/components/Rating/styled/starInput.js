@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledStartInput = attachThemeAttrs(styled.input)`
+const StyledStarInput = attachThemeAttrs(styled.input)`
     box-sizing: border-box;
     position: absolute;
     opacity: 0;
@@ -26,4 +26,4 @@ const StyledStartInput = attachThemeAttrs(styled.input)`
     }
 `;
 
-export default StyledStartInput;
+export default StyledStarInput;
