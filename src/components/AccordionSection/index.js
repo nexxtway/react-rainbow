@@ -151,7 +151,7 @@ class AccordionItem extends Component {
                             <StyledIcon>{icon}</StyledIcon>
                         </RenderIf>
                         <RenderIf isTrue={label}>
-                            <StyledSpan title="Accordion Label">{label}</StyledSpan>
+                            <StyledSpan data-id="accordion-section-label">{label}</StyledSpan>
                         </RenderIf>
                     </StyledHeading>
                 </StyledSummary>

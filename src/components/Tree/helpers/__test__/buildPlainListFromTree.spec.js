@@ -25,6 +25,11 @@ const tree = [
             { label: 'Tree Item' },
         ],
     },
+    {
+        label: 'Empty Tree Branch',
+        expanded: true,
+        children: undefined,
+    },
 ];
 
 const plainList = [
@@ -75,6 +80,14 @@ const plainList = [
         nodePath: [3],
         isExpanded: undefined,
         hasChildren: true,
+    },
+    {
+        name: 'node-5',
+        label: 'empty tree branch',
+        level: 1,
+        nodePath: [4],
+        isExpanded: undefined,
+        hasChildren: undefined,
     },
 ];
 

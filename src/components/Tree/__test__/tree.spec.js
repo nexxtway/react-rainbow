@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Tree from '../index';
 import ButtonIcon from '../../ButtonIcon';
+import TreeChildren from '../treeChildren';
 
 const data = [
     { label: 'Tree Item', isChecked: false },
@@ -159,5 +160,10 @@ describe('<Tree/>', () => {
         const component = mount(<Tree data={data} />);
         const node = component.find('li').at(2);
         expect(node.prop('aria-expanded')).toBe(true);
+    });
+    it('should render an empty tree when data is invalid', () => {
+        const component = mount(<Tree data={null} />);
+        const treeChildren = component.find(TreeChildren);
+        expect(treeChildren.prop('data')).toEqual([]);
     });
 });
