@@ -2,6 +2,7 @@ import getNodeName from './getNodeName';
 import getNodeLevel from './getNodeLevel';
 
 export default function buildPlainListFromTree(tree, parentName, parentPath) {
+    if (!Array.isArray(tree)) return [];
     return tree.reduce((result, node, index) => {
         const nodeName = getNodeName({ parentName, index });
         const level = getNodeLevel({ name: nodeName });
