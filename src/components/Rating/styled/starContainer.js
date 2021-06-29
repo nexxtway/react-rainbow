@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledStartContainer = styled.span`
+const StyledStarContainer = attachThemeAttrs(styled.span)`
     line-height: inherit;
     height: inherit;
-    color: ${props => props.theme.rainbow.palette.warning.main};
+    color: ${props => props.palette.warning.main};
 
     :not(:last-child) {
         margin-right: 0.25rem;
@@ -17,4 +18,4 @@ const StyledStartContainer = styled.span`
     }
 `;
 
-export default StyledStartContainer;
+export default StyledStarContainer;

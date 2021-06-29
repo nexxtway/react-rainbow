@@ -4,8 +4,8 @@ import AssistiveText from '../AssistiveText';
 import { uniqueId } from '../../libs/utils';
 import StarFill from './starFill';
 import StarBordered from './starBordered';
-import StyledStartContainer from './styled/starContainer';
-import StyledStartInput from './styled/starInput';
+import StyledStarContainer from './styled/starContainer';
+import StyledStarInput from './styled/starInput';
 import StarHalf from './starHalf';
 
 export default class Star extends Component {
@@ -41,8 +41,8 @@ export default class Star extends Component {
         const { value, name, readOnly } = this.props;
 
         return (
-            <StyledStartContainer readOnly={readOnly}>
-                <StyledStartInput
+            <StyledStarContainer readOnly={readOnly}>
+                <StyledStarInput
                     type="radio"
                     id={this.starId}
                     value={value}
@@ -55,7 +55,7 @@ export default class Star extends Component {
                     {this.renderStar()}
                     <AssistiveText text={this.getAssitiveText()} />
                 </label>
-            </StyledStartContainer>
+            </StyledStarContainer>
         );
     }
 }
