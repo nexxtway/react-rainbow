@@ -386,7 +386,7 @@ import styled from 'styled-components';
 const theme = {
     rainbow: {
         palette: {
-            warning: '#bfefff',
+            warning: '#ffdc7f',
         },
     },
 };

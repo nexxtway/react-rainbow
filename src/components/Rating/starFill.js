@@ -1,22 +1,14 @@
 import React from 'react';
-import defaultTheme from '../../styles/defaultTheme';
 
 export default function StarFill() {
     return (
-        <svg
-            width="19px"
-            height="18px"
-            viewBox="0 0 19 18"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-        >
+        <svg width="19px" height="18px" viewBox="0 0 19 18">
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g
                     transform="translate(-573.000000, -660.000000)"
-                    fill={defaultTheme.palette.warning.main}
+                    fill="currentColor"
                     fillRule="nonzero"
-                    stroke={defaultTheme.palette.warning.main}
+                    stroke="currentColor"
                 >
                     <g transform="translate(484.000000, 421.000000)">
                         <g transform="translate(89.000000, 239.000000)">

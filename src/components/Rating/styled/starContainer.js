@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const StyledStartContainer = styled.span`
     line-height: inherit;
     height: inherit;
+    color: ${props => props.theme.rainbow.palette.warning.main};
 
     :not(:last-child) {
         margin-right: 0.25rem;
