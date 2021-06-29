@@ -373,7 +373,7 @@ class DetailRating extends React.Component {
     </div>
 ```
 
-##### Rating with customize color
+##### Rating with custom color
 
 ```js
 import React from 'react';
