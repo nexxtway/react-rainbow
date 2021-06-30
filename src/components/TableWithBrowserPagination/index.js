@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Pagination from '../Pagination';
-import Table from '../Table';
 import RenderIf from '../RenderIf';
 import Options from './options';
 import getPageItems from './helpers/getPageItems';
-import StyledContainer from './styled/container';
+import { StyledContainer, StyledTable } from './styled/container';
 import StyledPaginationContainer from './styled/paginationContainer';
 import StyledSelectContainer from './styled/selectContainer';
 import StyledSelect from './styled/select';
@@ -96,9 +95,9 @@ export default class TableWithBrowserPagination extends Component {
         return (
             <StyledContainer className={className} style={style}>
                 {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                <Table data={pageItems} {...rest} ref={this.table} variant={variant}>
+                <StyledTable data={pageItems} {...rest} ref={this.table} variant={variant}>
                     {children}
-                </Table>
+                </StyledTable>
                 <RenderIf isTrue={showPagination}>
                     <StyledPaginationContainer
                         paginationAlignment={paginationAlignment}

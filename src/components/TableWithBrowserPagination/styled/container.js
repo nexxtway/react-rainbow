@@ -1,7 +1,10 @@
 import styled from 'styled-components';
+import Table from '../../Table';
 
-const StyledContainer = styled.section`
+export const StyledContainer = styled.section`
     height: 100%;
 `;
 
-export default StyledContainer;
+export const StyledTable = styled(Table)`
+    overflow: auto;
+`;
