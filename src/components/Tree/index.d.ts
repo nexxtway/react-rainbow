@@ -26,9 +26,8 @@ export interface TreeProps extends BaseProps {
     ariaLabel?: string;
 }
 
-interface Tree {
-    (props: TreeProps): ReactElement<any, any> | null;
-    getNode?: (tree: DataItem[], nodePath: number[]) => DataItem;
+declare function Tree(props: TreeProps): ReactElement<any, any> | null;
+declare namespace Tree {
+    export const getNode: (tree: DataItem[], nodePath: number[]) => DataItem;
 }
-
 export default Tree;
