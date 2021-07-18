@@ -2,7 +2,7 @@ import { ComponentType, ReactNode } from 'react';
 import { BaseProps, IconPosition } from '../types';
 
 export interface OptionProps extends BaseProps {
-    label?: string;
+    label?: ReactNode;
     labelText?: string;
     name?: string | number;
     variant?: 'default' | 'header';

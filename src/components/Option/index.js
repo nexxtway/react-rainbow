@@ -273,7 +273,7 @@ export { OptionItem };
 
 Option.propTypes = {
     /** Text of the PicklistOption. */
-    label: PropTypes.string,
+    label: PropTypes.node,
     /** Searchable text when label is a node */
     labelText: PropTypes.string,
     /** The name of the PicklistOption. */

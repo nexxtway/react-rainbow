@@ -13,7 +13,9 @@ export default function PicklistOption(props) {
 
 PicklistOption.propTypes = {
     /** Text of the PicklistOption. */
-    label: PropTypes.string,
+    label: PropTypes.node,
+    /** Searchable text when label is a node */
+    labelText: PropTypes.string,
     /** The name of the PicklistOption. */
     name: PropTypes.string,
     /** The variant changes the type of PicklistOption.
@@ -39,6 +41,7 @@ PicklistOption.propTypes = {
 
 PicklistOption.defaultProps = {
     label: undefined,
+    labelText: undefined,
     name: undefined,
     variant: 'default',
     icon: null,
