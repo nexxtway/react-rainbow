@@ -11,7 +11,7 @@ export interface CheckboxToggleProps extends BaseProps {
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
     id?: string;
-    labelAlignment?: 'left' | 'right';
+    labelAlignment?: 'left' | 'right' | 'top';
 }
 
 declare const CheckboxToggle: ComponentType<CheckboxToggleProps>;

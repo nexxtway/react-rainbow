@@ -110,3 +110,28 @@ class DisabledCheckboxToggle extends React.Component {
         <DisabledCheckboxToggle />
     </div>
 ```
+
+##### checkbox with label alignment
+```js
+import React from 'react';
+import { CheckboxToggle } from 'react-rainbow-components';
+
+const AlignedCheckboxToggle = () => (<>
+    <CheckboxToggle
+        label="Align left"
+        labelAlignment="left"
+    />
+    <CheckboxToggle
+        label="Align top"
+        labelAlignment="top"
+    />
+    <CheckboxToggle
+        label="Align right"
+        labelAlignment="right"
+    />
+</>);
+
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_x-large rainbow-flex rainbow-justify_space-around">
+        <AlignedCheckboxToggle />
+    </div>
+```
