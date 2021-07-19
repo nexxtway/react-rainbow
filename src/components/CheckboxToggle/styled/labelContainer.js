@@ -1,7 +1,6 @@
 /* stylelint-disable no-descending-specificity, max-line-length */
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { MARGIN_MEDIUM } from '../../../styles/margins';
 
 const StyledLabelContainer = attachThemeAttrs(styled.label)`
     display: inline-flex;
@@ -128,7 +127,6 @@ const StyledLabelContainer = attachThemeAttrs(styled.label)`
         `
             flex-direction: column-reverse;
             align-items: start;
-            padding-left: ${MARGIN_MEDIUM};
         `};
     
 
