@@ -14,7 +14,7 @@ export default function filterCollection(params) {
         query,
         data,
         mapValuesToStringFn = item =>
-            typeof item.label === 'string' ? item.label : item.labelText,
+            typeof item.label === 'string' ? item.label : item.searchableText,
     } = params;
     if (query) {
         return data.filter(item => {
