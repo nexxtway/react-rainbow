@@ -121,6 +121,15 @@ const StyledLabelContainer = attachThemeAttrs(styled.label)`
         `
             flex-direction: row-reverse;
         `};
+
+    ${props =>
+        props.labelAlignment === 'top' &&
+        `
+            flex-direction: column-reverse;
+            align-items: start;
+        `};
+    
+
 `;
 
 export default StyledLabelContainer;

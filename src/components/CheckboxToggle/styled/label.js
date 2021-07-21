@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import { MARGIN_SMALL } from '../../../styles/margins';
+import { MARGIN_SMALL, MARGIN_XX_SMALL } from '../../../styles/margins';
 
 const StyledLabel = attachThemeAttrs(styled.span)`
     color: ${props => props.palette.text.main};
@@ -12,6 +12,13 @@ const StyledLabel = attachThemeAttrs(styled.span)`
         props.labelAlignment === 'left' &&
         `
             margin-right: 12px;
+        `};
+
+    ${props =>
+        props.labelAlignment === 'top' &&
+        `
+            margin-left: 0;
+            margin-bottom: ${MARGIN_XX_SMALL};
         `};
 `;
 
