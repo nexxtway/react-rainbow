@@ -95,12 +95,21 @@ class OptionItem extends Component {
     }
 
     register() {
-        const { privateRegisterChild, label, name, icon, value, variant } = this.props;
+        const {
+            privateRegisterChild,
+            label,
+            searchableText,
+            name,
+            icon,
+            value,
+            variant,
+        } = this.props;
 
         if (privateRegisterChild) {
             return setTimeout(() => {
                 return privateRegisterChild(this.itemRef.current, {
                     label,
+                    searchableText,
                     name,
                     icon,
                     value,
@@ -272,7 +281,9 @@ export { OptionItem };
 
 Option.propTypes = {
     /** Text of the PicklistOption. */
-    label: PropTypes.string,
+    label: PropTypes.node,
+    /** Searchable text when label is a node */
+    searchableText: PropTypes.string,
     /** The name of the PicklistOption. */
     name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /** The variant changes the type of PicklistOption.
@@ -303,6 +314,7 @@ Option.propTypes = {
 
 Option.defaultProps = {
     label: undefined,
+    searchableText: undefined,
     name: undefined,
     variant: 'default',
     icon: null,
