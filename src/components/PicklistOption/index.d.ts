@@ -3,7 +3,7 @@ import { BaseProps, IconPosition } from '../types';
 
 export interface PicklistOptionProps extends BaseProps {
     label?: ReactNode;
-    labelText?: string;
+    searchableText?: string;
     name?: string;
     variant?: 'default' | 'header';
     icon?: ReactNode;
