@@ -1,6 +1,11 @@
 import React, { useRef, useImperativeHandle, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useDisclosure, useOutsideClick, useWindowResize } from '../../libs/hooks';
+import {
+    useDisclosure,
+    useOutsideClick,
+    useWindowResize,
+    useUniqueIdentifier,
+} from '../../libs/hooks';
 import { ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
 import InternalOverlay from '../InternalOverlay';
 import MenuContent from './menuContent';
@@ -21,6 +26,7 @@ const PrimitiveMenu = React.forwardRef((props, ref) => {
         trigger: Trigger,
         ...rest
     } = props;
+    const listboxId = useUniqueIdentifier('listbox');
     const ariaLabel = title || assistiveText;
     const triggerRef = useRef();
     const dropdownRef = useRef();
@@ -80,6 +86,7 @@ const PrimitiveMenu = React.forwardRef((props, ref) => {
                 {...rest}
                 isOpen={isOpen}
                 title={title}
+                ariaControls={listboxId}
                 ariaExpanded={isOpen}
                 ariaHaspopup
                 assistiveText={assistiveText}
@@ -92,6 +99,7 @@ const PrimitiveMenu = React.forwardRef((props, ref) => {
                 triggerElementRef={() => triggerRef.current.htmlElementRef}
             >
                 <StyledDropdown
+                    id={listboxId}
                     data-id="primitive-menu_dropdown"
                     ref={dropdownRef}
                     menuSize={menuSize}
