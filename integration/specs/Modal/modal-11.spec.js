@@ -83,6 +83,18 @@ describe('Modal with redux form example', () => {
         expect(modal.isOpen()).toBe(false);
     });
 
+    it('should not close the modal when is opened and press ESC if the lookup is open', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const lookup = new PageLookup(MODAL_LOOKUP);
+        lookup.click();
+        lookup.waitUntilOpen();
+        browser.keys(ESCAPE_KEY);
+        expect(modal.isOpen()).toBe(true);
+    });
+
     it('should close the modal when select an option and then press ESC', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);

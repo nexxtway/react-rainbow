@@ -616,7 +616,7 @@ class FormModal extends React.Component {
         super(props);
         this.state = {
             isOpen: false,
-            options: null,
+            options: data,
             initialValues: {
                 subject: 'React Rainbow',
                 description:
@@ -675,7 +675,7 @@ class FormModal extends React.Component {
             this.setState({
                 isLoading: false,
                 value: '',
-                options: null,
+                options: data,
             });
         }
     }
