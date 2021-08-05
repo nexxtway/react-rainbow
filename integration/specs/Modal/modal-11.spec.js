@@ -56,7 +56,7 @@ describe('Modal with redux form example', () => {
         expect(titleInput.getValue()).toBe('React Rainbow');
     });
 
-    it('should not close the modal when is opened and press ESC if the lookup has value typed', () => {
+    it('should not close the modal when it is opened and press ESC if the lookup has value typed', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
         triggerButton.click();
