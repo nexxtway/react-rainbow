@@ -154,6 +154,7 @@ class Lookup extends Component {
         this.setState({
             searchValue: '',
         });
+        this.closeMenu();
         onChange(value);
     }
 
@@ -255,7 +256,10 @@ class Lookup extends Component {
         const { searchValue } = this.state;
         const { keyCode } = event;
 
+        console.log('handleKeyDOwn');
         if (keyCode === ESCAPE_KEY) {
+            console.log(searchValue);
+            console.log(this.isLookupOpen());
             if (searchValue) {
                 event.stopPropagation();
             } else if (this.isLookupOpen()) {

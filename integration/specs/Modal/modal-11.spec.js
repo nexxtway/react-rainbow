@@ -46,7 +46,8 @@ describe('Modal with redux form example', () => {
         triggerButton.click();
         modal.waitUntilOpen();
         const titleInput = $(TITLE_INPUT);
-        titleInput.setValue('');
+        titleInput.click();
+        titleInput.clearValue();
         expect(titleInput.getValue()).toBe('');
         modal.clickCloseButton();
         modal.waitUntilClose();
@@ -77,9 +78,10 @@ describe('Modal with redux form example', () => {
         lookup.click();
         lookup.setQuery('qwerty');
         lookup.waitUntilOpen();
-        browser.keys(ESCAPE_KEY);
+        browser.keys('Escape');
         expect(lookup.getQuery()).toBe('');
-        browser.keys(ESCAPE_KEY);
+        browser.keys('Escape');
+        browser.keys('Escape');
         expect(modal.isOpen()).toBe(false);
     });
 
@@ -106,8 +108,8 @@ describe('Modal with redux form example', () => {
         lookup.waitUntilOpen();
         const option3 = lookup.getOption(2);
         option3.click();
-        expect(lookup.getSelectedOptionLabel()).toBe('La Habana');
-        browser.keys(ESCAPE_KEY);
+        expect(lookup.getSelectedOptionLabel()).toBe('San Fransisco');
+        browser.keys('Escape');
         expect(modal.isOpen()).toBe(false);
     });
 
@@ -159,9 +161,9 @@ describe('Modal with redux form example', () => {
         lookup.click();
         lookup.setQuery('l');
         lookup.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
-        browser.keys(ESCAPE_KEY);
+        browser.keys('ArrowDown');
+        browser.keys('Enter');
+        browser.keys('Escape');
         expect(modal.isOpen()).toBe(false);
     });
     // it('should not close when dropdown item is clicked', () => {
