@@ -46,7 +46,8 @@ describe('Modal with redux form example', () => {
         triggerButton.click();
         modal.waitUntilOpen();
         const titleInput = $(TITLE_INPUT);
-        titleInput.setValue('');
+        titleInput.click();
+        titleInput.clearValue();
         expect(titleInput.getValue()).toBe('');
         modal.clickCloseButton();
         modal.waitUntilClose();
@@ -55,7 +56,7 @@ describe('Modal with redux form example', () => {
         expect(titleInput.getValue()).toBe('React Rainbow');
     });
 
-    it('should not close the modal when is opened and press ESC if the lookup has value typed', () => {
+    it('should not close the modal when it is opened and press ESC if the lookup has value typed', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
         triggerButton.click();
@@ -77,10 +78,23 @@ describe('Modal with redux form example', () => {
         lookup.click();
         lookup.setQuery('qwerty');
         lookup.waitUntilOpen();
-        browser.keys(ESCAPE_KEY);
+        browser.keys('Escape');
         expect(lookup.getQuery()).toBe('');
-        browser.keys(ESCAPE_KEY);
+        browser.keys('Escape');
+        browser.keys('Escape');
         expect(modal.isOpen()).toBe(false);
+    });
+
+    it('should not close the modal when is opened and press ESC if the lookup is open', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const lookup = new PageLookup(MODAL_LOOKUP);
+        lookup.click();
+        lookup.waitUntilOpen();
+        browser.keys(ESCAPE_KEY);
+        expect(modal.isOpen()).toBe(true);
     });
 
     it('should close the modal when select an option and then press ESC', () => {
@@ -94,8 +108,8 @@ describe('Modal with redux form example', () => {
         lookup.waitUntilOpen();
         const option3 = lookup.getOption(2);
         option3.click();
-        expect(lookup.getSelectedOptionLabel()).toBe('La Habana');
-        browser.keys(ESCAPE_KEY);
+        expect(lookup.getSelectedOptionLabel()).toBe('San Fransisco');
+        browser.keys('Escape');
         expect(modal.isOpen()).toBe(false);
     });
 
@@ -147,9 +161,9 @@ describe('Modal with redux form example', () => {
         lookup.click();
         lookup.setQuery('l');
         lookup.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
-        browser.keys(ESCAPE_KEY);
+        browser.keys('ArrowDown');
+        browser.keys('Enter');
+        browser.keys('Escape');
         expect(modal.isOpen()).toBe(false);
     });
     // it('should not close when dropdown item is clicked', () => {
