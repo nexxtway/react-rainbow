@@ -1,7 +1,5 @@
 export default function getSuffixSI(number) {
     if (!number || number < 0) {
-        // eslint-disable-next-line no-console
-        console.error('Invalid number');
         return '';
     }
     const SI_POSTFIXES = ['', 'k', 'M', 'G'];
