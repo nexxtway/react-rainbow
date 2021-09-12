@@ -21,8 +21,8 @@ export default class ResizeBar extends Component {
     handleMouseUp(event) {
         event.preventDefault();
         const { onResize } = this.props;
-        document.removeEventListener('mouseup', this.handleMouseUp);
-        document.removeEventListener('mousemove', this.handleMouseMove);
+        document.removeEventListener('mouseup', this.handleMouseUp, { capture: true });
+        document.removeEventListener('mousemove', this.handleMouseMove, { capture: true });
         onResize(this.newXPosition);
         this.setState({
             resizeBarStyle: { willChange: 'transform' },
@@ -52,8 +52,8 @@ export default class ResizeBar extends Component {
         event.preventDefault();
         this.newXPosition = 0;
         this.startXPosition = event.clientX;
-        document.addEventListener('mousemove', this.handleMouseMove);
-        document.addEventListener('mouseup', this.handleMouseUp);
+        document.addEventListener('mousemove', this.handleMouseMove, { capture: true });
+        document.addEventListener('mouseup', this.handleMouseUp, { capture: true });
     }
 
     render() {
