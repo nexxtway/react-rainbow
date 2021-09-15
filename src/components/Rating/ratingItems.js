@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Star from './star';
 
 export default function RatingItems(props) {
-    const { onChange, value, name, readOnly, required } = props;
+    const { onChange, value, name, readOnly, required, describedBy } = props;
 
     return Array(5)
         .fill(0)
@@ -23,6 +23,7 @@ export default function RatingItems(props) {
                     isHalf={isHalf}
                     readOnly={readOnly}
                     required={required}
+                    describedBy={describedBy}
                 />
             );
         });
@@ -34,6 +35,7 @@ RatingItems.propTypes = {
     name: PropTypes.string,
     readOnly: PropTypes.bool,
     required: PropTypes.bool,
+    describedBy: PropTypes.string,
 };
 
 RatingItems.defaultProps = {
@@ -42,4 +44,5 @@ RatingItems.defaultProps = {
     name: undefined,
     readOnly: false,
     required: false,
+    describedBy: undefined,
 };

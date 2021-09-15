@@ -5,6 +5,8 @@ import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import StyledFieldset from './styled/fieldset';
 import StyledLabel from './styled/label';
+import HelpText from '../Input/styled/helpText';
+import ErrorText from '../Input/styled/errorText';
 
 /** @category Form */
 export default class Rating extends Component {
@@ -16,6 +18,7 @@ export default class Rating extends Component {
         this.starGroupNameId = uniqueId('starGroup');
         this.handleOnHover = this.handleOnHover.bind(this);
         this.handleOnLeave = this.handleOnLeave.bind(this);
+        this.errorMessageId = uniqueId('error-message');
     }
 
     getName() {
@@ -24,6 +27,14 @@ export default class Rating extends Component {
             return name;
         }
         return this.starGroupNameId;
+    }
+
+    getErrorMessageId() {
+        const { error } = this.props;
+        if (error) {
+            return this.errorMessageId;
+        }
+        return undefined;
     }
 
     handleOnHover(event) {
@@ -49,6 +60,8 @@ export default class Rating extends Component {
             hideLabel,
             readOnly,
             required,
+            bottomHelpText,
+            error,
         } = this.props;
         const { value } = this.state;
         return (
@@ -73,7 +86,16 @@ export default class Rating extends Component {
                     name={this.getName()}
                     readOnly={readOnly}
                     required={required}
+                    describedBy={this.getErrorMessageId()}
                 />
+                <RenderIf isTrue={bottomHelpText}>
+                    <HelpText alignSelf="center">{bottomHelpText}</HelpText>
+                </RenderIf>
+                <RenderIf isTrue={error}>
+                    <ErrorText alignSelf="center" id={this.getErrorMessageId()}>
+                        {error}
+                    </ErrorText>
+                </RenderIf>
             </StyledFieldset>
         );
     }
@@ -102,6 +124,10 @@ Rating.propTypes = {
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
     required: PropTypes.bool,
+    /** Shows the help message below the Input. */
+    bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Specifies the error that the input contains. */
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 Rating.defaultProps = {
@@ -115,4 +141,6 @@ Rating.defaultProps = {
     style: undefined,
     readOnly: false,
     required: false,
+    bottomHelpText: undefined,
+    error: undefined,
 };
