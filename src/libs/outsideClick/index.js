@@ -15,7 +15,7 @@ class OutsideClick {
         if (!containerRef || !callback) return;
         this.containerRef = containerRef;
         this.callback = callback;
-        document.addEventListener('click', this[privateHandleClick]);
+        document.addEventListener('click', this[privateHandleClick], { capture: true });
         this.listening = true;
     }
 
@@ -23,7 +23,7 @@ class OutsideClick {
         if (!this.listening) return;
 
         this.listening = false;
-        document.removeEventListener('click', this[privateHandleClick]);
+        document.removeEventListener('click', this[privateHandleClick], { capture: true });
         this.containerRef = null;
         this.callback = null;
     }
