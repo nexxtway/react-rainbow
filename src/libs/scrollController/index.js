@@ -18,7 +18,7 @@ const isIosDevice =
     /iP(ad|hone|od)/.test(window.navigator.platform);
 
 const eventOptions = { capture: true };
-const passiveEventOptions = { passive: true, capture: true };
+const passiveEventOptions = { passive: false, capture: true };
 
 let locks = [];
 let documentListenerAdded = false;
