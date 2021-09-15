@@ -48,6 +48,7 @@ export default class Rating extends Component {
             labelAlignment,
             hideLabel,
             readOnly,
+            required,
         } = this.props;
         const { value } = this.state;
         return (
@@ -63,6 +64,7 @@ export default class Rating extends Component {
                         labelAlignment={labelAlignment}
                         hideLabel={hideLabel}
                         forwardedAs="legend"
+                        required={required}
                     />
                 </RenderIf>
                 <RatingItems
@@ -70,6 +72,7 @@ export default class Rating extends Component {
                     value={value}
                     name={this.getName()}
                     readOnly={readOnly}
+                    required={required}
                 />
             </StyledFieldset>
         );
@@ -96,6 +99,9 @@ Rating.propTypes = {
     style: PropTypes.object,
     /** Specifies that the Rating is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
+    /** Specifies that an input field must be filled out before submitting the form.
+     * This value defaults to false. */
+    required: PropTypes.bool,
 };
 
 Rating.defaultProps = {
@@ -108,4 +114,5 @@ Rating.defaultProps = {
     className: undefined,
     style: undefined,
     readOnly: false,
+    required: false,
 };

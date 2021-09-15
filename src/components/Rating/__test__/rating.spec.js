@@ -32,4 +32,10 @@ describe('<Rating />', () => {
         const component = mount(<Rating label="Rating Label" />);
         expect(component.find(StyledLabel).prop('labelAlignment')).toBe('center');
     });
+    it('should set the inputs as required when required is true', () => {
+        const component = mount(<Rating label="Rating Label" required />);
+        component.find('input[type="radio"]').forEach(input => {
+            expect(input.prop('required')).toBe(true);
+        });
+    });
 });
