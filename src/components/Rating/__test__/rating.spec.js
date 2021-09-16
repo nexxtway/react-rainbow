@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Rating from '..';
-import StyledLabel from '../styled/label';
+import { StyledLabel } from '../styled';
 import ErrorText from '../../Input/styled/errorText';
 
 describe('<Rating />', () => {

@@ -4,8 +4,7 @@ import AssistiveText from '../AssistiveText';
 import { uniqueId } from '../../libs/utils';
 import StarFill from './starFill';
 import StarBordered from './starBordered';
-import StyledStarContainer from './styled/starContainer';
-import StyledStarInput from './styled/starInput';
+import { StyledStarContainer, StyledStarInput } from './styled';
 import StarHalf from './starHalf';
 
 export default class Star extends Component {

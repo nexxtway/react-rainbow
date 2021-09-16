@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RatingItems from './ratingItems';
 import { uniqueId } from '../../libs/utils';
-import RenderIf from '../RenderIf';
-import StyledFieldset from './styled/fieldset';
-import StyledLabel from './styled/label';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
+import RenderIf from '../RenderIf';
+import { StyledFieldset, StyledLabel, StyledItemsContainer } from './styled';
 
 /** @category Form */
 export default class Rating extends Component {
@@ -80,14 +79,16 @@ export default class Rating extends Component {
                         required={required}
                     />
                 </RenderIf>
-                <RatingItems
-                    onChange={onChange}
-                    value={value}
-                    name={this.getName()}
-                    readOnly={readOnly}
-                    required={required}
-                    describedBy={this.getErrorMessageId()}
-                />
+                <StyledItemsContainer labelAlignment={labelAlignment}>
+                    <RatingItems
+                        onChange={onChange}
+                        value={value}
+                        name={this.getName()}
+                        readOnly={readOnly}
+                        required={required}
+                        describedBy={this.getErrorMessageId()}
+                    />
+                </StyledItemsContainer>
                 <RenderIf isTrue={bottomHelpText}>
                     <HelpText alignSelf="center">{bottomHelpText}</HelpText>
                 </RenderIf>
