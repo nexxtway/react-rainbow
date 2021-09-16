@@ -4,8 +4,7 @@ import AssistiveText from '../AssistiveText';
 import { uniqueId } from '../../libs/utils';
 import StarFill from './starFill';
 import StarBordered from './starBordered';
-import StyledStarContainer from './styled/starContainer';
-import StyledStarInput from './styled/starInput';
+import { StyledStarContainer, StyledStarInput } from './styled';
 import StarHalf from './starHalf';
 
 export default class Star extends Component {
@@ -38,7 +37,7 @@ export default class Star extends Component {
     }
 
     render() {
-        const { value, name, readOnly } = this.props;
+        const { value, name, readOnly, required, describedBy } = this.props;
 
         return (
             <StyledStarContainer readOnly={readOnly}>
@@ -49,6 +48,8 @@ export default class Star extends Component {
                     name={name}
                     onChange={this.handleChange}
                     disabled={readOnly}
+                    required={required}
+                    aria-describedby={describedBy}
                 />
 
                 <label htmlFor={this.starId}>
@@ -67,6 +68,8 @@ Star.propTypes = {
     isHalf: PropTypes.bool,
     name: PropTypes.string,
     readOnly: PropTypes.bool,
+    required: PropTypes.bool,
+    describedBy: PropTypes.string,
 };
 
 Star.defaultProps = {
@@ -75,4 +78,6 @@ Star.defaultProps = {
     name: undefined,
     readOnly: false,
     isHalf: false,
+    required: false,
+    describedBy: undefined,
 };

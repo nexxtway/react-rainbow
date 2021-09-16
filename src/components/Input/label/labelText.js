@@ -72,4 +72,5 @@ const Label = attachThemeAttrs(styled.label).attrs(props => {
     `}
 `;
 
+export { labelAlignmentMap };
 export default Label;

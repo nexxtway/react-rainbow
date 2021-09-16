@@ -12,6 +12,7 @@ describe('<RatingItems />', () => {
             isFilled: true,
             isHalf: false,
             readOnly: false,
+            required: false,
         });
     });
     it('should render the right amount of Star components', () => {

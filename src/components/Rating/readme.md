@@ -474,3 +474,52 @@ class SimpleRating extends React.Component {
 
 ```
 
+##### Rating options
+
+```js
+import React from 'react';
+import { Rating } from 'react-rainbow-components';
+
+const RatingExample = () => {
+    return (
+        <div className="rainbow-flex rainbow-justify_space-around rainbow-m-bottom_x-small">
+            <div className="rainbow-m-around_small">
+                <Rating value={3} label="Rating required" required />
+            </div>
+            <div className="rainbow-m-around_small">
+                <Rating value={3} label="Rating with error" error="This field is required." />
+            </div>
+            <div className="rainbow-m-around_small">
+                <Rating value={3} label="Rating with help text" bottomHelpText="Rate this" />
+            </div>
+        </div>
+    )
+}
+
+    <RatingExample />
+```
+
+##### Rating with label alignment
+
+```js
+import React from 'react';
+import { Rating } from 'react-rainbow-components';
+
+const RatingExample = () => {
+    return (
+        <div className="rainbow-flex rainbow-justify_space-around rainbow-m-bottom_x-small">
+            <div className="rainbow-m-around_small">
+                <Rating value={3} label="Align left" labelAlignment="left" />
+            </div>
+            <div className="rainbow-m-around_small">
+                <Rating value={3} label="Align center" labelAlignment="center" />
+            </div>
+            <div className="rainbow-m-around_small">
+                <Rating value={3} label="Align right" labelAlignment="right" />
+            </div>
+        </div>
+    )
+}
+
+    <RatingExample />
+```
