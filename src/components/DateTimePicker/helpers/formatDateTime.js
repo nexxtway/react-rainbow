@@ -1,3 +1,5 @@
+import capitalizeFirstLetter from './capitalizeFirstLetter';
+
 /* eslint-disable no-console */
 const FORMATS = {
     small: { year: '2-digit', month: 'numeric', day: 'numeric' },
@@ -18,7 +20,13 @@ export default function formatDateTime(
             const options = FORMATS[formatStyle] || FORMATS.medium;
             const value = typeof date === 'string' ? new Date(date) : date;
             const timeFormat = hour24 ? timeFormat24h : timeFormat12h;
-            return new Intl.DateTimeFormat(locale, { ...options, ...timeFormat }).format(value);
+            const formattedDatetime = new Intl.DateTimeFormat(locale, {
+                ...options,
+                ...timeFormat,
+            }).format(value);
+            return formatStyle === 'large'
+                ? capitalizeFirstLetter(formattedDatetime)
+                : formattedDatetime;
         } catch (error) {
             console.error(error);
             return '';

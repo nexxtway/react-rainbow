@@ -2,12 +2,12 @@
 import React, { useRef, useEffect, useState, useImperativeHandle, useContext } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from '../../libs/hocs/withReduxForm';
+import Input from '../Input';
 import DateTimeIcon from './icon';
 import DateTimePickerModal from './pickerModal';
 import formatDateTime from './helpers/formatDateTime';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import StyledContainer from './styled/container';
-import StyledInput from './styled/input';
 import { AppContext } from '../Application/context';
 import { getLocale } from '../../libs/utils';
 
@@ -105,7 +105,7 @@ const DateTimePicker = React.forwardRef((props, ref) => {
 
     return (
         <StyledContainer id={id} className={className} style={style}>
-            <StyledInput
+            <Input
                 ref={inputRef}
                 label={label}
                 placeholder={placeholder}
