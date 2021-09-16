@@ -1,7 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Rating from '..';
-import StyledLabel from '../styled/label';
+import { StyledLabel } from '../styled';
+import ErrorText from '../../Input/styled/errorText';
 
 describe('<Rating />', () => {
     it('should set the value of the star hovered to the state and set the value passed to the state when the mouse leave the component', () => {
@@ -31,5 +32,25 @@ describe('<Rating />', () => {
     it('should set "center" to labelAlignment if prop not passed in the Label component', () => {
         const component = mount(<Rating label="Rating Label" />);
         expect(component.find(StyledLabel).prop('labelAlignment')).toBe('center');
+    });
+    it('should set the inputs as required when required is true', () => {
+        const component = mount(<Rating label="Rating Label" required />);
+        component.find('input[type="radio"]').forEach(input => {
+            expect(input.prop('required')).toBe(true);
+        });
+    });
+    it('should show the help message', () => {
+        const component = mount(
+            <Rating label="Rating Label" bottomHelpText={<p id="help-text" />} />,
+        );
+        expect(component.find('#help-text').exists()).toBe(true);
+    });
+    it('should show the error message', () => {
+        const component = mount(<Rating label="Rating Label" error="Error text" />);
+        const errorTextId = component.find(ErrorText).prop('id');
+        expect(errorTextId).toMatch(/error-message/);
+        component.find('input[type="radio"]').forEach(input => {
+            expect(input.prop('aria-describedby')).toBe(errorTextId);
+        });
     });
 });
