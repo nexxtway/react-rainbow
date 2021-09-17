@@ -18,7 +18,10 @@ export default function formatDateTime(
             const options = FORMATS[formatStyle] || FORMATS.medium;
             const value = typeof date === 'string' ? new Date(date) : date;
             const timeFormat = hour24 ? timeFormat24h : timeFormat12h;
-            return new Intl.DateTimeFormat(locale, { ...options, ...timeFormat }).format(value);
+            return new Intl.DateTimeFormat(locale, {
+                ...options,
+                ...timeFormat,
+            }).format(value);
         } catch (error) {
             console.error(error);
             return '';
