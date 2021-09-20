@@ -66,6 +66,23 @@
     color: #061c3f;
 }
 
+.react-rainbow-utils_empty-test-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+}
+
+.react-rainbow-utils_text-empty {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #576574;
+    text-align: center;
+    display: inline-flex;
+    flex-grow: 0;
+}
+
 .react-rainbow-utils_text-description {
     font-size: 14px;
     line-height: 1.5;
@@ -76,7 +93,7 @@
 .react-rainbow-utils_examples-card-container {
     display: flex;
     flex-wrap: wrap;
-    margin: 1.2rem 0;
+    margin: 0 0 1.2rem 0;
 }
 
 @media (max-width: 700px) {
