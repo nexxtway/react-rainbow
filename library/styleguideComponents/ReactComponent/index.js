@@ -5,11 +5,11 @@ import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { Prismic } from 'react-prismic-cms';
-import Pathline from './../Pathline';
+import Pathline from '../Pathline';
 import Tabset from '../../../src/components/Tabset';
 import Tab from '../../../src/components/Tab';
 import RenderIf from '../../../src/components/RenderIf';
-import Card from './../../../src/components/Card';
+import Card from '../../../src/components/Card';
 import Breadcrumbs from '../../../src/components/Breadcrumbs';
 import Breadcrumb from '../../../src/components/Breadcrumb';
 import CarbonAds from '../../pages/components/CarbonAds';
@@ -144,11 +144,13 @@ export default class ReactComponent extends Component {
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'utils'}>
                         <div className="react-rainbow-utils_container">
-                            <Query value="page-object" name={name} />
-                            <Query value="tutorials" name={name} />
+                            <Query value="related-component" name={name} />
                         </div>
                         <div className="react-rainbow-utils_container">
                             <Query value="experience-examples" name={name} />
+                        </div>
+                        <div className="react-rainbow-utils_container">
+                            <Query value={['tutorials', 'page-object']} name={name} />
                         </div>
                     </RenderIf>
                 </div>

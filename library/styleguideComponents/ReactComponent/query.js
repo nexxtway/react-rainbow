@@ -1,9 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { QueryAt, QueryMulti } from 'react-prismic-cms';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { QueryAt, QueryMulti, QueryAny } from 'react-prismic-cms';
 import Util from './Utils';
 
 export default function Query({ value, name }) {
+    if (Array.isArray(value)) {
+        return (
+            <QueryMulti component={Util} type={value} componentName={name}>
+                <QueryAny path="document.type" value={value} />
+                <QueryAt path="document.tags" value={[name]} />
+            </QueryMulti>
+        );
+    }
     return (
         <QueryMulti component={Util} type={value} componentName={name}>
             <QueryAt path="document.type" value={value} />
@@ -13,6 +22,6 @@ export default function Query({ value, name }) {
 }
 
 Query.propTypes = {
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]).isRequired,
     name: PropTypes.string.isRequired,
 };
