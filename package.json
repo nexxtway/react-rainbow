@@ -44,7 +44,7 @@
         "remark-rehype": "^7.0.0",
         "styled-components": "^4.3.2",
         "unified": "^9.0.0",
-        "xlsx": "^0.14.4"
+        "xlsx": "^0.17.0"
     },
     "peerDependencies": {
         "react": ">=16.8.0",
