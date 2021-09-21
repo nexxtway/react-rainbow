@@ -50,12 +50,10 @@ jobs:
 
             - run:
                   name: run test
-                  command: |
-                      if [ -n "$COVERALLS_REPO_TOKEN" ]; then
-                          yarn test --ci --maxWorkers=2 --coverage --coverageReporters=text-lcov | ./node_modules/coveralls/bin/coveralls.js
-                      else
-                          yarn test --ci --maxWorkers=2 
-                      fi
+                  command: yarn test --ci --maxWorkers=2 --coverage --coverageReporters=text-lcov
+            - run:
+                  name: Upload Coveralls
+                  command: ./node_modules/coveralls/bin/coveralls.js || true
             - store_test_results:
                   path: test-results/jest-junit-results
 
