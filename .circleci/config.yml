@@ -53,7 +53,7 @@ jobs:
                   command: yarn test --ci --maxWorkers=2 --coverage --coverageReporters=text-lcov
             - run:
                   name: Upload Coveralls
-                  command: ./node_modules/coveralls/bin/coveralls.js || true
+                  command: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true
             - store_test_results:
                   path: test-results/jest-junit-results
 
