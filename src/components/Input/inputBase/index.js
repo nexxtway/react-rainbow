@@ -6,7 +6,7 @@ import RenderIf from '../../RenderIf';
 import RelativeElement from '../../Structural/relativeElement';
 import StyledContainer from '../styled/container';
 import StyledIconContainer from '../styled/iconContainer';
-import StyledInput from './styled/input';
+import { StyledInput, TogglePasswordButton } from './styled';
 import HelpText from '../styled/helpText';
 import ErrorText from '../styled/errorText';
 
@@ -17,6 +17,10 @@ export default class InputBase extends Component {
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
         this.inputRef = React.createRef();
+        this.handlePasswordToggle = this.handlePasswordToggle.bind(this);
+        this.state = {
+            isPasswordVisible: false,
+        };
     }
 
     getInlineTextLabelId() {
@@ -33,6 +37,30 @@ export default class InputBase extends Component {
             return this.errorMessageId;
         }
         return undefined;
+    }
+
+    getToggleButtonText() {
+        const { isPasswordVisible } = this.state;
+        return isPasswordVisible ? 'Hide' : 'Show';
+    }
+
+    getInputType() {
+        const { type } = this.props;
+        if (type === 'password') {
+            const { isPasswordVisible } = this.state;
+            return isPasswordVisible ? 'text' : 'password';
+        }
+        return type;
+    }
+
+    handlePasswordToggle() {
+        const { type } = this.props;
+        if (type === 'password') {
+            const { isPasswordVisible } = this.state;
+            this.setState({
+                isPasswordVisible: !isPasswordVisible,
+            });
+        }
     }
 
     /**
@@ -95,6 +123,7 @@ export default class InputBase extends Component {
             variant,
         } = this.props;
         const isReadOnly = !!(!disabled && readOnly);
+        const isPassword = type === 'password';
 
         return (
             <StyledContainer id={id} className={className} style={style}>
@@ -121,7 +150,7 @@ export default class InputBase extends Component {
                     <StyledInput
                         id={this.inputId}
                         name={name}
-                        type={type}
+                        type={this.getInputType()}
                         value={value}
                         placeholder={placeholder}
                         onChange={onChange}
@@ -149,6 +178,12 @@ export default class InputBase extends Component {
                         error={error}
                         variant={variant}
                     />
+                    <RenderIf isTrue={isPassword}>
+                        <TogglePasswordButton
+                            label={this.getToggleButtonText()}
+                            onClick={this.handlePasswordToggle}
+                        />
+                    </RenderIf>
                 </RelativeElement>
                 <RenderIf isTrue={bottomHelpText}>
                     <HelpText alignSelf="center">{bottomHelpText}</HelpText>
