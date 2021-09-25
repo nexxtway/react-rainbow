@@ -2,6 +2,17 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../../styles/fontSizes';
 
+const getAlignment = props => {
+    const aligmnentsMap = {
+        left: 'start',
+        center: 'center',
+        right: 'end',
+    };
+    const defaultAlignment = props.theme.variant === 'listview' ? 'center' : 'left';
+
+    return aligmnentsMap[props.cellAlignment] || defaultAlignment;
+};
+
 const StyledCellContent = attachThemeAttrs(styled.div)`
     border: 1px solid transparent;
     color: ${props => props.palette.text.label};
@@ -16,12 +27,14 @@ const StyledCellContent = attachThemeAttrs(styled.div)`
     font-weight: 400;
     box-sizing: border-box;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: ${props => getAlignment(props)};
 
     ${props =>
         props.component &&
         `
         padding: 0;
-        }
     `}
 
     ${props =>
@@ -33,7 +46,6 @@ const StyledCellContent = attachThemeAttrs(styled.div)`
         max-width: 100%;
         margin: auto;
         padding: 0.3rem 0.5rem;
-        }
     `}
 `;
 
