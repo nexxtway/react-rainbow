@@ -149,11 +149,7 @@ export default function Cell(props) {
                 isEditable={isEditable}
                 cellAlignment={cellAlignment}
             >
-                <StyledCellContent
-                    component={component}
-                    isEditable={isEditable}
-                    cellAlignment={cellAlignment}
-                >
+                <StyledCellContent component={component} isEditable={isEditable}>
                     <CellValue
                         component={component}
                         value={value}
@@ -180,11 +176,7 @@ export default function Cell(props) {
             isEditable={isEditable}
             cellAlignment={cellAlignment}
         >
-            <StyledCellContent
-                component={component}
-                isEditable={isEditable}
-                cellAlignment={cellAlignment}
-            >
+            <StyledCellContent component={component} isEditable={isEditable}>
                 <CellValue
                     component={component}
                     value={value}
