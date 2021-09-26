@@ -15,13 +15,11 @@ const StyledCellContent = attachThemeAttrs(styled.div)`
     white-space: nowrap;
     font-weight: 400;
     box-sizing: border-box;
-    height: 100%;
 
     ${props =>
         props.component &&
         `
         padding: 0;
-        }
     `}
 
     ${props =>
@@ -33,7 +31,6 @@ const StyledCellContent = attachThemeAttrs(styled.div)`
         max-width: 100%;
         margin: auto;
         padding: 0.3rem 0.5rem;
-        }
     `}
 `;
 
