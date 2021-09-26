@@ -16,6 +16,7 @@ export default class ResizeBar extends Component {
         this.handleMouseDown = this.handleMouseDown.bind(this);
         this.handleMouseMove = this.handleMouseMove.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
+        this.handleMouseClick = this.handleMouseClick.bind(this);
     }
 
     handleMouseUp(event) {
@@ -23,10 +24,17 @@ export default class ResizeBar extends Component {
         const { onResize } = this.props;
         document.removeEventListener('mouseup', this.handleMouseUp, { capture: true });
         document.removeEventListener('mousemove', this.handleMouseMove, { capture: true });
+        document.addEventListener('click', this.handleMouseClick, { capture: true, once: true });
         onResize(this.newXPosition);
         this.setState({
             resizeBarStyle: { willChange: 'transform' },
         });
+    }
+
+    // eslint-disable-next-line class-methods-use-this
+    handleMouseClick(event) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
     }
 
     handleMouseMove(event) {
@@ -52,7 +60,7 @@ export default class ResizeBar extends Component {
         event.preventDefault();
         this.newXPosition = 0;
         this.startXPosition = event.clientX;
-        document.addEventListener('mousemove', this.handleMouseMove, { capture: true });
+        document.addEventListener('mousemove', this.handleMouseMove, { capture: true }, true);
         document.addEventListener('mouseup', this.handleMouseUp, { capture: true });
     }
 
