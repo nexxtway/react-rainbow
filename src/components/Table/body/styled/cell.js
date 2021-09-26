@@ -45,8 +45,6 @@ const StyledCell = attachThemeAttrs(styled.th)`
             overflow: hidden;
             padding-left: 0.75rem;
         }
-
-
     `}
 
     :focus {
