@@ -13,7 +13,7 @@ export default function CheckboxList(props) {
         const { description, ...rest } = option;
 
         return (
-            <StyledItemContainer>
+            <StyledItemContainer data-id="input-checkboxgroup_container">
                 <Checkbox
                     // eslint-disable-next-line react/jsx-props-no-spreading
                     {...rest}
