@@ -1,22 +1,22 @@
 import styled from 'styled-components';
 import { COLOR_GRAY_3, COLOR_GRAY_TRANSPARENT_3 } from '../../../../styles/colors';
 import { darken, lighten } from '../../../../styles/helpers/color';
-import Button from '../../../Button';
+import ButtonIcon from '../../../ButtonIcon';
 
 const COLOR = darken(COLOR_GRAY_3, 0.2);
 
-const TogglePasswordButton = styled(Button)`
+const TogglePasswordButton = styled(ButtonIcon)`
     position: absolute;
     top: 0;
     right: 0;
-    width: 4em;
-    height: 1.5rem;
-    margin: 0.5rem;
+    margin: 0.4rem;
     font-size: 1em;
     color: ${COLOR};
     background-color: ${COLOR_GRAY_TRANSPARENT_3};
     border-radius: 100px;
     border: none;
+    width: 1.5rem;
+    height: 1.5rem;
 
     &:hover,
     &:focus {

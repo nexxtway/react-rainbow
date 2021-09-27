@@ -9,6 +9,7 @@ import StyledIconContainer from '../styled/iconContainer';
 import { StyledInput, TogglePasswordButton } from './styled';
 import HelpText from '../styled/helpText';
 import ErrorText from '../styled/errorText';
+import { Eye, EyeClosed } from './icons';
 
 export default class InputBase extends Component {
     constructor(props) {
@@ -39,9 +40,9 @@ export default class InputBase extends Component {
         return undefined;
     }
 
-    getToggleButtonText() {
+    getToggleButtonIcon() {
         const { isPasswordVisible } = this.state;
-        return isPasswordVisible ? 'Hide' : 'Show';
+        return isPasswordVisible ? <EyeClosed /> : <Eye />;
     }
 
     getInputType() {
@@ -180,7 +181,7 @@ export default class InputBase extends Component {
                     />
                     <RenderIf isTrue={isPassword}>
                         <TogglePasswordButton
-                            label={this.getToggleButtonText()}
+                            icon={this.getToggleButtonIcon()}
                             onClick={this.handlePasswordToggle}
                         />
                     </RenderIf>
