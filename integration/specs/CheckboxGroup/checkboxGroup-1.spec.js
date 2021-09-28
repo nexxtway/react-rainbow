@@ -31,7 +31,7 @@ describe('CheckboxGroup base example', () => {
         const checkboxGroup = new PageCheckboxGroup(CHECKBOX_GROUP);
         const checkbox = checkboxGroup.getItem(0);
         checkbox.click();
-        // TODO: Use constant once PR merged
+        // TODO: Use constant once PR merged.
         browser.keys('Tab');
         expect(checkbox.hasFocus()).toBe(false);
     });
