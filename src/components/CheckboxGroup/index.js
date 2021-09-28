@@ -98,6 +98,7 @@ CheckboxGroup.propTypes = {
             label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
             value: PropTypes.string,
             disabled: PropTypes.bool,
+            description: PropTypes.string,
         }),
     ),
     /** Text label for the checkbox group. */

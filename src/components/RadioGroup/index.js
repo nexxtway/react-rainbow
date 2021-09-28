@@ -95,6 +95,7 @@ RadioGroup.propTypes = {
             label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
             value: PropTypes.string,
             disabled: PropTypes.bool,
+            description: PropTypes.string,
         }),
     ),
     /** Specifies that an radio group must be filled out before submitting the form. */
