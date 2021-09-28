@@ -42,7 +42,7 @@ const StyledCellContainer = attachThemeAttrs(styled.td)`
     `}
 
     ${props =>
-        props.varaint === 'listview' &&
+        props.variant === 'listview' &&
         !props.hideBorderRight &&
         `
         border-right: 1px solid ${props.palette.border.divider};

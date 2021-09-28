@@ -623,9 +623,10 @@ const StyledTaskHeader = styled.span`
 const StyledPriority = styled.div`
     text-transform: capitalize;
     color: #ffffff;
+    width: 100%;
 
     ${props =>
-        props.priority === 'hight' &&
+        props.priority === 'high' &&
         `
             background-color: #fc5e5f;
         `};
@@ -675,7 +676,7 @@ const Constributor = () => (
     </StyledConstributor>
 );
 
-const priorityMap = ['low', 'medium', 'hight'];
+const priorityMap = ['low', 'medium', 'high'];
 const Priority = ({ value }) => {
     const priority = priorityMap[value];
     return <StyledPriority priority={priority}>{priority}</StyledPriority>;
@@ -731,6 +732,7 @@ function TableListView() {
                         header={<StyledTaskHeader>Task</StyledTaskHeader>}
                         field="task"
                         component={Task}
+                        cellAlignment="left"
                     />
                     <Column header="Coins" field="coins" component={Coins} defaultWidth={120} />
                     <Column
@@ -744,6 +746,7 @@ function TableListView() {
                         header={<StyledTaskHeader>Task</StyledTaskHeader>}
                         field="task"
                         component={Task}
+                        cellAlignment="left"
                     />
                     <Column
                         header="Priority"
@@ -783,8 +786,10 @@ const StyledTaskHeader = styled.span`
 const StyledPriority = styled.div`
     text-transform: capitalize;
     color: #ffffff;
+    width: 100%;
+    
     ${props =>
-        props.priority === 'hight' &&
+        props.priority === 'high' &&
         `
             background-color: #fc5e5f;
         `};
@@ -833,7 +838,7 @@ const Constributor = () => (
     </StyledConstributor>
 );
 
-const priorityMap = ['low', 'medium', 'hight'];
+const priorityMap = ['low', 'medium', 'high'];
 const Priority = ({ value }) => {
     const priority = priorityMap[value];
     return <StyledPriority priority={priority}>{priority}</StyledPriority>;
@@ -884,6 +889,7 @@ function TableListView() {
                     onSort={handleSort}
                     sortDirection={sortDirection}
                     sortedBy={sortedBy}
+                    cellAlignment="left"
                     showCheckboxColumn
                     showRowNumberColumn
                 >
@@ -891,6 +897,7 @@ function TableListView() {
                         header={<StyledTaskHeader>Task</StyledTaskHeader>}
                         field="task"
                         component={Task}
+                        cellAlignment="left"
                     />
                     <Column header="Coins" field="coins" component={Coins} defaultWidth={120} />
                     <Column
@@ -968,9 +975,10 @@ const Container = styled.div`
 const StyledPriority = styled.div`
     text-transform: capitalize;
     color: #ffffff;
+    width: 100%;
 
     ${props =>
-        props.priority === 'hight' &&
+        props.priority === 'high' &&
         `
             background-color: #fc5e5f;
         `};
@@ -1011,7 +1019,7 @@ const Constributor = () => (
     </StyledConstributor>
 );
 
-const priorityMap = ['low', 'medium', 'hight'];
+const priorityMap = ['low', 'medium', 'high'];
 const Priority = ({ value }) => {
     const priority = priorityMap[value];
     return <StyledPriority priority={priority}>{priority}</StyledPriority>;
