@@ -23,8 +23,9 @@ class PageCheckboxGroup {
         const items = $(this.rootElement).$$('[data-id="input-checkbox_container"]');
         if (items[itemPosition]) {
             return new PageCheckboxItem(
-                `${this.rootElement} [data-id="input-checkbox_container"]:nth-child(${itemPosition +
-                    1})`,
+                `${
+                    this.rootElement
+                } [data-id="input-checkboxgroup_container"]:nth-child(${itemPosition + 1})`,
             );
         }
         return null;
