@@ -303,3 +303,33 @@ const CheckboxGroupTry = () => {
         <CheckboxGroupTry />
     </div>;
 ```
+
+##### Checkbox Group with description
+
+```js
+import React, { useState } from 'react';
+import { CheckboxGroup } from 'react-rainbow-components';
+
+const options = [
+    { value: 'checkboxOne', label: 'Checkbox One', disabled: false, description: 'Checkbox One Description' },
+    { value: 'checkboxTwo', label: 'Checkbox Two', disabled: false, description: 'Checkbox Two Description' },
+    { value: 'checkboxThree', label: 'Checkbox Three', disabled: false, description: 'Checkbox Three Description' },
+];
+
+const DescriptionCheckboxGroup = () => {
+    const [values, setValues] = useState([]);
+
+    return (
+        <CheckboxGroup
+            id="checkbox-group-1"
+            options={options}
+            value={values}
+            onChange={setValues}
+            label="Checkbox Group Label"
+        />
+    );
+}
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+        <DescriptionCheckboxGroup />
+    </div>;
+```

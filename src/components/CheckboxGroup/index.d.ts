@@ -5,6 +5,7 @@ interface Option {
     label?: ReactNode;
     value?: string;
     disabled?: boolean;
+    description?: string;
 }
 
 export interface CheckboxGroupProps extends BaseProps {

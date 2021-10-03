@@ -84,4 +84,12 @@ describe('<InputBase/>', () => {
             variant: 'default',
         });
     });
+    it('should toggle the password visibility', () => {
+        const component = mount(<InputBase type="password" />);
+        expect(component.find('input').prop('type')).toBe('password');
+        component.find('button').simulate('click');
+        expect(component.find('input').prop('type')).toBe('text');
+        component.find('button').simulate('click');
+        expect(component.find('input').prop('type')).toBe('password');
+    });
 });
