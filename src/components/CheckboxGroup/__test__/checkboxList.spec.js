@@ -1,11 +1,12 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import CheckboxList from '../checkboxList';
+import StyledItemDescription from '../../RadioGroup/styled/itemDescription';
 
 const options = [
-    { value: 'admin', label: 'Admin', disabled: false },
-    { value: 'user', label: 'User', disabled: false },
-    { value: 'nobody', label: 'Anonymus', disabled: true },
+    { value: 'admin', label: 'Admin', disabled: false, description: 'Admin user' },
+    { value: 'user', label: 'User', disabled: false, description: 'Regular user' },
+    { value: 'nobody', label: 'Anonymus', disabled: true, description: 'Anonymous user' },
 ];
 
 describe('<CheckboxList />', () => {
@@ -22,5 +23,16 @@ describe('<CheckboxList />', () => {
         expect(checkbox.prop('value')).toBe('admin');
         expect(checkbox.prop('label')).toBe('Admin');
         expect(checkbox.prop('disabled')).toBe(false);
+    });
+
+    it('should render the description', () => {
+        const component = mount(<CheckboxList options={options} />);
+        expect(component.find(StyledItemDescription).length).toBe(3);
+        expect(
+            component
+                .find(StyledItemDescription)
+                .first()
+                .text(),
+        ).toBe('Admin user');
     });
 });

@@ -23,8 +23,9 @@ class PageRadioGroup {
         const items = $(this.rootElement).$$('[data-id="input-radio_container"]');
         if (items[itemPosition]) {
             return new PageRadioItem(
-                `${this.rootElement} [data-id="input-radio_container"]:nth-child(${itemPosition +
-                    1})`,
+                `${
+                    this.rootElement
+                } [data-id="input-radiogroup_container"]:nth-child(${itemPosition + 1})`,
             );
         }
         return null;

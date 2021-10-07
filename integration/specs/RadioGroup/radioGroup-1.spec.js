@@ -1,5 +1,4 @@
 const PageRadioGroup = require('../../../src/components/RadioGroup/pageObject');
-const { ARROW_DOWN_KEY } = require('../../constants');
 
 const RADIO_GROUP = '#radio-group-component-1';
 
@@ -23,7 +22,8 @@ describe('RadioGroup base example', () => {
         const radioGroup = new PageRadioGroup(RADIO_GROUP);
         const radio = radioGroup.getItem(1);
         radio.click();
-        browser.keys(ARROW_DOWN_KEY);
+        // TODO: Use constant once PR merged
+        browser.keys('ArrowDown');
         expect(radio.hasFocus()).toBe(false);
     });
     it('should focus the next item when press arrow down', () => {
@@ -31,7 +31,8 @@ describe('RadioGroup base example', () => {
         const radio1 = radioGroup.getItem(1);
         const radio2 = radioGroup.getItem(2);
         radio1.click();
-        browser.keys(ARROW_DOWN_KEY);
+        // TODO: Use constant once PR merged
+        browser.keys('ArrowDown');
         expect(radio2.hasFocus()).toBe(true);
     });
     it('should check the item clicked', () => {
@@ -44,7 +45,8 @@ describe('RadioGroup base example', () => {
         const radioGroup = new PageRadioGroup(RADIO_GROUP);
         const radio = radioGroup.getItem(1);
         radio.click();
-        browser.keys(ARROW_DOWN_KEY);
+        // TODO: Use constant once PR merged
+        browser.keys('ArrowDown');
         expect(radio.isChecked()).toBe(false);
     });
     it('should check the next item when press arrow down', () => {
@@ -52,7 +54,8 @@ describe('RadioGroup base example', () => {
         const radio1 = radioGroup.getItem(1);
         const radio2 = radioGroup.getItem(2);
         radio1.click();
-        browser.keys(ARROW_DOWN_KEY);
+        // TODO: Use constant once PR merged
+        browser.keys('ArrowDown');
         expect(radio2.isChecked()).toBe(true);
     });
 });

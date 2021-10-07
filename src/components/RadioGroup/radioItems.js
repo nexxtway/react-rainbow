@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Radio from '../Input/inputRadio/radio';
+import StyledItemContainer from './styled/itemContainer';
+import RenderIf from '../RenderIf';
+import StyledItemDescription from './styled/itemDescription';
 
 export default function RadioItems(props) {
     const { options, ariaDescribedby, onChange, value, name, error } = props;
@@ -9,17 +12,23 @@ export default function RadioItems(props) {
 
     return options.map((option, index) => {
         const key = `radio-${index}`;
+        const { description, ...rest } = option;
         return (
-            <Radio
-                // eslint-disable-next-line react/jsx-props-no-spreading
-                {...option}
-                key={key}
-                onChange={onChange}
-                checked={isChecked(option)}
-                ariaDescribedby={ariaDescribedby}
-                name={name}
-                error={error}
-            />
+            <StyledItemContainer data-id="input-radiogroup_container">
+                <Radio
+                    // eslint-disable-next-line react/jsx-props-no-spreading
+                    {...rest}
+                    key={key}
+                    onChange={onChange}
+                    checked={isChecked(option)}
+                    ariaDescribedby={ariaDescribedby}
+                    name={name}
+                    error={error}
+                />
+                <RenderIf isTrue={description}>
+                    <StyledItemDescription>{description}</StyledItemDescription>
+                </RenderIf>
+            </StyledItemContainer>
         );
     });
 }
