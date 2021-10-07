@@ -72,6 +72,7 @@ export default class Slider extends Component {
             className,
             labelAlignment,
             hideLabel,
+            required,
         } = this.props;
         const valueWidth = Math.max(`${max}`.length, `${min}`.length) + 1;
         return (
@@ -82,6 +83,7 @@ export default class Slider extends Component {
                         labelAlignment={labelAlignment}
                         hideLabel={hideLabel}
                         inputId={this.sliderId}
+                        required={required}
                     />
                 </RenderIf>
                 <StyledSlider>
@@ -95,6 +97,7 @@ export default class Slider extends Component {
                         step={step}
                         aria-describedby={this.getAriaDescribedBy()}
                         disabled={disabled}
+                        required={required}
                         onClick={onClick}
                         onChange={onChange}
                         onBlur={onBlur}
@@ -137,6 +140,9 @@ Slider.propTypes = {
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that the slider element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
+    /** Specifies that an input field must be filled out before submitting the form.
+     * This value defaults to false. */
+    required: PropTypes.bool,
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** The action triggered when the element is clicked. */
@@ -160,6 +166,7 @@ Slider.defaultProps = {
     step: 1,
     error: undefined,
     disabled: false,
+    required: false,
     onChange: () => {},
     onClick: () => {},
     onFocus: () => {},
