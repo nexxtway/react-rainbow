@@ -4,38 +4,114 @@
 ```js
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { ShowIf, Button, Card } from 'react-rainbow-components';
+import { ShowIf, Picklist, Option } from 'react-rainbow-components';
 
-const StyledContainer = styled.div`
+const Section = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
 `;
 
-const Content = styled(Card)`
-    padding: 2rem;
+const SectionHeader = styled.button`
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid ${props => props.theme.rainbow.palette.border.divider};
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        box-shadow: none;
+        background-color: ${props => props.theme.rainbow.palette.background.secondary};
+        border-radius: 12px 12px 0 0;
+    }
+
+    &:focus {
+        outline: 0;
+        box-shadow: ${props => props.theme.rainbow.shadows.brand};
+    }
 `;
+
+const FieldsContainer = styled.div`
+    margin: 20px;
+    max-width: 600px;
+    height: 100%;
+`;
+
+const ArrowIcon = styled(ArrowDownIcon)`
+    color: ${props => props.theme.rainbow.palette.brand.main};
+    margin-right: 16px;
+    margin-left: 4px;
+`;
+
+const LabelContainer = styled.div`
+    font-weight: bold;
+    font-size: 18px;
+    padding: 12px 0;
+`;
+
+const Container = styled.div`
+    width: 50%;
+    height: 100%;
+    border: 1px solid ${props => props.theme.rainbow.palette.border.divider};
+    margin: 32px 0;
+    background-color: ${props => props.theme.rainbow.palette.background.main};
+    border-radius: 12px;
+`;
+
+const HelpText = styled.p`
+    margin: 16px;
+    color: ${props => props.theme.rainbow.palette.text.header};
+`;
+
+const Fields = () => {
+    const [memory, setMemory] = useState();
+    return (
+        <>
+            <Picklist
+                label="Gender"
+                placeholder="Select your Gender"
+                labelAlignment="left"
+                value={memory}
+                onChange={setMemory}
+            >
+                <Option name="female" label="Female" />
+                <Option name="male" label="Male" />
+                <Option name="rather not say" label="Rather not say" />
+                <Option name="custom" label="Custom" />
+            </Picklist>
+        </>
+    )
+};
 
 const Example = () => {
-    const [isVisible, setIsVisible] = useState(true);
+    const [active, setActive] = useState(false);
+
+    const toggleAccordion = () => {
+        setActive(!active);
+    };
 
     return (
-        <div className="rainbow-m-bottom_medium rainbow-p-bottom_medium">
-            <GlobalHeader
-                src="images/user/user2.jpg"
-                className="rainbow-p-bottom_medium rainbow-m-bottom_medium"
-            >
-                <div className="rainbow-flex rainbow-align_right">
-                    <Button label="Toggle" onClick={() => setIsVisible(!isVisible)} />
-                </div>
-            </GlobalHeader>
-            <StyledContainer className="rainbow-m-around_small">
-                <ShowIf isTrue={isVisible}>
-                    <Content>
-                        ShowIf
-                    </Content>
-                </ShowIf>
-            </StyledContainer>
+        <div className="rainbow-m-bottom_medium rainbow-flex rainbow-justify_center">
+            <Container>
+                <Section>
+                    <SectionHeader type="button" onClick={toggleAccordion}>
+                        <ArrowIcon />
+                        <LabelContainer>
+                            Gender
+                        </LabelContainer>
+                    </SectionHeader>
+                    <ShowIf isTrue={active}>
+                        <FieldsContainer>
+                            <Fields />
+                        </FieldsContainer>
+                    </ShowIf>
+                </Section>
+                <HelpText>
+                    {active ? 'Click the header to collapse' : 'Click the header to expand'}
+                </HelpText>
+            </Container>
         </div>
     )
 }
@@ -49,52 +125,7 @@ const Example = () => {
 ```js
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { ShowIf, Button, Card } from 'react-rainbow-components';
-
-const StyledContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-`;
-
-const Content = styled(Card)`
-    padding: 2rem;
-`;
-
-const Example = () => {
-    const [isVisible, setIsVisible] = useState(true);
-
-    return (
-        <div className="rainbow-m-bottom_medium rainbow-p-bottom_medium">
-            <GlobalHeader
-                src="images/user/user2.jpg"
-                className="rainbow-p-bottom_medium rainbow-m-bottom_medium"
-            >
-                <div className="rainbow-flex rainbow-align_right">
-                    <Button label="Toggle" onClick={() => setIsVisible(!isVisible)} />
-                </div>
-            </GlobalHeader>
-            <StyledContainer className="rainbow-m-around_small">
-                <ShowIf isTrue={isVisible} inAnimation="fade" outAnimation="slide">
-                    <Content>
-                        ShowIf
-                    </Content>
-                </ShowIf>
-            </StyledContainer>
-        </div>
-    )
-}
-
-    <Example />
-```
-
-# Accordion example
-##### The next example shows how to use the `ShowIf` component to animate an accordion.
-
-```js
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { ShowIf, Input, Picklist, Option } from 'react-rainbow-components';
+import { ShowIf, Picklist, Option } from 'react-rainbow-components';
 
 const Section = styled.div`
     display: flex;
@@ -104,14 +135,17 @@ const Section = styled.div`
 const SectionHeader = styled.button`
     cursor: pointer;
     outline: none;
-    border: 1px solid ${props => props.theme.rainbow.palette.border.divider};
-    background-color: ${props => props.theme.rainbow.palette.background.main};
-    border-radius: 0.5rem;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid ${props => props.theme.rainbow.palette.border.divider};
     width: 100%;
+    display: flex;
+    align-items: center;
 
     &:hover {
-        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: none;
         background-color: ${props => props.theme.rainbow.palette.background.secondary};
+        border-radius: 12px 12px 0 0;
     }
 
     &:focus {
@@ -121,24 +155,34 @@ const SectionHeader = styled.button`
 `;
 
 const FieldsContainer = styled.div`
-    margin-top: 20px;
+    margin: 20px;
     max-width: 600px;
+    height: 100%;
+`;
+
+const ArrowIcon = styled(ArrowDownIcon)`
+    color: ${props => props.theme.rainbow.palette.brand.main};
+    margin-right: 16px;
+    margin-left: 4px;
 `;
 
 const LabelContainer = styled.div`
-    display: flex;
-    padding: 12px 0;
-    align-items: center;
     font-weight: bold;
+    font-size: 18px;
+    padding: 12px 0;
 `;
 
 const Container = styled.div`
     width: 50%;
-    height: 200px;
+    height: 100%;
+    border: 1px solid ${props => props.theme.rainbow.palette.border.divider};
+    margin: 32px 0;
+    background-color: ${props => props.theme.rainbow.palette.background.main};
+    border-radius: 12px;
 `;
 
 const HelpText = styled.p`
-    margin-top: 0.275rem;
+    margin: 16px;
     color: ${props => props.theme.rainbow.palette.text.header};
 `;
 
@@ -147,16 +191,17 @@ const Fields = () => {
     return (
         <>
             <Picklist
-                label="Memory Allocated"
+                label="Gender"
+                placeholder="Select your Gender"
                 labelAlignment="left"
                 value={memory}
                 onChange={setMemory}
             >
-                <Option name="128 MB" label="128 MB" />
-                <Option name="256 MB" label="256 MB" />
-                <Option name="512 MB" label="512 MB" />
+                <Option name="female" label="Female" />
+                <Option name="male" label="Male" />
+                <Option name="rather not say" label="Rather not say" />
+                <Option name="custom" label="Custom" />
             </Picklist>
-            <Input label="Timeout" labelAlignment="left" type="number" />
         </>
     )
 };
@@ -169,15 +214,16 @@ const Example = () => {
     };
 
     return (
-        <div className="rainbow-m-bottom_medium rainbow-p-bottom_xx-large rainbow-flex rainbow-justify_center">
+        <div className="rainbow-m-bottom_medium rainbow-flex rainbow-justify_center">
             <Container>
-                <Section className="rainbow-m-top_large">
+                <Section>
                     <SectionHeader type="button" onClick={toggleAccordion}>
+                        <ArrowIcon />
                         <LabelContainer>
-                            Runtime configuration
+                            Gender
                         </LabelContainer>
                     </SectionHeader>
-                    <ShowIf isTrue={active} inAnimation="slide" outAnimation="slide">
+                    <ShowIf isTrue={active} inAnimation="fade" outAnimation="slide">
                         <FieldsContainer>
                             <Fields />
                         </FieldsContainer>
