@@ -223,7 +223,7 @@ const Example = () => {
                             Gender
                         </LabelContainer>
                     </SectionHeader>
-                    <ShowIf isTrue={active} inAnimation="fade" outAnimation="slide">
+                    <ShowIf isTrue={active} inAnimation="fade" outAnimation="slideVertical">
                         <FieldsContainer>
                             <Fields />
                         </FieldsContainer>
@@ -235,6 +235,150 @@ const Example = () => {
             </Container>
         </div>
     )
+}
+
+    <Example />
+```
+
+# ShowIf horizontal slide
+##### This example show how to use the `ShowIf` component to slide content horizontally
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { ShowIf, Button, Card } from 'react-rainbow-components';
+
+const Item = styled(Card)`
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 200px;
+`;
+
+const ItemsContainer = styled.div`
+    display: flex;
+    width: 400px;
+`;
+
+const Example = () => {
+    const [active, setActive] = useState(true);
+
+    return (
+        <div className="rainbow-flex_column rainbow-justify_center">
+            <div className="rainbow-m-around_medium rainbow-flex rainbow-justify_center">
+                <Button
+                    label="Toggle"
+                    variant="neutral"
+                    onClick={() => setActive(!active)}
+                />
+            </div>
+            <div className="rainbow-m-bottom_medium rainbow-flex rainbow-justify_center">
+                <ItemsContainer>
+                    <ShowIf
+                        isTrue={active}
+                        inAnimation="slideHorizontal"
+                        outAnimation="slideHorizontal"
+                    >
+                        <Item>
+                            <img
+                                src="images/illustrations/Illustration-rainbow-1.svg"
+                                className="rainbow-m_auto rainbow-align-content_center"
+                                alt="landscape with rainbows, birds and colorful balloons"
+                            />
+                        </Item>
+                    </ShowIf>
+                    <ShowIf
+                        isTrue={!active}
+                        inAnimation="slideHorizontal"
+                        outAnimation="slideHorizontal"
+                    >
+                        <Item>
+                            A rainbow is a meteorological phenomenon that is caused by reflection,
+                            refraction and dispersion of light in water droplets resulting in a spectrum of light appearing in the sky.
+                        </Item>
+                    </ShowIf>
+                </ItemsContainer>
+            </div>
+        </div>
+    )
+}
+
+    <Example />
+```
+
+# ShowIf vertical slide
+##### The following example shows how to animate an item appearing from the bottom
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { ShowIf, Button } from 'react-rainbow-components';
+
+const Container = styled.div`
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+`;
+
+const SnackbarContainer = styled.div`
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+    padding-bottom: 0.5rem;
+`;
+
+const SnackbarContent = styled.div`
+    width: 200px;
+    height: 2rem;
+    background-color: #2A3039;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.275rem;
+`;
+
+const HelpText = styled.p`
+    margin: 16px;
+    color: ${props => props.theme.rainbow.palette.text.header};
+`;
+
+const Snackbar = ({ isVisible }) => (
+    <SnackbarContainer>
+        <HelpText>Click the button</HelpText>
+        <ShowIf
+            isTrue={isVisible}
+            inAnimation="slideVertical"
+            outAnimation="slideVertical"
+        >
+            <SnackbarContent>
+                This is a snackbar.
+            </SnackbarContent>
+        </ShowIf>
+    </SnackbarContainer>
+);
+
+const Example = () => {
+    const [active, setActive] = useState(false);
+
+    return (
+        <Container>
+            <div className="rainbow-m-around_medium rainbow-flex rainbow-justify_center">
+                <Button
+                    label={active ? 'Hide Snackbar' : 'Show Snackbar'}
+                    variant="neutral"
+                    onClick={() => setActive(!active)}
+                />
+            </div>
+            <Snackbar isVisible={active} />
+        </Container>
+    );
 }
 
     <Example />
