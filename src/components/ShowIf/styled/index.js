@@ -25,7 +25,7 @@ const AnimatedContainer = styled.div`
         }
     }
 
-    @keyframes slideIn {
+    @keyframes slideVerticalIn {
         from {
             max-height: 0;
         }
@@ -35,13 +35,33 @@ const AnimatedContainer = styled.div`
         }
     }
 
-    @keyframes slideOut {
+    @keyframes slideVerticalOut {
         from {
             max-height: ${props => (props.dimensions ? props.dimensions.height : 9999)}px;
         }
 
         to {
             max-height: 0;
+        }
+    }
+
+    @keyframes slideHorizontalIn {
+        from {
+            max-width: 0;
+        }
+
+        to {
+            max-width: ${props => (props.dimensions ? props.dimensions.width : 9999)}px;
+        }
+    }
+
+    @keyframes slideHorizontalOut {
+        from {
+            max-width: ${props => (props.dimensions ? props.dimensions.width : 9999)}px;
+        }
+
+        to {
+            max-width: 0;
         }
     }
 `;

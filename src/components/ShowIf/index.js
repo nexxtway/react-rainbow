@@ -55,8 +55,8 @@ ShowIf.propTypes = {
     style: PropTypes.object,
     /** Indicates whether the component content is showed or not. If is set to true, then is showed the component content. */
     isTrue: PropTypes.any,
-    inAnimation: PropTypes.oneOf(['fade', 'slide']),
-    outAnimation: PropTypes.oneOf(['fade', 'slide']),
+    inAnimation: PropTypes.oneOf(['fade', 'slideVertical', 'slideHorizontal']),
+    outAnimation: PropTypes.oneOf(['fade', 'slideVertical', 'slideHorizontal']),
     /** The content of the component. */
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
