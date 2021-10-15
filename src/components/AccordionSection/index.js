@@ -142,6 +142,7 @@ class AccordionItem extends Component {
                     onKeyDown={this.handleKeyPressed}
                     aria-controls={this.accordionDetailsId}
                     aria-expanded={isExpanded}
+                    type="button"
                     ref={this.buttonRef}
                 >
                     <RightArrow isExpanded={isExpanded} disabled={disabled} />
