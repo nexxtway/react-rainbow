@@ -22,6 +22,8 @@ const CounterBase = () => {
             labelAlignment="center"
             value={counter}
             onChange={setCounter}
+            min={10}
+            max={100}
         />
     )
 }
@@ -92,4 +94,44 @@ const CounterDisabled = () => {
 }
 
     <CounterDisabled />
+```
+
+# CounterInput with controlled limits
+##### If you want to validate the value of the input while the user is typing you can do so on the onChange handler.
+
+```js
+import React, { useState } from 'react';
+import { CounterInput } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 220,
+
+};
+
+const maxLimit = 100;
+
+const CounterControlled = () => {
+    const [counter, setCounter] = useState();
+
+    const handleChange = value => {
+        if (value > maxLimit) setCounter(maxLimit);
+        else setCounter(value)
+    }
+
+    return(
+        <CounterInput
+            id="input-component-1"
+            label="Passengers"
+            placeholder="Only numbers"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            labelAlignment="center"
+            value={counter}
+            onChange={handleChange}
+            max={maxLimit}
+        />
+    )
+}
+
+    <CounterControlled />
 ```
