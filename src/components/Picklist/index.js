@@ -76,6 +76,7 @@ class Picklist extends Component {
             this.outsideClick.startListening(this.containerRef.current, (_, event) => {
                 if (this.eventTarget !== event.target) {
                     this.closeMenu();
+                    this.handleBlur();
                 }
             });
             this.windowScrolling.startListening(this.handleWindowScroll);
@@ -153,6 +154,8 @@ class Picklist extends Component {
     }
 
     handleBlur() {
+        const { isOpen } = this.state;
+        if (isOpen) return;
         const { onBlur, value } = this.props;
         const eventValue = value || null;
         onBlur(eventValue);
