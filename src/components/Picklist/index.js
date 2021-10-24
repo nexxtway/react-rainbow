@@ -76,6 +76,7 @@ class Picklist extends Component {
             this.outsideClick.startListening(this.containerRef.current, (_, event) => {
                 if (this.eventTarget !== event.target) {
                     this.closeMenu();
+                    this.handleBlur();
                 }
             });
             this.windowScrolling.startListening(this.handleWindowScroll);
