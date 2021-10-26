@@ -9,6 +9,7 @@ const StyledItemDescription = attachThemeAttrs(styled.span)`
     margin-left: 2rem;
     line-height: 1em;
     margin-bottom: ${MARGIN_SMALL};
+    ${props => props.disabled && `color: ${props.palette.text.disabled};`};
 `;
 
 export default StyledItemDescription;

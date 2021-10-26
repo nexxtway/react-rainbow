@@ -218,7 +218,7 @@ import { RadioGroup } from 'react-rainbow-components';
 const options = [
     { value: 'radioOne', label: 'Radio One', description: 'Radio One Description' },
     { value: 'radioTwo', label: 'Radio Two', description: 'Radio Two Description' },
-    { value: 'radioThree', label: 'Radio Three', description: 'Radio Three Description' },
+    { value: 'radioThree', label: 'Radio Three', description: 'Radio Three Description', disabled: true },
 ];
 
 const DescriptionRadioGroup = () => {
