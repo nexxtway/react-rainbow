@@ -17,5 +17,4 @@ export const StyledCard = styled(Card)`
 
 export const StyledContent = styled.div`
     width: 19rem;
-    height: 26rem;
 `;
