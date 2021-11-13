@@ -41,10 +41,10 @@ describe('<ColorPickerInput />', () => {
         const component = mount(<ColorPickerInput onChange={changeFn} />);
         component.find('input').simulate('click');
         component.find(ColorPicker).prop('onChange')({ hex: '#000' });
-        expect(changeFn).toHaveBeenCalledWith('#000');
+        expect(changeFn).toHaveBeenCalledWith({ hex: '#000' });
     });
 
-    it('should call onChange callback', () => {
+    it('should call onClick callback', () => {
         const clickFn = jest.fn();
         const component = mount(<ColorPickerInput onClick={clickFn} />);
         component.find('input').simulate('click');

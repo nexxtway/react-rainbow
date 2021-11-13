@@ -25,7 +25,6 @@ const ColorPickerInput = ({
     const [isOpen, setIsOpen] = useState(false);
     const triggerRef = useRef();
     const pickerRef = useRef();
-    const currentColor = useRef();
 
     useOutsideClick(
         pickerRef,
@@ -50,21 +49,27 @@ const ColorPickerInput = ({
     };
 
     const handleChange = color => {
-        currentColor.current = color;
-        onChange(color[format] ?? undefined);
+        onChange(color);
     };
+
+    const inputValue = value && value.hex ? value.hex : '#000';
 
     return (
         <StyledContainer id={id} className={className} style={style}>
             <div ref={triggerRef}>
-                <StyledInput type="color" onClick={handleClick} value={value} {...inputProps} />
+                <StyledInput
+                    type="color"
+                    onClick={handleClick}
+                    value={inputValue}
+                    {...inputProps}
+                />
             </div>
             <InternalOverlay isVisible={isOpen} triggerElementRef={() => triggerRef}>
                 <div ref={pickerRef}>
                     <StyledCard>
                         <StyledContent>
                             <ColorPicker
-                                value={currentColor.current}
+                                value={value}
                                 defaultColors={defaultColors}
                                 variant={variant}
                                 onChange={handleChange}
