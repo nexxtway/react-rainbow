@@ -1,28 +1,25 @@
-import { BaseProps, IconPosition, LabelAlignment } from '../types';
 import { ReactNode, MouseEvent, FocusEvent, KeyboardEvent } from 'react';
-import { ColorPickerValue } from '../ColorPicker';
+import { BaseProps, LabelAlignment } from '../types';
 
-export type ColorFormats = 'hex' | 'rgba' | 'hsv';
+type Value = {
+    hex: string;
+    alpha: number;
+};
 
-export interface ColorPickerInputProps extends BaseProps {
+export interface ColorInputProps extends BaseProps {
     id?: string;
-    value?: ColorPickerValue;
+    value?: Value;
     defaultColors?: Array<string>;
     variant: 'default' | 'colors-fixed';
-    onChange?: (value: ColorPickerValue) => void;
-    format?: ColorFormats;
+    onChange?: (value: Value) => void;
     // Input props
     name?: string;
     label?: ReactNode;
     labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     placeholder?: string;
-    icon?: ReactNode;
-    iconPosition?: IconPosition;
     bottomHelpText?: ReactNode;
     required?: boolean;
-    isCentered?: boolean;
-    isBare?: boolean;
     error?: ReactNode;
     disabled?: boolean;
     readOnly?: boolean;
@@ -31,7 +28,12 @@ export interface ColorPickerInputProps extends BaseProps {
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
     onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
-    autoComplete?: string;
 }
 
-export default function(props: ColorPickerInputProps): JSX.Element | null;
+interface ColorInputInterface {
+    (props: ColorInputProps): JSX.Element | null;
+    toRgb: (color: Value) => [number, number, number];
+    toRgba: (color: Value) => [number, number, number, number];
+}
+declare const ColorInput: ColorInputInterface;
+export default ColorInput;

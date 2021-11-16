@@ -1,21 +1,21 @@
-# Basic ColorPickerInput
-##### Use the `ColorPickerInput` to allow users to provide a color with ease.
+# Basic ColorInput
+##### Use the `ColorInput` to allow users to provide a color with ease.
 ```js
 import React, { useState } from 'react';
-import { ColorPickerInput } from 'react-rainbow-components';
+import { ColorInput } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 250,
 };
 
-const ColorPickerInputExample = () => {
+const ColorInputExample = () => {
     const [value, setValue] = useState();
 
     return <div className="rainbow-m-vertical_x-large rainbow-m_auto rainbow-align-content_center rainbow-flex_wrap" style={containerStyles}>
-        <ColorPickerInput label="Favorite color" value={value} onChange={setValue} />
+        <ColorInput label="Favorite color" value={value} onChange={setValue} />
     </div>
 }
-    <ColorPickerInputExample />
+    <ColorInputExample />
 
 ```
 
@@ -23,40 +23,40 @@ const ColorPickerInputExample = () => {
 ##### Pass a value of `colors-fixed` to enable the fixed colors variant
 ```js
 import React, { useState } from 'react';
-import { ColorPickerInput } from 'react-rainbow-components';
+import { ColorInput } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 250,
 };
 
-const ColorPickerInputExample = () => {
+const ColorInputExample = () => {
     const [value, setValue] = useState();
 
     return <div className="rainbow-m-vertical_x-large rainbow-m_auto rainbow-align-content_center rainbow-flex_wrap" style={containerStyles}>
-        <ColorPickerInput label="Favorite color" value={value} onChange={setValue} variant="colors-fixed" />
+        <ColorInput label="Favorite color" value={value} onChange={setValue} variant="colors-fixed" />
     </div>
 }
-    <ColorPickerInputExample />
+    <ColorInputExample />
 
 ```
 
 # Input props
-##### You can pass all the relevant props from the Input component to customize the `ColorPickerInput` 
+##### You can pass all the relevant props from the Input component to customize the `ColorInput` 
 ```js
 import React, { useState } from 'react';
-import { ColorPickerInput } from 'react-rainbow-components';
+import { ColorInput } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 250,
 };
 
-const ColorPickerInputExample = () => {
+const ColorInputExample = () => {
     const [value, setValue] = useState();
 
     return <div className="rainbow-m-vertical_x-large rainbow-m_auto rainbow-align-content_center rainbow-flex_wrap" style={containerStyles}>
-        <ColorPickerInput label="Favorite color" value={value} onChange={setValue} error="Your color is too beautiful" required />
+        <ColorInput label="Favorite color" value={value} onChange={setValue} error="Your color is too beautiful" required />
     </div>
 }
-    <ColorPickerInputExample />
+    <ColorInputExample />
 
 ```
