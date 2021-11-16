@@ -37,7 +37,7 @@ describe('<ColorInput />', () => {
         const changeFn = jest.fn();
         const component = mount(<ColorInput onChange={changeFn} />);
         component.find('button').simulate('click');
-        component.find(ColorPicker).prop('onChange')({ hex: '#000000', rgba: [0, 0, 0, 75] });
+        component.find(ColorPicker).prop('onChange')({ hex: '#000000', rgba: [0, 0, 0, 0.75] });
         expect(changeFn).toHaveBeenCalledWith({ hex: '#000000', alpha: 0.75 });
     });
 

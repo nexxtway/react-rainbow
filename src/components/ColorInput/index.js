@@ -127,7 +127,7 @@ const ColorInput = props => {
     const handleColorChange = color => {
         const { hex, rgba } = color;
         setColorValue(color);
-        onChange({ hex, alpha: rgba[3] / 100 });
+        onChange({ hex, alpha: rgba[3] });
     };
 
     const isFocus = focusIndex > -1 || isOpen;
