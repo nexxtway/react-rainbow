@@ -7,9 +7,9 @@ import { COLOR_WHITE, COLOR_DARK_1 } from '../../../styles/colors';
 import { lighten, darken } from '../../../styles/helpers/color';
 
 const labelAlignmentMap = {
-    left: 'left',
+    left: 'flex-start',
     center: 'center',
-    right: 'right',
+    right: 'flex-end',
 };
 
 const Label = attachThemeAttrs(styled.label).attrs(props => {
@@ -30,9 +30,8 @@ const Label = attachThemeAttrs(styled.label).attrs(props => {
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     line-height: 1.5;
     margin-bottom: 0.125rem;
+    align-self: ${props => labelAlignmentMap[props.labelAlignment] || labelAlignmentMap.center};
     box-sizing: border-box;
-    width: 100%;
-    text-align: ${props => labelAlignmentMap[props.labelAlignment] || labelAlignmentMap.center};
 
     :empty {
         margin: 0;
@@ -41,12 +40,12 @@ const Label = attachThemeAttrs(styled.label).attrs(props => {
     ${props =>
         props.labelAlignment === 'left' &&
         `
-            padding-left: ${MARGIN_MEDIUM};
+            margin-left: ${MARGIN_MEDIUM};
         `};
     ${props =>
         props.labelAlignment === 'right' &&
         `
-            padding-right: ${MARGIN_MEDIUM};
+            margin-right: ${MARGIN_MEDIUM};
         `};
     ${props =>
         props.as === 'legend' &&
@@ -65,8 +64,6 @@ const Label = attachThemeAttrs(styled.label).attrs(props => {
         `
             align-self: flex-start;
             margin-left: 0;
-            padding-left: 0;
-            text-align: left;
         `};
     ${props =>
         props.variant === 'inverse' &&
