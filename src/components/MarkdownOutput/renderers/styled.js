@@ -23,11 +23,14 @@ const fontSizesMap = {
 
 export const StyledHeading = attachThemeAttrs(styled.h1)`
     font-size: ${props => fontSizesMap[props.level] || FONT_SIZE_HEADING_XX_SMALL};
-    margin-top: 1.25rem;
     margin-bottom: 0.75rem;
 
     b, strong {
         font-family: 'Lato Bold', Arial, Helvetica, sans-serif;
+    }
+
+    :not(:first-child) {
+        margin-top: 1.25rem;
     }
 `;
 
