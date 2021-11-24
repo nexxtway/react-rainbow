@@ -83,4 +83,6 @@ export const StyledColorSample = styled.div`
     height: 1.5rem;
     border-radius: 50%;
     background-color: ${props => props.backgroundColor};
+    border: solid 1px
+        ${props => props.backgroundColor || props.theme.rainbow.palette.border.disabled};
 `;
