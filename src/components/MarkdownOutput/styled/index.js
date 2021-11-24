@@ -21,6 +21,10 @@ const StyledContainer = attachThemeAttrs(styled.div)`
             display: inline;
         }
     `}
+
+    > div > *:first-child {
+        margin-top: 0;
+    }
 `;
 
 export default StyledContainer;
