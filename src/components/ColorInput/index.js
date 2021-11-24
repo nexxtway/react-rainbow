@@ -27,6 +27,7 @@ import ErrorText from '../Input/styled/errorText';
 import { useFocusIndex, useHandleBlur, useHandleFocus } from '../PhoneInput/hooks';
 import ColorSample from './colorSample';
 import { decomposeColor, hexToRgb, hexToRgba, recomposeColor } from '../../styles/helpers/color';
+import isHexColor from '../../styles/helpers/color/isHexColor';
 
 /**
  * Provides a color input with an improved color picker.
@@ -115,24 +116,27 @@ const ColorInput = props => {
 
     const handleChange = event => {
         const { alpha } = value;
-        onChange({ hex: event.target.value, alpha });
+        const hex = event.target.value;
+        onChange({ hex, alpha, isValid: isHexColor(hex) });
     };
 
     const handleAlphaChange = event => {
         const { hex } = value;
-        const alpha = Number.parseInt(event.target.value, 10);
+        let alpha = Number.parseInt(event.target.value || '0', 10);
+        if (alpha > 100) alpha = 100;
         if (!Number.isNaN(alpha)) onChange({ hex, alpha: alpha / 100 });
     };
 
     const handleColorChange = color => {
         const { hex, rgba } = color;
         setColorValue(color);
-        onChange({ hex, alpha: rgba[3] });
+        onChange({ hex, alpha: rgba[3], isValid: isHexColor(hex) });
     };
 
     const isFocus = focusIndex > -1 || isOpen;
-    const inputValue = value && value.hex ? value.hex : '#000000';
-    const alphaValue = value && value.alpha ? Math.round(value.alpha * 100) : 100;
+    const inputValue = (value && value.hex) || value.hex === '' ? value.hex : '#000000';
+    const alphaValue =
+        (value && value.alpha) || value.alpha === 0 ? Math.round(value.alpha * 100) : 100;
 
     return (
         <StyledContainer id={id} className={className} style={style} ref={containerRef}>
