@@ -38,14 +38,21 @@ describe('<ColorInput />', () => {
         const component = mount(<ColorInput onChange={changeFn} />);
         component.find('button').simulate('click');
         component.find(ColorPicker).prop('onChange')({ hex: '#000000', rgba: [0, 0, 0, 0.75] });
-        expect(changeFn).toHaveBeenCalledWith({ hex: '#000000', alpha: 0.75 });
+        expect(changeFn).toHaveBeenCalledWith({ hex: '#000000', alpha: 0.75, isValid: true });
     });
 
     it('shold call onChange when typing in the color input', () => {
         const changeFn = jest.fn();
         const component = mount(<ColorInput onChange={changeFn} />);
         component.find('input[type="text"]').simulate('change', { target: { value: '#cccccc' } });
-        expect(changeFn).toHaveBeenCalledWith({ hex: '#cccccc', alpha: 1 });
+        expect(changeFn).toHaveBeenCalledWith({ hex: '#cccccc', alpha: 1, isValid: true });
+    });
+
+    it('shold call onChange with isValid false when the color value is incorrect', () => {
+        const changeFn = jest.fn();
+        const component = mount(<ColorInput onChange={changeFn} />);
+        component.find('input[type="text"]').simulate('change', { target: { value: '#ccccc' } });
+        expect(changeFn).toHaveBeenCalledWith({ hex: '#ccccc', alpha: 1, isValid: false });
     });
 
     it('shold call onChange when typing in the alpha input', () => {
