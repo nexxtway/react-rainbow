@@ -38,14 +38,14 @@ export const StyledAlphaInput = styled(StyledPhoneInput)`
     font-weight: normal;
     padding-left: 8px;
 
-    ::-moz-focus-inner {
-        border: 0;
-        padding-left: 8px;
-    }
-
     :focus,
     :active {
         outline: 0;
+        padding-left: 8px;
+    }
+
+    &::-moz-focus-inner {
+        border: 0;
         padding-left: 8px;
     }
 
