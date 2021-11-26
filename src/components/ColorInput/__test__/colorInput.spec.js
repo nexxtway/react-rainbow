@@ -62,6 +62,13 @@ describe('<ColorInput />', () => {
         expect(changeFn).toHaveBeenCalledWith({ hex: '#000000', alpha: 0.5 });
     });
 
+    it('should call onChange with alpha null when input is empty', () => {
+        const changeFn = jest.fn();
+        const component = mount(<ColorInput onChange={changeFn} />);
+        component.find('input[type="number"]').simulate('change', { target: { value: '' } });
+        expect(changeFn).toHaveBeenCalledWith({ hex: '#000000', alpha: null });
+    });
+
     it('should call onClick callback', () => {
         const clickFn = jest.fn();
         const component = mount(<ColorInput onClick={clickFn} />);

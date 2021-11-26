@@ -140,6 +140,11 @@ const ColorInput = props => {
     };
 
     const handleAlphaChange = event => {
+        if (!event.target.value) {
+            onChange({ ...value, alpha: null });
+            return;
+        }
+
         let alpha = Number.parseInt(event.target.value || '0', 10);
         if (alpha > 100) alpha = 100;
         else if (alpha < 0) alpha = 0;
@@ -161,7 +166,7 @@ const ColorInput = props => {
     const inputValue =
         (value && value.hex) || value.hex === '' ? value.hex.replace('#', '') : '000000';
     const alphaValue =
-        (value && value.alpha) || value.alpha === 0 ? Math.round(value.alpha * 100) : 100;
+        (value && value.alpha) || value.alpha === 0 ? Math.round(value.alpha * 100) : '';
 
     return (
         <StyledContainer id={id} className={className} style={style} ref={containerRef}>

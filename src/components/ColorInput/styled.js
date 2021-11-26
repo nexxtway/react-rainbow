@@ -92,11 +92,11 @@ export const StyledAlpha = attachThemeAttrs(styled.div)`
     }
 `;
 
-export const StyledColorSample = styled.div`
+export const StyledColorSample = attachThemeAttrs(styled.div)`
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
     background-color: ${props => props.backgroundColor};
     border: solid 1px
-        ${props => props.backgroundColor || props.theme.rainbow.palette.border.disabled};
+        ${props => props.palette.border.disabled};
 `;
