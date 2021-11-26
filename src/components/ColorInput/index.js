@@ -37,6 +37,7 @@ import { decomposeColor, hexToRgb, hexToRgba, recomposeColor } from '../../style
 import isHexColor from '../../styles/helpers/color/isHexColor';
 import StyledIconContainer from '../Input/styled/iconContainer';
 import getHexString from './helpers/getHexString';
+import getColorValue from './helpers/getColorValue';
 
 /**
  * Provides a color input with an improved color picker.
@@ -67,7 +68,7 @@ const ColorInput = props => {
         onBlur: blurInProps,
     } = useReduxForm(props);
     const [isOpen, setIsOpen] = useState(false);
-    const [colorValue, setColorValue] = useState(value);
+    const [colorValue, setColorValue] = useState(getColorValue(value));
     const [sampleColor, setSampleColor] = useState(value);
     const pickerRef = useRef();
     const containerRef = useRef();
@@ -135,7 +136,10 @@ const ColorInput = props => {
         const hex = getHexString(eventValue);
         const isValid = isHexColor(hex);
         const newValue = { hex, alpha, isValid };
-        if (isValid) setSampleColor(newValue);
+        if (isValid) {
+            setSampleColor(newValue);
+            setColorValue(getColorValue(newValue));
+        }
         onChange(newValue);
     };
 
@@ -148,9 +152,11 @@ const ColorInput = props => {
         let alpha = Number.parseInt(event.target.value || '0', 10);
         if (alpha > 100) alpha = 100;
         else if (alpha < 0) alpha = 0;
+        alpha = alpha / 100;
 
-        const newValue = { ...value, alpha: alpha / 100 };
+        const newValue = { ...value, alpha };
         setSampleColor(newValue);
+        setColorValue(getColorValue(newValue));
         if (!Number.isNaN(alpha)) onChange(newValue);
     };
 
