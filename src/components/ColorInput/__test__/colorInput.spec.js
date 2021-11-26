@@ -23,7 +23,7 @@ describe('<ColorInput />', () => {
 
     it('should set the value passed to the input', () => {
         const component = mount(<ColorInput value={{ hex: '#cccccc', alpha: 0.75 }} />);
-        expect(component.find('input[type="text"]').prop('value')).toBe('#cccccc');
+        expect(component.find('input[type="text"]').prop('value')).toBe('cccccc');
         expect(component.find('input[type="number"]').prop('value')).toBe(75);
     });
 

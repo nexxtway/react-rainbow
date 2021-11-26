@@ -12,28 +12,42 @@ export const StyledContent = styled.div`
     width: 19rem;
 `;
 
+export const ColorInputContainer = styled.div`
+    display: flex;
+`;
+
 export const StyledInput = styled(StyledPhoneInput)`
+    display: flex;
+    padding-left: 1.2rem;
+
+    ::-moz-focus-inner {
+        border: 0;
+        padding-left: 1.2rem;
+    }
+
+    :focus,
+    :active {
+        outline: 0;
+        padding-left: 1.2rem;
+    }
+`;
+
+export const StyledAlphaInput = styled(StyledPhoneInput)`
+    width: 2.5em;
+    text-align: center;
+    font-weight: normal;
     padding-left: 8px;
 
     ::-moz-focus-inner {
         border: 0;
-        padding: 0;
         padding-left: 8px;
     }
 
     :focus,
     :active {
         outline: 0;
-        padding: 0;
         padding-left: 8px;
     }
-`;
-
-export const StyledAlphaInput = styled(StyledInput)`
-    width: 2.5em;
-    text-align: center;
-    padding-right: 0.275rem;
-    font-weight: normal;
 
     /* Chrome, Safari, Edge, Opera */
     &::-webkit-outer-spin-button,

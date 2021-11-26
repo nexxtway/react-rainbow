@@ -4,7 +4,7 @@ import { hexToRgba } from '../../styles/helpers/color';
 import { StyledColorSample } from './styled';
 
 const ColorSample = ({ value }) => {
-    const backgroundColor = hexToRgba(value.hex, value.alpha);
+    const backgroundColor = value ? hexToRgba(value.hex, value.alpha) : undefined;
 
     return <StyledColorSample backgroundColor={backgroundColor} />;
 };
@@ -17,7 +17,7 @@ ColorSample.propTypes = {
 };
 
 ColorSample.defaultProps = {
-    value: { hex: '#000000', alpha: 1 },
+    value: undefined,
 };
 
 export default ColorSample;

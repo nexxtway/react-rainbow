@@ -5,7 +5,14 @@ import Label from '../Input/label';
 import StyledContainer from '../Input/styled/container';
 import InternalOverlay from '../InternalOverlay';
 import ColorPicker from '../ColorPicker';
-import { StyledAlpha, StyledAlphaInput, StyledCard, StyledContent, StyledInput } from './styled';
+import {
+    StyledAlpha,
+    StyledAlphaInput,
+    StyledCard,
+    StyledContent,
+    StyledInput,
+    ColorInputContainer,
+} from './styled';
 import {
     useOutsideClick,
     useWindowResize,
@@ -28,6 +35,8 @@ import { useFocusIndex, useHandleBlur, useHandleFocus } from '../PhoneInput/hook
 import ColorSample from './colorSample';
 import { decomposeColor, hexToRgb, hexToRgba, recomposeColor } from '../../styles/helpers/color';
 import isHexColor from '../../styles/helpers/color/isHexColor';
+import StyledIconContainer from '../Input/styled/iconContainer';
+import getHexString from './helpers/getHexString';
 
 /**
  * Provides a color input with an improved color picker.
@@ -55,10 +64,11 @@ const ColorInput = props => {
         placeholder,
         bottomHelpText,
         onFocus,
-        onBlur,
+        onBlur: blurInProps,
     } = useReduxForm(props);
     const [isOpen, setIsOpen] = useState(false);
     const [colorValue, setColorValue] = useState(value);
+    const [sampleColor, setSampleColor] = useState(value);
     const pickerRef = useRef();
     const containerRef = useRef();
     const triggerRef = useRef();
@@ -98,6 +108,11 @@ const ColorInput = props => {
     );
     useWindowResize(() => setIsOpen(false), isOpen);
 
+    const onBlur = event => {
+        const { hex } = value;
+        if (!isHexColor(hex)) setSampleColor(undefined);
+        blurInProps(event);
+    };
     const handleFocus = useHandleFocus(focusIndex, onFocus, setFocusIndex, value);
     const handleBlur = useHandleBlur(focusIndex, onBlur, value);
 
@@ -115,26 +130,36 @@ const ColorInput = props => {
     };
 
     const handleChange = event => {
+        const eventValue = event.target.value;
         const { alpha } = value;
-        const hex = event.target.value;
-        onChange({ hex, alpha, isValid: isHexColor(hex) });
+        const hex = getHexString(eventValue);
+        const isValid = isHexColor(hex);
+        const newValue = { hex, alpha, isValid };
+        if (isValid) setSampleColor(newValue);
+        onChange(newValue);
     };
 
     const handleAlphaChange = event => {
-        const { hex } = value;
         let alpha = Number.parseInt(event.target.value || '0', 10);
         if (alpha > 100) alpha = 100;
-        if (!Number.isNaN(alpha)) onChange({ hex, alpha: alpha / 100 });
+        else if (alpha < 0) alpha = 0;
+
+        const newValue = { ...value, alpha: alpha / 100 };
+        setSampleColor(newValue);
+        if (!Number.isNaN(alpha)) onChange(newValue);
     };
 
     const handleColorChange = color => {
         const { hex, rgba } = color;
+        const newValue = { hex, alpha: rgba[3], isValid: isHexColor(hex) };
         setColorValue(color);
-        onChange({ hex, alpha: rgba[3], isValid: isHexColor(hex) });
+        setSampleColor(newValue);
+        onChange(newValue);
     };
 
     const isFocus = focusIndex > -1 || isOpen;
-    const inputValue = (value && value.hex) || value.hex === '' ? value.hex : '#000000';
+    const inputValue =
+        (value && value.hex) || value.hex === '' ? value.hex.replace('#', '') : '000000';
     const alphaValue =
         (value && value.alpha) || value.alpha === 0 ? Math.round(value.alpha * 100) : 100;
 
@@ -165,31 +190,34 @@ const ColorInput = props => {
                     type="button"
                 >
                     <StyledFlagContainer disabled={disabled}>
-                        <ColorSample value={value} />
+                        <ColorSample value={sampleColor} />
                         <StyledIndicator error={error} disabled={disabled} />
                     </StyledFlagContainer>
                     <AssistiveText text="pick color" />
                 </StyledTrigger>
-                <StyledInput
-                    id={inputId}
-                    ref={inputRef}
-                    name={name}
-                    type="text"
-                    value={inputValue}
-                    placeholder={placeholder}
-                    tabIndex={tabIndex}
-                    onFocus={event => handleFocus(event, 2)}
-                    onBlur={handleBlur}
-                    onClick={onClick}
-                    onChange={handleChange}
-                    disabled={disabled}
-                    readOnly={readOnly}
-                    required={required}
-                    aria-labelledby={labelId}
-                    aria-describedby={errorMessageId}
-                    error={error}
-                    isFocus={isFocus}
-                />
+                <ColorInputContainer>
+                    <StyledIconContainer>#</StyledIconContainer>
+                    <StyledInput
+                        id={inputId}
+                        ref={inputRef}
+                        name={name}
+                        type="text"
+                        value={inputValue}
+                        placeholder={placeholder}
+                        tabIndex={tabIndex}
+                        onFocus={event => handleFocus(event, 2)}
+                        onBlur={handleBlur}
+                        onClick={onClick}
+                        onChange={handleChange}
+                        disabled={disabled}
+                        readOnly={readOnly}
+                        required={required}
+                        aria-labelledby={labelId}
+                        aria-describedby={errorMessageId}
+                        error={error}
+                        isFocus={isFocus}
+                    />
+                </ColorInputContainer>
                 <StyledAlpha disabled={disabled}>
                     <StyledAlphaInput
                         type="number"
