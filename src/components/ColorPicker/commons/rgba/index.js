@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import React, { useContext, useRef, useImperativeHandle } from 'react';
+import React, { useContext, useRef, useImperativeHandle, useState } from 'react';
 import { ColorPickerContext } from '../../context';
 import { StyledFlexContainer } from '../../styled';
 import StyledNumberInput from './styled';
@@ -15,6 +15,7 @@ const Rgba = React.forwardRef((_props, ref) => {
 
     const firstRef = useRef();
     const lastRef = useRef();
+    const isAlphaEmpty = useRef(false);
 
     useImperativeHandle(ref, () => ({
         focus: () => {
@@ -29,6 +30,7 @@ const Rgba = React.forwardRef((_props, ref) => {
     }));
 
     const handleAlphaChange = event => {
+        isAlphaEmpty.current = event.target.value === '';
         const value = parseInt(event.target.value, 10);
         const newApha = isNaN(value) ? 1 : Math.max(0, Math.min(value, 100)) / 100;
         rgba[3] = newApha;
@@ -59,7 +61,7 @@ const Rgba = React.forwardRef((_props, ref) => {
 
     // eslint-disable-next-line id-length
     const [r, g, b, a] = rgba;
-    const alpha = Math.round(a * 100);
+    const alpha = isAlphaEmpty.current ? '' : Math.round(a * 100);
 
     return (
         <StyledFlexContainer>
