@@ -12,15 +12,28 @@ import {
 import { Component as Picklist } from '..';
 import PicklistOption from '../../PicklistOption';
 import InternalOverlay from '../../InternalOverlay';
+import WindowResize from '../../../libs/WindowResize';
 
 jest.mock('../../InternalOverlay', () =>
     // eslint-disable-next-line react/jsx-props-no-spreading
     jest.fn((...props) => <div {...props} data-id="internal-dropdown" />),
 );
 
+const mockStartListening = jest.fn();
+const mockStopListening = jest.fn();
+jest.mock('../../../libs/WindowResize', () => {
+    return jest.fn().mockImplementation(() => {
+        return { startListening: mockStartListening, stopListening: mockStopListening };
+    });
+});
+
 jest.useFakeTimers();
 
 describe('<Picklist />', () => {
+    beforeEach(() => {
+        mockStartListening.mockClear();
+        mockStopListening.mockClear();
+    });
     it('should set the value label as value in the input element', () => {
         const component = mount(
             <Picklist label="Picklist" value={{ label: 'Option 1' }}>
@@ -145,5 +158,29 @@ describe('<Picklist />', () => {
         component.find('label').simulate('click');
         expect(component.find('[aria-expanded=true]').exists()).toBe(false);
         expect(component.find(InternalOverlay).prop('isVisible')).toBe(false);
+    });
+    it('should listen for window resize when opened', () => {
+        const component = mount(
+            <Picklist label="Picklist">
+                <PicklistOption label="Option 1" name="option1" />
+                <PicklistOption label="Option 2" name="option2" />
+                <PicklistOption label="Option 3" name="option3" />
+            </Picklist>,
+        );
+        component.find('input').simulate('click');
+        expect(mockStartListening).toHaveBeenCalled();
+    });
+    it('should cancel the resize listener when closed', () => {
+        const component = mount(
+            <Picklist label="Picklist">
+                <PicklistOption label="Option 1" name="option1" />
+                <PicklistOption label="Option 2" name="option2" />
+                <PicklistOption label="Option 3" name="option3" />
+            </Picklist>,
+        );
+        component.instance().openMenu();
+        component.update();
+        component.find('input').simulate('click');
+        expect(mockStopListening).toHaveBeenCalled();
     });
 });
