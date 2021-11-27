@@ -12,7 +12,7 @@ export default function RadioItems(props) {
 
     return options.map((option, index) => {
         const key = `radio-${index}`;
-        const { description, ...rest } = option;
+        const { description, disabled, ...rest } = option;
         return (
             <StyledItemContainer data-id="input-radiogroup_container">
                 <Radio
@@ -24,9 +24,10 @@ export default function RadioItems(props) {
                     ariaDescribedby={ariaDescribedby}
                     name={name}
                     error={error}
+                    disabled={disabled}
                 />
                 <RenderIf isTrue={description}>
-                    <StyledItemDescription>{description}</StyledItemDescription>
+                    <StyledItemDescription disabled={disabled}>{description}</StyledItemDescription>
                 </RenderIf>
             </StyledItemContainer>
         );
