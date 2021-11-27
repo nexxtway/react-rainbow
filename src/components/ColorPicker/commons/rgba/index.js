@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import React, { useContext, useRef, useImperativeHandle, useState } from 'react';
+import React, { useContext, useRef, useImperativeHandle } from 'react';
 import { ColorPickerContext } from '../../context';
 import { StyledFlexContainer } from '../../styled';
 import StyledNumberInput from './styled';

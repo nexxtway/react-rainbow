@@ -152,7 +152,7 @@ const ColorInput = props => {
         let alpha = Number.parseInt(event.target.value || '0', 10);
         if (alpha > 100) alpha = 100;
         else if (alpha < 0) alpha = 0;
-        alpha = alpha / 100;
+        alpha /= 100;
 
         const newValue = { ...value, alpha };
         setSampleColor(newValue);
