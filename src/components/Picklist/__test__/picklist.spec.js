@@ -12,7 +12,6 @@ import {
 import { Component as Picklist } from '..';
 import PicklistOption from '../../PicklistOption';
 import InternalOverlay from '../../InternalOverlay';
-import WindowResize from '../../../libs/WindowResize';
 
 jest.mock('../../InternalOverlay', () =>
     // eslint-disable-next-line react/jsx-props-no-spreading
