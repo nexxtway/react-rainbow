@@ -76,6 +76,22 @@ describe('<ColorInput />', () => {
         expect(clickFn).toHaveBeenCalled();
     });
 
+    it('should call onFocus with the current value', () => {
+        const focusFn = jest.fn();
+        const value = { hex: '#ccc', alpha: 1, isValid: true };
+        const component = mount(<ColorInput value={value} onFocus={focusFn} />);
+        component.find('input[type="text"]').simulate('focus');
+        expect(focusFn).toHaveBeenCalledWith(value);
+    });
+
+    it('should call onBlur with the current value', () => {
+        const blurFn = jest.fn();
+        const value = { hex: '#ccc', alpha: 1, isValid: true };
+        const component = mount(<ColorInput value={value} onBlur={blurFn} />);
+        component.find('input[type="text"]').simulate('blur');
+        expect(blurFn).toHaveBeenCalledWith(value);
+    });
+
     it('should set the name of the input', () => {
         const component = mount(
             <ColorInput label="Test label" name="test" bottomHelpText="Help text" />,
