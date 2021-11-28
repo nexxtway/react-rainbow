@@ -298,6 +298,7 @@ ColorInput.propTypes = {
     value: PropTypes.shape({
         hex: PropTypes.string,
         alpha: PropTypes.number,
+        isValid: PropTypes.bool,
     }),
     /** Specifies the default colors to choice. */
     defaultColors: PropTypes.array,
