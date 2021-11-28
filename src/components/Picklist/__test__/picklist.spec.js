@@ -182,4 +182,15 @@ describe('<Picklist />', () => {
         component.find('input').simulate('click');
         expect(mockStopListening).toHaveBeenCalled();
     });
+    it('should cancel the resize listener when unmounted', () => {
+        const component = mount(
+            <Picklist label="Picklist">
+                <PicklistOption label="Option 1" name="option1" />
+                <PicklistOption label="Option 2" name="option2" />
+                <PicklistOption label="Option 3" name="option3" />
+            </Picklist>,
+        );
+        component.unmount();
+        expect(mockStopListening).toHaveBeenCalled();
+    });
 });

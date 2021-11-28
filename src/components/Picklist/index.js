@@ -90,7 +90,7 @@ class Picklist extends Component {
     componentWillUnmount() {
         this.outsideClick.stopListening();
         this.windowScrolling.stopListening();
-        this.windowScrolling.stopListening();
+        this.windowResize.stopListening();
     }
 
     getErrorMessageId() {
