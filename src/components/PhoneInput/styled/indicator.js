@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 const StyledIndicator = styled.span`
     margin-left: 8px;
+    display: flex;
+    align-items: center;
 
     &::after {
         content: '';
