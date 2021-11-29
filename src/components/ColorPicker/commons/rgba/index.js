@@ -53,7 +53,7 @@ const Rgba = React.forwardRef((_props, ref) => {
         const rgbaColor = recomposeColor({ type: 'rgba', values: rgba });
 
         onChange({
-            hex: rgbaToHex(rgbaColor),
+            hex: `#${rgbaToHex(rgbaColor)}`,
             rgba,
             hsv: decomposeColor(rgbToHsv(rgbaColor)).values,
         });
