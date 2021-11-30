@@ -113,9 +113,9 @@ const ColorInput = props => {
         const { hex } = value;
         if (!isHexColor(hex)) setSampleColor(undefined);
         blurInProps(value);
-    }, [value]);
+    }, [value, blurInProps]);
 
-    const onFocus = useCallback(() => focusInProps(value), [value]);
+    const onFocus = useCallback(() => focusInProps(value), [value, focusInProps]);
 
     const handleFocus = useHandleFocus(focusIndex, onFocus, setFocusIndex, value);
     const handleBlur = useHandleBlur(focusIndex, onBlur, value);
