@@ -17,6 +17,7 @@ import StyledError from '../Input/styled/errorText';
 import StyledIndicator from './styled/indicator';
 import InternalDropdown from '../InternalDropdown';
 import InternalOverlay from '../InternalOverlay';
+import WindowResize from '../../libs/WindowResize';
 
 function positionResolver(opts) {
     const { trigger, viewport, content } = opts;
@@ -56,8 +57,10 @@ class Picklist extends Component {
         this.handleContainerClick = this.handleContainerClick.bind(this);
         this.closeAndFocusInput = this.closeAndFocusInput.bind(this);
         this.handleWindowScroll = this.handleWindowScroll.bind(this);
+        this.handleWindowResize = this.handleWindowResize.bind(this);
         this.outsideClick = new OutsideClick();
         this.windowScrolling = new WindowScrolling();
+        this.windowResize = new WindowResize();
         this.activeChildren = [];
         this.state = {
             isOpen: false,
@@ -80,12 +83,14 @@ class Picklist extends Component {
                 }
             });
             this.windowScrolling.startListening(this.handleWindowScroll);
+            this.windowResize.startListening(this.handleWindowResize);
         }
     }
 
     componentWillUnmount() {
         this.outsideClick.stopListening();
         this.windowScrolling.stopListening();
+        this.windowResize.stopListening();
     }
 
     getErrorMessageId() {
@@ -115,6 +120,10 @@ class Picklist extends Component {
         this.closeMenu();
     }
 
+    handleWindowResize() {
+        this.closeMenu();
+    }
+
     closeAndFocusInput() {
         this.closeMenu();
         this.focus();
@@ -132,6 +141,7 @@ class Picklist extends Component {
     closeMenu() {
         this.outsideClick.stopListening();
         this.windowScrolling.stopListening();
+        this.windowResize.stopListening();
         this.setState({
             isOpen: false,
         });
