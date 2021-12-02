@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unused-prop-types */
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Label from '../Input/label';
 import StyledContainer from '../Input/styled/container';
@@ -64,7 +64,7 @@ const ColorInput = props => {
         name,
         placeholder,
         bottomHelpText,
-        onFocus,
+        onFocus: focusInProps,
         onBlur: blurInProps,
     } = useReduxForm(props);
     const [isOpen, setIsOpen] = useState(false);
@@ -109,11 +109,14 @@ const ColorInput = props => {
     );
     useWindowResize(() => setIsOpen(false), isOpen);
 
-    const onBlur = event => {
+    const onBlur = useCallback(() => {
         const { hex } = value;
         if (!isHexColor(hex)) setSampleColor(undefined);
-        blurInProps(event);
-    };
+        blurInProps(value);
+    }, [value, blurInProps]);
+
+    const onFocus = useCallback(() => focusInProps(value), [value, focusInProps]);
+
     const handleFocus = useHandleFocus(focusIndex, onFocus, setFocusIndex, value);
     const handleBlur = useHandleBlur(focusIndex, onBlur, value);
 
@@ -298,6 +301,7 @@ ColorInput.propTypes = {
     value: PropTypes.shape({
         hex: PropTypes.string,
         alpha: PropTypes.number,
+        isValid: PropTypes.bool,
     }),
     /** Specifies the default colors to choice. */
     defaultColors: PropTypes.array,
