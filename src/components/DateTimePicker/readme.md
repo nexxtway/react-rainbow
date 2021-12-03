@@ -259,7 +259,7 @@ const containerStyles = {
     >
         <DateTimePicker
             value={new Date()}
-            label="DateTimePicker Label" 
+            label="DateTimePicker Label"
             icon={<FontAwesomeIcon icon={faCalendar} />}
         />
     </div>
