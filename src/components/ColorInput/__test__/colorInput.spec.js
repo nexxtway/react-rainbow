@@ -21,7 +21,7 @@ describe('<ColorInput />', () => {
         });
     });
 
-    it('should set the value passed to the input', () => {
+    it('should set the value passed to the input without `#`', () => {
         const component = mount(<ColorInput value={{ hex: '#cccccc', alpha: 0.75 }} />);
         expect(component.find('input[type="text"]').prop('value')).toBe('cccccc');
         expect(component.find('input[type="number"]').prop('value')).toBe(75);
@@ -69,11 +69,76 @@ describe('<ColorInput />', () => {
         expect(changeFn).toHaveBeenCalledWith({ hex: '#000000', alpha: null });
     });
 
+    it('should call onChange with alpha 1 when type an alpha greater than 100', () => {
+        const changeFn = jest.fn();
+        const component = mount(<ColorInput onChange={changeFn} />);
+        component.find('input[type="number"]').simulate('change', { target: { value: '150' } });
+        expect(changeFn).toHaveBeenCalledWith({ hex: '#000000', alpha: 1 });
+    });
+
+    it('should call onChange with alpha 0 when type an alpha smaller than 0', () => {
+        const changeFn = jest.fn();
+        const component = mount(<ColorInput onChange={changeFn} />);
+        component.find('input[type="number"]').simulate('change', { target: { value: '-10' } });
+        expect(changeFn).toHaveBeenCalledWith({ hex: '#000000', alpha: 0 });
+    });
+
     it('should call onClick callback', () => {
         const clickFn = jest.fn();
         const component = mount(<ColorInput onClick={clickFn} />);
         component.find('input[type="text"]').simulate('click');
         expect(clickFn).toHaveBeenCalled();
+    });
+
+    it('should call onFocus with the current value', () => {
+        const focusFn = jest.fn();
+        const value = { hex: '#ccc', alpha: 1, isValid: true };
+        const component = mount(<ColorInput value={value} onFocus={focusFn} />);
+        component.find('input[type="text"]').simulate('focus');
+        expect(focusFn).toHaveBeenCalledWith(value);
+    });
+
+    it('should call onBlur with the current value', () => {
+        const blurFn = jest.fn();
+        const value = { hex: '#ccc', alpha: 1, isValid: true };
+        const component = mount(<ColorInput value={value} onBlur={blurFn} />);
+        component.find('input[type="text"]').simulate('blur');
+        expect(blurFn).toHaveBeenCalledWith(value);
+    });
+
+    it('should set the color sample according to the value', () => {
+        const value = { hex: '#ccc', alpha: 1, isValid: true };
+        const component = mount(<ColorInput value={value} />);
+        expect(component.find('ColorSample').prop('value')).toEqual(value);
+    });
+
+    it('should update the color sample on change', () => {
+        const value = { hex: '#ccc', alpha: 1, isValid: true };
+        const component = mount(<ColorInput value={value} />);
+        component.find('input[type="text"]').simulate('change', { target: { value: '#fff' } });
+        expect(component.find('ColorSample').prop('value')).toEqual({
+            hex: '#fff',
+            alpha: 1,
+            isValid: true,
+        });
+    });
+
+    it('should not update the color sample on change when value is invalid', () => {
+        const value = { hex: '#ccc', alpha: 1, isValid: true };
+        const component = mount(<ColorInput value={value} />);
+        component.find('input[type="text"]').simulate('change', { target: { value: '#ffff' } });
+        expect(component.find('ColorSample').prop('value')).toEqual({
+            hex: '#ccc',
+            alpha: 1,
+            isValid: true,
+        });
+    });
+
+    it('should set the color sample undefined on blur if value is invalid', () => {
+        const value = { hex: '#cccc', alpha: 1, isValid: false };
+        const component = mount(<ColorInput value={value} />);
+        component.find('input[type="number"]').simulate('blur');
+        expect(component.find('ColorSample').prop('value')).toBe(undefined);
     });
 
     it('should set the name of the input', () => {

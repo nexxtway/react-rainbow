@@ -5,7 +5,6 @@ export default function useFocusIndex(...refsMap) {
 
     useEffect(() => {
         if (focusIndex > -1) {
-            // const refsMap = [triggerRef, searchRef, inputRef];
             refsMap[focusIndex].current.focus();
         }
     }, [focusIndex, refsMap]);

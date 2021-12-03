@@ -56,7 +56,7 @@ describe('<Rgba />', () => {
 
         expect(onChangeMockFn).toHaveBeenCalledWith(
             expect.objectContaining({
-                rgba: [0, 0, 0, 1],
+                rgba: [0, 0, 0, 0],
             }),
         );
     });

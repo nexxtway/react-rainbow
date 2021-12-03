@@ -32,7 +32,7 @@ const Rgba = React.forwardRef((_props, ref) => {
     const handleAlphaChange = event => {
         isAlphaEmpty.current = event.target.value === '';
         const value = parseInt(event.target.value, 10);
-        const newApha = isNaN(value) ? 1 : Math.max(0, Math.min(value, 100)) / 100;
+        const newApha = isNaN(value) ? 0 : Math.max(0, Math.min(value, 100)) / 100;
         rgba[3] = newApha;
 
         onChange({
@@ -53,7 +53,7 @@ const Rgba = React.forwardRef((_props, ref) => {
         const rgbaColor = recomposeColor({ type: 'rgba', values: rgba });
 
         onChange({
-            hex: rgbaToHex(rgbaColor),
+            hex: `#${rgbaToHex(rgbaColor)}`,
             rgba,
             hsv: decomposeColor(rgbToHsv(rgbaColor)).values,
         });

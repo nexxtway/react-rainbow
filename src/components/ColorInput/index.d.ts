@@ -4,6 +4,7 @@ import { BaseProps, LabelAlignment } from '../types';
 type Value = {
     hex: string;
     alpha: number;
+    isValid: boolean;
 };
 
 export interface ColorInputProps extends BaseProps {
