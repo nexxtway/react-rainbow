@@ -389,7 +389,7 @@ import styled from 'styled-components';
 import 'highlight.js/styles/dracula.css';
 import { Card, RadioButtonGroup, Textarea, MarkdownOutput } from 'react-rainbow-components';
 
-const markdownString = '# Code examples\n ### Standard \n```\nconst data = \'Lorem ipsum....\';\n\nconst doSomething = (param) => {\n};\n\nconst xx = doSomething(data);\n```\n\n ### Javascript \n```js\nconst data = \'Lorem ipsum....\';\n\nconst doSomething = (param) => {\n};\n\nconst xx = doSomething(data);\n```\n\n ### Shell \n```sh\n$ node index.js;\n```\n\n ### Java \n ```java\n String foo = 5;\n```';
+const markdownString = '# Code examples\n ### Standard \n```\nconst data = \'Lorem ipsum....\';\n\nconst doSomething = (param) => {\n};\n\nconst xx = doSomething(data);\n```\n\n ### Javascript \n```js\nconst data = \'Lorem ipsum....\';\n\nconst doSomething = (param) => {\n};\n\nconst xx = doSomething(data);\n```\n\n ### Shell \n```sh\n$ node index.js;\n```\n\n ### Java \n ```java\n String foo = 5;\n```\n ### Inline\n Hello, `const hello = 1` inline';
 
 const StyledCard = styled(Card)`
     padding: 1rem 2rem 2rem;

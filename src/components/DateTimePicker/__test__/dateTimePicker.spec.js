@@ -105,4 +105,8 @@ describe('<DateTimePicker/>', () => {
         );
         expect(component.find('input').prop('value')).toBe('10/24/2019, 10:48 AM');
     });
+    it('should render the passed icon', () => {
+        const component = mount(<DateTimePicker icon={<span id="test" />} />);
+        expect(component.find('span#test').exists()).toBe(true);
+    });
 });

@@ -1,4 +1,5 @@
-##### DatePicker base:
+# DatePicker base
+##### Use a `DatePicker` to allow users to select a date with a friendly user interface.
 
 ```js
 import React from 'react';
@@ -39,7 +40,8 @@ const containerStyles = {
     </div>
 ```
 
-##### DatePicker with date constraints:
+# DatePicker with date constraints
+##### Use `minDate` and `maxDate` to limit the available dates.
 
 ```js
 import React from 'react';
@@ -65,7 +67,8 @@ const initialState = { date: new Date() };
     </div>
 ```
 
-##### DatePicker with different date formats:
+# DatePicker with different date formats
+##### Use the `formatStyle` prop to customize the date format.
 
 ```js
 import React from 'react';
@@ -101,7 +104,8 @@ const initialState = { date: new Date() };
     </div>
 ```
 
-##### DatePicker required:
+# DatePicker required
+##### You can pass the `required` prop to mark the input as required.
 
 ```js
 import React from 'react';
@@ -126,7 +130,8 @@ const initialState = { date: new Date() };
     </div>
 ```
 
-##### DatePicker with error:
+# DatePicker with error
+##### Pass the `error` prop to indicate that there is an error in the input.
 
 ```js
 import React from 'react';
@@ -153,7 +158,8 @@ const initialState = { date: undefined };
     </div>
 ```
 
-##### DatePicker disabled:
+# DatePicker disabled
+##### Use the `disabled` prop to render the input as disabled.
 
 ```js
 import React from 'react';
@@ -171,7 +177,8 @@ const containerStyles = {
     </div>;
 ```
 
-##### DatePicker readOnly:
+# DatePicker readOnly
+##### Pass the `readOnly` prop to prevent the user from modifying the value.
 
 ```js
 import React from 'react';
@@ -189,7 +196,8 @@ const containerStyles = {
     </div>
 ```
 
-##### DatePicker with range selection:
+# DatePicker with range selection
+##### You can allow the users to select a date range passing the `selectionType` prop as 'range'.
 
 ```js
 import React from 'react';
@@ -219,7 +227,8 @@ const containerStyles = {
     </div>
 ```
 
-##### DatePicker with variant double:
+# DatePicker with variant double
+##### Use the 'double' variant to show two months side by side.
 
 ```js
 import React from 'react';
@@ -247,7 +256,39 @@ const containerStyles = {
     </div>
 ```
 
-##### DatePicker select date:
+# DatePicker with custom icon
+##### It is possible to provide a custom icon for the input if you pass the `icon` prop.
+
+```js
+import React from 'react';
+import { DatePicker } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+
+const initialState = {
+    date: undefined,
+};
+const containerStyles = {
+    maxWidth: 400,
+};
+
+    <div
+        className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+        style={containerStyles}
+    >
+        <DatePicker
+            id="datePicker-19"
+            label="DatePicker Label"
+            placeholder="Select date"
+            value={state.date}
+            onChange={date => setState({ date })}
+            icon={<FontAwesomeIcon icon={faCalendar} />}
+        />
+    </div>
+```
+
+# DatePicker select date
+##### This is an example use case for the DatePicker component
 
 ```js
 import React from 'react';
