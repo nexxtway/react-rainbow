@@ -115,12 +115,14 @@ describe('<ColorInput />', () => {
     it('should update the color sample on change', () => {
         const value = { hex: '#ccc', alpha: 1, isValid: true };
         const component = mount(<ColorInput value={value} />);
+        const div = component.find('ColorSample').find('div');
+        expect(getComputedStyle(div.getDOMNode()).getPropertyValue('background-color')).toBe(
+            'rgb(204, 204, 204)',
+        );
         component.find('input[type="text"]').simulate('change', { target: { value: '#fff' } });
-        expect(component.find('ColorSample').prop('value')).toEqual({
-            hex: '#fff',
-            alpha: 1,
-            isValid: true,
-        });
+        expect(getComputedStyle(div.getDOMNode()).getPropertyValue('background-color')).toBe(
+            'rgb(255, 255, 255)',
+        );
     });
 
     it('should not update the color sample on change when value is invalid', () => {
