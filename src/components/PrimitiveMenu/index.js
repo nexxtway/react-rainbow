@@ -1,5 +1,6 @@
 import React, { useRef, useImperativeHandle, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { useWindowScrolling } from '@rainbow-modules/hooks';
 import {
     useDisclosure,
     useOutsideClick,
@@ -42,6 +43,7 @@ const PrimitiveMenu = React.forwardRef((props, ref) => {
         isOpen,
     );
     useWindowResize(() => closeMenu(), isOpen);
+    useWindowScrolling(closeMenu, isOpen);
 
     useImperativeHandle(ref, () => ({
         focus: () => {
