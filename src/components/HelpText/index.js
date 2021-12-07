@@ -83,7 +83,7 @@ export default function HelpText(props) {
 
     const handleTooltipMouseUp = () => {
         isClickTooltip.current = false;
-        triggerRef.current.focus();
+        setTimeout(() => triggerRef.current.focus());
     };
 
     const handleTooltipMouseEnter = () => {
