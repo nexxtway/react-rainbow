@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useWindowScrolling } from '@rainbow-modules/hooks';
 import { useUniqueIdentifier, useDisclosure, useWindowResize } from '../../libs/hooks';
 import InternalOverlay from '../InternalOverlay';
 import RenderIf from '../RenderIf';
@@ -59,6 +60,8 @@ export default function HelpText(props) {
     }, [closeOverlay, isFocused, openOverlay]);
 
     useWindowResize(() => closeOverlay(), isOpen);
+
+    useWindowScrolling(closeOverlay, isOpen);
 
     const handleBlur = () => {
         if (!isClickTooltip.current) {
