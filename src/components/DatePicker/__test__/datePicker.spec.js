@@ -117,4 +117,8 @@ describe('<DatePicker/>', () => {
         const component = mount(<DatePicker value={value} />);
         expect(component.find('input').prop('value')).toBe('10/13/2019');
     });
+    it('should render the passed icon', () => {
+        const component = mount(<DatePicker icon={<span id="test" />} />);
+        expect(component.find('span#test').exists()).toBe(true);
+    });
 });

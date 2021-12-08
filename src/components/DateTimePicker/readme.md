@@ -1,4 +1,5 @@
-##### DateTimePicker base:
+# DateTimePicker base
+##### Use a `DateTimePicker` to allow users to select a date and time with a friendly user interface.
 
 ```js
 import React from 'react';
@@ -53,7 +54,8 @@ const cancelButtonLocalizedLabel = {
     </div>;
 ```
 
-##### DateTimePicker with date constraints:
+# DateTimePicker with date constraints
+##### Use `minDate` and `maxDate` to limit the available dates.
 
 ```js
 import React from 'react';
@@ -79,7 +81,8 @@ const initialState = { value: new Date() };
     </div>
 ```
 
-##### DateTimePicker with different date formats:
+# DateTimePicker with different date formats
+##### Use the `formatStyle` prop to customize the date format.
 
 ```js
 import React from 'react';
@@ -119,7 +122,8 @@ const initialState = { value: new Date() };
     </div>
 ```
 
-##### DateTimePicker with time in 24h format:
+# DateTimePicker with time in 24h format
+##### Pass the `use24` prop to show the time in 24H format.
 
 ```js
 import React from 'react';
@@ -145,7 +149,8 @@ const initialState = { value: new Date('2019-10-25 18:44') };
     </div>
 ```
 
-##### DateTimePicker required:
+# DateTimePicker required
+##### You can pass the `required` prop to mark the input as required.
 
 ```js
 import React from 'react';
@@ -169,7 +174,8 @@ const initialState = { value: new Date() };
     </div>
 ```
 
-##### DateTimePicker with error:
+# DateTimePicker with error
+##### Pass the `error` prop to indicate that there is an error in the input.
 
 ```js
 import React from 'react';
@@ -196,7 +202,8 @@ const initialState = { value: undefined };
     </div>
 ```
 
-##### DateTimePicker disabled:
+# DateTimePicker disabled
+##### Use the `disabled` prop to render the input as disabled.
 
 ```js
 import React from 'react';
@@ -214,7 +221,8 @@ const containerStyles = {
     </div>
 ```
 
-##### DateTimePicker readOnly:
+# DateTimePicker readOnly
+##### Pass the `readOnly` prop to prevent the user from modifying the value.
 
 ```js
 import React from 'react';
@@ -229,5 +237,30 @@ const containerStyles = {
         style={containerStyles}
     >
         <DateTimePicker readOnly value={new Date()} label="DateTimePicker Label" />
+    </div>
+```
+
+# DateTimePicker with custom icon
+##### It is possible to provide a custom icon for the input if you pass the `icon` prop.
+
+```js
+import React from 'react';
+import { DateTimePicker } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+
+const containerStyles = {
+    maxWidth: 400,
+};
+
+    <div
+        className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+        style={containerStyles}
+    >
+        <DateTimePicker
+            value={new Date()}
+            label="DateTimePicker Label"
+            icon={<FontAwesomeIcon icon={faCalendar} />}
+        />
     </div>
 ```
