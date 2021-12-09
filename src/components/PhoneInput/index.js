@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unused-prop-types */
-import React, { useRef, useImperativeHandle } from 'react';
+import React, { useRef, useImperativeHandle, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useOutsideClick } from '@rainbow-modules/hooks';
 import Label from '../Input/label';
@@ -8,6 +8,7 @@ import StyledContainer from '../Input/styled/container';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import AssistiveText from '../AssistiveText';
+import InternalOverlay from '../InternalOverlay';
 import {
     StyledInputContainer,
     StyledInput,
@@ -27,6 +28,7 @@ import {
     useHandleCountryChange,
 } from './hooks';
 import CountriesDropdown from './countriesDropdown';
+import positionResolver from './helpers/positionResolver';
 
 /**
  * phone input are used for freeform data entry.
@@ -61,6 +63,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
     const triggerRef = useRef();
     const searchRef = useRef();
     const inputRef = useRef();
+    const pickerRef = useRef();
     useImperativeHandle(ref, () => ({
         focus: () => {
             inputRef.current.focus();
@@ -81,18 +84,20 @@ const PhoneInput = React.forwardRef((props, ref) => {
     const countries = useCountries(countriesProps);
     const country = useCountry(value, countries);
     const { countryCode, isoCode, flagIcon } = country;
-    const [focusIndex, setFocusIndex] = useFocusIndex(
-        containerRef,
-        triggerRef,
-        searchRef,
-        inputRef,
-    );
+    const [focusIndex, setFocusIndex] = useFocusIndex(containerRef, triggerRef, inputRef);
+    console.log(focusIndex);
     useOutsideClick(
-        containerRef,
-        () => {
-            setFocusIndex(-1);
+        pickerRef,
+        event => {
+            if (
+                event.target !== triggerRef.current &&
+                !triggerRef.current.contains(event.target) &&
+                !pickerRef.current.contains(event.target)
+            ) {
+                setFocusIndex(-1);
+            }
         },
-        focusIndex > -1,
+        isOpen,
     );
 
     const handleFocus = useHandleFocus(focusIndex, onFocus, setFocusIndex, value);
@@ -202,16 +207,6 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 <RenderIf isTrue={icon}>
                     <StyledIconContainer error={error}>{icon}</StyledIconContainer>
                 </RenderIf>
-                <CountriesDropdown
-                    country={country}
-                    countries={countries}
-                    isOpen={isOpen}
-                    searchRef={searchRef}
-                    setFocusIndex={setFocusIndex}
-                    handleFocus={handleFocus}
-                    handleBlur={handleBlur}
-                    onCountryChange={handleCountryChange}
-                />
             </StyledInputContainer>
             <RenderIf isTrue={bottomHelpText}>
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
@@ -221,6 +216,23 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     {error}
                 </ErrorText>
             </RenderIf>
+            <InternalOverlay
+                isVisible={isOpen}
+                positionResolver={positionResolver}
+                triggerElementRef={() => containerRef}
+            >
+                <CountriesDropdown
+                    country={country}
+                    countries={countries}
+                    isOpen={isOpen}
+                    searchRef={searchRef}
+                    setFocusIndex={setFocusIndex}
+                    handleFocus={handleFocus}
+                    handleBlur={handleBlur}
+                    onCountryChange={handleCountryChange}
+                    ref={pickerRef}
+                />
+            </InternalOverlay>
         </StyledContainer>
     );
 });
