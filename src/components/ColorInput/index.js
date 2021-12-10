@@ -117,8 +117,8 @@ const ColorInput = props => {
 
     const onFocus = useCallback(() => focusInProps(value), [value, focusInProps]);
 
-    const handleFocus = useHandleFocus(focusIndex, onFocus, setFocusIndex, value);
-    const handleBlur = useHandleBlur(focusIndex, onBlur, value);
+    const handleFocus = useHandleFocus({ focusIndex, onFocus, setFocusIndex, value });
+    const handleBlur = useHandleBlur({ focusIndex, onBlur, value });
 
     const handleClick = event => {
         if (focusIndex === 1) {
