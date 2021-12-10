@@ -4,6 +4,21 @@ import PhoneInput from '..';
 import { StyledTrigger } from '../styled';
 
 describe('<PhoneInput />', () => {
+    beforeEach(() => {
+        Element.prototype.getClientRects = jest.fn(() => {
+            return [
+                {
+                    bottom: 0,
+                    height: 0,
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    width: 0,
+                },
+            ];
+        });
+    });
+
     it('should fire onChange with the right value', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(<PhoneInput label="Phone Number" onChange={onChangeMockFn} />);

@@ -24,16 +24,7 @@ import StyledEmptyMessage from '../../Lookup/options/styled/emptyMessage';
 
 const CountriesDropdown = memo(
     React.forwardRef((props, ref) => {
-        const {
-            country,
-            countries,
-            isOpen,
-            searchRef,
-            setFocusIndex,
-            onCountryChange,
-            handleFocus,
-            handleBlur,
-        } = props;
+        const { country, countries, isOpen, searchRef, onCountryChange, onKeyDown } = props;
 
         const scrollableRef = useRef();
         const [query, countriesFiltered, setQuery] = useFilterCountries(countries, country);
@@ -50,7 +41,6 @@ const CountriesDropdown = memo(
             scrollableRef,
             itemsRef,
             handleCountryChange,
-            setFocusIndex,
         );
         const {
             showScrollUp,
@@ -63,15 +53,13 @@ const CountriesDropdown = memo(
         const listHeight = countriesFiltered.length * 45;
 
         return (
-            <StyledDropdown isOpen={isOpen} ref={ref}>
+            <StyledDropdown isOpen={isOpen} onKeyDown={onKeyDown} ref={ref}>
                 <StyledSearchContainer>
                     <StyledSearch
                         ref={searchRef}
                         type="text"
                         value={query}
                         onChange={event => setQuery(event.target.value)}
-                        onFocus={event => handleFocus(event, 1)}
-                        onBlur={handleBlur}
                     />
                 </StyledSearchContainer>
                 <StyledScrollControls>
@@ -125,10 +113,8 @@ CountriesDropdown.propTypes = {
     country: PropTypes.object,
     searchRef: PropTypes.object,
     isOpen: PropTypes.bool,
-    setFocusIndex: PropTypes.func,
     onCountryChange: PropTypes.func,
-    handleFocus: PropTypes.func,
-    handleBlur: PropTypes.func,
+    onKeyDown: PropTypes.func,
 };
 
 CountriesDropdown.defaultProps = {
@@ -136,10 +122,8 @@ CountriesDropdown.defaultProps = {
     country: undefined,
     isOpen: false,
     searchRef: undefined,
-    setFocusIndex: () => {},
     onCountryChange: () => {},
-    handleFocus: () => {},
-    handleBlur: () => {},
+    onKeyDown: () => {},
 };
 
 export default CountriesDropdown;
