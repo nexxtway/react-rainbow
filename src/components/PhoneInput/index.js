@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unused-prop-types */
 import React, { useRef, useImperativeHandle, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useOutsideClick } from '@rainbow-modules/hooks';
+import { useOutsideClick, useScrollingIntent } from '@rainbow-modules/hooks';
 import Label from '../Input/label';
 import RenderIf from '../RenderIf';
 import StyledContainer from '../Input/styled/container';
@@ -85,7 +85,8 @@ const PhoneInput = React.forwardRef((props, ref) => {
     const country = useCountry(value, countries);
     const { countryCode, isoCode, flagIcon } = country;
     const [focusIndex, setFocusIndex] = useFocusIndex(containerRef, triggerRef, inputRef);
-    console.log(focusIndex);
+    const [isOpen, setIsOpen] = useState(false);
+
     useOutsideClick(
         pickerRef,
         event => {
@@ -94,17 +95,32 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 !triggerRef.current.contains(event.target) &&
                 !pickerRef.current.contains(event.target)
             ) {
+                setIsOpen(false);
                 setFocusIndex(-1);
             }
         },
         isOpen,
     );
+    useScrollingIntent({
+        callback: () => setIsOpen(false),
+        isListening: isOpen,
+        triggerElementRef: () => triggerRef,
+        threshold: 10,
+    });
 
     const handleFocus = useHandleFocus(focusIndex, onFocus, setFocusIndex, value);
     const handleBlur = useHandleBlur(focusIndex, onBlur, value);
 
-    const isOpen = focusIndex === 1;
-    const handleCountryChange = useHandleCountryChange(phone, onChange, setFocusIndex, isOpen);
+    const onCountryChange = event => {
+        setIsOpen(false);
+        onChange(event);
+    };
+    const handleCountryChange = useHandleCountryChange(
+        phone,
+        onCountryChange,
+        setFocusIndex,
+        isOpen,
+    );
 
     function handlePhoneChange(event) {
         const rawPhone = event.target.value;
@@ -117,6 +133,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
     }
 
     function handleClick() {
+        setIsOpen(true);
         if (focusIndex === 1) {
             setFocusIndex(0);
         } else {
@@ -220,6 +237,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 isVisible={isOpen}
                 positionResolver={positionResolver}
                 triggerElementRef={() => containerRef}
+                keepScrollEnabled
             >
                 <CountriesDropdown
                     country={country}

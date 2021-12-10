@@ -24,7 +24,6 @@ import StyledEmptyMessage from '../../Lookup/options/styled/emptyMessage';
 
 const CountriesDropdown = memo(
     React.forwardRef((props, ref) => {
-        console.log('rendering');
         const {
             country,
             countries,
