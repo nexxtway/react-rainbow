@@ -120,6 +120,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
     const handleBlur = event => {
         const { relatedTarget } = event;
         if (
+            relatedTarget !== null &&
             !containerRef.current.contains(relatedTarget) &&
             (!pickerRef.current || !pickerRef.current.contains(relatedTarget))
         ) {
