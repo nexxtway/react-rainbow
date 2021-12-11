@@ -7,9 +7,23 @@ import getTransform from './helpers/getTransform';
 const ZoomedImage = ({ src, alt, close, originalRect }) => {
     const [isCentered, setIsCentered] = useState(false);
 
+    const handleKeyDown = event => {
+        if (event.key === 'Escape') {
+            setIsCentered(false);
+            setTimeout(close, 300);
+        }
+    };
+
     useEffect(() => {
         setIsCentered(true);
     }, []);
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    });
 
     const handleClick = () => {
         setIsCentered(false);
@@ -17,7 +31,7 @@ const ZoomedImage = ({ src, alt, close, originalRect }) => {
     };
 
     return ReactDOM.createPortal(
-        <StyledImageContainer onClick={handleClick}>
+        <StyledImageContainer onClick={handleClick} onKeyDown={handleKeyDown}>
             <StyledBackdrop isCentered={isCentered} />
             <StyledCenteredImage
                 src={src}
