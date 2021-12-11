@@ -129,10 +129,14 @@ const PhoneInput = React.forwardRef((props, ref) => {
         }
     };
 
-    const onCountryChange = event => {
+    const onCountryChange = newCountry => {
         setIsOpen(false);
         inputRef.current.focus();
-        onChange(event);
+        onChange({
+            ...value,
+            isoCode: newCountry.isoCode,
+            countryCode: newCountry.countryCode,
+        });
     };
 
     function handlePhoneChange(event) {

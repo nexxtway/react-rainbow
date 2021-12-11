@@ -30,6 +30,29 @@ describe('<PhoneInput />', () => {
             phone: '12345678',
         });
     });
+    it('should fire onChange with the right value when country changes', () => {
+        const value = {
+            phone: '123456',
+            isoCode: 'us',
+            countryCode: '+1',
+        };
+        const onChangeMockFn = jest.fn();
+        const component = mount(
+            <PhoneInput label="Phone Number" onChange={onChangeMockFn} value={value} />,
+        );
+        component.find(StyledTrigger).simulate('click');
+        component.find(CountriesDropdown).prop('onCountryChange')({
+            flagIcon: {},
+            countryCode: '+213',
+            country: 'Algeria',
+            isoCode: 'dz',
+        });
+        expect(onChangeMockFn).toHaveBeenCalledWith({
+            countryCode: '+213',
+            isoCode: 'dz',
+            phone: '123456',
+        });
+    });
     it('should fire onFocus with the right value', () => {
         const onFocusMockFn = jest.fn();
         const component = mount(<PhoneInput label="Phone Number" onFocus={onFocusMockFn} />);
