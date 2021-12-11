@@ -137,11 +137,12 @@ const PhoneInput = React.forwardRef((props, ref) => {
     }
 
     function handleClick() {
-        setIsOpen(true);
+        if (isOpen) setIsOpen(false);
+        else setIsOpen(true);
     }
 
     const handleKeyDown = event => {
-        if (event.key === 'Tab') {
+        if (event.key === 'Tab' || event.key === 'Escape') {
             event.preventDefault();
             setIsOpen(false);
             inputRef.current.focus();

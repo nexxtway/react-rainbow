@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import PhoneInput from '..';
 import { StyledTrigger } from '../styled';
+import CountriesDropdown from '../countriesDropdown';
 
 describe('<PhoneInput />', () => {
     beforeEach(() => {
@@ -124,5 +125,29 @@ describe('<PhoneInput />', () => {
         const wrapper = mount(<PhoneInput countries={countries} onClick={onClickMockFn} />);
         wrapper.find(StyledTrigger).simulate('click');
         expect(onClickMockFn).toBeDefined();
+    });
+
+    it('should close the dropdown when is open and click on the trigger', () => {
+        const wrapper = mount(<PhoneInput />);
+        wrapper.find(StyledTrigger).simulate('click');
+        expect(wrapper.find('InternalOverlay').prop('isVisible')).toBe(true);
+        wrapper.find(StyledTrigger).simulate('click');
+        expect(wrapper.find('InternalOverlay').prop('isVisible')).toBe(false);
+    });
+
+    it('should close the dropdown when is open and press Escape key', () => {
+        const wrapper = mount(<PhoneInput />);
+        wrapper.find(StyledTrigger).simulate('click');
+        expect(wrapper.find('InternalOverlay').prop('isVisible')).toBe(true);
+        wrapper.find(CountriesDropdown).simulate('keyDown', { key: 'Escape' });
+        expect(wrapper.find('InternalOverlay').prop('isVisible')).toBe(false);
+    });
+
+    it('should close the dropdown when is open and press Tab key', () => {
+        const wrapper = mount(<PhoneInput />);
+        wrapper.find(StyledTrigger).simulate('click');
+        expect(wrapper.find('InternalOverlay').prop('isVisible')).toBe(true);
+        wrapper.find(CountriesDropdown).simulate('keyDown', { key: 'Tab' });
+        expect(wrapper.find('InternalOverlay').prop('isVisible')).toBe(false);
     });
 });
