@@ -31,7 +31,7 @@ const ZoomedImage = ({ src, alt, close, originalRect }) => {
     };
 
     return ReactDOM.createPortal(
-        <StyledImageContainer onClick={handleClick} onKeyDown={handleKeyDown}>
+        <StyledImageContainer onClick={handleClick}>
             <StyledBackdrop isCentered={isCentered} />
             <StyledCenteredImage
                 src={src}
