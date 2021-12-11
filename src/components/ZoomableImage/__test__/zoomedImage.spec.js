@@ -15,4 +15,14 @@ describe('<ZoomableImage />', () => {
         jest.runAllTimers();
         expect(close).toHaveBeenCalled();
     });
+
+    it('should close when Escape key is pressed', () => {
+        const close = jest.fn();
+        const component = mount(
+            <ZoomedImage src="https://via.placeholder.com/450" originalRect={{}} close={close} />,
+        );
+        component.find(StyledCenteredImage).simulate('keydown', { key: 'Escape' });
+        jest.runAllTimers();
+        expect(close).toHaveBeenCalled();
+    });
 });
