@@ -18,7 +18,13 @@ import {
     StyledCountryCode,
     StyledIconContainer,
 } from './styled';
-import { useUniqueIdentifier, useReduxForm, useErrorMessageId, useLabelId } from '../../libs/hooks';
+import {
+    useUniqueIdentifier,
+    useReduxForm,
+    useErrorMessageId,
+    useLabelId,
+    useWindowResize,
+} from '../../libs/hooks';
 import { useCountry, useCountries } from './hooks';
 import CountriesDropdown from './countriesDropdown';
 import positionResolver from './helpers/positionResolver';
@@ -99,6 +105,8 @@ const PhoneInput = React.forwardRef((props, ref) => {
         triggerElementRef: () => triggerRef,
         threshold: 10,
     });
+    useWindowResize(() => setIsOpen(false), isOpen);
+
     useEffect(() => {
         if (isOpen) searchRef.current.focus();
     }, [isOpen]);
