@@ -24,6 +24,10 @@ const StyledNumberInput = styled(Input)`
         appearance: none;
         margin: 0;
     }
+
+    input[type='number'] {
+        -moz-appearance: textfield;
+    }
 `;
 
 export default StyledNumberInput;
