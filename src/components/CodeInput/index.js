@@ -35,7 +35,6 @@ const CodeInput = React.forwardRef((props, ref) => {
         className,
         style,
     } = useReduxForm(props);
-
     const inputRef = useRef();
     const value = useValueState(valueProp, length);
     const focusedIndex = useFocusedIndexState(value, length, disabled, readOnly);
