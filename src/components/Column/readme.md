@@ -136,3 +136,69 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         </Table>
     </div>
 ```
+
+# Column header alignment
+##### It is possible to align the content of each column header using the `headerAlignment` prop. Valid values are `left` (default), `center` and `right`.
+
+```js
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+
+const data = [
+    {
+        name: 'Leandro Torres',
+        company: 'Nexxtway',
+        email: 'leandro@gmail.com',
+        status: 'verified',
+    },
+    {
+        name: 'Jose Torres',
+        company: 'Google',
+        email: 'jose@gmail.com',
+        status: 'verified',
+    },
+    {
+        name: 'Reinier',
+        company: 'Nexxtway',
+        email: 'reinier@gmail.com',
+        status: 'verified',
+    },
+    {
+        name: 'Sara',
+        company: 'Nexxtway',
+        email: 'sara@gmail.com',
+        status: 'verified',
+    },
+    {
+        name: 'Tahimi',
+        company: 'Nexxtway',
+        email: 'tahimi@gmail.com',
+        status: 'verified',
+    },
+];
+
+const badgeStyles = { color: '#1de9b6' };
+
+const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
+
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon
+                    variant="border-filled"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table data={data} keyField="name">
+            <Column header="Name" field="name" headerAlignment="center" />
+            <Column header="Status" field="status" component={StatusBadge} headerAlignment="center" />
+            <Column header="Company" field="company" headerAlignment="center" />
+            <Column header="Email" field="email" headerAlignment="center" />
+        </Table>
+    </div>
+```

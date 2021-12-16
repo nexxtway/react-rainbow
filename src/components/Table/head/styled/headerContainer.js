@@ -4,6 +4,7 @@ import { PADDING_X_SMALL } from '../../../../styles/paddings';
 const StyledHeaderContainer = styled.div`
     border: 1px transparent solid;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     height: 44px;
     padding: 0 ${PADDING_X_SMALL};
@@ -13,6 +14,9 @@ const StyledHeaderContainer = styled.div`
             justify-content: center;
             text-transform: capitalize;
         `};
+
+    ${props => props.headerAlignment === 'center' && 'justify-content: center;'}
+    ${props => props.headerAlignment === 'right' && 'justify-content: flex-end;'}
 `;
 
 export default StyledHeaderContainer;

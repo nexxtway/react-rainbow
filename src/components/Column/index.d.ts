@@ -2,6 +2,7 @@ import { ReactNode, ComponentType } from 'react';
 
 export interface ColumnProps<P> {
     header?: ReactNode;
+    headerAlignment?: 'left' | 'center' | 'right';
     component?: ComponentType<P>;
     field?: string;
     sortable?: boolean;

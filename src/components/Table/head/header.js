@@ -65,6 +65,7 @@ export default class Header extends Component {
             tableId,
             maxRowSelection,
             bulkSelection,
+            headerAlignment,
         } = this.props;
 
         const headerStyles = {
@@ -100,6 +101,7 @@ export default class Header extends Component {
                     <StyledHeaderContainer
                         className="rainbow-table_header-container"
                         role="presentation"
+                        headerAlignment={headerAlignment}
                         onClick={this.handleSort}
                     >
                         <StyledContent
@@ -146,6 +148,7 @@ Header.propTypes = {
     tableId: PropTypes.string.isRequired,
     maxRowSelection: PropTypes.number,
     bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
+    headerAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 Header.defaultProps = {
@@ -166,4 +169,5 @@ Header.defaultProps = {
     onDeselectAllRows: () => {},
     maxRowSelection: undefined,
     bulkSelection: 'none',
+    headerAlignment: 'left',
 };
