@@ -2,8 +2,24 @@ import React from 'react';
 import { mount } from 'enzyme';
 import PhoneInput from '..';
 import { StyledTrigger } from '../styled';
+import CountriesDropdown from '../countriesDropdown';
 
 describe('<PhoneInput />', () => {
+    beforeEach(() => {
+        Element.prototype.getClientRects = jest.fn(() => {
+            return [
+                {
+                    bottom: 0,
+                    height: 0,
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    width: 0,
+                },
+            ];
+        });
+    });
+
     it('should fire onChange with the right value', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(<PhoneInput label="Phone Number" onChange={onChangeMockFn} />);
@@ -12,6 +28,29 @@ describe('<PhoneInput />', () => {
             countryCode: '+1',
             isoCode: 'us',
             phone: '12345678',
+        });
+    });
+    it('should fire onChange with the right value when country changes', () => {
+        const value = {
+            phone: '123456',
+            isoCode: 'us',
+            countryCode: '+1',
+        };
+        const onChangeMockFn = jest.fn();
+        const component = mount(
+            <PhoneInput label="Phone Number" onChange={onChangeMockFn} value={value} />,
+        );
+        component.find(StyledTrigger).simulate('click');
+        component.find(CountriesDropdown).prop('onCountryChange')({
+            flagIcon: {},
+            countryCode: '+213',
+            country: 'Algeria',
+            isoCode: 'dz',
+        });
+        expect(onChangeMockFn).toHaveBeenCalledWith({
+            countryCode: '+213',
+            isoCode: 'dz',
+            phone: '123456',
         });
     });
     it('should fire onFocus with the right value', () => {
@@ -109,5 +148,29 @@ describe('<PhoneInput />', () => {
         const wrapper = mount(<PhoneInput countries={countries} onClick={onClickMockFn} />);
         wrapper.find(StyledTrigger).simulate('click');
         expect(onClickMockFn).toBeDefined();
+    });
+
+    it('should close the dropdown when is open and click on the trigger', () => {
+        const wrapper = mount(<PhoneInput />);
+        wrapper.find(StyledTrigger).simulate('click');
+        expect(wrapper.find('InternalOverlay').prop('isVisible')).toBe(true);
+        wrapper.find(StyledTrigger).simulate('click');
+        expect(wrapper.find('InternalOverlay').prop('isVisible')).toBe(false);
+    });
+
+    it('should close the dropdown when is open and press Escape key', () => {
+        const wrapper = mount(<PhoneInput />);
+        wrapper.find(StyledTrigger).simulate('click');
+        expect(wrapper.find('InternalOverlay').prop('isVisible')).toBe(true);
+        wrapper.find(CountriesDropdown).simulate('keyDown', { key: 'Escape' });
+        expect(wrapper.find('InternalOverlay').prop('isVisible')).toBe(false);
+    });
+
+    it('should close the dropdown when is open and press Tab key', () => {
+        const wrapper = mount(<PhoneInput />);
+        wrapper.find(StyledTrigger).simulate('click');
+        expect(wrapper.find('InternalOverlay').prop('isVisible')).toBe(true);
+        wrapper.find(CountriesDropdown).simulate('keyDown', { key: 'Tab' });
+        expect(wrapper.find('InternalOverlay').prop('isVisible')).toBe(false);
     });
 });

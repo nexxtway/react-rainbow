@@ -4,6 +4,10 @@ import { StyledCenteredImage } from '../styled';
 import ZoomedImage from '../zoomedImage';
 
 jest.useFakeTimers();
+const eventMap = {};
+document.addEventListener = jest.fn((event, callback) => {
+    eventMap[event] = callback;
+});
 
 describe('<ZoomableImage />', () => {
     it('should call close when clicked', () => {
@@ -18,10 +22,10 @@ describe('<ZoomableImage />', () => {
 
     it('should close when Escape key is pressed', () => {
         const close = jest.fn();
-        const component = mount(
+        mount(
             <ZoomedImage src="https://via.placeholder.com/450" originalRect={{}} close={close} />,
         );
-        component.find(StyledCenteredImage).simulate('keydown', { key: 'Escape' });
+        eventMap.keydown({ key: 'Escape' });
         jest.runAllTimers();
         expect(close).toHaveBeenCalled();
     });
