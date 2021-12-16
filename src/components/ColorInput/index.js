@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unused-prop-types */
 import React, { useState, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { useScrollingIntent } from '@rainbow-modules/hooks';
 import Label from '../Input/label';
 import StyledContainer from '../Input/styled/container';
 import InternalOverlay from '../InternalOverlay';
@@ -107,6 +108,12 @@ const ColorInput = props => {
         },
         isOpen,
     );
+    useScrollingIntent({
+        callback: () => setIsOpen(false),
+        isListening: isOpen,
+        triggerElementRef: () => triggerRef,
+        threshold: 5,
+    });
     useWindowResize(() => setIsOpen(false), isOpen);
 
     const onBlur = useCallback(() => {
