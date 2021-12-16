@@ -152,6 +152,7 @@ describe('getColumns', () => {
                 width: 75,
                 isEditable: false,
                 onChange: expect.any(Function),
+                headerAlignment: 'left',
             },
         ]);
     });
