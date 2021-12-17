@@ -15,7 +15,7 @@ const StyledHeaderContainer = styled.div`
             text-transform: capitalize;
         `};
     ${props => props.headerAlignment === 'center' && 'justify-content: center;'}
-    ${props => props.headerAlignment === 'right' && 'justify-content: flex-end;'}
+    ${props => props.headerAlignment === 'right' && 'flex-direction: row-reverse;'}
 `;
 
 export default StyledHeaderContainer;

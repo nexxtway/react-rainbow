@@ -111,7 +111,10 @@ export default class Header extends Component {
                             {content}
                         </StyledContent>
                         <RenderIf isTrue={sortable}>
-                            <SortArrowIcon direction={sortDirection} />
+                            <SortArrowIcon
+                                direction={sortDirection}
+                                headerAlignment={headerAlignment}
+                            />
                         </RenderIf>
                     </StyledHeaderContainer>
                     <ResizeBar
