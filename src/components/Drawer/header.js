@@ -13,12 +13,7 @@ export default function Header({ content, id }) {
         );
     }
 
-    return (
-        <>
-            {content}
-            <StyledDivider />
-        </>
-    );
+    return <>{content}</>;
 }
 
 Header.propTypes = {

@@ -19,6 +19,10 @@ Column.propTypes = {
      */
     header: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     /**
+     * The alignment of the text of the column header
+     */
+    headerAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /**
      * The component class or function that is going to be use to render
      * the content of each cell on this column. By default the cell is
      * going to render the computed value(`data[rowIndex][field]`) for each cell.
@@ -62,6 +66,7 @@ Column.propTypes = {
 
 Column.defaultProps = {
     header: undefined,
+    headerAlignment: 'left',
     component: undefined,
     field: undefined,
     sortable: false,

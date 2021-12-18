@@ -27,6 +27,7 @@ export { default as CheckboxToggle } from './components/CheckboxToggle';
 export { default as Chip } from './components/Chip';
 export { default as CodeInput } from './components/CodeInput';
 export { default as ColorPicker } from './components/ColorPicker';
+export { default as ColorInput } from './components/ColorInput';
 export { default as Column } from './components/Column';
 export { default as CounterInput } from './components/CounterInput';
 export { default as Dataset } from './components/Dataset';

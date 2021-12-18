@@ -1,3 +1,4 @@
+/* stylelint-disable property-no-vendor-prefix */
 import styled from 'styled-components';
 import Input from '../../../Input';
 import { CssInput } from '../styled';
@@ -23,6 +24,10 @@ const StyledNumberInput = styled(Input)`
     input::-webkit-outer-spin-button {
         appearance: none;
         margin: 0;
+    }
+
+    input[type='number'] {
+        -moz-appearance: textfield;
     }
 `;
 

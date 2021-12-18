@@ -28,6 +28,7 @@ export interface DatePickerProps extends BaseProps {
     locale?: string;
     selectionType?: 'single' | 'range';
     variant?: 'single' | 'double';
+    icon?: ReactNode;
 }
 
 export default function(props: DatePickerProps): JSX.Element | null;
