@@ -814,12 +814,6 @@ import React, { useState } from 'react';
 import { Tabset, Tab } from 'react-rainbow-components';
 import styled from 'styled-components';
 
-const StyledTabLabel = styled.div`
-    font-family: Lato;
-    font-size: 14px;
-    letter-spacing: 0.46px;
-`;
-
 const StyledContainer = styled.div`
     max-width: 600px;
 `;
@@ -933,9 +927,9 @@ function TabsetExample() {
         <div className="rainbow-flex rainbow-flex_column rainbow-justify_center rainbow-align_center">
             <StyledContainer className="rainbow-m-vertical_xx-large">
                 <Tabset variant="line" onSelect={handleOnSelect} activeTabName={selected}>
-                    <Tab name="companies" label={<StyledTabLabel>Companies</StyledTabLabel>} />
+                    <Tab name="companies" label="Companies" />
 
-                    <Tab name="customers" label={<StyledTabLabel>Customers</StyledTabLabel>} />
+                    <Tab name="customers" label="Customers" />
                 </Tabset>
                 {getTabContent(selected)}
             </StyledContainer>

@@ -9,6 +9,7 @@ export interface RatingProps extends BaseProps {
     labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     readOnly?: boolean;
+    required?: boolean;
 }
 
 declare const Rating: React.ComponentType<RatingProps>;

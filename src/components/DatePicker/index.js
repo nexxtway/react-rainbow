@@ -9,7 +9,8 @@ import DatePickerModal from '../DatePickerModal';
 import { StyledContainer, StyledInput } from './styled';
 
 /**
- * The DatePicker is used to select a specific day or a range of days on a calendar.
+ * The DatePicker is a component that is used to select a specific day or a range of days on a calendar. The selected day
+ * is indicated by a filled circle. The current day is indicated by a different color in the font and a dot under the day.
  * @category Form
  */
 const DatePicker = React.forwardRef((props, ref) => {
@@ -40,6 +41,7 @@ const DatePicker = React.forwardRef((props, ref) => {
         locale,
         variant,
         selectionType,
+        icon: iconInProps,
     } = useReduxForm(props);
 
     const currentLocale = useLocale(locale);
@@ -101,13 +103,15 @@ const DatePicker = React.forwardRef((props, ref) => {
         [openModal, readOnly],
     );
 
+    const icon = iconInProps || <CalendarIcon />;
+
     return (
         <StyledContainer id={id} className={className} style={style}>
             <StyledInput
                 ref={inputRef}
                 label={label}
                 placeholder={placeholder}
-                icon={<CalendarIcon />}
+                icon={icon}
                 iconPosition="right"
                 required={required}
                 value={formattedDate}
@@ -205,6 +209,8 @@ DatePicker.propTypes = {
     selectionType: PropTypes.oneOf(['single', 'range']),
     /** The calendar variant. Defaults to 'single' */
     variant: PropTypes.oneOf(['single', 'double']),
+    /** The icon to show if it is passed. It must be a svg icon or a font icon. Defaults to a Calendar icon */
+    icon: PropTypes.node,
 };
 
 DatePicker.defaultProps = {
@@ -234,6 +240,7 @@ DatePicker.defaultProps = {
     locale: undefined,
     selectionType: 'single',
     variant: 'single',
+    icon: undefined,
 };
 
 export default DatePicker;

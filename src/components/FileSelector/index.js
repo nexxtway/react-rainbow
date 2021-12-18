@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unused-prop-types */
-import React, { useState, useEffect, useRef, useImperativeHandle } from 'react';
+import React, { useState, useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import Label from '../Input/label';
 import RenderIf from '../RenderIf';
@@ -67,9 +67,13 @@ const FileSelector = React.forwardRef((props, ref) => {
         },
     }));
 
-    useEffect(() => {
-        inputRef.current.files = files;
-    }, [files]);
+    const clearInput = () => {
+        inputRef.current.value = '';
+        if (!/safari/i.test(navigator.userAgent)) {
+            inputRef.current.type = '';
+            inputRef.current.type = 'file';
+        }
+    };
 
     const handleDragEnter = () => {
         if (disabled) {
@@ -103,6 +107,7 @@ const FileSelector = React.forwardRef((props, ref) => {
 
         const list = new DataTransfer();
         setFiles(list.files);
+        clearInput();
         if (onChange) {
             onChange(list.files);
         }
@@ -119,7 +124,6 @@ const FileSelector = React.forwardRef((props, ref) => {
     };
 
     const text = getText(files, placeholder, value);
-
     const isFileSelected = files && files.length > 0;
     const isSingleFile = files && files.length === 1;
     const shouldRenderCancel = isFileSelected && !isDragOver && value !== null;

@@ -105,6 +105,7 @@ describe('<Table />', () => {
             {
                 field: 'name',
                 header: 'Name',
+                headerAlignment: 'left',
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
@@ -121,6 +122,7 @@ describe('<Table />', () => {
             {
                 field: 'name',
                 header: 'Name',
+                headerAlignment: 'left',
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
@@ -136,6 +138,7 @@ describe('<Table />', () => {
                 isFirstDataColumn: false,
                 isEditable: false,
                 onChange: expect.any(Function),
+                headerAlignment: 'left',
             },
         ]);
     });
@@ -154,6 +157,7 @@ describe('<Table />', () => {
             {
                 field: 'name',
                 header: 'Name',
+                headerAlignment: 'left',
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
@@ -163,7 +167,10 @@ describe('<Table />', () => {
             },
         ]);
         component.setProps({
-            children: [<Column field="name" header="Name" />, <Column field="number" sortable />],
+            children: [
+                <Column field="name" header="Name" headerAlignment="right" />,
+                <Column field="number" sortable />,
+            ],
         });
         component.update();
         expect(component.state().columns).toEqual([
@@ -175,6 +182,7 @@ describe('<Table />', () => {
             {
                 field: 'name',
                 header: 'Name',
+                headerAlignment: 'right',
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
@@ -190,6 +198,7 @@ describe('<Table />', () => {
                 isFirstDataColumn: false,
                 isEditable: false,
                 onChange: expect.any(Function),
+                headerAlignment: 'left',
             },
         ]);
     });
@@ -198,6 +207,7 @@ describe('<Table />', () => {
             {
                 field: 'name',
                 header: 'Name',
+                headerAlignment: 'left',
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
@@ -247,6 +257,7 @@ describe('<Table />', () => {
             {
                 field: 'name',
                 header: 'Name',
+                headerAlignment: 'left',
                 computedWidth: 50,
                 sortable: false,
                 type: 'text',
@@ -257,6 +268,7 @@ describe('<Table />', () => {
             {
                 field: 'number',
                 header: 'Number',
+                headerAlignment: 'left',
                 computedWidth: 50,
                 sortable: false,
                 type: 'text',
@@ -273,6 +285,7 @@ describe('<Table />', () => {
             {
                 field: 'name',
                 header: 'Name',
+                headerAlignment: 'left',
                 computedWidth: 182,
                 isResized: true,
                 sortable: false,
@@ -284,6 +297,7 @@ describe('<Table />', () => {
             {
                 field: 'number',
                 header: 'Number',
+                headerAlignment: 'left',
                 computedWidth: 50,
                 sortable: false,
                 type: 'text',

@@ -101,7 +101,11 @@ export default function Child(props) {
                         onClick={handleNodeExpand}
                     />
                     <RenderIf isTrue={hasCheckbox}>
-                        <InputCheckbox checked={isChecked} onChange={handleNodeCheck} />
+                        <InputCheckbox
+                            label={label}
+                            checked={isChecked}
+                            onChange={handleNodeCheck}
+                        />
                     </RenderIf>
                 </InnerContainer>
                 <RenderIf isTrue={hasIcon}>
@@ -112,7 +116,12 @@ export default function Child(props) {
                 </Label>
             </NodeContainer>
             <RenderIf isTrue={hasChildren && isExpanded}>
-                <ChildrenContainerUl icon={icon} isChecked={isChecked} role="group">
+                <ChildrenContainerUl
+                    icon={icon}
+                    isChecked={isChecked}
+                    ariaLevelValue={ariaLevelValue}
+                    role="group"
+                >
                     <TreeChildren
                         data={children}
                         onNodeCheck={onNodeCheck}

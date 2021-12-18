@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledThead = styled.thead`
+const StyledThead = attachThemeAttrs(styled.thead)`
     ${props =>
         props.theme.hideTableHeader &&
         `

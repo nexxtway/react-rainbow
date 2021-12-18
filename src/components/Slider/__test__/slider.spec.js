@@ -61,4 +61,13 @@ describe('<Slider />', () => {
         expect(component.find(ErrorText).exists()).toBe(false);
         expect(component.find('input').prop('aria-describedby')).toBe(undefined);
     });
+    it('should set the input as required when `required` prop is true', () => {
+        const component = mount(<Slider required />);
+        expect(component.find('input').prop('required')).toBe(true);
+    });
+
+    it('should render required asterisk when required prop is true', () => {
+        const component = mount(<Slider label="My label" required />);
+        expect(component.find('RequiredAsterisk').exists()).toBe(true);
+    });
 });

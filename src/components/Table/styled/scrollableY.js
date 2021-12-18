@@ -20,8 +20,22 @@ const StyledScrollableY = attachThemeAttrs(styled.div)`
     ${props =>
         props.theme.variant === 'listview' &&
         `
-            border-top: none;
             background-color: transparent;
+            border-top: none;
+        `};
+        
+    ${props =>
+        props.theme.variant === 'listview' &&
+        props.isEmpty &&
+        `
+            border-top: 1px solid ${props.palette.border.divider};
+        `};    
+    
+    ${props =>
+        props.theme.variant === 'listview' &&
+        props.isLoading &&
+        `
+            border-top: none;
         `};
 `;
 

@@ -15,6 +15,7 @@ const Rgba = React.forwardRef((_props, ref) => {
 
     const firstRef = useRef();
     const lastRef = useRef();
+    const isAlphaEmpty = useRef(false);
 
     useImperativeHandle(ref, () => ({
         focus: () => {
@@ -29,8 +30,9 @@ const Rgba = React.forwardRef((_props, ref) => {
     }));
 
     const handleAlphaChange = event => {
+        isAlphaEmpty.current = event.target.value === '';
         const value = parseInt(event.target.value, 10);
-        const newApha = isNaN(value) ? 1 : Math.max(0, Math.min(value, 100)) / 100;
+        const newApha = isNaN(value) ? 0 : Math.max(0, Math.min(value, 100)) / 100;
         rgba[3] = newApha;
 
         onChange({
@@ -51,7 +53,7 @@ const Rgba = React.forwardRef((_props, ref) => {
         const rgbaColor = recomposeColor({ type: 'rgba', values: rgba });
 
         onChange({
-            hex: rgbaToHex(rgbaColor),
+            hex: `#${rgbaToHex(rgbaColor)}`,
             rgba,
             hsv: decomposeColor(rgbToHsv(rgbaColor)).values,
         });
@@ -59,7 +61,7 @@ const Rgba = React.forwardRef((_props, ref) => {
 
     // eslint-disable-next-line id-length
     const [r, g, b, a] = rgba;
-    const alpha = Math.round(a * 100);
+    const alpha = isAlphaEmpty.current ? '' : Math.round(a * 100);
 
     return (
         <StyledFlexContainer>

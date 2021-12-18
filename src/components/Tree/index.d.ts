@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import { BaseProps } from '../types';
 
 interface selectValue {
@@ -26,4 +26,8 @@ export interface TreeProps extends BaseProps {
     ariaLabel?: string;
 }
 
-export default function(props: TreeProps): JSX.Element | null;
+declare function Tree(props: TreeProps): ReactElement<any, any> | null;
+declare namespace Tree {
+    export const getNode: (tree: DataItem[], nodePath: number[]) => DataItem;
+}
+export default Tree;

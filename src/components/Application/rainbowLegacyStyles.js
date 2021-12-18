@@ -1,64 +1,70 @@
-import LatoBlackEot from './fonts/Lato-Black/Lato-Black.eot';
-import LatoBlackSvg from './fonts/Lato-Black/Lato-Black.svg';
-import LatoBlackTtf from './fonts/Lato-Black/Lato-Black.ttf';
-import LatoBlackWoff from './fonts/Lato-Black/Lato-Black.woff';
-import LatoBlackWoff2 from './fonts/Lato-Black/Lato-Black.woff2';
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
+import { isServer } from '../../libs/utils';
 
-import LatoBlackItalicEot from './fonts/Lato-BlackItalic/Lato-BlackItalic.eot';
-import LatoBlackItalicSvg from './fonts/Lato-BlackItalic/Lato-BlackItalic.svg';
-import LatoBlackItalicTtf from './fonts/Lato-BlackItalic/Lato-BlackItalic.ttf';
-import LatoBlackItalicWoff from './fonts/Lato-BlackItalic/Lato-BlackItalic.woff';
-import LatoBlackItalicWoff2 from './fonts/Lato-BlackItalic/Lato-BlackItalic.woff2';
+const fontsCDN = 'https://fonts.react-rainbow.io';
 
-import LatoBoldEot from './fonts/Lato-Bold/Lato-Bold.eot';
-import LatoBoldSvg from './fonts/Lato-Bold/Lato-Bold.svg';
-import LatoBoldTtf from './fonts/Lato-Bold/Lato-Bold.ttf';
-import LatoBoldWoff from './fonts/Lato-Bold/Lato-Bold.woff';
-import LatoBoldWoff2 from './fonts/Lato-Bold/Lato-Bold.woff2';
+const LatoBlackEot = `${fontsCDN}/Lato-Black/Lato-Black.eot`;
+const LatoBlackSvg = `${fontsCDN}/Lato-Black/Lato-Black.svg`;
+const LatoBlackTtf = `${fontsCDN}/Lato-Black/Lato-Black.ttf`;
+const LatoBlackWoff = `${fontsCDN}/Lato-Black/Lato-Black.woff`;
+const LatoBlackWoff2 = `${fontsCDN}/Lato-Black/Lato-Black.woff2`;
 
-import LatoBoldItalicEot from './fonts/Lato-BoldItalic/Lato-BoldItalic.eot';
-import LatoBoldItalicSvg from './fonts/Lato-BoldItalic/Lato-BoldItalic.svg';
-import LatoBoldItalicTtf from './fonts/Lato-BoldItalic/Lato-BoldItalic.ttf';
-import LatoBoldItalicWoff from './fonts/Lato-BoldItalic/Lato-BoldItalic.woff';
-import LatoBoldItalicWoff2 from './fonts/Lato-BoldItalic/Lato-BoldItalic.woff2';
+const LatoBlackItalicEot = `${fontsCDN}/Lato-BlackItalic/Lato-BlackItalic.eot`;
+const LatoBlackItalicSvg = `${fontsCDN}/Lato-BlackItalic/Lato-BlackItalic.svg`;
+const LatoBlackItalicTtf = `${fontsCDN}/Lato-BlackItalic/Lato-BlackItalic.ttf`;
+const LatoBlackItalicWoff = `${fontsCDN}/Lato-BlackItalic/Lato-BlackItalic.woff`;
+const LatoBlackItalicWoff2 = `${fontsCDN}/Lato-BlackItalic/Lato-BlackItalic.woff2`;
 
-import LatoHairlineEot from './fonts/Lato-Hairline/Lato-Hairline.eot';
-import LatoHairlineSvg from './fonts/Lato-Hairline/Lato-Hairline.svg';
-import LatoHairlineTtf from './fonts/Lato-Hairline/Lato-Hairline.ttf';
-import LatoHairlineWoff from './fonts/Lato-Hairline/Lato-Hairline.woff';
-import LatoHairlineWoff2 from './fonts/Lato-Hairline/Lato-Hairline.woff2';
+const LatoBoldEot = `${fontsCDN}/Lato-Bold/Lato-Bold.eot`;
+const LatoBoldSvg = `${fontsCDN}/Lato-Bold/Lato-Bold.svg`;
+const LatoBoldTtf = `${fontsCDN}/Lato-Bold/Lato-Bold.ttf`;
+const LatoBoldWoff = `${fontsCDN}/Lato-Bold/Lato-Bold.woff`;
+const LatoBoldWoff2 = `${fontsCDN}/Lato-Bold/Lato-Bold.woff2`;
 
-import LatoHairlineItalicEot from './fonts/Lato-HairlineItalic/Lato-HairlineItalic.eot';
-import LatoHairlineItalicSvg from './fonts/Lato-HairlineItalic/Lato-HairlineItalic.svg';
-import LatoHairlineItalicTtf from './fonts/Lato-HairlineItalic/Lato-HairlineItalic.ttf';
-import LatoHairlineItalicWoff from './fonts/Lato-HairlineItalic/Lato-HairlineItalic.woff';
-import LatoHairlineItalicWoff2 from './fonts/Lato-HairlineItalic/Lato-HairlineItalic.woff2';
+const LatoBoldItalicEot = `${fontsCDN}/Lato-BoldItalic/Lato-BoldItalic.eot`;
+const LatoBoldItalicSvg = `${fontsCDN}/Lato-BoldItalic/Lato-BoldItalic.svg`;
+const LatoBoldItalicTtf = `${fontsCDN}/Lato-BoldItalic/Lato-BoldItalic.ttf`;
+const LatoBoldItalicWoff = `${fontsCDN}/Lato-BoldItalic/Lato-BoldItalic.woff`;
+const LatoBoldItalicWoff2 = `${fontsCDN}/Lato-BoldItalic/Lato-BoldItalic.woff2`;
 
-import LatoItalicEot from './fonts/Lato-Italic/Lato-Italic.eot';
-import LatoItalicSvg from './fonts/Lato-Italic/Lato-Italic.svg';
-import LatoItalicTtf from './fonts/Lato-Italic/Lato-Italic.ttf';
-import LatoItalicWoff from './fonts/Lato-Italic/Lato-Italic.woff';
-import LatoItalicWoff2 from './fonts/Lato-Italic/Lato-Italic.woff2';
+const LatoHairlineEot = `${fontsCDN}/Lato-Hairline/Lato-Hairline.eot`;
+const LatoHairlineSvg = `${fontsCDN}/Lato-Hairline/Lato-Hairline.svg`;
+const LatoHairlineTtf = `${fontsCDN}/Lato-Hairline/Lato-Hairline.ttf`;
+const LatoHairlineWoff = `${fontsCDN}/Lato-Hairline/Lato-Hairline.woff`;
+const LatoHairlineWoff2 = `${fontsCDN}/Lato-Hairline/Lato-Hairline.woff2`;
 
-import LatoLightEot from './fonts/Lato-Light/Lato-Light.eot';
-import LatoLightSvg from './fonts/Lato-Light/Lato-Light.svg';
-import LatoLightTtf from './fonts/Lato-Light/Lato-Light.ttf';
-import LatoLightWoff from './fonts/Lato-Light/Lato-Light.woff';
-import LatoLightWoff2 from './fonts/Lato-Light/Lato-Light.woff2';
+const LatoHairlineItalicEot = `${fontsCDN}/Lato-HairlineItalic/Lato-HairlineItalic.eot`;
+const LatoHairlineItalicSvg = `${fontsCDN}/Lato-HairlineItalic/Lato-HairlineItalic.svg`;
+const LatoHairlineItalicTtf = `${fontsCDN}/Lato-HairlineItalic/Lato-HairlineItalic.ttf`;
+const LatoHairlineItalicWoff = `${fontsCDN}/Lato-HairlineItalic/Lato-HairlineItalic.woff`;
+const LatoHairlineItalicWoff2 = `${fontsCDN}/Lato-HairlineItalic/Lato-HairlineItalic.woff2`;
 
-import LatoLightItalicEot from './fonts/Lato-LightItalic/Lato-LightItalic.eot';
-import LatoLightItalicSvg from './fonts/Lato-LightItalic/Lato-LightItalic.svg';
-import LatoLightItalicTtf from './fonts/Lato-LightItalic/Lato-LightItalic.ttf';
-import LatoLightItalicWoff from './fonts/Lato-LightItalic/Lato-LightItalic.woff';
-import LatoLightItalicWoff2 from './fonts/Lato-LightItalic/Lato-LightItalic.woff2';
+const LatoItalicEot = `${fontsCDN}/Lato-Italic/Lato-Italic.eot`;
+const LatoItalicSvg = `${fontsCDN}/Lato-Italic/Lato-Italic.svg`;
+const LatoItalicTtf = `${fontsCDN}/Lato-Italic/Lato-Italic.ttf`;
+const LatoItalicWoff = `${fontsCDN}/Lato-Italic/Lato-Italic.woff`;
+const LatoItalicWoff2 = `${fontsCDN}/Lato-Italic/Lato-Italic.woff2`;
 
-import LatoRegularEot from './fonts/Lato-Regular/Lato-Regular.eot';
-import LatoRegularSvg from './fonts/Lato-Regular/Lato-Regular.svg';
-import LatoRegularTtf from './fonts/Lato-Regular/Lato-Regular.ttf';
-import LatoRegularWoff from './fonts/Lato-Regular/Lato-Regular.woff';
-import LatoRegularWoff2 from './fonts/Lato-Regular/Lato-Regular.woff2';
+const LatoLightEot = `${fontsCDN}/Lato-Light/Lato-Light.eot`;
+const LatoLightSvg = `${fontsCDN}/Lato-Light/Lato-Light.svg`;
+const LatoLightTtf = `${fontsCDN}/Lato-Light/Lato-Light.ttf`;
+const LatoLightWoff = `${fontsCDN}/Lato-Light/Lato-Light.woff`;
+const LatoLightWoff2 = `${fontsCDN}/Lato-Light/Lato-Light.woff2`;
 
-export default `
+const LatoLightItalicEot = `${fontsCDN}/Lato-LightItalic/Lato-LightItalic.eot`;
+const LatoLightItalicSvg = `${fontsCDN}/Lato-LightItalic/Lato-LightItalic.svg`;
+const LatoLightItalicTtf = `${fontsCDN}/Lato-LightItalic/Lato-LightItalic.ttf`;
+const LatoLightItalicWoff = `${fontsCDN}/Lato-LightItalic/Lato-LightItalic.woff`;
+const LatoLightItalicWoff2 = `${fontsCDN}/Lato-LightItalic/Lato-LightItalic.woff2`;
+
+const LatoRegularEot = `${fontsCDN}/Lato-Regular/Lato-Regular.eot`;
+const LatoRegularSvg = `${fontsCDN}/Lato-Regular/Lato-Regular.svg`;
+const LatoRegularTtf = `${fontsCDN}/Lato-Regular/Lato-Regular.ttf`;
+const LatoRegularWoff = `${fontsCDN}/Lato-Regular/Lato-Regular.woff`;
+const LatoRegularWoff2 = `${fontsCDN}/Lato-Regular/Lato-Regular.woff2`;
+
+const legacyStyles = `
 @font-face {
     font-family: 'Lato Black';
     src: url(${LatoBlackEot});
@@ -130,7 +136,7 @@ export default `
     font-style: normal; }
   
   html {
-    font-family: "Lato", Arial, sans-serif;
+    font-family: 'Lato', Arial, sans-serif;
     font-size: 100%;
     line-height: 1.5;
     background: #fafaf9;
@@ -1010,5 +1016,13 @@ export default `
     font-size: 0.875rem; }
   
   .rainbow-font-size-text_large {
-    font-size: 1rem; }  
+    font-size: 1rem; }
 `;
+
+const RainbowLegacyStyles = isServer
+    ? createGlobalStyle`
+          ${legacyStyles}
+      `
+    : () => <style>{legacyStyles}</style>;
+
+export default RainbowLegacyStyles;

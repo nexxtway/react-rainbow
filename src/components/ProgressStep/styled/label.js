@@ -8,8 +8,13 @@ const StyledLabel = attachThemeAttrs(styled.span)`
     color: ${props => props.palette.text.label};
     margin-top: ${MARGIN_XX_SMALL};
     position: absolute;
-    display: inline-table;
+    display: inline;
     top: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center;
     ${props =>
         props.stepState === 'Active' &&
         `

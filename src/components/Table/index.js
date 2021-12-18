@@ -423,7 +423,7 @@ export default class Table extends Component {
         const maxColWidth = Number(maxColumnWidth) || 5000;
 
         const isEmpty = data.length === 0;
-        const theme = { variant, hideTableHeader };
+        const theme = { variant, hideTableHeader, isEmpty };
 
         if (keyField && typeof keyField === 'string') {
             return (

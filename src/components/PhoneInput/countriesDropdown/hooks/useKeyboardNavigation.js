@@ -1,13 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
-import {
-    UP_KEY,
-    DOWN_KEY,
-    HOME_KEY,
-    END_KEY,
-    ENTER_KEY,
-    ESCAPE_KEY,
-    TAB_KEY,
-} from '../../../../libs/constants';
+import { UP_KEY, DOWN_KEY, HOME_KEY, END_KEY, ENTER_KEY } from '../../../../libs/constants';
 import getNewIndex from '../helpers/getNewIndex';
 import isOptionVisible from '../../../InternalDropdown/helpers/isOptionVisible';
 
@@ -18,7 +10,6 @@ export default function useKeyboardNavigation(
     scrollableRef,
     itemsRef,
     handleCountryChange,
-    setFocusIndex,
 ) {
     const activeIndex = useRef(0);
     const { length } = list;
@@ -52,11 +43,7 @@ export default function useKeyboardNavigation(
     );
     const handleKeyDown = useCallback(
         event => {
-            if (
-                [UP_KEY, DOWN_KEY, ENTER_KEY, HOME_KEY, END_KEY, ESCAPE_KEY, TAB_KEY].indexOf(
-                    event.keyCode,
-                ) !== -1
-            ) {
+            if ([UP_KEY, DOWN_KEY, ENTER_KEY, HOME_KEY, END_KEY].indexOf(event.keyCode) !== -1) {
                 event.preventDefault();
                 const { current: active } = activeIndex;
                 const keyHandlerMap = {
@@ -65,13 +52,11 @@ export default function useKeyboardNavigation(
                     [HOME_KEY]: () => moveToOption(0),
                     [END_KEY]: () => moveToOption(length - 1),
                     [ENTER_KEY]: () => list[active] && handleCountryChange(list[active]),
-                    [ESCAPE_KEY]: () => setFocusIndex(0),
-                    [TAB_KEY]: () => setFocusIndex(2),
                 };
                 keyHandlerMap[event.keyCode]();
             }
         },
-        [handleCountryChange, length, list, moveToOption, setFocusIndex],
+        [handleCountryChange, length, list, moveToOption],
     );
 
     useEffect(() => {

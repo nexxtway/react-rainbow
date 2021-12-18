@@ -3,6 +3,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import MenuItem from '../../../MenuItem';
 import ActionsCell from '../actionsCell';
+import ButtonIcon from '../../../ButtonIcon';
 
 const columnChildren = [<MenuItem />, <MenuItem />];
 
@@ -31,7 +32,7 @@ describe('<ActionsCell />', () => {
         const component = mount(
             <ActionsCell columnChildren={columnChildren} rowsLength={3} rowIndex={1} />,
         );
-        component.find('ButtonIcon').simulate('click');
+        component.find(ButtonIcon).simulate('click');
         expect(component.find(MenuItem).length).toBe(2);
     });
     it('should render only one menu item', () => {
@@ -39,7 +40,7 @@ describe('<ActionsCell />', () => {
         const component = mount(
             <ActionsCell columnChildren={singleColumnChild} rowsLength={3} rowIndex={1} />,
         );
-        component.find('ButtonIcon').simulate('click');
+        component.find(ButtonIcon).simulate('click');
         expect(component.find(MenuItem).length).toBe(1);
     });
     it('should set the menuAlignment to "right" in ButtonMenu component', () => {
@@ -84,7 +85,7 @@ describe('<ActionsCell />', () => {
                 rowData={rowData}
             />,
         );
-        component.find('ButtonIcon').simulate('click');
+        component.find(ButtonIcon).simulate('click');
         component
             .find(MenuItem)
             .at(0)

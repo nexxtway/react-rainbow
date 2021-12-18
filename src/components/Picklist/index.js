@@ -17,6 +17,7 @@ import StyledError from '../Input/styled/errorText';
 import StyledIndicator from './styled/indicator';
 import InternalDropdown from '../InternalDropdown';
 import InternalOverlay from '../InternalOverlay';
+import WindowResize from '../../libs/WindowResize';
 
 function positionResolver(opts) {
     const { trigger, viewport, content } = opts;
@@ -56,8 +57,10 @@ class Picklist extends Component {
         this.handleContainerClick = this.handleContainerClick.bind(this);
         this.closeAndFocusInput = this.closeAndFocusInput.bind(this);
         this.handleWindowScroll = this.handleWindowScroll.bind(this);
+        this.handleWindowResize = this.handleWindowResize.bind(this);
         this.outsideClick = new OutsideClick();
         this.windowScrolling = new WindowScrolling();
+        this.windowResize = new WindowResize();
         this.activeChildren = [];
         this.state = {
             isOpen: false,
@@ -76,15 +79,18 @@ class Picklist extends Component {
             this.outsideClick.startListening(this.containerRef.current, (_, event) => {
                 if (this.eventTarget !== event.target) {
                     this.closeMenu();
+                    this.handleBlur();
                 }
             });
             this.windowScrolling.startListening(this.handleWindowScroll);
+            this.windowResize.startListening(this.handleWindowResize);
         }
     }
 
     componentWillUnmount() {
         this.outsideClick.stopListening();
         this.windowScrolling.stopListening();
+        this.windowResize.stopListening();
     }
 
     getErrorMessageId() {
@@ -114,20 +120,28 @@ class Picklist extends Component {
         this.closeMenu();
     }
 
+    handleWindowResize() {
+        this.closeMenu();
+    }
+
     closeAndFocusInput() {
         this.closeMenu();
         this.focus();
     }
 
     openMenu() {
-        this.setState({
-            isOpen: true,
-        });
+        const { readOnly } = this.props;
+        if (!readOnly) {
+            this.setState({
+                isOpen: true,
+            });
+        }
     }
 
     closeMenu() {
         this.outsideClick.stopListening();
         this.windowScrolling.stopListening();
+        this.windowResize.stopListening();
         this.setState({
             isOpen: false,
         });
@@ -150,6 +164,8 @@ class Picklist extends Component {
     }
 
     handleBlur() {
+        const { isOpen } = this.state;
+        if (isOpen) return;
         const { onBlur, value } = this.props;
         const eventValue = value || null;
         onBlur(eventValue);
@@ -213,6 +229,8 @@ class Picklist extends Component {
             name,
             value: valueInProps,
             enableSearch,
+            onSearch,
+            debounce,
         } = this.props;
         const { label: valueLabel, icon } = getNormalizeValue(valueInProps);
         const value = valueLabel || '';
@@ -239,6 +257,7 @@ class Picklist extends Component {
                         required={required}
                         inputId={this.inputId}
                         readOnly={isReadOnly}
+                        variant={variant}
                     />
                 </RenderIf>
 
@@ -291,6 +310,8 @@ class Picklist extends Component {
                             value={valueInProps}
                             onChange={this.handleChange}
                             enableSearch={enableSearch}
+                            onSearch={onSearch}
+                            debounce={debounce}
                             ref={this.dropdownRef}
                         >
                             {children}
@@ -358,10 +379,14 @@ Picklist.propTypes = {
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
     /** The variant changes the appearance of the Picklist. Accepted variants include default,
-     * and shaded. This value defaults to default. */
-    variant: PropTypes.oneOf(['default', 'shaded']),
+     * shaded, bare and inverse. This value defaults to default. */
+    variant: PropTypes.oneOf(['default', 'shaded', 'bare', 'inverse']),
     /** If is set to true, then a search input to filter is showed. */
     enableSearch: PropTypes.bool,
+    /** Action triggered when search query changes */
+    onSearch: PropTypes.func,
+    /** When true, the onSearch callback will be debounced */
+    debounce: PropTypes.bool,
 };
 
 Picklist.defaultProps = {
@@ -387,6 +412,8 @@ Picklist.defaultProps = {
     style: undefined,
     variant: 'default',
     enableSearch: false,
+    onSearch: undefined,
+    debounce: false,
 };
 
 export default withReduxForm(Picklist);

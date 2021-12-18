@@ -161,6 +161,8 @@ import {
     Select,
     ButtonMenu,
     MenuItem,
+    Picklist,
+    Option,
 } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
@@ -407,6 +409,18 @@ function EditContactForm(props) {
                         component={Input}
                         placeholder="Your skills"
                     />
+                    <Field
+                        id="building-input"
+                        className="rainbow-m-top_large"
+                        name="building"
+                        component={Picklist}
+                        placeholder="Your building"
+                    >
+                        <Option name="header" label="Your Buildings" variant="header" />
+                        <Option name="option 1" label="Experimental Building" />
+                        <Option name="option 2" label="Empire State" />
+                        <Option name="option 3" label="Central Park" />
+                    </Field>
                 </form>
             </div>
         </div>

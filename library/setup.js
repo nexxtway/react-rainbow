@@ -81,6 +81,9 @@ import ArrowDownIcon from './exampleComponents/Icons/arrowDown';
 import PictureIcon from './exampleComponents/Icons/picture';
 import Coin from './exampleComponents/Icons/coin';
 import InfoIcon from './exampleComponents/Icons/info';
+import OneIcon from './exampleComponents/Icons/one';
+import ListIcon from './exampleComponents/Icons/list';
+import TextIcon from './exampleComponents/Icons/text';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -166,3 +169,10 @@ global.ArrowDownIcon = ArrowDownIcon;
 global.PictureIcon = PictureIcon;
 global.Coin = Coin;
 global.InfoIcon = InfoIcon;
+global.OneIcon = OneIcon;
+global.ListIcon = ListIcon;
+global.TextIcon = TextIcon;
+global.LIBRARY_ALGOLIA_APP_ID = process.env.REACT_APP_ALGOLIA_APP_ID;
+global.LIBRARY_ALGOLIA_SEARCH_KEY = process.env.REACT_APP_ALGOLIA_SEARCH_KEY;
+global.LIBRARY_ALGOLIA_SEARCH_COMPONENTS_INDEX =
+    process.env.REACT_APP_ALGOLIA_SEARCH_COMPONENTS_INDEX;

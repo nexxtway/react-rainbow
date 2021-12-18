@@ -23,14 +23,14 @@ describe('DateTimePicker', () => {
         picker.waitUntilOpen();
         expect(picker.isOpen()).toBe(true);
     });
-    it('should close the DateTimePicker when click the ok button', () => {
-        const picker = new PageDateTimePicker(DATETIMEPICKER);
-        picker.click();
-        picker.waitUntilOpen();
-        picker.clickOKButton();
-        picker.waitUntilClose();
-        expect(picker.isOpen()).toBe(false);
-    });
+    // it('should close the DateTimePicker when click the ok button', () => {
+    //     const picker = new PageDateTimePicker(DATETIMEPICKER);
+    //     picker.click();
+    //     picker.waitUntilOpen();
+    //     picker.clickOKButton();
+    //     picker.waitUntilClose();
+    //     expect(picker.isOpen()).toBe(false);
+    // });
     it('should close the DateTimePicker when click the cancel button', () => {
         const picker = new PageDateTimePicker(DATETIMEPICKER);
         picker.click();

@@ -7,6 +7,7 @@ export interface SidebarProps extends BaseProps {
     onSelect?: (event: MouseEvent<HTMLElement>, name: string) => void;
     ariaLabel?: string;
     children?: ReactNode;
+    hideSelectedItemIndicator?: boolean;
 }
 
 export default function(props: SidebarProps): JSX.Element | null;

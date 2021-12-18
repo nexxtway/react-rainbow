@@ -2,12 +2,12 @@
 import React, { useRef, useEffect, useState, useImperativeHandle, useContext } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from '../../libs/hocs/withReduxForm';
+import Input from '../Input';
 import DateTimeIcon from './icon';
 import DateTimePickerModal from './pickerModal';
 import formatDateTime from './helpers/formatDateTime';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import StyledContainer from './styled/container';
-import StyledInput from './styled/input';
 import { AppContext } from '../Application/context';
 import { getLocale } from '../../libs/utils';
 
@@ -44,6 +44,7 @@ const DateTimePicker = React.forwardRef((props, ref) => {
         bottomHelpText,
         hour24,
         locale: localeProp,
+        icon: iconInProps,
     } = props;
 
     const inputRef = useRef();
@@ -103,13 +104,15 @@ const DateTimePicker = React.forwardRef((props, ref) => {
         onChange(...args);
     };
 
+    const icon = iconInProps || <DateTimeIcon />;
+
     return (
         <StyledContainer id={id} className={className} style={style}>
-            <StyledInput
+            <Input
                 ref={inputRef}
                 label={label}
                 placeholder={placeholder}
-                icon={<DateTimeIcon />}
+                icon={icon}
                 iconPosition="right"
                 required={required}
                 value={formattedDatetime}
@@ -209,6 +212,8 @@ DateTimePicker.propTypes = {
     locale: PropTypes.string,
     /** Specifies that the DateTimePicker will be in a 24hr format. This value defaults to false. */
     hour24: PropTypes.bool,
+    /** The icon to show if it is passed. It must be a svg icon or a font icon. Defaults to a DateTime icon */
+    icon: PropTypes.node,
 };
 
 DateTimePicker.defaultProps = {
@@ -239,6 +244,7 @@ DateTimePicker.defaultProps = {
     isCentered: false,
     locale: undefined,
     hour24: false,
+    icon: undefined,
 };
 
 export default withReduxForm(DateTimePicker);

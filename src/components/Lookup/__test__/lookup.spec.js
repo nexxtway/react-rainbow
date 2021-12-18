@@ -1,8 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import ButtonIcon from '../../ButtonIcon';
 import Lookup from '..';
 import StyledTextError from '../../Input/styled/errorText';
 import StyledInput from '../styled/input';
+
+jest.mock('../../InternalOverlay', () =>
+    jest.fn(props => <div data-id="internal-dropdown">{props.isVisible && props.children}</div>),
+);
 
 describe('<Lookup />', () => {
     it('should set an id in the input element', () => {
@@ -27,6 +32,7 @@ describe('<Lookup />', () => {
             labelAlignment: 'center',
             hideLabel: false,
             inputId: expect.any(String),
+            variant: 'default',
         });
     });
     it('should render the Options menu when there are options and the input is focused', () => {
@@ -143,7 +149,7 @@ describe('<Lookup />', () => {
         );
         component
             .find('SelectedValue')
-            .find('ButtonIcon')
+            .find(ButtonIcon)
             .simulate('click');
         expect(onChangeMockFn).toHaveBeenCalledWith(null);
         expect(onSearchMockFn).toHaveBeenCalledWith('');
@@ -160,7 +166,7 @@ describe('<Lookup />', () => {
         expect(component.find('input').prop('value')).toBe('london');
         component
             .find('RightElement')
-            .find('ButtonIcon')
+            .find(ButtonIcon)
             .simulate('click');
         expect(component.find('input').prop('value')).toBe('');
         expect(onSearchMockFn.mock.calls[0][0]).toBe('london');

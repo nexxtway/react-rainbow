@@ -1,19 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import useMarkdownToReact from './hooks/useMarkdownToReact';
+import StyledContainer from './styled';
+import { defaultRenderer, inlineRenderer } from './renderers';
 
 /**
- * MarkdownOutput preview markdown text in web browser.
+ * MarkdownOutput renders Markdown text in browser.
  * It is based on highlight.js, to customize the code blocks you can use highlight.js themes.
  * @category Form
  */
 export default function MarkdownOutput(props) {
-    const { id, className, style, value } = props;
-    const result = useMarkdownToReact(value);
+    const { id, className, style, value, variant } = props;
+    const renderer = variant === 'inline' ? inlineRenderer : defaultRenderer;
+    const result = useMarkdownToReact(value, renderer);
     return (
-        <div id={id} className={className} style={style}>
+        <StyledContainer id={id} className={className} style={style} variant={variant}>
             {result}
-        </div>
+        </StyledContainer>
     );
 }
 
@@ -26,6 +29,8 @@ MarkdownOutput.propTypes = {
     style: PropTypes.object,
     /** The markdown string to parse.  */
     value: PropTypes.string,
+    /** The variant of the output. Possible values are `default` and `inline` */
+    variant: PropTypes.oneOf(['default', 'inline']),
 };
 
 MarkdownOutput.defaultProps = {
@@ -33,4 +38,5 @@ MarkdownOutput.defaultProps = {
     className: undefined,
     style: undefined,
     value: '',
+    variant: 'default',
 };

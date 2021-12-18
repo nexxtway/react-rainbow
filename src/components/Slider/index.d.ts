@@ -12,10 +12,11 @@ export interface SliderProps extends BaseProps {
     step?: string | number;
     error?: ReactNode;
     disabled?: boolean;
-    onChange?: (event: ChangeEvent<HTMLElement>) => void;
-    onClick?: (event: MouseEvent<HTMLElement>) => void;
-    onFocus?: (event: FocusEvent<HTMLElement>) => void;
-    onBlur?: (event: FocusEvent<HTMLElement>) => void;
+    required?: boolean;
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+    onClick?: (event: MouseEvent<HTMLInputElement>) => void;
+    onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
 }
 
 declare const Slider: ComponentType<SliderProps>;

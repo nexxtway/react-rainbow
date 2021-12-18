@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import WeeklyCalendar from '..';
+import ButtonIcon from '../../ButtonIcon';
 
 describe('WeeklyCalendar', () => {
     it('should render the component when pass falsy values', () => {
@@ -19,14 +20,14 @@ describe('WeeklyCalendar', () => {
         const value = new Date('04/10/2020');
         const minDate = new Date('04/06/2020');
         const component = mount(<WeeklyCalendar currentWeek={value} minDate={minDate} />);
-        const prevWeekButton = component.find('ButtonIcon').at(0);
+        const prevWeekButton = component.find(ButtonIcon).at(0);
         expect(prevWeekButton.prop('disabled')).toBe(true);
     });
     it('should set to disable the next week button when maxDate is less than next week date', () => {
         const value = new Date('04/08/2020');
         const maxDate = new Date('04/11/2020');
         const component = mount(<WeeklyCalendar currentWeek={value} maxDate={maxDate} />);
-        const prevWeekButton = component.find('ButtonIcon').at(1);
+        const prevWeekButton = component.find(ButtonIcon).at(1);
         expect(prevWeekButton.prop('disabled')).toBe(true);
     });
     it('should render the right week when value is updated', async done => {
@@ -48,7 +49,7 @@ describe('WeeklyCalendar', () => {
         const component = mount(
             <WeeklyCalendar currentWeek={week} onWeekChange={onWeekChangeMockFn} />,
         );
-        const prevWeekButton = component.find('ButtonIcon').at(0);
+        const prevWeekButton = component.find(ButtonIcon).at(0);
         prevWeekButton.simulate('click');
         expect(onWeekChangeMockFn).toHaveBeenCalledWith(prevWeek);
     });
@@ -59,7 +60,7 @@ describe('WeeklyCalendar', () => {
         const component = mount(
             <WeeklyCalendar currentWeek={week} onWeekChange={onWeekChangeMockFn} />,
         );
-        const nextWeekButton = component.find('ButtonIcon').at(1);
+        const nextWeekButton = component.find(ButtonIcon).at(1);
         nextWeekButton.simulate('click');
         expect(onWeekChangeMockFn).toHaveBeenCalledWith(nextWeek);
     });

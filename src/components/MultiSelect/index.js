@@ -48,6 +48,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
         variant,
         chipVariant,
         isBare,
+        isLoading,
         value,
         onChange,
         onFocus,
@@ -266,6 +267,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                         <StyledDropdown
                             id={dropdownId}
                             value={value}
+                            isLoading={isLoading}
                             onChange={handleChange}
                             ref={dropdownRef}
                             width={dropdownWidth}
@@ -313,6 +315,8 @@ MultiSelect.propTypes = {
     required: PropTypes.bool,
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
+    /** If is set to true, then is showed a loading symbol. */
+    isLoading: PropTypes.bool,
     /** Specifies that an input field is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
@@ -354,6 +358,7 @@ MultiSelect.defaultProps = {
     required: false,
     disabled: false,
     readOnly: false,
+    isLoading: false,
     tabIndex: 0,
     variant: 'default',
     chipVariant: 'base',

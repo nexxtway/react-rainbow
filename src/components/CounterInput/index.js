@@ -72,13 +72,17 @@ const CounterInput = React.forwardRef((props, ref) => {
     const handlePlusMouseDown = event => {
         event.preventDefault();
         inputRef.current.focus();
-        onChange(getNormalizedValue(getValue(Number(value)) + step));
+        const val = getValue(Number(value));
+        if (val < min) return onChange(getNormalizedValue(min));
+        return onChange(getNormalizedValue(val + step));
     };
 
     const handleMinusMouseDown = event => {
         event.preventDefault();
         inputRef.current.focus();
-        onChange(getNormalizedValue(getValue(Number(value)) - step));
+        const val = getValue(Number(value));
+        if (val > max) return onChange(getNormalizedValue(max));
+        return onChange(getNormalizedValue(val - step));
     };
 
     const handleEvents = (event, callback) => {
@@ -168,7 +172,7 @@ CounterInput.propTypes = {
     /** The name of the input. */
     name: PropTypes.string,
     /** Specifies the value of an input element. */
-    value: PropTypes.number,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** The action triggered when a value attribute changes. */

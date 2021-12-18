@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import ButtonIcon from '../../ButtonIcon';
 import CalendarHeader from '../calendarHeader';
 
 const mockFn = jest.fn();
@@ -24,7 +25,7 @@ describe('CalendarHeader', () => {
     it('should call updateFocusedItem with correct value when click on prev month button element', () => {
         const component = mount(<CalendarHeader />);
         component
-            .find('ButtonIcon')
+            .find(ButtonIcon)
             .at(0)
             .simulate('click');
         expect(mockFn).toHaveBeenCalledWith(0);
@@ -32,7 +33,7 @@ describe('CalendarHeader', () => {
     it('should call updateFocusedItem with correct value when click on next month button element', () => {
         const component = mount(<CalendarHeader />);
         component
-            .find('ButtonIcon')
+            .find(ButtonIcon)
             .at(1)
             .simulate('click');
         expect(mockFn).toHaveBeenCalledWith(1);
@@ -48,7 +49,7 @@ describe('CalendarHeader', () => {
     it('should call updateFocusedItem with correct value prev month button element is focused', () => {
         const component = mount(<CalendarHeader />);
         component
-            .find('ButtonIcon')
+            .find(ButtonIcon)
             .at(0)
             .simulate('focus');
         expect(mockFn).toHaveBeenCalledWith(0);
@@ -56,7 +57,7 @@ describe('CalendarHeader', () => {
     it('should call updateFocusedItem with correct value next month button element is focused', () => {
         const component = mount(<CalendarHeader />);
         component
-            .find('ButtonIcon')
+            .find(ButtonIcon)
             .at(1)
             .simulate('focus');
         expect(mockFn).toHaveBeenCalledWith(1);

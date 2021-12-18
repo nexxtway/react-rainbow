@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RatingItems from './ratingItems';
 import { uniqueId } from '../../libs/utils';
+import HelpText from '../Input/styled/helpText';
+import ErrorText from '../Input/styled/errorText';
 import RenderIf from '../RenderIf';
-import StyledFieldset from './styled/fieldset';
-import StyledLabel from './styled/label';
+import { StyledFieldset, StyledLabel, StyledItemsContainer } from './styled';
 
 /** @category Form */
 export default class Rating extends Component {
@@ -16,6 +17,7 @@ export default class Rating extends Component {
         this.starGroupNameId = uniqueId('starGroup');
         this.handleOnHover = this.handleOnHover.bind(this);
         this.handleOnLeave = this.handleOnLeave.bind(this);
+        this.errorMessageId = uniqueId('error-message');
     }
 
     getName() {
@@ -24,6 +26,14 @@ export default class Rating extends Component {
             return name;
         }
         return this.starGroupNameId;
+    }
+
+    getErrorMessageId() {
+        const { error } = this.props;
+        if (error) {
+            return this.errorMessageId;
+        }
+        return undefined;
     }
 
     handleOnHover(event) {
@@ -48,6 +58,9 @@ export default class Rating extends Component {
             labelAlignment,
             hideLabel,
             readOnly,
+            required,
+            bottomHelpText,
+            error,
         } = this.props;
         const { value } = this.state;
         return (
@@ -63,14 +76,27 @@ export default class Rating extends Component {
                         labelAlignment={labelAlignment}
                         hideLabel={hideLabel}
                         forwardedAs="legend"
+                        required={required}
                     />
                 </RenderIf>
-                <RatingItems
-                    onChange={onChange}
-                    value={value}
-                    name={this.getName()}
-                    readOnly={readOnly}
-                />
+                <StyledItemsContainer labelAlignment={labelAlignment}>
+                    <RatingItems
+                        onChange={onChange}
+                        value={value}
+                        name={this.getName()}
+                        readOnly={readOnly}
+                        required={required}
+                        describedBy={this.getErrorMessageId()}
+                    />
+                </StyledItemsContainer>
+                <RenderIf isTrue={bottomHelpText}>
+                    <HelpText alignSelf="center">{bottomHelpText}</HelpText>
+                </RenderIf>
+                <RenderIf isTrue={error}>
+                    <ErrorText alignSelf="center" id={this.getErrorMessageId()}>
+                        {error}
+                    </ErrorText>
+                </RenderIf>
             </StyledFieldset>
         );
     }
@@ -96,6 +122,13 @@ Rating.propTypes = {
     style: PropTypes.object,
     /** Specifies that the Rating is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
+    /** Specifies that an input field must be filled out before submitting the form.
+     * This value defaults to false. */
+    required: PropTypes.bool,
+    /** Shows the help message below the Input. */
+    bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Specifies the error that the input contains. */
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 Rating.defaultProps = {
@@ -108,4 +141,7 @@ Rating.defaultProps = {
     className: undefined,
     style: undefined,
     readOnly: false,
+    required: false,
+    bottomHelpText: undefined,
+    error: undefined,
 };

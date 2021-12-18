@@ -9,6 +9,12 @@ const StyledSortArrowIcon = styled.svg`
         `
             transform: rotate(-180deg);
         `};
+    ${props =>
+        props.headerAlignment === 'right' &&
+        `
+        margin-left: 0;
+        margin-right: 12px;
+    `}
 `;
 
 export default StyledSortArrowIcon;

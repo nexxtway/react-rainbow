@@ -88,7 +88,7 @@ describe('useMarkdownToReact', () => {
             useMarkdownToReact('[Link](http://www.example.com/ "A link")'),
         );
         expect(ReactDOMServer.renderToString(result.current)).toMatch(
-            /<a href="http:\/\/www.example.com\/" title="A link">Link<\/a>/i,
+            /<a href="http:\/\/www.example.com\/" title="A link" class="(.*)">Link<\/a>/i,
         );
     });
 });

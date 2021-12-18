@@ -86,7 +86,7 @@ const StyledContainer = attachThemeAttrs(styled.section).attrs(props => {
         props.isOpen &&
         `
             animation: drawer-slide-${props.slideFrom}-in 0.2s linear;
-            transform: translateX(0%);
+            transform: none;
             opacity: 1;
         `};
     ${props =>
@@ -103,12 +103,12 @@ const StyledContainer = attachThemeAttrs(styled.section).attrs(props => {
             transform:  translateX(-100%);
         }
         100% {
-            transform: translateX(0);
+            transform: none;
         }
     }
     @keyframes drawer-slide-left-out {
         0% {
-            transform: translateX(0);
+            transform: none;
         }
         100% {
             transform:  translateX(-100%);
@@ -121,12 +121,12 @@ const StyledContainer = attachThemeAttrs(styled.section).attrs(props => {
             transform:  translateX(100%);
         }
         100% {
-            transform: translateX(0);
+            transform: none;
         }
     }
     @keyframes drawer-slide-right-out {
         0% {
-            transform: translateX(0%);
+            transform: none;
         }
         100% {
             transform:  translateX(100%);

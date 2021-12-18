@@ -4,6 +4,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledLabelContainer = attachThemeAttrs(styled.label)`
     display: inline-flex;
+    flex-direction: row;
     align-items: center;
     box-sizing: border-box;
 
@@ -114,6 +115,21 @@ const StyledLabelContainer = attachThemeAttrs(styled.label)`
             box-sizing: border-box;
         }
     }
+
+    ${props =>
+        props.labelAlignment === 'left' &&
+        `
+            flex-direction: row-reverse;
+        `};
+
+    ${props =>
+        props.labelAlignment === 'top' &&
+        `
+            flex-direction: column-reverse;
+            align-items: start;
+        `};
+    
+
 `;
 
 export default StyledLabelContainer;

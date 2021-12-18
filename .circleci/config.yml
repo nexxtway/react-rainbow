@@ -3,11 +3,29 @@ version: 2.1
 orbs:
     browser-tools: circleci/browser-tools@1.1.0
 
-defaults: &defaults
-    working_directory: ~/repo
-    docker:
-        - image: cimg/node:12.19.0-browsers
-    resource_class: medium+
+references:
+    defaults: &defaults
+        working_directory: ~/repo
+        docker:
+            - image: cimg/node:12.19.0-browsers
+        resource_class: medium+
+
+    create_env_file: &create_env_file
+        run:
+            name: Create .env file
+            command: |
+                touch .env;
+                echo REACT_APP_GA_ID=$REACT_APP_GA_ID >> .env;
+                echo REACT_APP_GOOGLE_MAPS_APIKEY=$REACT_APP_GOOGLE_MAPS_APIKEY >> .env;
+                echo REACT_APP_RECAPTCHA_APIKEY=$REACT_APP_RECAPTCHA_APIKEY >> .env;
+                echo REACT_APP_CARBON_ADS_SRC=$REACT_APP_CARBON_ADS_SRC >> .env;
+                echo REACT_APP_STRIPE_APIKEY=$REACT_APP_STRIPE_APIKEY >> .env;
+                echo REACT_APP_ALGOLIA_APP_ID=$REACT_APP_ALGOLIA_APP_ID >> .env;
+                echo REACT_APP_ALGOLIA_SEARCH_KEY=$REACT_APP_ALGOLIA_SEARCH_KEY >> .env;
+                echo REACT_APP_ALGOLIA_SEARCH_COMPONENTS_INDEX=$REACT_APP_ALGOLIA_SEARCH_COMPONENTS_INDEX >> .env;
+                echo REACT_APP_ALGOLIA_SEARCH_EXAMPLES_INDEX=$REACT_APP_ALGOLIA_SEARCH_EXAMPLES_INDEX >> .env;
+                echo REACT_APP_ALGOLIA_SEARCH_MEDIUMS_INDEX=$REACT_APP_ALGOLIA_SEARCH_MEDIUMS_INDEX >> .env;
+                echo REACT_APP_ALGOLIA_SEARCH_YOUTUBE_INDEX=$REACT_APP_ALGOLIA_SEARCH_YOUTUBE_INDEX >> .env;
 
 jobs:
     build_and_test:
@@ -32,12 +50,10 @@ jobs:
 
             - run:
                   name: run test
-                  command: |
-                      if [ -n "$COVERALLS_REPO_TOKEN" ]; then
-                          yarn test --ci --maxWorkers=2 --coverage --coverageReporters=text-lcov | ./node_modules/coveralls/bin/coveralls.js
-                      else
-                          yarn test --ci --maxWorkers=2 
-                      fi
+                  command: yarn test --ci --maxWorkers=2 --coverage --coverageReporters=text-lcov
+            - run:
+                  name: Upload Coveralls
+                  command: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true
             - store_test_results:
                   path: test-results/jest-junit-results
 
@@ -49,12 +65,12 @@ jobs:
 
         steps:
             - checkout
-
             - restore_cache:
                   keys:
                       - v2-dependencies-{{ checksum "yarn.lock" }}
                       - v2-dependencies-
 
+            - *create_env_file
             - run: yarn install
 
             - browser-tools/install-chrome:
@@ -109,19 +125,7 @@ jobs:
                       - v2-dependencies-{{ checksum "yarn.lock" }}
                       - v2-dependencies-
 
-            - run:
-                  name: Create .env file
-                  command: |
-                      touch .env;
-                      echo REACT_APP_GA_ID=$REACT_APP_GA_ID >> .env;
-                      echo REACT_APP_GOOGLE_MAPS_APIKEY=$REACT_APP_GOOGLE_MAPS_APIKEY >> .env;
-                      echo REACT_APP_RECAPTCHA_APIKEY=$REACT_APP_RECAPTCHA_APIKEY >> .env;
-                      echo REACT_APP_CARBON_ADS_SRC=$REACT_APP_CARBON_ADS_SRC >> .env;
-                      echo REACT_APP_STRIPE_APIKEY=$REACT_APP_STRIPE_APIKEY >> .env;
-                      echo REACT_APP_ALGOLIA_APP_ID=$REACT_APP_ALGOLIA_APP_ID >> .env;
-                      echo REACT_APP_ALGOLIA_SEARCH_KEY=$REACT_APP_ALGOLIA_SEARCH_KEY >> .env;
-                      echo REACT_APP_ALGOLIA_SEARCH_INDEX=$REACT_APP_ALGOLIA_SEARCH_INDEX >> .env;
-
+            - *create_env_file
             - run: yarn install
             - run: yarn deploy:library --token=$FIREBASE_TOKEN
 

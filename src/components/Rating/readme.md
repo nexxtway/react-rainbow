@@ -372,3 +372,154 @@ class DetailRating extends React.Component {
         </div>
     </div>
 ```
+
+##### Rating with custom color
+
+```js
+import React from 'react';
+import { Card, ButtonGroup, ButtonIcon, Rating, RainbowThemeContainer } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+
+
+const theme = {
+    rainbow: {
+        palette: {
+            warning: '#ffdc7f',
+        },
+    },
+};
+
+const cardStyles = {
+    width: 300,
+};
+
+const imageStyles = {
+    borderTopLeftRadius: '0.875rem',
+    borderTopRightRadius: '0.875rem',
+    height: 170,
+    width: '100%',
+    backgroundImage: 'url(images/illustrations/Illustration-rainbow-4.svg)',
+    backgroundSize: 'cover',
+};
+
+const StyledHeader = styled.h3.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
+
+const StyledText = styled.h3.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.label};
+`;
+
+class SimpleRating extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: '3',
+        };
+        this.handleOnChange = this.handleOnChange.bind(this);
+    }
+
+    handleOnChange(event) {
+        return this.setState({ value: event.target.value });
+    }
+
+    render() {
+        const { value } = this.state;
+        return (
+            <RainbowThemeContainer theme={theme}>
+                <Rating value={value} onChange={this.handleOnChange} />
+            </RainbowThemeContainer>
+        )
+    }
+}
+
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faPlus} />} />
+                <ButtonIcon
+                    variant="border-filled"
+                    disabled
+                    icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                />
+            </ButtonGroup>
+        </GlobalHeader>
+        <div className="rainbow-align-content_center">
+            <Card
+                style={cardStyles}
+                footer={
+                    <div>
+                        <div className="rainbow-flex rainbow-flex_column rainbow-align_start rainbow-m-bottom_x-small">
+                            <StyledHeader className="rainbow-font-size-heading_medium">
+                                Rainbow
+                            </StyledHeader>
+                            <StyledText>
+                                Give us your rate about how you like this…
+                            </StyledText>
+                        </div>
+                        <SimpleRating />
+                    </div>
+                }
+            >
+                <div style={imageStyles} />
+            </Card>
+        </div>
+    </div>
+
+```
+
+##### Rating options
+
+```js
+import React from 'react';
+import { Rating } from 'react-rainbow-components';
+
+const RatingExample = () => {
+    return (
+        <div className="rainbow-flex rainbow-justify_space-around rainbow-m-bottom_x-small">
+            <div className="rainbow-m-around_small">
+                <Rating value={3} label="Rating required" required />
+            </div>
+            <div className="rainbow-m-around_small">
+                <Rating value={3} label="Rating with error" error="This field is required." />
+            </div>
+            <div className="rainbow-m-around_small">
+                <Rating value={3} label="Rating with help text" bottomHelpText="Rate this" />
+            </div>
+        </div>
+    )
+}
+
+    <RatingExample />
+```
+
+##### Rating with label alignment
+
+```js
+import React from 'react';
+import { Rating } from 'react-rainbow-components';
+
+const RatingExample = () => {
+    return (
+        <div className="rainbow-flex rainbow-justify_space-around rainbow-m-bottom_x-small">
+            <div className="rainbow-m-around_small">
+                <Rating value={3} label="Align left" labelAlignment="left" />
+            </div>
+            <div className="rainbow-m-around_small">
+                <Rating value={3} label="Align center" labelAlignment="center" />
+            </div>
+            <div className="rainbow-m-around_small">
+                <Rating value={3} label="Align right" labelAlignment="right" />
+            </div>
+        </div>
+    )
+}
+
+    <RatingExample />
+```

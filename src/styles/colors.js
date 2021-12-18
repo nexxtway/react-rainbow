@@ -24,6 +24,7 @@ export const COLOR_GRAY_4 = '#3F4954';
 export const COLOR_GRAY_TRANSPARENT_1 = 'rgba(244, 246, 249, 0.4)';
 export const COLOR_GRAY_TRANSPARENT_2 = 'rgba(82, 95, 127, 0.3)';
 export const COLOR_GRAY_TRANSPARENT_3 = 'rgba(82, 95, 127, 0.15)';
+export const COLOR_GRAY_DARK_TRANSPARENT = 'rgba(42, 48, 57, 0.2)';
 
 // text colors
 export const COLOR_DARK_1 = '#2A3039';
@@ -32,6 +33,8 @@ export const COLOR_DARK_1 = '#2A3039';
 // TODO: only warning const should remain
 export const COLOR_YELLOW_1 = '#fc0';
 export const COLOR_WARNING = COLOR_YELLOW_1;
+export const COLOR_WARNING_DARK = '#FFB900';
+export const COLOR_WARNING_LIGHT = '#FFDC7F';
 
 // purple colors
 export const COLOR_PURPLE = '#663398';

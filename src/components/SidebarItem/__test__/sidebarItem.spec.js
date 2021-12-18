@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faUser } from '@fortawesome/free-solid-svg-icons';
 import Sidebar from '../../Sidebar';
 import SidebarItem from '../index';
+import InternalTooltip from '../../InternalTooltip';
 
 describe('<SidebarItem when href is passed />', () => {
     it('should have aria-current of page if isSelected', () => {
@@ -97,5 +98,21 @@ describe('<SidebarItem when href is not passed />', () => {
         const sidebarLink = component.find('button');
         sidebarLink.simulate('click');
         expect(component.find(FontAwesomeIcon).prop('icon')).toBe(faUser);
+    });
+});
+
+describe('<SidebarItem />', () => {
+    it('should render a tooltip when passed', () => {
+        const component = mount(
+            <Sidebar>
+                <SidebarItem
+                    icon={<FontAwesomeIcon icon={faClock} />}
+                    name="sidebaritem-test-2"
+                    label="sidebaritem-test-2"
+                    tooltip="sidebaritem-test-2"
+                />
+            </Sidebar>,
+        );
+        expect(component.find(InternalTooltip).exists()).toBe(true);
     });
 });

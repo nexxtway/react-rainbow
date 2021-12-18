@@ -28,6 +28,24 @@ describe('<CounterInput />', () => {
         expect(onChangeMockFn).toHaveBeenCalledWith(1);
     });
 
+    it('should fire onChange `min` as argument when click in plusButton', () => {
+        const onChangeMockFn = jest.fn();
+        const component = mount(<CounterInput onChange={onChangeMockFn} value={5} min={10} />);
+        const button = component.find('button');
+        const plusButton = button.at(1);
+        plusButton.simulate('mouseDown');
+        expect(onChangeMockFn).toHaveBeenCalledWith(10);
+    });
+
+    it('should fire onChange `max` as argument when click in minusButton', () => {
+        const onChangeMockFn = jest.fn();
+        const component = mount(<CounterInput onChange={onChangeMockFn} value={101} max={100} />);
+        const button = component.find('button');
+        const plusButton = button.at(0);
+        plusButton.simulate('mouseDown');
+        expect(onChangeMockFn).toHaveBeenCalledWith(100);
+    });
+
     it('should fire onChange with -2 as argument when click in minusButton and step = 2', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(<CounterInput onChange={onChangeMockFn} step={2} />);

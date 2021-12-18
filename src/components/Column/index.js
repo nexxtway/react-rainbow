@@ -19,6 +19,10 @@ Column.propTypes = {
      */
     header: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     /**
+     * The alignment of the text of the column header
+     */
+    headerAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /**
      * The component class or function that is going to be use to render
      * the content of each cell on this column. By default the cell is
      * going to render the computed value(`data[rowIndex][field]`) for each cell.
@@ -48,15 +52,21 @@ Column.propTypes = {
      */
     defaultWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The data type to be used for data formatting in cell. */
-    type: PropTypes.oneOf(['text', 'action']),
+    type: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf(['text', 'action'])]),
     /** A boolean that specifies whether a column is editable or not. Its default value is false.  */
-    isEditable: PropTypes.bool,
+    isEditable: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
+    /** Determines the alignment of the text in each column cell.
+     * Available options are: left, right, center.
+     * This value defaults to `left` when the Table uses the `default` variant and defaults to `center` when uses the `listview` variant.
+     */
+    cellAlignment: PropTypes.oneOf(['left', 'right', 'center']),
 };
 
 Column.defaultProps = {
     header: undefined,
+    headerAlignment: 'left',
     component: undefined,
     field: undefined,
     sortable: false,
@@ -65,4 +75,5 @@ Column.defaultProps = {
     type: 'text',
     isEditable: false,
     onChange: () => {},
+    cellAlignment: undefined,
 };

@@ -269,6 +269,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
                 background-color: transparent;
             }
         `};
+
     ${props => {
         const inverseBackgroundColor = replaceAlpha(colorToRgba(props.inverse.active), 0.1);
 

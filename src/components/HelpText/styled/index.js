@@ -44,7 +44,7 @@ export const StyledTooltip = attachThemeAttrs(styled.div)`
 export const StyledTitle = attachThemeAttrs(styled.div).attrs(props => {
     const { palette, variant } = props;
     const variantColorMap = {
-        info: palette.brand.main,
+        info: palette.text.header,
         error: palette.error.main,
         warning: palette.warning.main,
         question: palette.text.header,

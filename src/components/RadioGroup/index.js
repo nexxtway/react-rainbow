@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from '../../libs/hocs/withReduxForm';
-import RadioItmes from './radioItems';
+import RadioItems from './radioItems';
 import RenderIf from '../RenderIf';
 import { uniqueId } from '../../libs/utils';
 import StyledFieldset from './styled/fieldset';
@@ -56,7 +56,7 @@ class RadioGroup extends Component {
                     />
                 </RenderIf>
                 <StyledContentContainer orientation={orientation}>
-                    <RadioItmes
+                    <RadioItems
                         value={value}
                         onChange={onChange}
                         options={options}
@@ -95,6 +95,7 @@ RadioGroup.propTypes = {
             label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
             value: PropTypes.string,
             disabled: PropTypes.bool,
+            description: PropTypes.string,
         }),
     ),
     /** Specifies that an radio group must be filled out before submitting the form. */

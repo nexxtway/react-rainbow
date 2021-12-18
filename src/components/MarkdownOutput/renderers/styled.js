@@ -5,64 +5,167 @@ import {
     FONT_SIZE_HEADING_LARGE,
     FONT_SIZE_HEADING_MEDIUM,
     FONT_SIZE_HEADING_SMALL,
+    FONT_SIZE_HEADING_X_SMALL,
+    FONT_SIZE_HEADING_XX_SMALL,
     FONT_SIZE_TEXT_MEDIUM,
-} from '../../../styles/fontSizes';
+    FONT_SIZE_TEXT_LARGE,
+} from './fontSizes';
 import { BORDER_RADIUS_3 } from '../../../styles/borderRadius';
+import { getContrastText } from '../../../styles/helpers/color';
+
+const fontSizesMap = {
+    1: FONT_SIZE_HEADING_X_LARGE,
+    2: FONT_SIZE_HEADING_LARGE,
+    3: FONT_SIZE_HEADING_MEDIUM,
+    4: FONT_SIZE_HEADING_SMALL,
+    5: FONT_SIZE_HEADING_X_SMALL,
+    6: FONT_SIZE_HEADING_XX_SMALL,
+};
 
 export const StyledHeading = attachThemeAttrs(styled.h1)`
-    font-size: ${FONT_SIZE_HEADING_SMALL};
-    color: ${props => props.palette.text.main};
-    margin-top: 1rem;
+    font-size: ${props => fontSizesMap[props.level] || FONT_SIZE_HEADING_XX_SMALL};
+    margin-top: 1.25rem;
     margin-bottom: 0.75rem;
-    ${props =>
-        props.level === 1 &&
-        `
-        font-size: ${FONT_SIZE_HEADING_X_LARGE};
-        `};
-    ${props =>
-        props.level === 2 &&
-        `
-        font-size: ${FONT_SIZE_HEADING_LARGE};
-        `};
-    ${props =>
-        props.level === 3 &&
-        `
-        font-size: ${FONT_SIZE_HEADING_MEDIUM};
-        `};
+
+    b, strong {
+        font-family: 'Lato Bold', Arial, Helvetica, sans-serif;
+    }
+`;
+
+export const StyledInlineHeading = styled(StyledHeading)`
+    margin: 0;
+    display: inline;
 `;
 
 export const StyledParagraph = attachThemeAttrs(styled.p)`
-    font-size: ${FONT_SIZE_TEXT_MEDIUM};
+    margin-bottom: 1rem;
+
+    b, strong {
+        font-family: 'Lato Black', Arial, Helvetica, sans-serif;
+    }
+
+    code {
+        display: inline-block;
+        margin-bottom: -4px;
+        padding: 0 0.3rem;
+        line-height: 1.2;
+        font-size: 1rem;
+    }
+`;
+
+export const StyledInlineParagraph = styled(StyledParagraph)`
+    margin: 0;
+    display: inline;
+
+    code {
+        display: inline;
+        margin: 0;
+    }
+`;
+
+export const StyledLink = attachThemeAttrs(styled.a)`
     color: ${props => props.palette.text.main};
+    text-decoration: underline;
+
+    :hover {
+        color: ${props => props.palette.text.main};
+    }
+
+    > p {
+        margin-bottom: 0;
+    }
+`;
+
+export const StyledPre = attachThemeAttrs(
+    styled.pre.attrs({
+        className: 'hljs',
+    }),
+)`
+    display: block;
+    font-size: ${FONT_SIZE_TEXT_MEDIUM};
+    border-radius: 4px;
+    border: 1px solid ${props => props.palette.border.divider};
+    padding: 2px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+
+    && > code {
+        display: block;
+        background: inherit;
+        color: inherit;
+    }
+`;
+
+export const StyledInlinePre = styled(StyledPre)`
+    display: inline;
+
+    > code {
+        display: inline-block;
+        padding: 0.2rem;
+    }
 `;
 
 export const StyledCode = attachThemeAttrs(
     styled.code.attrs({
         className: 'hljs',
     }),
-)`
-    background: ${props => props.palette.background.highlight};
-    color: ${props => props.palette.text.main};
+)`    
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     border-radius: 4px;
-    border: 1px solid ${props => props.palette.border.divider};
-    padding: 2px 6px;
+    padding: 1px;
     overflow-x: auto;
-
-    pre > & {
-        display: block;
-        padding: 0.5rem 1rem;    
+    
+    &.hljs {
+        background: ${props => props.palette.background.highlight};
+        color: ${props => getContrastText(props.palette.background.highlight)};
     }
+`;
 
-    p > & {
-        margin-left: 4px;
-        margin-right: 4px;
-    }
+export const StyledInlineCode = styled(StyledCode)`
+    padding: 0;
+    margin: 0;
+    display: inline;
 `;
 
 export const StyledHR = attachThemeAttrs(styled.hr)`
     margin: 1rem auto;
     background: ${props => props.palette.border.divider};
+`;
+
+export const StyledBlockquote = attachThemeAttrs(styled.blockquote)`
+    position: relative;    
+    display: block;
+    margin: 0;
+    padding: 1em 1rem 1rem 1.5rem;
+    background-color: ${props => props.palette.background.secondary};
+    border-radius: 6px;
+    margin-bottom: 1rem;
+
+    b, strong {
+        font-family: 'Lato Black', Arial, Helvetica, sans-serif;
+    }
+
+    > p {
+        margin-bottom: 0;
+        color: ${props => props.palette.text.label};
+    }
+    
+    :before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: ${props => props.palette.border.disabled};
+        content: '';
+        width: 4px;
+        height: 100%;
+        border-radius: 4px 0 0 4px;
+    }
+`;
+
+export const StyledInlineBlockquote = styled(StyledBlockquote)`
+    padding: 0.2rem 0.2rem 0.2rem 1rem;
+    margin-bottom: 0;
+    display: inline-block;
 `;
 
 export const StyledTable = attachThemeAttrs(styled.table)`
@@ -72,14 +175,8 @@ export const StyledTable = attachThemeAttrs(styled.table)`
     border-spacing: 0;
     width: 100%;
     box-sizing: border-box;
-    border-radius: 10px;
     border: 1px solid ${props => props.palette.border.divider};
-`;
-
-export const StyledTableBody = attachThemeAttrs(styled.tbody)`
-    background-color: ${props => props.palette.background.main};
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    margin-bottom: 1rem;
 `;
 
 export const StyledTableRow = attachThemeAttrs(styled.tr)`
@@ -87,23 +184,15 @@ export const StyledTableRow = attachThemeAttrs(styled.tr)`
     transition: all 250ms cubic-bezier(0.4,0,0.2,1) 0ms;
     box-sizing: border-box;
     counter-increment: rowCounter;
-
-    &:last-of-type {
-        box-shadow: none;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-    }
 `;
 
 export const StyledTableHeadindCell = attachThemeAttrs(styled.td)`
-    font-size: ${FONT_SIZE_TEXT_MEDIUM};
+    font-size: ${FONT_SIZE_TEXT_LARGE};
     text-align: ${props => props.align};
     border: 1px solid transparent;
     box-sizing: border-box;
-    padding: 0;
     white-space: nowrap;
     padding: 0 18px;
-    text-transform: uppercase;
     font-weight: 900;
     color: ${props => props.palette.text.title};
     line-height: normal;
@@ -111,15 +200,6 @@ export const StyledTableHeadindCell = attachThemeAttrs(styled.td)`
     border-top: 0;
     outline: none;
     height: 44px;
-    background-color: ${props => props.palette.background.highlight};
-        
-    &:first-of-type {
-        border-radius: 10px 0 0 0;
-    }
-    
-    &:last-of-type {
-        border-radius: 0 10px 0 0;
-    }
 `;
 
 export const StyledTableCell = attachThemeAttrs(styled.td)`
@@ -127,7 +207,6 @@ export const StyledTableCell = attachThemeAttrs(styled.td)`
     text-align: ${props => props.align};
     border: 1px solid transparent;
     box-sizing: border-box;
-    padding: 0;
     white-space: nowrap;
     padding: 0 18px;
     color: ${props => props.palette.text.label};
@@ -137,20 +216,39 @@ export const StyledTableCell = attachThemeAttrs(styled.td)`
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: 400;
-    border-radius: 10px;
 `;
 
 export const StyledList = styled.ul`
-    list-style: circle;
+    list-style: disc;
+    margin-left: 8px;
+    margin-bottom: 1rem;
+
+    b,
+    strong {
+        font-family: 'Lato Black', Arial, Helvetica, sans-serif;
+    }
+
+    ul {
+        list-style: circle;
+        margin-left: 8px;
+    }
 `;
 
 export const StyledOrderedList = styled.ol`
     list-style: decimal;
+    margin-left: 8px;
+    margin-bottom: 1rem;
+
+    b,
+    strong {
+        font-family: 'Lato Black', Arial, Helvetica, sans-serif;
+    }
 `;
 
 export const StyledListItem = attachThemeAttrs(styled.li)`
-    margin-left: 1rem;
+    margin-left: 2rem;
     margin-bottom: 4px;
+    font-size: ${FONT_SIZE_TEXT_LARGE};
 
     input[type='checkbox'] {
         width: 18px;

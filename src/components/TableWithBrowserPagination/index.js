@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Pagination from '../Pagination';
-import Table from '../Table';
 import RenderIf from '../RenderIf';
 import Options from './options';
 import getPageItems from './helpers/getPageItems';
-import StyledContainer from './styled/container';
+import { StyledContainer, StyledTable } from './styled/container';
 import StyledPaginationContainer from './styled/paginationContainer';
 import StyledSelectContainer from './styled/selectContainer';
 import StyledSelect from './styled/select';
 
 /**
- * It implement a client side pagination experience. It basically wire up the Table and
- * the Pagination component in a compose manner and keep the internal state of the active page
- * based on a new prop `pageSize`.
+ * This component implements a client-side pagination experience. Basically,
+ * it wires up the Table and the Pagination components in a composed manner
+ * and keeps the internal state of the active page based on a new prop pageSize.
  * @category DataView
  */
 export default class TableWithBrowserPagination extends Component {
@@ -96,9 +95,9 @@ export default class TableWithBrowserPagination extends Component {
         return (
             <StyledContainer className={className} style={style}>
                 {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                <Table data={pageItems} {...rest} ref={this.table} variant={variant}>
+                <StyledTable data={pageItems} {...rest} ref={this.table} variant={variant}>
                     {children}
-                </Table>
+                </StyledTable>
                 <RenderIf isTrue={showPagination}>
                     <StyledPaginationContainer
                         paginationAlignment={paginationAlignment}
@@ -133,7 +132,7 @@ TableWithBrowserPagination.propTypes = {
      * Available options are: center, left, and right.
      * This value defaults to center. */
     paginationAlignment: PropTypes.oneOf(['center', 'left', 'right']),
-    /** Indicates the amount of data that will be showed per page. */
+    /** Indicates the amount of data that will be shown per page. */
     pageSize: PropTypes.number,
     /** An array containing the objects(rows) to be displayed. */
     data: PropTypes.array,

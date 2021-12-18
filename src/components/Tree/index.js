@@ -40,6 +40,8 @@ export default function Tree(props) {
         onNodeExpand,
     });
 
+    const treeData = Array.isArray(data) ? data : [];
+
     return (
         <Provider
             value={{
@@ -59,7 +61,7 @@ export default function Tree(props) {
                 aria-label={ariaLabel}
             >
                 <TreeChildren
-                    data={data}
+                    data={treeData}
                     onNodeExpand={onNodeExpand}
                     onNodeCheck={onNodeCheck}
                     nodePath={[]}

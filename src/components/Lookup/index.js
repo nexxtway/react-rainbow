@@ -25,6 +25,9 @@ import StyledSearchIcon from './styled/searchIcon';
 import StyledTextError from '../Input/styled/errorText';
 import isScrollPositionAtMenuBottom from './helpers/isScrollPositionAtMenuBottom';
 import MenuArrowButton from './menuArrowButton';
+import InternalOverlay from '../InternalOverlay';
+import lookupPositionResolver from './helpers/lookupPositionResolver';
+import { WindowScrolling } from '../../libs/scrollController';
 
 const OPTION_HEIGHT = 48;
 const visibleOptionsMap = {
@@ -80,6 +83,10 @@ class Lookup extends Component {
         this.handleScrollUpArrowHover = this.handleScrollUpArrowHover.bind(this);
         this.stopArrowScoll = this.stopArrowScoll.bind(this);
         this.updateScrollingArrows = this.updateScrollingArrows.bind(this);
+        this.handleWindowScroll = this.handleWindowScroll.bind(this);
+        this.handleOverlayOpened = this.handleOverlayOpened.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.windowScrolling = new WindowScrolling();
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -112,6 +119,7 @@ class Lookup extends Component {
         if (!wasOpen && isOpen && this.menuRef.current !== null) {
             this.updateScrollingArrows();
         }
+        if (!this.isLookupOpen()) this.windowScrolling.stopListening();
     }
 
     getValue() {
@@ -146,6 +154,7 @@ class Lookup extends Component {
         this.setState({
             searchValue: '',
         });
+        this.closeMenu();
         onChange(value);
     }
 
@@ -169,6 +178,12 @@ class Lookup extends Component {
         this.closeMenu();
         const eventValue = value || null;
         onBlur(eventValue);
+    }
+
+    handleClick(event) {
+        const { onClick } = this.props;
+        this.openMenu();
+        return onClick(event);
     }
 
     handleRemoveValue() {
@@ -240,8 +255,14 @@ class Lookup extends Component {
     handleKeyDown(event) {
         const { searchValue } = this.state;
         const { keyCode } = event;
-        if (keyCode === ESCAPE_KEY && !!searchValue) {
-            event.stopPropagation();
+
+        if (keyCode === ESCAPE_KEY) {
+            if (searchValue) {
+                event.stopPropagation();
+            } else if (this.isLookupOpen()) {
+                event.stopPropagation();
+                this.closeMenu();
+            }
         }
         if (isNavigationKey(keyCode) && this.isLookupOpen()) {
             event.preventDefault();
@@ -378,6 +399,15 @@ class Lookup extends Component {
         onChange(value);
     }
 
+    handleWindowScroll(event) {
+        if (this.menuRef.current && this.menuRef.current.getRef().contains(event.target)) return;
+        this.closeMenu();
+    }
+
+    handleOverlayOpened() {
+        this.windowScrolling.startListening(this.handleWindowScroll);
+    }
+
     /**
      * Sets focus on the element.
      * @public
@@ -496,7 +526,7 @@ class Lookup extends Component {
                             tabIndex={tabIndex}
                             onFocus={this.handleFocus}
                             onBlur={this.handleBlur}
-                            onClick={onClick}
+                            onClick={this.handleClick}
                             disabled={disabled}
                             readOnly={readOnly}
                             required={required}
@@ -512,8 +542,17 @@ class Lookup extends Component {
                             isLoading={isLoading}
                             variant={variant}
                         />
-                        <RenderIf isTrue={isLookupOpen}>
-                            <StyledOptionsMenu id={this.listboxId} role="listbox">
+                        <InternalOverlay
+                            isVisible={isLookupOpen}
+                            triggerElementRef={this.inputRef}
+                            positionResolver={lookupPositionResolver}
+                            onOpened={this.handleOverlayOpened}
+                        >
+                            <StyledOptionsMenu
+                                id={this.listboxId}
+                                role="listbox"
+                                data-id="lookup-options-container"
+                            >
                                 <RenderIf isTrue={showScrollUpArrow}>
                                     <MenuArrowButton
                                         arrow="up"
@@ -539,7 +578,7 @@ class Lookup extends Component {
                                     />
                                 </RenderIf>
                             </StyledOptionsMenu>
-                        </RenderIf>
+                        </InternalOverlay>
                     </StyledInputContainer>
                 </RenderIf>
                 <RenderIf isTrue={errorValue}>

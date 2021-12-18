@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '../../../libs/hooks';
+import { darken } from '../../../styles/helpers/color';
 
 function InfoIcon({ className, style, isFocused }) {
-    const { brand } = useTheme().rainbow.palette;
-    const background = isFocused ? brand.dark : brand.main;
+    const gray = useTheme().rainbow.palette.text.header;
+    const background = isFocused ? darken(gray) : gray;
     return (
         <svg width={22} height={22} viewBox="0 0 22 22" className={className} style={style}>
             <path

@@ -15,6 +15,4 @@ const StyledContentContainer = styled.div`
         `}
 `;
 
-StyledContentContainer.displayName = 'CheckboxGroupStyledContentContainer';
-
 export default StyledContentContainer;

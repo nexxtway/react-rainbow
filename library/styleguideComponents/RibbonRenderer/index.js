@@ -2,20 +2,23 @@
 import React from 'react';
 import GitHubButton from 'react-github-btn';
 import StackoverflowIcon from './stackoverflowIcon';
-import GlobalSearch from '../GlobalSearch';
+import YouTubeIcon from './youtubeIcon';
+import UniversalSearch from '../UniversalSearch';
+import MediumIcon from './mediumIcon';
 import {
     StyledContainer,
     StyledGitHubContianer,
-    StyledGithubIcon,
-    StyledGithubLink,
+    StyledIcon,
+    StyledLink,
     StyledHeading,
-    StyledStackoverflowLink,
+    StyledTwitterIcon,
+    StyledGithubIcon,
 } from './styled';
 
 export default function RibbonRenderer() {
     return (
         <StyledHeading>
-            <GlobalSearch />
+            <UniversalSearch />
             <StyledContainer>
                 <StyledGitHubContianer>
                     <GitHubButton
@@ -28,22 +31,46 @@ export default function RibbonRenderer() {
                         Star
                     </GitHubButton>
                 </StyledGitHubContianer>
-                <StyledGithubLink
-                    href="https://github.com/nexxtway/react-rainbow"
+                <StyledLink
+                    href="http://bit.ly/3pQjabO"
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Github repository"
                 >
                     <StyledGithubIcon />
-                </StyledGithubLink>
-                <StyledStackoverflowLink
-                    href="https://stackoverflow.com/questions/tagged/react-rainbow+or+react-rainbow-components+or+rainbow-components"
+                </StyledLink>
+                <StyledLink
+                    href="http://bit.ly/2Xunfql"
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Stackoverflow"
                 >
-                    <StyledGithubIcon as={StackoverflowIcon} />
-                </StyledStackoverflowLink>
+                    <StyledIcon as={StackoverflowIcon} />
+                </StyledLink>
+                <StyledLink
+                    href="http://bit.ly/2XgMqwj"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Medium Blog"
+                >
+                    <StyledIcon as={MediumIcon} />
+                </StyledLink>
+                <StyledLink
+                    href="https://bit.ly/3nrVOYM"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Twitter Page"
+                >
+                    <StyledIcon as={StyledTwitterIcon} />
+                </StyledLink>
+                <StyledLink
+                    href="http://bit.ly/3rY0skt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="YouTube Channel"
+                >
+                    <StyledIcon as={YouTubeIcon} />
+                </StyledLink>
             </StyledContainer>
         </StyledHeading>
     );

@@ -25,6 +25,7 @@ export interface StripeCardEvent {
 }
 
 export interface StripeCardInput extends BaseProps {
+    id?: string;
     apiKey: string;
     label?: ReactNode;
     labelAlignment?: LabelAlignment;

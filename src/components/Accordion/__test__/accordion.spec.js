@@ -13,7 +13,7 @@ describe('<Accordion />', () => {
                 </AccordionSection>
             </Accordion>,
         );
-        const buttonComponent = component.find('ButtonIcon');
+        const buttonComponent = component.find('button');
         buttonComponent.simulate('click');
 
         expect(component.state('activeNames')).toEqual('accordion-test-1');
@@ -31,7 +31,7 @@ describe('<Accordion />', () => {
             </Accordion>,
         );
         const secondAccordionSection = component.find('ul').childAt(1);
-        const secondAccordionSectionButton = secondAccordionSection.find('ButtonIcon');
+        const secondAccordionSectionButton = secondAccordionSection.find('button');
         secondAccordionSectionButton.simulate('click');
 
         expect(component.state('activeNames')).toEqual(['accordion-test-1', 'accordion-test-2']);
@@ -45,7 +45,7 @@ describe('<Accordion />', () => {
                 </AccordionSection>
             </Accordion>,
         );
-        const buttonComponent = component.find('ButtonIcon');
+        const buttonComponent = component.find('button');
         buttonComponent.simulate('click');
 
         expect(handleToggleSectionMockFn).toHaveBeenCalledTimes(0);
@@ -59,7 +59,7 @@ describe('<Accordion />', () => {
                 </AccordionSection>
             </Accordion>,
         );
-        const buttonComponent = component.find('ButtonIcon');
+        const buttonComponent = component.find('button');
         buttonComponent.simulate('click');
 
         expect(handleToggleSectionMockFn).toHaveBeenCalledWith(
@@ -85,7 +85,7 @@ describe('<Accordion />', () => {
             </Accordion>,
         );
         const secondAccordionSection = component.find('ul').childAt(1);
-        const secondAccordionSectionButton = secondAccordionSection.find('ButtonIcon');
+        const secondAccordionSectionButton = secondAccordionSection.find('button');
         secondAccordionSectionButton.simulate('click');
 
         expect(handleToggleSectionMockFn).toHaveBeenCalledWith(expect.any(Object), [
@@ -107,7 +107,7 @@ describe('<Accordion />', () => {
             </Accordion>,
         );
         const firstAccordionSection = component.find('ul').childAt(0);
-        const firstAccordionSectionButton = firstAccordionSection.find('ButtonIcon');
+        const firstAccordionSectionButton = firstAccordionSection.find('button');
         firstAccordionSectionButton.simulate('click');
 
         expect(handleToggleSectionMockFn.mock.calls[0][1]).toEqual('');
@@ -130,7 +130,7 @@ describe('<Accordion />', () => {
             </Accordion>,
         );
         const secondAccordionSection = component.find('ul').childAt(1);
-        const secondAccordionSectionButton = secondAccordionSection.find('ButtonIcon');
+        const secondAccordionSectionButton = secondAccordionSection.find('button');
         secondAccordionSectionButton.simulate('click');
 
         expect(handleToggleSectionMockFn.mock.calls[0][1]).toEqual(['accordion-test-1']);
@@ -148,7 +148,7 @@ describe('<Accordion />', () => {
             </Accordion>,
         );
         const secondAccordionSection = component.find('ul').childAt(1);
-        const secondAccordionSectionButton = secondAccordionSection.find('ButtonIcon');
+        const secondAccordionSectionButton = secondAccordionSection.find('button');
         secondAccordionSectionButton.simulate('click');
 
         expect(handleToggleSectionMockFn.mock.calls[0][1]).toEqual(['accordion-test-2']);
@@ -162,9 +162,9 @@ describe('<Accordion />', () => {
                 </AccordionSection>
             </Accordion>,
         );
-        const button = component.find('ButtonIcon');
+        const button = component.find('button');
 
-        expect(button.prop('ariaExpanded')).toBe(true);
+        expect(button.prop('aria-expanded')).toBe(true);
     });
     it('should set ariaExpanded to false in button when the AccordionSection is collapsed', () => {
         const component = mount(
@@ -172,9 +172,9 @@ describe('<Accordion />', () => {
                 <AccordionSection label="Rainbow Accordion">AccordionSection-1</AccordionSection>
             </Accordion>,
         );
-        const button = component.find('ButtonIcon');
+        const button = component.find('button');
 
-        expect(button.prop('ariaExpanded')).toBe(false);
+        expect(button.prop('aria-expanded')).toBe(false);
     });
     it('should set aria-hidden to false in container of the content when the content is expanded', () => {
         const activeNames = 'accordion-test-1';

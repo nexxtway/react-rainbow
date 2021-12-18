@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useTheme } from '../../../libs/hooks';
 
 function InfoInverseIcon({ className, style }) {
-    const color = useTheme().rainbow.palette.brand.main;
+    const color = useTheme().rainbow.palette.text.header;
     return (
         <svg width={21} height={21} viewBox="0 0 21 21" className={className} style={style}>
             <path

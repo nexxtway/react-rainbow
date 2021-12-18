@@ -1,4 +1,6 @@
-##### A table with pagination made in the client side:
+# The basic TableWithBrowserPagination
+##### This example represents a table with client-side pagination. It allows you to split huge amounts
+##### of data within your table into smaller subsets that can be easily navigated.
 
 ```js
 import React from 'react';
@@ -23,7 +25,8 @@ const StatusBadge = ({ value }) => <StyledBadge label={value} variant="lightest"
     </div>
 ```
 
-##### A table with fixed height and pagination made in the client side:
+# TableWithBrowserPagination with fixed height
+##### In this example, the table with client-side pagination appears with fixed height.
 
 ```js
 import React from 'react';
@@ -58,7 +61,8 @@ const containerTableStyles = { height: 256 };
     </div>
 ```
 
-##### A table with pagination aling to the right made in the client side:
+# TableWithBrowserPagination with right alignment
+##### In this case, the table with client-side pagination is aligned to the right.
 
 ```js
 import React from 'react';
@@ -83,7 +87,8 @@ const StatusBadge = ({ value }) => <StyledBadge label={value} variant="lightest"
     </div>
 ```
 
-##### A table with pagination aling to the left made in the client side:
+# TableWithBrowserPagination with left alignment
+##### In this case, the table with client-side pagination is aligned to the left.
 
 ```js
 import React from 'react';
@@ -108,7 +113,8 @@ const StatusBadge = ({ value }) => <StyledBadge label={value} variant="lightest"
     </div>
 ```
 
-##### A table with shaded pagination and variant listview:
+# TableWithBrowserPagination shaded and with “listview” variant
+##### The following example shows the pagination with a shadow around it, and a different presentation of the table with the “listview” variant.
 
 ```js
 import React from 'react';

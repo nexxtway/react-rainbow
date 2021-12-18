@@ -44,6 +44,12 @@ export default class CarouselCard extends Component {
         }
     }
 
+    componentWillUnmount() {
+        if (this.animationTimeout) {
+            clearTimeout(this.animationTimeout);
+        }
+    }
+
     getContainerStyle() {
         const { style } = this.props;
         return { ...getCarouselCardContainerStyles(this.container.current), ...style };
@@ -55,7 +61,7 @@ export default class CarouselCard extends Component {
 
     startAnimation() {
         const { scrollDuration, disableAutoRefresh } = this.props;
-        setTimeout(() => {
+        this.animationTimeout = setTimeout(() => {
             const { isAnimationPaused } = this.state;
             if (!isAnimationPaused) {
                 const { childrenRegistred, activeItem } = this.state;

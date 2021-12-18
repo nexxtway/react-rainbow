@@ -8,13 +8,11 @@ import StyledHeader from '../../Option/styled/header';
 export const Dropdown = attachThemeAttrs(styled.div)`
     position: relative;
     overflow: hidden;
-    z-index: 1999;
     width: 100%;
-    border: solid 1px ${props => props.palette.border.divider};
     border-radius: 0.875rem;
     font-size: 0.75rem;
     background: ${props => props.palette.background.main};
-    box-shadow: ${props => props.shadows.shadow_2};
+    box-shadow: ${props => props.shadows.shadow_12};
     transition: opacity 0.1s linear, visibility 0.1s linear;
 
     &:focus,
@@ -95,10 +93,17 @@ export const SearchContainer = attachThemeAttrs(styled.div)`
     border-bottom: 1px solid ${props => props.palette.border.divider};
 `;
 
-export const Icon = styled(SearchIcon)`
+export const Icon = attachThemeAttrs(styled(SearchIcon))`
     width: 14px;
     height: 14px;
     margin-left: 12px;
+    color: ${props => props.palette.border.main};
+`;
+
+export const StyledSearchIcon = attachThemeAttrs(styled(SearchIcon))`
+    width: 32px;
+    height: 32px;
+    color: ${props => props.palette.border.main};
 `;
 
 export const InputSearch = attachThemeAttrs(styled.input)`

@@ -72,7 +72,9 @@ export default class Slider extends Component {
             className,
             labelAlignment,
             hideLabel,
+            required,
         } = this.props;
+        const valueWidth = Math.max(`${max}`.length, `${min}`.length) + 1;
         return (
             <StyledContainer className={className} style={style}>
                 <RenderIf isTrue={label}>
@@ -81,6 +83,7 @@ export default class Slider extends Component {
                         labelAlignment={labelAlignment}
                         hideLabel={hideLabel}
                         inputId={this.sliderId}
+                        required={required}
                     />
                 </RenderIf>
                 <StyledSlider>
@@ -94,13 +97,16 @@ export default class Slider extends Component {
                         step={step}
                         aria-describedby={this.getAriaDescribedBy()}
                         disabled={disabled}
+                        required={required}
                         onClick={onClick}
                         onChange={onChange}
                         onBlur={onBlur}
                         onFocus={onFocus}
                         ref={this.sliderRef}
                     />
-                    <StyledValue aria-hidden>{value}</StyledValue>
+                    <StyledValue width={valueWidth} aria-hidden>
+                        {value}
+                    </StyledValue>
                 </StyledSlider>
                 <RenderIf isTrue={error}>
                     <ErrorText id={this.errorMessageId}>{error}</ErrorText>
@@ -134,6 +140,9 @@ Slider.propTypes = {
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that the slider element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
+    /** Specifies that an input field must be filled out before submitting the form.
+     * This value defaults to false. */
+    required: PropTypes.bool,
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** The action triggered when the element is clicked. */
@@ -157,6 +166,7 @@ Slider.defaultProps = {
     step: 1,
     error: undefined,
     disabled: false,
+    required: false,
     onChange: () => {},
     onClick: () => {},
     onFocus: () => {},

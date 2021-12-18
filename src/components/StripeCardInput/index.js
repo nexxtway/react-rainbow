@@ -17,6 +17,7 @@ import StyledCardInput from './styled/cardInput';
  */
 const StripeCardInput = React.forwardRef((props, ref) => {
     const {
+        id,
         apiKey,
         label,
         labelAlignment,
@@ -83,6 +84,7 @@ const StripeCardInput = React.forwardRef((props, ref) => {
 
     return (
         <StyledContainer
+            id={id}
             ref={ref}
             className={className}
             style={style}
@@ -110,6 +112,8 @@ const StripeCardInput = React.forwardRef((props, ref) => {
 });
 
 StripeCardInput.propTypes = {
+    /** The id of the outer element. */
+    id: PropTypes.string,
     /** The application's API key. To use Stripe,
      * you must get an API Key. See https://dashboard.stripe.com/account/apikeys
      * to get an API Key. */
@@ -177,6 +181,7 @@ StripeCardInput.propTypes = {
 };
 
 StripeCardInput.defaultProps = {
+    id: undefined,
     label: undefined,
     labelAlignment: 'center',
     hideLabel: false,
