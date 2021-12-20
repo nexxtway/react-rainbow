@@ -260,8 +260,8 @@ const StatusBadge = ({ value }) => <div style={{ display: 'flex', justifyContent
                 />
             </ButtonGroup>
         </GlobalHeader>
-        <Table data={data} keyField="name" variant="listview">
-            <Column header="Name" field="name" headerAlignment="left" />
+        <Table data={data} keyField="name" variant="listview" className="rainbow-p-left_large rainbow-p-right_large">
+            <Column header="Name" field="name" headerAlignment="left"  cellAlignment="left" />
             <Column header="Email" field="email" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Payment" field="payment" headerAlignment="right" cellAlignment="right" />
