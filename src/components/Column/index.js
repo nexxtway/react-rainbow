@@ -66,7 +66,7 @@ Column.propTypes = {
 
 Column.defaultProps = {
     header: undefined,
-    headerAlignment: 'left',
+    headerAlignment: undefined,
     component: undefined,
     field: undefined,
     sortable: false,

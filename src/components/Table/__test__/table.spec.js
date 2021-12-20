@@ -105,7 +105,7 @@ describe('<Table />', () => {
             {
                 field: 'name',
                 header: 'Name',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
@@ -122,7 +122,7 @@ describe('<Table />', () => {
             {
                 field: 'name',
                 header: 'Name',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
@@ -138,7 +138,7 @@ describe('<Table />', () => {
                 isFirstDataColumn: false,
                 isEditable: false,
                 onChange: expect.any(Function),
-                headerAlignment: 'left',
+                headerAlignment: undefined,
             },
         ]);
     });
@@ -157,7 +157,7 @@ describe('<Table />', () => {
             {
                 field: 'name',
                 header: 'Name',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
@@ -198,7 +198,7 @@ describe('<Table />', () => {
                 isFirstDataColumn: false,
                 isEditable: false,
                 onChange: expect.any(Function),
-                headerAlignment: 'left',
+                headerAlignment: undefined,
             },
         ]);
     });
@@ -207,7 +207,7 @@ describe('<Table />', () => {
             {
                 field: 'name',
                 header: 'Name',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
@@ -257,7 +257,7 @@ describe('<Table />', () => {
             {
                 field: 'name',
                 header: 'Name',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 computedWidth: 50,
                 sortable: false,
                 type: 'text',
@@ -268,7 +268,7 @@ describe('<Table />', () => {
             {
                 field: 'number',
                 header: 'Number',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 computedWidth: 50,
                 sortable: false,
                 type: 'text',
@@ -285,7 +285,7 @@ describe('<Table />', () => {
             {
                 field: 'name',
                 header: 'Name',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 computedWidth: 182,
                 isResized: true,
                 sortable: false,
@@ -297,7 +297,7 @@ describe('<Table />', () => {
             {
                 field: 'number',
                 header: 'Number',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 computedWidth: 50,
                 sortable: false,
                 type: 'text',
