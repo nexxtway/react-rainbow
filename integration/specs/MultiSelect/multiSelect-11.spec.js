@@ -1,10 +1,10 @@
 const PageMultiSelect = require('../../../src/components/MultiSelect/pageObject');
 
-const MULTI_SELECT = '#multiselect-component-11';
+const MULTI_SELECT = '#multiselect-component-13';
 
 describe('MultiSelect base', () => {
     beforeAll(() => {
-        browser.url('/#!/MultiSelect/11');
+        browser.url('/#!/MultiSelect/13');
     });
     beforeEach(() => {
         browser.refresh();

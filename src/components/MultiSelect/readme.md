@@ -285,7 +285,7 @@ const MultiSelectExample = () => {
 
     return (
         <MultiSelect
-            id="multiselect-component-11"
+            id="multiselect-component-13"
             label="MultiSelect Label"
             placeholder="Placeholder text"
             style={containerStyles}
