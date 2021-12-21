@@ -55,6 +55,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
         onBlur,
         children,
         showCheckbox,
+        enableSearch,
     } = useReduxForm(props);
 
     const triggerRef = useRef();
@@ -273,6 +274,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                             width={dropdownWidth}
                             placeholder={placeholder}
                             showCheckbox={showCheckbox}
+                            enableSearch={enableSearch}
                             multiple
                         >
                             {children}
@@ -323,6 +325,8 @@ MultiSelect.propTypes = {
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** Specifies the variant for the input. */
     variant: PropTypes.oneOf(['default', 'chip', 'bare']),
+    /** If is set to true, then a search input to filter is showed. */
+    enableSearch: PropTypes.bool,
     /** Specifies the variant for the chips. */
     chipVariant: PropTypes.oneOf(['base', 'neutral', 'outline-brand', 'brand']),
     /** Specifies the value of an input element. */
@@ -361,6 +365,7 @@ MultiSelect.defaultProps = {
     isLoading: false,
     tabIndex: 0,
     variant: 'default',
+    enableSearch: false,
     chipVariant: 'base',
     value: undefined,
     onChange: () => {},
