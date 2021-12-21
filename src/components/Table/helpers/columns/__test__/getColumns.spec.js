@@ -33,7 +33,7 @@ describe('getColumns', () => {
                 component: <span />,
                 field: 'a',
                 header: 'header',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 isFirstDataColumn: true,
                 type: 'text',
                 sortable: false,
@@ -55,7 +55,7 @@ describe('getColumns', () => {
             {
                 field: 'a',
                 header: 'header',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 component: <span />,
                 sortable: false,
                 type: 'text',
@@ -80,7 +80,7 @@ describe('getColumns', () => {
             {
                 field: 'a',
                 header: 'header',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 component: <span />,
                 sortable: false,
                 type: 'text',
@@ -115,7 +115,7 @@ describe('getColumns', () => {
             {
                 field: 'a',
                 header: 'header',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 component: <span />,
                 sortable: false,
                 type: 'text',
@@ -137,7 +137,7 @@ describe('getColumns', () => {
             {
                 field: 'a',
                 header: 'header',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 component: <span />,
                 sortable: false,
                 type: 'text',
@@ -152,7 +152,7 @@ describe('getColumns', () => {
                 width: 75,
                 isEditable: false,
                 onChange: expect.any(Function),
-                headerAlignment: 'left',
+                headerAlignment: undefined,
             },
         ]);
     });
@@ -174,7 +174,7 @@ describe('getColumns', () => {
             {
                 field: 'a',
                 header: 'header a',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 component: <span />,
                 sortable: false,
                 type: 'text',
@@ -187,7 +187,7 @@ describe('getColumns', () => {
             {
                 field: 'b',
                 header: 'header b',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 sortable: false,
                 type: 'text',
                 isFirstDataColumn: false,
@@ -215,7 +215,7 @@ describe('getColumns', () => {
             {
                 field: 'a',
                 header: 'header a',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 component: <span />,
                 sortable: false,
                 type: 'text',
@@ -227,7 +227,7 @@ describe('getColumns', () => {
             {
                 field: 'b',
                 header: 'header b',
-                headerAlignment: 'left',
+                headerAlignment: undefined,
                 sortable: false,
                 type: 'text',
                 isFirstDataColumn: false,

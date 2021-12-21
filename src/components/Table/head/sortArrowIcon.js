@@ -47,5 +47,5 @@ SortArrowIcon.propTypes = {
 
 SortArrowIcon.defaultProps = {
     direction: 'asc',
-    headerAlignment: 'left',
+    headerAlignment: undefined,
 };
