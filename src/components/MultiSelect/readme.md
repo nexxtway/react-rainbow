@@ -20,7 +20,7 @@ const MultiSelectExample = () => {
             className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
             value={value}
             onChange={setValue}
-            bottomHelpText="You can select several options"
+            bottomHelpText="You can select several options."
             showCheckbox
         >
             <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
