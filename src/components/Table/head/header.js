@@ -172,5 +172,5 @@ Header.defaultProps = {
     onDeselectAllRows: () => {},
     maxRowSelection: undefined,
     bulkSelection: 'none',
-    headerAlignment: 'left',
+    headerAlignment: undefined,
 };
