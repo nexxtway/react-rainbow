@@ -107,4 +107,8 @@ describe('<TimePicker/>', () => {
         wrapper.update();
         expect(wrapper.find('input').props().value).toBe('23:01');
     });
+    it('should render the passed icon', () => {
+        const component = mount(<TimePicker icon={<span id="test" />} />);
+        expect(component.find('span#test').exists()).toBe(true);
+    });
 });

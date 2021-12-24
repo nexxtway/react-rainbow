@@ -39,6 +39,7 @@ const TimePicker = React.forwardRef((props, ref) => {
         onBlur,
         onFocus,
         value: valueProp,
+        icon: iconInProps,
     } = useReduxForm(props);
     const [isOpen, setIsOpen] = useState(false);
     const [value, setValue] = useState(hour24 ? valueProp : get12HourTime(valueProp));
@@ -94,6 +95,8 @@ const TimePicker = React.forwardRef((props, ref) => {
         setValue(hour24 ? valueProp : get12HourTime(valueProp));
     }, [valueProp, hour24]);
 
+    const icon = iconInProps || <ClockIcon />;
+
     return (
         <StyledContainer id={id} className={className} style={style}>
             <Input
@@ -101,7 +104,7 @@ const TimePicker = React.forwardRef((props, ref) => {
                 ref={inputRef}
                 label={label}
                 placeholder={placeholder}
-                icon={<ClockIcon />}
+                icon={icon}
                 iconPosition="right"
                 required={required}
                 value={getTriggerInputValue()}
@@ -189,6 +192,8 @@ TimePicker.propTypes = {
     style: PropTypes.object,
     /** Specifies that the TimePicker will be in a 24hr format. This value defaults to false. */
     hour24: PropTypes.bool,
+    /** The icon to show if it is passed. It must be a svg icon or a font icon. Defaults to a Calendar icon */
+    icon: PropTypes.node,
 };
 
 TimePicker.defaultProps = {
@@ -215,6 +220,7 @@ TimePicker.defaultProps = {
     className: undefined,
     style: undefined,
     hour24: false,
+    icon: undefined,
 };
 
 export default TimePicker;
