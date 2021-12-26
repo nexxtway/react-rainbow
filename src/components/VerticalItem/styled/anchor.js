@@ -26,7 +26,7 @@ const StyledAnchor = attachThemeAttrs(styled.a)`
 
     :focus,
     :active {
-        font-family: 'Lato Black', Arial, sans-serif;
+        font-weight: bold;
         background-color: ${props => props.palette.action.active};
     }
 
@@ -39,7 +39,7 @@ const StyledAnchor = attachThemeAttrs(styled.a)`
         `
             color: ${props.palette.text.main};
             background-color: ${props.palette.action.active};
-            font-family: 'Lato Black', Arial, sans-serif;
+            font-weight: bold;
         `};
 `;
 
