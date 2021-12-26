@@ -5,6 +5,7 @@ import Option from '../../Option';
 import HelpText from '../../Input/styled/helpText';
 import ErrorText from '../../Input/styled/errorText';
 import Label from '../../Input/label/labelText';
+import InternalDropdown from '../../InternalDropdown';
 import { StyledChip, StyledPlaceholder, StyledText, StyledButtonIcon } from '../styled';
 
 describe('<MultiSelect />', () => {
@@ -134,5 +135,29 @@ describe('<MultiSelect />', () => {
             </MultiSelect>,
         );
         expect(component.find('button').exists()).toBe(false);
+    });
+
+    it('should enable search when enableSearch prop is passed', () => {
+        Element.prototype.getClientRects = jest.fn(() => {
+            return [
+                {
+                    bottom: 0,
+                    height: 0,
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    width: 0,
+                },
+            ];
+        });
+        Element.prototype.scrollTo = jest.fn();
+        const component = mount(
+            <MultiSelect enableSearch>
+                <Option name="first" label="First" />
+                <Option name="second" label="Second" />
+            </MultiSelect>,
+        );
+        component.find(StyledButtonIcon).simulate('click');
+        expect(component.find(InternalDropdown).prop('enableSearch')).toBe(true);
     });
 });
