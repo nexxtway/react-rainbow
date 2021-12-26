@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 import Label from '..';
 import LabelText from '../labelText';
 import HiddenElement from '../../../Structural/hiddenElement';
+import RequiredAsterisk from '../../../RequiredAsterisk';
 
 describe('<InputBaseLabel/>', () => {
     describe('without hideLabel', () => {
@@ -26,6 +27,10 @@ describe('<InputBaseLabel/>', () => {
             const component = mount(<Label label="Input Label" />);
             expect(component.find(LabelText).exists()).toBe(true);
             expect(component.find(HiddenElement).exists()).toBe(false);
+        });
+        it('should not render the RequiredAsterisk when there is no label', () => {
+            const component = mount(<Label required />);
+            expect(component.find(RequiredAsterisk).exists()).toBe(false);
         });
     });
     describe('with hideLabel', () => {
