@@ -240,7 +240,7 @@ const containerStyles = {
     </div>
 ```
 
-# DateTimePicker with custom icon
+# DateTimePicker with custom FontAwesome icon
 ##### It is possible to provide a custom icon for the input if you pass the `icon` prop.
 
 ```js
@@ -261,6 +261,35 @@ const containerStyles = {
             value={new Date()}
             label="DateTimePicker Label"
             icon={<FontAwesomeIcon icon={faCalendar} />}
+        />
+    </div>
+```
+
+# DateTimePicker with custom SVG icon
+##### It is possible to provide a custom icon for the input if you pass the `icon` prop.
+
+```js
+import React from 'react';
+import { DateTimePicker } from 'react-rainbow-components';
+import styled from 'styled-components';
+import { Picture } from '@rainbow-modules/icons'
+
+const containerStyles = {
+    maxWidth: 400,
+};
+
+const PictureIcon = styled(Picture)`
+    color: ${props => props.theme.rainbow.palette.brand.main};
+`;
+
+    <div
+        className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+        style={containerStyles}
+    >
+        <DateTimePicker
+            value={new Date()}
+            label="DateTimePicker Label"
+            icon={<PictureIcon />}
         />
     </div>
 ```
