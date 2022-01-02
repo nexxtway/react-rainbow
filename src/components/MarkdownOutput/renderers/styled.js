@@ -48,7 +48,7 @@ export const StyledParagraph = attachThemeAttrs(styled.p)`
         display: inline-block;
         margin-bottom: -4px;
         padding: 0 0.3rem;
-        line-height: 1.2;
+        line-height: 1.3;
         font-size: 1rem;
     }
 `;
@@ -249,6 +249,14 @@ export const StyledListItem = attachThemeAttrs(styled.li)`
     margin-left: 2rem;
     margin-bottom: 4px;
     font-size: ${FONT_SIZE_TEXT_LARGE};
+
+    code {
+        display: inline-block;
+        margin-bottom: -4px;
+        padding: 0 0.3rem;
+        line-height: 1.3;
+        font-size: 1rem;
+    }
 
     input[type='checkbox'] {
         width: 18px;
