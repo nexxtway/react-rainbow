@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import RequiredAsterisk from '../../RequiredAsterisk';
 import HiddenElement from '../../Structural/hiddenElement';
 import LabelText from './labelText';
+import RenderIf from '../../RenderIf';
 
 export default function Label(props) {
     const {
@@ -27,18 +28,20 @@ export default function Label(props) {
     }
 
     return (
-        <LabelText
-            className={className}
-            readOnly={readOnly}
-            labelAlignment={labelAlignment}
-            htmlFor={inputId}
-            as={as}
-            id={id}
-            variant={variant}
-        >
-            <RequiredAsterisk required={required} />
-            {label}
-        </LabelText>
+        <RenderIf isTrue={label}>
+            <LabelText
+                className={className}
+                readOnly={readOnly}
+                labelAlignment={labelAlignment}
+                htmlFor={inputId}
+                as={as}
+                id={id}
+                variant={variant}
+            >
+                <RequiredAsterisk required={required} />
+                {label}
+            </LabelText>
+        </RenderIf>
     );
 }
 
