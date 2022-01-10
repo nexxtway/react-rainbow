@@ -1,4 +1,5 @@
-##### select basic
+# Basic select
+##### The `Select` component is used to create a dropdown list, most often used in forms to collect user input.
 
 ```js
 import React from 'react';
@@ -23,7 +24,8 @@ const options = [
     />;
 ```
 
-##### select required
+# Select required
+##### Set the `required` prop to *true* to mark the `Select` input as required.
 
 ```js
 import React from 'react';
@@ -48,7 +50,8 @@ const options = [
     />;
 ```
 
-##### select disabled
+# Select disabled
+##### Pass the `disabled` prop as *true* if you want to show the `Select` input as disabled.
 
 ```js
 import React from 'react';
@@ -73,7 +76,8 @@ const options = [
     />;
 ```
 
-##### select with error
+# Select with error
+##### Pass the `error` prop to show an error message under the input.
 
 ```js
 import React from 'react';
@@ -99,53 +103,8 @@ const options = [
     />;
 ```
 
-##### select controlled example
-
-```js
-import React from 'react';
-import { Select } from 'react-rainbow-components';
-
-const containerStyles = {
-    maxWidth: 700,
-};
-
-const options = [
-    { value: 'option 1', label: 'Option controlled 1', disabled: false },
-    { value: 'option 2', label: 'Option controlled 2', disabled: false },
-    { value: 'option 3', label: 'Option controlled 3', disabled: true },
-];
-
-class ControlledSelect extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { value: undefined };
-        this.handleOnSelect = this.handleOnSelect.bind(this);
-    }
-
-    handleOnSelect(event) {
-        this.setState({ value: event.target.value });
-    }
-
-    render() {
-        const { value } = this.state;
-        return (
-            <Select
-                label="Select Label"
-                required
-                options={options}
-                value={value}
-                onChange={this.handleOnSelect}
-                style={containerStyles}
-                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-            />
-        );
-    }
-}
-
-    <ControlledSelect />;
-```
-
-##### select with help
+# Select with help text
+##### You can use the *bottomHelpText* prop to show a help message under the input.
 
 ```js
 import React from 'react';
@@ -170,7 +129,8 @@ const options = [
     />;
 ```
 
-##### select with left align label
+# Select with label alignment
+##### Use the *labelAlignment* prop to customize the label position. Possible values are *left*, *center (default)* and *right*.
 
 ```js
 import React from 'react';
@@ -196,10 +156,11 @@ const options = [
     />;
 ```
 
-##### select with right align label
+# Select controlled example
+##### In React, it is recommended to use controlled inputs. To achieve this you can pass the *value* to the `Select` component like the following example.
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import { Select } from 'react-rainbow-components';
 
 const containerStyles = {
@@ -207,17 +168,30 @@ const containerStyles = {
 };
 
 const options = [
-    { value: 'option 1', label: 'Option with help 1' },
-    { value: 'option 2', label: 'Option with help 2' },
-    { value: 'option 3', label: 'Option with help 3' },
+    { value: 'option 1', label: 'Option controlled 1', disabled: false },
+    { value: 'option 2', label: 'Option controlled 2', disabled: false },
+    { value: 'option 3', label: 'Option controlled 3', disabled: true },
 ];
 
-    <Select
-        label="Select Label"
-        bottomHelpText="ex: here goes the help"
-        options={options}
-        style={containerStyles}
-        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-        labelAlignment="right"
-    />;
+const ControlledSelect = () => {
+    const [value, setValue] = useState('option 2');
+
+    const handleOnSelect = event => {
+        setValue(event.target.value);
+    };
+
+    return (
+        <Select
+            label="Select Label"
+            required
+            options={options}
+            value={value}
+            onChange={handleOnSelect}
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        />
+    );
+}
+
+    <ControlledSelect />;
 ```
