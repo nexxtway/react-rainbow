@@ -7,7 +7,7 @@ const StyledItemDescription = attachThemeAttrs(styled.span)`
     color: ${props => lighten(props.palette.text.label, 0.2)};
     display: inline-block;
     margin-left: 2rem;
-    line-height: 1em;
+    line-height: 1.35em;
     margin-bottom: ${MARGIN_SMALL};
     ${props => props.disabled && `color: ${props.palette.text.disabled};`};
 `;
