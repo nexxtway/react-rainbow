@@ -12,12 +12,12 @@ import StyledFooter from './styled/footer';
  * @category Layout
  */
 export default function Card(props) {
-    const { className, style, actions, children, footer, title, icon, isLoading } = props;
+    const { id, className, style, actions, children, footer, title, icon, isLoading } = props;
     const hasHeader = icon || title || actions;
     const showFooter = !!(footer && !isLoading);
 
     return (
-        <StyledContainer className={className} style={style} hasHeader={hasHeader}>
+        <StyledContainer id={id} className={className} style={style} hasHeader={hasHeader}>
             <Header actions={actions} title={title} icon={icon} />
 
             <CardBoddy isLoading={isLoading}>{children}</CardBoddy>
@@ -48,6 +48,8 @@ Card.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 Card.defaultProps = {
@@ -59,4 +61,5 @@ Card.defaultProps = {
     className: undefined,
     style: undefined,
     children: null,
+    id: undefined,
 };
