@@ -6,6 +6,8 @@ import resolverBottomCenter from './resolverBottomCenter';
 import resolverUpCenter from './resolverUpCenter';
 import resolverCenterLeft from './resolverCenterLeft';
 import resolverCenterRight from './resolverCenterRight';
+import resolverTopLeft from './resolverTopLeft';
+import resolverTopRight from './resolverTopRight';
 
 const DEFAULT_MARGIN = 5;
 
@@ -18,6 +20,8 @@ const resolvers = [
     resolverUpCenter,
     resolverCenterLeft,
     resolverCenterRight,
+    resolverTopLeft,
+    resolverTopRight,
 ];
 
 export default function defaultPositionResolver(opts) {
