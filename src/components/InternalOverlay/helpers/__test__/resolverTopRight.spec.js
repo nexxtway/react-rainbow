@@ -1,7 +1,7 @@
 /* eslint-disable id-length */
 import resolverTopRight from '../resolverTopRight';
 
-describe('resolverTopLeft', () => {
+describe('resolverTopRight', () => {
     it('should return the correct topRight position', () => {
         const param = {
             trigger: {
