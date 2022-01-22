@@ -2,11 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MenuItem from '../MenuItem';
 
+/**
+ * A DynamicMenuItem is a menu item meant to be used in the action column of Table. This component adds two new props
+ * that allows to render the item conditionally based on row data.
+ * @category DataView
+ */
 const DynamicMenuItem = props => {
-    const { renderIf, disabled, rowData, ...rest } = props;
+    const { renderIf, disabled, rowData: row, ...rest } = props;
 
-    const shouldRender = typeof renderIf === 'function' ? renderIf(rowData) : true;
-    const isDisabled = typeof disabled === 'function' ? disabled(rowData) : false;
+    const shouldRender = typeof renderIf === 'function' ? renderIf({ row }) : true;
+    const isDisabled = typeof disabled === 'function' ? disabled({ row }) : false;
 
     if (shouldRender) {
         // eslint-disable-next-line react/jsx-props-no-spreading

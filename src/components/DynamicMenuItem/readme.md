@@ -6,7 +6,7 @@ import React from 'react';
 import { Table, Column, DynamicMenuItem } from 'react-rainbow-components';
 
 const DynamicMenuItemExample = () => {
-    const shouldRenderDelete = rowData => rowData.company.toLowerCase() !== 'nexxtway';
+    const shouldRenderDelete = ({ row }) => row.company.toLowerCase() !== 'nexxtway';
 
     return (
         <div className="rainbow-p-bottom_xx-large">
@@ -41,7 +41,7 @@ import React from 'react';
 import { Table, Column, DynamicMenuItem } from 'react-rainbow-components';
 
 const DynamicMenuItemExample = () => {
-    const shouldDisableDelete = rowData => rowData.company.toLowerCase() === 'nexxtway';
+    const shouldDisableDelete = ({ row }) => row.company.toLowerCase() === 'nexxtway';
 
     return (
         <div className="rainbow-p-bottom_xx-large">
