@@ -14,6 +14,7 @@ function MenuItems({ children, rowData }) {
                     ...child,
                     props: {
                         ...child.props,
+                        rowData,
                         onClick: event => child.props.onClick(event, rowData),
                     },
                 };
