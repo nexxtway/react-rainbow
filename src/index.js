@@ -33,6 +33,7 @@ export { default as DatePicker } from './components/DatePicker';
 export { default as DatePickerModal } from './components/DatePickerModal';
 export { default as DateTimePicker } from './components/DateTimePicker';
 export { default as Drawer } from './components/Drawer';
+export { default as DynamicMenuItem } from './components/DynamicMenuItem';
 export { default as FileSelector } from './components/FileSelector';
 export { default as GMap } from './components/GMap';
 export { default as GoogleAddressLookup } from './components/GoogleAddressLookup';
