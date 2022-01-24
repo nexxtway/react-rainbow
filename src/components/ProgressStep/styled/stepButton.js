@@ -9,6 +9,8 @@ const StyledStepButton = attachThemeAttrs(styled(ButtonIcon)).attrs(props => {
     width: 1.25rem;
     height: 1.25rem;
     cursor: auto;
+    z-index: 1;
+
     ${props =>
         props.stepState === 'Inactive' &&
         `

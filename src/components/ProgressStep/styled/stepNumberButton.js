@@ -10,7 +10,8 @@ const StyledStepNumberButton = attachThemeAttrs(styled.button).attrs(props => {
     padding: 0;
     border: none;
     border-radius: 50%;
-    cursor: auto;    
+    cursor: auto;
+    z-index: 1;
 
     ::-moz-focus-inner {
         border: 0;
