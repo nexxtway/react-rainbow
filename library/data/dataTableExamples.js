@@ -247,3 +247,39 @@ export const ListviewDataTable = [
         id: '5278aswegh',
     },
 ];
+
+export const ContactDataTable = [
+    {
+        createdAt: '05/12/1990',
+        name: 'Leandro Torres',
+        phone: '+1 444 444 4444',
+    },
+    {
+        createdAt: '10/18/1989',
+        name: 'Jose Torres',
+        lineType: 'Mobile',
+        carrier: 'AT&T',
+        phone: '+1 444 444 4444',
+    },
+    {
+        createdAt: '01/28/1990',
+        name: 'Reinier',
+        lineType: 'Mobile',
+        carrier: 'AT&T',
+        phone: '+1 444 444 4444',
+    },
+    {
+        createdAt: '08/02/1988',
+        name: 'Sara',
+        lineType: 'Mobile',
+        carrier: 'AT&T',
+        phone: '+1 444 444 4444',
+    },
+    {
+        createdAt: '03/30/1987',
+        name: 'Tahimi',
+        lineType: 'Mobile',
+        carrier: 'AT&T',
+        phone: '+1 444 444 4444',
+    },
+];

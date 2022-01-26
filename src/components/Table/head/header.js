@@ -52,12 +52,8 @@ export default class Header extends Component {
 
     render() {
         const {
-            content,
-            sortDirection,
             minColumnWidth,
             maxColumnWidth,
-            sortable,
-            isSorted,
             computedWidth,
             type,
             onSelectAllRows,
@@ -65,8 +61,11 @@ export default class Header extends Component {
             tableId,
             maxRowSelection,
             bulkSelection,
-            headerAlignment,
+            headerComponent: HeaderComponent,
+            ...rest
         } = this.props;
+
+        const { content, sortDirection, sortable, isSorted, headerAlignment } = rest;
 
         const headerStyles = {
             width: computedWidth,
@@ -98,25 +97,31 @@ export default class Header extends Component {
                 aria-label={this.getHeaderContent()}
             >
                 <StyledWrapper style={headerStyles}>
-                    <StyledHeaderContainer
-                        className="rainbow-table_header-container"
-                        role="presentation"
-                        headerAlignment={headerAlignment}
-                        onClick={this.handleSort}
-                    >
-                        <StyledContent
-                            title={this.getHeaderContent()}
-                            className="rainbow-table_header-content"
+                    <RenderIf isTrue={HeaderComponent}>
+                        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+                        <HeaderComponent {...rest} onSort={this.handleSort} />
+                    </RenderIf>
+                    <RenderIf isTrue={!HeaderComponent}>
+                        <StyledHeaderContainer
+                            className="rainbow-table_header-container"
+                            role="presentation"
+                            headerAlignment={headerAlignment}
+                            onClick={this.handleSort}
                         >
-                            {content}
-                        </StyledContent>
-                        <RenderIf isTrue={sortable}>
-                            <SortArrowIcon
-                                direction={sortDirection}
-                                headerAlignment={headerAlignment}
-                            />
-                        </RenderIf>
-                    </StyledHeaderContainer>
+                            <StyledContent
+                                title={this.getHeaderContent()}
+                                className="rainbow-table_header-content"
+                            >
+                                {content}
+                            </StyledContent>
+                            <RenderIf isTrue={sortable}>
+                                <SortArrowIcon
+                                    direction={sortDirection}
+                                    headerAlignment={headerAlignment}
+                                />
+                            </RenderIf>
+                        </StyledHeaderContainer>
+                    </RenderIf>
                     <ResizeBar
                         minColumnWidth={minColumnWidth}
                         maxColumnWidth={maxColumnWidth}
@@ -152,6 +157,7 @@ Header.propTypes = {
     maxRowSelection: PropTypes.number,
     bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
     headerAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    headerComponent: PropTypes.elementType,
 };
 
 Header.defaultProps = {
@@ -173,4 +179,5 @@ Header.defaultProps = {
     maxRowSelection: undefined,
     bulkSelection: 'none',
     headerAlignment: undefined,
+    headerComponent: undefined,
 };

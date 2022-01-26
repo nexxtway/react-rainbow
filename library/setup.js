@@ -36,6 +36,7 @@ import {
     DynamicDataTable,
     ActionsDataTable,
     ListviewDataTable,
+    ContactDataTable,
 } from './data/dataTableExamples';
 import GitHubIcon from './exampleComponents/Icons/gitHub';
 import LinkedinIcon from './exampleComponents/Icons/linkedin';
@@ -125,6 +126,7 @@ global.DataTable = DataTable;
 global.DynamicDataTable = DynamicDataTable;
 global.ActionsDataTable = ActionsDataTable;
 global.ListviewDataTable = ListviewDataTable;
+global.ContactDataTable = ContactDataTable;
 global.GitHubIcon = GitHubIcon;
 global.LinkedinIcon = LinkedinIcon;
 global.TrashIcon = TrashIcon;
