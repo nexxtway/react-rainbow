@@ -83,4 +83,27 @@ describe('<Header />', () => {
         const component = mount(<Header type={SELECTABLE_CHECKBOX} />);
         expect(component.find('SelectableHeader').exists()).toBe(true);
     });
+    it('should render headerComponent component when is passed', () => {
+        const component = mount(<Header headerComponent={() => 'test'} />);
+        expect(component.text()).toBe('test');
+    });
+    it('should call onSort with de right data', () => {
+        const onSortMockFn = jest.fn();
+        const component = mount(
+            <Header
+                sortable
+                sortDirection="asc"
+                field="email"
+                onSort={onSortMockFn}
+                headerComponent={({ onSort }) => (
+                    <button type="button" onClick={onSort}>
+                        Test
+                    </button>
+                )}
+            />,
+        );
+        const header = component.find('button');
+        header.simulate('click');
+        expect(onSortMockFn).toHaveBeenCalledWith(expect.any(Object), 'email', 'asc');
+    });
 });
