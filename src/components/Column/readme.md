@@ -330,11 +330,11 @@ const EmptyCell = ({ value }) => {
     );
 };
 
-const SortBackgroundHeader = ({ onSort, content, sortDirection, isSorted }) => {
+const SortBackgroundHeader = ({ onSort, header, sortDirection, isSorted }) => {
     const arrowIcon = sortDirection === 'asc' ? faArrowDown : faArrowUp;
     return (
         <StyledHeaderContainer onClick={onSort} sortDirection={sortDirection} isSorted={isSorted}>
-            <span>{content}</span>
+            <span>{header}</span>
             <StyledArrowIcon icon={arrowIcon} />
         </StyledHeaderContainer>
     );

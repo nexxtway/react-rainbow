@@ -52,6 +52,7 @@ export default class Header extends Component {
 
     render() {
         const {
+            content,
             minColumnWidth,
             maxColumnWidth,
             computedWidth,
@@ -65,7 +66,7 @@ export default class Header extends Component {
             ...rest
         } = this.props;
 
-        const { content, sortDirection, sortable, isSorted, headerAlignment } = rest;
+        const { sortDirection, sortable, isSorted, headerAlignment } = rest;
 
         const headerStyles = {
             width: computedWidth,
@@ -99,7 +100,7 @@ export default class Header extends Component {
                 <StyledWrapper style={headerStyles}>
                     <RenderIf isTrue={HeaderComponent}>
                         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                        <HeaderComponent {...rest} onSort={this.handleSort} />
+                        <HeaderComponent {...rest} header={content} onSort={this.handleSort} />
                     </RenderIf>
                     <RenderIf isTrue={!HeaderComponent}>
                         <StyledHeaderContainer
