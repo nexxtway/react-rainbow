@@ -1,4 +1,4 @@
-import { RefObject, ComponentClass, FunctionComponent } from 'react';
+import { RefObject, ComponentClass, FunctionComponent, ReactNode } from 'react';
 
 type TriggerElementRefFunction = () => RefObject<HTMLElement>;
 
@@ -37,6 +37,7 @@ export interface InternalOverlayProps {
     positionResolver?: (opts: PositionResolverOpts) => Position;
     onOpened?: () => void;
     keepScrollEnabled?: boolean;
+    children?: ReactNode;
 }
 
 export default function(props: InternalOverlayProps): JSX.Element | null;
