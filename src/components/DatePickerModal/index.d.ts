@@ -1,11 +1,13 @@
 import { ReactNode } from 'react';
 import { BaseProps } from '../types';
 
+type Value = string | Date | Date[];
+
 export interface DatePickerModalProps extends BaseProps {
     id?: string;
     title?: ReactNode;
     isOpen?: boolean;
-    value?: string | Date;
+    value?: Value;
     maxDate?: Date;
     minDate?: Date;
     onChange?: (date: Date) => void;
