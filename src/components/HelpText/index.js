@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import { useWindowScrolling } from '@rainbow-modules/hooks';
 import { useUniqueIdentifier, useDisclosure, useWindowResize } from '../../libs/hooks';
@@ -41,7 +41,7 @@ const inverseIconMap = {
 /**
  * HelpText is a popup that displays information related to an element.
  */
-export default function HelpText(props) {
+const HelpText = React.forwardRef((props, ref) => {
     const { id, title, text, variant, tabIndex, className, style } = props;
 
     const triggerRef = useRef();
@@ -50,6 +50,10 @@ export default function HelpText(props) {
     const isHoverTooltip = useRef(false);
     const isClickTooltip = useRef(false);
     const { isOpen, open: openOverlay, close: closeOverlay } = useDisclosure(false);
+
+    useImperativeHandle(ref, () => ({
+        close: closeOverlay,
+    }));
 
     useEffect(() => {
         if (isFocused) {
@@ -155,7 +159,7 @@ export default function HelpText(props) {
             </RenderIf>
         </>
     );
-}
+});
 
 HelpText.propTypes = {
     /** The id of the outer element. */
@@ -183,3 +187,5 @@ HelpText.defaultProps = {
     variant: 'info',
     tabIndex: undefined,
 };
+
+export default HelpText;
