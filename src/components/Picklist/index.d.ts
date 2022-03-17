@@ -31,7 +31,7 @@ export interface PicklistProps extends BaseProps {
     readOnly?: boolean;
     id?: string;
     debounce?: boolean;
-    emptyComponent: ReactNode;
+    emptyComponent?: ReactNode;
 }
 
 declare const Picklist: ComponentType<PicklistProps>;
