@@ -63,17 +63,17 @@ function InternalDropdownWithSearch() {
 import React, { useState } from 'react';
 import { PicklistOption } from 'react-rainbow-components';
 
-const textStyle = { fontSize: '16px'};
-const searchValueStyle = { fontFamily: 'Lato Bold'};
+const textStyle = { fontSize: '16px' };
+const searchValueStyle = { fontFamily: 'Lato Bold' };
 
 const CustomEmptyComponent = ({ searchValue }) => {
    return (
-        <div className="rainbow-flex rainbow-justify_center rainbow-align_center rainbow-m-around_small">
-            <h1 style={textStyle}>
-                Sorry, but nothing matched your search terms: 
-                <span style={searchValueStyle}>“{searchValue}”</span>
-            </h1>
-        </div>
+       <div className="rainbow-flex rainbow-justify_center rainbow-align_center rainbow-m-around_small">
+           <h1 style={textStyle}>
+               Sorry, but nothing matched your search terms:
+               <span style={searchValueStyle}>“{searchValue}”</span>
+           </h1>
+       </div>
     )
 }
 
