@@ -418,10 +418,7 @@ const InternalDropdown = forwardRef((props, reference) => {
                     </Content>
                 </Ul>
                 <RenderIf isTrue={showEmptyMessage && EmptyComponent}>
-                    <EmptyComponent
-                        searchValue={searchValue}
-                        hasTimeout={!!searchTimeout.current}
-                    />
+                    <EmptyComponent searchValue={searchValue} />
                 </RenderIf>
                 <RenderIf isTrue={showEmptyMessage && !EmptyComponent}>
                     <EmptyMessage searchValue={searchValue} hasTimeout={!!searchTimeout.current} />
