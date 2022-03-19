@@ -7,7 +7,7 @@ references:
     defaults: &defaults
         working_directory: ~/repo
         docker:
-            - image: cimg/node:12.19.0-browsers
+            - image: cimg/node:14.19.1-browsers
         resource_class: medium+
 
     create_env_file: &create_env_file
