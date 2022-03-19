@@ -29,6 +29,7 @@ export const SpanContainer = attachThemeAttrs(styled.div)`
     padding: 5px;
     margin: auto;
     border-radius: 0.2rem;
+    width: 100%;
     :hover {
         padding: 5px 5px 5px 4px;
         border: 1px dotted ${props => props.palette.border.main};

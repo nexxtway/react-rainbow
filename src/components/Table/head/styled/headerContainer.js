@@ -13,6 +13,14 @@ const StyledHeaderContainer = styled.div`
             justify-content: center;
             text-transform: capitalize;
         `};
+    ${props => props.headerAlignment === 'left' && 'justify-content: left;'}
+    ${props => props.headerAlignment === 'center' && 'justify-content: center;'}
+    ${props =>
+        props.headerAlignment === 'right' &&
+        `
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+    `}
 `;
 
 export default StyledHeaderContainer;

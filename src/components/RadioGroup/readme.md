@@ -208,3 +208,38 @@ const SimpleRadioGroup = () => {
         <SimpleRadioGroup />
     </div>
 ```
+
+##### radio group with description
+
+```js
+import React, { useState } from 'react';
+import { RadioGroup } from 'react-rainbow-components';
+
+const options = [
+    { value: 'radioOne', label: 'Radio One', description: 'Radio One Description' },
+    { value: 'radioTwo', label: 'Radio Two', description: 'Radio Two Description' },
+    { value: 'radioThree', label: 'Radio Three', description: 'Radio Three Description', disabled: true },
+];
+
+const DescriptionRadioGroup = () => {
+    const [value, setValue] = useState('anonymous');
+
+    const handleOnChange = event => {
+        setValue(event.target.value);
+    }
+
+    return (
+        <RadioGroup
+            id="radio-group-component-1"
+            options={options}
+            value={value}
+            onChange={handleOnChange}
+            label="Radio Group Label"
+        />
+    );
+}
+
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+        <DescriptionRadioGroup />
+    </div>
+```

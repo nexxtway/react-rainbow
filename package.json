@@ -1,6 +1,6 @@
 {
     "name": "react-rainbow-components",
-    "version": "1.27.0",
+    "version": "1.29.0",
     "description": "React Rainbow Components",
     "keywords": [
         "react",
@@ -135,7 +135,7 @@
         "classnames": "^2.2.6",
         "codemirror": "^5.49.2",
         "copy-webpack-plugin": "^4.0.1",
-        "coveralls": "^2.13.1",
+        "coveralls": "^3.1.1",
         "css-loader": "^0.26.0",
         "dotenv": "^6.2.0",
         "enzyme": "^3.3.0",

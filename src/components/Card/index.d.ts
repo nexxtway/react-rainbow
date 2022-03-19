@@ -8,6 +8,7 @@ export interface CardProps extends BaseProps {
     footer?: ReactNode;
     children?: ReactNode;
     isLoading?: boolean;
+    id?: string;
 }
 
 export default function(props: CardProps): JSX.Element | null;

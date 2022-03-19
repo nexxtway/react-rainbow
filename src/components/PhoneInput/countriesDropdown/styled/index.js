@@ -24,6 +24,7 @@ export const StyledSearchContainer = attachThemeAttrs(styled.div)`
     border-bottom: 1px solid ${props => props.palette.border.divider};
     padding: 0 1rem;
     margin-top: 5px;
+    box-sizing: border-box;
 `;
 
 export const StyledCountryCodeItem = attachThemeAttrs(styled.span)`

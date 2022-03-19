@@ -23,6 +23,7 @@ export interface TimePickerProps extends BaseProps {
     onBlur?: (value: string) => void;
     id?: string;
     hour24?: boolean;
+    icon?: ReactNode;
 }
 
 declare const TimePicker: ComponentType<TimePickerProps>;

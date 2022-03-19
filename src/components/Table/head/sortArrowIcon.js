@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StyledSortArrowIcon from './styled/sortArrowIcon';
 
-export default function SortArrowIcon({ direction }) {
+export default function SortArrowIcon({ direction, headerAlignment }) {
     const arrowAscendent = direction === 'asc';
 
     return (
         <StyledSortArrowIcon
             arrowAscendent={arrowAscendent}
+            headerAlignment={headerAlignment}
             className="rainbow-table_header-arrow"
             width="12px"
             height="12px"
@@ -41,8 +42,10 @@ export default function SortArrowIcon({ direction }) {
 
 SortArrowIcon.propTypes = {
     direction: PropTypes.oneOf(['asc', 'desc']),
+    headerAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 SortArrowIcon.defaultProps = {
     direction: 'asc',
+    headerAlignment: undefined,
 };

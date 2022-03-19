@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Provider } from './context';
 import StyledContainer from './styled/container';
 import StyledIndicatorList from './styled/indicatorList';
-import StyledIndicatorBar from './styled/indicatorBar';
 
 /**
  * The ProgressIndicator is a visual representation of a user's progress through a set of steps.
@@ -56,7 +55,6 @@ export default class ProgressIndicator extends Component {
                 <StyledIndicatorList>
                     <Provider value={context}>{children}</Provider>
                 </StyledIndicatorList>
-                <StyledIndicatorBar />
             </StyledContainer>
         );
     }

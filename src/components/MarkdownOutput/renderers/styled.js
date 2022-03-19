@@ -11,6 +11,7 @@ import {
     FONT_SIZE_TEXT_LARGE,
 } from './fontSizes';
 import { BORDER_RADIUS_3 } from '../../../styles/borderRadius';
+import { getContrastText } from '../../../styles/helpers/color';
 
 const fontSizesMap = {
     1: FONT_SIZE_HEADING_X_LARGE,
@@ -46,8 +47,8 @@ export const StyledParagraph = attachThemeAttrs(styled.p)`
     code {
         display: inline-block;
         margin-bottom: -4px;
-        padding: 0 0.5rem;
-        line-height: 1.5;
+        padding: 0 0.3rem;
+        line-height: 1.3;
         font-size: 1rem;
     }
 `;
@@ -75,11 +76,23 @@ export const StyledLink = attachThemeAttrs(styled.a)`
     }
 `;
 
-export const StyledPre = styled.pre`
+export const StyledPre = attachThemeAttrs(
+    styled.pre.attrs({
+        className: 'hljs',
+    }),
+)`
     display: block;
+    font-size: ${FONT_SIZE_TEXT_MEDIUM};
+    border-radius: 4px;
+    border: 1px solid ${props => props.palette.border.divider};
+    padding: 2px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
 
-    > code {
+    && > code {
         display: block;
+        background: inherit;
+        color: inherit;
     }
 `;
 
@@ -96,14 +109,16 @@ export const StyledCode = attachThemeAttrs(
     styled.code.attrs({
         className: 'hljs',
     }),
-)`
-    background: ${props => props.palette.background.highlight};
+)`    
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     border-radius: 4px;
-    border: 1px solid ${props => props.palette.border.divider};
-    padding: 2px;
+    padding: 1px;
     overflow-x: auto;
-    margin-bottom: 1rem;
+    
+    &.hljs {
+        background: ${props => props.palette.background.highlight};
+        color: ${props => getContrastText(props.palette.background.highlight)};
+    }
 `;
 
 export const StyledInlineCode = styled(StyledCode)`
@@ -234,6 +249,14 @@ export const StyledListItem = attachThemeAttrs(styled.li)`
     margin-left: 2rem;
     margin-bottom: 4px;
     font-size: ${FONT_SIZE_TEXT_LARGE};
+
+    code {
+        display: inline-block;
+        margin-bottom: -4px;
+        padding: 0 0.3rem;
+        line-height: 1.3;
+        font-size: 1rem;
+    }
 
     input[type='checkbox'] {
         width: 18px;

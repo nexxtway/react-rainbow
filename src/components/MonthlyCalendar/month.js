@@ -7,9 +7,9 @@ export default function Month(props) {
     const { firstDayMonth, selectedDate, minDate, maxDate, onSelectDate } = props;
     let date = new Date(firstDayMonth);
     const lastDayMonth = useMemo(() => getLastDayMonth(firstDayMonth), [firstDayMonth]);
+    const weeks = [];
 
     function Weeks() {
-        const weeks = [];
         const dayOfWeek = date.getDay();
         const daysAfter = 6 - dayOfWeek;
         while (date <= lastDayMonth || addDays(date, -dayOfWeek) <= lastDayMonth) {

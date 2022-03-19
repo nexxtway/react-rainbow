@@ -19,6 +19,15 @@ Column.propTypes = {
      */
     header: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     /**
+     * The alignment of the text of the column header
+     */
+    headerAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /**
+     * The `headerComponent` prop should replace the whole header interface and functionality.
+     * When this prop is passed the developer need to implement all of the functionalities given on the column for example `sort`...
+     */
+    headerComponent: PropTypes.elementType,
+    /**
      * The component class or function that is going to be use to render
      * the content of each cell on this column. By default the cell is
      * going to render the computed value(`data[rowIndex][field]`) for each cell.
@@ -34,7 +43,6 @@ Column.propTypes = {
     field: PropTypes.string,
     /**
      * Sets whether the column should control the sorting order of the data.
-     * @ignore
      */
     sortable: PropTypes.bool,
     /** Specifies the width of a column in pixels and make the column non-resizable.
@@ -62,6 +70,8 @@ Column.propTypes = {
 
 Column.defaultProps = {
     header: undefined,
+    headerAlignment: undefined,
+    headerComponent: undefined,
     component: undefined,
     field: undefined,
     sortable: false,

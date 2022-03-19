@@ -36,4 +36,5 @@ export interface RadioOption {
     label?: ReactNode;
     value?: string;
     disabled?: boolean;
+    description?: string;
 }

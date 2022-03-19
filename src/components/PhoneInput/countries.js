@@ -5,6 +5,7 @@ import * as Flags from './flags';
 const style = {
     width: '28px',
     height: '28px',
+    verticalAlign: 'middle',
 };
 export default [
     {
