@@ -56,6 +56,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         placeholder,
         onSearch,
         debounce,
+        emptyComponent: EmptyComponent,
     } = props;
     const [showScrollUpArrow, setShowScrollUpArrow] = useState(false);
     const [showScrollDownArrow, setShowScrollDownArrow] = useState(false);
@@ -416,7 +417,10 @@ const InternalDropdown = forwardRef((props, reference) => {
                         </Provider>
                     </Content>
                 </Ul>
-                <RenderIf isTrue={showEmptyMessage}>
+                <RenderIf isTrue={showEmptyMessage && EmptyComponent}>
+                    <EmptyComponent searchValue={searchValue} />
+                </RenderIf>
+                <RenderIf isTrue={showEmptyMessage && !EmptyComponent}>
                     <EmptyMessage searchValue={searchValue} hasTimeout={!!searchTimeout.current} />
                 </RenderIf>
                 <RenderIf isTrue={showScrollDownArrow}>
@@ -471,6 +475,8 @@ InternalDropdown.propTypes = {
     onSearch: PropTypes.func,
     /** When true, the onSearch callback will be debounced */
     debounce: PropTypes.bool,
+    /** A component that is displayed when no search matches are found */
+    emptyComponent: PropTypes.node,
 };
 
 InternalDropdown.defaultProps = {
@@ -486,6 +492,7 @@ InternalDropdown.defaultProps = {
     showCheckbox: false,
     placeholder: undefined,
     onSearch: undefined,
+    emptyComponent: undefined,
     debounce: false,
 };
 
