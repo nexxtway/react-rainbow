@@ -56,6 +56,49 @@ function InternalDropdownWithSearch() {
     <InternalDropdownWithSearch />
 ```
 
+##### With search input and custom empty component:
+
+```js
+/* eslint-disable react/jsx-no-undef */
+import React, { useState } from 'react';
+import { PicklistOption } from 'react-rainbow-components';
+
+const textStyle = { fontSize: '16px' };
+const searchValueStyle = { fontFamily: 'Lato Bold' };
+
+const CustomEmptyComponent = ({ searchValue }) => {
+   return (
+       <div className="rainbow-flex rainbow-justify_center rainbow-align_center rainbow-m-around_small">
+           <h1 style={textStyle}>
+               Sorry, but nothing matched your search terms:
+               <span style={searchValueStyle}>“{searchValue}”</span>
+           </h1>
+       </div>
+    )
+}
+
+function InternalDropdownWithSearch() {
+    const [value, setValue] = useState();
+    return (
+        <div className="rainbow-m-around_xx-large">
+            <InternalDropdown id="internal-dropdown-3" value={value} onChange={setValue} enableSearch emptyComponent={CustomEmptyComponent}>
+                <PicklistOption name="option-1" label="All Buildings" icon={<DashboardIcon />} />
+                <PicklistOption name="option-2" label="New Building" icon={<AddFilledIcon />} />
+                <PicklistOption name="header" label="Your Buildings" variant="header" />
+                <PicklistOption name="option-3" label="Experimental" icon={<BuildingIcon />} />
+                <PicklistOption name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
+                <PicklistOption name="option-5" label="Empire State" icon={<BuildingIcon />} />
+                <PicklistOption name="option-6" label="Central Park" icon={<BuildingIcon />} />
+                <PicklistOption name="option-7" label="Chrysler" icon={<BuildingIcon />} />
+                <PicklistOption name="option-8" label="Plaza" icon={<BuildingIcon />} />
+            </InternalDropdown>
+        </div>
+    );
+}
+
+    <InternalDropdownWithSearch />
+```
+
 ##### With search input and custom search:
 
 ```js
@@ -95,7 +138,7 @@ function InternalDropdownWithAlgoliaSearch() {
 
     return (
         <div className="rainbow-m-around_xx-large">
-            <InternalDropdown id="internal-dropdown-5" isLoading={isLoading} value={value} onChange={setValue} enableSearch onSearch={onSearch} debounce>
+            <InternalDropdown id="internal-dropdown-5" isLoading={isLoading} value={value} onChange={setValue} enableSearch onSearch={onSearch} debounce >
                 {options.map(option => <Option key={option.name} name={option.name} label={option.label} />)}
             </InternalDropdown>
         </div>
