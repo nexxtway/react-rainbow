@@ -43,7 +43,6 @@ Column.propTypes = {
     field: PropTypes.string,
     /**
      * Sets whether the column should control the sorting order of the data.
-     * @ignore
      */
     sortable: PropTypes.bool,
     /** Specifies the width of a column in pixels and make the column non-resizable.
