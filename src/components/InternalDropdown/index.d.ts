@@ -34,4 +34,6 @@ export interface InternalDropdownProps extends BaseProps {
     onSearch?: (query: string) => void;
     /** When true, the onSearch callback will be debounced */
     debounce?: boolean;
+    /** A component that is displayed when no search matches are found */
+    emptyComponent?: ReactNode;
 }
