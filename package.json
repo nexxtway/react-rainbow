@@ -123,7 +123,7 @@
         "@wdio/selenium-standalone-service": "^6.4.7",
         "@wdio/spec-reporter": "^6.4.7",
         "@wdio/sync": "^6.5.0",
-        "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
+        "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
         "algoliasearch": "^4.5.1",
         "allure-commandline": "^2.13.0",
         "assert": "^1.4.1",
