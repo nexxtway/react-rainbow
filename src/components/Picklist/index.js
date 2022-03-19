@@ -231,6 +231,7 @@ class Picklist extends Component {
             enableSearch,
             onSearch,
             debounce,
+            emptyComponent,
         } = this.props;
         const { label: valueLabel, icon } = getNormalizeValue(valueInProps);
         const value = valueLabel || '';
@@ -313,6 +314,7 @@ class Picklist extends Component {
                             onSearch={onSearch}
                             debounce={debounce}
                             ref={this.dropdownRef}
+                            emptyComponent={emptyComponent}
                         >
                             {children}
                         </InternalDropdown>
@@ -387,6 +389,8 @@ Picklist.propTypes = {
     onSearch: PropTypes.func,
     /** When true, the onSearch callback will be debounced */
     debounce: PropTypes.bool,
+    /** A component that is displayed when no search matches are found */
+    emptyComponent: PropTypes.node,
 };
 
 Picklist.defaultProps = {
@@ -414,6 +418,7 @@ Picklist.defaultProps = {
     enableSearch: false,
     onSearch: undefined,
     debounce: false,
+    emptyComponent: undefined,
 };
 
 export default withReduxForm(Picklist);
