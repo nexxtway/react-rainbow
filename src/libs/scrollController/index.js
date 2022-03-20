@@ -17,9 +17,6 @@ const isIosDevice =
     window.navigator.platform &&
     /iP(ad|hone|od)/.test(window.navigator.platform);
 
-const eventOptions = { capture: true };
-const passiveEventOptions = { passive: false, capture: true };
-
 let locks = [];
 let documentListenerAdded = false;
 let initialClientY = -1;
@@ -168,7 +165,7 @@ export function disableBodyScroll(targetElement, options) {
                 document.addEventListener(
                     'touchmove',
                     preventDefault,
-                    hasPassiveEvents ? passiveEventOptions : eventOptions,
+                    hasPassiveEvents ? { passive: false } : undefined,
                 );
                 documentListenerAdded = true;
             }
@@ -196,7 +193,7 @@ export function clearAllBodyScrollLocks() {
             document.removeEventListener(
                 'touchmove',
                 preventDefault,
-                hasPassiveEvents ? passiveEventOptions : eventOptions,
+                hasPassiveEvents ? { passive: false } : undefined,
             );
             documentListenerAdded = false;
         }
@@ -230,7 +227,7 @@ export function enableBodyScroll(targetElement) {
             document.removeEventListener(
                 'touchmove',
                 preventDefault,
-                hasPassiveEvents ? passiveEventOptions : eventOptions,
+                hasPassiveEvents ? { passive: false } : undefined,
             );
 
             documentListenerAdded = false;
