@@ -6,7 +6,7 @@ import React, { useRef, useState } from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
 import styled from 'styled-components';
 import { useOutsideClick, useWindowResize } from '../../libs/hooks';
-import InternalOverlay from '../InternalOverlay';
+import InternalOverlay from './index.js';
 
 const Container = styled.div`
     height: 240px;
@@ -106,7 +106,7 @@ const Component = props => {
 import React, { useRef, useState } from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
 import styled from 'styled-components';
-import InternalOverlay from '../InternalOverlay';
+import InternalOverlay from './index.js';
 import { useOutsideClick, useWindowResize } from '../../libs/hooks';
 
 const Container = styled.div`

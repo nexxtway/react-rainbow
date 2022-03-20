@@ -21,14 +21,6 @@ class VisualPicker extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    getErrorMessageId() {
-        const { error } = this.props;
-        if (error) {
-            return this.errorId;
-        }
-        return undefined;
-    }
-
     handleChange(optionName, isChecked) {
         const { onChange, multiple, value } = this.props;
         let currentValue = optionName;
@@ -42,6 +34,14 @@ class VisualPicker extends Component {
             }
         }
         onChange(currentValue);
+    }
+
+    getErrorMessageId() {
+        const { error } = this.props;
+        if (error) {
+            return this.errorId;
+        }
+        return undefined;
     }
 
     render() {

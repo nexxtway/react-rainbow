@@ -50,6 +50,14 @@ export default class CarouselCard extends Component {
         }
     }
 
+    handleOnClick() {
+        const { isAnimationPaused } = this.state;
+        if (isAnimationPaused) {
+            this.startAnimation();
+        }
+        this.setState({ isAnimationPaused: !isAnimationPaused });
+    }
+
     getContainerStyle() {
         const { style } = this.props;
         return { ...getCarouselCardContainerStyles(this.container.current), ...style };
@@ -78,14 +86,6 @@ export default class CarouselCard extends Component {
                 }
             }
         }, scrollDuration * 1000);
-    }
-
-    handleOnClick() {
-        const { isAnimationPaused } = this.state;
-        if (isAnimationPaused) {
-            this.startAnimation();
-        }
-        this.setState({ isAnimationPaused: !isAnimationPaused });
     }
 
     registerChild(child) {

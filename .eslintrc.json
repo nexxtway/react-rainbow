@@ -25,6 +25,7 @@
         {
             "files": ["**/*.md/*.js"],
             "rules": {
+                "import/no-unresolved": [2, { "ignore": ["react-rainbow-components"] }],
                 "prettier/prettier": "off",
                 "import/no-extraneous-dependencies": "off",
                 "no-alert": "off",

@@ -29,6 +29,10 @@ class TabExample extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
+    handleOnSelect(event, selected) {
+        this.setState({ selected });
+    }
+
     getTabContent() {
         const { selected } = this.state;
 
@@ -67,10 +71,6 @@ class TabExample extends React.Component {
                 observer&apos;s eye.
             </StyledTabContent>
         );
-    }
-
-    handleOnSelect(event, selected) {
-        this.setState({ selected });
     }
 
     render() {
@@ -162,6 +162,10 @@ class TabExample extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
+    handleOnSelect(event, selected) {
+        this.setState({ selected });
+    }
+
     getTabContent() {
         const { selected } = this.state;
 
@@ -200,10 +204,6 @@ class TabExample extends React.Component {
                 observer&apos;s eye.
             </StyledTabContent>
         );
-    }
-
-    handleOnSelect(event, selected) {
-        this.setState({ selected });
     }
 
     render() {
@@ -307,6 +307,10 @@ class TabExample extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
+    handleOnSelect(event, selected) {
+        this.setState({ selected });
+    }
+
     getTabContent() {
         const { selected } = this.state;
 
@@ -345,10 +349,6 @@ class TabExample extends React.Component {
                 observer&apos;s eye.
             </StyledTabContent>
         );
-    }
-
-    handleOnSelect(event, selected) {
-        this.setState({ selected });
     }
 
     render() {

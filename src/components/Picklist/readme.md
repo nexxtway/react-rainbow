@@ -194,15 +194,15 @@ class PicklistExample extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    addNewBuildings() {
-        const { isBuildingsAdded } = this.state;
-        this.setState({ isBuildingsAdded: !isBuildingsAdded });
-    }
-
     handleChange(value) {
         this.setState({
             value,
         });
+    }
+
+    addNewBuildings() {
+        const { isBuildingsAdded } = this.state;
+        this.setState({ isBuildingsAdded: !isBuildingsAdded });
     }
 
     renderNewBuildings() {

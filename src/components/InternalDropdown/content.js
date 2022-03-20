@@ -15,11 +15,11 @@ export default function Content({ children, isLoading }) {
 }
 
 Content.propTypes = {
-    className: PropTypes.string,
-    style: PropTypes.object,
+    children: PropTypes.node,
+    isLoading: PropTypes.bool,
 };
 
 Content.defaultProps = {
-    className: undefined,
-    style: undefined,
+    children: undefined,
+    isLoading: false,
 };

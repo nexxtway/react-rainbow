@@ -24,6 +24,16 @@ export default class InputBase extends Component {
         };
     }
 
+    handlePasswordToggle() {
+        const { type } = this.props;
+        if (type === 'password') {
+            const { isPasswordVisible } = this.state;
+            this.setState({
+                isPasswordVisible: !isPasswordVisible,
+            });
+        }
+    }
+
     getInlineTextLabelId() {
         const { bottomHelpText } = this.props;
         if (bottomHelpText) {
@@ -52,16 +62,6 @@ export default class InputBase extends Component {
             return isPasswordVisible ? 'text' : 'password';
         }
         return type;
-    }
-
-    handlePasswordToggle() {
-        const { type } = this.props;
-        if (type === 'password') {
-            const { isPasswordVisible } = this.state;
-            this.setState({
-                isPasswordVisible: !isPasswordVisible,
-            });
-        }
     }
 
     /**

@@ -518,7 +518,7 @@ const WrapDescription = styled.p`
 function TableCustomAction() {
     const [data, setData] = useState(ActionsDataTable);
 
-    function handleDeleteElement(id) {
+    const handleDeleteElement = id => {
         const newData = data.filter(item => item.id !== id);
         setData(newData);
     }
@@ -687,7 +687,7 @@ function TableListView() {
     const [sortedBy, setSortedBy] = useState();
     const [sortDirection, setSortDirection] = useState('asc');
 
-    function handleSort(event, field, nextSortDirection) {
+    const handleSort = (event, field, nextSortDirection) => {
         const newData = [...data];
         const key = value => value[field];
         const reverse = nextSortDirection === 'asc' ? 1 : -1;
@@ -849,7 +849,7 @@ function TableListView() {
     const [sortedBy, setSortedBy] = useState();
     const [sortDirection, setSortDirection] = useState('asc');
 
-    function handleSort(event, field, nextSortDirection) {
+    const handleSort = (event, field, nextSortDirection) => {
         const newData = [...data];
         const key = value => value[field];
         const reverse = nextSortDirection === 'asc' ? 1 : -1;
@@ -1030,7 +1030,7 @@ function TableListView() {
     const [sortedBy, setSortedBy] = useState();
     const [sortDirection, setSortDirection] = useState('asc');
 
-    function handleSort(event, field, nextSortDirection) {
+    const handleSort = (event, field, nextSortDirection) => {
         const newData = [...data];
         const key = value => value[field];
         const reverse = nextSortDirection === 'asc' ? 1 : -1;

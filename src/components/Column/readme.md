@@ -346,7 +346,7 @@ function TableContact() {
     const [sortedBy, setSortedBy] = useState();
     const [sortDirection, setSortDirection] = useState();
 
-    function handleSort(event, field, nextSortDirection) {
+    const handleSort = (event, field, nextSortDirection) => {
         const newData = [...data];
         const key = value => value[field];
         const reverse = nextSortDirection === 'asc' ? 1 : -1;

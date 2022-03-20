@@ -44,10 +44,10 @@ function SidebarItem(props) {
         return undefined;
     };
 
-    function handleOnClick(event) {
+    const handleOnClick = event => {
         onClick(event);
         onSelect(event, name);
-    }
+    };
 
     return (
         <StyledLi

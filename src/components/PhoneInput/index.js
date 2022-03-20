@@ -139,7 +139,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
         });
     };
 
-    function handlePhoneChange(event) {
+    const handlePhoneChange = event => {
         const rawPhone = event.target.value;
         const newPhone = rawPhone.replace(/\D/g, '');
         onChange({
@@ -147,12 +147,12 @@ const PhoneInput = React.forwardRef((props, ref) => {
             isoCode,
             phone: newPhone,
         });
-    }
+    };
 
-    function handleClick() {
+    const handleClick = () => {
         if (isOpen) setIsOpen(false);
         else setIsOpen(true);
-    }
+    };
 
     const handleKeyDown = event => {
         if (event.key === 'Tab' || event.key === 'Escape') {

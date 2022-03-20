@@ -19,6 +19,11 @@ class PickerOption extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    handleChange(event) {
+        const { name, privateOnChange } = this.props;
+        privateOnChange(name, event.target.checked);
+    }
+
     getType() {
         const { multiple } = this.props;
         if (multiple) {
@@ -34,11 +39,6 @@ class PickerOption extends Component {
         }
 
         return typeof value === 'string' && name === value;
-    }
-
-    handleChange(event) {
-        const { name, privateOnChange } = this.props;
-        privateOnChange(name, event.target.checked);
     }
 
     render() {

@@ -78,6 +78,10 @@ class PaginationExample extends React.Component {
         ];
     }
 
+    handleOnChange(event, page) {
+        this.setState({ activePage: page });
+    }
+
     getContent() {
         const { activePage } = this.state;
         const lastItem = activePage * 2;
@@ -96,10 +100,6 @@ class PaginationExample extends React.Component {
                 <div style={getCardImageContainerStyles(src)} />
             </Card>
         ));
-    }
-
-    handleOnChange(event, page) {
-        this.setState({ activePage: page });
     }
 
     render() {

@@ -1,3 +1,4 @@
+/* eslint-disable react/sort-comp */
 /* eslint-disable react/no-did-update-set-state, react/no-did-mount-set-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';

@@ -21,6 +21,18 @@ class CheckboxGroup extends Component {
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
+    handleOnChange(event) {
+        const { value, checked } = event.target;
+        const { value: values, onChange } = this.props;
+        if (checked && Array.isArray(values)) {
+            return onChange(values.concat([value]));
+        }
+        if (checked && !Array.isArray(values)) {
+            return onChange([value]);
+        }
+        return onChange(values.filter(valueId => valueId !== value));
+    }
+
     getErrorMessageId() {
         const { error } = this.props;
         if (error) {
@@ -35,18 +47,6 @@ class CheckboxGroup extends Component {
             return [];
         }
         return value;
-    }
-
-    handleOnChange(event) {
-        const { value, checked } = event.target;
-        const { value: values, onChange } = this.props;
-        if (checked && Array.isArray(values)) {
-            return onChange(values.concat([value]));
-        }
-        if (checked && !Array.isArray(values)) {
-            return onChange([value]);
-        }
-        return onChange(values.filter(valueId => valueId !== value));
     }
 
     render() {

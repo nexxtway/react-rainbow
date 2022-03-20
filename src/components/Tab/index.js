@@ -32,18 +32,18 @@ class TabItem extends Component {
         privateUnRegisterTab(name);
     }
 
-    getTabIndex() {
-        if (this.isSelected()) {
-            return 0;
-        }
-        return -1;
-    }
-
     handleSelect(event) {
         const { disabled, onSelect, name } = this.props;
         if (!disabled) {
             onSelect(event, name);
         }
+    }
+
+    getTabIndex() {
+        if (this.isSelected()) {
+            return 0;
+        }
+        return -1;
     }
 
     isSelected() {

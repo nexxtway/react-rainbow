@@ -55,11 +55,6 @@ export default class Accordion extends Component {
         return null;
     }
 
-    setAsSelectAccordionSection(accordionSectionIndex) {
-        const { childrenRegistered } = this.state;
-        childrenRegistered[accordionSectionIndex].focusButton();
-    }
-
     handleToggleSection(event, name) {
         const { onToggleSection } = this.props;
         if (typeof onToggleSection === 'function') {
@@ -78,6 +73,11 @@ export default class Accordion extends Component {
             return this.keyHandlerMap[event.keyCode]();
         }
         return null;
+    }
+
+    setAsSelectAccordionSection(accordionSectionIndex) {
+        const { childrenRegistered } = this.state;
+        childrenRegistered[accordionSectionIndex].focusButton();
     }
 
     selectAccordionSection(side) {

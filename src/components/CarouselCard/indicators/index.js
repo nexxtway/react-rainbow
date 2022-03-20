@@ -26,6 +26,13 @@ export default class Indicators extends Component {
         };
     }
 
+    handleKeyPressed(event) {
+        if (this.keyHandlerMap[event.keyCode]) {
+            return this.keyHandlerMap[event.keyCode]();
+        }
+        return null;
+    }
+
     setAsSelectedIndicator(tabIndex) {
         const { indicatorsRefs } = this.state;
         indicatorsRefs[tabIndex].ref.current.click();
@@ -58,13 +65,6 @@ export default class Indicators extends Component {
         } else {
             this.setAsSelectedIndicator(indicatorIndex + side);
         }
-    }
-
-    handleKeyPressed(event) {
-        if (this.keyHandlerMap[event.keyCode]) {
-            return this.keyHandlerMap[event.keyCode]();
-        }
-        return null;
     }
 
     isSelected(id) {

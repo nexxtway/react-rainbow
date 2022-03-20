@@ -77,8 +77,8 @@ const StyledDynamicContent = styled.div.attrs(props => {
     top: 50%;
 `;
 
-function DynamicContent(prop) {
-    return <h1>You have clicked on {prop.selectedItem}</h1>;
+function DynamicContent({ selectedItem }) {
+    return <h1>You have clicked on {selectedItem}</h1>;
 }
 
 function SimpleSidebar() {
