@@ -13,6 +13,7 @@ const containerStyles = {
         id="time-picker-1"
         value={state.time}
         label="TimePicker Label"
+        labelAlignment="left"
         onChange={value => setState({ time: value })}
         style={containerStyles}
         className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
