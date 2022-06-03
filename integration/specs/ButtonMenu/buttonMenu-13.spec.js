@@ -1,5 +1,4 @@
 const PageButtonMenu = require('../../../src/components/ButtonMenu/pageObject');
-const { ARROW_DOWN_KEY, ARROW_UP_KEY } = require('../../constants');
 
 const MENU_BTN = '#button-menu-disabled-items';
 
@@ -19,14 +18,14 @@ describe('ButtonMenu when the second and last items are disabled', () => {
         const lastFocusableMenuItem = buttonMenu.getItem(3);
         const firstMenuItem = buttonMenu.getItem(0);
         lastFocusableMenuItem.hover();
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
         expect(firstMenuItem.hasFocus()).toBe(true);
     });
     it('should move to the last focusabled item when first item is active and press arrow up', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         buttonMenu.click();
         const menuItem = buttonMenu.getItem(3);
-        browser.keys(ARROW_UP_KEY);
+        browser.keys('ArrowUp');
         expect(menuItem.hasFocus()).toBe(true);
     });
     it('should not move focus to the item hovered when the item is disabled', () => {
@@ -47,7 +46,7 @@ describe('ButtonMenu when the second and last items are disabled', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         buttonMenu.click();
         const menuItem = buttonMenu.getItem(2);
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
         expect(menuItem.hasFocus()).toBe(true);
     });
     it('should move to the previous focusabled item when press arrow up', () => {
@@ -56,7 +55,7 @@ describe('ButtonMenu when the second and last items are disabled', () => {
         const thirdMenuItem = buttonMenu.getItem(2);
         const fourthMenuItem = buttonMenu.getItem(3);
         fourthMenuItem.hover();
-        browser.keys(ARROW_UP_KEY);
+        browser.keys('ArrowUp');
         expect(thirdMenuItem.hasFocus()).toBe(true);
     });
 });
