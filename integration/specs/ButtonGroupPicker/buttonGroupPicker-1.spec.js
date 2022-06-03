@@ -1,5 +1,4 @@
 const PageButtonGroupPicker = require('../../../src/components/ButtonGroupPicker/pageObject');
-const { ARROW_DOWN_KEY, ARROW_LEFT_KEY, ARROW_RIGHT_KEY } = require('../../constants');
 
 const BUTTON_GROUP_PICKER = '#button-group-picker-component-1';
 
@@ -32,7 +31,7 @@ describe('ButtonGroupPicker base example', () => {
         const option1 = groupPicker.getItem(1);
         const option2 = groupPicker.getItem(2);
         option1.click();
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
         expect(option2.hasFocus()).toBe(true);
     });
 
@@ -41,7 +40,7 @@ describe('ButtonGroupPicker base example', () => {
         const option1 = groupPicker.getItem(1);
         const option2 = groupPicker.getItem(2);
         option1.click();
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
         expect(option2.isChecked()).toBe(true);
     });
 
@@ -49,7 +48,7 @@ describe('ButtonGroupPicker base example', () => {
         const groupPicker = new PageButtonGroupPicker(BUTTON_GROUP_PICKER);
         const option = groupPicker.getItem(1);
         option.click();
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
         expect(option.isChecked()).toBe(false);
     });
 
@@ -58,7 +57,7 @@ describe('ButtonGroupPicker base example', () => {
         const option1 = groupPicker.getItem(1);
         const option2 = groupPicker.getItem(2);
         option2.click();
-        browser.keys(ARROW_LEFT_KEY);
+        browser.keys('ArrowLeft');
         expect(option1.isChecked()).toBe(true);
     });
 
@@ -67,7 +66,7 @@ describe('ButtonGroupPicker base example', () => {
         const option1 = groupPicker.getItem(1);
         const option2 = groupPicker.getItem(2);
         option1.click();
-        browser.keys(ARROW_RIGHT_KEY);
+        browser.keys('ArrowRight');
         expect(option2.isChecked()).toBe(true);
     });
 
@@ -75,7 +74,7 @@ describe('ButtonGroupPicker base example', () => {
         const groupPicker = new PageButtonGroupPicker(BUTTON_GROUP_PICKER);
         const option = groupPicker.getItem(1);
         option.click();
-        browser.keys(ARROW_LEFT_KEY);
+        browser.keys('ArrowLeft');
         expect(option.isChecked()).toBe(false);
     });
 
@@ -84,7 +83,7 @@ describe('ButtonGroupPicker base example', () => {
         const option0 = groupPicker.getItem(0);
         const option2 = groupPicker.getItem(2);
         option2.click();
-        browser.keys(ARROW_RIGHT_KEY);
+        browser.keys('ArrowRight');
         expect(option0.isChecked()).toBe(true);
     });
 });
