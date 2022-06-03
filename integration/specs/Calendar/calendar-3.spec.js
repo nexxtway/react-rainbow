@@ -1,13 +1,4 @@
 const PageCalendar = require('../../../src/components/Calendar/pageObject');
-const {
-    ARROW_UP_KEY,
-    ARROW_DOWN_KEY,
-    ARROW_LEFT_KEY,
-    ARROW_RIGHT_KEY,
-    ALT_KEY,
-    PAGEUP_KEY,
-    PAGEDOWN_KEY,
-} = require('../../constants');
 
 const CALENDAR = '#calendar-3';
 
@@ -42,8 +33,8 @@ describe('Calendar', () => {
         calendar.clickDay(1);
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2020');
-        browser.keys(PAGEDOWN_KEY);
-        browser.keys(PAGEDOWN_KEY);
+        browser.keys('PageDown');
+        browser.keys('PageDown');
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2020');
         expect(calendar.isDayFocused(4)).toBe(true);
@@ -56,8 +47,8 @@ describe('Calendar', () => {
         calendar.clickDay(25);
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2018');
-        browser.keys(PAGEUP_KEY);
-        browser.keys(PAGEUP_KEY);
+        browser.keys('PageUp');
+        browser.keys('PageUp');
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2018');
     });
@@ -68,7 +59,7 @@ describe('Calendar', () => {
         calendar.clickDay(1);
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2020');
-        browser.keys([ALT_KEY, PAGEDOWN_KEY]);
+        browser.keys(['Alt', 'PageDown']);
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2020');
         expect(calendar.isDayFocused(4)).toBe(true);
@@ -81,7 +72,7 @@ describe('Calendar', () => {
         calendar.clickDay(25);
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2018');
-        browser.keys([ALT_KEY, PAGEUP_KEY]);
+        browser.keys(['Alt', 'PageUp']);
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2018');
     });
@@ -93,11 +84,11 @@ describe('Calendar', () => {
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2020');
         expect(calendar.isDayFocused(4)).toBe(true);
-        browser.keys(ARROW_RIGHT_KEY);
+        browser.keys('ArrowRight');
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2020');
         expect(calendar.isDayFocused(4)).toBe(true);
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2020');
         expect(calendar.isDayFocused(4)).toBe(true);
@@ -111,11 +102,11 @@ describe('Calendar', () => {
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2018');
         expect(calendar.isDayFocused(4)).toBe(true);
-        browser.keys(ARROW_LEFT_KEY);
+        browser.keys('ArrowLeft');
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2018');
         expect(calendar.isDayFocused(4)).toBe(true);
-        browser.keys(ARROW_UP_KEY);
+        browser.keys('ArrowUp');
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2018');
         expect(calendar.isDayFocused(4)).toBe(true);

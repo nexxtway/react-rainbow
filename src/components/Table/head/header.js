@@ -98,10 +98,10 @@ export default class Header extends Component {
                 aria-label={this.getHeaderContent()}
             >
                 <StyledWrapper style={headerStyles}>
-                    <RenderIf isTrue={HeaderComponent}>
-                        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+                    {HeaderComponent ? (
+                        // eslint-disable-next-line react/jsx-props-no-spreading
                         <HeaderComponent {...rest} header={content} onSort={this.handleSort} />
-                    </RenderIf>
+                    ) : null}
                     <RenderIf isTrue={!HeaderComponent}>
                         <StyledHeaderContainer
                             className="rainbow-table_header-container"

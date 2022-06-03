@@ -1,5 +1,4 @@
 const PageButtonMenu = require('../../../src/components/ButtonMenu/pageObject');
-const { ESCAPE_KEY, ARROW_DOWN_KEY, ARROW_UP_KEY, TAB_KEY } = require('../../constants');
 
 const MENU_BTN = '#button-menu';
 const REACT_LOGO = 'img[alt="rainbow logo"]';
@@ -29,7 +28,7 @@ describe('ButtonMenu with subheaders example', () => {
     it('should close the menu when the menu is opened and press ESC', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         buttonMenu.click();
-        browser.keys(ESCAPE_KEY);
+        browser.keys('Escape');
         expect(buttonMenu.isOpen()).toBe(false);
     });
     it('should close the menu when the menu is opened and click an element', () => {
@@ -42,7 +41,7 @@ describe('ButtonMenu with subheaders example', () => {
     it('should put the menu button focused when the menu is opened and press ESC', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         buttonMenu.click();
-        browser.keys(ESCAPE_KEY);
+        browser.keys('Escape');
         expect(buttonMenu.hasFocusButton()).toBe(true);
     });
     it('should set the focus to the first menu item when open the menu', () => {
@@ -55,7 +54,7 @@ describe('ButtonMenu with subheaders example', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         buttonMenu.click();
         const menuItem = buttonMenu.getItem(1);
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
         expect(menuItem.hasFocus()).toBe(true);
     });
     it('should move to the previous item when press arrow up', () => {
@@ -64,7 +63,7 @@ describe('ButtonMenu with subheaders example', () => {
         const secondMenuItem = buttonMenu.getItem(1);
         const thirdMenuItem = buttonMenu.getItem(2);
         thirdMenuItem.hover();
-        browser.keys(ARROW_UP_KEY);
+        browser.keys('ArrowUp');
         expect(secondMenuItem.hasFocus()).toBe(true);
     });
     it('should move to the first item when last item is active and press arrow down', () => {
@@ -73,20 +72,20 @@ describe('ButtonMenu with subheaders example', () => {
         const secondMenuItem = buttonMenu.getItem(1);
         const thirdMenuItem = buttonMenu.getItem(2);
         secondMenuItem.hover();
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
         expect(thirdMenuItem.hasFocus()).toBe(true);
     });
     it('should move to the last item when first item is active and press arrow up', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         buttonMenu.click();
         const menuItem = buttonMenu.getItem(4);
-        browser.keys(ARROW_UP_KEY);
+        browser.keys('ArrowUp');
         expect(menuItem.hasFocus()).toBe(true);
     });
     it('should close the menu when the menu is opened and press the key "tab"', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         buttonMenu.click();
-        browser.keys(TAB_KEY);
+        browser.keys('Tab');
         expect(buttonMenu.isOpen()).toBe(false);
     });
     it('should move focus to the item hovered', () => {
