@@ -1,5 +1,4 @@
 const PageButtonMenu = require('../../../src/components/ButtonMenu/pageObject');
-const { ARROW_DOWN_KEY } = require('../../constants');
 
 const BUTTONMENU = '#button-menu-17';
 
@@ -19,7 +18,7 @@ describe('ButtonMenu with MenuItems changed dynamically', () => {
         addMenuItem();
         buttonMenu.click();
         const secondItemMenu = buttonMenu.getItem(1);
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
         expect(secondItemMenu.hasFocus()).toBe(true);
         expect(secondItemMenu.getLabelText()).toBe('Menu Item New');
     });
@@ -27,11 +26,11 @@ describe('ButtonMenu with MenuItems changed dynamically', () => {
         const buttonMenu = new PageButtonMenu(BUTTONMENU);
         addMenuItem();
         buttonMenu.click();
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
         const secondItemMenu = buttonMenu.getItem(1);
         addMenuItem();
         buttonMenu.click();
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
         expect(secondItemMenu.hasFocus()).toBe(true);
         expect(secondItemMenu.getLabelText()).toBe('Menu Item Two');
     });
