@@ -1,5 +1,4 @@
 const PageCarouselCard = require('../../../src/components/CarouselCard/pageObject');
-const { ARROW_RIGHT_KEY } = require('../../constants');
 
 const CAROUSEL = '#carousel-3';
 
@@ -18,7 +17,7 @@ describe('CarouselCard with CarouselImagen changed dynamically', () => {
         const carousel = new PageCarouselCard(CAROUSEL);
         const indicator = carousel.getIndicatorItem(0);
         indicator.click();
-        browser.keys(ARROW_RIGHT_KEY);
+        browser.keys('ArrowRight');
         const indicator2 = carousel.getIndicatorItem(1);
         expect(indicator2.isSelected()).toBe(true);
         const carouselImagen2 = carousel.getImageItem(1);
@@ -26,7 +25,7 @@ describe('CarouselCard with CarouselImagen changed dynamically', () => {
         browser.refresh();
         addNewCard();
         indicator.click();
-        browser.keys(ARROW_RIGHT_KEY);
+        browser.keys('ArrowRight');
         expect(indicator2.isSelected()).toBe(true);
         expect(carouselImagen2.getHeaderText()).toBe('New Card');
     });
@@ -35,14 +34,14 @@ describe('CarouselCard with CarouselImagen changed dynamically', () => {
         const indicator = carousel.getIndicatorItem(0);
         addNewCard();
         indicator.click();
-        browser.keys(ARROW_RIGHT_KEY);
+        browser.keys('ArrowRight');
         const indicator2 = carousel.getIndicatorItem(1);
         expect(indicator2.isSelected()).toBe(true);
         const carouselImagen2 = carousel.getImageItem(1);
         expect(carouselImagen2.getHeaderText()).toBe('New Card');
         addNewCard();
         indicator.click();
-        browser.keys(ARROW_RIGHT_KEY);
+        browser.keys('ArrowRight');
         expect(indicator2.isSelected()).toBe(true);
         expect(carouselImagen2.getHeaderText()).toBe('Second Card');
     });

@@ -225,7 +225,7 @@ FileSelector.propTypes = {
     /** Shows the help message below the input. */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
-    placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    placeholder: PropTypes.string,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** Specifies that an input field must be filled out before submitting the form.

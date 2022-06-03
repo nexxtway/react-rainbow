@@ -1,5 +1,4 @@
 const PageButtonMenu = require('../../../src/components/ButtonMenu/pageObject');
-const { TAB_KEY } = require('../../constants');
 
 const FIRST_MENU_BTN = '#button-menu-1';
 const SECOND_MENU_BTN = '#button-menu-2';
@@ -10,7 +9,7 @@ describe('ButtonMenu with icons example', () => {
         const secondButtonMenu = new PageButtonMenu(SECOND_MENU_BTN);
         const firsButtonMenu = $(FIRST_MENU_BTN);
         firsButtonMenu.click();
-        browser.keys(TAB_KEY);
+        browser.keys('Tab');
         expect(secondButtonMenu.hasFocusButton()).toBe(true);
     });
 });

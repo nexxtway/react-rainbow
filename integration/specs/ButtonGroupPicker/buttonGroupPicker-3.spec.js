@@ -1,5 +1,4 @@
 const PageButtonGroupPicker = require('../../../src/components/ButtonGroupPicker/pageObject');
-const { ARROW_DOWN_KEY } = require('../../constants');
 
 const BUTTON_GROUP_PICKER = '#button-group-picker-component-3';
 
@@ -18,7 +17,7 @@ describe('ButtonGroupPicker base example', () => {
         const option2 = groupPicker.getItem(2);
         const option3 = groupPicker.getItem(3);
         option2.click();
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
         expect(option3.isChecked()).toBe(false);
     });
 
