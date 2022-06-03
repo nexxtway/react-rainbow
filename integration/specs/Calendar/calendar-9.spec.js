@@ -1,12 +1,4 @@
 const PageCalendar = require('../../../src/components/Calendar/pageObject');
-const {
-    ARROW_UP_KEY,
-    ARROW_DOWN_KEY,
-    PAGEDOWN_KEY,
-    TAB_KEY,
-    ESCAPE_KEY,
-    ENTER_KEY,
-} = require('../../constants');
 
 const CALENDAR = '#calendar-9';
 
@@ -29,13 +21,13 @@ describe('Calendar', () => {
     it('should set range initial and end dates when using keyboard navigation', () => {
         const calendar = new PageCalendar(CALENDAR);
         calendar.clickLeftMonthSelectYear();
-        browser.keys(ESCAPE_KEY);
-        browser.keys(TAB_KEY);
-        browser.keys(ARROW_UP_KEY);
-        browser.keys(ENTER_KEY);
-        browser.keys(PAGEDOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
+        browser.keys('Escape');
+        browser.keys('Tab');
+        browser.keys('ArrowUp');
+        browser.keys('Enter');
+        browser.keys('PageDown');
+        browser.keys('ArrowDown');
+        browser.keys('Enter');
         expect(calendar.isLeftMonthDaySelected(16)).toBe(true);
         expect(calendar.isRightMonthDaySelected(23)).toBe(true);
     });
