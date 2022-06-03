@@ -1,6 +1,6 @@
 {
     "name": "react-rainbow-components",
-    "version": "1.29.0",
+    "version": "1.30.0",
     "description": "React Rainbow Components",
     "keywords": [
         "react",
@@ -189,7 +189,6 @@
         "stylelint-config-styled-components": "^0.1.1",
         "stylelint-processor-styled-components": "^1.8.0",
         "stylelint-scss": "^3.3.0",
-        "wdio-chromedriver-service": "^6.0.4",
         "webdriverio": "^6.5.2",
         "webpack": "^4.41.2"
     },
