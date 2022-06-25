@@ -16,8 +16,8 @@ class PageNodeItem {
      * Clicks the li element.
      * @method
      */
-    click() {
-        $(this.rootElement).click();
+    async click() {
+        await $(this.rootElement).click();
     }
 
     /**
@@ -25,17 +25,17 @@ class PageNodeItem {
      * @method
      * @returns {bool}
      */
-    hasFocus() {
+    async hasFocus() {
         const nodeEl = $(this.rootElement);
-        return nodeEl.isExisting() && nodeEl.isFocused();
+        return (await nodeEl.isExisting()) && nodeEl.isFocused();
     }
 
     /**
      * Clicks the button icon element.
      * @method
      */
-    clickExpandButton() {
-        $(this.rootElement)
+    async clickExpandButton() {
+        await $(this.rootElement)
             .$('[data-id="node-element"] button')
             .click();
     }
@@ -45,9 +45,9 @@ class PageNodeItem {
      * @method
      * @returns {bool}
      */
-    isExpanded() {
-        const childEl = $(this.rootElement).$('[data-id="node-element-li"]');
-        return childEl.isExisting() && childEl.isDisplayed();
+    async isExpanded() {
+        const childEl = await $(this.rootElement).$('[data-id="node-element-li"]');
+        return (await childEl.isExisting()) && childEl.isDisplayed();
     }
 
     /**
@@ -55,8 +55,8 @@ class PageNodeItem {
      * @method
      * @returns {bool}
      */
-    isSelected() {
-        return $(this.rootElement).getAttribute('aria-selected') === 'true';
+    async isSelected() {
+        return (await $(this.rootElement).getAttribute('aria-selected')) === 'true';
     }
 }
 

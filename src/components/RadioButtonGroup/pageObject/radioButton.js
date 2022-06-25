@@ -15,8 +15,8 @@ class PageRadioButtonItem {
     /** Click the radiobutton.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('label')
             .click();
     }
@@ -26,7 +26,7 @@ class PageRadioButtonItem {
      * @method
      * @returns {bool}
      */
-    hasFocus() {
+    async hasFocus() {
         return $(this.rootElement)
             .$('input[type="radio"]')
             .isFocused();
@@ -37,10 +37,10 @@ class PageRadioButtonItem {
      * @method
      * @returns {bool}
      */
-    isChecked() {
-        return !!$(this.rootElement)
+    async isChecked() {
+        return !!(await $(this.rootElement)
             .$('input[type="radio"]')
-            .isSelected();
+            .isSelected());
     }
 }
 

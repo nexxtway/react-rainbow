@@ -4,57 +4,57 @@ const { ARROW_LEFT_KEY, ARROW_RIGHT_KEY } = require('../../constants');
 const TABSET = '#tabset-1';
 
 describe('Tabset base example', () => {
-    beforeAll(() => {
-        browser.url('/#!/Tabset/1');
+    beforeAll(async () => {
+        await browser.url('/#!/Tabset/1');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(TABSET);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(TABSET);
+        await component.waitForExist();
     });
 
-    it('should select the first tab when selected', () => {
+    it('should select the first tab when selected', async () => {
         const tabset = new PageTabset(TABSET);
-        const tabItem = tabset.getItem(0);
-        tabItem.click();
-        expect(tabItem.isSelected()).toBe(true);
+        const tabItem = await tabset.getItem(0);
+        await tabItem.click();
+        await expect(await tabItem.isSelected()).toBe(true);
     });
-    it('should select the last tab when the first has focus and left arrow key is pressed', () => {
+    it('should select the last tab when the first has focus and left arrow key is pressed', async () => {
         const tabset = new PageTabset(TABSET);
-        const firstTabItem = tabset.getItem(0);
-        firstTabItem.click();
-        browser.keys(ARROW_LEFT_KEY);
-        const lastTabItem = tabset.getItem(4);
-        expect(lastTabItem.isSelected()).toBe(true);
+        const firstTabItem = await tabset.getItem(0);
+        await firstTabItem.click();
+        await browser.keys(ARROW_LEFT_KEY);
+        const lastTabItem = await tabset.getItem(4);
+        await expect(await lastTabItem.isSelected()).toBe(true);
     });
-    it('should select the next tab when the first has focus and right arrow key is pressed', () => {
+    it('should select the next tab when the first has focus and right arrow key is pressed', async () => {
         const tabset = new PageTabset(TABSET);
-        const tabItem = tabset.getItem(0);
-        const tabItem2 = tabset.getItem(1);
-        tabItem.click();
-        browser.keys(ARROW_RIGHT_KEY);
-        expect(tabItem2.isSelected()).toBe(true);
+        const tabItem = await tabset.getItem(0);
+        const tabItem2 = await tabset.getItem(1);
+        await tabItem.click();
+        await browser.keys(ARROW_RIGHT_KEY);
+        await expect(await tabItem2.isSelected()).toBe(true);
     });
-    it('should lost focus if other tab is selected', () => {
+    it('should lost focus if other tab is selected', async () => {
         const tabset = new PageTabset(TABSET);
-        const tabItem = tabset.getItem(0);
-        const tabItem2 = tabset.getItem(1);
-        tabItem.click();
-        tabItem2.click();
-        expect(tabItem.hasFocus()).toBe(false);
+        const tabItem = await tabset.getItem(0);
+        const tabItem2 = await tabset.getItem(1);
+        await tabItem.click();
+        await tabItem2.click();
+        await expect(await tabItem.hasFocus()).toBe(false);
     });
-    it('should lost focus if other tab is selected by keyboard navigation', () => {
+    it('should lost focus if other tab is selected by keyboard navigation', async () => {
         const tabset = new PageTabset(TABSET);
-        const tabItem = tabset.getItem(0);
-        tabItem.click();
-        browser.keys(ARROW_RIGHT_KEY);
-        expect(tabItem.hasFocus()).toBe(false);
+        const tabItem = await tabset.getItem(0);
+        await tabItem.click();
+        await browser.keys(ARROW_RIGHT_KEY);
+        await expect(await tabItem.hasFocus()).toBe(false);
     });
-    it('should set the buttons visible when the screen size is resized', () => {
+    it('should set the buttons visible when the screen size is resized', async () => {
         const tabset = new PageTabset(TABSET);
-        browser.setWindowSize(1920, 1080);
-        expect(tabset.isButtonsVisible()).toBe(false);
-        browser.setWindowSize(610, 610);
-        expect(tabset.isButtonsVisible()).toBe(true);
+        await browser.setWindowSize(1920, 1080);
+        await expect(await tabset.isButtonsVisible()).toBe(false);
+        await browser.setWindowSize(610, 610);
+        await expect(await tabset.isButtonsVisible()).toBe(true);
     });
 });

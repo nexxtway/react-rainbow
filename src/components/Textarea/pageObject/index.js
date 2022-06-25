@@ -16,8 +16,8 @@ class PageTextarea {
      * Clicks the textarea element.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('textarea')
             .click();
     }
@@ -26,8 +26,8 @@ class PageTextarea {
      * Clicks the label element.
      * @method
      */
-    clickLabel() {
-        $(this.rootElement)
+    async clickLabel() {
+        await $(this.rootElement)
             .$('label')
             .click();
     }
@@ -37,7 +37,7 @@ class PageTextarea {
      * @method
      * @returns {bool}
      */
-    hasFocusTextarea() {
+    async hasFocusTextarea() {
         return $(this.rootElement)
             .$('textarea')
             .isFocused();
@@ -48,8 +48,8 @@ class PageTextarea {
      * @method
      * @param {string} values - The value to set in the textarea.
      */
-    setValue(value) {
-        $(this.rootElement)
+    async setValue(value) {
+        await $(this.rootElement)
             .$('textarea')
             .setValue(value);
     }
@@ -59,7 +59,7 @@ class PageTextarea {
      * @method
      * @returns {string}
      */
-    getValue() {
+    async getValue() {
         return $(this.rootElement)
             .$('textarea')
             .getValue();

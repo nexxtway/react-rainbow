@@ -21,7 +21,7 @@ class PageButtonMenu {
      * @method
      * @param {number} itemPosition - The base 0 index of the MenuItem.
      */
-    getItem(itemPosition) {
+    async getItem(itemPosition) {
         return this.primitiveMenu.getItem(itemPosition);
     }
 
@@ -29,8 +29,8 @@ class PageButtonMenu {
      * Clicks the button element.
      * @method
      */
-    click() {
-        this.primitiveMenu.clickTrigger();
+    async click() {
+        await this.primitiveMenu.clickTrigger();
     }
 
     /**
@@ -38,7 +38,7 @@ class PageButtonMenu {
      * @method
      * @returns {bool}
      */
-    isOpen() {
+    async isOpen() {
         return this.primitiveMenu.isDropdownOpen();
     }
 
@@ -47,7 +47,7 @@ class PageButtonMenu {
      * @method
      * @returns {bool}
      */
-    hasFocusButton() {
+    async hasFocusButton() {
         return this.primitiveMenu.hasFocusTrigger();
     }
 }

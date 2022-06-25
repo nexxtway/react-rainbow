@@ -16,8 +16,8 @@ class PageSidebarItem {
      * Clicks the sidebar a element.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('[data-id="sidebar-item-clickable-element"]')
             .click();
     }
@@ -27,7 +27,7 @@ class PageSidebarItem {
      * @method
      * @returns {bool}
      */
-    isActive() {
+    async isActive() {
         return $(this.rootElement)
             .$('[aria-current="page"]')
             .isExisting();

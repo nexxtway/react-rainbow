@@ -4,68 +4,68 @@ const { ARROW_DOWN_KEY, ARROW_UP_KEY, ENTER_KEY } = require('../../constants');
 const INTERNAL_DROPDOWN = '#internal-dropdown-1';
 
 describe('InternalDropdown base example', () => {
-    beforeAll(() => {
-        browser.url('/#!/InternalDropdown/1');
+    beforeAll(async () => {
+        await browser.url('/#!/InternalDropdown/1');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(INTERNAL_DROPDOWN);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(INTERNAL_DROPDOWN);
+        await component.waitForExist();
     });
-    it('should render Arrow component at top of the list of options when scrolling down the list', () => {
+    it('should render Arrow component at top of the list of options when scrolling down the list', async () => {
         const internalDropdown = new PageInternalDropdown(INTERNAL_DROPDOWN);
-        internalDropdown.hoverScrollDownArrow();
-        expect(internalDropdown.arrowUpExists()).toBe(true);
+        await internalDropdown.hoverScrollDownArrow();
+        await expect(await internalDropdown.arrowUpExists()).toBe(true);
     });
-    it('should not render Arrow component at top of the list of options when scroll is at top of the list', () => {
+    it('should not render Arrow component at top of the list of options when scroll is at top of the list', async () => {
         const internalDropdown = new PageInternalDropdown(INTERNAL_DROPDOWN);
-        expect(internalDropdown.arrowUpExists()).toBe(false);
+        await expect(await internalDropdown.arrowUpExists()).toBe(false);
     });
-    it('should render Arrow component at bottom of the list of options when scrolling up the list', () => {
+    it('should render Arrow component at bottom of the list of options when scrolling up the list', async () => {
         const internalDropdown = new PageInternalDropdown(INTERNAL_DROPDOWN);
-        internalDropdown.getOption(6).click();
-        browser.keys(ARROW_UP_KEY);
-        browser.keys(ARROW_UP_KEY);
-        expect(internalDropdown.arrowDownExists()).toBe(true);
+        await (await internalDropdown.getOption(6)).click();
+        await browser.keys(ARROW_UP_KEY);
+        await browser.keys(ARROW_UP_KEY);
+        await expect(await internalDropdown.arrowDownExists()).toBe(true);
     });
-    it('should not render Arrow component at bottom of the list of options when last option is visible', () => {
+    it('should not render Arrow component at bottom of the list of options when last option is visible', async () => {
         const internalDropdown = new PageInternalDropdown(INTERNAL_DROPDOWN);
-        internalDropdown.getOption(4).click();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        expect(internalDropdown.arrowDownExists()).toBe(false);
+        await (await internalDropdown.getOption(4)).click();
+        await browser.keys(ARROW_DOWN_KEY);
+        await browser.keys(ARROW_DOWN_KEY);
+        await browser.keys(ARROW_DOWN_KEY);
+        await browser.keys(ARROW_DOWN_KEY);
+        await browser.keys(ARROW_DOWN_KEY);
+        await expect(await internalDropdown.arrowDownExists()).toBe(false);
     });
-    it('should render Arrow component at top and bottom when first option and last options are not visible', () => {
+    it('should render Arrow component at top and bottom when first option and last options are not visible', async () => {
         const internalDropdown = new PageInternalDropdown(INTERNAL_DROPDOWN);
-        const option4 = internalDropdown.getOption(5);
-        option4.click();
-        browser.keys(ARROW_DOWN_KEY);
-        expect(internalDropdown.arrowUpExists()).toBe(true);
-        expect(internalDropdown.arrowDownExists()).toBe(true);
+        const option4 = await internalDropdown.getOption(5);
+        await option4.click();
+        await browser.keys(ARROW_DOWN_KEY);
+        await expect(await internalDropdown.arrowUpExists()).toBe(true);
+        await expect(await internalDropdown.arrowDownExists()).toBe(true);
     });
-    it('should set active next option when press arrow down key', () => {
+    it('should set active next option when press arrow down key', async () => {
         const internalDropdown = new PageInternalDropdown(INTERNAL_DROPDOWN);
-        const option1 = internalDropdown.getOption(0);
-        const option2 = internalDropdown.getOption(1);
-        option1.click();
-        browser.keys(ARROW_DOWN_KEY);
-        expect(option2.isActive()).toBe(true);
+        const option1 = await internalDropdown.getOption(0);
+        const option2 = await internalDropdown.getOption(1);
+        await option1.click();
+        await browser.keys(ARROW_DOWN_KEY);
+        await expect(await option2.isActive()).toBe(true);
     });
-    it('should select the option active when press enter key', () => {
+    it('should select the option active when press enter key', async () => {
         const internalDropdown = new PageInternalDropdown(INTERNAL_DROPDOWN);
-        const option2 = internalDropdown.getOption(1);
-        const option3 = internalDropdown.getOption(2);
-        option2.click();
-        browser.keys([ARROW_DOWN_KEY, ENTER_KEY]);
-        expect(option3.isSelected()).toBe(true);
+        const option2 = await internalDropdown.getOption(1);
+        const option3 = await internalDropdown.getOption(2);
+        await option2.click();
+        await browser.keys([ARROW_DOWN_KEY, ENTER_KEY]);
+        await expect(await option3.isSelected()).toBe(true);
     });
-    it('should select the option clicked', () => {
+    it('should select the option clicked', async () => {
         const internalDropdown = new PageInternalDropdown(INTERNAL_DROPDOWN);
-        const option1 = internalDropdown.getOption(0);
-        option1.click();
-        expect(option1.isSelected()).toBe(true);
+        const option1 = await internalDropdown.getOption(0);
+        await option1.click();
+        await expect(await option1.isSelected()).toBe(true);
     });
 });

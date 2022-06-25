@@ -17,8 +17,8 @@ class PageSingleCalendar {
      * Clicks the previous month button element.
      * @method
      */
-    clickPrevMonthButton() {
-        $(this.rootElement)
+    async clickPrevMonthButton() {
+        await $(this.rootElement)
             .$$('button[data-id=button-icon-element]')[0]
             .click();
     }
@@ -27,8 +27,8 @@ class PageSingleCalendar {
      * Clicks the next month button element.
      * @method
      */
-    clickNextMonthButton() {
-        $(this.rootElement)
+    async clickNextMonthButton() {
+        await $(this.rootElement)
             .$$('button[data-id=button-icon-element]')[1]
             .click();
     }
@@ -37,8 +37,8 @@ class PageSingleCalendar {
      * Clicks the select year element.
      * @method
      */
-    clickSelectYear() {
-        $(this.rootElement)
+    async clickSelectYear() {
+        await $(this.rootElement)
             .$('select')
             .click();
     }
@@ -47,11 +47,11 @@ class PageSingleCalendar {
      * Clicks the specific enabled day button element.
      * @method
      */
-    clickDay(day) {
-        const buttonEl = $(this.rootElement)
+    async clickDay(day) {
+        const buttonEl = await $(this.rootElement)
             .$('table')
             .$(`button=${day}`);
-        if (buttonEl.isExisting()) buttonEl.click();
+        if (await buttonEl.isExisting()) await buttonEl.click();
     }
 
     /**
@@ -59,7 +59,7 @@ class PageSingleCalendar {
      * @method
      * @returns {string}
      */
-    getSelectedMonth() {
+    async getSelectedMonth() {
         return $(this.rootElement)
             .$('h3[data-id=month]')
             .getText();
@@ -70,7 +70,7 @@ class PageSingleCalendar {
      * @method
      * @returns {string}
      */
-    getSelectedYear() {
+    async getSelectedYear() {
         return $(this.rootElement)
             .$('select')
             .getValue();
@@ -81,7 +81,7 @@ class PageSingleCalendar {
      * @method
      * @returns {string}
      */
-    getSelectedDay() {
+    async getSelectedDay() {
         return $(this.rootElement)
             .$('button[data-selected=true]')
             .getText();
@@ -92,11 +92,14 @@ class PageSingleCalendar {
      * @method
      * @returns {string}
      */
-    isDaySelected(day) {
-        const buttonEl = $(this.rootElement)
+    async isDaySelected(day) {
+        const buttonEl = await $(this.rootElement)
             .$('table')
             .$(`button=${day}`);
-        return buttonEl.isExisting() && buttonEl.getAttribute('data-selected') === 'true';
+        return (
+            (await buttonEl.isExisting()) &&
+            (await buttonEl.getAttribute('data-selected')) === 'true'
+        );
     }
 
     /**
@@ -104,8 +107,8 @@ class PageSingleCalendar {
      * @method
      * @param {string}
      */
-    setYear(value) {
-        $(this.rootElement)
+    async setYear(value) {
+        await $(this.rootElement)
             .$('select')
             .selectByVisibleText(value);
     }
@@ -115,11 +118,12 @@ class PageSingleCalendar {
      * @method
      * @returns {bool}
      */
-    isDayFocused(day) {
-        const buttonEl = $(this.rootElement)
+    async isDayFocused(day) {
+        const buttonEl = await $(this.rootElement)
             .$('table')
             .$(`button=${day}`);
-        return buttonEl.isExisting() && buttonEl.isFocused();
+        // eslint-disable-next-line no-return-await
+        return (await buttonEl.isExisting()) && (await buttonEl.isFocused());
     }
 
     /**
@@ -127,9 +131,9 @@ class PageSingleCalendar {
      * @method
      * @returns {bool}
      */
-    isPrevMonthButtonDisabled() {
-        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[0];
-        return !buttonEl.isEnabled();
+    async isPrevMonthButtonDisabled() {
+        const buttonEl = (await $(this.rootElement).$$('button[data-id=button-icon-element]'))[0];
+        return !(await buttonEl.isEnabled());
     }
 
     /**
@@ -137,9 +141,9 @@ class PageSingleCalendar {
      * @method
      * @returns {bool}
      */
-    isNextMonthButtonDisabled() {
-        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[1];
-        return !buttonEl.isEnabled();
+    async isNextMonthButtonDisabled() {
+        const buttonEl = (await $(this.rootElement).$$('button[data-id=button-icon-element]'))[1];
+        return !(await buttonEl.isEnabled());
     }
 
     /**
@@ -147,9 +151,10 @@ class PageSingleCalendar {
      * @method
      * @returns {bool}
      */
-    isPrevMonthButtonFocused() {
-        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[0];
-        return buttonEl.isExisting() && buttonEl.isFocused();
+    async isPrevMonthButtonFocused() {
+        const buttonEl = (await $(this.rootElement).$$('button[data-id=button-icon-element]'))[0];
+        // eslint-disable-next-line no-return-await
+        return (await buttonEl.isExisting()) && (await buttonEl.isFocused());
     }
 
     /**
@@ -157,9 +162,10 @@ class PageSingleCalendar {
      * @method
      * @returns {bool}
      */
-    isNextMonthButtonFocused() {
-        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[1];
-        return buttonEl.isExisting() && buttonEl.isFocused();
+    async isNextMonthButtonFocused() {
+        const buttonEl = (await $(this.rootElement).$$('button[data-id=button-icon-element]'))[1];
+        // eslint-disable-next-line no-return-await
+        return (await buttonEl.isExisting()) && (await buttonEl.isFocused());
     }
 
     /**
@@ -167,9 +173,10 @@ class PageSingleCalendar {
      * @method
      * @returns {bool}
      */
-    isYearSelectFocused() {
-        const selectEl = $(this.rootElement).$('select');
-        return selectEl.isExisting() && selectEl.isFocused();
+    async isYearSelectFocused() {
+        const selectEl = await $(this.rootElement).$('select');
+        // eslint-disable-next-line no-return-await
+        return (await selectEl.isExisting()) && (await selectEl.isFocused());
     }
 }
 

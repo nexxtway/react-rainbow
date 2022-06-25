@@ -3,23 +3,23 @@ const PageStrongPasswordInput = require('../../../src/components/StrongPasswordI
 const INPUT = '#strong-password-input-1';
 
 describe('StrongPasswordInput base example', () => {
-    beforeAll(() => {
-        browser.url('/#!/StrongPasswordInput/1');
+    beforeAll(async () => {
+        await browser.url('/#!/StrongPasswordInput/1');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(INPUT);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(INPUT);
+        await component.waitForExist();
     });
 
-    it('should put the input element focused when is clicked', () => {
+    it('should put the input element focused when is clicked', async () => {
         const input = new PageStrongPasswordInput(INPUT);
-        input.click();
-        expect(input.hasFocusInput()).toBe(true);
+        await input.click();
+        await expect(await input.hasFocusInput()).toBe(true);
     });
-    it('should put the input element focused when the label element is clicked', () => {
+    it('should put the input element focused when the label element is clicked', async () => {
         const input = new PageStrongPasswordInput(INPUT);
-        input.clickLabel();
-        expect(input.hasFocusInput()).toBe(true);
+        await input.clickLabel();
+        await expect(await input.hasFocusInput()).toBe(true);
     });
 });

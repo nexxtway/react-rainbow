@@ -3,23 +3,23 @@ const PageTextarea = require('../../../src/components/Textarea/pageObject');
 const TEXTAREA = '#example-textarea-1';
 
 describe('Textarea base example', () => {
-    beforeAll(() => {
-        browser.url('/#!/Textarea/1');
+    beforeAll(async () => {
+        await browser.url('/#!/Textarea/1');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(TEXTAREA);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(TEXTAREA);
+        await component.waitForExist();
     });
 
-    it('should put the textarea focused when clcik on it', () => {
+    it('should put the textarea focused when clcik on it', async () => {
         const textarea = new PageTextarea(TEXTAREA);
-        textarea.click();
-        expect(textarea.hasFocusTextarea()).toBe(true);
+        await textarea.click();
+        await expect(await textarea.hasFocusTextarea()).toBe(true);
     });
-    it('should put the textarea focused when click on the label of the textarea', () => {
+    it('should put the textarea focused when click on the label of the textarea', async () => {
         const textarea = new PageTextarea(TEXTAREA);
-        textarea.clickLabel();
-        expect(textarea.hasFocusTextarea()).toBe(true);
+        await textarea.clickLabel();
+        await expect(await textarea.hasFocusTextarea()).toBe(true);
     });
 });

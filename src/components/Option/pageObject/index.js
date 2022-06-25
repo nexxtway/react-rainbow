@@ -1,10 +1,11 @@
+/* eslint-disable no-return-await */
 /* eslint-disable id-length */
 /**
  * Option page object class.
  * @class
  */
 
-function isPointWithinRect(point, rect) {
+async function isPointWithinRect(point, rect) {
     const { x, y } = point;
     const { left, top, right, bottom } = rect;
     return x >= left && y >= top && x <= right && y <= bottom;
@@ -25,18 +26,18 @@ class PageOption {
      * Clicks the Option
      * @method
      */
-    click() {
-        this.rootElement.click();
+    async click() {
+        await this.rootElement.click();
     }
 
     /**
      * It moves the pointer over the Option
      * @method
      */
-    hover() {
-        const itemElement = this.rootElement.$('div[role="option"]');
-        itemElement.scrollIntoView();
-        itemElement.moveTo();
+    async hover() {
+        const itemElement = await this.rootElement.$('div[role="option"]');
+        await itemElement.scrollIntoView();
+        await itemElement.moveTo();
     }
 
     /**
@@ -44,8 +45,8 @@ class PageOption {
      * @method
      * @returns {string}
      */
-    getLabel() {
-        return this.rootElement.$('div[role="option"]').getText();
+    async getLabel() {
+        return (await this.rootElement.$('div[role="option"]')).getText();
     }
 
     /**
@@ -53,8 +54,8 @@ class PageOption {
      * @method
      * @returns {bool}
      */
-    isActive() {
-        return this.rootElement.$('div[aria-selected="true"]').isExisting();
+    async isActive() {
+        return (await this.rootElement.$('div[aria-selected="true"]')).isExisting();
     }
 
     /**
@@ -62,8 +63,8 @@ class PageOption {
      * @method
      * @returns {bool}
      */
-    isSelected() {
-        return this.rootElement.getAttribute('data-selected') === 'true';
+    async isSelected() {
+        return (await this.rootElement.getAttribute('data-selected')) === 'true';
     }
 
     /**
@@ -71,14 +72,14 @@ class PageOption {
      * @method
      * @returns {bool}
      */
-    isVisible() {
-        const { x, y } = this.rootElement.$('div[role="option"]').getLocation();
-        const { width, height } = this.rootElement.$('div[role="option"]').getSize();
+    async isVisible() {
+        const { x, y } = await (await this.rootElement.$('div[role="option"]')).getLocation();
+        const { width, height } = await (await this.rootElement.$('div[role="option"]')).getSize();
 
         return (
-            this.rootElement.isDisplayedInViewport() &&
-            (isPointWithinRect({ x, y }, this.containerRect) &&
-                isPointWithinRect({ x: x + width, y: y + height }, this.containerRect))
+            (await this.rootElement.isDisplayedInViewport()) &&
+            ((await isPointWithinRect({ x, y }, this.containerRect)) &&
+                (await isPointWithinRect({ x: x + width, y: y + height }, this.containerRect)))
         );
     }
 
@@ -86,8 +87,16 @@ class PageOption {
      *  Wait until the option is visible.
      * @method
      */
-    waitUntilIsVisible() {
-        browser.waitUntil(() => this.isVisible());
+    async waitUntilIsVisible() {
+        await browser.waitUntil(async () => await this.isVisible(), 30000);
+    }
+
+    /**
+     * Scrolls the Option into view.
+     * @method
+     */
+    async scrollIntoView() {
+        await this.rootElement.scrollIntoView();
     }
 }
 

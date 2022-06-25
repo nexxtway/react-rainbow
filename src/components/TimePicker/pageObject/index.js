@@ -1,3 +1,4 @@
+/* eslint-disable no-return-await */
 /* eslint-disable class-methods-use-this */
 const timePickerModalId = '#time-picker_modal';
 const timeInputId = '#time-picker_time-input';
@@ -21,8 +22,8 @@ class PageTimePicker {
      * Clicks the input element.
      * @method
      */
-    clickTimeInput() {
-        $(this.rootElement)
+    async clickTimeInput() {
+        await $(this.rootElement)
             .$(timeInputId)
             .$('input')
             .click();
@@ -32,8 +33,8 @@ class PageTimePicker {
      * Clicks the label element.
      * @method
      */
-    clickLabel() {
-        $(this.rootElement)
+    async clickLabel() {
+        await $(this.rootElement)
             .$('label')
             .click();
     }
@@ -42,8 +43,8 @@ class PageTimePicker {
      * Clicks the up button element.
      * @method
      */
-    clickUpButton() {
-        $(timePickerModalId)
+    async clickUpButton() {
+        await $(timePickerModalId)
             .$('button[id="time-picker_up-button"]')
             .click();
     }
@@ -52,8 +53,8 @@ class PageTimePicker {
      * Clicks the down button element.
      * @method
      */
-    clickDownButton() {
-        $(timePickerModalId)
+    async clickDownButton() {
+        await $(timePickerModalId)
             .$('button[id="time-picker_down-button"]')
             .click();
     }
@@ -62,8 +63,8 @@ class PageTimePicker {
      * Clicks the cancel button element.
      * @method
      */
-    clickCancelButton() {
-        $(timePickerModalId)
+    async clickCancelButton() {
+        await $(timePickerModalId)
             .$('button[id="time-picker_cancel-button"]')
             .click();
     }
@@ -72,8 +73,8 @@ class PageTimePicker {
      * Clicks the OK button element.
      * @method
      */
-    clickOkButton() {
-        $(timePickerModalId)
+    async clickOkButton() {
+        await $(timePickerModalId)
             .$('button[id="time-picker_ok-button"]')
             .click();
     }
@@ -83,30 +84,26 @@ class PageTimePicker {
      * @method
      * @returns {bool}
      */
-    isOpen() {
+    async isOpen() {
         return (
-            $(timePickerModalId).isDisplayed() &&
-            $(timePickerModalId)
-                .$('button[id="time-picker_cancel-button"]')
-                .isDisplayed() &&
-            $(timePickerModalId)
-                .$('button[id="time-picker_ok-button"]')
-                .isDisplayed() &&
-            $(timePickerModalId)
-                .$('button[id="time-picker_up-button"]')
-                .isDisplayed() &&
-            $(timePickerModalId)
-                .$('button[id="time-picker_down-button"]')
-                .isDisplayed() &&
-            $(timePickerModalId)
-                .$('input[data-id="minutes"]')
-                .isDisplayed() &&
-            $(timePickerModalId)
-                .$('input[data-id="hour"]')
-                .isDisplayed() &&
-            $(timePickerModalId)
-                .$('input[aria-label="am-pm selector"]')
-                .isDisplayed()
+            (await $(timePickerModalId).isDisplayed()) &&
+            (await (await $(timePickerModalId).$(
+                'button[id="time-picker_cancel-button"]',
+            )).isDisplayed()) &&
+            (await (await $(timePickerModalId).$(
+                'button[id="time-picker_ok-button"]',
+            )).isDisplayed()) &&
+            (await (await $(timePickerModalId).$(
+                'button[id="time-picker_up-button"]',
+            )).isDisplayed()) &&
+            (await (await $(timePickerModalId).$(
+                'button[id="time-picker_down-button"]',
+            )).isDisplayed()) &&
+            (await (await $(timePickerModalId).$('input[data-id="minutes"]')).isDisplayed()) &&
+            (await (await $(timePickerModalId).$('input[data-id="hour"]')).isDisplayed()) &&
+            (await (await $(timePickerModalId).$(
+                'input[aria-label="am-pm selector"]',
+            )).isDisplayed())
         );
     }
 
@@ -115,7 +112,7 @@ class PageTimePicker {
      * @method
      * @returns {string}
      */
-    getTimeValue() {
+    async getTimeValue() {
         return $(this.rootElement)
             .$(timeInputId)
             .$('input')
@@ -127,7 +124,7 @@ class PageTimePicker {
      * @method
      * @returns {bool}
      */
-    hasFocusTimeInput() {
+    async hasFocusTimeInput() {
         return $(this.rootElement)
             .$(timeInputId)
             .$('input')
@@ -139,7 +136,7 @@ class PageTimePicker {
      * @method
      * @returns {bool}
      */
-    hasFocusHourInput() {
+    async hasFocusHourInput() {
         return $(timePickerModalId)
             .$('input[data-id="hour"]')
             .isFocused();
@@ -150,7 +147,7 @@ class PageTimePicker {
      * @method
      * @returns {string}
      */
-    getHourValue() {
+    async getHourValue() {
         return $(timePickerModalId)
             .$('input[data-id="hour"]')
             .getValue();
@@ -161,7 +158,7 @@ class PageTimePicker {
      * @method
      * @returns {bool}
      */
-    hasFocusMinutesInput() {
+    async hasFocusMinutesInput() {
         return $(timePickerModalId)
             .$('input[data-id="minutes"]')
             .isFocused();
@@ -172,7 +169,7 @@ class PageTimePicker {
      * @method
      * @returns {string}
      */
-    getMinutesValue() {
+    async getMinutesValue() {
         return $(timePickerModalId)
             .$('input[data-id="minutes"]')
             .getValue();
@@ -183,7 +180,7 @@ class PageTimePicker {
      * @method
      * @returns {bool}
      */
-    hasFocusAmPmSelect() {
+    async hasFocusAmPmSelect() {
         return $(timePickerModalId)
             .$('fieldset[role="presentation"]')
             .isFocused();
@@ -194,8 +191,8 @@ class PageTimePicker {
      * @method
      * @returns {bool}
      */
-    isAmSelected() {
-        browser.waitUntil(() =>
+    async isAmSelected() {
+        await browser.waitUntil(async () =>
             $(timePickerModalId)
                 .$('fieldset[role="presentation"]')
                 .isFocused(),
@@ -210,8 +207,8 @@ class PageTimePicker {
      * @method
      * @returns {bool}
      */
-    isPmSelected() {
-        browser.waitUntil(() =>
+    async isPmSelected() {
+        await browser.waitUntil(async () =>
             $(timePickerModalId)
                 .$('fieldset[role="presentation"]')
                 .isFocused(),
@@ -226,8 +223,8 @@ class PageTimePicker {
      * @method
      * @param {string} value - The value to type in the hour input element.
      */
-    setHourValue(value) {
-        $(timePickerModalId)
+    async setHourValue(value) {
+        await $(timePickerModalId)
             .$('input[data-id="hour"]')
             .setValue(value);
     }
@@ -237,8 +234,8 @@ class PageTimePicker {
      * @method
      * @param {string} value - The value to type in the minutes input element.
      */
-    setMinutesValue(value) {
-        $(timePickerModalId)
+    async setMinutesValue(value) {
+        await $(timePickerModalId)
             .$('input[data-id="minutes"]')
             .setValue(value);
     }
@@ -247,16 +244,16 @@ class PageTimePicker {
      * Wait until the TimePicker is open.
      * @method
      */
-    waitUntilOpen() {
-        browser.waitUntil(() => this.isOpen());
+    async waitUntilOpen() {
+        await browser.waitUntil(async () => this.isOpen());
     }
 
     /**
      * Wait until the TimePicker is close.
      * @method
      */
-    waitUntilClose() {
-        browser.waitUntil(() => !this.isOpen());
+    async waitUntilClose() {
+        await browser.waitUntil(async () => !(await this.isOpen()));
     }
 }
 

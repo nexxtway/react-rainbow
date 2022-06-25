@@ -3,71 +3,71 @@ const PageTabset = require('../../../src/components/Tabset/pageObject');
 const TABSET = '#tabset-3';
 
 describe('Tabset with multi Tabs', () => {
-    beforeAll(() => {
-        browser.url('/#!/Tabset/5');
-        browser.setWindowSize(1280, 1280);
+    beforeAll(async () => {
+        await browser.url('/#!/Tabset/5');
+        await browser.setWindowSize(1280, 1280);
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(TABSET);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(TABSET);
+        await component.waitForExist();
     });
 
-    it('should be disabled the left button when the first tab is visible', () => {
+    it('should be disabled the left button when the first tab is visible', async () => {
         const tabset = new PageTabset(TABSET);
-        const firstTab = tabset.getItem(0);
-        expect(firstTab.isVisibleWithinViewport()).toBe(true);
-        expect(tabset.isLeftButtonEnabled()).toBe(false);
+        const firstTab = await tabset.getItem(0);
+        await expect(await firstTab.isVisibleWithinViewport()).toBe(true);
+        await expect(await tabset.isLeftButtonEnabled()).toBe(false);
     });
-    it('should be enabled the right button when the first tab is visible', () => {
+    it('should be enabled the right button when the first tab is visible', async () => {
         const tabset = new PageTabset(TABSET);
-        const firstTab = tabset.getItem(0);
-        expect(firstTab.isVisibleWithinViewport()).toBe(true);
-        expect(tabset.isRightButtonEnabled()).toBe(true);
+        const firstTab = await tabset.getItem(0);
+        await expect(await firstTab.isVisibleWithinViewport()).toBe(true);
+        await expect(await tabset.isRightButtonEnabled()).toBe(true);
     });
-    it('should set to visible a tab not visible on viewport when it is clicked', () => {
+    it('should set to visible a tab not visible on viewport when it is clicked', async () => {
         const tabset = new PageTabset(TABSET);
-        const lastTab = tabset.getItem(13);
-        expect(lastTab.isVisibleWithinViewport()).toBe(false);
-        lastTab.click();
-        expect(lastTab.isVisibleWithinViewport()).toBe(true);
+        const lastTab = await tabset.getItem(13);
+        await expect(await lastTab.isVisibleWithinViewport()).toBe(false);
+        await lastTab.click();
+        await expect(await lastTab.isVisibleWithinViewport()).toBe(true);
     });
-    it('should set the first tab to visible if it was not visible on viewport when it is clicked', () => {
+    it('should set the first tab to visible if it was not visible on viewport when it is clicked', async () => {
         const tabset = new PageTabset(TABSET);
-        const firstTab = tabset.getItem(0);
-        const lastTab = tabset.getItem(13);
-        lastTab.click();
-        expect(firstTab.isVisibleWithinViewport()).toBe(false);
-        firstTab.click();
-        expect(firstTab.isVisibleWithinViewport()).toBe(true);
+        const firstTab = await tabset.getItem(0);
+        const lastTab = await tabset.getItem(13);
+        await lastTab.click();
+        await expect(await firstTab.isVisibleWithinViewport()).toBe(false);
+        await firstTab.click();
+        await expect(await firstTab.isVisibleWithinViewport()).toBe(true);
     });
-    it('should set visible a tab out of view on the right side whe click on the right button', () => {
+    it('should set visible a tab out of view on the right side whe click on the right button', async () => {
         const tabset = new PageTabset(TABSET);
-        const lastTab = tabset.getItem(13);
-        expect(lastTab.isVisibleWithinViewport()).toBe(false);
-        tabset.clickRightButton();
-        expect(lastTab.isVisibleWithinViewport()).toBe(true);
+        const lastTab = await tabset.getItem(13);
+        await expect(await lastTab.isVisibleWithinViewport()).toBe(false);
+        await tabset.clickRightButton();
+        await expect(await lastTab.isVisibleWithinViewport()).toBe(true);
     });
-    it('should set visible a tab out of view on the left side whe click on the left button', () => {
+    it('should set visible a tab out of view on the left side whe click on the left button', async () => {
         const tabset = new PageTabset(TABSET);
-        const firstTab = tabset.getItem(0);
-        tabset.clickRightButton();
-        expect(firstTab.isVisibleWithinViewport()).toBe(false);
-        tabset.clickLeftButton();
-        expect(firstTab.isVisibleWithinViewport()).toBe(true);
+        const firstTab = await tabset.getItem(0);
+        await tabset.clickRightButton();
+        await expect(await firstTab.isVisibleWithinViewport()).toBe(false);
+        await tabset.clickLeftButton();
+        await expect(await firstTab.isVisibleWithinViewport()).toBe(true);
     });
-    it('should be disabled the right button when the last tab is visible', () => {
+    it('should be disabled the right button when the last tab is visible', async () => {
         const tabset = new PageTabset(TABSET);
-        const lastTab = tabset.getItem(13);
-        tabset.clickRightButton();
-        expect(lastTab.isVisibleWithinViewport()).toBe(true);
-        expect(tabset.isRightButtonEnabled()).toBe(false);
+        const lastTab = await tabset.getItem(13);
+        await tabset.clickRightButton();
+        await expect(await lastTab.isVisibleWithinViewport()).toBe(true);
+        await expect(await tabset.isRightButtonEnabled()).toBe(false);
     });
-    it('should be enabled the left button when the last tab is visible', () => {
+    it('should be enabled the left button when the last tab is visible', async () => {
         const tabset = new PageTabset(TABSET);
-        const lastTab = tabset.getItem(13);
-        tabset.clickRightButton();
-        expect(lastTab.isVisibleWithinViewport()).toBe(true);
-        expect(tabset.isLeftButtonEnabled()).toBe(true);
+        const lastTab = await tabset.getItem(13);
+        await tabset.clickRightButton();
+        await expect(await lastTab.isVisibleWithinViewport()).toBe(true);
+        await expect(await tabset.isLeftButtonEnabled()).toBe(true);
     });
 });

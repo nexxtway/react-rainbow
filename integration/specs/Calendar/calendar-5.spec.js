@@ -3,32 +3,32 @@ const PageCalendar = require('../../../src/components/Calendar/pageObject');
 const CALENDAR = '#calendar-5';
 
 describe('Calendar', () => {
-    beforeAll(() => {
-        browser.url('/#!/Calendar/5');
+    beforeAll(async () => {
+        await browser.url('/#!/Calendar/5');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(CALENDAR);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(CALENDAR);
+        await component.waitForExist();
     });
-    it('should set range initial date and end date button elements as selected', () => {
-        const calendar = new PageCalendar(CALENDAR);
-        calendar.clickDay(2);
-        calendar.clickDay(16);
-        expect(calendar.isDaySelected(2)).toBe(true);
-        expect(calendar.isDaySelected(16)).toBe(true);
+    it('should set range initial date and end date button elements as selected', async () => {
+        const calendar = await PageCalendar(CALENDAR);
+        await calendar.clickDay(2);
+        await calendar.clickDay(16);
+        await expect(await calendar.isDaySelected(2)).toBe(true);
+        await expect(await calendar.isDaySelected(16)).toBe(true);
     });
-    it('should set range initial and end dates when using keyboard navigation', () => {
-        const calendar = new PageCalendar(CALENDAR);
-        calendar.clickSelectYear();
-        browser.keys('Escape');
-        browser.keys('Tab');
-        browser.keys('ArrowLeft');
-        browser.keys('Enter');
-        browser.keys('ArrowDown');
-        browser.keys('ArrowDown');
-        browser.keys('Enter');
-        expect(calendar.isDaySelected(2)).toBe(true);
-        expect(calendar.isDaySelected(16)).toBe(true);
+    it('should set range initial and end dates when using keyboard navigation', async () => {
+        const calendar = await PageCalendar(CALENDAR);
+        await calendar.clickSelectYear();
+        await browser.keys('Escape');
+        await browser.keys('Tab');
+        await browser.keys('ArrowLeft');
+        await browser.keys('Enter');
+        await browser.keys('ArrowDown');
+        await browser.keys('ArrowDown');
+        await browser.keys('Enter');
+        await expect(await calendar.isDaySelected(2)).toBe(true);
+        await expect(await calendar.isDaySelected(16)).toBe(true);
     });
 });

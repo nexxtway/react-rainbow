@@ -20,8 +20,8 @@ class PageSidebar {
      * @method
      * @param {number} itemPosition - The base 0 index of the sidebar item
      */
-    getItem(itemPosition) {
-        const items = $(this.rootElement).$$('li[data-id="sidebar-item-li"]');
+    async getItem(itemPosition) {
+        const items = await $(this.rootElement).$$('li[data-id="sidebar-item-li"]');
         if (items[itemPosition]) {
             return new PageSidebarItem(
                 `${this.rootElement} li[data-id="sidebar-item-li"]:nth-child(${itemPosition + 1})`,

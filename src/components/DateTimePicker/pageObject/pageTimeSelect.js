@@ -18,16 +18,12 @@ class PageTimeSelect {
      * @method
      * @returns {string}
      */
-    getValue() {
-        const hour = $(this.rootElement)
-            .$('input[data-id=hour]')
-            .getValue();
-        const minutes = $(this.rootElement)
-            .$('input[data-id=minutes]')
-            .getValue();
-        const meridian = $(this.rootElement)
-            .$('input[aria-label="am-pm selector"]')
-            .getValue();
+    async getValue() {
+        const hour = await (await $(this.rootElement).$('input[data-id=hour]')).getValue();
+        const minutes = await (await $(this.rootElement).$('input[data-id=minutes]')).getValue();
+        const meridian = await (await $(this.rootElement).$(
+            'input[aria-label="am-pm selector"]',
+        )).getValue();
 
         return hour && minutes && meridian ? `${hour}:${minutes} ${meridian}` : '';
     }

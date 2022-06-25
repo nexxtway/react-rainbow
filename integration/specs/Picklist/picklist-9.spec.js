@@ -6,43 +6,43 @@ const PICKLIST = '#picklist-9';
 const addNewBuildings = () => $('#button-icon_add-new-buildings').click();
 
 describe('Picklist with PicklistOption changed dynamically', () => {
-    beforeAll(() => {
-        browser.url('/#!/Picklist/9');
+    beforeAll(async () => {
+        await browser.url('/#!/Picklist/9');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(PICKLIST);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(PICKLIST);
+        await component.waitForExist();
     });
 
-    it('should select the new option with keyboard after it is added dynamically', () => {
+    it('should select the new option with keyboard after it is added dynamically', async () => {
         const picklist = new PagePicklist(PICKLIST);
-        picklist.clickInput();
-        picklist.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
-        expect(picklist.getSelectedOptionLabel()).toBe('Empire State');
-        browser.refresh();
-        addNewBuildings();
-        picklist.clickInput();
-        picklist.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
-        expect(picklist.getSelectedOptionLabel()).toBe('One World Trade Center');
+        await picklist.clickInput();
+        await picklist.waitUntilOpen();
+        await browser.keys(ARROW_DOWN_KEY);
+        await browser.keys(ENTER_KEY);
+        await expect(await picklist.getSelectedOptionLabel()).toBe('Empire State');
+        await browser.refresh();
+        await addNewBuildings();
+        await picklist.clickInput();
+        await picklist.waitUntilOpen();
+        await browser.keys(ARROW_DOWN_KEY);
+        await browser.keys(ENTER_KEY);
+        await expect(await picklist.getSelectedOptionLabel()).toBe('One World Trade Center');
     });
-    it('should select the second option with keyboard after it is added and removed dynamically a new element', () => {
+    it('should select the second option with keyboard after it is added and removed dynamically a new element', async () => {
         const picklist = new PagePicklist(PICKLIST);
-        addNewBuildings();
-        picklist.clickInput();
-        picklist.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
-        expect(picklist.getSelectedOptionLabel()).toBe('One World Trade Center');
-        addNewBuildings();
-        picklist.clickInput();
-        picklist.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
-        expect(picklist.getSelectedOptionLabel()).toBe('Empire State');
+        await addNewBuildings();
+        await picklist.clickInput();
+        await picklist.waitUntilOpen();
+        await browser.keys(ARROW_DOWN_KEY);
+        await browser.keys(ENTER_KEY);
+        await expect(await picklist.getSelectedOptionLabel()).toBe('One World Trade Center');
+        await addNewBuildings();
+        await picklist.clickInput();
+        await picklist.waitUntilOpen();
+        await browser.keys(ARROW_DOWN_KEY);
+        await browser.keys(ENTER_KEY);
+        await expect(await picklist.getSelectedOptionLabel()).toBe('Empire State');
     });
 });

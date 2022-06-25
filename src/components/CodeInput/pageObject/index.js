@@ -12,10 +12,10 @@ class PageCodeInput {
         this.rootElement = rootElement;
     }
 
-    type(key) {
-        const focusedInput = this.getFocusedInput();
+    async type(key) {
+        const focusedInput = await this.getFocusedInput();
         if (focusedInput) {
-            focusedInput.setValue(key);
+            await focusedInput.setValue(key);
         }
     }
 
@@ -24,10 +24,10 @@ class PageCodeInput {
      * @method
      * @param {string} inputIndex - The index of the input
      */
-    click() {
-        const focusedInput = this.getFocusedInput();
+    async click() {
+        const focusedInput = await this.getFocusedInput();
         if (focusedInput) {
-            focusedInput.click();
+            await focusedInput.click();
         }
     }
 
@@ -36,10 +36,10 @@ class PageCodeInput {
      * @method
      * @param {string} inputIndex - The index of the input
      */
-    clickInputAtIndex(inputIndex) {
-        const input = this.getInputAtIndex(inputIndex);
+    async clickInputAtIndex(inputIndex) {
+        const input = await this.getInputAtIndex(inputIndex);
         if (input) {
-            input.click();
+            await input.click();
         }
     }
 
@@ -47,8 +47,8 @@ class PageCodeInput {
      * Returns the index of the current input focused or -1 if not found any
      * @method
      */
-    getFocusedIndex() {
-        const focusedInput = this.getFocusedInput();
+    async getFocusedIndex() {
+        const focusedInput = await this.getFocusedInput();
         if (focusedInput) {
             return focusedInput.index;
         }
@@ -59,8 +59,8 @@ class PageCodeInput {
      * Returns the value of the current input focused or -1 if not found any
      * @method
      */
-    getFocusedValue() {
-        const focusedInput = this.getFocusedInput();
+    async getFocusedValue() {
+        const focusedInput = await this.getFocusedInput();
         if (focusedInput) {
             return focusedInput.getValue();
         }
@@ -72,21 +72,22 @@ class PageCodeInput {
      * @method
      * @param {string} inputIndex - The index of the input
      */
-    getInputValueAtIndex(inputIndex) {
-        const input = this.getInputAtIndex(inputIndex);
+    async getInputValueAtIndex(inputIndex) {
+        const input = await this.getInputAtIndex(inputIndex);
         if (input) {
             return input.getValue();
         }
         return undefined;
     }
 
-    getFocusedInput() {
-        const inputs = $(this.rootElement).$$('input');
-        return inputs.filter(input => input.isFocused()).shift();
+    async getFocusedInput() {
+        const inputs = await $(this.rootElement).$$('input');
+        const focusedInputs = await Promise.all(inputs.map(async input => input.isFocused()));
+        return inputs.find((input, index) => focusedInputs[index]);
     }
 
-    getInputAtIndex(inputIndex) {
-        const input = $(this.rootElement).$$('input')[inputIndex];
+    async getInputAtIndex(inputIndex) {
+        const input = (await $(this.rootElement).$$('input'))[inputIndex];
         if (input) {
             return input;
         }

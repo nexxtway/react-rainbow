@@ -16,8 +16,8 @@ class PageCheckboxItem {
      * Clicks the checkbox.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('input[type="checkbox"] + label')
             .click();
     }
@@ -27,7 +27,7 @@ class PageCheckboxItem {
      * @method
      * @returns {bool}
      */
-    hasFocus() {
+    async hasFocus() {
         return $(this.rootElement)
             .$('input[type="checkbox"]')
             .isFocused();
@@ -38,7 +38,7 @@ class PageCheckboxItem {
      * @method
      * @returns {bool}
      */
-    isChecked() {
+    async isChecked() {
         return $(this.rootElement)
             .$('input[type="checkbox"]')
             .isSelected();

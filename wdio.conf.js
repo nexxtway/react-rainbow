@@ -84,9 +84,9 @@ exports.config = {
     // Test Configurations
     // ===================
     // Define all options that are relevant for the WebdriverIO instance here
-    sync: true,
+    sync: false,
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'silent',
+    logLevel: 'debug',
     //
     // Set specific log levels per logger
     // loggers:

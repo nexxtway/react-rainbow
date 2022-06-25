@@ -19,8 +19,8 @@ class PageRadioGroup {
      * @method
      * @param {number} itemPosition - The base 0 index of the radio.
      */
-    getItem(itemPosition) {
-        const items = $(this.rootElement).$$('[data-id="input-radio_container"]');
+    async getItem(itemPosition) {
+        const items = await $(this.rootElement).$$('[data-id="input-radio_container"]');
         if (items[itemPosition]) {
             return new PageRadioItem(
                 `${
