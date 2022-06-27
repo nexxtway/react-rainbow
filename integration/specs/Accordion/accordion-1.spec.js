@@ -6,6 +6,7 @@ describe('Accordion whend multiple is not passed', () => {
     beforeAll(async () => {
         await browser.url('/#!/Accordion/1');
     });
+
     beforeEach(async () => {
         await browser.refresh();
         const component = await $(ACCORDION);
