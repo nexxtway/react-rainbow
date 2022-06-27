@@ -16,8 +16,8 @@ class PageVisualPickerOption {
      * Clicks the option content.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('label[data-id="visual-picker_option-label"]')
             .click();
     }
@@ -27,7 +27,7 @@ class PageVisualPickerOption {
      * @method
      * @returns {bool}
      */
-    hasFocus() {
+    async hasFocus() {
         return $(this.rootElement)
             .$('input')
             .isFocused();
@@ -38,7 +38,7 @@ class PageVisualPickerOption {
      * @method
      * @returns {bool}
      */
-    isChecked() {
+    async isChecked() {
         return $(this.rootElement)
             .$('input')
             .isSelected();

@@ -15,12 +15,20 @@ class PagePrimitiveMenu {
         this.dropdownElement = dropdownElement || 'div[data-id="primitive-menu_dropdown"]';
     }
 
+    get dropdown() {
+        return $(this.dropdownElement);
+    }
+
+    get trigger() {
+        return $(this.triggerElement);
+    }
+
     /**
      * Clicks the PrimitiveMenu trigger element.
      * @method
      */
-    clickTrigger() {
-        $(this.triggerElement).click();
+    async clickTrigger() {
+        await (await this.trigger).click();
     }
 
     /**
@@ -28,8 +36,11 @@ class PagePrimitiveMenu {
      * @method
      * @returns {bool}
      */
-    isDropdownOpen() {
-        return $(this.dropdownElement).isExisting() && $(this.dropdownElement).isDisplayed();
+    async isDropdownOpen() {
+        const dropdown = await this.dropdown;
+        const exists = await dropdown.isExisting();
+        const visible = await dropdown.isDisplayed();
+        return exists && visible;
     }
 
     /**
@@ -37,8 +48,8 @@ class PagePrimitiveMenu {
      * @method
      * @returns {bool}
      */
-    hasFocusTrigger() {
-        return $(this.triggerElement).isFocused();
+    async hasFocusTrigger() {
+        return (await this.trigger).isFocused();
     }
 
     /**
@@ -46,8 +57,8 @@ class PagePrimitiveMenu {
      * @param {number} index
      * @return {PageMenuItem}
      */
-    getItem(itemPosition) {
-        const menuItems = $(this.dropdownElement).$$('li[role="menuitem"]');
+    async getItem(itemPosition) {
+        const menuItems = await this.dropdown.$$('li[role="menuitem"]');
         if (menuItems[itemPosition]) {
             return new PageMenuItem(menuItems[itemPosition]);
         }

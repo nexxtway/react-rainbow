@@ -23,7 +23,7 @@ class PageAvatarMenu {
      * @method
      * @param {number} itemPosition - The base 0 index of the MenuItem.
      */
-    getItem(itemPosition) {
+    async getItem(itemPosition) {
         return this.primitiveMenu.getItem(itemPosition);
     }
 
@@ -31,8 +31,8 @@ class PageAvatarMenu {
      * Clicks the button element.
      * @method
      */
-    click() {
-        this.primitiveMenu.clickTrigger();
+    async click() {
+        await this.primitiveMenu.clickTrigger();
     }
 
     /**
@@ -40,7 +40,7 @@ class PageAvatarMenu {
      * @method
      * @returns {bool}
      */
-    isOpen() {
+    async isOpen() {
         return this.primitiveMenu.isDropdownOpen();
     }
 
@@ -49,7 +49,7 @@ class PageAvatarMenu {
      * @method
      * @returns {bool}
      */
-    hasFocusButton() {
+    async hasFocusButton() {
         return this.primitiveMenu.hasFocusTrigger();
     }
 }

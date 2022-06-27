@@ -81,7 +81,7 @@ function InternalDropdownWithSearch() {
     const [value, setValue] = useState();
     return (
         <div className="rainbow-m-around_xx-large">
-            <InternalDropdown id="internal-dropdown-3" value={value} onChange={setValue} enableSearch emptyComponent={CustomEmptyComponent}>
+            <InternalDropdown id="internal-dropdown-5" value={value} onChange={setValue} enableSearch emptyComponent={CustomEmptyComponent}>
                 <PicklistOption name="option-1" label="All Buildings" icon={<DashboardIcon />} />
                 <PicklistOption name="option-2" label="New Building" icon={<AddFilledIcon />} />
                 <PicklistOption name="header" label="Your Buildings" variant="header" />
@@ -138,7 +138,7 @@ function InternalDropdownWithAlgoliaSearch() {
 
     return (
         <div className="rainbow-m-around_xx-large">
-            <InternalDropdown id="internal-dropdown-5" isLoading={isLoading} value={value} onChange={setValue} enableSearch onSearch={onSearch} debounce >
+            <InternalDropdown id="internal-dropdown-7" isLoading={isLoading} value={value} onChange={setValue} enableSearch onSearch={onSearch} debounce >
                 {options.map(option => <Option key={option.name} name={option.name} label={option.label} />)}
             </InternalDropdown>
         </div>

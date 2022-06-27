@@ -3,18 +3,18 @@ const PageWeekDayPicker = require('../../../src/components/WeekDayPicker/pageObj
 const WEEKDAY_PICKER = '#weekday-picker-7';
 
 describe('WeekDayPicker readOnly', () => {
-    beforeAll(() => {
-        browser.url('/#!/WeekDayPicker/7');
+    beforeAll(async () => {
+        await browser.url('/#!/WeekDayPicker/7');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(WEEKDAY_PICKER);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(WEEKDAY_PICKER);
+        await component.waitForExist();
     });
-    it('should keep checkbox status when WeekDayPicker is readOnly', () => {
+    it('should keep checkbox status when WeekDayPicker is readOnly', async () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
-        expect(weekDayPicker.getSelectedDays()).toEqual(['tuesday']);
-        weekDayPicker.clickOn('saturday');
-        expect(weekDayPicker.getSelectedDays()).toEqual(['tuesday']);
+        await expect(await weekDayPicker.getSelectedDays()).toEqual(['tuesday']);
+        await weekDayPicker.clickOn('saturday');
+        await expect(await weekDayPicker.getSelectedDays()).toEqual(['tuesday']);
     });
 });

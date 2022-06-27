@@ -19,8 +19,8 @@ class PageCheckboxGroup {
      * @method
      * @param {number} itemPosition - The base 0 index of the checkbox.
      */
-    getItem(itemPosition) {
-        const items = $(this.rootElement).$$('[data-id="input-checkbox_container"]');
+    async getItem(itemPosition) {
+        const items = await $(this.rootElement).$$('[data-id="input-checkbox_container"]');
         if (items[itemPosition]) {
             return new PageCheckboxItem(
                 `${

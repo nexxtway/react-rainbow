@@ -3,17 +3,17 @@ const PageWeekDayPicker = require('../../../src/components/WeekDayPicker/pageObj
 const WEEKDAY_PICKER = '#weekday-picker-13';
 
 describe('WeekDayPicker disabled', () => {
-    beforeAll(() => {
-        browser.url('/#!/WeekDayPicker/13');
+    beforeAll(async () => {
+        await browser.url('/#!/WeekDayPicker/13');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(WEEKDAY_PICKER);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(WEEKDAY_PICKER);
+        await component.waitForExist();
     });
-    it('should keep checkbox status when input is disabled', () => {
+    it('should keep checkbox status when input is disabled', async () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
-        weekDayPicker.clickOn('monday');
-        expect(weekDayPicker.getSelectedDays()).toEqual([]);
+        await weekDayPicker.clickOn('monday');
+        await expect(await weekDayPicker.getSelectedDays()).toEqual([]);
     });
 });

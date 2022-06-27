@@ -16,8 +16,8 @@ class PageVerticalItem {
      * Clicks the vertical item.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('[data-id="vertical-item-clickable-element"]')
             .click();
     }
@@ -27,7 +27,7 @@ class PageVerticalItem {
      * @method
      * @returns {bool}
      */
-    hasFocus() {
+    async hasFocus() {
         return $(this.rootElement)
             .$('[data-id="vertical-item-clickable-element"]')
             .isFocused();
@@ -38,8 +38,8 @@ class PageVerticalItem {
      * @method
      * @returns {bool}
      */
-    isSelected() {
-        return !!$(this.rootElement).getAttribute('data-active');
+    async isSelected() {
+        return !!(await $(this.rootElement).getAttribute('data-active'));
     }
 }
 

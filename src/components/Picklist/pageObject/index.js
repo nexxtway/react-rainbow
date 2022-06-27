@@ -21,8 +21,8 @@ class PagePicklist {
      * Clicks the input element.
      * @method
      */
-    clickInput() {
-        $(this.rootElement)
+    async clickInput() {
+        await $(this.rootElement)
             .$('input[type="text"]')
             .click();
     }
@@ -31,8 +31,8 @@ class PagePicklist {
      * Focus the input element.
      * @method
      */
-    focusInput() {
-        $(this.rootElement)
+    async focusInput() {
+        await $(this.rootElement)
             .$('input[type="text"]')
             .doubleClick();
     }
@@ -42,7 +42,7 @@ class PagePicklist {
      * @method
      * @returns {bool}
      */
-    hasFocusInput() {
+    async hasFocusInput() {
         return $(this.rootElement)
             .$('input[type="text"]')
             .isFocused();
@@ -52,7 +52,7 @@ class PagePicklist {
      * It move the pointer off any menu scroll arrow
      * @method
      */
-    mouseLeaveScrollArrow() {
+    async mouseLeaveScrollArrow() {
         return $(this.rootElement)
             .$('input[type="text"]')
             .moveTo();
@@ -63,7 +63,7 @@ class PagePicklist {
      * @method
      * @returns {string}
      */
-    getSelectedOptionLabel() {
+    async getSelectedOptionLabel() {
         return $(this.rootElement)
             .$('input[type="text"]')
             .getValue();
@@ -74,11 +74,11 @@ class PagePicklist {
      * @method
      * @returns {bool}
      */
-    isMenuOpen() {
+    async isMenuOpen() {
         return (
-            $(this.rootElement)
+            (await $(this.rootElement)
                 .$('div[role="combobox"]')
-                .getAttribute('aria-expanded') === 'true'
+                .getAttribute('aria-expanded')) === 'true'
         );
     }
 
@@ -86,19 +86,19 @@ class PagePicklist {
      * Wait until the options menu is open.
      * @method
      */
-    waitUntilOpen() {
-        browser.waitUntil(() => this.isMenuOpen());
+    async waitUntilOpen() {
+        await browser.waitUntil(async () => this.isMenuOpen());
     }
 
     /**
      * Returns a new InternalDropdown page object for the element with the supplied id.
      * @method
      */
-    [privateGetMenu]() {
-        const menuId = `#${$(this.rootElement)
+    async [privateGetMenu]() {
+        const menuId = `#${await $(this.rootElement)
             .$('input[type="text"]')
             .getAttribute('aria-controls')}`;
-        if (this.isMenuOpen()) {
+        if (await this.isMenuOpen()) {
             return new PageInternalDropdown(menuId);
         }
         return null;
@@ -108,16 +108,16 @@ class PagePicklist {
      * It moves the pointer over the menu scroll up arrow
      * @method
      */
-    hoverScrollUpArrow() {
-        return this[privateGetMenu]().hoverScrollUpArrow();
+    async hoverScrollUpArrow() {
+        return (await this[privateGetMenu]()).hoverScrollUpArrow();
     }
 
     /**
      * It moves the pointer over the menu scroll down arrow
      * @method
      */
-    hoverScrollDownArrow() {
-        return this[privateGetMenu]().hoverScrollDownArrow();
+    async hoverScrollDownArrow() {
+        return (await this[privateGetMenu]()).hoverScrollDownArrow();
     }
 
     /**
@@ -125,8 +125,8 @@ class PagePicklist {
      * @method
      * @returns {number}
      */
-    getOptionsLength() {
-        return this[privateGetMenu]().getOptionsLength();
+    async getOptionsLength() {
+        return (await this[privateGetMenu]()).getOptionsLength();
     }
 
     /**
@@ -134,16 +134,16 @@ class PagePicklist {
      * @method
      * @param {number} optionIndex - The base 0 index of the PicklistOption.
      */
-    getOption(optionIndex) {
-        return this[privateGetMenu]().getOption(optionIndex);
+    async getOption(optionIndex) {
+        return (await this[privateGetMenu]()).getOption(optionIndex);
     }
 
     /**
      * Clicks the search element
      * @method
      */
-    clickSearch() {
-        return this[privateGetMenu]().clickSearch();
+    async clickSearch() {
+        return (await this[privateGetMenu]()).clickSearch();
     }
 }
 

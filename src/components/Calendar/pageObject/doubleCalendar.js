@@ -1,3 +1,4 @@
+/* eslint-disable no-return-await */
 /**
  * Calendar page object class.
  * @class
@@ -17,8 +18,8 @@ class PageDoubleCalendar {
      * Clicks the previous month button element.
      * @method
      */
-    clickPrevMonthButton() {
-        $(this.rootElement)
+    async clickPrevMonthButton() {
+        await $(this.rootElement)
             .$$('button[data-id=button-icon-element]')[0]
             .click();
     }
@@ -27,8 +28,8 @@ class PageDoubleCalendar {
      * Clicks the next month button element.
      * @method
      */
-    clickNextMonthButton() {
-        $(this.rootElement)
+    async clickNextMonthButton() {
+        await $(this.rootElement)
             .$$('button[data-id=button-icon-element]')[1]
             .click();
     }
@@ -38,9 +39,9 @@ class PageDoubleCalendar {
      * @method
      * @returns {bool}
      */
-    isPrevMonthButtonDisabled() {
-        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[0];
-        return !buttonEl.isEnabled();
+    async isPrevMonthButtonDisabled() {
+        const buttonEl = (await $(this.rootElement).$$('button[data-id=button-icon-element]'))[0];
+        return !(await buttonEl.isEnabled());
     }
 
     /**
@@ -48,9 +49,9 @@ class PageDoubleCalendar {
      * @method
      * @returns {bool}
      */
-    isNextMonthButtonDisabled() {
-        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[1];
-        return !buttonEl.isEnabled();
+    async isNextMonthButtonDisabled() {
+        const buttonEl = (await $(this.rootElement).$$('button[data-id=button-icon-element]'))[1];
+        return !(await buttonEl.isEnabled());
     }
 
     /**
@@ -58,9 +59,9 @@ class PageDoubleCalendar {
      * @method
      * @returns {bool}
      */
-    isPrevMonthButtonFocused() {
-        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[0];
-        return buttonEl.isExisting() && buttonEl.isFocused();
+    async isPrevMonthButtonFocused() {
+        const buttonEl = (await $(this.rootElement).$$('button[data-id=button-icon-element]'))[0];
+        return (await buttonEl.isExisting()) && (await buttonEl.isFocused());
     }
 
     /**
@@ -68,17 +69,17 @@ class PageDoubleCalendar {
      * @method
      * @returns {bool}
      */
-    isNextMonthButtonFocused() {
-        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[1];
-        return buttonEl.isExisting() && buttonEl.isFocused();
+    async isNextMonthButtonFocused() {
+        const buttonEl = (await $(this.rootElement).$$('button[data-id=button-icon-element]'))[1];
+        return (await buttonEl.isExisting()) && (await buttonEl.isFocused());
     }
 
     /**
      * Clicks the select year element on the left month.
      * @method
      */
-    clickLeftMonthSelectYear() {
-        $(this.rootElement)
+    async clickLeftMonthSelectYear() {
+        await $(this.rootElement)
             .$$('select')[0]
             .click();
     }
@@ -87,11 +88,11 @@ class PageDoubleCalendar {
      * Clicks the specific enabled day button element on the left month.
      * @method
      */
-    clickLeftMonthDay(day) {
-        const buttonEl = $(this.rootElement)
+    async clickLeftMonthDay(day) {
+        const buttonEl = await $(this.rootElement)
             .$$('table[role=grid]')[0]
             .$(`button=${day}`);
-        if (buttonEl.isExisting()) buttonEl.click();
+        if (await buttonEl.isExisting()) await buttonEl.click();
     }
 
     /**
@@ -99,7 +100,7 @@ class PageDoubleCalendar {
      * @method
      * @returns {string}
      */
-    getLeftSelectedMonth() {
+    async getLeftSelectedMonth() {
         return $(this.rootElement)
             .$$('h3[data-id=month]')[0]
             .getText();
@@ -110,7 +111,7 @@ class PageDoubleCalendar {
      * @method
      * @returns {string}
      */
-    getLeftMonthSelectedYear() {
+    async getLeftMonthSelectedYear() {
         return $(this.rootElement)
             .$$('select')[0]
             .getValue();
@@ -121,11 +122,11 @@ class PageDoubleCalendar {
      * @method
      * @returns {string}
      */
-    getLeftMonthSelectedDay() {
-        const day = $(this.rootElement)
+    async getLeftMonthSelectedDay() {
+        const day = await $(this.rootElement)
             .$$('table[role=grid]')[0]
             .$('button[data-selected=true]');
-        if (day.isExisting()) return day.getText();
+        if (await day.isExisting()) return day.getText();
         return undefined;
     }
 
@@ -134,8 +135,8 @@ class PageDoubleCalendar {
      * @method
      * @param {string}
      */
-    setLeftMonthYear(value) {
-        $(this.rootElement)
+    async setLeftMonthYear(value) {
+        await $(this.rootElement)
             .$$('select')[0]
             .selectByVisibleText(value);
     }
@@ -145,11 +146,11 @@ class PageDoubleCalendar {
      * @method
      * @returns {bool}
      */
-    isLeftMonthDayFocused(day) {
-        const buttonEl = $(this.rootElement)
+    async isLeftMonthDayFocused(day) {
+        const buttonEl = await $(this.rootElement)
             .$$('table[role=grid]')[0]
             .$(`button=${day}`);
-        return buttonEl.isExisting() && buttonEl.isFocused();
+        return (await buttonEl.isExisting()) && (await buttonEl.isFocused());
     }
 
     /**
@@ -157,11 +158,14 @@ class PageDoubleCalendar {
      * @method
      * @returns {string}
      */
-    isLeftMonthDaySelected(day) {
-        const buttonEl = $(this.rootElement)
+    async isLeftMonthDaySelected(day) {
+        const buttonEl = await $(this.rootElement)
             .$$('table[role=grid]')[0]
             .$(`button=${day}`);
-        return buttonEl.isExisting() && buttonEl.getAttribute('data-selected') === 'true';
+        return (
+            (await buttonEl.isExisting()) &&
+            (await buttonEl.getAttribute('data-selected')) === 'true'
+        );
     }
 
     /**
@@ -169,17 +173,17 @@ class PageDoubleCalendar {
      * @method
      * @returns {bool}
      */
-    isLeftYearSelectFocused() {
-        const selectEl = $(this.rootElement).$$('select')[0];
-        return selectEl.isExisting() && selectEl.isFocused();
+    async isLeftYearSelectFocused() {
+        const selectEl = (await $(this.rootElement).$$('select'))[0];
+        return (await selectEl.isExisting()) && (await selectEl.isFocused());
     }
 
     /**
      * Clicks the select year element on the right month.
      * @method
      */
-    clickRightMonthSelectYear() {
-        $(this.rootElement)
+    async clickRightMonthSelectYear() {
+        await $(this.rootElement)
             .$$('select')[1]
             .click();
     }
@@ -188,11 +192,11 @@ class PageDoubleCalendar {
      * Clicks the specific enabled day button element on the right month.
      * @method
      */
-    clickRightMonthDay(day) {
-        const buttonEl = $(this.rootElement)
+    async clickRightMonthDay(day) {
+        const buttonEl = await $(this.rootElement)
             .$$('table[role=grid]')[1]
             .$(`button=${day}`);
-        if (buttonEl.isExisting()) buttonEl.click();
+        if (await buttonEl.isExisting()) await buttonEl.click();
     }
 
     /**
@@ -200,7 +204,7 @@ class PageDoubleCalendar {
      * @method
      * @returns {string}
      */
-    getRightSelectedMonth() {
+    async getRightSelectedMonth() {
         return $(this.rootElement)
             .$$('h3[data-id=month]')[1]
             .getText();
@@ -211,7 +215,7 @@ class PageDoubleCalendar {
      * @method
      * @returns {string}
      */
-    getRightMonthSelectedYear() {
+    async getRightMonthSelectedYear() {
         return $(this.rootElement)
             .$$('select')[1]
             .getValue();
@@ -222,11 +226,11 @@ class PageDoubleCalendar {
      * @method
      * @returns {string}
      */
-    getRightMonthSelectedDay() {
-        const day = $(this.rootElement)
+    async getRightMonthSelectedDay() {
+        const day = await $(this.rootElement)
             .$$('table[role=grid]')[1]
             .$('button[data-selected=true]');
-        if (day.isExisting()) return day.getText();
+        if (await day.isExisting()) return day.getText();
         return undefined;
     }
 
@@ -235,8 +239,8 @@ class PageDoubleCalendar {
      * @method
      * @param {string}
      */
-    setRightMonthYear(value) {
-        $(this.rootElement)
+    async setRightMonthYear(value) {
+        await $(this.rootElement)
             .$$('select')[1]
             .selectByVisibleText(value);
     }
@@ -246,11 +250,11 @@ class PageDoubleCalendar {
      * @method
      * @returns {bool}
      */
-    isRightMonthDayFocused(day) {
-        const buttonEl = $(this.rootElement)
+    async isRightMonthDayFocused(day) {
+        const buttonEl = await $(this.rootElement)
             .$$('table[role=grid]')[1]
             .$(`button=${day}`);
-        return buttonEl.isExisting() && buttonEl.isFocused();
+        return (await buttonEl.isExisting()) && (await buttonEl.isFocused());
     }
 
     /**
@@ -258,11 +262,14 @@ class PageDoubleCalendar {
      * @method
      * @returns {string}
      */
-    isRightMonthDaySelected(day) {
-        const buttonEl = $(this.rootElement)
+    async isRightMonthDaySelected(day) {
+        const buttonEl = await $(this.rootElement)
             .$$('table[role=grid]')[1]
             .$(`button=${day}`);
-        return buttonEl.isExisting() && buttonEl.getAttribute('data-selected') === 'true';
+        return (
+            (await buttonEl.isExisting()) &&
+            (await buttonEl.getAttribute('data-selected')) === 'true'
+        );
     }
 
     /**
@@ -270,9 +277,9 @@ class PageDoubleCalendar {
      * @method
      * @returns {bool}
      */
-    isRightYearSelectFocused() {
-        const selectEl = $(this.rootElement).$$('select')[1];
-        return selectEl.isExisting() && selectEl.isFocused();
+    async isRightYearSelectFocused() {
+        const selectEl = (await $(this.rootElement).$$('select'))[1];
+        return (await selectEl.isExisting()) && (await selectEl.isFocused());
     }
 }
 

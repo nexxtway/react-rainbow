@@ -16,8 +16,8 @@ class PageCarouselImage {
      * Clicks the CarouselImage item.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('a')
             .click();
     }
@@ -27,7 +27,7 @@ class PageCarouselImage {
      * @method
      * @returns {string}
      */
-    getHeaderText() {
+    async getHeaderText() {
         return $(this.rootElement)
             .$('[title="Imagen Header"]')
             .getHTML(false);

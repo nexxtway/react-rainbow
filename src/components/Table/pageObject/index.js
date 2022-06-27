@@ -1,3 +1,4 @@
+/* eslint-disable no-return-await */
 const PageTableRow = require('./row');
 
 const HEAD_CHECKBOX_LABEL_SELECTOR = 'label[data-id="table-input-checkbox_label"]';
@@ -21,12 +22,15 @@ class PageTable {
      * Clicks the head checkbox to select the maximum selectable rows.
      * @method
      */
-    selectAllRows() {
-        const headCheckbox = $(this.rootElement)
+    async selectAllRows() {
+        const headCheckbox = await $(this.rootElement)
             .$('thead')
             .$(HEAD_CHECKBOX_INPUT_SELECTOR);
-        if (!headCheckbox.isSelected() && !headCheckbox.getAttribute('indeterminate')) {
-            $(this.rootElement)
+        if (
+            !(await headCheckbox.isSelected()) &&
+            !(await headCheckbox.getAttribute('indeterminate'))
+        ) {
+            await $(this.rootElement)
                 .$('thead')
                 .$(HEAD_CHECKBOX_LABEL_SELECTOR)
                 .click();
@@ -37,12 +41,15 @@ class PageTable {
      * Clicks the head checkbox to deselect all selected rows.
      * @method
      */
-    deselectAllRows() {
-        const headCheckbox = $(this.rootElement)
+    async deselectAllRows() {
+        const headCheckbox = await $(this.rootElement)
             .$('thead')
             .$(HEAD_CHECKBOX_INPUT_SELECTOR);
-        if (headCheckbox.isSelected() || headCheckbox.getAttribute('indeterminate')) {
-            $(this.rootElement)
+        if (
+            (await headCheckbox.isSelected()) ||
+            (await headCheckbox.getAttribute('indeterminate'))
+        ) {
+            await $(this.rootElement)
                 .$('thead')
                 .$(HEAD_CHECKBOX_LABEL_SELECTOR)
                 .click();
@@ -54,8 +61,8 @@ class PageTable {
      * @method
      * @param {number} rowPosition - The base 0 index of the row item.
      */
-    getRow(rowPosition) {
-        const rows = $(this.rootElement).$$('tbody > tr[data-id="table_body-row"]');
+    async getRow(rowPosition) {
+        const rows = await $(this.rootElement).$$('tbody > tr[data-id="table_body-row"]');
         if (rows[rowPosition]) {
             return new PageTableRow(
                 `${this.rootElement} tr[data-id="table_body-row"]:nth-child(${rowPosition + 1})`,
@@ -68,15 +75,15 @@ class PageTable {
      * Wait until the data is loaded.
      * @method
      */
-    waitUntilDataIsLoaded() {
-        browser.waitUntil(
-            () =>
-                !$(this.rootElement)
+    async waitUntilDataIsLoaded() {
+        await browser.waitUntil(
+            async () =>
+                !(await $(this.rootElement)
                     .$('div[data-id="table_body--loading"]')
-                    .isDisplayed() &&
-                $(this.rootElement)
+                    .isDisplayed()) &&
+                (await $(this.rootElement)
                     .$('tr[data-id="table_body-row"]')
-                    .isDisplayed(),
+                    .isDisplayed()),
         );
     }
 }

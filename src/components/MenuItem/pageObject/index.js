@@ -33,8 +33,8 @@ class PageMenuItem {
      * It moves the pointer over the menu item.
      * @method
      */
-    hover() {
-        this.rootElement.moveTo();
+    async hover() {
+        await this.rootElement.moveTo();
     }
 
     /**

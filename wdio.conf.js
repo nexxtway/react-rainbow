@@ -1,7 +1,7 @@
 const drivers = {
-    chrome: { version: '100.0.4896.127' }, // https://chromedriver.chromium.org/
-    firefox: { version: '0.30.0' }, // https://github.com/mozilla/geckodriver/releases
-    chromiumedge: { version: '85.0.564.70' }, // https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
+    chrome: { version: '103.0.5060.53' }, // https://chromedriver.chromium.org/
+    firefox: { version: '0.31.0' }, // https://github.com/mozilla/geckodriver/releases
+    chromiumedge: { version: '103.0.1264.37' }, // https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
 };
 
 exports.config = {
@@ -84,9 +84,9 @@ exports.config = {
     // Test Configurations
     // ===================
     // Define all options that are relevant for the WebdriverIO instance here
-    sync: true,
+    sync: false,
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'silent',
+    logLevel: 'debug',
     //
     // Set specific log levels per logger
     // loggers:

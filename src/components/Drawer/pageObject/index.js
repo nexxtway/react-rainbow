@@ -1,3 +1,4 @@
+/* eslint-disable no-return-await */
 /* eslint-disable id-length */
 /**
  * Drawer page object class.
@@ -25,8 +26,8 @@ class PageDrawer {
      * Clicks the close button element.
      * @method
      */
-    clickCloseButton() {
-        $(this.rootElement)
+    async clickCloseButton() {
+        await $(this.rootElement)
             .$('[id="drawer-close-button"]')
             .click();
     }
@@ -35,15 +36,18 @@ class PageDrawer {
      * Clicks the drawer's backdrop element.
      * @method
      */
-    clickBackDrop() {
-        $(this.rootElement)
+    async clickBackDrop() {
+        await $(this.rootElement)
             .$('[id="drawer-close-button"]')
             .waitForDisplayed();
 
-        const section = $(this.rootElement).$('section[role="dialog"]');
-        const { x, y } = getPointOutsideDrawer(section.getLocation(), section.getSize());
+        const section = await $(this.rootElement).$('section[role="dialog"]');
+        const { x, y } = getPointOutsideDrawer(
+            await section.getLocation(),
+            await section.getSize(),
+        );
 
-        $(this.rootElement)
+        await $(this.rootElement)
             .$('[id="drawer-close-button"]')
             .click({ x, y });
     }
@@ -53,15 +57,15 @@ class PageDrawer {
      * @method
      * @returns {bool}
      */
-    isOpen() {
+    async isOpen() {
         return (
-            $(this.rootElement).isExisting() &&
-            $(this.rootElement)
+            (await $(this.rootElement).isExisting()) &&
+            (await $(this.rootElement)
                 .$('section[role="dialog"]')
-                .isDisplayed() &&
-            $(this.rootElement)
+                .isDisplayed()) &&
+            (await $(this.rootElement)
                 .$('[id="drawer-close-button"]')
-                .isDisplayed()
+                .isDisplayed())
         );
     }
 
@@ -70,7 +74,7 @@ class PageDrawer {
      * @method
      * @returns {bool}
      */
-    hasFocusCloseButton() {
+    async hasFocusCloseButton() {
         return $(this.rootElement)
             .$('[id="drawer-close-button"]')
             .isFocused();
@@ -80,18 +84,18 @@ class PageDrawer {
      * Wait until the open transition has finished.
      * @method
      */
-    waitUntilOpen() {
-        browser.pause(1000);
-        browser.waitUntil(() => this.isOpen());
+    async waitUntilOpen() {
+        await browser.pause(1000);
+        await browser.waitUntil(async () => await this.isOpen());
     }
 
     /**
      * Wait until the close transition has finished.
      * @method
      */
-    waitUntilClose() {
-        browser.pause(1000);
-        browser.waitUntil(() => !$(this.rootElement).isExisting());
+    async waitUntilClose() {
+        await browser.pause(1000);
+        await browser.waitUntil(async () => !(await $(this.rootElement).isExisting()));
     }
 }
 
