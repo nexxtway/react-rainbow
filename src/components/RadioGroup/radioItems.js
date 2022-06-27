@@ -14,11 +14,10 @@ export default function RadioItems(props) {
         const key = `radio-${index}`;
         const { description, disabled, ...rest } = option;
         return (
-            <StyledItemContainer data-id="input-radiogroup_container">
+            <StyledItemContainer key={key} data-id="input-radiogroup_container">
                 <Radio
                     // eslint-disable-next-line react/jsx-props-no-spreading
                     {...rest}
-                    key={key}
                     onChange={onChange}
                     checked={isChecked(option)}
                     ariaDescribedby={ariaDescribedby}
