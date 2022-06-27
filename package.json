@@ -27,7 +27,8 @@
         "generate:pageObjectDocs": "jsdoc -c jsdoc.conf.js",
         "deploy:library": "yarn build:library && yarn generate:pageObjectDocs && firebase deploy -P default",
         "format": "prettier --write '{src,examples, library, tutorials}/**/*.{js,json,md}'",
-        "prepare:canary": "node scripts/prepare-canary.js"
+        "prepare:canary": "node scripts/prepare-canary.js",
+        "wait:on:local:server": "wait-on http-get://localhost:6060"
     },
     "dependencies": {
         "@rainbow-modules/hooks": "^0.12.0",
@@ -188,6 +189,7 @@
         "stylelint-config-styled-components": "^0.1.1",
         "stylelint-processor-styled-components": "^1.8.0",
         "stylelint-scss": "^3.3.0",
+        "wait-on": "^6.0.1",
         "webdriverio": "^7",
         "webpack": "^4.41.2"
     },

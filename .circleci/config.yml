@@ -80,7 +80,7 @@ jobs:
                   command: yarn start
                   background: true
 
-            - run: sleep 10
+            - run: yarn wait:on:local:server
 
             - run:
                   name: run integration test
