@@ -85,7 +85,7 @@ jobs:
             - run:
                   name: run integration test
                   command: |
-                      yarn test:integration --headless || true
+                      yarn test:integration --headless
             - run:
                   name: generate report
                   command: |
