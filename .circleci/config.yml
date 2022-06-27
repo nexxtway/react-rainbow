@@ -74,7 +74,7 @@ jobs:
             - run: yarn install
 
             - browser-tools/install-chrome:
-                  chrome-version: 104.0.5112.20
+                  chrome-version: 103.0.5060.53
 
             - run:
                   command: yarn start
