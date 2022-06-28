@@ -1,3 +1,9 @@
+const drivers = {
+    chrome: { version: '103.0.5060.53' }, // https://chromedriver.chromium.org/
+    firefox: { version: '0.31.0' }, // https://github.com/mozilla/geckodriver/releases
+    chromiumedge: { version: '103.0.1264.37' }, // https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
+};
+
 exports.config = {
     //
     // ====================
@@ -78,9 +84,9 @@ exports.config = {
     // Test Configurations
     // ===================
     // Define all options that are relevant for the WebdriverIO instance here
-    sync: true,
+    sync: false,
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'silent',
+    logLevel: 'debug',
     //
     // Set specific log levels per logger
     // loggers:
@@ -126,7 +132,16 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['selenium-standalone'],
+    services: [
+        [
+            'selenium-standalone',
+            {
+                logPath: 'logs',
+                installArgs: { drivers }, // drivers to install
+                args: { drivers }, // drivers to use
+            },
+        ],
+    ],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -137,7 +152,11 @@ exports.config = {
     framework: 'jasmine',
     //
     // The number of times to retry the entire specfile when it fails as a whole
-    // specFileRetries: 1,
+    specFileRetries: 1,
+    // Delay in seconds between the spec file retry attempts
+    specFileRetriesDelay: 0,
+    // Retried specfiles are inserted at the beginning of the queue and retried immediately
+    specFileRetriesDeferred: true,
     //
     // Test reporter for stdout.
     // The only one supported by default is 'dot'

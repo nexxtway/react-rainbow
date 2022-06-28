@@ -16,8 +16,8 @@ class PageInput {
      * Clicks the input element.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('input')
             .click();
     }
@@ -26,8 +26,8 @@ class PageInput {
      * Clicks the label element.
      * @method
      */
-    clickLabel() {
-        $(this.rootElement)
+    async clickLabel() {
+        await $(this.rootElement)
             .$('label')
             .click();
     }
@@ -37,7 +37,7 @@ class PageInput {
      * @method
      * @returns {bool}
      */
-    hasFocusInput() {
+    async hasFocusInput() {
         return $(this.rootElement)
             .$('input')
             .isFocused();
@@ -48,8 +48,8 @@ class PageInput {
      * @method
      * @param {string} value - The value to type in the input element.
      */
-    setValue(value) {
-        $(this.rootElement)
+    async setValue(value) {
+        await $(this.rootElement)
             .$('input')
             .setValue(value);
     }
@@ -59,7 +59,7 @@ class PageInput {
      * @method
      * @returns {string}
      */
-    getValue() {
+    async getValue() {
         return $(this.rootElement)
             .$('input')
             .getValue();

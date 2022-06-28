@@ -19,9 +19,9 @@ class PageTree {
      * @method
      * @param {array} path - Array with 0 base indexes that defines the node path in tree.
      */
-    getNode(path) {
+    async getNode(path) {
         const nodePath = path.join('.');
-        const node = $(this.rootElement).$(`[data-path="${nodePath}"]`);
+        const node = await $(this.rootElement).$(`[data-path="${nodePath}"]`);
         if (node) {
             return new PageNodeItem(`${this.rootElement} [data-path="${nodePath}"]`);
         }

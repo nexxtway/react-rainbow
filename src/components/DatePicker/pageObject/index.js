@@ -1,3 +1,4 @@
+/* eslint-disable no-return-await */
 const PageCalendar = require('../../Calendar/pageObject');
 
 /**
@@ -22,7 +23,7 @@ class PageDatePicker {
      * @method
      * @returns {string}
      */
-    getValue() {
+    async getValue() {
         return $(this.rootElement)
             .$('input[type="text"]')
             .getValue();
@@ -32,8 +33,8 @@ class PageDatePicker {
      * Clicks the input element.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('input[type="text"]')
             .click();
     }
@@ -42,8 +43,8 @@ class PageDatePicker {
      * Clicks the input label element.
      * @method
      */
-    clickLabel() {
-        $(this.rootElement)
+    async clickLabel() {
+        await $(this.rootElement)
             .$('label')
             .click();
     }
@@ -52,8 +53,9 @@ class PageDatePicker {
      * Clicks the calendar specific day button element.
      * @method
      */
-    clickDay(day) {
-        new PageCalendar(this.calendarRootEl).clickDay(day);
+    async clickDay(day) {
+        const calendar = await PageCalendar(this.calendarRootEl);
+        await calendar.clickDay(day);
     }
 
     /**
@@ -61,15 +63,15 @@ class PageDatePicker {
      * @method
      * @returns {bool}
      */
-    isOpen() {
+    async isOpen() {
         return (
-            $(this.modalRootEl).isDisplayed() &&
-            $(this.modalRootEl)
+            (await $(this.modalRootEl).isDisplayed()) &&
+            (await $(this.modalRootEl)
                 .$('h1')
-                .isDisplayed() &&
-            $(this.modalRootEl)
+                .isDisplayed()) &&
+            (await $(this.modalRootEl)
                 .$('select')
-                .isDisplayed()
+                .isDisplayed())
         );
     }
 
@@ -78,10 +80,8 @@ class PageDatePicker {
      * @method
      * @returns {bool}
      */
-    hasFocusInput() {
-        return $(this.rootElement)
-            .$('input[type="text"]')
-            .isFocused();
+    async hasFocusInput() {
+        return (await $(this.rootElement).$('input[type="text"]')).isFocused();
     }
 
     /**
@@ -89,7 +89,7 @@ class PageDatePicker {
      * @method
      * @returns {string}
      */
-    getDate() {
+    async getDate() {
         return $(this.modalRootEl)
             .$('h1')
             .getText();
@@ -99,16 +99,16 @@ class PageDatePicker {
      * Wait until the DatePicker modal is open.
      * @method
      */
-    waitUntilOpen() {
-        browser.waitUntil(() => this.isOpen());
+    async waitUntilOpen() {
+        await browser.waitUntil(async () => await this.isOpen());
     }
 
     /**
      * Wait until the DatePicker modal is closed.
      * @method
      */
-    waitUntilClose() {
-        browser.waitUntil(() => !this.isOpen());
+    async waitUntilClose() {
+        await browser.waitUntil(async () => !(await this.isOpen()));
     }
 }
 

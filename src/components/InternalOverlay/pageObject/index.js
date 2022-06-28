@@ -15,7 +15,7 @@ class PageInternalOverlay {
     /**
      * Checks if the element exists
      */
-    exists() {
+    async exists() {
         return $(this.rootElement).isExisting();
     }
 }

@@ -19,9 +19,9 @@ class PageTableRow {
      * Clicks the row to select.
      * @method
      */
-    selectRow() {
-        if (!this.isRowSelected()) {
-            $(this.rootElement)
+    async selectRow() {
+        if (!(await this.isRowSelected())) {
+            await $(this.rootElement)
                 .$(CHECKBOX_LABEL_SELECTOR)
                 .click();
         }
@@ -31,9 +31,9 @@ class PageTableRow {
      * Clicks the row to select.
      * @method
      */
-    deselectRow() {
-        if (this.isRowSelected()) {
-            $(this.rootElement)
+    async deselectRow() {
+        if (await this.isRowSelected()) {
+            await $(this.rootElement)
                 .$(CHECKBOX_LABEL_SELECTOR)
                 .click();
         }
@@ -44,7 +44,7 @@ class PageTableRow {
      * @method
      * @returns {bool}
      */
-    isRowSelected() {
+    async isRowSelected() {
         return $(this.rootElement)
             .$(CHECKBOX_INPUT_SELECTOR)
             .isSelected();
@@ -55,10 +55,10 @@ class PageTableRow {
      * @method
      * @returns {bool}
      */
-    isRowSelectionDisabled() {
-        return !$(this.rootElement)
+    async isRowSelectionDisabled() {
+        return !(await $(this.rootElement)
             .$(CHECKBOX_INPUT_SELECTOR)
-            .isEnabled();
+            .isEnabled());
     }
 }
 

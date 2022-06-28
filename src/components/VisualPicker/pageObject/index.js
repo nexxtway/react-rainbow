@@ -19,8 +19,10 @@ class PageVisualPicker {
      * @method
      * @param {number} itemPosition - The base 0 index of the VisualPickerOption.
      */
-    getItem(itemPosition) {
-        const items = $(this.rootElement).$$('span[data-id="visual-picker_option-container"]');
+    async getItem(itemPosition) {
+        const items = await $(this.rootElement).$$(
+            'span[data-id="visual-picker_option-container"]',
+        );
         if (items[itemPosition]) {
             return new PageVisualPickerOption(
                 `${

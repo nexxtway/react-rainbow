@@ -1,3 +1,4 @@
+/* eslint-disable no-return-await */
 /**
  * Modal page object class.
  * @class
@@ -17,13 +18,13 @@ class PageModal {
      * Clicks the close button element.
      * @method
      */
-    clickCloseButton() {
-        browser.waitUntil(() =>
+    async clickCloseButton() {
+        await browser.waitUntil(async () =>
             $(this.rootElement)
                 .$('[id="modal-close-button"]')
                 .isDisplayed(),
         );
-        $(this.rootElement)
+        await $(this.rootElement)
             .$('[id="modal-close-button"]')
             .click();
     }
@@ -39,15 +40,15 @@ class PageModal {
      * @method
      * @returns {bool}
      */
-    isOpen() {
-        if ($(this.rootElement).isDisplayed()) {
+    async isOpen() {
+        if (await $(this.rootElement).isDisplayed()) {
             return (
-                $(this.rootElement)
+                (await $(this.rootElement)
                     .$('section[role="dialog"]')
-                    .isDisplayed() &&
-                $(this.rootElement)
+                    .isDisplayed()) &&
+                (await $(this.rootElement)
                     .$('[id="modal-close-button"]')
-                    .isDisplayed()
+                    .isDisplayed())
             );
         }
         return false;
@@ -58,26 +59,24 @@ class PageModal {
      * @method
      * @returns {bool}
      */
-    hasFocusCloseButton() {
-        return $(this.rootElement)
-            .$('[id="modal-close-button"]')
-            .isFocused();
+    async hasFocusCloseButton() {
+        return (await $(this.rootElement).$('[id="modal-close-button"]')).isFocused();
     }
 
     /**
      * Wait until the open modal transition has finished.
      * @method
      */
-    waitUntilOpen() {
-        browser.waitUntil(() => this.isOpen());
+    async waitUntilOpen() {
+        await browser.waitUntil(async () => await this.isOpen());
     }
 
     /**
      * Wait until the close modal transition has finished.
      * @method
      */
-    waitUntilClose() {
-        browser.waitUntil(() => !this.isOpen());
+    async waitUntilClose() {
+        await browser.waitUntil(async () => !(await this.isOpen()));
     }
 }
 

@@ -11,80 +11,82 @@ const {
 const DATEPICKER = '#datePicker-1';
 
 describe('DatePicker base', () => {
-    beforeAll(() => {
-        browser.url('/#!/DatePicker/1');
+    beforeAll(async () => {
+        await browser.url('/#!/DatePicker/1');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(DATEPICKER);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(DATEPICKER);
+        await component.waitForExist();
     });
-    it('should open the DatePicker when click on the input element', () => {
+    it('should open the DatePicker when click on the input element', async () => {
         const datePicker = new PageDatePicker(DATEPICKER);
-        datePicker.click();
-        datePicker.waitUntilOpen();
-        expect(datePicker.isOpen()).toBe(true);
+        await datePicker.click();
+        await datePicker.waitUntilOpen();
+        await expect(await datePicker.isOpen()).toBe(true);
     });
-    it('should open the DatePicker when click on the label element', () => {
+    it('should open the DatePicker when click on the label element', async () => {
         const datePicker = new PageDatePicker(DATEPICKER);
-        datePicker.clickLabel();
-        datePicker.waitUntilOpen();
-        expect(datePicker.isOpen()).toBe(true);
+        await datePicker.clickLabel();
+        await datePicker.waitUntilOpen();
+        await expect(await datePicker.isOpen()).toBe(true);
     });
-    it('should close the DatePicker when esc key is pressed', () => {
+    it('should close the DatePicker when esc key is pressed', async () => {
         const datePicker = new PageDatePicker(DATEPICKER);
-        datePicker.clickLabel();
-        datePicker.waitUntilOpen();
-        expect(datePicker.isOpen()).toBe(true);
-        browser.keys(ESCAPE_KEY);
-        datePicker.waitUntilClose();
-        expect(datePicker.isOpen()).toBe(false);
+        await datePicker.clickLabel();
+        await datePicker.waitUntilOpen();
+        await expect(await datePicker.isOpen()).toBe(true);
+        await browser.keys(ESCAPE_KEY);
+        await datePicker.waitUntilClose();
+        await expect(await datePicker.isOpen()).toBe(false);
     });
-    it('should open the DatePicker when enter key is pressed while input element is focused', () => {
+    it('should open the DatePicker when enter key is pressed while input element is focused', async () => {
         const datePicker = new PageDatePicker(DATEPICKER);
-        datePicker.click();
-        datePicker.waitUntilOpen();
-        browser.keys(ESCAPE_KEY);
-        browser.keys(ENTER_KEY);
-        expect(datePicker.isOpen()).toBe(true);
+        await datePicker.click();
+        await datePicker.waitUntilOpen();
+        await browser.keys(ESCAPE_KEY);
+        await browser.keys(ENTER_KEY);
+        await datePicker.waitUntilOpen();
+        await expect(await datePicker.isOpen()).toBe(true);
     });
-    it('should open the DatePicker when space key is pressed while input element is focused', () => {
+    it('should open the DatePicker when space key is pressed while input element is focused', async () => {
         const datePicker = new PageDatePicker(DATEPICKER);
-        datePicker.click();
-        datePicker.waitUntilOpen();
-        browser.keys(ESCAPE_KEY);
-        browser.keys(SPACE_KEY);
-        expect(datePicker.isOpen()).toBe(true);
+        await datePicker.click();
+        await datePicker.waitUntilOpen();
+        await browser.keys(ESCAPE_KEY);
+        await browser.keys(SPACE_KEY);
+        await datePicker.waitUntilOpen();
+        await expect(await datePicker.isOpen()).toBe(true);
     });
-    it('should show the right date on top of the DatePicker when it is open', () => {
+    it('should show the right date on top of the DatePicker when it is open', async () => {
         const datePicker = new PageDatePicker(DATEPICKER);
-        datePicker.click();
-        datePicker.waitUntilOpen();
-        expect(datePicker.getDate()).toBe('Friday, 10/25/2019');
+        await datePicker.click();
+        await datePicker.waitUntilOpen();
+        await expect(await datePicker.getDate()).toBe('Friday, 10/25/2019');
     });
-    it('should set the right value when select a date', () => {
+    it('should set the right value when select a date', async () => {
         const datePicker = new PageDatePicker(DATEPICKER);
-        datePicker.click();
-        datePicker.waitUntilOpen();
-        expect(datePicker.getValue()).toBe('Friday, 10/25/2019');
-        datePicker.clickDay(31);
-        datePicker.waitUntilClose();
-        expect(datePicker.isOpen()).toBe(false);
-        expect(datePicker.getValue()).toBe('Thursday, 10/31/2019');
+        await datePicker.click();
+        await datePicker.waitUntilOpen();
+        await expect(await datePicker.getValue()).toBe('Friday, 10/25/2019');
+        await datePicker.clickDay(31);
+        await datePicker.waitUntilClose();
+        await expect(await datePicker.isOpen()).toBe(false);
+        await expect(await datePicker.getValue()).toBe('Thursday, 10/31/2019');
     });
-    it('should set the right value when select a date with keyboard navigation', () => {
+    it('should set the right value when select a date with keyboard navigation', async () => {
         const datePicker = new PageDatePicker(DATEPICKER);
-        datePicker.click();
-        datePicker.waitUntilOpen();
-        expect(datePicker.getValue()).toBe('Friday, 10/25/2019');
-        browser.keys(TAB_KEY);
-        browser.keys(TAB_KEY);
-        browser.keys(TAB_KEY);
-        browser.keys(ARROW_LEFT_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
-        datePicker.waitUntilClose();
-        expect(datePicker.isOpen()).toBe(false);
-        expect(datePicker.getValue()).toBe('Thursday, 10/31/2019');
+        await datePicker.click();
+        await datePicker.waitUntilOpen();
+        await expect(await datePicker.getValue()).toBe('Friday, 10/25/2019');
+        await browser.keys(TAB_KEY);
+        await browser.keys(TAB_KEY);
+        await browser.keys(TAB_KEY);
+        await browser.keys(ARROW_LEFT_KEY);
+        await browser.keys(ARROW_DOWN_KEY);
+        await browser.keys(ENTER_KEY);
+        await datePicker.waitUntilClose();
+        await expect(await datePicker.isOpen()).toBe(false);
+        await expect(await datePicker.getValue()).toBe('Thursday, 10/31/2019');
     });
 });

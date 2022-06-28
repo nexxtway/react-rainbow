@@ -16,8 +16,8 @@ class PageSelect {
      * Clicks the select element.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('select')
             .click();
     }
@@ -26,8 +26,8 @@ class PageSelect {
      * Clicks the label element.
      * @method
      */
-    clickLabel() {
-        $(this.rootElement)
+    async clickLabel() {
+        await $(this.rootElement)
             .$('label')
             .click();
     }
@@ -37,7 +37,7 @@ class PageSelect {
      * @method
      * @returns {bool}
      */
-    hasFocusSelect() {
+    async hasFocusSelect() {
         return $(this.rootElement)
             .$('select')
             .isFocused();
@@ -49,8 +49,8 @@ class PageSelect {
      * @returns {bool}
      * @param {number} itemPosition - The base 0 index of the select item.
      */
-    isSelectedItem(itemPosition) {
-        const items = $(this.rootElement).$$('option');
+    async isSelectedItem(itemPosition) {
+        const items = await $(this.rootElement).$$('option');
         if (items[itemPosition]) {
             return items[itemPosition].isSelected();
         }

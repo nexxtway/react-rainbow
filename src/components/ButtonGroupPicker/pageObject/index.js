@@ -14,13 +14,17 @@ class PageButtonGroupPicker {
         this.rootElement = rootElement;
     }
 
+    get root() {
+        return $(this.rootElement);
+    }
+
     /**
      * Returns a new ButtonOption page object of the element in item position.
      * @method
      * @param {number} itemPosition - The base 0 index of the radio.
      */
-    getItem(itemPosition) {
-        const items = $(this.rootElement).$$('label');
+    async getItem(itemPosition) {
+        const items = await $(this.rootElement).$$('label');
         if (items[itemPosition]) {
             return new PageButtonOption(`${this.rootElement} label:nth-child(${itemPosition + 1})`);
         }

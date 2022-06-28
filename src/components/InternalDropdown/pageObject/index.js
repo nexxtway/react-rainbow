@@ -20,9 +20,9 @@ class PageInternalDropdown {
      * It moves the pointer over the menu scroll up arrow
      * @method
      */
-    hoverScrollUpArrow() {
-        const upArrow = $(this.rootElement).$('[data-id="internal-dropdown-arrow-up"]');
-        upArrow.scrollIntoView();
+    async hoverScrollUpArrow() {
+        const upArrow = await $(this.rootElement).$('[data-id="internal-dropdown-arrow-up"]');
+        await upArrow.scrollIntoView();
         return upArrow.moveTo();
     }
 
@@ -30,9 +30,9 @@ class PageInternalDropdown {
      * It moves the pointer over the menu scroll down arrow
      * @method
      */
-    hoverScrollDownArrow() {
-        const downArrow = $(this.rootElement).$('[data-id="internal-dropdown-arrow-down"]');
-        downArrow.scrollIntoView();
+    async hoverScrollDownArrow() {
+        const downArrow = await $(this.rootElement).$('[data-id="internal-dropdown-arrow-down"]');
+        await downArrow.scrollIntoView();
         return downArrow.moveTo();
     }
 
@@ -41,8 +41,8 @@ class PageInternalDropdown {
      * @method
      * @returns {number}
      */
-    getOptionsLength() {
-        return $(this.rootElement).$$('li[data-selected="false"]').length;
+    async getOptionsLength() {
+        return (await $(this.rootElement).$$('li[data-selected="false"]')).length;
     }
 
     /**
@@ -50,11 +50,11 @@ class PageInternalDropdown {
      * @method
      * @param {number} optionIndex - The base 0 index of the Option.
      */
-    getOption(optionIndex) {
-        const activeOptions = $(this.rootElement).$$('li[data-selected="false"]');
+    async getOption(optionIndex) {
+        const activeOptions = await $(this.rootElement).$$('li[data-selected="false"]');
         const option = activeOptions[optionIndex];
         if (option && !option.error) {
-            return new PageOption(option, this[privateGetMenuBoundsRect]());
+            return new PageOption(option, await this[privateGetMenuBoundsRect]());
         }
         return null;
     }
@@ -64,11 +64,11 @@ class PageInternalDropdown {
      * @method
      * @returns {object}
      */
-    [privateGetMenuBoundsRect]() {
+    async [privateGetMenuBoundsRect]() {
         const menu = $(this.rootElement);
         // eslint-disable-next-line id-length
-        const { x, y } = menu.getLocation();
-        const { width, height } = menu.getSize();
+        const { x, y } = await menu.getLocation();
+        const { width, height } = await menu.getSize();
         return {
             left: x,
             top: y,
@@ -82,7 +82,7 @@ class PageInternalDropdown {
      * @method
      * @returns {bool}
      */
-    arrowDownExists() {
+    async arrowDownExists() {
         return $(this.rootElement)
             .$('[data-id="internal-dropdown-arrow-down"]')
             .isExisting();
@@ -93,7 +93,7 @@ class PageInternalDropdown {
      * @method
      * @returns {bool}
      */
-    arrowUpExists() {
+    async arrowUpExists() {
         return $(this.rootElement)
             .$('[data-id="internal-dropdown-arrow-up"]')
             .isExisting();
@@ -104,7 +104,7 @@ class PageInternalDropdown {
      * @method
      * @returns {bool}
      */
-    emptyMessageExist() {
+    async emptyMessageExist() {
         return $(this.rootElement)
             .$('[data-id="internal-dropdown-empty-message"]')
             .isExisting();
@@ -115,7 +115,7 @@ class PageInternalDropdown {
      * @method
      * @returns {bool}
      */
-    isLoading() {
+    async isLoading() {
         return $(this.rootElement)
             .$('ul[role="presentation"] > div > div')
             .isExisting();
@@ -125,8 +125,8 @@ class PageInternalDropdown {
      * Clicks the input element.
      * @method
      */
-    clickSearch() {
-        $(this.rootElement)
+    async clickSearch() {
+        await $(this.rootElement)
             .$('input[type="search"]')
             .click();
     }
@@ -136,8 +136,8 @@ class PageInternalDropdown {
      * @method
      * @param {string} value - The value to type in the input element.
      */
-    setQuery(value) {
-        $(this.rootElement)
+    async setQuery(value) {
+        await $(this.rootElement)
             .$('input[type="search"]')
             .setValue(value);
     }

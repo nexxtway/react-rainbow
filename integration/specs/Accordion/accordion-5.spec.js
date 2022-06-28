@@ -3,29 +3,29 @@ const PageAccordion = require('../../../src/components/Accordion/pageObject');
 const ACCORDION = '#accordion-multiple-1';
 
 describe('Accordion when multiple is passed', () => {
-    beforeAll(() => {
-        browser.url('/#!/Accordion/5');
+    beforeAll(async () => {
+        await browser.url('/#!/Accordion/5');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(ACCORDION);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(ACCORDION);
+        await component.waitForExist();
     });
 
-    it('should collapse the accordion section when the accordion section is expanded and click on the button icon', () => {
+    it('should collapse the accordion section when the accordion section is expanded and click on the button icon', async () => {
         const accordion = new PageAccordion(ACCORDION);
-        const accordionSection = accordion.getItem(0);
-        accordionSection.clickButton();
-        expect(accordionSection.isExpanded()).toBe(false);
+        const accordionSection = await accordion.getItem(0);
+        await accordionSection.clickButton();
+        await expect(await accordionSection.isExpanded()).toBe(false);
     });
-    it('should expand all accordion section when the first and second accordion section are expanded and click on the third button icon', () => {
+    it('should expand all accordion section when the first and second accordion section are expanded and click on the third button icon', async () => {
         const accordion = new PageAccordion(ACCORDION);
-        const firstAccordionSection = accordion.getItem(0);
-        const secondAccordionSection = accordion.getItem(1);
-        const thirdAccordionSection = accordion.getItem(2);
-        thirdAccordionSection.clickButton();
-        expect(firstAccordionSection.isExpanded()).toBe(true);
-        expect(secondAccordionSection.isExpanded()).toBe(true);
-        expect(thirdAccordionSection.isExpanded()).toBe(true);
+        const firstAccordionSection = await accordion.getItem(0);
+        const secondAccordionSection = await accordion.getItem(1);
+        const thirdAccordionSection = await accordion.getItem(2);
+        await thirdAccordionSection.clickButton();
+        await expect(await firstAccordionSection.isExpanded()).toBe(true);
+        await expect(await secondAccordionSection.isExpanded()).toBe(true);
+        await expect(await thirdAccordionSection.isExpanded()).toBe(true);
     });
 });

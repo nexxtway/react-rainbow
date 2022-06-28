@@ -17,8 +17,8 @@ class PageMonthlyCalendar {
      * Clicks the previous month button element.
      * @method
      */
-    clickPrevMonthButton() {
-        $(this.rootElement)
+    async clickPrevMonthButton() {
+        await $(this.rootElement)
             .$$('button[data-id=button-icon-element]')[0]
             .click();
     }
@@ -27,8 +27,8 @@ class PageMonthlyCalendar {
      * Clicks the next month button element.
      * @method
      */
-    clickNextMonthButton() {
-        $(this.rootElement)
+    async clickNextMonthButton() {
+        await $(this.rootElement)
             .$$('button[data-id=button-icon-element]')[1]
             .click();
     }
@@ -37,8 +37,8 @@ class PageMonthlyCalendar {
      * Clicks the select year element.
      * @method
      */
-    clickSelectYear() {
-        $(this.rootElement)
+    async clickSelectYear() {
+        await $(this.rootElement)
             .$('select')
             .click();
     }
@@ -48,7 +48,7 @@ class PageMonthlyCalendar {
      * @method
      * @returns {string}
      */
-    getSelectedMonth() {
+    async getSelectedMonth() {
         return $(this.rootElement)
             .$('h3[data-id=month]')
             .getText();
@@ -59,7 +59,7 @@ class PageMonthlyCalendar {
      * @method
      * @returns {string}
      */
-    getSelectedYear() {
+    async getSelectedYear() {
         return $(this.rootElement)
             .$('select')
             .getValue();
@@ -70,8 +70,8 @@ class PageMonthlyCalendar {
      * @method
      * @param {string}
      */
-    setYear(value) {
-        $(this.rootElement)
+    async setYear(value) {
+        await $(this.rootElement)
             .$('select')
             .selectByVisibleText(value);
     }
@@ -81,9 +81,9 @@ class PageMonthlyCalendar {
      * @method
      * @returns {bool}
      */
-    isPrevMonthButtonDisabled() {
-        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[0];
-        return !buttonEl.isEnabled();
+    async isPrevMonthButtonDisabled() {
+        const buttonEl = (await $(this.rootElement).$$('button[data-id=button-icon-element]'))[0];
+        return !(await buttonEl.isEnabled());
     }
 
     /**
@@ -91,9 +91,9 @@ class PageMonthlyCalendar {
      * @method
      * @returns {bool}
      */
-    isNextMonthButtonDisabled() {
-        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[1];
-        return !buttonEl.isEnabled();
+    async isNextMonthButtonDisabled() {
+        const buttonEl = (await $(this.rootElement).$$('button[data-id=button-icon-element]'))[1];
+        return !(await buttonEl.isEnabled());
     }
 }
 

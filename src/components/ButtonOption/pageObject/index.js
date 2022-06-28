@@ -12,11 +12,19 @@ class PageButtonOption {
         this.rootElement = rootElement;
     }
 
+    get root() {
+        return $(this.rootElement);
+    }
+
+    get input() {
+        return this.root.then(root => root.$('input'));
+    }
+
     /** Click the ButtonOption.
      * @method
      */
-    click() {
-        $(this.rootElement).click();
+    async click() {
+        return (await this.root).click();
     }
 
     /**
@@ -24,10 +32,8 @@ class PageButtonOption {
      * @method
      * @returns {bool}
      */
-    hasFocus() {
-        return $(this.rootElement)
-            .$('input')
-            .isFocused();
+    async hasFocus() {
+        return (await this.input).isFocused();
     }
 
     /**
@@ -35,10 +41,8 @@ class PageButtonOption {
      * @method
      * @returns {bool}
      */
-    isChecked() {
-        return !!$(this.rootElement)
-            .$('input')
-            .isSelected();
+    async isChecked() {
+        return (await this.input).isSelected();
     }
 }
 

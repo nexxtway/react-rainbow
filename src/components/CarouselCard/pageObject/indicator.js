@@ -16,8 +16,8 @@ class PageCarouselCardIndicator {
      * Clicks the indicator item.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('button')
             .click();
     }
@@ -27,7 +27,7 @@ class PageCarouselCardIndicator {
      * @method
      * @returns {bool}
      */
-    hasFocus() {
+    async hasFocus() {
         return $(this.rootElement)
             .$('button')
             .isFocused();
@@ -38,11 +38,11 @@ class PageCarouselCardIndicator {
      * @method
      * @returns {bool}
      */
-    isSelected() {
+    async isSelected() {
         return (
-            $(this.rootElement)
+            (await $(this.rootElement)
                 .$('button')
-                .getAttribute('aria-selected') === 'true'
+                .getAttribute('aria-selected')) === 'true'
         );
     }
 }

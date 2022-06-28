@@ -5,31 +5,31 @@ const OVERLAY = '#overlay-1';
 const CONTAINER = '#overlay-1-container';
 
 describe('InternalOverlay with default position resolver', () => {
-    beforeAll(() => {
-        browser.url('/#!/InternalOverlay/1');
+    beforeAll(async () => {
+        await browser.url('/#!/InternalOverlay/1');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(BUTTON);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(BUTTON);
+        await component.waitForExist();
     });
 
-    it('should exist after one click on trigger and destroy on second click', () => {
+    it('should exist after one click on trigger and destroy on second click', async () => {
         const internalOverlay = new PageInternalOverlay(OVERLAY);
         const triggerButton = $(BUTTON);
-        triggerButton.click();
-        expect(internalOverlay.exists()).toBe(true);
-        triggerButton.click();
-        expect(internalOverlay.exists()).toBe(false);
+        await triggerButton.click();
+        await expect(await internalOverlay.exists()).toBe(true);
+        await triggerButton.click();
+        await expect(await internalOverlay.exists()).toBe(false);
     });
 
-    it('should not exists after click outside of element', () => {
+    it('should not exists after click outside of element', async () => {
         const internalOverlay = new PageInternalOverlay(OVERLAY);
         const internalOverlayContainer = $(CONTAINER);
         const triggerButton = $(BUTTON);
-        triggerButton.click();
-        expect(internalOverlay.exists()).toBe(true);
-        internalOverlayContainer.click();
-        expect(internalOverlay.exists()).toBe(false);
+        await triggerButton.click();
+        await expect(await internalOverlay.exists()).toBe(true);
+        await internalOverlayContainer.click();
+        await expect(await internalOverlay.exists()).toBe(false);
     });
 });

@@ -3,41 +3,41 @@ const PageVisualPicker = require('../../../src/components/VisualPicker/pageObjec
 const VISUAL_PICKER = '#visual-picker-component-3';
 
 describe('VisualPicker with multiple option selection', () => {
-    beforeAll(() => {
-        browser.url('/#!/VisualPicker/3');
+    beforeAll(async () => {
+        await browser.url('/#!/VisualPicker/3');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(VISUAL_PICKER);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(VISUAL_PICKER);
+        await component.waitForExist();
     });
-    it(' set the focus on the item clicked', () => {
+    it(' set the focus on the item clicked', async () => {
         const visualPicker = new PageVisualPicker(VISUAL_PICKER);
-        const option = visualPicker.getItem(0);
-        option.click();
-        expect(option.hasFocus()).toBe(true);
+        const option = await visualPicker.getItem(0);
+        await option.click();
+        await expect(await option.hasFocus()).toBe(true);
     });
-    it('should loose focus if another option is clicked', () => {
+    it('should loose focus if another option is clicked', async () => {
         const visualPicker = new PageVisualPicker(VISUAL_PICKER);
-        const option1 = visualPicker.getItem(0);
-        const option3 = visualPicker.getItem(2);
-        option1.click();
-        option3.click();
-        expect(option1.hasFocus()).toBe(false);
+        const option1 = await visualPicker.getItem(0);
+        const option3 = await visualPicker.getItem(2);
+        await option1.click();
+        await option3.click();
+        await expect(await option1.hasFocus()).toBe(false);
     });
-    it('should set checked on the option when clicked', () => {
+    it('should set checked on the option when clicked', async () => {
         const visualPicker = new PageVisualPicker(VISUAL_PICKER);
-        const option = visualPicker.getItem(0);
-        option.click();
-        expect(option.isChecked()).toBe(true);
+        const option = await visualPicker.getItem(0);
+        await option.click();
+        await expect(await option.isChecked()).toBe(true);
     });
-    it('should not loose the checked if another option is clicked', () => {
+    it('should not loose the checked if another option is clicked', async () => {
         const visualPicker = new PageVisualPicker(VISUAL_PICKER);
-        const option1 = visualPicker.getItem(0);
-        const option3 = visualPicker.getItem(2);
-        option1.click();
-        option3.click();
-        expect(option1.isChecked()).toBe(true);
-        expect(option3.isChecked()).toBe(true);
+        const option1 = await visualPicker.getItem(0);
+        const option3 = await visualPicker.getItem(2);
+        await option1.click();
+        await option3.click();
+        await expect(await option1.isChecked()).toBe(true);
+        await expect(await option3.isChecked()).toBe(true);
     });
 });

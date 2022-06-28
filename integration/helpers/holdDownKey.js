@@ -1,5 +1,5 @@
-function holdDownKey(character) {
-    browser.performActions([
+async function holdDownKey(character) {
+    await browser.performActions([
         {
             type: 'key',
             id: 'keyboard',
