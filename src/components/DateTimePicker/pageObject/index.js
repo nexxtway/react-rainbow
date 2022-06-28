@@ -1,3 +1,4 @@
+/* eslint-disable no-return-await */
 const PageCalendar = require('../../Calendar/pageObject');
 const PageTimeSelect = require('./pageTimeSelect');
 
@@ -22,7 +23,7 @@ class PageDateTimePicker {
      * @method
      * @returns {string}
      */
-    getTimeValue() {
+    async getTimeValue() {
         return new PageTimeSelect(this.modalRootEl).getValue();
     }
 
@@ -31,7 +32,7 @@ class PageDateTimePicker {
      * @method
      * @returns {string}
      */
-    getValue() {
+    async getValue() {
         return $(this.rootElement)
             .$('input[type="text"]')
             .getValue();
@@ -41,8 +42,8 @@ class PageDateTimePicker {
      * Clicks the input element.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('input[type="text"]')
             .click();
     }
@@ -51,8 +52,8 @@ class PageDateTimePicker {
      * Clicks the input label element.
      * @method
      */
-    clickLabel() {
-        $(this.rootElement)
+    async clickLabel() {
+        await $(this.rootElement)
             .$('label')
             .click();
     }
@@ -61,16 +62,17 @@ class PageDateTimePicker {
      * Clicks the calendar specific day button element.
      * @method
      */
-    clickDay(day) {
-        new PageCalendar(this.modalRootEl).clickDay(day);
+    async clickDay(day) {
+        const calendar = await PageCalendar(this.modalRootEl);
+        await calendar.clickDay(day);
     }
 
     /**
      * Clicks the OK button element
      * @method
      */
-    clickOKButton() {
-        $(this.modalRootEl)
+    async clickOKButton() {
+        await $(this.modalRootEl)
             .$('button[id="time-picker_ok-button"]')
             .click();
     }
@@ -79,8 +81,8 @@ class PageDateTimePicker {
      * Clicks the Cancel button element
      * @method
      */
-    clickCancelButton() {
-        $(this.modalRootEl)
+    async clickCancelButton() {
+        await $(this.modalRootEl)
             .$('button[id="time-picker_cancel-button"]')
             .click();
     }
@@ -90,15 +92,15 @@ class PageDateTimePicker {
      * @method
      * @returns {bool}
      */
-    isOpen() {
+    async isOpen() {
         return (
-            $(this.modalRootEl).isDisplayed() &&
-            $(this.modalRootEl)
+            (await $(this.modalRootEl).isDisplayed()) &&
+            (await $(this.modalRootEl)
                 .$('button[id="time-picker_ok-button"]')
-                .isDisplayed() &&
-            $(this.modalRootEl)
+                .isDisplayed()) &&
+            (await $(this.modalRootEl)
                 .$('button[id="time-picker_cancel-button"]')
-                .isDisplayed()
+                .isDisplayed())
         );
     }
 
@@ -106,16 +108,16 @@ class PageDateTimePicker {
      * Wait until the modal is open.
      * @method
      */
-    waitUntilOpen() {
-        browser.waitUntil(() => this.isOpen());
+    async waitUntilOpen() {
+        await browser.waitUntil(async () => await this.isOpen());
     }
 
     /**
      * Wait until the modal is closed.
      * @method
      */
-    waitUntilClose() {
-        browser.waitUntil(() => !this.isOpen());
+    async waitUntilClose() {
+        await browser.waitUntil(async () => !(await this.isOpen()));
     }
 }
 

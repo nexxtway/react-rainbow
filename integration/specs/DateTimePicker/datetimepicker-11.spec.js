@@ -3,20 +3,20 @@ const PageDateTimePicker = require('../../../src/components/DateTimePicker/pageO
 const DATETIMEPICKER = '#datetimepicker-11';
 
 describe('DateTimePicker', () => {
-    beforeAll(() => {
-        browser.url('/#!/DateTimePicker/11');
+    beforeAll(async () => {
+        await browser.url('/#!/DateTimePicker/11');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(DATETIMEPICKER);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(DATETIMEPICKER);
+        await component.waitForExist();
     });
-    it('should set 12:00 AM as time when day is selected', () => {
+    it('should set 12:00 AM as time when day is selected', async () => {
         const picker = new PageDateTimePicker(DATETIMEPICKER);
-        picker.click();
-        picker.waitUntilOpen();
-        expect(picker.getTimeValue()).toBe('');
-        picker.clickDay(10);
-        expect(picker.getTimeValue()).toBe('12:00 AM');
+        await picker.click();
+        await picker.waitUntilOpen();
+        await expect(await picker.getTimeValue()).toBe('');
+        await picker.clickDay(10);
+        await expect(await picker.getTimeValue()).toBe('12:00 AM');
     });
 });

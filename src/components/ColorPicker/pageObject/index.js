@@ -1,3 +1,4 @@
+/* eslint-disable no-return-await */
 /**
  * PageColorPicker page object class.
  * @class
@@ -17,7 +18,7 @@ class PageColorPicker {
      * @method
      * @returns {object}
      */
-    getSaturationPointer() {
+    async getSaturationPointer() {
         return $(this.rootElement).$('button');
     }
 
@@ -25,8 +26,8 @@ class PageColorPicker {
      * Triggers a click over the saturation pointer button element.
      * @method
      */
-    clickSaturation() {
-        this.getSaturationPointer().click();
+    async clickSaturation() {
+        await (await this.getSaturationPointer()).click();
     }
 
     /**
@@ -34,7 +35,7 @@ class PageColorPicker {
      * @method
      * @returns {object}
      */
-    getHueInput() {
+    async getHueInput() {
         return $(this.rootElement).$('input[type=range]');
     }
 
@@ -42,8 +43,8 @@ class PageColorPicker {
      * Triggers a click over the hue input element.
      * @method
      */
-    clickHue() {
-        this.getHueInput().click();
+    async clickHue() {
+        await (await this.getHueInput()).click();
     }
 
     /**
@@ -51,7 +52,7 @@ class PageColorPicker {
      * @method
      * @returns {object}
      */
-    getHexInput() {
+    async getHexInput() {
         return $(this.rootElement).$('input[type=text]');
     }
 
@@ -61,8 +62,8 @@ class PageColorPicker {
      * @param {number} index
      * @returns {object}
      */
-    getRgbaInput(index) {
-        return $(this.rootElement).$$('input[type=number]')[index];
+    async getRgbaInput(index) {
+        return (await $(this.rootElement).$$('input[type=number]'))[index];
     }
 
     /**
@@ -70,7 +71,7 @@ class PageColorPicker {
      * @method
      * @returns {object}
      */
-    getDefaultColorsInput() {
+    async getDefaultColorsInput() {
         return $(this.rootElement).$('input[type=radio]');
     }
 
@@ -79,8 +80,8 @@ class PageColorPicker {
      * @method
      * @returns {object}
      */
-    getDefaultColorsLabel() {
-        const id = this.getDefaultColorsInput().getAttribute('id');
+    async getDefaultColorsLabel() {
+        const id = await (await this.getDefaultColorsInput()).getAttribute('id');
         return $(this.rootElement).$(`label[for="${id}"]`);
     }
 
@@ -88,8 +89,8 @@ class PageColorPicker {
      * Triggers a click over the default colors label element.
      * @method
      */
-    clickDefaultColors() {
-        this.getDefaultColorsLabel().click();
+    async clickDefaultColors() {
+        await (await this.getDefaultColorsLabel()).click();
     }
 
     /**
@@ -97,8 +98,8 @@ class PageColorPicker {
      * @method
      * @returns {string}
      */
-    getColor() {
-        return this.getHexInput().getValue();
+    async getColor() {
+        return (await this.getHexInput()).getValue();
     }
 
     /**
@@ -106,8 +107,8 @@ class PageColorPicker {
      * @method
      * @returns {string}
      */
-    getAlpha() {
-        return this.getRgbaInput(3).getValue();
+    async getAlpha() {
+        return (await this.getRgbaInput(3)).getValue();
     }
 
     /**
@@ -115,9 +116,9 @@ class PageColorPicker {
      * @method
      * @returns {bool}
      */
-    isSaturationFocused() {
-        const buttonEl = this.getSaturationPointer();
-        return buttonEl.isExisting() && buttonEl.isFocused();
+    async isSaturationFocused() {
+        const buttonEl = await this.getSaturationPointer();
+        return (await buttonEl.isExisting()) && (await buttonEl.isFocused());
     }
 
     /**
@@ -125,9 +126,9 @@ class PageColorPicker {
      * @method
      * @returns {bool}
      */
-    isHueFocused() {
-        const rangeEl = this.getHueInput();
-        return rangeEl.isExisting() && rangeEl.isFocused();
+    async isHueFocused() {
+        const rangeEl = await this.getHueInput();
+        return (await rangeEl.isExisting()) && (await rangeEl.isFocused());
     }
 
     /**
@@ -135,9 +136,9 @@ class PageColorPicker {
      * @method
      * @returns {bool}
      */
-    isAlphaFocused() {
-        const rangeEl = $(this.rootElement).$$('input[type=range]')[1];
-        return rangeEl.isExisting() && rangeEl.isFocused();
+    async isAlphaFocused() {
+        const rangeEl = (await $(this.rootElement).$$('input[type=range]'))[1];
+        return (await rangeEl.isExisting()) && (await rangeEl.isFocused());
     }
 
     /**
@@ -145,9 +146,9 @@ class PageColorPicker {
      * @method
      * @returns {bool}
      */
-    isHexFocused() {
-        const inputEl = this.getHexInput();
-        return inputEl.isExisting() && inputEl.isFocused();
+    async isHexFocused() {
+        const inputEl = await this.getHexInput();
+        return (await inputEl.isExisting()) && (await inputEl.isFocused());
     }
 
     /**
@@ -156,9 +157,9 @@ class PageColorPicker {
      * * @param {number} index
      * @returns {bool}
      */
-    isRgbaFocused(index = 0) {
-        const inputEl = this.getRgbaInput(index);
-        return inputEl.isExisting() && inputEl.isFocused();
+    async isRgbaFocused(index = 0) {
+        const inputEl = await this.getRgbaInput(index);
+        return (await inputEl.isExisting()) && (await inputEl.isFocused());
     }
 
     /**
@@ -166,9 +167,9 @@ class PageColorPicker {
      * @method
      * @returns {bool}
      */
-    isDefaultColorsFocused() {
-        const inputEl = this.getDefaultColorsInput();
-        return inputEl.isExisting() && inputEl.isFocused();
+    async isDefaultColorsFocused() {
+        const inputEl = await this.getDefaultColorsInput();
+        return (await inputEl.isExisting()) && (await inputEl.isFocused());
     }
 }
 

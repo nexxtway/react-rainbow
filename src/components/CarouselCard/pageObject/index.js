@@ -21,8 +21,8 @@ class PageCarouselCard {
      * @method
      * @param {number} itemPosition - The base 0 index of the indicator item.
      */
-    getIndicatorItem(itemPosition) {
-        const items = $(this.rootElement).$$('li[role="presentation"]');
+    async getIndicatorItem(itemPosition) {
+        const items = await $(this.rootElement).$$('li[role="presentation"]');
         if (items[itemPosition]) {
             return new PageCarouselCardIndicator(
                 `${this.rootElement} li[role="presentation"]:nth-child(${itemPosition + 1})`,
@@ -36,8 +36,8 @@ class PageCarouselCard {
      * @method
      * @param {number} itemPosition - The base 0 index of the CarouselImage item.
      */
-    getImageItem(itemPosition) {
-        const items = $(this.rootElement).$$('li[role="tabpanel"]');
+    async getImageItem(itemPosition) {
+        const items = await $(this.rootElement).$$('li[role="tabpanel"]');
         if (items[itemPosition]) {
             return new PageCarouselImage(
                 `${this.rootElement} li[role="tabpanel"]:nth-child(${itemPosition + 1})`,

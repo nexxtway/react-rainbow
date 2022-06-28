@@ -1,49 +1,48 @@
 const PageCarouselCard = require('../../../src/components/CarouselCard/pageObject');
-const { ARROW_RIGHT_KEY } = require('../../constants');
 
 const CAROUSEL = '#carousel-3';
 
 const addNewCard = () => $('#button-icon_add-new-card').click();
 
 describe('CarouselCard with CarouselImagen changed dynamically', () => {
-    beforeAll(() => {
-        browser.url('/#!/CarouselCard/3');
+    beforeAll(async () => {
+        await browser.url('/#!/CarouselCard/3');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(CAROUSEL);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(CAROUSEL);
+        await component.waitForExist();
     });
-    it('should select the new option with keyboard after it is added dynamically', () => {
+    it('should select the new option with keyboard after it is added dynamically', async () => {
         const carousel = new PageCarouselCard(CAROUSEL);
-        const indicator = carousel.getIndicatorItem(0);
-        indicator.click();
-        browser.keys(ARROW_RIGHT_KEY);
-        const indicator2 = carousel.getIndicatorItem(1);
-        expect(indicator2.isSelected()).toBe(true);
-        const carouselImagen2 = carousel.getImageItem(1);
-        expect(carouselImagen2.getHeaderText()).toBe('Second Card');
-        browser.refresh();
-        addNewCard();
-        indicator.click();
-        browser.keys(ARROW_RIGHT_KEY);
-        expect(indicator2.isSelected()).toBe(true);
-        expect(carouselImagen2.getHeaderText()).toBe('New Card');
+        const indicator = await carousel.getIndicatorItem(0);
+        await indicator.click();
+        await browser.keys('ArrowRight');
+        const indicator2 = await carousel.getIndicatorItem(1);
+        await expect(await indicator2.isSelected()).toBe(true);
+        const carouselImagen2 = await carousel.getImageItem(1);
+        await expect(await carouselImagen2.getHeaderText()).toBe('Second Card');
+        await browser.refresh();
+        await addNewCard();
+        await indicator.click();
+        await browser.keys('ArrowRight');
+        await expect(await indicator2.isSelected()).toBe(true);
+        await expect(await carouselImagen2.getHeaderText()).toBe('New Card');
     });
-    it('should select the second option with keyboard after it is added and removeed dynamically a new element', () => {
+    it('should select the second option with keyboard after it is added and removeed dynamically a new element', async () => {
         const carousel = new PageCarouselCard(CAROUSEL);
-        const indicator = carousel.getIndicatorItem(0);
-        addNewCard();
-        indicator.click();
-        browser.keys(ARROW_RIGHT_KEY);
-        const indicator2 = carousel.getIndicatorItem(1);
-        expect(indicator2.isSelected()).toBe(true);
-        const carouselImagen2 = carousel.getImageItem(1);
-        expect(carouselImagen2.getHeaderText()).toBe('New Card');
-        addNewCard();
-        indicator.click();
-        browser.keys(ARROW_RIGHT_KEY);
-        expect(indicator2.isSelected()).toBe(true);
-        expect(carouselImagen2.getHeaderText()).toBe('Second Card');
+        const indicator = await carousel.getIndicatorItem(0);
+        await addNewCard();
+        await indicator.click();
+        await browser.keys('ArrowRight');
+        const indicator2 = await carousel.getIndicatorItem(1);
+        await expect(await indicator2.isSelected()).toBe(true);
+        const carouselImagen2 = await carousel.getImageItem(1);
+        await expect(await carouselImagen2.getHeaderText()).toBe('New Card');
+        await addNewCard();
+        await indicator.click();
+        await browser.keys('ArrowRight');
+        await expect(await indicator2.isSelected()).toBe(true);
+        await expect(await carouselImagen2.getHeaderText()).toBe('Second Card');
     });
 });

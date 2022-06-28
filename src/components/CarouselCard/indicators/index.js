@@ -26,17 +26,17 @@ export default class Indicators extends Component {
         };
     }
 
+    setAsSelectedIndicator(tabIndex) {
+        const { indicatorsRefs } = this.state;
+        indicatorsRefs[tabIndex].ref.current.click();
+        indicatorsRefs[tabIndex].ref.current.focus();
+    }
+
     handleKeyPressed(event) {
         if (this.keyHandlerMap[event.keyCode]) {
             return this.keyHandlerMap[event.keyCode]();
         }
         return null;
-    }
-
-    setAsSelectedIndicator(tabIndex) {
-        const { indicatorsRefs } = this.state;
-        indicatorsRefs[tabIndex].ref.current.click();
-        indicatorsRefs[tabIndex].ref.current.focus();
     }
 
     registerIndicator(indicator) {

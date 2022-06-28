@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 const weekDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
 /**
@@ -19,21 +20,22 @@ class PageWeekDayPicker {
      * @method
      * @param {string} weekDay - The value of the day we want the make click.
      */
-    clickOn(weekDay) {
-        const inputRef = this.getInputRef(weekDay);
-        inputRef.click();
+    async clickOn(weekDay) {
+        const inputRef = await this.getInputRef(weekDay);
+        await inputRef.click();
     }
 
     /**
      * Returns an array with the selected days
      * @method
      */
-    getSelectedDays() {
-        const selected = weekDays.filter((weekDay, index) => {
-            const elem = $(this.rootElement).$$('input');
-            const input = elem[index];
-            return input.getAttribute('checked') === 'true';
-        });
+    async getSelectedDays() {
+        const selected = (await Promise.all(
+            weekDays.map(async weekDay => {
+                const input = await this.getInput(weekDay);
+                return (await input.isSelected()) ? weekDay : undefined;
+            }),
+        )).filter(value => value);
 
         return selected;
     }
@@ -42,20 +44,25 @@ class PageWeekDayPicker {
      * Returns the day that has the current focus or empty
      * @method
      */
-    getFocusedDay() {
-        const focusedDay = weekDays.filter(weekDay => this.getInput(weekDay).isFocused());
+    async getFocusedDay() {
+        const focusedDay = (await Promise.all(
+            weekDays.map(async weekDay => {
+                const input = await this.getInput(weekDay);
+                return (await input.isFocused()) ? weekDay : undefined;
+            }),
+        )).filter(value => value);
         return focusedDay.length ? focusedDay[0] : undefined;
     }
 
-    getInput(weekDay) {
+    async getInput(weekDay) {
         const index = weekDays.findIndex(value => value === weekDay);
-        const elem = $(this.rootElement).$$('input');
+        const elem = await $(this.rootElement).$$('input');
         return elem[index];
     }
 
-    getInputRef(weekDay) {
+    async getInputRef(weekDay) {
         const index = weekDays.findIndex(value => value === weekDay);
-        const elem = $(this.rootElement).$$('span');
+        const elem = await $(this.rootElement).$$('span');
         return elem[index].$('label');
     }
 }

@@ -20,8 +20,8 @@ class PageMultiSelect {
      * Clicks the component
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('[role="combobox"]')
             .click();
     }
@@ -30,8 +30,8 @@ class PageMultiSelect {
      * Clicks the label element
      * @method
      */
-    clickLabel() {
-        $(this.rootElement)
+    async clickLabel() {
+        await $(this.rootElement)
             .$('label')
             .click();
     }
@@ -40,8 +40,8 @@ class PageMultiSelect {
      * Clicks the trigger button
      * @method
      */
-    clickTrigger() {
-        $(this.rootElement)
+    async clickTrigger() {
+        await $(this.rootElement)
             .$('[data-id="button-icon-element"]')
             .click();
     }
@@ -51,11 +51,11 @@ class PageMultiSelect {
      * @method
      * @returns {bool}
      */
-    isMenuOpen() {
+    async isMenuOpen() {
         return (
-            $(this.rootElement)
+            (await $(this.rootElement)
                 .$('div[role="combobox"]')
-                .getAttribute('aria-expanded') === 'true'
+                .getAttribute('aria-expanded')) === 'true'
         );
     }
 
@@ -64,10 +64,8 @@ class PageMultiSelect {
      * @method
      * @returns {bool}
      */
-    hasTriggerFocus() {
-        return $(this.rootElement)
-            .$('[role="combobox"] > button')
-            .isFocused();
+    async hasTriggerFocus() {
+        return (await $(this.rootElement).$('[role="combobox"] > button')).isFocused();
     }
 
     /**
@@ -75,21 +73,19 @@ class PageMultiSelect {
      * @method
      * @returns {bool}
      */
-    hasInputFocus() {
-        return $(this.rootElement)
-            .$('[role="textbox"]')
-            .isFocused();
+    async hasInputFocus() {
+        return (await $(this.rootElement).$('[role="textbox"]')).isFocused();
     }
 
     /**
      * Returns a new InternalDropdown page object for the element with the supplied id.
      * @method
      */
-    [privateGetMenu]() {
-        const menuId = `#${$(this.rootElement)
+    async [privateGetMenu]() {
+        const menuId = `#${await $(this.rootElement)
             .$('[role="combobox"]')
             .getAttribute('aria-controls')}`;
-        if (this.isMenuOpen()) {
+        if (await this.isMenuOpen()) {
             return new PageInternalDropdown(menuId);
         }
         return null;
@@ -100,16 +96,16 @@ class PageMultiSelect {
      * @method
      * @param {number} optionIndex - The base 0 index of the Option.
      */
-    getOption(optionIndex) {
-        return this[privateGetMenu]().getOption(optionIndex);
+    async getOption(optionIndex) {
+        return (await this[privateGetMenu]()).getOption(optionIndex);
     }
 
     /**
      * Wait until the dropdown is open.
      * @method
      */
-    waitUntilOpen() {
-        browser.waitUntil(() => this.isMenuOpen());
+    async waitUntilOpen() {
+        await browser.waitUntil(async () => this.isMenuOpen());
     }
 }
 

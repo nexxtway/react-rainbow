@@ -20,8 +20,8 @@ class PageVerticalNavigation {
      * @method
      * @param {number} itemPosition - The base 0 index of the vertical item.
      */
-    getItem(itemPosition) {
-        const items = $(this.rootElement).$$('[data-id="vertical-item"]');
+    async getItem(itemPosition) {
+        const items = await $(this.rootElement).$$('[data-id="vertical-item"]');
         if (items[itemPosition]) {
             return new PageVerticalItem(
                 `${this.rootElement} [data-id="vertical-item"]:nth-child(${itemPosition + 1})`,
@@ -35,8 +35,8 @@ class PageVerticalNavigation {
      * @method
      * @param {number} itemPosition - The base 0 index of the vertical section overflow.
      */
-    getSectionOverflow(itemPosition) {
-        const items = $(this.rootElement).$$('[data-id="vertical-overflow-container"]');
+    async getSectionOverflow(itemPosition) {
+        const items = await $(this.rootElement).$$('[data-id="vertical-overflow-container"]');
         if (items[itemPosition]) {
             return new PageVerticalSectionOverflow(
                 `${

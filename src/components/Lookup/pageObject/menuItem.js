@@ -16,18 +16,18 @@ class PageLookupMenuItem {
      * Clicks the menu item.
      * @method
      */
-    click() {
-        this.rootElement.click();
+    async click() {
+        await this.rootElement.click();
     }
 
     /**
      * It moves the pointer over the menu item.
      * @method
      */
-    hover() {
-        const itemElement = this.rootElement.$('div[role="option"]');
-        itemElement.scrollIntoView();
-        itemElement.moveTo();
+    async hover() {
+        const itemElement = await this.rootElement.$('div[role="option"]');
+        await itemElement.scrollIntoView();
+        await itemElement.moveTo();
     }
 
     /**
@@ -35,8 +35,10 @@ class PageLookupMenuItem {
      * @method
      * @returns {bool}
      */
-    isActive() {
-        return this.rootElement.$('[role="option"]').getAttribute('aria-selected') === 'true';
+    async isActive() {
+        return (
+            (await this.rootElement.$('[role="option"]').getAttribute('aria-selected')) === 'true'
+        );
     }
 
     /**
@@ -44,7 +46,7 @@ class PageLookupMenuItem {
      * @method
      * @returns {bool}
      */
-    isVisible() {
+    async isVisible() {
         return this.rootElement.isDisplayedInViewport();
     }
 
@@ -52,8 +54,8 @@ class PageLookupMenuItem {
      *  Wait until the option is visible.
      * @method
      */
-    waitUntilIsVisible() {
-        browser.waitUntil(() => this.isVisible());
+    async waitUntilIsVisible() {
+        await browser.waitUntil(async () => this.isVisible());
     }
 }
 

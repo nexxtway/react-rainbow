@@ -16,8 +16,8 @@ class PageTab {
      * Clicks the tab item.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('button[role="tab"]')
             .click();
     }
@@ -27,7 +27,7 @@ class PageTab {
      * @method
      * @returns {bool}
      */
-    hasFocus() {
+    async hasFocus() {
         return $(this.rootElement)
             .$('button[role="tab"]')
             .isFocused();
@@ -38,10 +38,10 @@ class PageTab {
      * @method
      * @returns {bool}
      */
-    isSelected() {
-        return !!$(this.rootElement)
+    async isSelected() {
+        return !!(await $(this.rootElement)
             .$('button[role="tab"]')
-            .getAttribute('data-active');
+            .getAttribute('data-active'));
     }
 
     /**
@@ -49,7 +49,7 @@ class PageTab {
      * @method
      * @returns {bool}
      */
-    isVisibleWithinViewport() {
+    async isVisibleWithinViewport() {
         return $(this.rootElement)
             .$('button[role="tab"]')
             .isDisplayedInViewport();
@@ -60,7 +60,7 @@ class PageTab {
      * @method
      * @returns {string}
      */
-    getLabelText() {
+    async getLabelText() {
         return $(this.rootElement).getText();
     }
 }

@@ -12,14 +12,29 @@ class PageAccordionSection {
         this.rootElement = rootElement;
     }
 
+    get root() {
+        return $(this.rootElement);
+    }
+
+    get summary() {
+        return this.root.then(root => root.$('[data-id="accordion-section-summary"]'));
+    }
+
+    get content() {
+        return this.root.then(root => root.$('[data-id="accordion-section-content"]'));
+    }
+
+    get label() {
+        return this.root.then(root => root.$('[data-id="accordion-section-label"]'));
+    }
+
     /**
      * Clicks the button icon element.
      * @method
      */
-    clickButton() {
-        $(this.rootElement)
-            .$('[data-id="accordion-section-summary"]')
-            .click();
+    async clickButton() {
+        const elem = await this.summary;
+        return elem.click();
     }
 
     /**
@@ -27,10 +42,9 @@ class PageAccordionSection {
      * @method
      * @returns {bool}
      */
-    hasFocusButton() {
-        return $(this.rootElement)
-            .$('[data-id="accordion-section-summary"]')
-            .isFocused();
+    async hasFocusButton() {
+        const elem = await this.summary;
+        return elem.isFocused();
     }
 
     /**
@@ -38,10 +52,9 @@ class PageAccordionSection {
      * @method
      * @returns {bool}
      */
-    isExpanded() {
-        return $(this.rootElement)
-            .$('[data-id="accordion-section-content"]')
-            .isDisplayed();
+    async isExpanded() {
+        const elem = await this.content;
+        return elem.isDisplayed();
     }
 
     /**
@@ -49,10 +62,9 @@ class PageAccordionSection {
      * @method
      * @returns {string}
      */
-    getLabel() {
-        return $(this.rootElement)
-            .$('[data-id="accordion-section-label"]')
-            .getText();
+    async getLabel() {
+        const elem = await this.label;
+        return elem.getText();
     }
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-return-await */
 const PageTab = require('../../Tab/pageObject');
 
 const BUTTON_SELECTOR = '[data-id="button-icon-element"]';
@@ -21,8 +22,8 @@ class PageTabset {
      * @method
      * @param {number} itemPosition - The base 0 index of the tab item.
      */
-    getItem(itemPosition) {
-        const items = $(this.rootElement).$$('li[role="presentation"]');
+    async getItem(itemPosition) {
+        const items = await $(this.rootElement).$$('li[role="presentation"]');
         if (items[itemPosition]) {
             return new PageTab(
                 `${this.rootElement} li[role="presentation"]:nth-child(${itemPosition + 1})`,
@@ -36,10 +37,12 @@ class PageTabset {
      * @method
      * @returns {bool}
      */
-    isButtonsVisible() {
-        const buttons = $(this.rootElement).$$(BUTTON_SELECTOR);
+    async isButtonsVisible() {
+        const buttons = await $(this.rootElement).$$(BUTTON_SELECTOR);
         if (buttons && buttons.length) {
-            return browser.waitUntil(() => buttons[0].isDisplayed() && buttons[1].isDisplayed());
+            return browser.waitUntil(
+                async () => (await buttons[0].isDisplayed()) && (await buttons[1].isDisplayed()),
+            );
         }
         return false;
     }
@@ -49,7 +52,7 @@ class PageTabset {
      * @method
      * @returns {bool}
      */
-    isLeftButtonEnabled() {
+    async isLeftButtonEnabled() {
         return $(this.rootElement)
             .$$(BUTTON_SELECTOR)[0]
             .isEnabled();
@@ -60,7 +63,7 @@ class PageTabset {
      * @method
      * @returns {bool}
      */
-    isRightButtonEnabled() {
+    async isRightButtonEnabled() {
         return $(this.rootElement)
             .$$(BUTTON_SELECTOR)[1]
             .isEnabled();
@@ -71,7 +74,7 @@ class PageTabset {
      * @method
      * @returns {bool}
      */
-    clickLeftButton() {
+    async clickLeftButton() {
         return $(this.rootElement)
             .$$(BUTTON_SELECTOR)[0]
             .click();
@@ -82,7 +85,7 @@ class PageTabset {
      * @method
      * @returns {bool}
      */
-    clickRightButton() {
+    async clickRightButton() {
         return $(this.rootElement)
             .$$(BUTTON_SELECTOR)[1]
             .click();

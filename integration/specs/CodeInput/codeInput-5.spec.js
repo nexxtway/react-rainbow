@@ -3,19 +3,19 @@ const PageCodeInput = require('../../../src/components/CodeInput/pageObject');
 const CODEINPUT = '#codeinput-5';
 
 describe('CodeInput disabled example', () => {
-    beforeAll(() => {
-        browser.url('/#!/CodeInput/5');
+    beforeAll(async () => {
+        await browser.url('/#!/CodeInput/5');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(CODEINPUT);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(CODEINPUT);
+        await component.waitForExist();
     });
-    it('should keep inputs unfocused when codeInput is disabled and inputs are clicked', () => {
+    it('should keep inputs unfocused when codeInput is disabled and inputs are clicked', async () => {
         const codeInput = new PageCodeInput(CODEINPUT);
-        expect(codeInput.getFocusedIndex()).toBe(undefined);
-        codeInput.clickInputAtIndex(2);
-        codeInput.clickInputAtIndex(3);
-        expect(codeInput.getFocusedIndex()).toBe(undefined);
+        await expect(await codeInput.getFocusedIndex()).toBe(undefined);
+        await codeInput.clickInputAtIndex(2);
+        await codeInput.clickInputAtIndex(3);
+        await expect(await codeInput.getFocusedIndex()).toBe(undefined);
     });
 });

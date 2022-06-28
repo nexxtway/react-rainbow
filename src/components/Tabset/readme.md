@@ -29,10 +29,6 @@ class TabsetExample extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(event, selected) {
-        this.setState({ selected });
-    }
-
     getTabContent() {
         const { selected } = this.state;
 
@@ -97,6 +93,10 @@ class TabsetExample extends React.Component {
                 water.
             </StyledTabContent>
         );
+    }
+
+    handleOnSelect(event, selected) {
+        this.setState({ selected });
     }
 
     render() {
@@ -193,10 +193,6 @@ class TabsetExample extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(event, selected) {
-        this.setState({ selected });
-    }
-
     getTabContent() {
         const { selected } = this.state;
 
@@ -250,6 +246,10 @@ class TabsetExample extends React.Component {
                 leaving it.
             </StyledTabContent>
         );
+    }
+
+    handleOnSelect(event, selected) {
+        this.setState({ selected });
     }
 
     render() {
@@ -359,10 +359,6 @@ class TabsetExample extends React.Component {
         super(props);
         this.state = { selected: 'recents' };
         this.handleOnSelect = this.handleOnSelect.bind(this);
-    }
-
-    handleOnSelect(event, selected) {
-        this.setState({ selected });
     }
 
     getTabContent() {
@@ -506,6 +502,10 @@ class TabsetExample extends React.Component {
                 leaving it.
             </StyledTabContent>
         );
+    }
+
+    handleOnSelect(event, selected) {
+        this.setState({ selected });
     }
 
     render() {
@@ -653,10 +653,6 @@ class TabsetExample extends React.Component {
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
-    handleOnSelect(event, selected) {
-        this.setState({ selected });
-    }
-
     getTabContent() {
         const { selected } = this.state;
 
@@ -721,6 +717,10 @@ class TabsetExample extends React.Component {
                 water.
             </StyledTabContent>
         );
+    }
+
+    handleOnSelect(event, selected) {
+        this.setState({ selected });
     }
 
     addRecents() {

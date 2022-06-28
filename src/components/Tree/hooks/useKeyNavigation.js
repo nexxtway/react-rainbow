@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useCallback, useState, useMemo, useEffect } from 'react';
 import {
     RIGHT_KEY,

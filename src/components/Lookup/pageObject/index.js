@@ -19,8 +19,8 @@ class PageLookup {
      * Clicks the input element.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('input[type="search"]')
             .click();
     }
@@ -29,8 +29,8 @@ class PageLookup {
      * Clicks the close button element.
      * @method
      */
-    clickCloseButton() {
-        $(this.rootElement)
+    async clickCloseButton() {
+        await $(this.rootElement)
             .$('button[title="close"]')
             .click();
     }
@@ -39,8 +39,8 @@ class PageLookup {
      * Clicks the input with a selected option.
      * @method
      */
-    clickSelectedOptionInput() {
-        $(this.rootElement)
+    async clickSelectedOptionInput() {
+        await $(this.rootElement)
             .$('input[type="text"]')
             .click();
     }
@@ -49,8 +49,8 @@ class PageLookup {
      * Clicks the lookup label
      * @method
      */
-    clickLabel() {
-        $(this.rootElement)
+    async clickLabel() {
+        await $(this.rootElement)
             .$('label')
             .click();
     }
@@ -59,8 +59,8 @@ class PageLookup {
      * Clicks the remove selected option button.
      * @method
      */
-    clickRemoveSelectedOptionButton() {
-        $(this.rootElement)
+    async clickRemoveSelectedOptionButton() {
+        await $(this.rootElement)
             .$('button[title="Remove selected option"]')
             .click();
     }
@@ -70,7 +70,7 @@ class PageLookup {
      * @method
      * @returns {bool}
      */
-    hasFocusInput() {
+    async hasFocusInput() {
         return $(this.rootElement)
             .$('input[type="search"]')
             .isFocused();
@@ -81,7 +81,7 @@ class PageLookup {
      * @method
      * @returns {bool}
      */
-    hasFocusSelectedOptionInput() {
+    async hasFocusSelectedOptionInput() {
         return $(this.rootElement)
             .$('input[type="text"]')
             .isFocused();
@@ -92,7 +92,7 @@ class PageLookup {
      * @method
      * @returns {bool}
      */
-    hasFocusRemoveSelectedOptionButton() {
+    async hasFocusRemoveSelectedOptionButton() {
         return $(this.rootElement)
             .$('button[title="Remove selected option"]')
             .isFocused();
@@ -103,8 +103,8 @@ class PageLookup {
      * @method
      * @param {string} value - The value to type in the input element.
      */
-    setQuery(value) {
-        $(this.rootElement)
+    async setQuery(value) {
+        await $(this.rootElement)
             .$('input[type="search"]')
             .setValue(value);
     }
@@ -113,8 +113,8 @@ class PageLookup {
      * Clear the input element.
      * @method
      */
-    clearQuery() {
-        $(this.rootElement)
+    async clearQuery() {
+        await $(this.rootElement)
             .$('input[type="search"]')
             .clearValue();
     }
@@ -124,7 +124,7 @@ class PageLookup {
      * @method
      * @returns {string}
      */
-    getQuery() {
+    async getQuery() {
         return $(this.rootElement)
             .$('input[type="search"]')
             .getValue();
@@ -135,8 +135,9 @@ class PageLookup {
      * @method
      * @returns {number}
      */
-    getOptionsLength() {
-        return $('[data-id="lookup-options-container"]').$$('li[role="presentation"]').length;
+    async getOptionsLength() {
+        return (await $('[data-id="lookup-options-container"]').$$('li[role="presentation"]'))
+            .length;
     }
 
     /**
@@ -144,8 +145,8 @@ class PageLookup {
      * @method
      * @param {number} itemPosition - The base 0 index of the LookupMenuItem.
      */
-    getOption(itemPosition) {
-        const items = $('[data-id="lookup-options-container"]').$$('li[role="presentation"]');
+    async getOption(itemPosition) {
+        const items = await $('[data-id="lookup-options-container"]').$$('li[role="presentation"]');
         if (items[itemPosition]) {
             return new PageLookupMenuItem(items[itemPosition]);
         }
@@ -157,8 +158,8 @@ class PageLookup {
      * @method
      * @returns {string}
      */
-    getSelectedOptionLabel() {
-        const content = $(this.rootElement).$('input[type="text"]');
+    async getSelectedOptionLabel() {
+        const content = await $(this.rootElement).$('input[type="text"]');
         if (content) {
             return content.getValue();
         }
@@ -170,11 +171,11 @@ class PageLookup {
      * @method
      * @returns {bool}
      */
-    isMenuOpen() {
+    async isMenuOpen() {
         return (
-            $(this.rootElement)
+            (await $(this.rootElement)
                 .$('div[role="combobox"]')
-                .getAttribute('aria-expanded') === 'true'
+                .getAttribute('aria-expanded')) === 'true'
         );
     }
 
@@ -183,7 +184,7 @@ class PageLookup {
      * @method
      * @returns {bool}
      */
-    isMenuEmpty() {
+    async isMenuEmpty() {
         return $('[data-id="lookup-options-empty-container"]').isDisplayed();
     }
 
@@ -191,19 +192,19 @@ class PageLookup {
      * Wait until the options menu is open.
      * @method
      */
-    waitUntilOpen() {
-        browser.waitUntil(() => this.isMenuOpen());
+    async waitUntilOpen() {
+        await browser.waitUntil(async () => this.isMenuOpen());
     }
 
     /**
      * It moves the pointer over the menu scroll up arrow
      * @method
      */
-    hoverScrollUpArrow() {
-        const upArrow = $('[data-id="lookup-options-container"]').$(
+    async hoverScrollUpArrow() {
+        const upArrow = await $('[data-id="lookup-options-container"]').$(
             '[data-id=lookup-arrow-button-up]',
         );
-        upArrow.scrollIntoView();
+        await upArrow.scrollIntoView();
         return upArrow.moveTo();
     }
 
@@ -211,21 +212,19 @@ class PageLookup {
      * It moves the pointer out of the menu scroll up arrow
      * @method
      */
-    mouseLeaveScrollUpArrow() {
-        return $(this.rootElement)
-            .$('input[type="text"]')
-            .moveTo();
+    async mouseLeaveScrollUpArrow() {
+        return (await $(this.rootElement).$('input[type="text"]')).moveTo();
     }
 
     /**
      * It moves the pointer over the menu scroll down arrow
      * @method
      */
-    hoverScrollDownArrow() {
-        const downArrow = $('[data-id="lookup-options-container"]').$(
+    async hoverScrollDownArrow() {
+        const downArrow = await $('[data-id="lookup-options-container"]').$(
             '[data-id="lookup-arrow-button-down"]',
         );
-        downArrow.scrollIntoView();
+        await downArrow.scrollIntoView();
         return downArrow.moveTo();
     }
 
@@ -233,10 +232,8 @@ class PageLookup {
      * It moves the pointer out of the menu scroll down arrow
      * @method
      */
-    mouseLeaveScrollDownArrow() {
-        return $(this.rootElement)
-            .$('input[type="text"]')
-            .moveTo();
+    async mouseLeaveScrollDownArrow() {
+        return (await $(this.rootElement).$('input[type="text"]')).moveTo();
     }
 
     /**
@@ -244,10 +241,10 @@ class PageLookup {
      * @method
      * @returns {bool}
      */
-    arrowDownExists() {
-        return $('[data-id="lookup-options-container"]')
-            .$('[data-id="lookup-arrow-button-down"]')
-            .isExisting();
+    async arrowDownExists() {
+        return (await $('[data-id="lookup-options-container"]').$(
+            '[data-id="lookup-arrow-button-down"]',
+        )).isExisting();
     }
 
     /**
@@ -255,10 +252,10 @@ class PageLookup {
      * @method
      * @returns {bool}
      */
-    arrowUpExists() {
-        return $('[data-id="lookup-options-container"]')
-            .$('[data-id="lookup-arrow-button-up"]')
-            .isExisting();
+    async arrowUpExists() {
+        return (await $('[data-id="lookup-options-container"]').$(
+            '[data-id="lookup-arrow-button-up"]',
+        )).isExisting();
     }
 }
 

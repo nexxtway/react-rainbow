@@ -20,8 +20,8 @@ class PageAccordion {
      * @method
      * @param {number} itemPosition - The base 0 index of the accordion section.
      */
-    getItem(itemPosition) {
-        const items = $(this.rootElement).$$('[data-id="accordion-section-li"]');
+    async getItem(itemPosition) {
+        const items = await $(this.rootElement).$$('[data-id="accordion-section-li"]');
         if (items[itemPosition]) {
             return new PageAccordionSection(
                 `${this.rootElement} [data-id="accordion-section-li"]:nth-child(${itemPosition +

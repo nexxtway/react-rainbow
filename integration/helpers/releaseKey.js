@@ -1,5 +1,5 @@
-function releaseKey(character) {
-    browser.performActions([
+async function releaseKey(character) {
+    await browser.performActions([
         {
             type: 'key',
             id: 'keyboard',

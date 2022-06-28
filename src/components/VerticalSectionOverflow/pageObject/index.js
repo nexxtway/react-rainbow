@@ -16,8 +16,8 @@ class PageVerticalSectionOverflow {
      * Clicks the vertical section overflow button.
      * @method
      */
-    click() {
-        $(this.rootElement)
+    async click() {
+        await $(this.rootElement)
             .$('[data-id="vertical-overflow-button"]')
             .click();
     }
@@ -27,7 +27,7 @@ class PageVerticalSectionOverflow {
      * @method
      * @returns {bool}
      */
-    isExpanded() {
+    async isExpanded() {
         return $(this.rootElement)
             .$('[data-id="vertical-overflow"]')
             .isDisplayed();
@@ -37,16 +37,16 @@ class PageVerticalSectionOverflow {
      * Wait until the expand transition has finished.
      * @method
      */
-    waitUntilExpand() {
-        browser.waitUntil(() => this.isExpanded());
+    async waitUntilExpand() {
+        await browser.waitUntil(async () => this.isExpanded());
     }
 
     /**
      * Wait until the contract transition has finished.
      * @method
      */
-    waitUntilCollapse() {
-        browser.waitUntil(() => !this.isExpanded());
+    async waitUntilCollapse() {
+        await browser.waitUntil(async () => !(await this.isExpanded()));
     }
 
     /**
@@ -54,7 +54,7 @@ class PageVerticalSectionOverflow {
      * @method
      * @returns {bool}
      */
-    hasFocusButton() {
+    async hasFocusButton() {
         return $(this.rootElement)
             .$('[data-id="vertical-overflow-button"]')
             .isFocused();

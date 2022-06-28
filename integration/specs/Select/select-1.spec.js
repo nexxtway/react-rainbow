@@ -3,23 +3,23 @@ const PageSelect = require('../../../src/components/Select/pageObject');
 const SELECT = '#example-select-1';
 
 describe('Select base example', () => {
-    beforeAll(() => {
-        browser.url('/#!/Select/1');
+    beforeAll(async () => {
+        await browser.url('/#!/Select/1');
     });
-    beforeEach(() => {
-        browser.refresh();
-        const component = $(SELECT);
-        component.waitForExist();
+    beforeEach(async () => {
+        await browser.refresh();
+        const component = await $(SELECT);
+        await component.waitForExist();
     });
 
-    it('should put the select focused when clcik on it', () => {
+    it('should put the select focused when clcik on it', async () => {
         const select = new PageSelect(SELECT);
-        select.click();
-        expect(select.hasFocusSelect()).toBe(true);
+        await select.click();
+        await expect(await select.hasFocusSelect()).toBe(true);
     });
-    it('should put the select focused when click on the label of the select', () => {
+    it('should put the select focused when click on the label of the select', async () => {
         const select = new PageSelect(SELECT);
-        select.clickLabel();
-        expect(select.hasFocusSelect()).toBe(true);
+        await select.clickLabel();
+        await expect(await select.hasFocusSelect()).toBe(true);
     });
 });

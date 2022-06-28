@@ -16,8 +16,8 @@ class PageCheckboxToggle {
      * Clicks the root element.
      * @method
      */
-    click() {
-        $(this.rootElement).click();
+    async click() {
+        await $(this.rootElement).click();
     }
 
     /**
@@ -25,10 +25,10 @@ class PageCheckboxToggle {
      * @method
      * @returns {bool}
      */
-    isChecked() {
-        return !!$(this.rootElement)
+    async isChecked() {
+        return !!(await $(this.rootElement)
             .$('input')
-            .isSelected();
+            .isSelected());
     }
 }
 
