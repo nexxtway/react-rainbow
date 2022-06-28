@@ -20,23 +20,6 @@ class ButtonGroupPicker extends Component {
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
-    handleOnChange(event) {
-        const { value: eventValue, checked } = event.target;
-        const { value, multiple, onChange } = this.props;
-
-        if (!multiple) {
-            return onChange(eventValue);
-        }
-
-        if (checked && Array.isArray(value)) {
-            return onChange(value.concat([eventValue]));
-        }
-        if (checked && !Array.isArray(value)) {
-            return onChange([eventValue]);
-        }
-        return onChange(value.filter(valueId => valueId !== eventValue));
-    }
-
     getErrorMessageId() {
         const { error } = this.props;
         if (error) {
@@ -56,6 +39,23 @@ class ButtonGroupPicker extends Component {
             size,
             variant,
         };
+    }
+
+    handleOnChange(event) {
+        const { value: eventValue, checked } = event.target;
+        const { value, multiple, onChange } = this.props;
+
+        if (!multiple) {
+            return onChange(eventValue);
+        }
+
+        if (checked && Array.isArray(value)) {
+            return onChange(value.concat([eventValue]));
+        }
+        if (checked && !Array.isArray(value)) {
+            return onChange([eventValue]);
+        }
+        return onChange(value.filter(valueId => valueId !== eventValue));
     }
 
     render() {

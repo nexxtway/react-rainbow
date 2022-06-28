@@ -203,21 +203,21 @@ const MarkdownCard = () => {
 
     return (
         <StyledCard
-            actions={
-                <ToggleMode
-                    mode={mode}
-                    options={[
-                        {
-                            label: 'Edit',
-                            value: 'edit',
-                        },
-                        {
-                            label: 'Preview',
-                            value: 'preview',
-                        }
-                    ]}
-                    onModeChange={value => setMode(value)}
-                />
+                actions={
+                    <ToggleMode
+                        mode={mode}
+                        options={[
+                            {
+                                label: 'Edit',
+                                value: 'edit',
+                            },
+                            {
+                                label: 'Preview',
+                                value: 'preview',
+                            }
+                        ]}
+                        onModeChange={value => setMode(value)}
+                    />
             }
         >
             {content}
@@ -349,21 +349,21 @@ const MarkdownCard = () => {
 
     return (
         <StyledCard
-            actions={
-                <ToggleMode
-                    mode={mode}
-                    options={[
-                            {
-                                label: 'Edit',
-                                value: 'edit',
-                            },
-                            {
-                                label: 'Preview',
-                                value: 'preview',
-                            }
-                        ]}
-                    onModeChange={value => setMode(value)}
-                />
+                actions={
+                    <ToggleMode
+                        mode={mode}
+                        options={[
+                                {
+                                    label: 'Edit',
+                                    value: 'edit',
+                                },
+                                {
+                                    label: 'Preview',
+                                    value: 'preview',
+                                }
+                            ]}
+                        onModeChange={value => setMode(value)}
+                    />
             }
         >
             {content}
@@ -423,21 +423,21 @@ const MarkdownCard = () => {
 
     return (
         <StyledCard
-            actions={
-                <ToggleMode
-                    mode={mode}
-                    options={[
-                            {
-                                label: 'Edit',
-                                value: 'edit',
-                            },
-                            {
-                                label: 'Preview',
-                                value: 'preview',
-                            }
-                        ]}
-                    onModeChange={value => setMode(value)}
-                />
+                actions={
+                    <ToggleMode
+                        mode={mode}
+                        options={[
+                                {
+                                    label: 'Edit',
+                                    value: 'edit',
+                                },
+                                {
+                                    label: 'Preview',
+                                    value: 'preview',
+                                }
+                            ]}
+                        onModeChange={value => setMode(value)}
+                    />
             }
         >
             {content}

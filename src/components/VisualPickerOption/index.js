@@ -19,17 +19,17 @@ class PickerOption extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(event) {
-        const { name, privateOnChange } = this.props;
-        privateOnChange(name, event.target.checked);
-    }
-
     getType() {
         const { multiple } = this.props;
         if (multiple) {
             return 'checkbox';
         }
         return 'radio';
+    }
+
+    handleChange(event) {
+        const { name, privateOnChange } = this.props;
+        privateOnChange(name, event.target.checked);
     }
 
     isChecked() {
