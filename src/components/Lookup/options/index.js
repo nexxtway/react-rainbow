@@ -75,6 +75,7 @@ export default class Options extends React.PureComponent {
             onHoverOption,
             focusedItemIndex,
             itemHeight,
+            onScroll,
         } = this.props;
 
         if (items.length === 0) {
@@ -104,6 +105,7 @@ export default class Options extends React.PureComponent {
                 ref={this.containerRef}
                 role="presentation"
                 onMouseDown={preventDefault}
+                onScroll={onScroll}
             >
                 <MenuItems
                     items={items}
@@ -124,6 +126,7 @@ Options.propTypes = {
     focusedItemIndex: PropTypes.number,
     itemHeight: PropTypes.number.isRequired,
     size: PropTypes.oneOf(['small', 'medium', 'large']),
+    onScroll: PropTypes.func,
 };
 
 Options.defaultProps = {
@@ -133,4 +136,5 @@ Options.defaultProps = {
     onHoverOption: () => {},
     focusedItemIndex: undefined,
     size: 'medium',
+    onScroll: () => {},
 };

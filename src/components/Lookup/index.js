@@ -471,7 +471,6 @@ class Lookup extends Component {
                 onKeyDown={this.handleKeyDown}
                 ref={this.containerRef}
                 tabIndex={-1}
-                onScroll={this.updateScrollingArrows}
             >
                 <Label
                     label={label}
@@ -570,6 +569,7 @@ class Lookup extends Component {
                                     itemHeight={OPTION_HEIGHT}
                                     ref={this.menuRef}
                                     size={size}
+                                    onScroll={this.updateScrollingArrows}
                                 />
                                 <RenderIf isTrue={showScrollDownArrow}>
                                     <MenuArrowButton
