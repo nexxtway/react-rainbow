@@ -29,7 +29,6 @@ export default class Accordion extends Component {
             [DOWN_KEY]: () => this.selectAccordionSection(RIGHT_SIDE),
             [UP_KEY]: () => this.selectAccordionSection(LEFT_SIDE),
         };
-
         this.state = {
             activeNames: props.activeSectionNames,
             multiple: props.multiple,
