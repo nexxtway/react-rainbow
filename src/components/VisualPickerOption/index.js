@@ -27,6 +27,11 @@ class PickerOption extends Component {
         return 'radio';
     }
 
+    handleChange(event) {
+        const { name, privateOnChange } = this.props;
+        privateOnChange(name, event.target.checked);
+    }
+
     isChecked() {
         const { multiple, name, value } = this.props;
         if (multiple) {
@@ -34,11 +39,6 @@ class PickerOption extends Component {
         }
 
         return typeof value === 'string' && name === value;
-    }
-
-    handleChange(event) {
-        const { name, privateOnChange } = this.props;
-        privateOnChange(name, event.target.checked);
     }
 
     render() {

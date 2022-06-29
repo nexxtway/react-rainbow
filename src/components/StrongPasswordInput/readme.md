@@ -11,11 +11,11 @@ const containerStyles = {
 function ControlledStrongPasswordInput() {
     const [value, setValue] = useState('');
 
-    function handleOnChange(event) {
+    const handleOnChange = event => {
         setValue(event.target.value);
     }
 
-    function getStrength() {
+    const getStrength = () => {
         const { length } = value;
         if (length === 0) {
             return undefined;
@@ -64,11 +64,11 @@ const containerStyles = {
 function ControlledStrongPasswordInput() {
     const [value, setValue] = useState('');
 
-    function handleOnChange(event) {
+    const handleOnChange = event => {
         setValue(event.target.value);
     }
 
-    function getStrength() {
+    const getStrength = () => {
         const { length } = value;
         if (length === 0) {
             return undefined;
@@ -122,11 +122,11 @@ const passwordStateLabels = {
 function ControlledStrongPasswordInput() {
     const [value, setValue] = useState('');
 
-    function handleOnChange(event) {
+    const handleOnChange = event => {
         setValue(event.target.value);
     }
 
-    function getStrength() {
+    const getStrength = () => {
         const { length } = value;
         if (length === 0) {
             return undefined;
@@ -174,11 +174,11 @@ const containerStyles = {
 function ControlledStrongPasswordInput() {
     const [value, setValue] = useState('');
 
-    function handleOnChange(event) {
+    const handleOnChange = event => {
         setValue(event.target.value);
     }
 
-    function getStrength() {
+    const getStrength = () => {
         const { length } = value;
         if (length === 0) {
             return undefined;

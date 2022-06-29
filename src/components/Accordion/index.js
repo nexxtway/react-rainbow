@@ -29,6 +29,7 @@ export default class Accordion extends Component {
             [DOWN_KEY]: () => this.selectAccordionSection(RIGHT_SIDE),
             [UP_KEY]: () => this.selectAccordionSection(LEFT_SIDE),
         };
+
         this.state = {
             activeNames: props.activeSectionNames,
             multiple: props.multiple,
@@ -60,6 +61,20 @@ export default class Accordion extends Component {
         childrenRegistered[accordionSectionIndex].focusButton();
     }
 
+    selectAccordionSection(side) {
+        const { childrenRegistered, currentSection } = this.state;
+        const accordionSectionIndex = childrenRegistered.findIndex(
+            section => section.name === currentSection,
+        );
+        if (accordionSectionIndex === childrenRegistered.length - 1 && side === RIGHT_SIDE) {
+            this.setAsSelectAccordionSection(0);
+        } else if (accordionSectionIndex === 0 && side === LEFT_SIDE) {
+            this.setAsSelectAccordionSection(childrenRegistered.length - 1);
+        } else {
+            this.setAsSelectAccordionSection(accordionSectionIndex + side);
+        }
+    }
+
     handleToggleSection(event, name) {
         const { onToggleSection } = this.props;
         if (typeof onToggleSection === 'function') {
@@ -78,20 +93,6 @@ export default class Accordion extends Component {
             return this.keyHandlerMap[event.keyCode]();
         }
         return null;
-    }
-
-    selectAccordionSection(side) {
-        const { childrenRegistered, currentSection } = this.state;
-        const accordionSectionIndex = childrenRegistered.findIndex(
-            section => section.name === currentSection,
-        );
-        if (accordionSectionIndex === childrenRegistered.length - 1 && side === RIGHT_SIDE) {
-            this.setAsSelectAccordionSection(0);
-        } else if (accordionSectionIndex === 0 && side === LEFT_SIDE) {
-            this.setAsSelectAccordionSection(childrenRegistered.length - 1);
-        } else {
-            this.setAsSelectAccordionSection(accordionSectionIndex + side);
-        }
     }
 
     registerAccordionSection(section) {

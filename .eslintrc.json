@@ -25,6 +25,7 @@
         {
             "files": ["**/*.md/*.js"],
             "rules": {
+                "import/no-unresolved": [2, { "ignore": ["react-rainbow-components"] }],
                 "prettier/prettier": "off",
                 "import/no-extraneous-dependencies": "off",
                 "no-alert": "off",
@@ -119,6 +120,7 @@
         "react/jsx-first-prop-new-line": "off",
         "react/jsx-closing-bracket-location": "off",
         "react/forbid-prop-types": "off",
+        "react/sort-comp": "off",
         "no-mixed-operators": "off",
         "arrow-parens": ["error", "as-needed"],
         "linebreak-style": 0,

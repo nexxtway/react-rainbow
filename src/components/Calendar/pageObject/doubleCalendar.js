@@ -92,7 +92,10 @@ class PageDoubleCalendar {
         const buttonEl = await $(this.rootElement)
             .$$('table[role=grid]')[0]
             .$(`button=${day}`);
-        if (await buttonEl.isExisting()) await buttonEl.click();
+        if (await buttonEl.isExisting()) {
+            await buttonEl.scrollIntoView();
+            await buttonEl.click();
+        }
     }
 
     /**
@@ -196,7 +199,10 @@ class PageDoubleCalendar {
         const buttonEl = await $(this.rootElement)
             .$$('table[role=grid]')[1]
             .$(`button=${day}`);
-        if (await buttonEl.isExisting()) await buttonEl.click();
+        if (await buttonEl.isExisting()) {
+            await buttonEl.scrollIntoView();
+            await buttonEl.click();
+        }
     }
 
     /**

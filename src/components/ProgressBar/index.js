@@ -24,6 +24,7 @@ export default function ProgressBar(props) {
             aria-valuemax="100"
             aria-valuenow={normalizedValue}
             role="progressbar"
+            aria-label={assistiveText}
         >
             <StyledBar variant={variant} style={WIDTH}>
                 <AsistiveText text={assistiveText} />

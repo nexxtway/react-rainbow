@@ -59,6 +59,14 @@ export default class CarouselCard extends Component {
         this.setState({ activeItem: id, isAnimationPaused: true });
     }
 
+    handleOnClick() {
+        const { isAnimationPaused } = this.state;
+        if (isAnimationPaused) {
+            this.startAnimation();
+        }
+        this.setState({ isAnimationPaused: !isAnimationPaused });
+    }
+
     startAnimation() {
         const { scrollDuration, disableAutoRefresh } = this.props;
         this.animationTimeout = setTimeout(() => {
@@ -78,14 +86,6 @@ export default class CarouselCard extends Component {
                 }
             }
         }, scrollDuration * 1000);
-    }
-
-    handleOnClick() {
-        const { isAnimationPaused } = this.state;
-        if (isAnimationPaused) {
-            this.startAnimation();
-        }
-        this.setState({ isAnimationPaused: !isAnimationPaused });
     }
 
     registerChild(child) {

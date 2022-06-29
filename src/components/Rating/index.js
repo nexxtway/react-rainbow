@@ -1,3 +1,4 @@
+/* eslint-disable react/sort-comp */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RatingItems from './ratingItems';

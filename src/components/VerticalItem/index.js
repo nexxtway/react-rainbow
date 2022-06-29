@@ -35,17 +35,17 @@ function Item(props) {
         return undefined;
     };
 
-    function hanldeOnClick(event) {
+    const hanldeOnClick = event => {
         onClick(event);
         onSelect(event, name);
-    }
+    };
 
-    function resolveTabIndex() {
+    const resolveTabIndex = () => {
         if (isExpanded === false) {
             return -1;
         }
         return 0;
-    }
+    };
 
     return (
         <StyledLi

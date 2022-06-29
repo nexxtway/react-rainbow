@@ -21,6 +21,7 @@ export default function ProgressCircular(props) {
             aria-valuemax="100"
             aria-valuenow={normalizedValue}
             role="progressbar"
+            aria-label={assistiveText}
             style={style}
         >
             <ProgressRing variant={variant} percent={normalizedValue} />

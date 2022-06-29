@@ -5,7 +5,7 @@
 import React, { useRef, useState } from 'react';
 import { ButtonIcon, RadioGroup } from 'react-rainbow-components';
 import styled from 'styled-components';
-import  InternalTooltip from '../InternalTooltip';
+import  InternalTooltip from './index.js';
 import useDefaultTooltipConnector from './hooks/useDefaultTooltipConnector';
 
 const Container = styled.div`
@@ -107,7 +107,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboard } from '@fortawesome/free-solid-svg-icons';
 import useScrollingIntent from '@rainbow-modules/hooks/lib/useScrollingIntent';
-import  InternalTooltip from '../InternalTooltip';
+import  InternalTooltip from './index.js';
 
 const Container = styled.div`
     display: flex;
@@ -185,7 +185,7 @@ function Example() {
 import React, { useRef } from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
 import styled from 'styled-components';
-import  InternalTooltip from '../InternalTooltip';
+import  InternalTooltip from './index.js';
 import useDefaultTooltipConnector from './hooks/useDefaultTooltipConnector';
 
 const Container = styled.div`
@@ -292,7 +292,7 @@ function Example() {
 import React, { useRef } from 'react';
 import { Input, Button } from 'react-rainbow-components';
 import styled from 'styled-components';
-import  InternalTooltip from '../InternalTooltip';
+import  InternalTooltip from './index.js';
 import useDefaultTooltipConnector from './hooks/useDefaultTooltipConnector';
 
 const Container = styled.div`

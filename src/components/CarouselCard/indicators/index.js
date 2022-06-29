@@ -32,6 +32,13 @@ export default class Indicators extends Component {
         indicatorsRefs[tabIndex].ref.current.focus();
     }
 
+    handleKeyPressed(event) {
+        if (this.keyHandlerMap[event.keyCode]) {
+            return this.keyHandlerMap[event.keyCode]();
+        }
+        return null;
+    }
+
     registerIndicator(indicator) {
         const { indicatorsRefs } = this.state;
         const [...nodes] = getChildTabNodes(this.container.current);
@@ -58,13 +65,6 @@ export default class Indicators extends Component {
         } else {
             this.setAsSelectedIndicator(indicatorIndex + side);
         }
-    }
-
-    handleKeyPressed(event) {
-        if (this.keyHandlerMap[event.keyCode]) {
-            return this.keyHandlerMap[event.keyCode]();
-        }
-        return null;
     }
 
     isSelected(id) {
