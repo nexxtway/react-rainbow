@@ -43,7 +43,7 @@
         "rehype-react": "^6.1.0",
         "remark-parse": "^8.0.2",
         "remark-rehype": "^7.0.0",
-        "styled-components": "^4.3.2",
+        "styled-components": ">=4.3.2 <6",
         "unified": "^9.0.0",
         "xlsx": "^0.14.4"
     },
