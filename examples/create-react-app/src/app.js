@@ -2,7 +2,7 @@ import React from 'react';
 import { createStore, combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RainbowApplication from 'react-rainbow-components/components/Application';
 import Home from './pages/Home';
 import Avatar from './pages/Avatar';
@@ -31,21 +31,23 @@ export default function App() {
         <Provider store={store}>
             <Router>
                 <RainbowApplication>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/avatar" component={Avatar} />
-                    <Route path="/badge" component={Badge} />
-                    <Route path="/button" component={Button} />
-                    <Route path="/button-group" component={ButtonGroup} />
-                    <Route path="/button-icon" component={ButtonIcon} />
-                    <Route path="/button-menu" component={ButtonMenu} />
-                    <Route path="/card" component={Card} />
-                    <Route path="/input" component={Input} />
-                    <Route path="/progress-bar" component={ProgressBar} />
-                    <Route path="/spinner" component={Spinner} />
-                    <Route path="/checkout" component={Checkout} />
-                    <Route path="/sign-in" component={SignIn} />
-                    <Route path="/admin" component={Admin} />
-                    <Route path="/redux-form" component={ReduxForm} />
+                    <Routes>
+                        <Route exact path="/" element={<Home />} />
+                        <Route path="/avatar" element={<Avatar />} />
+                        <Route path="/badge" element={<Badge />} />
+                        <Route path="/button" element={<Button />} />
+                        <Route path="/button-group" element={<ButtonGroup />} />
+                        <Route path="/button-icon" element={<ButtonIcon />} />
+                        <Route path="/button-menu" element={<ButtonMenu />} />
+                        <Route path="/card" element={<Card />} />
+                        <Route path="/input" element={<Input />} />
+                        <Route path="/progress-bar" element={<ProgressBar />} />
+                        <Route path="/spinner" element={<Spinner />} />
+                        <Route path="/checkout" element={<Checkout />} />
+                        <Route path="/sign-in" element={<SignIn />} />
+                        <Route path="/admin" element={<Admin />} />
+                        <Route path="/redux-form" element={<ReduxForm />} />
+                    </Routes>
                 </RainbowApplication>
             </Router>
         </Provider>

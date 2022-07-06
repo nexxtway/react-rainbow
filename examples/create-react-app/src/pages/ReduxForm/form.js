@@ -29,9 +29,11 @@ class CheckoutForm extends React.Component {
     constructor(props) {
         super(props);
         this.fieldRef = React.createRef();
+        this.inputRef = React.createRef();
     }
 
     componentDidMount() {
+        console.log(this.fieldRef.current.getRenderedComponent());
         this.fieldRef.current.getRenderedComponent().focus();
     }
 
@@ -49,11 +51,12 @@ class CheckoutForm extends React.Component {
                         name="firstName"
                         className="rainbow-checkout_form-element rainbow-m-right_x-large"
                         label="First Name"
-                        required
                         placeholder="Enter your first name"
                         type="text"
-                        withRef
                         ref={this.fieldRef}
+                        forwardRef={this.inputRef}
+                        required
+                        withRef
                     />
 
                     <Field
