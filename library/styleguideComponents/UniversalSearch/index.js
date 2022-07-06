@@ -1,5 +1,6 @@
 import React from 'react';
-import { SearchEntity, useLocalRecentSearches } from '@rainbow-modules/search';
+import SearchEntity from '@rainbow-modules/search/lib/components/SearchEntity';
+import useLocalRecentSearches from '@rainbow-modules/search/lib/hooks/useLocalRecentSearches';
 import { Component, InteractiveExamples, YoutubeIcon } from '@rainbow-modules/icons';
 import universalSearchAlgolia from './universalSearchAlgolia';
 import PostItemSearchResult from './postItemSearchResult';
