@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { GlobalSearch } from '@rainbow-modules/search';
+import GlobalSearch from '@rainbow-modules/search/lib/components/GlobalSearch';
 import { MediumIcon } from '@rainbow-modules/icons';
 
 export const StyledGlobalSearch = styled(GlobalSearch)`
