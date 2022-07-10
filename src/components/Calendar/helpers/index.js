@@ -22,3 +22,4 @@ export { default as buildNewRangeFromValue } from './buildNewRangeFromValue';
 export { default as shouldDateBeSelected } from './shouldDateBeSelected';
 export { default as isSameDatesRange } from './isSameDatesRange';
 export { default as isEmptyRange } from './isEmptyRange';
+export { default as normalizeDates } from './normalizeDates';

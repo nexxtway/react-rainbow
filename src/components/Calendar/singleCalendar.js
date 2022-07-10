@@ -38,6 +38,7 @@ import {
 } from '../../libs/constants';
 import { uniqueId } from '../../libs/utils';
 import { Provider } from './context';
+import normalizeDates from './helpers/normalizeDates';
 
 class SingleCalendar extends Component {
     constructor(props) {
@@ -46,6 +47,7 @@ class SingleCalendar extends Component {
             focusedDate: normalizeDate(props.value),
             currentMonth: getFirstDayMonth(normalizeDate(props.value)),
             currentRange: props.selectedRange,
+            maxRangeEnd: undefined,
         };
         this.enableNavKeys = false;
         this.monthLabelId = uniqueId('month');
@@ -131,14 +133,16 @@ class SingleCalendar extends Component {
     }
 
     getContext() {
-        const { focusedDate, currentRange } = this.state;
-        const { selectionType, selectedRange } = this.props;
+        const { focusedDate, currentRange, maxRangeEnd } = this.state;
+        const { selectionType, selectedRange, disabledDays } = this.props;
         return {
             focusedDate,
             useAutoFocus: this.enableNavKeys,
             selectionType,
             selectedRange,
             currentRange,
+            disabledDays,
+            maxRangeEnd,
             privateKeyDown: this.handleKeyDown,
             privateOnFocus: this.onDayFocus,
             privateOnBlur: this.onDayBlur,
@@ -203,8 +207,16 @@ class SingleCalendar extends Component {
     }
 
     updateCurrentRange(value) {
+        const { disabledDays: disabledDaysInProps } = this.props;
+        const disabledDays = normalizeDates(disabledDaysInProps);
+
+        const maxRangeEnd =
+            value.length === 1
+                ? Math.min(...disabledDays.filter(day => isDateBeyondLimit(day, value[0])))
+                : undefined;
         this.setState({
             currentRange: value,
+            maxRangeEnd,
         });
     }
 
@@ -368,6 +380,9 @@ SingleCalendar.propTypes = {
     selectedRange: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
     ),
+    disabledDays: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+    ),
 };
 
 SingleCalendar.defaultProps = {
@@ -381,6 +396,7 @@ SingleCalendar.defaultProps = {
     locale: undefined,
     selectionType: 'single',
     selectedRange: undefined,
+    disabledDays: [],
 };
 
 export default SingleCalendar;

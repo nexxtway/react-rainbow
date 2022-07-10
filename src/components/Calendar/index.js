@@ -78,6 +78,10 @@ Calendar.propTypes = {
     selectionType: PropTypes.oneOf(['single', 'range']),
     /** The component variant. Defaults to 'single' */
     variant: PropTypes.oneOf(['single', 'double']),
+    /** An array containing the days that should be disabled */
+    disabledDays: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+    ),
 };
 
 Calendar.defaultProps = {
@@ -91,4 +95,5 @@ Calendar.defaultProps = {
     locale: undefined,
     selectionType: 'single',
     variant: 'single',
+    disabledDays: [],
 };

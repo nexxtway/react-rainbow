@@ -42,6 +42,7 @@ const DatePicker = React.forwardRef((props, ref) => {
         variant,
         selectionType,
         icon: iconInProps,
+        disabledDays,
     } = useReduxForm(props);
 
     const currentLocale = useLocale(locale);
@@ -141,6 +142,7 @@ const DatePicker = React.forwardRef((props, ref) => {
                 value={value}
                 onChange={handleChange}
                 onRequestClose={closeModal}
+                disabledDays={disabledDays}
             />
         </StyledContainer>
     );
@@ -211,6 +213,10 @@ DatePicker.propTypes = {
     variant: PropTypes.oneOf(['single', 'double']),
     /** The icon to show if it is passed. It must be a svg icon or a font icon. Defaults to a Calendar icon */
     icon: PropTypes.node,
+    /** An array containing the days that should be disabled */
+    disabledDays: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+    ),
 };
 
 DatePicker.defaultProps = {
@@ -241,6 +247,7 @@ DatePicker.defaultProps = {
     selectionType: 'single',
     variant: 'single',
     icon: undefined,
+    disabledDays: [],
 };
 
 export default DatePicker;

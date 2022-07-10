@@ -172,6 +172,18 @@ class PageDoubleCalendar {
     }
 
     /**
+     * Returns true when the specific day element in left month is selected.
+     * @method
+     * @returns {string}
+     */
+    async isLeftMonthDayEnabled(day) {
+        const buttonEl = await $(this.rootElement)
+            .$$('table[role=grid]')[0]
+            .$(`button=${day}`);
+        return buttonEl.isExisting();
+    }
+
+    /**
      * Returns true when the year select element in left month has focus.
      * @method
      * @returns {bool}
@@ -276,6 +288,18 @@ class PageDoubleCalendar {
             (await buttonEl.isExisting()) &&
             (await buttonEl.getAttribute('data-selected')) === 'true'
         );
+    }
+
+    /**
+     * Returns true when the specific day element in right month is selected.
+     * @method
+     * @returns {string}
+     */
+    async isRightMonthDayEnabled(day) {
+        const buttonEl = await $(this.rootElement)
+            .$$('table[role=grid]')[1]
+            .$(`button=${day}`);
+        return buttonEl.isExisting();
     }
 
     /**

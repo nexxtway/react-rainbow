@@ -103,6 +103,18 @@ class PageSingleCalendar {
     }
 
     /**
+     * Returns true when the specific day element is selected.
+     * @method
+     * @returns {string}
+     */
+    async isDayEnabled(day) {
+        const spanEl = await $(this.rootElement)
+            .$('table')
+            .$(`button=${day}`);
+        return spanEl.isExisting();
+    }
+
+    /**
      * Set the value of the year select element
      * @method
      * @param {string}

@@ -18,6 +18,7 @@ export default function DatePickerModal(props) {
         onRequestClose,
         isOpen,
         title,
+        disabledDays,
     } = props;
 
     const calendarId = id && `${id}_calendar`;
@@ -44,6 +45,7 @@ export default function DatePickerModal(props) {
                 variant={variant}
                 value={value}
                 onChange={onChange}
+                disabledDays={disabledDays}
             />
         </StyledModal>
     );
@@ -86,6 +88,10 @@ DatePickerModal.propTypes = {
     /** The title can include text or another component,
      * and is displayed in the header of the component. */
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** An array containing the days that should be disabled */
+    disabledDays: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+    ),
 };
 
 DatePickerModal.defaultProps = {
@@ -102,4 +108,5 @@ DatePickerModal.defaultProps = {
     onChange: () => {},
     onRequestClose: () => {},
     title: undefined,
+    disabledDays: [],
 };

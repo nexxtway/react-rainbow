@@ -8,6 +8,7 @@ export interface DateTimePickerProps extends DatePickerProps {
     hour24?: boolean;
     labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
+    disabledDays?: Array<Date | string>;
 }
 
 declare const DatePicker: ComponentType<DateTimePickerProps>;
