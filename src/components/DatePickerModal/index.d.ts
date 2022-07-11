@@ -15,6 +15,7 @@ export interface DatePickerModalProps extends BaseProps {
     selectionType?: 'single' | 'range';
     variant?: 'single' | 'double';
     locale?: string;
+    disabledDays?: Array<Date | string>;
 }
 
 export default function(props: DatePickerModalProps): JSX.Element | null;

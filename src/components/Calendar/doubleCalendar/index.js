@@ -12,6 +12,8 @@ import {
     getNextFocusedDate,
     isEmptyRange,
     isDateBelowLimit,
+    isDateBeyondLimit,
+    normalizeDates,
 } from '../helpers';
 import {
     useNormalizedValue,
@@ -45,12 +47,14 @@ export default function DoubleCalendar(props) {
         onChange,
         selectedRange,
         selectionType,
+        disabledDays,
     } = props;
     const currentValue = useNormalizedValue(value);
     const [focusedDate, setFocusedDate] = useState(currentValue);
     const [currentMonth, setCurrentMonth] = useState(getFirstDayMonth(currentValue));
     const [currentRange, setCurrentRange] = useState(selectedRange);
     const [enableNavKeys, setEnableNavKeys] = useState(false);
+    const [maxRangeEnd, setMaxRangeEnd] = useState(undefined);
 
     const rightCalendarMonth = addMonths(currentMonth, 1);
     const currentYear = currentMonth.getFullYear();
@@ -158,6 +162,19 @@ export default function DoubleCalendar(props) {
         setCurrentRange(selectedRange);
     }, [selectedRange]);
 
+    useEffect(() => {
+        const normalizedDisabledDays = normalizeDates(disabledDays);
+        const newMaxRangeEnd =
+            selectedRange && selectedRange.length === 1
+                ? Math.min(
+                      ...normalizedDisabledDays.filter(day =>
+                          isDateBeyondLimit(day, selectedRange[0]),
+                      ),
+                  )
+                : undefined;
+        setMaxRangeEnd(newMaxRangeEnd);
+    }, [selectedRange, disabledDays]);
+
     const currentYearSelectTabIndex = disablePreviousMonth ? undefined : -1;
 
     return (
@@ -223,6 +240,8 @@ export default function DoubleCalendar(props) {
                         selectionType,
                         selectedRange,
                         currentRange,
+                        disabledDays,
+                        maxRangeEnd,
                         privateOnFocus: handleOnDayFocus,
                         privateOnBlur: handleOnDayBlur,
                         privateKeyDown: handleKeyDown,
@@ -250,6 +269,8 @@ export default function DoubleCalendar(props) {
                         selectionType,
                         selectedRange,
                         currentRange,
+                        disabledDays,
+                        maxRangeEnd,
                         privateOnFocus: handleOnDayFocus,
                         privateOnBlur: handleOnDayBlur,
                         privateKeyDown: handleKeyDown,
@@ -286,6 +307,9 @@ DoubleCalendar.propTypes = {
     selectedRange: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
     ),
+    disabledDays: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+    ),
 };
 
 DoubleCalendar.defaultProps = {
@@ -299,4 +323,5 @@ DoubleCalendar.defaultProps = {
     locale: undefined,
     selectionType: 'single',
     selectedRange: undefined,
+    disabledDays: [],
 };

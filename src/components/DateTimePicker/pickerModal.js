@@ -26,6 +26,7 @@ function DateTimePickerModal(props) {
         onChange,
         locale,
         hour24,
+        disabledDays,
     } = props;
 
     const [date, setDate] = useState(value);
@@ -67,6 +68,7 @@ function DateTimePickerModal(props) {
                     maxDate={maxDate}
                     formatStyle={formatStyle}
                     onChange={handleDateChange}
+                    disabledDays={disabledDays}
                 />
                 <StyledDivider />
                 <StyledTimeSelect
@@ -96,6 +98,9 @@ DateTimePickerModal.propTypes = {
     onChange: PropTypes.func,
     locale: PropTypes.string,
     hour24: PropTypes.bool,
+    disabledDays: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+    ),
 };
 
 DateTimePickerModal.defaultProps = {
@@ -109,6 +114,7 @@ DateTimePickerModal.defaultProps = {
     onChange: () => {},
     locale: undefined,
     hour24: false,
+    disabledDays: [],
 };
 
 export default DateTimePickerModal;

@@ -8,6 +8,7 @@ import StyledDayButton from './styled/dayButton';
 import StyledRangeHighlight from './styled/rangeHighlight';
 import { isSameDay, compareDates } from './helpers';
 import { useRangeStartDate, useRangeEndDate } from './hooks';
+import isInArray from './helpers/isInArray';
 
 function DayComponent(props) {
     const {
@@ -16,6 +17,7 @@ function DayComponent(props) {
         isSelected,
         minDate,
         maxDate,
+        maxRangeEnd,
         onChange,
         isWithinRange,
         isFirstDayOfWeek,
@@ -23,14 +25,20 @@ function DayComponent(props) {
         useAutoFocus,
         focusedDate,
         currentRange,
+        disabledDays,
         privateKeyDown,
         privateOnFocus,
         privateOnBlur,
         privateOnHover,
     } = props;
+
     const day = date.getDate();
     const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
-    const isDisabled = compareDates(date, maxDate) > 0 || compareDates(date, minDate) < 0;
+    const isDisabled =
+        compareDates(date, maxDate) > 0 ||
+        compareDates(date, minDate) < 0 ||
+        (maxRangeEnd && compareDates(date, maxRangeEnd) > 0) ||
+        isInArray(date, disabledDays);
     const tabIndex = isSameDay(focusedDate, date) ? 0 : -1;
     const buttonRef = useRef();
     const isRangeStartDate = useRangeStartDate(date, currentRange);

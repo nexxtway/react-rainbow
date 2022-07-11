@@ -45,6 +45,7 @@ const DateTimePicker = React.forwardRef((props, ref) => {
         hour24,
         locale: localeProp,
         icon: iconInProps,
+        disabledDays,
     } = props;
 
     const inputRef = useRef();
@@ -145,6 +146,7 @@ const DateTimePicker = React.forwardRef((props, ref) => {
                 cancelLabel={cancelLabel}
                 locale={locale}
                 hour24={hour24}
+                disabledDays={disabledDays}
             />
         </StyledContainer>
     );
@@ -214,6 +216,10 @@ DateTimePicker.propTypes = {
     hour24: PropTypes.bool,
     /** The icon to show if it is passed. It must be a svg icon or a font icon. Defaults to a DateTime icon */
     icon: PropTypes.node,
+    /** An array containing the days that should be disabled */
+    disabledDays: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+    ),
 };
 
 DateTimePicker.defaultProps = {
@@ -245,6 +251,7 @@ DateTimePicker.defaultProps = {
     locale: undefined,
     hour24: false,
     icon: undefined,
+    disabledDays: [],
 };
 
 export default withReduxForm(DateTimePicker);

@@ -1,4 +1,5 @@
-##### Calendar base:
+# Base Calendar
+##### To pick a single date you can use a basic calendar.
 
 ```js
 import React from 'react';
@@ -43,7 +44,8 @@ const selectStyles = {
     </div>
 ```
 
-##### Calendar with dates contrains:
+# Calendar with dates contrains
+##### If you need to limit the available dates you can do so with `minDate` and `maxDate` props
 
 ```js
 import React from 'react';
@@ -70,7 +72,35 @@ const calendarContainerStyles = {
     </div>
 ```
 
-##### Calendar with range selection:
+# Calendar with disabled days
+##### If more control over the available dates is needed, the `disabledDays` prop provides a way to disable individual days
+
+```js
+import React from 'react';
+import { Card, Calendar } from 'react-rainbow-components';
+
+const initialState = { date: new Date('2019-11-11 00:00:00') };
+const calendarContainerStyles = {
+    width: '28rem',
+    height: '27rem',
+};
+
+    <div>
+        <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
+            <Card style={calendarContainerStyles} className="rainbow-p-around_large">
+                <Calendar
+                    id="calendar-5"
+                    value={state.date}
+                    onChange={value => setState({ date: value })}
+                    disabledDays={['2019/11/15', new Date('2019/11/20')]}
+                />
+            </Card>
+        </div>
+    </div>
+```
+
+# Calendar with range selection
+##### Use `selectionType = 'range'` to allow your users to pick a range of dates
 
 ```js
 import React from 'react';
@@ -89,17 +119,19 @@ const calendarContainerStyles = {
         <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
             <Card style={calendarContainerStyles} className="rainbow-p-around_large">
                 <Calendar
-                    id="calendar-5"
+                    id="calendar-7"
                     selectionType="range"
                     value={state.range}
                     onChange={value => setState({ range: value })}
+                    disabledDays={['2019/01/23']}
                 />
             </Card>
         </div>
     </div>
 ```
 
-##### Calendar with variant double:
+# Calendar with variant double
+##### Set the `variant` prop to 'double' if you want to show two months side by side
 
 ```js
 import React from 'react';
@@ -115,7 +147,7 @@ const calendarContainerStyles = {
             style={calendarContainerStyles}
         >
             <Calendar
-                id="calendar-7"
+                id="calendar-9"
                 variant="double"
                 value={state.date}
                 onChange={value => setState({ date: value })}
@@ -124,7 +156,8 @@ const calendarContainerStyles = {
     </div>
 ```
 
-##### Calendar with variant double and range selection:
+# Calendar with variant double and range selection
+##### The best use case for double variant is to ease the selection of large date ranges
 
 ```js
 import React from 'react';
@@ -145,11 +178,12 @@ const calendarContainerStyles = {
             style={calendarContainerStyles}
         >
             <Calendar
-                id="calendar-9"
+                id="calendar-11"
                 variant="double"
                 selectionType="range"
                 value={state.range}
                 onChange={value => setState({ range: value })}
+                disabledDays={['2020/01/23']}
             />
         </div>
     </div>
