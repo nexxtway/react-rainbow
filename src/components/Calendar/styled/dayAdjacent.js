@@ -11,12 +11,23 @@ const StyledDayAdjacent = attachThemeAttrs(styled.span)`
     font-weight: 400;
     line-height: 38px;
     height: 38px;
+    width: 38px;
     margin: 6px auto;
     cursor: not-allowed;
     user-select: none;
+    border-radius: 48px;
 
     @media (max-width: 600px) {
         margin: 3px auto;
+    }
+
+    &:focus,
+    &:active,
+    &:focus-visible {
+        box-shadow: ${props => props.shadows.shadow_1};
+        border: 1px solid ${props => props.palette.border.disabled};
+        line-height: 36px;
+        outline: none;
     }
 `;
 

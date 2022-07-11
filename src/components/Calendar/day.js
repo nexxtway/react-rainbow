@@ -35,6 +35,7 @@ function DayComponent(props) {
     const day = date.getDate();
     const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
     const isDisabled =
+        isAdjacentDate ||
         compareDates(date, maxDate) > 0 ||
         compareDates(date, minDate) < 0 ||
         (maxRangeEnd && compareDates(date, maxRangeEnd) > 0) ||
@@ -54,7 +55,17 @@ function DayComponent(props) {
     if (isAdjacentDate || isDisabled) {
         return (
             <StyledDay role="gridcell" aria-selected="false">
-                <StyledDayAdjacent>{day}</StyledDayAdjacent>
+                <StyledDayAdjacent
+                    tabIndex={tabIndex}
+                    ref={buttonRef}
+                    onKeyDown={privateKeyDown}
+                    onFocus={privateOnFocus}
+                    onBlur={privateOnBlur}
+                    role="button"
+                    aria-disabled="true"
+                >
+                    {day}
+                </StyledDayAdjacent>
             </StyledDay>
         );
     }
