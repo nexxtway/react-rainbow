@@ -19,6 +19,22 @@ describe('Day', () => {
         component.find('button').simulate('click');
         expect(onChangeMockFn).toHaveBeenCalledWith(new Date('04/24/2019'));
     });
+    it('should not call onChange when disabled and press enter', () => {
+        const date = new Date('04/24/2019');
+        const firstDayMonth = new Date('04/01/2019');
+        const onChangeMockFn = jest.fn();
+        const component = mount(
+            <Day
+                date={date}
+                firstDayMonth={firstDayMonth}
+                onChange={onChangeMockFn}
+                disabledDays={['04/24/2019']}
+            />,
+        );
+        console.log(component.html());
+        component.find('span').simulate('keydown', { key: 'Enter' });
+        expect(onChangeMockFn).not.toBeCalled();
+    });
     it('should render the right day when is adjacent', () => {
         const date = new Date('03/29/2019');
         const firstDayMonth = new Date('04/01/2019');

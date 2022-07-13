@@ -21,6 +21,7 @@ import {
     getNextFocusedDate,
     isSameDatesRange,
     isEmptyRange,
+    isSameDay,
 } from './helpers';
 import CalendarHeader from './calendarHeader';
 import StyledTable from './styled/table';
@@ -313,8 +314,9 @@ class SingleCalendar extends Component {
     }
 
     handleKeyEnterPressed() {
-        const { onChange } = this.props;
+        const { onChange, disabledDays } = this.props;
         const { focusedDate } = this.state;
+        if (disabledDays.some(day => isSameDay(day, focusedDate))) return;
         onChange(new Date(focusedDate));
     }
 
