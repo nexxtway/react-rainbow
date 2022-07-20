@@ -20,7 +20,7 @@
         "build:copy-ts-files": "node ./scripts/copy-files.js",
         "build": "npm-run-all --parallel build:components --serial build:copy-ts-files",
         "prepublishOnly": "yarn clean && yarn build",
-        "clean": "rm -Rf components && rm -Rf libs && rm -Rf styles",
+        "clean": "rm -Rf components && rm -Rf libs && rm -Rf styles && rm -Rf esm",
         "lint:js": "eslint src",
         "lint:styles": "stylelint './src/**/*.js'",
         "lint": "yarn lint:js && yarn lint:styles",
