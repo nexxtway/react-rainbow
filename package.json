@@ -67,7 +67,8 @@
         "esm",
         "styles",
         "libs",
-        "index.d.ts"
+        "index.d.ts",
+        "index.js"
     ],
     "repository": {
         "type": "git",
