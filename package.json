@@ -14,11 +14,13 @@
     "scripts": {
         "start": "./node_modules/.bin/styleguidist server",
         "build:library": "./node_modules/.bin/styleguidist build",
-        "build:components": "npx babel ./src --out-dir ./",
+        "build:components": "yarn build:components:node && yarn build:components:esm",
+        "build:components:node": "node ./scripts/build node --out-dir ./",
+        "build:components:esm": "node ./scripts/build esm --out-dir ./",
         "build:copy-ts-files": "node ./scripts/copy-files.js",
         "build": "npm-run-all --parallel build:components --serial build:copy-ts-files",
         "prepublishOnly": "yarn clean && yarn build",
-        "clean": "rm -Rf components && rm -Rf libs && rm -Rf styles",
+        "clean": "rm -Rf components && rm -Rf libs && rm -Rf styles && rm -Rf esm",
         "lint:js": "eslint src",
         "lint:styles": "stylelint './src/**/*.js'",
         "lint": "yarn lint:js && yarn lint:styles",
@@ -52,10 +54,17 @@
         "react-dom": ">=16.8.0",
         "styled-components": ">=4.3.2 <6"
     },
-    "main": "index.js",
-    "types": "index.d.ts",
+    "main": "./index.js",
+    "module": "./esm/index.js",
+    "exports": {
+        "import": "./esm/index.js",
+        "require": "./index.js"
+    },
+    "types": "./index.d.ts",
+    "sideEffects": false,
     "files": [
         "components",
+        "esm",
         "styles",
         "libs",
         "index.d.ts"
@@ -192,7 +201,8 @@
         "stylelint-scss": "^3.3.0",
         "wait-on": "^6.0.1",
         "webdriverio": "^7",
-        "webpack": "^4.41.2"
+        "webpack": "^4.41.2",
+        "yargs": "^17.5.1"
     },
     "pre-push": [
         "lint",
