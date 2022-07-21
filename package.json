@@ -57,8 +57,16 @@
     "main": "./index.js",
     "module": "./esm/index.js",
     "exports": {
-        "import": "./esm/index.js",
-        "require": "./index.js"
+        ".": {
+            "module": "./esm/index.js",
+            "require": "./index.js",
+            "default": "./esm/index.js"
+        },
+        "./*": {
+            "module": "./esm/*/index.js",
+            "require": "./*/index.js",
+            "default": "./esm/*/index.js"
+        }
     },
     "types": "./index.d.ts",
     "sideEffects": false,
