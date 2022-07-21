@@ -20,6 +20,7 @@ coverage
 .env
 package-lock.json
 components
+esm
 propTypes
 libs
 styles
