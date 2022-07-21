@@ -460,6 +460,7 @@ InternalDropdown.propTypes = {
                 name: PropTypes.string,
             }),
         ),
+        PropTypes.string,
     ]),
     /** The action triggered when click/select an option. */
     onChange: PropTypes.func,
