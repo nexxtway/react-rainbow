@@ -239,7 +239,7 @@ class Picklist extends Component {
         const errorMessageId = this.getErrorMessageId();
         const { isOpen } = this.state;
         const isReadOnly = !!(!disabled && readOnly);
-
+        const labelVariant = variant === 'inverse' ? variant : 'default';
         return (
             <StyledContainer
                 id={id}
@@ -259,7 +259,7 @@ class Picklist extends Component {
                         required={required}
                         inputId={this.inputId}
                         readOnly={isReadOnly}
-                        variant={variant}
+                        variant={labelVariant}
                     />
                 </RenderIf>
 

@@ -8,6 +8,7 @@ export interface LabelProps {
     readOnly?: boolean;
     id?: string;
     labelAlignment?: 'left' | 'center' | 'right';
+    variant?: 'default' | 'inverse';
     hideLabel?: boolean;
     as?: string;
 }
