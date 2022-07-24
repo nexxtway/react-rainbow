@@ -1,2 +1,2 @@
-const isServer: boolean;
+declare const isServer: boolean;
 export default isServer;

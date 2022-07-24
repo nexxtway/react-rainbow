@@ -1,2 +1,2 @@
-declare function isPercentage(value: string): boolean;
+declare function isPercentage(value?: string): boolean;
 export default isPercentage;

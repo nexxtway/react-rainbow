@@ -1,2 +1,2 @@
-declare function replaceAlpha(color: string, alpha: number): string;
+declare function replaceAlpha(color: string, alpha?: number): string;
 export default replaceAlpha;

@@ -1,2 +1,2 @@
-declare function uniqueId(prefix: string): string;
+declare function uniqueId(prefix?: string): string;
 export default uniqueId;

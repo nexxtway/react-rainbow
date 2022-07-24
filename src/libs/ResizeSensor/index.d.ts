@@ -1,8 +1,5 @@
 declare class ResizeSensor {
-    constructor(
-        element: Element,
-        resizeListener: (size: { width: number; height: number }) => void,
-    );
+    constructor(element: Element, resizeListener: () => void);
     detach(): void;
     reset(): void;
 }

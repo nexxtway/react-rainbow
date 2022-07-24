@@ -1,1 +1,3 @@
-export default function(callback: Function, time: number): Function;
+declare function debounce(callback: Function, time?: number): (...args: unknown[]) => void;
+
+export default debounce;

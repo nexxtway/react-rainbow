@@ -1,2 +1,2 @@
-declare function useErrorMessageId(error: any): string | undefined;
+declare function useErrorMessageId(error: unknown): string | undefined;
 export default useErrorMessageId;

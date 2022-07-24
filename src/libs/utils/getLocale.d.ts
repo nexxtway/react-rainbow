@@ -1,2 +1,2 @@
-declare function getLocale(context: any, localProp: string): string;
+declare function getLocale(context?: unknown, localProp?: string): string;
 export default getLocale;

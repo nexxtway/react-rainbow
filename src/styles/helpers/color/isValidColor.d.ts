@@ -1,2 +1,2 @@
-declare function isValidColor(color: string): boolean;
+declare function isValidColor(color?: string): boolean;
 export default isValidColor;

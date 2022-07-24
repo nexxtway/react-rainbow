@@ -1,2 +1,2 @@
-declare function hexToRgba(color: string, alpha: number): string;
+declare function hexToRgba(color: string, alpha?: number): string;
 export default hexToRgba;

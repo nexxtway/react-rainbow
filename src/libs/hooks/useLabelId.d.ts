@@ -1,2 +1,2 @@
-declare function useLabelId(label: any): string | undefined;
+declare function useLabelId(label?: unknown): string | undefined;
 export default useLabelId;

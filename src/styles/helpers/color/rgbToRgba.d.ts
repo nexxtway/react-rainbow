@@ -1,2 +1,2 @@
-declare function rgbToRgba(color: string): string;
+declare function rgbToRgba(color: string, alpha?: number): string;
 export default rgbToRgba;

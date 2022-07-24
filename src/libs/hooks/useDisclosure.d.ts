@@ -5,5 +5,5 @@ interface Disclosure {
     toggle: () => void;
 }
 
-declare function useDisclosure(defaultIsOpen: any): Disclosure;
+declare function useDisclosure(defaultIsOpen?: unknown): Disclosure;
 export default useDisclosure;
