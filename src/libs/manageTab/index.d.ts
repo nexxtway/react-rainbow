@@ -1,3 +1,2 @@
-import { KeyboardEvent } from 'react';
-
-export default function manageTab(node: HTMLElement, event: KeyboardEvent<Element>): void;
+declare function manageTab(node: HTMLElement, event: React.KeyboardEvent<Element>): void;
+export default manageTab;
