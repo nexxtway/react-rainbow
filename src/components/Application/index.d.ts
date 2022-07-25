@@ -1,17 +1,6 @@
 import { ReactNode } from 'react';
 import { BaseProps } from '../types';
-
-type ThemeType = {
-    rainbow?: {
-        palette?: {
-            brand?: string;
-            success?: string;
-            error?: string;
-            warning?: string;
-            mainBackground?: string;
-        };
-    };
-};
+import { ThemeType } from '../../styled';
 
 export interface ApplicationProps extends BaseProps {
     children?: ReactNode;

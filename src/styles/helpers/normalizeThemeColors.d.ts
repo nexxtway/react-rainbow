@@ -1,2 +1,4 @@
-declare function normalizeThemeColors(theme: Record<string, any>): Record<string, any>;
+import { RainbowTheme } from '../../styled';
+
+declare function normalizeThemeColors(theme: RainbowTheme): RainbowTheme;
 export default normalizeThemeColors;
