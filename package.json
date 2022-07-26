@@ -63,9 +63,9 @@
             "default": "./esm/index.js"
         },
         "./*": {
-            "module": "./esm/*/index.js",
-            "require": "./*/index.js",
-            "default": "./esm/*/index.js"
+            "module": "./esm/*",
+            "require": "./*",
+            "default": "./esm/*"
         }
     },
     "types": "./index.d.ts",
