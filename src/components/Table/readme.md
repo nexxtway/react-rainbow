@@ -764,6 +764,219 @@ function TableListView() {
     <TableListView />;
 ```
 
+# Table with expanded cell height
+##### In this example you can see how the data is displayed in the two variants of the table when one of the columns has the height of the cell expanded.
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Table, Column, ButtonGroup, ButtonIcon, Avatar, RadioButtonGroup } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+
+const options = [
+    { value: 'default', label: 'Default' },
+    { value: 'listview', label: 'Listview' },
+];
+
+
+const Container = styled.div`
+    padding: 0 2rem;
+`;
+
+const StyledTaskHeader = styled.span`
+    text-transform: uppercase;
+`;
+
+const StyledPriority = styled.div`
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+    text-transform: capitalize;
+    color: #ffffff;
+
+    ${props =>
+        props.priority === 'high' &&
+        `
+            background-color: #fc5e5f;
+        `};
+    ${props =>
+        props.priority === 'medium' &&
+        `
+            background-color: #fc9c44;
+        `};
+    ${props =>
+        props.priority === 'low' &&
+        `
+            background-color: #ffd86a;
+        `};
+`;
+
+const StyledValue = styled.span`
+    margin-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+`;
+
+const StyledConstributor = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+`;
+
+const StyledRadioContainer = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+`;
+
+const StyledTask = styled.div`
+    text-align: left;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+`;
+
+const StyleCoin = styled(Coin)`
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+`;
+
+const Task = ({ value }) => <StyledTask>{value}</StyledTask>;
+
+const Description = () => (
+    <>
+        <StyledTask>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</StyledTask>
+        <StyledTask>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</StyledTask>
+    </>
+);
+
+const Coins = ({ value }) => (
+    <>
+        <StyleCoin />
+        {value} coins
+    </>
+);
+
+const Constributor = () => (
+    <StyledConstributor>
+        <Avatar src="images/user/user3.jpg" variant="circle" size="small" />
+    </StyledConstributor>
+);
+
+const priorityMap = ['low', 'medium', 'high'];
+const Priority = ({ value }) => {
+    const priority = priorityMap[value];
+    return (
+        <StyledPriority priority={priority}>
+            <StyledValue>{priority}</StyledValue>
+        </StyledPriority>
+    );
+};
+
+function TableListView() {
+    const [data, setData] = useState(ListviewDataTable);
+    const [sortedBy, setSortedBy] = useState();
+    const [sortDirection, setSortDirection] = useState('asc');
+    const [variant, setVariant] = useState('default');
+
+    const handleSort = (event, field, nextSortDirection) => {
+        const newData = [...data];
+        const key = value => value[field];
+        const reverse = nextSortDirection === 'asc' ? 1 : -1;
+
+        const sortedData = newData.sort((aItem, bItem) => {
+            const aValue = key(aItem);
+            const bValue = key(bItem);
+            return reverse * ((aValue > bValue) - (bValue > aValue));
+        });
+
+        setData(sortedData);
+        setSortedBy(field);
+        setSortDirection(nextSortDirection);
+    }
+
+    const handleOnChange = event => {
+        setVariant(event.target.value);
+    }
+
+    return (
+        <div className="rainbow-p-bottom_xx-large">
+            <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+                <ButtonGroup className="rainbow-m-right_medium">
+                    <ButtonIcon
+                        variant="border-filled"
+                        disabled
+                        icon={<FontAwesomeIcon icon={faCog} />}
+                    />
+                    <ButtonIcon
+                        variant="border-filled"
+                        disabled
+                        icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                    />
+                </ButtonGroup>
+            </GlobalHeader>
+            <Container>
+                <StyledRadioContainer>
+                    <RadioButtonGroup
+                        options={options}
+                        label='Variant'
+                        value={variant}
+                        onChange={handleOnChange}
+                        size="small"
+                        variant="brand"
+                    />
+                </StyledRadioContainer>
+                <Table
+                    data={data}
+                    keyField="id"
+                    variant={variant}
+                    onSort={handleSort}
+                    sortDirection={sortDirection}
+                    sortedBy={sortedBy}
+                >
+                    <Column
+                        header={<StyledTaskHeader>Task</StyledTaskHeader>}
+                        field="task"
+                        component={Task}
+                        cellAlignment="left"
+                    />
+                    <Column header="Coins" field="coins" component={Coins} defaultWidth={120} />
+                    <Column
+                        header="Constributor"
+                        field="constributor"
+                        component={Constributor}
+                        defaultWidth={180}
+                        sortable
+                    />
+                    <Column
+                        header={<StyledTaskHeader>Description</StyledTaskHeader>}
+                        field="task"
+                        component={Description}
+                        cellAlignment="left"
+                    />
+                    <Column
+                        header="Priority"
+                        field="priority"
+                        component={Priority}
+                        defaultWidth={200}
+                        sortable
+                    />
+                </Table>
+            </Container>
+        </div>
+    );
+}
+
+    <TableListView />;
+```
+
 # Table "listview" variant, selectable and enumerated rows
 ##### The following example shows a version of the `listview` variant, where rows can be selectable and enumerated.
 
