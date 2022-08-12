@@ -5,10 +5,10 @@ const StyledCell = attachThemeAttrs(styled.th)`
     padding: 0;
     text-align: ${props => props.cellAlignment || 'left'};
     box-sizing: border-box;
-    height: 1px; // This fixes expanding cell height in all other browsers
+    height: 1px; // This is needed for expanding the cell height in all browsers but doesn't work in Firefox
     
     @-moz-document url-prefix() {
-        height: 100%; // This fixes expanding cell height in Firefox
+        height: 100%; // This is needed for expanding the cell height in Firefox
     }
     
 
