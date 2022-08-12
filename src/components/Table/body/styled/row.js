@@ -39,7 +39,7 @@ const StyledRow = attachThemeAttrs(styled.tr)`
         background-color: ${replaceAlpha(props.palette.action.active, 0.4)};
         `};
 
-        height: 1px; // This fixes expanding cell height in Firefox
+        height: 1px; // This is needed for expanding the cell height in Firefox
     
 `;
 
