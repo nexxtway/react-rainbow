@@ -145,7 +145,7 @@ InternalOverlay.propTypes = {
     /** Controls whether the InternalOverlay is visible or not. If true, the content of the Overlay is shown. */
     isVisible: PropTypes.bool,
     /** Ref or function that returns a ref to a DOM element, the DOM element resolved by this ref will be used to positioning the component passed when visible. */
-    triggerElementRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+    triggerElementRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     /** It could be used to write your own position resolution. The function passed here will receive the necessary data to compute an object with { top, left } CSS position of the component rendered. */
     positionResolver: PropTypes.func,
     /** A callback triggered when the overlay component is opened. This is useful for example to set focus
@@ -169,6 +169,7 @@ InternalOverlay.defaultProps = {
     onOpened: () => {},
     children: undefined,
     keepScrollEnabled: false,
+    triggerElementRef: undefined,
 };
 
 InternalOverlay.defaultPositionResolver = defaultPositionResolver;
