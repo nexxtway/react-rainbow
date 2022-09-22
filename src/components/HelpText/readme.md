@@ -96,3 +96,28 @@ const style = { width: '250px' };
         />
     </Container>
 ```
+
+##### HelpText small
+
+```js
+import React from 'react';
+import styled from 'styled-components'
+import { HelpText } from 'react-rainbow-components';
+
+const style = { width: '250px' };
+
+const Container = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+`;
+
+    <Container>
+        <HelpText
+            title="Message Title"
+            iconSize="small"
+            text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>}
+        />
+    </Container>
+```

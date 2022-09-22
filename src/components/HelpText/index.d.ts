@@ -6,6 +6,7 @@ export interface HelpTextProps extends BaseProps {
     text?: ReactNode;
     variant?: 'question' | 'info' | 'error' | 'warning';
     tabIndex?: number | string;
+    iconSize?: 'small' | 'medium';
 }
 
 export default function(props: HelpTextProps): JSX.Element | null;
