@@ -36,7 +36,7 @@ export default function Content({ label, children, variant, isLoading, size }) {
 
 Content.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
+    children: PropTypes.node,
     variant: PropTypes.string,
     isLoading: PropTypes.bool,
     size: PropTypes.string,
