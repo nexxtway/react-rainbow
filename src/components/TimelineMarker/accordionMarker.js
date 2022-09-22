@@ -120,7 +120,7 @@ AccordionTimelineMarker.propTypes = {
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     datetime: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     icon: PropTypes.node,
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
+    children: PropTypes.node,
     className: PropTypes.string,
     style: PropTypes.object,
     name: PropTypes.string,

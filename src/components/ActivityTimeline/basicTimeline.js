@@ -13,7 +13,7 @@ export default function BasicTimeline(props) {
 
 BasicTimeline.propTypes = {
     id: PropTypes.string,
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
+    children: PropTypes.node,
     className: PropTypes.string,
     style: PropTypes.object,
 };
