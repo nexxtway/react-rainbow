@@ -54,7 +54,7 @@ const Label = attachThemeAttrs(styled.label).attrs(props => {
                 Object.prototype.hasOwnProperty.call(labelAlignmentMap, props.labelAlignment)
                     ? props.labelAlignment
                     : 'center'
-            }
+            };
             margin-left: 0;
             margin-right: 0;
             padding: 0 ${PADDING_MEDIUM};
