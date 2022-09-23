@@ -5,7 +5,7 @@ export default function ButtonContent({ label, children }) {
 }
 
 ButtonContent.propTypes = {
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     children: PropTypes.node,
 };
 

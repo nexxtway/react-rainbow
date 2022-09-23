@@ -367,7 +367,7 @@ const InternalDropdown = forwardRef((props, reference) => {
 
     const isPlaceholderOptionChecked = isChecked(value, activeChildren.current);
     const shouldRenderPlaceholderOption = placeholder && showCheckbox;
-
+    const showEmptyComponent = showEmptyMessage && EmptyComponent;
     return (
         <Dropdown
             id={id}
@@ -417,9 +417,7 @@ const InternalDropdown = forwardRef((props, reference) => {
                         </Provider>
                     </Content>
                 </Ul>
-                <RenderIf isTrue={showEmptyMessage && EmptyComponent}>
-                    <EmptyComponent searchValue={searchValue} />
-                </RenderIf>
+                {showEmptyComponent && <EmptyComponent searchValue={searchValue} />}
                 <RenderIf isTrue={showEmptyMessage && !EmptyComponent}>
                     <EmptyMessage searchValue={searchValue} hasTimeout={!!searchTimeout.current} />
                 </RenderIf>
@@ -460,6 +458,7 @@ InternalDropdown.propTypes = {
                 name: PropTypes.string,
             }),
         ),
+        PropTypes.string,
     ]),
     /** The action triggered when click/select an option. */
     onChange: PropTypes.func,
