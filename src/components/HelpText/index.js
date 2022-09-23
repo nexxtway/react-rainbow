@@ -42,7 +42,7 @@ const inverseIconMap = {
  * HelpText is a popup that displays information related to an element.
  */
 const HelpText = React.forwardRef((props, ref) => {
-    const { id, title, text, variant, tabIndex, className, style } = props;
+    const { id, title, text, variant, tabIndex, iconSize, className, style } = props;
 
     const triggerRef = useRef();
     const helpTextId = useUniqueIdentifier('help-text');
@@ -128,7 +128,7 @@ const HelpText = React.forwardRef((props, ref) => {
                 ariaLabelledby={helpTextId}
                 variant={variant}
             >
-                <Icon isFocused={isFocused} />
+                <Icon isFocused={isFocused} iconSize={iconSize} />
                 <AssistiveText text={variant} />
             </StyledButton>
             <RenderIf isTrue={text}>
@@ -176,6 +176,8 @@ HelpText.propTypes = {
     variant: PropTypes.oneOf(['question', 'info', 'error', 'warning']),
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** The size of the icon */
+    iconSize: PropTypes.oneOf(['small', 'medium']),
 };
 
 HelpText.defaultProps = {
@@ -186,6 +188,7 @@ HelpText.defaultProps = {
     text: undefined,
     variant: 'info',
     tabIndex: undefined,
+    iconSize: 'medium',
 };
 
 export default HelpText;
