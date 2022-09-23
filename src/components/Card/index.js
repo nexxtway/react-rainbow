@@ -41,7 +41,7 @@ Card.propTypes = {
     /** The footer can include text or another component. */
     footer: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The content of the Card. */
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
+    children: PropTypes.node,
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */

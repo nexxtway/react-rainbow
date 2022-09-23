@@ -116,7 +116,7 @@ Button.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The content of the button, used to render icon or text elements inside the button.
      * Children take precedence over label. */
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
+    children: PropTypes.node,
     /** The variant changes the appearance of the button. Accepted variants include
      * base, brand, success, destructive, neutral, outline-brand, border, border-filled, inverse and border-inverse. */
     variant: PropTypes.oneOf([
