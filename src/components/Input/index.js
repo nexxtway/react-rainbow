@@ -107,7 +107,7 @@ Input.propTypes = {
     /** Specifies the regular expression that the input's value is checked against.
      * This attribute is supported for text, search, url, tel, email, and password types. */
     pattern: PropTypes.string,
-    /** Specifies that an input text will be centered. This value defaults to false. */
+    /** @deprecated Backward compatibility only. Use `valueAlignment` instead. */
     isCentered: PropTypes.bool,
     /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -147,6 +147,8 @@ Input.propTypes = {
      *
      * For a detailed list, go to: https://www.w3.org/TR/WCAG21/#input-purposes */
     autoComplete: PropTypes.string,
+    /** Specifies the alignment of the value text */
+    valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 Input.defaultProps = {
@@ -182,6 +184,7 @@ Input.defaultProps = {
     label: undefined,
     labelAlignment: 'center',
     hideLabel: false,
+    valueAlignment: 'left',
 };
 
 export default withReduxForm(Input);
