@@ -1,3 +1,4 @@
+import { ChartOptions } from 'chart.js';
 import { ReactNode, ComponentType } from 'react';
 import { BaseProps } from '../types';
 
@@ -19,6 +20,8 @@ export interface ChartProps extends BaseProps {
     maintainAspectRatio?: boolean;
     plugins?: Array<object>;
     children?: ReactNode;
+    options?: ChartOptions;
+    [key: string]: unknown;
 }
 
 declare const Chart: ComponentType<ChartProps>;
