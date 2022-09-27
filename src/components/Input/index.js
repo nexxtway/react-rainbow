@@ -147,6 +147,8 @@ Input.propTypes = {
      *
      * For a detailed list, go to: https://www.w3.org/TR/WCAG21/#input-purposes */
     autoComplete: PropTypes.string,
+    /** The size of the input. Valid values are small, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 Input.defaultProps = {
@@ -182,6 +184,7 @@ Input.defaultProps = {
     label: undefined,
     labelAlignment: 'center',
     hideLabel: false,
+    size: 'medium',
 };
 
 export default withReduxForm(Input);

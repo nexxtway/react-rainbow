@@ -58,6 +58,7 @@ export interface InputProps extends BaseProps {
     id?: string;
     variant?: 'default' | 'shaded' | 'bare';
     autoComplete?: string;
+    size?: 'small' | 'medium' | 'large';
 }
 
 declare const Input: ComponentType<InputProps>;
