@@ -46,6 +46,7 @@ const DateTimePicker = React.forwardRef((props, ref) => {
         locale: localeProp,
         icon: iconInProps,
         disabledDays,
+        size,
     } = props;
 
     const inputRef = useRef();
@@ -131,6 +132,7 @@ const DateTimePicker = React.forwardRef((props, ref) => {
                 disabled={disabled}
                 tabIndex={tabIndex}
                 autoComplete="off"
+                size={size}
             />
             <DateTimePickerModal
                 id={modalId}
@@ -220,6 +222,8 @@ DateTimePicker.propTypes = {
     disabledDays: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     ),
+    /** The size of the input. Valid values are small, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 DateTimePicker.defaultProps = {
@@ -252,6 +256,7 @@ DateTimePicker.defaultProps = {
     hour24: false,
     icon: undefined,
     disabledDays: [],
+    size: 'medium',
 };
 
 export default withReduxForm(DateTimePicker);
