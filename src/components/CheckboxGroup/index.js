@@ -61,6 +61,7 @@ class CheckboxGroup extends Component {
             style,
             className,
             orientation,
+            size,
         } = this.props;
         return (
             <StyledFieldset id={id} className={className} style={style}>
@@ -81,6 +82,7 @@ class CheckboxGroup extends Component {
                         name={this.groupNameId}
                         describedBy={this.getErrorMessageId()}
                         error={error}
+                        size={size}
                     />
                 </StyledContentContainer>
                 <RenderIf isTrue={error}>
@@ -127,6 +129,8 @@ CheckboxGroup.propTypes = {
     id: PropTypes.string,
     /** The orientation of the element. */
     orientation: PropTypes.oneOf(['vertical', 'horizontal']),
+    /** The size of the input. Valid values are small, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 CheckboxGroup.defaultProps = {
@@ -143,6 +147,7 @@ CheckboxGroup.defaultProps = {
     style: undefined,
     id: undefined,
     orientation: 'vertical',
+    size: 'medium',
 };
 
 export default withReduxForm(CheckboxGroup);

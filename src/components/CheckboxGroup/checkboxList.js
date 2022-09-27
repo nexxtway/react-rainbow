@@ -7,7 +7,7 @@ import StyledItemDescription from '../RadioGroup/styled/itemDescription';
 import RenderIf from '../RenderIf';
 
 export default function CheckboxList(props) {
-    const { values, options, onChange, describedBy, name, error } = props;
+    const { values, options, onChange, describedBy, name, error, size } = props;
     return options.map((option, index) => {
         const key = `checkbox-${index}`;
         const { description, ...rest } = option;
@@ -22,6 +22,7 @@ export default function CheckboxList(props) {
                     ariaDescribedBy={describedBy}
                     name={name}
                     error={error}
+                    size={size}
                 />
                 <RenderIf isTrue={description}>
                     <StyledItemDescription>{description}</StyledItemDescription>
@@ -37,6 +38,7 @@ CheckboxList.propTypes = {
     values: PropTypes.array,
     onChange: PropTypes.func,
     describedBy: PropTypes.string,
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 CheckboxList.defaultProps = {
@@ -44,4 +46,5 @@ CheckboxList.defaultProps = {
     onChange: () => {},
     describedBy: undefined,
     name: undefined,
+    size: 'medium',
 };
