@@ -39,6 +39,19 @@ const Radio = attachThemeAttrs(styled(HiddenElement))`
         transition: border 0.1s linear, background-color 0.1s linear;
         box-sizing: border-box;
         padding: 0;
+        ${props =>
+            props.size === 'large' &&
+            `
+            width: 25px;
+            height: 25px;
+            `};
+
+        ${props =>
+            props.size === 'small' &&
+            `
+            width: 18px;
+            height: 18px;
+            `};
 
         &::after {
             content: '';
@@ -53,6 +66,19 @@ const Radio = attachThemeAttrs(styled(HiddenElement))`
             transform: scale(0.1, 0.1);
             transition: all 0.2s ease-in;
             box-sizing: border-box;
+            ${props =>
+                props.size === 'large' &&
+                `
+                width: 17px;
+                height: 17px;
+                `};
+
+            ${props =>
+                props.size === 'small' &&
+                `
+                width: 10px;
+                height: 10px;
+                `};
         }
     }
 

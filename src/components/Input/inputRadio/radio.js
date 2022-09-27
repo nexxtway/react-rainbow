@@ -53,6 +53,7 @@ export default class Radio extends Component {
             error,
             label,
             hideLabel,
+            size,
         } = this.props;
 
         return (
@@ -75,6 +76,7 @@ export default class Radio extends Component {
                     aria-describedby={ariaDescribedBy}
                     ref={this.inputRef}
                     error={error}
+                    size={size}
                 />
                 <Label
                     label={label}
@@ -82,6 +84,7 @@ export default class Radio extends Component {
                     disabled={disabled}
                     inputId={this.inputId}
                     id={ariaLabelledBy}
+                    size={size}
                 />
             </StyledContainer>
         );
@@ -104,6 +107,7 @@ Radio.propTypes = {
     hideLabel: PropTypes.bool,
     ariaLabelledBy: PropTypes.string,
     ariaDescribedBy: PropTypes.string,
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 Radio.defaultProps = {
@@ -122,4 +126,5 @@ Radio.defaultProps = {
     hideLabel: false,
     ariaLabelledBy: undefined,
     ariaDescribedBy: undefined,
+    size: 'medium',
 };
