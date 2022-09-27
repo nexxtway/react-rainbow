@@ -43,6 +43,7 @@ const DatePicker = React.forwardRef((props, ref) => {
         selectionType,
         icon: iconInProps,
         disabledDays,
+        size,
     } = useReduxForm(props);
 
     const currentLocale = useLocale(locale);
@@ -129,6 +130,7 @@ const DatePicker = React.forwardRef((props, ref) => {
                 readOnly={readOnly}
                 disabled={disabled}
                 tabIndex={tabIndex}
+                size={size}
             />
             <DatePickerModal
                 id={modalId}
@@ -217,6 +219,8 @@ DatePicker.propTypes = {
     disabledDays: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     ),
+    /** The size of the input. Valid values are small, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 DatePicker.defaultProps = {
@@ -248,6 +252,7 @@ DatePicker.defaultProps = {
     variant: 'single',
     icon: undefined,
     disabledDays: [],
+    size: 'medium',
 };
 
 export default DatePicker;
