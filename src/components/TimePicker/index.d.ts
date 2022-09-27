@@ -24,6 +24,7 @@ export interface TimePickerProps extends BaseProps {
     id?: string;
     hour24?: boolean;
     icon?: ReactNode;
+    size?: 'small' | 'medium' | 'large';
 }
 
 declare const TimePicker: ComponentType<TimePickerProps>;

@@ -40,6 +40,7 @@ const TimePicker = React.forwardRef((props, ref) => {
         onFocus,
         value: valueProp,
         icon: iconInProps,
+        size,
     } = useReduxForm(props);
     const [isOpen, setIsOpen] = useState(false);
     const [value, setValue] = useState(hour24 ? valueProp : get12HourTime(valueProp));
@@ -120,6 +121,7 @@ const TimePicker = React.forwardRef((props, ref) => {
                 readOnly={readOnly}
                 disabled={disabled}
                 tabIndex={tabIndex}
+                size={size}
             />
 
             <StyledModal
@@ -194,6 +196,8 @@ TimePicker.propTypes = {
     hour24: PropTypes.bool,
     /** The icon to show if it is passed. It must be a svg icon or a font icon. Defaults to a Calendar icon */
     icon: PropTypes.node,
+    /** The size of the input. Valid values are small, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 TimePicker.defaultProps = {
@@ -221,6 +225,7 @@ TimePicker.defaultProps = {
     style: undefined,
     hour24: false,
     icon: undefined,
+    size: 'medium',
 };
 
 export default TimePicker;
