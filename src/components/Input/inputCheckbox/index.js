@@ -74,6 +74,7 @@ export default class InputCheckbox extends Component {
             name,
             checked,
             hideLabel,
+            size,
         } = this.props;
         const errorMessageId = this.getErrorMessageId();
 
@@ -96,6 +97,7 @@ export default class InputCheckbox extends Component {
                     error={error}
                     label={label}
                     hideLabel={hideLabel}
+                    size={size}
                 />
                 <RenderIf isTrue={bottomHelpText}>
                     <HelpText alignSelf="flex-start">{bottomHelpText}</HelpText>
@@ -128,6 +130,7 @@ InputCheckbox.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
     id: PropTypes.string,
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 InputCheckbox.defaultProps = {
@@ -148,4 +151,5 @@ InputCheckbox.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    size: 'medium',
 };

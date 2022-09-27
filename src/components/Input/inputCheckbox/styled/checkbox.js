@@ -45,6 +45,19 @@ const Checkbox = attachThemeAttrs(styled(HiddenElement))`
         margin-right: ${MARGIN_SMALL};
         transition: border 0.1s linear, background-color 0.1s linear;
         box-sizing: border-box;
+        ${props =>
+            props.size === 'large' &&
+            `
+            width: 25px;
+            height: 25px;
+            `};
+
+        ${props =>
+            props.size === 'small' &&
+            `
+            width: 18px;
+            height: 18px;
+            `};
     }
 
     :checked ~ label > .rainbow-input_faux::after {
@@ -61,6 +74,19 @@ const Checkbox = attachThemeAttrs(styled(HiddenElement))`
         border-color: ${getColor};
         box-sizing: border-box;
         padding: 0;
+        ${props =>
+            props.size === 'large' &&
+            `
+            height: 0.6rem;
+            width: 0.85rem;
+            `};
+
+        ${props =>
+            props.size === 'small' &&
+            `
+            height: 0.3rem;
+            width: 0.55rem;
+            `};
     }
 
     :checked ~ label > .rainbow-input_faux {
