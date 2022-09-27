@@ -186,6 +186,7 @@ export default class InputBase extends Component {
                         <TogglePasswordButton
                             icon={this.getToggleButtonIcon()}
                             onClick={this.handlePasswordToggle}
+                            size={size}
                         />
                     </RenderIf>
                 </RelativeElement>
