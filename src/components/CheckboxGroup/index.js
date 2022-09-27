@@ -129,7 +129,7 @@ CheckboxGroup.propTypes = {
     id: PropTypes.string,
     /** The orientation of the element. */
     orientation: PropTypes.oneOf(['vertical', 'horizontal']),
-    /** The size of the input. Valid values are small, and large. */
+    /** The size of the inputs. Valid values are small, and large. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 

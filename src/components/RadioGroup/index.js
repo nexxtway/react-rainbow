@@ -42,6 +42,7 @@ class RadioGroup extends Component {
             value,
             id,
             orientation,
+            size,
         } = this.props;
 
         return (
@@ -63,6 +64,7 @@ class RadioGroup extends Component {
                         name={this.groupNameId}
                         ariaDescribedby={this.getErrorMessageId()}
                         error={error}
+                        size={size}
                     />
                 </StyledContentContainer>
                 <RenderIf isTrue={error}>
@@ -108,6 +110,8 @@ RadioGroup.propTypes = {
     id: PropTypes.string,
     /** The orientation of the element. */
     orientation: PropTypes.oneOf(['vertical', 'horizontal']),
+    /** The size of the inputs. Valid values are small, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 RadioGroup.defaultProps = {
@@ -124,6 +128,7 @@ RadioGroup.defaultProps = {
     error: null,
     id: undefined,
     orientation: 'vertical',
+    size: 'medium',
 };
 
 export default withReduxForm(RadioGroup);

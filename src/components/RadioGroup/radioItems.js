@@ -6,7 +6,7 @@ import RenderIf from '../RenderIf';
 import StyledItemDescription from './styled/itemDescription';
 
 export default function RadioItems(props) {
-    const { options, ariaDescribedby, onChange, value, name, error } = props;
+    const { options, ariaDescribedby, onChange, value, name, error, size } = props;
 
     const isChecked = option => option.value === value;
 
@@ -24,6 +24,7 @@ export default function RadioItems(props) {
                     name={name}
                     error={error}
                     disabled={disabled}
+                    size={size}
                 />
                 <RenderIf isTrue={description}>
                     <StyledItemDescription disabled={disabled}>{description}</StyledItemDescription>
@@ -39,10 +40,12 @@ RadioItems.propTypes = {
     options: PropTypes.array.isRequired,
     onChange: PropTypes.func,
     name: PropTypes.string.isRequired,
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 RadioItems.defaultProps = {
     ariaDescribedby: undefined,
     value: undefined,
     onChange: () => {},
+    size: 'medium',
 };
