@@ -6,7 +6,11 @@ export interface TableProps extends BaseProps {
     sortedBy?: string;
     sortDirection?: 'asc' | 'desc';
     defaultSortDirection?: 'asc' | 'desc';
-    onSort?: (event: MouseEvent<HTMLElement>, field: string, nextSortDirection: string) => void;
+    onSort?: (
+        event: MouseEvent<HTMLElement>,
+        field: string,
+        nextSortDirection: 'asc' | 'desc',
+    ) => void;
     resizeColumnDisabled?: boolean;
     minColumnWidth?: string | number;
     maxColumnWidth?: string | number;
