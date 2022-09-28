@@ -6,6 +6,7 @@ export interface DatasetProps {
     borderColor?: string[] | string;
     stack?: string;
     fill?: boolean;
+    [key: string]: unknown;
 }
 
 export default function(props: DatasetProps): JSX.Element | null;
