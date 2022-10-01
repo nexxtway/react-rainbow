@@ -219,7 +219,7 @@ DatePicker.propTypes = {
     disabledDays: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     ),
-    /** Specifies the alignment of the value text */
+    /** Specifies the alignment of the value text. This value defaults to left. */
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 

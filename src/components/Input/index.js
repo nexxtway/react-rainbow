@@ -147,7 +147,7 @@ Input.propTypes = {
      *
      * For a detailed list, go to: https://www.w3.org/TR/WCAG21/#input-purposes */
     autoComplete: PropTypes.string,
-    /** Specifies the alignment of the value text */
+    /** Specifies the alignment of the value text. This value defaults to left. */
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
