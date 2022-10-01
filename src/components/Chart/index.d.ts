@@ -21,7 +21,6 @@ export interface ChartProps extends BaseProps {
     plugins?: Array<object>;
     children?: ReactNode;
     options?: ChartOptions;
-    [key: string]: unknown;
 }
 
 declare const Chart: ComponentType<ChartProps>;
