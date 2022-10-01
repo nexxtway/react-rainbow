@@ -10,6 +10,7 @@ import HelpText from '../styled/helpText';
 import ErrorText from '../styled/errorText';
 import StyledReadonlyInput from '../inputBase/styled/input';
 import StyledPickerInput from './styled/input';
+import getValueAlignment from '../helpers/getValueAlignment';
 
 export default class Input extends Component {
     constructor(props) {
@@ -63,7 +64,7 @@ export default class Input extends Component {
     renderInput() {
         const { props } = this;
         const { readOnly, isCentered, valueAlignment } = props;
-        const alignment = isCentered ? 'center' : valueAlignment;
+        const alignment = getValueAlignment({ valueAlignment, isCentered });
 
         if (readOnly) {
             return (

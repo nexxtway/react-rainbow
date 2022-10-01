@@ -252,8 +252,7 @@ DatePicker.defaultProps = {
     variant: 'single',
     icon: undefined,
     disabledDays: [],
-    /** Specifies the alignment of the value text */
-    valueAlignment: 'left',
+    valueAlignment: undefined,
 };
 
 export default DatePicker;

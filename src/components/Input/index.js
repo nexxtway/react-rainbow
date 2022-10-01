@@ -184,7 +184,7 @@ Input.defaultProps = {
     label: undefined,
     labelAlignment: 'center',
     hideLabel: false,
-    valueAlignment: 'left',
+    valueAlignment: undefined,
 };
 
 export default withReduxForm(Input);

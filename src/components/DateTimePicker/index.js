@@ -222,7 +222,7 @@ DateTimePicker.propTypes = {
     disabledDays: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     ),
-    /** Specifies the alignment of the value text */
+    /** Specifies the alignment of the value text. This value defaults to center. */
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
@@ -256,7 +256,7 @@ DateTimePicker.defaultProps = {
     hour24: false,
     icon: undefined,
     disabledDays: [],
-    valueAlignment: 'left',
+    valueAlignment: undefined,
 };
 
 export default withReduxForm(DateTimePicker);

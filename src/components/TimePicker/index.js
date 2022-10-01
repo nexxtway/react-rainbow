@@ -196,7 +196,7 @@ TimePicker.propTypes = {
     hour24: PropTypes.bool,
     /** The icon to show if it is passed. It must be a svg icon or a font icon. Defaults to a Calendar icon */
     icon: PropTypes.node,
-    /** Specifies the alignment of the value text */
+    /** Specifies the alignment of the value text. This value defaults to left. */
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
@@ -225,7 +225,7 @@ TimePicker.defaultProps = {
     style: undefined,
     hour24: false,
     icon: undefined,
-    valueAlignment: 'left',
+    valueAlignment: undefined,
 };
 
 export default TimePicker;

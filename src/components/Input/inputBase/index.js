@@ -10,6 +10,7 @@ import { StyledInput, TogglePasswordButton } from './styled';
 import HelpText from '../styled/helpText';
 import ErrorText from '../styled/errorText';
 import { Eye, EyeClosed } from './icons';
+import getValueAlignment from '../helpers/getValueAlignment';
 
 export default class InputBase extends Component {
     constructor(props) {
@@ -126,7 +127,6 @@ export default class InputBase extends Component {
         } = this.props;
         const isReadOnly = !!(!disabled && readOnly);
         const isPassword = type === 'password';
-        const alignment = isCentered ? 'center' : valueAlignment;
 
         return (
             <StyledContainer id={id} className={className} style={style}>
@@ -175,7 +175,7 @@ export default class InputBase extends Component {
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.inputRef}
                         isBare={isBare}
-                        valueAlignment={alignment}
+                        valueAlignment={getValueAlignment({ valueAlignment, isCentered })}
                         iconPosition={iconPosition}
                         icon={icon}
                         error={error}
@@ -286,5 +286,5 @@ InputBase.defaultProps = {
     autoComplete: 'on',
     labelAlignment: 'center',
     hideLabel: false,
-    valueAlignment: 'left',
+    valueAlignment: undefined,
 };
