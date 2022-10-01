@@ -95,7 +95,10 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
 
     &:active {
         color: ${props => props.palette.brand.dark};
-        transform: scale(0.95);
+        ${props =>
+            !props.disabled &&
+            `transform: scale(0.95);
+            `}
         transition: all 0.2s ease;
     }
 
