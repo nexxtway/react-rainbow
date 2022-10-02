@@ -285,23 +285,38 @@ const containerStyles = {
     />;
 ```
 
-##### input centered
+##### input with aligned value
 
 ```js
 import React from 'react';
 import { Input } from 'react-rainbow-components';
 
-const containerStyles = {
-    maxWidth: 700,
+const inputStyles = {
+    width: 300,
 };
 
-    <Input
-        label="Input label"
-        placeholder="center"
-        isCentered
-        style={containerStyles}
-        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-    />;
+    <div className="rainbow-align-content_center rainbow-p-vertical_x-large rainbow-flex_wrap">
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input label"
+            placeholder="left"
+        />
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input label"
+            placeholder="center"
+            valueAlignment="center"
+        />
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input label"
+            placeholder="right"
+            valueAlignment="right"
+        />
+    </div>
 ```
 
 ##### input error

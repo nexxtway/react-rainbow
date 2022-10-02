@@ -10,6 +10,7 @@ import { StyledInput, TogglePasswordButton } from './styled';
 import HelpText from '../styled/helpText';
 import ErrorText from '../styled/errorText';
 import { Eye, EyeClosed } from './icons';
+import getValueAlignment from '../helpers/getValueAlignment';
 
 export default class InputBase extends Component {
     constructor(props) {
@@ -122,6 +123,7 @@ export default class InputBase extends Component {
             isCentered,
             iconPosition,
             variant,
+            valueAlignment,
         } = this.props;
         const isReadOnly = !!(!disabled && readOnly);
         const isPassword = type === 'password';
@@ -173,7 +175,7 @@ export default class InputBase extends Component {
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.inputRef}
                         isBare={isBare}
-                        isCentered={isCentered}
+                        valueAlignment={getValueAlignment({ valueAlignment, isCentered })}
                         iconPosition={iconPosition}
                         icon={icon}
                         error={error}
@@ -229,6 +231,7 @@ InputBase.propTypes = {
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     required: PropTypes.bool,
     pattern: PropTypes.string,
+    /** @deprecated Backward compatibility only. Use `valueAlignment` instead. */
     isCentered: PropTypes.bool,
     isBare: PropTypes.bool,
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -247,6 +250,7 @@ InputBase.propTypes = {
     autoComplete: PropTypes.string,
     labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     hideLabel: PropTypes.bool,
+    valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 InputBase.defaultProps = {
@@ -282,4 +286,5 @@ InputBase.defaultProps = {
     autoComplete: 'on',
     labelAlignment: 'center',
     hideLabel: false,
+    valueAlignment: undefined,
 };

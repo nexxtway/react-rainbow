@@ -10,6 +10,7 @@ import HelpText from '../styled/helpText';
 import ErrorText from '../styled/errorText';
 import StyledReadonlyInput from '../inputBase/styled/input';
 import StyledPickerInput from './styled/input';
+import getValueAlignment from '../helpers/getValueAlignment';
 
 export default class Input extends Component {
     constructor(props) {
@@ -62,7 +63,8 @@ export default class Input extends Component {
 
     renderInput() {
         const { props } = this;
-        const { readOnly } = props;
+        const { readOnly, isCentered, valueAlignment } = props;
+        const alignment = getValueAlignment({ valueAlignment, isCentered });
 
         if (readOnly) {
             return (
@@ -74,6 +76,7 @@ export default class Input extends Component {
                     aria-labelledby={this.getInlineTextLabelId()}
                     aria-describedby={this.getErrorMessageId()}
                     autoComplete="off"
+                    valueAlignment={alignment}
                     ref={this.inputRef}
                 />
             );
@@ -88,6 +91,7 @@ export default class Input extends Component {
                 aria-labelledby={this.getInlineTextLabelId()}
                 aria-describedby={this.getErrorMessageId()}
                 autoComplete="off"
+                valueAlignment={alignment}
                 ref={this.inputRef}
             />
         );
@@ -173,6 +177,7 @@ Input.propTypes = {
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     required: PropTypes.bool,
     pattern: PropTypes.string,
+    /** @deprecated Backward compatibility only. Use `valueAlignment` instead. */
     isCentered: PropTypes.bool,
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     disabled: PropTypes.bool,
@@ -189,6 +194,7 @@ Input.propTypes = {
     autoComplete: PropTypes.string,
     labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     hideLabel: PropTypes.bool,
+    valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 Input.defaultProps = {
@@ -220,4 +226,5 @@ Input.defaultProps = {
     autoComplete: 'on',
     labelAlignment: 'center',
     hideLabel: false,
+    valueAlignment: 'left',
 };
