@@ -13,6 +13,9 @@ export interface TimePickerProps extends BaseProps {
     required?: boolean;
     name?: string;
     bottomHelpText?: ReactNode;
+    /**
+     * @deprecated use 'valueAlignment' instead
+     */
     isCentered?: boolean;
     error?: ReactNode;
     readOnly?: boolean;
@@ -24,6 +27,7 @@ export interface TimePickerProps extends BaseProps {
     id?: string;
     hour24?: boolean;
     icon?: ReactNode;
+    valueAlignment?: 'left' | 'center' | 'right';
 }
 
 declare const TimePicker: ComponentType<TimePickerProps>;
