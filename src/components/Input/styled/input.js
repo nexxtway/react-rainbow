@@ -43,6 +43,7 @@ const Input = attachThemeAttrs(styled.input)`
             font-size: ${FONT_SIZE_TEXT_MEDIUM};
             height: 1.9rem;
         `};
+    text-align: ${props => props.valueAlignment};
 
     ::-moz-focus-inner {
         border: 0;
@@ -187,7 +188,7 @@ const Input = attachThemeAttrs(styled.input)`
                 border: 0;
             }
         `};
-    ${props => props.isCentered && 'text-align: center;'};
+    
     ${props =>
         hasLeftIcon(props) &&
         `

@@ -41,6 +41,7 @@ const TimePicker = React.forwardRef((props, ref) => {
         value: valueProp,
         icon: iconInProps,
         size,
+        valueAlignment,
     } = useReduxForm(props);
     const [isOpen, setIsOpen] = useState(false);
     const [value, setValue] = useState(hour24 ? valueProp : get12HourTime(valueProp));
@@ -122,6 +123,7 @@ const TimePicker = React.forwardRef((props, ref) => {
                 disabled={disabled}
                 tabIndex={tabIndex}
                 size={size}
+                valueAlignment={valueAlignment}
             />
 
             <StyledModal
@@ -170,7 +172,7 @@ TimePicker.propTypes = {
     name: PropTypes.string,
     /** Shows the help message below the TimePicker. */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** Specifies that the TimePicker text will be centered. This value defaults to false. */
+    /** @deprecated Backward compatibility only. Use `valueAlignment` instead. */
     isCentered: PropTypes.bool,
     /** Specifies that the TimePicker must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -198,6 +200,8 @@ TimePicker.propTypes = {
     icon: PropTypes.node,
     /** The size of the input. Valid values are small, and large. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
+    /** Specifies the alignment of the value text. This value defaults to left. */
+    valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 TimePicker.defaultProps = {
@@ -226,6 +230,7 @@ TimePicker.defaultProps = {
     hour24: false,
     icon: undefined,
     size: 'medium',
+    valueAlignment: undefined,
 };
 
 export default TimePicker;
