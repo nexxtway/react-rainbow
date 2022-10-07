@@ -20,7 +20,6 @@ export interface CheckboxGroupProps extends BaseProps {
     onChange?: (values: string[]) => void;
     id?: string;
     orientation?: 'vertical' | 'horizontal';
-    size?: 'small' | 'medium' | 'large';
 }
 
 declare const CheckboxGroup: ComponentType<CheckboxGroupProps>;

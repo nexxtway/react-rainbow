@@ -74,7 +74,6 @@ export default class InputRadio extends Component {
             name,
             checked,
             hideLabel,
-            size,
         } = this.props;
         const errorMessageId = this.getErrorMessageId();
 
@@ -97,7 +96,6 @@ export default class InputRadio extends Component {
                     error={error}
                     label={label}
                     hideLabel={hideLabel}
-                    size={size}
                 />
                 <RenderIf isTrue={bottomHelpText}>
                     <HelpText alignSelf="flex-start">{bottomHelpText}</HelpText>
@@ -130,7 +128,6 @@ InputRadio.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
     id: PropTypes.string,
-    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 InputRadio.defaultProps = {
@@ -151,5 +148,4 @@ InputRadio.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
-    size: 'medium',
 };

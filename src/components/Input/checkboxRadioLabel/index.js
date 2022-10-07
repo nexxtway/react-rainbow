@@ -4,7 +4,7 @@ import HiddenElement from '../../Structural/hiddenElement';
 import StyledLabelText from './labelText';
 
 export default function Label(props) {
-    const { label, disabled, hideLabel, inputId, size, id } = props;
+    const { label, disabled, hideLabel, inputId, id } = props;
 
     if (hideLabel) {
         return (
@@ -18,9 +18,7 @@ export default function Label(props) {
     return (
         <label htmlFor={inputId} id={id}>
             <span className="rainbow-input_faux" />
-            <StyledLabelText disabled={disabled} size={size}>
-                {label}
-            </StyledLabelText>
+            <StyledLabelText disabled={disabled}>{label}</StyledLabelText>
         </label>
     );
 }
@@ -31,7 +29,6 @@ Label.propTypes = {
     disabled: PropTypes.bool,
     hideLabel: PropTypes.bool,
     id: PropTypes.string,
-    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 Label.defaultProps = {
@@ -40,5 +37,4 @@ Label.defaultProps = {
     disabled: false,
     hideLabel: false,
     id: undefined,
-    size: 'medium',
 };
