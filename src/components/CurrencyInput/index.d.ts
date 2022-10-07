@@ -1,4 +1,3 @@
-import { CurrencyInputProps } from './index.d';
 import { ReactNode, MouseEvent, FocusEvent, KeyboardEvent } from 'react';
 import { BaseProps, IconPosition, LabelAlignment } from '../types';
 
@@ -33,6 +32,7 @@ export interface CurrencyInputProps extends BaseProps {
     maximumFractionDigits?: number;
     minimumSignificantDigits?: number;
     maximumSignificantDigits?: number;
+    size?: 'small' | 'medium' | 'large';
 }
 
 export default function(props: CurrencyInputProps): JSX.Element | null;

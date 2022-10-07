@@ -51,6 +51,7 @@ const CurrencyInput = forwardRef((props, ref) => {
         labelAlignment,
         hideLabel,
         locale,
+        size,
     } = useReduxForm(props);
 
     const inputRef = useRef();
@@ -148,6 +149,7 @@ const CurrencyInput = forwardRef((props, ref) => {
                         iconPosition={iconPosition}
                         readOnly={readOnly}
                         error={error}
+                        size={size}
                     >
                         {icon}
                     </StyledIconContainer>
@@ -175,6 +177,7 @@ const CurrencyInput = forwardRef((props, ref) => {
                     icon={icon}
                     error={error}
                     variant={variant}
+                    size={size}
                 />
             </RelativeElement>
             <RenderIf isTrue={bottomHelpText}>
@@ -269,6 +272,8 @@ CurrencyInput.propTypes = {
     minimumSignificantDigits: PropTypes.number,
     /** The maximum number of significant digits to use. Possible values are from 1 to 21; The default is 21. */
     maximumSignificantDigits: PropTypes.number,
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 CurrencyInput.defaultProps = {
@@ -304,6 +309,7 @@ CurrencyInput.defaultProps = {
     maximumFractionDigits: undefined,
     minimumSignificantDigits: undefined,
     maximumSignificantDigits: undefined,
+    size: 'medium',
 };
 
 export default CurrencyInput;
