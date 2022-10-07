@@ -198,7 +198,7 @@ TimePicker.propTypes = {
     hour24: PropTypes.bool,
     /** The icon to show if it is passed. It must be a svg icon or a font icon. Defaults to a Calendar icon */
     icon: PropTypes.node,
-    /** The size of the input. Valid values are small, and large. */
+    /** The size of the input. Valid values are small, medium, and large. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** Specifies the alignment of the value text. This value defaults to left. */
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
