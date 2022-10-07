@@ -111,6 +111,7 @@ export default class Input extends Component {
             hideLabel,
             labelAlignment,
             iconPosition,
+            size,
         } = this.props;
 
         return (
@@ -130,6 +131,7 @@ export default class Input extends Component {
                             iconPosition={iconPosition}
                             readOnly={readOnly}
                             error={error}
+                            size={size}
                         >
                             {icon}
                         </StyledIconContainer>
@@ -194,6 +196,7 @@ Input.propTypes = {
     autoComplete: PropTypes.string,
     labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     hideLabel: PropTypes.bool,
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
@@ -226,5 +229,6 @@ Input.defaultProps = {
     autoComplete: 'on',
     labelAlignment: 'center',
     hideLabel: false,
+    size: 'medium',
     valueAlignment: 'left',
 };

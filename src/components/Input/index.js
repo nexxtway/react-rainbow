@@ -147,6 +147,8 @@ Input.propTypes = {
      *
      * For a detailed list, go to: https://www.w3.org/TR/WCAG21/#input-purposes */
     autoComplete: PropTypes.string,
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** Specifies the alignment of the value text. This value defaults to left. */
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
@@ -184,6 +186,7 @@ Input.defaultProps = {
     label: undefined,
     labelAlignment: 'center',
     hideLabel: false,
+    size: 'medium',
     valueAlignment: undefined,
 };
 

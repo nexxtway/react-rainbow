@@ -33,6 +33,7 @@ export interface DatePickerProps extends BaseProps {
     variant?: 'single' | 'double';
     icon?: ReactNode;
     disabledDays?: Array<Date | string>;
+    size?: 'small' | 'medium' | 'large';
     valueAlignment?: 'left' | 'center' | 'right';
 }
 

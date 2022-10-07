@@ -61,6 +61,7 @@ export interface InputProps extends BaseProps {
     id?: string;
     variant?: 'default' | 'shaded' | 'bare';
     autoComplete?: string;
+    size?: 'small' | 'medium' | 'large';
     valueAlignment?: 'left' | 'center' | 'right';
 }
 

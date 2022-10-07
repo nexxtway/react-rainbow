@@ -17,6 +17,19 @@ const TogglePasswordButton = styled(ButtonIcon)`
     border: none;
     width: 1.5rem;
     height: 1.5rem;
+    ${props =>
+        props.size === 'large' &&
+        `
+            top: 0.2rem;
+            width: 2rem;
+            height: 2rem;
+        `};
+    ${props =>
+        props.size === 'small' &&
+        `
+            width: 1.1rem;
+            height: 1.1rem;
+        `};
 
     &:hover,
     &:focus {

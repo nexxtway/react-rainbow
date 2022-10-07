@@ -46,6 +46,7 @@ const DateTimePicker = React.forwardRef((props, ref) => {
         locale: localeProp,
         icon: iconInProps,
         disabledDays,
+        size,
         valueAlignment,
     } = props;
 
@@ -132,6 +133,7 @@ const DateTimePicker = React.forwardRef((props, ref) => {
                 disabled={disabled}
                 tabIndex={tabIndex}
                 autoComplete="off"
+                size={size}
                 valueAlignment={valueAlignment}
             />
             <DateTimePickerModal
@@ -222,6 +224,8 @@ DateTimePicker.propTypes = {
     disabledDays: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     ),
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** Specifies the alignment of the value text. This value defaults to left. */
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
@@ -256,6 +260,7 @@ DateTimePicker.defaultProps = {
     hour24: false,
     icon: undefined,
     disabledDays: [],
+    size: 'medium',
     valueAlignment: undefined,
 };
 

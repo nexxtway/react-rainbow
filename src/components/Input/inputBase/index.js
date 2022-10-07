@@ -123,6 +123,7 @@ export default class InputBase extends Component {
             isCentered,
             iconPosition,
             variant,
+            size,
             valueAlignment,
         } = this.props;
         const isReadOnly = !!(!disabled && readOnly);
@@ -145,6 +146,7 @@ export default class InputBase extends Component {
                             iconPosition={iconPosition}
                             readOnly={readOnly}
                             error={error}
+                            size={size}
                         >
                             {icon}
                         </StyledIconContainer>
@@ -180,11 +182,13 @@ export default class InputBase extends Component {
                         icon={icon}
                         error={error}
                         variant={variant}
+                        size={size}
                     />
                     <RenderIf isTrue={isPassword}>
                         <TogglePasswordButton
                             icon={this.getToggleButtonIcon()}
                             onClick={this.handlePasswordToggle}
+                            size={size}
                         />
                     </RenderIf>
                 </RelativeElement>
@@ -250,6 +254,7 @@ InputBase.propTypes = {
     autoComplete: PropTypes.string,
     labelAlignment: PropTypes.oneOf(['left', 'center', 'right']),
     hideLabel: PropTypes.bool,
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
@@ -286,5 +291,6 @@ InputBase.defaultProps = {
     autoComplete: 'on',
     labelAlignment: 'center',
     hideLabel: false,
+    size: 'medium',
     valueAlignment: undefined,
 };

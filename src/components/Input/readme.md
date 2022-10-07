@@ -477,6 +477,42 @@ const inputStyles = {
         />
     </div>
 ```
+
+# Inputs of different sizes
+##### If you need to resize your input, you can do so using the `size` prop.
+
+```js
+import React from 'react';
+import { Input } from 'react-rainbow-components';
+
+const inputStyles = {
+    width: 300,
+};
+
+    <div className="rainbow-align-content_center rainbow-p-vertical_x-large rainbow-flex_wrap">
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input Label"
+            placeholder="Placeholder text"
+            size="small"
+        />
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input Label"
+            placeholder="Placeholder text"
+        />
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input Label"
+            placeholder="Placeholder text"
+            size="large"
+        />
+    </div>
+```
+
 # Input with a set value
 ##### This example shows an input base with a value controlled through a state and an initial value set by default.
 

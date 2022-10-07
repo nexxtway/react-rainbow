@@ -43,6 +43,7 @@ const DatePicker = React.forwardRef((props, ref) => {
         selectionType,
         icon: iconInProps,
         disabledDays,
+        size,
         valueAlignment,
     } = useReduxForm(props);
 
@@ -130,6 +131,7 @@ const DatePicker = React.forwardRef((props, ref) => {
                 readOnly={readOnly}
                 disabled={disabled}
                 tabIndex={tabIndex}
+                size={size}
                 valueAlignment={valueAlignment}
             />
             <DatePickerModal
@@ -219,6 +221,8 @@ DatePicker.propTypes = {
     disabledDays: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     ),
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** Specifies the alignment of the value text. This value defaults to left. */
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
@@ -252,6 +256,7 @@ DatePicker.defaultProps = {
     variant: 'single',
     icon: undefined,
     disabledDays: [],
+    size: 'medium',
     valueAlignment: undefined,
 };
 
