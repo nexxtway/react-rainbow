@@ -9,12 +9,11 @@ export const StyledCountryCode = styled.div`
         `
             line-height: 3.125rem;
         `};
-
     ${props =>
         props.size === 'small' &&
         `
             line-height: 1.6rem;
-        `};
+    `};
 `;
 
 export const StyledFlagIcon = styled.svg`
@@ -27,7 +26,6 @@ export const StyledFlagIcon = styled.svg`
             width: 20px !important;
             height: 20px !important;
         `};
-
     ${props =>
         props.size === 'large' &&
         `
