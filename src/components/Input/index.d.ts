@@ -43,6 +43,9 @@ export interface InputProps extends BaseProps {
     bottomHelpText?: ReactNode;
     required?: boolean;
     pattern?: string;
+    /**
+     * @deprecated use 'valueAlignment' instead
+     */
     isCentered?: boolean;
     isBare?: boolean;
     error?: ReactNode;
@@ -58,6 +61,8 @@ export interface InputProps extends BaseProps {
     id?: string;
     variant?: 'default' | 'shaded' | 'bare';
     autoComplete?: string;
+    size?: 'small' | 'medium' | 'large';
+    valueAlignment?: 'left' | 'center' | 'right';
 }
 
 declare const Input: ComponentType<InputProps>;

@@ -16,6 +16,9 @@ export interface DatePickerProps extends BaseProps {
     required?: boolean;
     name?: string;
     bottomHelpText?: ReactNode;
+    /**
+     * @deprecated use 'valueAlignment' instead
+     */
     isCentered?: boolean;
     error?: ReactNode;
     readOnly?: boolean;
@@ -30,6 +33,8 @@ export interface DatePickerProps extends BaseProps {
     variant?: 'single' | 'double';
     icon?: ReactNode;
     disabledDays?: Array<Date | string>;
+    size?: 'small' | 'medium' | 'large';
+    valueAlignment?: 'left' | 'center' | 'right';
 }
 
 export default function(props: DatePickerProps): JSX.Element | null;

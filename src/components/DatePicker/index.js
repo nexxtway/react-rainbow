@@ -43,6 +43,8 @@ const DatePicker = React.forwardRef((props, ref) => {
         selectionType,
         icon: iconInProps,
         disabledDays,
+        size,
+        valueAlignment,
     } = useReduxForm(props);
 
     const currentLocale = useLocale(locale);
@@ -129,6 +131,8 @@ const DatePicker = React.forwardRef((props, ref) => {
                 readOnly={readOnly}
                 disabled={disabled}
                 tabIndex={tabIndex}
+                size={size}
+                valueAlignment={valueAlignment}
             />
             <DatePickerModal
                 id={modalId}
@@ -183,7 +187,7 @@ DatePicker.propTypes = {
     name: PropTypes.string,
     /** Shows the help message below the DatePicker. */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** Specifies that the DatePicker text will be centered. This value defaults to false. */
+    /** @deprecated Backward compatibility only. Use `valueAlignment` instead. */
     isCentered: PropTypes.bool,
     /** Specifies that the DatePicker must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -217,6 +221,10 @@ DatePicker.propTypes = {
     disabledDays: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     ),
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
+    /** Specifies the alignment of the value text. This value defaults to left. */
+    valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 DatePicker.defaultProps = {
@@ -248,6 +256,8 @@ DatePicker.defaultProps = {
     variant: 'single',
     icon: undefined,
     disabledDays: [],
+    size: 'medium',
+    valueAlignment: undefined,
 };
 
 export default DatePicker;

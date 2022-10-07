@@ -285,23 +285,38 @@ const containerStyles = {
     />;
 ```
 
-##### input centered
+##### input with aligned value
 
 ```js
 import React from 'react';
 import { Input } from 'react-rainbow-components';
 
-const containerStyles = {
-    maxWidth: 700,
+const inputStyles = {
+    width: 300,
 };
 
-    <Input
-        label="Input label"
-        placeholder="center"
-        isCentered
-        style={containerStyles}
-        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-    />;
+    <div className="rainbow-align-content_center rainbow-p-vertical_x-large rainbow-flex_wrap">
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input label"
+            placeholder="left"
+        />
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input label"
+            placeholder="center"
+            valueAlignment="center"
+        />
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input label"
+            placeholder="right"
+            valueAlignment="right"
+        />
+    </div>
 ```
 
 ##### input error
@@ -462,6 +477,42 @@ const inputStyles = {
         />
     </div>
 ```
+
+# Inputs of different sizes
+##### If you need to resize your input, you can do so using the `size` prop.
+
+```js
+import React from 'react';
+import { Input } from 'react-rainbow-components';
+
+const inputStyles = {
+    width: 300,
+};
+
+    <div className="rainbow-align-content_center rainbow-p-vertical_x-large rainbow-flex_wrap">
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input Label"
+            placeholder="Placeholder text"
+            size="small"
+        />
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input Label"
+            placeholder="Placeholder text"
+        />
+        <Input
+            className="rainbow-p-around_medium"
+            style={inputStyles}
+            label="Input Label"
+            placeholder="Placeholder text"
+            size="large"
+        />
+    </div>
+```
+
 # Input with a set value
 ##### This example shows an input base with a value controlled through a state and an initial value set by default.
 

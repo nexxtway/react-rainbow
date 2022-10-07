@@ -46,6 +46,8 @@ const DateTimePicker = React.forwardRef((props, ref) => {
         locale: localeProp,
         icon: iconInProps,
         disabledDays,
+        size,
+        valueAlignment,
     } = props;
 
     const inputRef = useRef();
@@ -131,6 +133,8 @@ const DateTimePicker = React.forwardRef((props, ref) => {
                 disabled={disabled}
                 tabIndex={tabIndex}
                 autoComplete="off"
+                size={size}
+                valueAlignment={valueAlignment}
             />
             <DateTimePickerModal
                 id={modalId}
@@ -181,7 +185,7 @@ DateTimePicker.propTypes = {
     required: PropTypes.bool,
     /** Shows the help message below the DateTimePicker. */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** Specifies that the DateTimePicker text will be centered. This value defaults to false. */
+    /** @deprecated Backward compatibility only. Use `valueAlignment` instead. */
     isCentered: PropTypes.bool,
     /** Specifies that the DateTimePicker must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -220,6 +224,10 @@ DateTimePicker.propTypes = {
     disabledDays: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     ),
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
+    /** Specifies the alignment of the value text. This value defaults to left. */
+    valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 DateTimePicker.defaultProps = {
@@ -252,6 +260,8 @@ DateTimePicker.defaultProps = {
     hour24: false,
     icon: undefined,
     disabledDays: [],
+    size: 'medium',
+    valueAlignment: undefined,
 };
 
 export default withReduxForm(DateTimePicker);

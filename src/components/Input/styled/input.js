@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
+import {
+    FONT_SIZE_TEXT_LARGE,
+    FONT_SIZE_TEXT_MEDIUM,
+    FONT_SIZE_HEADING_MEDIUM,
+} from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const hasLeftIcon = props => props.icon && props.iconPosition === 'left';
@@ -21,6 +25,25 @@ const Input = attachThemeAttrs(styled.input)`
     font-size: ${FONT_SIZE_TEXT_LARGE};
     box-sizing: border-box;
     margin: 0;
+    
+    ${props =>
+        props.size === 'large' &&
+        `
+            padding: 0 1.2rem;
+            line-height: 3.275rem;
+            font-size: ${FONT_SIZE_HEADING_MEDIUM};
+            height: 3.4rem;
+        `};
+
+    ${props =>
+        props.size === 'small' &&
+        `
+            padding: 0 0.8rem;
+            line-height: 1.775rem;
+            font-size: ${FONT_SIZE_TEXT_MEDIUM};
+            height: 1.9rem;
+        `};
+    text-align: ${props => props.valueAlignment};
 
     ::-moz-focus-inner {
         border: 0;
@@ -39,12 +62,34 @@ const Input = attachThemeAttrs(styled.input)`
         border: 2px solid ${props => props.palette.brand.main};
         background-color: ${props => props.palette.background.main};
         box-shadow: ${props => props.shadows.brand};
+        ${props =>
+            props.size === 'large' &&
+            `
+                padding: 0 1.125rem;
+            `};
+    
+        ${props =>
+            props.size === 'small' &&
+            `
+                padding: 0 0.75rem;
+            `};
     }
 
     ::placeholder {
         color: ${props => props.palette.text.header};
         font-weight: 500;
         font-size: ${FONT_SIZE_TEXT_LARGE};
+        ${props =>
+            props.size === 'large' &&
+            `
+                font-size: ${FONT_SIZE_HEADING_MEDIUM};
+            `};
+    
+        ${props =>
+            props.size === 'small' &&
+            `
+                font-size: ${FONT_SIZE_TEXT_MEDIUM};
+            `};
     }
 
     &[disabled] {
@@ -143,7 +188,7 @@ const Input = attachThemeAttrs(styled.input)`
                 border: 0;
             }
         `};
-    ${props => props.isCentered && 'text-align: center;'};
+    
     ${props =>
         hasLeftIcon(props) &&
         `
