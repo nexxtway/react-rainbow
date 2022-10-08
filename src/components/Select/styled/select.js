@@ -2,7 +2,11 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
-import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
+import {
+    FONT_SIZE_TEXT_LARGE,
+    FONT_SIZE_HEADING_MEDIUM,
+    FONT_SIZE_TEXT_MEDIUM,
+} from '../../../styles/fontSizes';
 
 const StyledSelect = attachThemeAttrs(styled.select)`
     font: inherit;
@@ -21,6 +25,24 @@ const StyledSelect = attachThemeAttrs(styled.select)`
     transition: all 0.1s linear;
     box-sizing: border-box;
 
+    ${props =>
+        props.size === 'large' &&
+        `
+            // padding: 0 1.2rem;
+            line-height: 3.275rem;
+            font-size: ${FONT_SIZE_HEADING_MEDIUM};
+            height: 3.4rem;
+        `};
+
+    ${props =>
+        props.size === 'small' &&
+        `
+            // padding: 0 0.8rem;
+            line-height: 1.775rem;
+            font-size: ${FONT_SIZE_TEXT_MEDIUM};
+            height: 1.9rem;
+        `};
+
     &::-ms-expand {
         display: none;
     }
@@ -33,7 +55,17 @@ const StyledSelect = attachThemeAttrs(styled.select)`
         padding-right: 1.7375rem;
         border: 0.125rem ${props => props.palette.brand.main} solid;
         box-shadow: ${props => props.shadows.brand};
-        line-height: 2rem;
+        ${props =>
+            props.size === 'large' &&
+            `
+                // padding: 0 1.125rem;
+            `};
+    
+        ${props =>
+            props.size === 'small' &&
+            `
+                // padding: 0 0.75rem;
+            `};
     }
 
     &[disabled] {
@@ -48,8 +80,8 @@ const StyledSelect = attachThemeAttrs(styled.select)`
             box-shadow: none;
             background-color: ${props => props.palette.action.active};
             border: 0.0626rem ${props => props.palette.border.divider} solid;
-            padding-left: ${PADDING_MEDIUM};
-            padding-right: 1.8rem;
+            // padding-left: ${PADDING_MEDIUM};
+            // padding-right: 1.8rem;
         }
     }
 
