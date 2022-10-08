@@ -5,6 +5,7 @@ import RenderIf from '../../RenderIf';
 import Icon from '../../Option/icon';
 import { StyledItem, StyledCountryCodeItem, StyledCheckmarkIcon } from './styled';
 import { useSimulatedLoading } from './hooks';
+import { StyledFlagIcon } from '../styled';
 
 const CountriesList = memo(props => {
     const { countries, country, itemsRef, handleCountryChange, handleActiveChange } = props;
@@ -28,7 +29,7 @@ const CountriesList = memo(props => {
                 isSelected={isSelected}
             >
                 <div>
-                    <Icon icon={flagIcon} isVisible position="left" />
+                    <Icon icon={<StyledFlagIcon as={flagIcon} />} isVisible position="left" />
                     {name}
                 </div>
                 <div>

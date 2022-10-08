@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
+import {
+    FONT_SIZE_TEXT_LARGE,
+    FONT_SIZE_HEADING_MEDIUM,
+    FONT_SIZE_TEXT_MEDIUM,
+} from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledInputContainer = attachThemeAttrs(styled.div)`
@@ -20,6 +24,24 @@ const StyledInputContainer = attachThemeAttrs(styled.div)`
     margin: 0;
     display: flex;
 
+    ${props =>
+        props.size === 'large' &&
+        `
+            padding: 1px 1.2rem 1px 1px;
+            line-height: 3.275rem;
+            font-size: ${FONT_SIZE_HEADING_MEDIUM};
+            height: 3.4rem;
+        `};
+
+    ${props =>
+        props.size === 'small' &&
+        `
+            padding:1px 0.8rem 1px 1px;
+            line-height: 1.775rem;
+            font-size: ${FONT_SIZE_TEXT_MEDIUM};
+            height: 1.9rem;
+        `};
+
 
     ${props =>
         props.isFocus &&
@@ -29,6 +51,15 @@ const StyledInputContainer = attachThemeAttrs(styled.div)`
         border: 2px solid ${props.palette.brand.main};
         background-color: ${props.palette.background.main};
         box-shadow: ${props.shadows.brand};
+        ${props.size === 'large' &&
+            `
+                padding: 0 1.125rem 0 0;
+            `};
+    
+        ${props.size === 'small' &&
+            `
+                padding: 0 0.75rem 0 0;
+            `};
     `};
 
     ${props =>
@@ -38,6 +69,16 @@ const StyledInputContainer = attachThemeAttrs(styled.div)`
         background-color: ${props.palette.background.main};
         border: 2px solid ${props.palette.error.main};
         background-clip: padding-box;
+
+        ${props.size === 'large' &&
+            `
+                padding: 0 1.125rem 0 0;
+            `};
+    
+        ${props.size === 'small' &&
+            `
+                padding: 0 0.75rem 0 0;
+            `};
 
         ${props.isFocus &&
             `

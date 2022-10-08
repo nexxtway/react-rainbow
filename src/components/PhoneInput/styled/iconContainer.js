@@ -17,6 +17,21 @@ const StyledIconContainer = attachThemeAttrs(styled.span)`
         width: 16px !important;
         height: 16px !important;
         font-size: 16px !important;
+        ${props =>
+            props.size === 'large' &&
+            `
+            width: 20px !important;
+            height: 20px !important;
+            font-size: 20px !important;
+        `};
+    
+        ${props =>
+            props.size === 'small' &&
+            `
+            width: 14px !important;
+            height: 14px !important;
+            font-size: 14px !important;
+        `};
     }
 
     :not(button) {

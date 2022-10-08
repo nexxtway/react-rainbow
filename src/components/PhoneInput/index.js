@@ -17,6 +17,7 @@ import {
     StyledFlagContainer,
     StyledCountryCode,
     StyledIconContainer,
+    StyledFlagIcon,
 } from './styled';
 import {
     useUniqueIdentifier,
@@ -56,6 +57,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
         labelAlignment,
         hideLabel,
         countries: countriesProps,
+        size,
     } = useReduxForm(props);
 
     const containerRef = useRef();
@@ -193,9 +195,12 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 icon={icon}
                 error={error}
                 isFocus={hasFocus}
+                size={size}
             >
                 <RenderIf isTrue={isReadOnly}>
-                    <StyledFlagContainer readOnly>{flagIcon}</StyledFlagContainer>
+                    <StyledFlagContainer readOnly>
+                        <StyledFlagIcon as={flagIcon} size={size} />
+                    </StyledFlagContainer>
                 </RenderIf>
                 <RenderIf isTrue={hasTrigger}>
                     <StyledTrigger
@@ -204,9 +209,10 @@ const PhoneInput = React.forwardRef((props, ref) => {
                         tabIndex={tabIndex}
                         disabled={disabled}
                         type="button"
+                        size={size}
                     >
                         <StyledFlagContainer disabled={disabled}>
-                            {flagIcon}
+                            <StyledFlagIcon as={flagIcon} size={size} />
                             <StyledIndicator error={error} disabled={disabled} />
                         </StyledFlagContainer>
                         <AssistiveText text="select country" />
@@ -214,10 +220,12 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 </RenderIf>
                 <RenderIf isTrue={isOnlyCountry}>
                     <StyledTrigger ref={triggerRef} tabIndex={tabIndex} disabled={disabled}>
-                        <StyledFlagContainer disabled={disabled}>{flagIcon}</StyledFlagContainer>
+                        <StyledFlagContainer disabled={disabled}>
+                            <StyledFlagIcon as={flagIcon} size={size} />
+                        </StyledFlagContainer>
                     </StyledTrigger>
                 </RenderIf>
-                <StyledCountryCode>{formattedCountryCode}</StyledCountryCode>
+                <StyledCountryCode size={size}>{formattedCountryCode}</StyledCountryCode>
                 <StyledInput
                     id={inputId}
                     ref={inputRef}
@@ -236,6 +244,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     iconPosition="right"
                     icon={icon}
                     error={error}
+                    size={size}
                 />
                 <RenderIf isTrue={icon}>
                     <StyledIconContainer error={error}>{icon}</StyledIconContainer>
@@ -323,6 +332,8 @@ PhoneInput.propTypes = {
     id: PropTypes.string,
     /** Specifies the available countries for selection. */
     countries: PropTypes.array,
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 PhoneInput.defaultProps = {
@@ -345,6 +356,7 @@ PhoneInput.defaultProps = {
     onFocus: () => {},
     onBlur: () => {},
     onChange: () => {},
+    size: 'medium',
     value: {
         countryCode: '+1',
         isoCode: 'us',
