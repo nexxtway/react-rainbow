@@ -30,6 +30,7 @@ export { default as ColorPicker } from './components/ColorPicker';
 export { default as ColorInput } from './components/ColorInput';
 export { default as Column } from './components/Column';
 export { default as CounterInput } from './components/CounterInput';
+export { default as CurrencyInput } from './components/CurrencyInput';
 export { default as Dataset } from './components/Dataset';
 export { default as DatePicker } from './components/DatePicker';
 export { default as DatePickerModal } from './components/DatePickerModal';

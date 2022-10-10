@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
+import {
+    FONT_SIZE_TEXT_LARGE,
+    FONT_SIZE_HEADING_MEDIUM,
+    FONT_SIZE_TEXT_MEDIUM,
+} from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledInput = attachThemeAttrs(styled.input)`
@@ -13,6 +17,20 @@ const StyledInput = attachThemeAttrs(styled.input)`
     margin: 0;
     border: 0;
     padding: 0;
+
+    ${props =>
+        props.size === 'large' &&
+        `
+            line-height: 3.275rem;
+            font-size: ${FONT_SIZE_HEADING_MEDIUM};
+        `};
+
+    ${props =>
+        props.size === 'small' &&
+        `
+            line-height: 1.775rem;
+            font-size: ${FONT_SIZE_TEXT_MEDIUM};
+        `};
 
     :focus,
     :active {
@@ -29,6 +47,17 @@ const StyledInput = attachThemeAttrs(styled.input)`
         color: ${props => props.palette.text.header};
         font-weight: 300;
         font-size: ${FONT_SIZE_TEXT_LARGE};
+        ${props =>
+            props.size === 'large' &&
+            `
+                font-size: ${FONT_SIZE_HEADING_MEDIUM};
+            `};
+    
+        ${props =>
+            props.size === 'small' &&
+            `
+                font-size: ${FONT_SIZE_TEXT_MEDIUM};
+            `};
     }
 
     &[readonly] {

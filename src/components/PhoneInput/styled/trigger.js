@@ -38,11 +38,6 @@ const StyledTrigger = attachThemeAttrs(styled.button)`
         `
         color: ${props.palette.text.disabled};
     `}
-
-    > img {
-        width: 24px;
-        height: 24px;
-    }
 `;
 
 export default StyledTrigger;
