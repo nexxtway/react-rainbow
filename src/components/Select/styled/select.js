@@ -28,8 +28,8 @@ const StyledSelect = attachThemeAttrs(styled.select)`
     ${props =>
         props.size === 'large' &&
         `
-            // padding: 0 1.2rem;
-            line-height: 3.275rem;
+            padding-left: 1.2rem;
+            line-height: 3.125rem;
             font-size: ${FONT_SIZE_HEADING_MEDIUM};
             height: 3.4rem;
         `};
@@ -37,8 +37,8 @@ const StyledSelect = attachThemeAttrs(styled.select)`
     ${props =>
         props.size === 'small' &&
         `
-            // padding: 0 0.8rem;
-            line-height: 1.775rem;
+            padding-left: 0.8rem;
+            line-height: 1.6rem;
             font-size: ${FONT_SIZE_TEXT_MEDIUM};
             height: 1.9rem;
         `};
@@ -58,13 +58,13 @@ const StyledSelect = attachThemeAttrs(styled.select)`
         ${props =>
             props.size === 'large' &&
             `
-                // padding: 0 1.125rem;
+                padding-left: 1.125rem;
             `};
     
         ${props =>
             props.size === 'small' &&
             `
-                // padding: 0 0.75rem;
+                padding-left: 0.75rem;
             `};
     }
 
@@ -80,8 +80,19 @@ const StyledSelect = attachThemeAttrs(styled.select)`
             box-shadow: none;
             background-color: ${props => props.palette.action.active};
             border: 0.0626rem ${props => props.palette.border.divider} solid;
-            // padding-left: ${PADDING_MEDIUM};
-            // padding-right: 1.8rem;
+            padding-left: ${PADDING_MEDIUM};
+            padding-right: 1.8rem;
+            ${props =>
+                props.size === 'large' &&
+                `
+                    padding-left: 1.2rem;
+                `};
+        
+            ${props =>
+                props.size === 'small' &&
+                `
+                    padding-left: 0.8rem;
+                `};
         }
     }
 
