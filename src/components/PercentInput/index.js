@@ -8,14 +8,9 @@ import {
     useErrorMessageId,
     useLabelId,
 } from '../../libs/hooks';
-import {
-    clearValue,
-    countCharacters,
-    formatCurrency,
-    isValidStringNumber,
-    normalizeValue,
-} from './helpers';
-import { useDecimalSeparator, useGroupSeparator, useOptions } from './hooks';
+import { clearValue, countCharacters, isValidStringNumber } from '../CurrencyInput/helpers';
+import { useDecimalSeparator, useGroupSeparator } from '../CurrencyInput/hooks';
+import useOptions from './hooks/useOptions';
 import Label from '../Input/label';
 import RenderIf from '../RenderIf';
 import RelativeElement from '../Structural/relativeElement';
@@ -24,8 +19,10 @@ import StyledIconContainer from '../Input/styled/iconContainer';
 import { StyledInput } from '../Input/inputBase/styled';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
+import formatPercent from './helpers/formatPercent';
+import { normalizeValue } from './helpers';
 
-const CurrencyInput = forwardRef((props, ref) => {
+const PercentInput = forwardRef((props, ref) => {
     const {
         value,
         name,
@@ -51,12 +48,11 @@ const CurrencyInput = forwardRef((props, ref) => {
         labelAlignment,
         hideLabel,
         locale: localeProp,
-        currency,
         size,
     } = useReduxForm(props);
 
     const inputRef = useRef();
-    const inputId = useUniqueIdentifier('currency-input');
+    const inputId = useUniqueIdentifier('percent-input');
     const errorMessageId = useErrorMessageId(error);
     const labelId = useLabelId(label);
 
@@ -64,11 +60,11 @@ const CurrencyInput = forwardRef((props, ref) => {
     const [cursor, setCursor] = useState(0);
     const options = useOptions(props);
     const locale = useLocale(localeProp);
-    const decimalSeparator = useDecimalSeparator({ locale, style: 'currency', currency });
-    const groupSeparator = useGroupSeparator({ locale, style: 'currency', currency });
+    const decimalSeparator = useDecimalSeparator({ locale, style: 'percent' });
+    const groupSeparator = useGroupSeparator({ locale, style: 'percent' });
 
     const normalizedValue = normalizeValue({ value, locale, decimalSeparator, options });
-    const currentValue = focused ? normalizedValue : formatCurrency({ value, locale, options });
+    const currentValue = focused ? normalizedValue : formatPercent({ value, locale, options });
 
     const isReadOnly = !!(!disabled && readOnly);
 
@@ -193,7 +189,7 @@ const CurrencyInput = forwardRef((props, ref) => {
     );
 });
 
-CurrencyInput.propTypes = {
+PercentInput.propTypes = {
     /** Specifies the value of an input element. */
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /** The name of the input. */
@@ -246,13 +242,6 @@ CurrencyInput.propTypes = {
     id: PropTypes.string,
     /** The CurrencyInput locale. Defaults to browser's language. */
     locale: PropTypes.string,
-    /** The currency to use in currency formatting. Possible values are the ISO 4217 currency codes. The default is "USD" */
-    currency: PropTypes.string,
-    /** How to display the currency in currency formatting. The default is "symbol". */
-    currencyDisplay: PropTypes.oneOf(['symbol', 'narrowSymbol', 'code', 'name']),
-    /** In many locales, accounting format means to wrap the number with parentheses instead of appending a minus sign.
-     * You can enable this formatting by setting the currencySign option to "accounting". The default value is "standard". */
-    currencySign: PropTypes.oneOf(['standard', 'accounting']),
     /** The minimum number of integer digits to use.
      * A value with a smaller number of integer digits than this number will be left-padded with zeros (to the specified
      *  length) when formatted. Possible values are from 1 to 21; The default is 1. */
@@ -277,7 +266,7 @@ CurrencyInput.propTypes = {
     size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
-CurrencyInput.defaultProps = {
+PercentInput.defaultProps = {
     value: undefined,
     name: undefined,
     placeholder: null,
@@ -302,9 +291,6 @@ CurrencyInput.defaultProps = {
     labelAlignment: 'center',
     hideLabel: false,
     locale: undefined,
-    currency: 'USD',
-    currencyDisplay: undefined,
-    currencySign: undefined,
     minimumIntegerDigits: undefined,
     minimumFractionDigits: undefined,
     maximumFractionDigits: undefined,
@@ -313,4 +299,4 @@ CurrencyInput.defaultProps = {
     size: 'medium',
 };
 
-export default CurrencyInput;
+export default PercentInput;
