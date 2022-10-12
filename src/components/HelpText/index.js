@@ -127,6 +127,7 @@ const HelpText = React.forwardRef((props, ref) => {
                 tabIndex={tabIndex}
                 ariaLabelledby={helpTextId}
                 variant={variant}
+                iconSize={iconSize}
             >
                 <Icon isFocused={isFocused} iconSize={iconSize} />
                 <AssistiveText text={variant} />
