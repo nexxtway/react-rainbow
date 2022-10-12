@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import ButtonIcon from '../../ButtonIcon';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
+import {
+    FONT_SIZE_TEXT_LARGE,
+    FONT_SIZE_HEADING_MEDIUM,
+    FONT_SIZE_TEXT_MEDIUM,
+} from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 export const StyledContainer = styled.div`
@@ -29,6 +33,22 @@ export const StyledInput = attachThemeAttrs(styled.input)`
     font-size: ${FONT_SIZE_TEXT_LARGE};
     box-sizing: border-box;
     margin: 0;
+
+    ${props =>
+        props.size === 'large' &&
+        `
+            line-height: 3.275rem;
+            font-size: ${FONT_SIZE_HEADING_MEDIUM};
+            height: 3.4rem;
+        `};
+
+    ${props =>
+        props.size === 'small' &&
+        `
+            line-height: 1.775rem;
+            font-size: ${FONT_SIZE_TEXT_MEDIUM};
+            height: 1.9rem;
+        `};
     
     ::-moz-focus-inner {
         border: 0;
@@ -55,6 +75,17 @@ export const StyledInput = attachThemeAttrs(styled.input)`
         color: ${props => props.palette.text.header};
         font-weight: 500;
         font-size: ${FONT_SIZE_TEXT_LARGE};
+        ${props =>
+            props.size === 'large' &&
+            `
+                font-size: ${FONT_SIZE_HEADING_MEDIUM};
+            `};
+    
+        ${props =>
+            props.size === 'small' &&
+            `
+                font-size: ${FONT_SIZE_TEXT_MEDIUM};
+            `};
     }
 
     &[disabled] {
