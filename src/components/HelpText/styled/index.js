@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import getIconSize from '../helpers/getIconSize';
 
 export const StyledButton = attachThemeAttrs(styled.button)`
     border: none;
     background: transparent;
-    height: fit-content;
+    height: ${props => getIconSize(props.iconSize)}px;
+    width: ${props => getIconSize(props.iconSize)}px;
+    line-height: 0;
     padding: 0;
     border-radius: 1rem;
 

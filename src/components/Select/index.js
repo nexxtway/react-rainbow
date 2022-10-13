@@ -67,6 +67,7 @@ class Select extends Component {
             hideLabel,
             tabIndex,
             variant,
+            size,
         } = this.props;
 
         return (
@@ -93,6 +94,7 @@ class Select extends Component {
                         disabled={disabled}
                         variant={variant}
                         ref={this.selectRef}
+                        size={size}
                     >
                         <Options options={options} />
                     </StyledSelect>
@@ -157,6 +159,8 @@ Select.propTypes = {
     /** The variant changes the appearance of the Select. Accepted variants include default
      * and shaded. This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'shaded']),
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 Select.defaultProps = {
@@ -179,6 +183,7 @@ Select.defaultProps = {
     hideLabel: false,
     tabIndex: undefined,
     variant: 'default',
+    size: 'medium',
 };
 
 export default withReduxForm(Select);
