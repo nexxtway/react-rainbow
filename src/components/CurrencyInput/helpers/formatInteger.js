@@ -1,14 +1,14 @@
 const TYPE = ['group', 'integer', 'minusSign'];
 
-export default function formatInteger(value, locale, options) {
+export default function formatInteger({ integer, locale, options }) {
     const formatter = new Intl.NumberFormat(locale, {
-        style: 'currency',
         ...options,
+        minimumIntegerDigits: undefined,
     });
-    const parts = formatter.formatToParts(Number(value));
-    return parts.reduce((acc, part) => {
-        if (TYPE.includes(part.type)) {
-            return acc + part.value;
+    const parts = formatter.formatToParts(Number(integer));
+    return parts.reduce((acc, { type, value }) => {
+        if (TYPE.includes(type)) {
+            return acc + value;
         }
         return acc;
     }, '');
