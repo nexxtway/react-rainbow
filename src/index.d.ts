@@ -58,6 +58,7 @@ export { default as Option } from './components/Option';
 export { default as Pagination } from './components/Pagination';
 export { default as Path } from './components/Path';
 export { default as PathStep } from './components/PathStep';
+export { default as PercentInput } from './components/PercentInput';
 export { default as PhoneInput } from './components/PhoneInput';
 export { default as Picklist } from './components/Picklist';
 export { default as PicklistOption } from './components/PicklistOption';

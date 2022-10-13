@@ -25,6 +25,7 @@ export interface SelectProps extends BaseProps {
     hideLabel?: boolean;
     tabIndex?: number | string;
     variant?: 'default' | 'shaded';
+    size?: 'small' | 'medium' | 'large';
 }
 
 declare const Select: React.ComponentType<SelectProps>;

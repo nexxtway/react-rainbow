@@ -2,9 +2,6 @@ import { useMemo } from 'react';
 
 export default function useOptions(props) {
     const {
-        currency,
-        currencyDisplay,
-        currencySign,
         minimumIntegerDigits,
         minimumFractionDigits,
         maximumFractionDigits,
@@ -13,10 +10,7 @@ export default function useOptions(props) {
     } = props;
     return useMemo(
         () => ({
-            style: 'currency',
-            currency,
-            currencyDisplay,
-            currencySign,
+            style: 'percent',
             minimumIntegerDigits,
             minimumFractionDigits,
             maximumFractionDigits,
@@ -24,9 +18,6 @@ export default function useOptions(props) {
             maximumSignificantDigits,
         }),
         [
-            currency,
-            currencyDisplay,
-            currencySign,
             maximumFractionDigits,
             maximumSignificantDigits,
             minimumFractionDigits,
