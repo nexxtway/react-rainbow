@@ -175,7 +175,7 @@ Button.propTypes = {
     id: PropTypes.string,
     /** If it is set to true, then a loading symbol is displayed. */
     isLoading: PropTypes.bool,
-    /** The size of the button. Valid values are small, and large. This value defaults to medium. */
+    /** The size of the button. Valid values are small, medium and large. This value defaults to medium. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 

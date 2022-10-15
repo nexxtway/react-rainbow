@@ -45,6 +45,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
         labelAlignment,
         hideLabel,
         iconPosition,
+        size,
     } = useReduxForm(props);
 
     const inputId = useUniqueIdentifier('input');
@@ -83,6 +84,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
                         iconPosition={iconPosition}
                         readOnly={readOnly}
                         error={error}
+                        size={size}
                     >
                         {icon}
                     </StyledIconContainer>
@@ -112,6 +114,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
                     error={error}
                     status={status}
                     ref={inputRef}
+                    size={size}
                 />
             </RelativeElement>
             <StrengthBar passwordState={passwordState} passwordStateLabels={passwordStateLabels} />
@@ -187,6 +190,8 @@ StrongPasswordInput.propTypes = {
         average: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         strong: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     }),
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 StrongPasswordInput.defaultProps = {
@@ -216,6 +221,7 @@ StrongPasswordInput.defaultProps = {
     hideLabel: false,
     passwordState: undefined,
     passwordStateLabels: undefined,
+    size: 'medium',
 };
 
 export default StrongPasswordInput;
