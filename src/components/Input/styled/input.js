@@ -147,6 +147,15 @@ const Input = attachThemeAttrs(styled.input)`
             box-shadow: ${props.shadows.error};
             padding: 0 1rem;
             outline: 0;
+            ${props.size === 'large' &&
+                `
+                    padding: 0 1.2rem;
+                `};
+        
+            ${props.size === 'small' &&
+                `
+                    padding: 0 0.8rem;
+                `};
         }
 
         &[disabled] {
