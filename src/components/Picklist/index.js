@@ -233,6 +233,7 @@ class Picklist extends Component {
             onSearch,
             debounce,
             emptyComponent,
+            size,
         } = this.props;
         const { label: valueLabel, icon } = getNormalizeValue(valueInProps);
         const value = valueLabel || '';
@@ -299,6 +300,7 @@ class Picklist extends Component {
                         icon={icon}
                         iconPosition="left"
                         variant={variant}
+                        size={size}
                     />
                     <InternalOverlay
                         isVisible={isOpen}
@@ -392,6 +394,8 @@ Picklist.propTypes = {
     debounce: PropTypes.bool,
     /** A component that is displayed when no search matches are found */
     emptyComponent: PropTypes.node,
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 Picklist.defaultProps = {
@@ -420,6 +424,7 @@ Picklist.defaultProps = {
     onSearch: undefined,
     debounce: false,
     emptyComponent: undefined,
+    size: 'medium',
 };
 
 export default withReduxForm(Picklist);
