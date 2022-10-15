@@ -49,6 +49,7 @@ const CounterInput = React.forwardRef((props, ref) => {
         bottomHelpText,
         className,
         style,
+        size,
     } = useReduxForm(props);
 
     const inputRef = useRef(null);
@@ -140,6 +141,7 @@ const CounterInput = React.forwardRef((props, ref) => {
                     variant={variant}
                     step={step}
                     autoComplete="off"
+                    size={size}
                 />
                 <ButtonContainer iconPosition="right" readOnly={readOnly} error={error}>
                     <StyledButton
@@ -217,6 +219,8 @@ CounterInput.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 CounterInput.defaultProps = {
@@ -244,4 +248,5 @@ CounterInput.defaultProps = {
     bottomHelpText: null,
     className: undefined,
     style: undefined,
+    size: 'mediun',
 };
