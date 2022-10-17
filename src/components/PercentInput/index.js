@@ -49,6 +49,7 @@ const PercentInput = forwardRef((props, ref) => {
         hideLabel,
         locale: localeProp,
         size,
+        valueAlignment,
     } = useReduxForm(props);
 
     const inputRef = useRef();
@@ -175,6 +176,7 @@ const PercentInput = forwardRef((props, ref) => {
                     error={error}
                     variant={variant}
                     size={size}
+                    valueAlignment={valueAlignment}
                 />
             </RelativeElement>
             <RenderIf isTrue={bottomHelpText}>
@@ -258,6 +260,8 @@ PercentInput.propTypes = {
     maximumSignificantDigits: PropTypes.number,
     /** The size of the input. Valid values are small, medium, and large. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
+    /** Specifies the alignment of the value text. This value defaults to left. */
+    valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 PercentInput.defaultProps = {
@@ -291,6 +295,7 @@ PercentInput.defaultProps = {
     minimumSignificantDigits: undefined,
     maximumSignificantDigits: undefined,
     size: 'medium',
+    valueAlignment: 'left',
 };
 
 export default PercentInput;

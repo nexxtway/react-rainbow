@@ -53,6 +53,7 @@ const CurrencyInput = forwardRef((props, ref) => {
         locale: localeProp,
         currency,
         size,
+        valueAlignment,
     } = useReduxForm(props);
 
     const inputRef = useRef();
@@ -179,6 +180,7 @@ const CurrencyInput = forwardRef((props, ref) => {
                     error={error}
                     variant={variant}
                     size={size}
+                    valueAlignment={valueAlignment}
                 />
             </RelativeElement>
             <RenderIf isTrue={bottomHelpText}>
@@ -272,6 +274,8 @@ CurrencyInput.propTypes = {
     maximumSignificantDigits: PropTypes.number,
     /** The size of the input. Valid values are small, medium, and large. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
+    /** Specifies the alignment of the value text. This value defaults to left. */
+    valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 CurrencyInput.defaultProps = {
@@ -308,6 +312,7 @@ CurrencyInput.defaultProps = {
     minimumSignificantDigits: undefined,
     maximumSignificantDigits: undefined,
     size: 'medium',
+    valueAlignment: 'left',
 };
 
 export default CurrencyInput;
