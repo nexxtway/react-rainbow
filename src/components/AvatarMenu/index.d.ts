@@ -2,8 +2,8 @@ import { ReactNode, MouseEvent, FocusEvent } from 'react';
 import { BaseProps, AvatarSize, MenuSize, MenuAlignment } from '../types';
 
 export interface AvatarMenuProps extends BaseProps {
-    src?: string;
-    initials?: string;
+    src?: string | null;
+    initials?: string | null;
     icon?: ReactNode;
     avatarSize?: AvatarSize;
     avatarBackgroundColor?: string;
@@ -12,8 +12,8 @@ export interface AvatarMenuProps extends BaseProps {
     menuSize?: MenuSize;
     menuAlignment?: MenuAlignment;
     isLoading?: boolean;
-    title?: string;
-    assistiveText?: string;
+    title?: string | null;
+    assistiveText?: string | null;
     tabIndex?: number | string;
     disabled?: boolean;
     onClick?: (event: MouseEvent<HTMLElement>) => void;
