@@ -30,6 +30,7 @@ export interface PercentInputProps extends BaseProps {
     minimumSignificantDigits?: number;
     maximumSignificantDigits?: number;
     size?: 'small' | 'medium' | 'large';
+    valueAlignment?: 'left' | 'center' | 'right';
 }
 
 export default function(props: PercentInputProps): JSX.Element | null;
