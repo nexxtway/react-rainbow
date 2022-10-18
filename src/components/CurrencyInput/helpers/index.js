@@ -5,3 +5,4 @@ export { default as countCharacters } from './countCharacters';
 export { default as isValidStringNumber } from './isValidStringNumber';
 export { default as normalizeValue } from './normalizeValue';
 export { default as formatInteger } from './formatInteger';
+export { default as isValidCurrencyValue } from './isValidCurrencyValue';

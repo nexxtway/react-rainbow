@@ -1,11 +1,12 @@
+import isValidCurrencyValue from './isValidCurrencyValue';
+
 export default function formatCurrency({ value, locale, options }) {
-    if (value === '-' || value === '' || value === null) {
+    if (value === '-') {
         return value;
     }
-    const number = Number(value);
 
-    if (!Number.isNaN(number)) {
-        return new Intl.NumberFormat(locale, options).format(number);
+    if (isValidCurrencyValue(value)) {
+        return new Intl.NumberFormat(locale, options).format(Number(value));
     }
 
     return '';
