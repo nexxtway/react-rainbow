@@ -11,7 +11,7 @@ const TestCurrencyInput = props => {
     return <CurrencyInput onChange={setValue} value={value} />;
 };
 
-describe('<CounterInput />', () => {
+describe('<CurrencyInput />', () => {
     it('should mount a input with a value of $5.00', () => {
         [5, '5', '5.', '5.00', '5.00003'].forEach(value => {
             render(<CurrencyInput value={value} />);
