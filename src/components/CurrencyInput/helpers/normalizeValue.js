@@ -1,5 +1,5 @@
 import formatInteger from './formatInteger';
-import isValidCurrencyValue from './isValidCurrencyValue';
+import isValidNumberValue from './isValidNumberValue';
 
 export default function normalizeValue({ value, locale, decimalSeparator, options }) {
     const stringValue = String(value);
@@ -7,7 +7,7 @@ export default function normalizeValue({ value, locale, decimalSeparator, option
         return value;
     }
 
-    if (isValidCurrencyValue(value)) {
+    if (isValidNumberValue(value)) {
         const [integer, fraction] = stringValue.split('.');
         const formattedInteger = formatInteger({ integer, locale, options });
 
