@@ -1,11 +1,11 @@
+import isValidCurrencyValue from '../../CurrencyInput/helpers/isValidCurrencyValue';
+
 export default function formatPercent({ value, locale, options }) {
-    if (value === '-' || value === '' || value === null) {
+    if (value === '-') {
         return value;
     }
-    const number = Number(value);
-
-    if (!Number.isNaN(number)) {
-        return new Intl.NumberFormat(locale, options).format(number / 100);
+    if (isValidCurrencyValue(value)) {
+        return new Intl.NumberFormat(locale, options).format(Number(value) / 100);
     }
 
     return '';
