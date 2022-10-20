@@ -5,6 +5,7 @@ import {
     FONT_SIZE_TEXT_MEDIUM,
     FONT_SIZE_HEADING_MEDIUM,
 } from '../../../styles/fontSizes';
+import { BORDER_RADIUS_SQUARE, BORDER_RADIUS_SEMI_ROUNDED } from '../../../styles/borderRadius';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { COLOR_WHITE, COLOR_GRAY_3, COLOR_DARK_1 } from '../../../styles/colors';
 import { lighten } from '../../../styles/helpers/color';
@@ -81,6 +82,18 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             padding: 0 0.8rem;
             line-height: 1.775rem;
             font-size: ${FONT_SIZE_TEXT_MEDIUM};
+        `};
+
+    ${props =>
+        props.borderRadius === 'square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+
+    ${props =>
+        props.borderRadius === 'semi-rounded' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
         `};
 
     &:hover,
