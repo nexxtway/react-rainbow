@@ -40,7 +40,6 @@ Content.propTypes = {
     variant: PropTypes.string,
     isLoading: PropTypes.bool,
     size: PropTypes.string,
-    borderRadius: PropTypes.string,
 };
 
 Content.defaultProps = {
@@ -49,5 +48,4 @@ Content.defaultProps = {
     variant: 'neutral',
     isLoading: false,
     size: 'medium',
-    borderRadius: 'rounded',
 };

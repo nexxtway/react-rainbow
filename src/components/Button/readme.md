@@ -166,7 +166,7 @@ import { Button } from 'react-rainbow-components';
         <Button label="Button Large" variant="brand" className="rainbow-m-around_medium" size='large'/>
     </div>
 ```
-# Buttons of different sizes
+# Buttons of different border-radius
 ##### If you need to change the border radius of your button, you can do so using the `borderRadius` prop.
 
 ```js
