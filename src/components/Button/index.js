@@ -74,6 +74,7 @@ export default class Button extends Component {
             form,
             className,
             size,
+            borderRadius,
         } = this.props;
 
         return (
@@ -102,6 +103,7 @@ export default class Button extends Component {
                 form={form}
                 ref={this.buttonRef}
                 size={size}
+                borderRadius={borderRadius}
             >
                 <Content variant={variant} label={label} isLoading={isLoading} size={size}>
                     {children}
@@ -177,6 +179,8 @@ Button.propTypes = {
     isLoading: PropTypes.bool,
     /** The size of the button. Valid values are small, medium and large. This value defaults to medium. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 Button.defaultProps = {
@@ -204,4 +208,5 @@ Button.defaultProps = {
     ariaExpanded: undefined,
     form: undefined,
     size: 'medium',
+    borderRadius: 'rounded',
 };
