@@ -3,6 +3,7 @@ import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { COLOR_WHITE, COLOR_GRAY_3, COLOR_DARK_1 } from '../../../styles/colors';
 import { lighten, colorToRgba, replaceAlpha } from '../../../styles/helpers/color';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { BORDER_RADIUS_SQUARE, BORDER_RADIUS_SEMI_ROUNDED } from '../../../styles/borderRadius';
 
 const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
     if (props.palette.isDark) {
@@ -396,6 +397,18 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
                 height: 1.5rem !important;
                 font-size: 1rem !important;
             }
+        `};
+
+    ${props =>
+        props.borderRadius === 'square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+    
+    ${props =>
+        props.borderRadius === 'semi-rounded' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
         `};
 `;
 
