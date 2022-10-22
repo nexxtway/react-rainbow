@@ -24,6 +24,7 @@ export interface ButtonProps extends BaseProps {
     id?: string;
     isLoading?: boolean;
     size?: 'small' | 'medium' | 'large';
+    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
 }
 
 declare const Button: ComponentType<ButtonProps>;
