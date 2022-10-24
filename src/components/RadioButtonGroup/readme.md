@@ -71,7 +71,7 @@ class BorderRadiusRadioButtonGroup extends React.Component {
     render() {
         const { value } = this.state;
         return (
-            [
+            <>
             <RadioButtonGroup
                 label="Border Radius Square"
                 id="radio-button-group-component-1"
@@ -79,7 +79,7 @@ class BorderRadiusRadioButtonGroup extends React.Component {
                 value={value}
                 onChange={this.handleOnChange}
                 borderRadius="square"
-            />,
+            />
             <RadioButtonGroup
                 label="Border Radius Semi Rounded"
                 id="radio-button-group-component-1"
@@ -87,7 +87,7 @@ class BorderRadiusRadioButtonGroup extends React.Component {
                 value={value}
                 onChange={this.handleOnChange}
                 borderRadius="semi-rounded"
-            />,
+            />
             <RadioButtonGroup
                 label="Border Radius Rounded"
                 id="radio-button-group-component-1"
@@ -95,12 +95,14 @@ class BorderRadiusRadioButtonGroup extends React.Component {
                 value={value}
                 onChange={this.handleOnChange}
                 borderRadius="rounded"
-            />]
+            />
+            </>
+            
         );
     }
 }
 
-    <div className="rainbow-p-around_x-large rainbow-align-content_center">
+    <div className="rainbow-p-around_x-large rainbow-align-content_center" style={{"flex-direction" : "column", "gap": "20px"}}>
         <BorderRadiusRadioButtonGroup />
     </div>
 ```
