@@ -186,13 +186,7 @@ const ColorInput = props => {
         (value && value.alpha) || value.alpha === 0 ? Math.round(value.alpha * 100) : '';
 
     return (
-        <StyledContainer
-            id={id}
-            className={className}
-            style={style}
-            ref={containerRef}
-            borderRadius={borderRadius}
-        >
+        <StyledContainer id={id} className={className} style={style} ref={containerRef}>
             <Label
                 label={label}
                 labelAlignment={labelAlignment}

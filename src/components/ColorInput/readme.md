@@ -33,9 +33,9 @@ const ColorInputExample = () => {
     const [value, setValue] = useState();
 
     return <div className="rainbow-m-vertical_x-large rainbow-m_auto rainbow-align-content_center rainbow-flex_wrap" style={containerStyles}>
-        <ColorInput label="Favorite color" value={value} onChange={setValue} borderRadius="square" />
-        <ColorInput label="Favorite color" value={value} onChange={setValue} borderRadius="square" />
-        <ColorInput label="Favorite color" value={value} onChange={setValue} borderRadius="square" />
+        <ColorInput label="Border Radius square" value={value} onChange={setValue} borderRadius="square" />
+        <ColorInput label="Border Radius semi-rounded" value={value} onChange={setValue} borderRadius="semi-rounded" />
+        <ColorInput label="Border Radius rounded" value={value} onChange={setValue} borderRadius="rounded" />
     </div>
 }
     <ColorInputExample />

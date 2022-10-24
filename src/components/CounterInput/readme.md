@@ -31,6 +31,67 @@ const CounterBase = () => {
     <CounterBase />
 ```
 
+# CounterInput with different border radius
+##### Use the `borderRadius` prop to change the border radius of the CounterInput.
+
+```js
+import React, { useState } from 'react';
+import { CounterInput } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 220,
+};
+
+const CounterBorderRadius = (  ) => {
+    const [counter, setCounter] = useState();
+    return(
+        <>
+        <CounterInput
+            id="input-component-1"
+            label="Border Radius square"
+            placeholder="Only numbers"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            labelAlignment="center"
+            value={counter}
+            onChange={setCounter}
+            min={10}
+            max={100}
+            borderRadius="square"
+        />
+        <CounterInput
+            id="input-component-1"
+            label="Border Radius square"
+            placeholder="Only numbers"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            labelAlignment="center"
+            value={counter}
+            onChange={setCounter}
+            min={10}
+            max={100}
+            borderRadius="semi-rounded"
+        />
+        <CounterInput
+            id="input-component-1"
+            label="Border Radius square"
+            placeholder="Only numbers"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            labelAlignment="center"
+            value={counter}
+            onChange={setCounter}
+            min={10}
+            max={100}
+            borderRadius="rounded"
+        />
+        </>
+    )
+}
+    <CounterBorderRadius />
+    
+```
+
 # CounterInput shaded variant
 ##### You can modify CounterInput appearance by applying the shaded variant we offer you.
 
