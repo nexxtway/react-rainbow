@@ -72,37 +72,36 @@ class BorderRadiusRadioButtonGroup extends React.Component {
         const { value } = this.state;
         return (
             <>
-            <RadioButtonGroup
-                label="Border Radius Square"
-                id="radio-button-group-component-1"
-                options={options}
-                value={value}
-                onChange={this.handleOnChange}
-                borderRadius="square"
-            />
-            <RadioButtonGroup
-                label="Border Radius Semi Rounded"
-                id="radio-button-group-component-1"
-                options={options}
-                value={value}
-                onChange={this.handleOnChange}
-                borderRadius="semi-rounded"
-            />
-            <RadioButtonGroup
-                label="Border Radius Rounded"
-                id="radio-button-group-component-1"
-                options={options}
-                value={value}
-                onChange={this.handleOnChange}
-                borderRadius="rounded"
-            />
+                <RadioButtonGroup
+                    label="Border Radius Square"
+                    id="radio-button-group-component-1"
+                    options={options}
+                    value={value}
+                    onChange={this.handleOnChange}
+                    borderRadius="square"
+                />
+                <RadioButtonGroup
+                    label="Border Radius Semi Rounded"
+                    id="radio-button-group-component-1"
+                    options={options}
+                    value={value}
+                    onChange={this.handleOnChange}
+                    borderRadius="semi-rounded"
+                />
+                <RadioButtonGroup
+                    label="Border Radius Rounded"
+                    id="radio-button-group-component-1"
+                    options={options}
+                    value={value}
+                    onChange={this.handleOnChange}
+                    borderRadius="rounded"
+                />
             </>
-            
         );
     }
 }
 
-    <div className="rainbow-p-around_x-large rainbow-align-content_center" style={{"flex-direction" : "column", "gap": "20px"}}>
+    <div className="rainbow-p-around_x-large rainbow-align-content_center" style={ { "flex-direction" : "column", "gap": "20px" }}>
         <BorderRadiusRadioButtonGroup />
     </div>
 ```
