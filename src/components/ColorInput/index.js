@@ -67,6 +67,7 @@ const ColorInput = props => {
         bottomHelpText,
         onFocus: focusInProps,
         onBlur: blurInProps,
+        borderRadius,
     } = useReduxForm(props);
     const [isOpen, setIsOpen] = useState(false);
     const [colorValue, setColorValue] = useState(getColorValue(value));
@@ -185,7 +186,13 @@ const ColorInput = props => {
         (value && value.alpha) || value.alpha === 0 ? Math.round(value.alpha * 100) : '';
 
     return (
-        <StyledContainer id={id} className={className} style={style} ref={containerRef}>
+        <StyledContainer
+            id={id}
+            className={className}
+            style={style}
+            ref={containerRef}
+            borderRadius={borderRadius}
+        >
             <Label
                 label={label}
                 labelAlignment={labelAlignment}
@@ -200,6 +207,7 @@ const ColorInput = props => {
                 readOnly={readOnly}
                 error={error}
                 isFocus={isFocus}
+                borderRadius={borderRadius}
             >
                 <StyledTrigger
                     ref={triggerRef}
@@ -352,6 +360,8 @@ ColorInput.propTypes = {
     onBlur: PropTypes.func,
     /** The action triggered when a key is pressed on the element. */
     onKeyDown: PropTypes.func,
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 ColorInput.defaultProps = {
@@ -378,6 +388,7 @@ ColorInput.defaultProps = {
     label: undefined,
     labelAlignment: 'center',
     hideLabel: false,
+    borderRadius: 'rounded',
 };
 
 export default ColorInput;
