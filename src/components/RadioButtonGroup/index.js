@@ -10,6 +10,7 @@ import isOptionChecked from './helpers/isOptionChecked';
 import StyledContainer from './styled/container';
 import StyledLabel from './styled/label';
 import StyledButtonItemsContainer from './styled/buttonItemsContainer';
+import StyledButtonItem from './styled/buttonItem';
 
 /**
  * A button list that can have a single entry checked at any one time.
@@ -115,6 +116,7 @@ class RadioButtonGroup extends Component {
             onChange,
             variant,
             size,
+            borderRadius,
         } = this.props;
         const { options, markerLeft, markerWidth } = this.state;
         const markerStyle = {
@@ -123,7 +125,12 @@ class RadioButtonGroup extends Component {
         };
 
         return (
-            <StyledContainer id={id} className={className} style={style}>
+            <StyledContainer
+                id={id}
+                className={className}
+                style={style}
+                borderRadius={borderRadius}
+            >
                 <RenderIf isTrue={label}>
                     <StyledLabel
                         label={label}
@@ -134,14 +141,18 @@ class RadioButtonGroup extends Component {
                         forwardedAs="legend"
                     />
                 </RenderIf>
-                <StyledButtonItemsContainer variant={variant} size={size}>
+                <StyledButtonItemsContainer
+                    variant={variant}
+                    size={size}
+                    borderRadius={borderRadius}
+                >
                     <Marker
                         variant={variant}
                         isVisible={this.isMarkerActive()}
                         style={markerStyle}
                         size={size}
+                        borderRadius={borderRadius}
                     />
-
                     <ButtonItems
                         value={value}
                         onChange={onChange}
@@ -151,6 +162,7 @@ class RadioButtonGroup extends Component {
                         ariaDescribedby={this.getErrorMessageId()}
                         variant={variant}
                         size={size}
+                        borderRadius={borderRadius}
                     />
                 </StyledButtonItemsContainer>
                 <RenderIf isTrue={error}>
@@ -202,6 +214,8 @@ RadioButtonGroup.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** The border radius of the radio button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 RadioButtonGroup.defaultProps = {
@@ -217,6 +231,7 @@ RadioButtonGroup.defaultProps = {
     required: false,
     options: [],
     size: 'medium',
+    borderRadius: 'rounded',
     error: null,
     id: undefined,
 };

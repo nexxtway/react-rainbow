@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { replaceAlpha } from '../../../styles/helpers/color';
-import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
+import {
+    BORDER_RADIUS_2,
+    BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_ROUNDED,
+} from '../../../styles/borderRadius';
 import { COLOR_GRAY_2 } from '../../../styles/colors';
 
 const sizeMap = { large: '3rem', medium: '2.5rem', small: '1.8rem', 'x-small': '1.3rem' };
@@ -31,6 +35,18 @@ const StyledButtonItemsContainer = attachThemeAttrs(styled.div).attrs(props => {
             border: solid 1px ${props.inverse.border};
             background-color: ${props.inverse.background};
         `};
+
+        ${props =>
+            props.borderRadius === 'square' &&
+            `
+                border-radius: ${BORDER_RADIUS_SQUARE} !important;
+            `};
+        
+        ${props =>
+            props.borderRadius === 'semi-rounded' &&
+            `
+                border-radius: ${BORDER_RADIUS_SEMI_ROUNDED} !important;
+            `};
 `;
 
 export default StyledButtonItemsContainer;

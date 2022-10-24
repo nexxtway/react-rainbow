@@ -1,7 +1,11 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
+import {
+    BORDER_RADIUS_2,
+    BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_ROUNDED,
+} from '../../../styles/borderRadius';
 
 const sizeMap = { large: '3.1rem', medium: '2.6rem', small: '1.81rem', 'x-small': '1.31rem' };
 const StyledMarker = attachThemeAttrs(styled.span)`
@@ -32,6 +36,18 @@ const StyledMarker = attachThemeAttrs(styled.span)`
             background-color: ${props.palette.brand.main};
             border: solid 1px ${props.palette.brand.dark};
         `};
+
+        ${props =>
+            props.borderRadius === 'square' &&
+            `
+                border-radius: ${BORDER_RADIUS_SQUARE} !important;
+            `};
+            
+        ${props =>
+            props.borderRadius === 'semi-rounded' &&
+            `
+                border-radius: ${BORDER_RADIUS_SEMI_ROUNDED} !important;
+            `};
 `;
 
 export default StyledMarker;
