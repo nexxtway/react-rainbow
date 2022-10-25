@@ -16,6 +16,44 @@ const containerStyles = {
         className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
     />;
 ```
+##### input with different border radius
+
+```js
+import React from 'react';
+import { Input } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 700,
+};
+    <>
+        <Input
+            id="input-component-1"
+            label="Border radius square"
+            placeholder="Placeholder text"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            borderRadius="square"
+        />
+
+        <Input
+            id="input-component-1"
+            label="Border radius semi-rounded"
+            placeholder="Placeholder text"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            borderRadius="semi-rounded"
+        />
+
+        <Input
+            id="input-component-1"
+            label="Border radius rounded"
+            placeholder="Placeholder text"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            borderRadius="rounded"
+        />
+    </>
+```
 
 ##### type of the inputs
 
