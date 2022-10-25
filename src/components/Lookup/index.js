@@ -453,6 +453,7 @@ class Lookup extends Component {
             isLoading,
             icon,
             variant,
+            borderRadius,
         } = this.props;
         const { searchValue, focusedItemIndex, options } = this.state;
         const onDeleteValue = disabled || readOnly ? undefined : this.handleRemoveValue;
@@ -541,6 +542,7 @@ class Lookup extends Component {
                             error={errorValue}
                             isLoading={isLoading}
                             variant={variant}
+                            borderRadius={borderRadius}
                         />
                         <InternalOverlay
                             isVisible={isLookupOpen}
