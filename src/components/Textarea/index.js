@@ -110,6 +110,7 @@ class Textarea extends Component {
             header,
             footer,
             variant,
+            borderRadius,
         } = this.props;
         const { isFocused } = this.state;
 
@@ -130,6 +131,7 @@ class Textarea extends Component {
                     disabled={disabled}
                     variant={variant}
                     isFocused={isFocused}
+                    borderRadius={borderRadius}
                 >
                     <RenderIf isTrue={header}>{header}</RenderIf>
                     <StyledTextarea
@@ -222,6 +224,8 @@ Textarea.propTypes = {
     header: PropTypes.node,
     /** It is what will be displayed at the bottom of the component. */
     footer: PropTypes.node,
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 Textarea.defaultProps = {
@@ -251,6 +255,7 @@ Textarea.defaultProps = {
     hideLabel: false,
     header: undefined,
     footer: undefined,
+    borderRadius: 'rounded',
 };
 
 export default withReduxForm(Textarea);

@@ -22,56 +22,6 @@ const initialState = { value: null };
     />;
 ```
 
-##### GoogleAddressLookup with different border radius
-
-```js
-import React from 'react';
-import { GoogleAddressLookup } from 'react-rainbow-components';
-
-const containerStyles = {
-    maxWidth: 700,
-};
-
-const initialState = { value: null };
-
-    <>
-    <GoogleAddressLookup
-        id="gaddresslookup-1"
-        label="GoogleAddressLookup with border radius square"
-        onChange={value => setState({ value })}
-        value={state.value}
-        placeholder="Enter location"
-        apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
-        style={containerStyles}
-        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-        borderRadius="square"
-    />
-    <GoogleAddressLookup
-        id="gaddresslookup-1"
-        label="GoogleAddressLookup with border radius semi-rounded"
-        onChange={value => setState({ value })}
-        value={state.value}
-        placeholder="Enter location"
-        apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
-        style={containerStyles}
-        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-        borderRadius="semi-rounded"
-    />
-    <GoogleAddressLookup
-        id="gaddresslookup-1"
-        label="GoogleAddressLookup with border radius rounded"
-        onChange={value => setState({ value })}
-        value={state.value}
-        placeholder="Enter location"
-        apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
-        style={containerStyles}
-        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-        borderRadius="rounded"
-    />
-    </>;
-    ;
-```
-
 ##### GoogleAddressLookup disabled
 
 ```js
@@ -193,3 +143,55 @@ const initialState = { value: null };
         error="This field is required"
     />;
 ```
+
+
+##### GoogleAddressLookup with different border radius
+
+```js
+import React from 'react';
+import { GoogleAddressLookup } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+const initialState = { value: null };
+
+    <>
+    <GoogleAddressLookup
+        id="gaddresslookup-1"
+        label="GoogleAddressLookup with border radius square"
+        onChange={value => setState({ value })}
+        value={state.value}
+        placeholder="Enter location"
+        apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        borderRadius="square"
+    />
+    <GoogleAddressLookup
+        id="gaddresslookup-1"
+        label="GoogleAddressLookup with border radius semi-rounded"
+        onChange={value => setState({ value })}
+        value={state.value}
+        placeholder="Enter location"
+        apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        borderRadius="semi-rounded"
+    />
+    <GoogleAddressLookup
+        id="gaddresslookup-1"
+        label="GoogleAddressLookup with border radius rounded"
+        onChange={value => setState({ value })}
+        value={state.value}
+        placeholder="Enter location"
+        apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        borderRadius="rounded"
+    />
+    </>;
+    ;
+```
+

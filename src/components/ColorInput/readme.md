@@ -19,29 +19,6 @@ const ColorInputExample = () => {
 
 ```
 
-# ColorInput with different border radius
-##### Use the `borderRadius` prop to change the border radius of the ColorInput.
-```js
-import React, { useState } from 'react';
-import { ColorInput } from 'react-rainbow-components';
-
-const containerStyles = {
-    maxWidth: 250,
-};
-
-const ColorInputExample = () => {
-    const [value, setValue] = useState();
-
-    return <div className="rainbow-m-vertical_x-large rainbow-m_auto rainbow-align-content_center rainbow-flex_wrap" style={containerStyles}>
-        <ColorInput label="Border Radius square" value={value} onChange={setValue} borderRadius="square" />
-        <ColorInput label="Border Radius semi-rounded" value={value} onChange={setValue} borderRadius="semi-rounded" />
-        <ColorInput label="Border Radius rounded" value={value} onChange={setValue} borderRadius="rounded" />
-    </div>
-}
-    <ColorInputExample />
-
-```
-
 # Fixed colors
 ##### Pass a value of `colors-fixed` to enable the fixed colors variant
 ```js
@@ -78,6 +55,29 @@ const ColorInputExample = () => {
 
     return <div className="rainbow-m-vertical_x-large rainbow-m_auto rainbow-align-content_center rainbow-flex_wrap" style={containerStyles}>
         <ColorInput label="Favorite color" value={value} onChange={setValue} error="Your color is too beautiful" required />
+    </div>
+}
+    <ColorInputExample />
+
+```
+
+# ColorInput with different border radius
+##### Use the `borderRadius` prop to change the border radius of the ColorInput.
+```js
+import React, { useState } from 'react';
+import { ColorInput } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 250,
+};
+
+const ColorInputExample = () => {
+    const [value, setValue] = useState();
+
+    return <div className="rainbow-m-vertical_x-large rainbow-m_auto rainbow-align-content_center rainbow-flex_wrap" style={containerStyles}>
+        <ColorInput label="Border Radius square" value={value} onChange={setValue} borderRadius="square" />
+        <ColorInput label="Border Radius semi-rounded" value={value} onChange={setValue} borderRadius="semi-rounded" />
+        <ColorInput label="Border Radius rounded" value={value} onChange={setValue} borderRadius="rounded" />
     </div>
 }
     <ColorInputExample />

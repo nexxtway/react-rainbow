@@ -234,6 +234,7 @@ class Picklist extends Component {
             debounce,
             emptyComponent,
             size,
+            borderRadius,
         } = this.props;
         const { label: valueLabel, icon } = getNormalizeValue(valueInProps);
         const value = valueLabel || '';
@@ -301,6 +302,7 @@ class Picklist extends Component {
                         iconPosition="left"
                         variant={variant}
                         size={size}
+                        borderRadius={borderRadius}
                     />
                     <InternalOverlay
                         isVisible={isOpen}

@@ -183,3 +183,51 @@ const Payment = () => {
 };
     <Payment/>
 ```
+
+##### StripeCardInput with different border radius
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { StripeCardInput } from 'react-rainbow-components';
+
+const Container = styled.div`
+    max-width: 480px;
+    margin: 30px auto;
+    padding: 20px 10px;
+`;
+
+const Payment = () => {
+    const [stripeCard, setStripeCard] = useState();
+
+    return (
+        <Container>
+            <StripeCardInput
+                apiKey={LIBRARY_STRIPE_APIKEY}
+                label="StripeCardInput with border radius square"
+                onChange={setStripeCard}
+                error={(stripeCard && stripeCard.error && stripeCard.error.message)}
+                borderRadius="square"
+                style={{ marginBottom: '20px' }}
+            />
+            <StripeCardInput
+                apiKey={LIBRARY_STRIPE_APIKEY}
+                label="StripeCardInput with border radius semi-rounded"
+                onChange={setStripeCard}
+                error={(stripeCard && stripeCard.error && stripeCard.error.message)}
+                borderRadius="semi-rounded"
+                style={{ marginBottom: '20px' }}
+            />
+            <StripeCardInput
+                apiKey={LIBRARY_STRIPE_APIKEY}
+                label="StripeCardInput with border radius rounded"
+                onChange={setStripeCard}
+                error={(stripeCard && stripeCard.error && stripeCard.error.message)}
+                borderRadius="rounded"
+            />
+        </Container>
+    );
+};
+    <Payment/>
+
+```

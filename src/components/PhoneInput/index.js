@@ -58,6 +58,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
         hideLabel,
         countries: countriesProps,
         size,
+        borderRadius,
     } = useReduxForm(props);
 
     const containerRef = useRef();
@@ -196,6 +197,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 error={error}
                 isFocus={hasFocus}
                 size={size}
+                borderRadius={borderRadius}
             >
                 <RenderIf isTrue={isReadOnly}>
                     <StyledFlagContainer readOnly>
@@ -334,6 +336,8 @@ PhoneInput.propTypes = {
     countries: PropTypes.array,
     /** The size of the input. Valid values are small, medium, and large. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 PhoneInput.defaultProps = {
@@ -357,6 +361,7 @@ PhoneInput.defaultProps = {
     onBlur: () => {},
     onChange: () => {},
     size: 'medium',
+    borderRadius: 'rounded',
     value: {
         countryCode: '+1',
         isoCode: 'us',

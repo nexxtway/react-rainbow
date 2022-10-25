@@ -56,6 +56,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
         children,
         showCheckbox,
         enableSearch,
+        borderRadius,
     } = useReduxForm(props);
 
     const triggerRef = useRef();
@@ -214,6 +215,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                 ref={comboboxRef}
                 aria-labelledby={labelId}
                 variant={variant}
+                borderRadius={borderRadius}
             >
                 <StyledInput
                     id={inputId}
@@ -348,6 +350,8 @@ MultiSelect.propTypes = {
      * @ignore
      */
     children: PropTypes.node,
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 MultiSelect.defaultProps = {
@@ -372,6 +376,7 @@ MultiSelect.defaultProps = {
     onFocus: () => {},
     onBlur: () => {},
     children: null,
+    borderRadius: 'rounded',
 };
 
 export default MultiSelect;

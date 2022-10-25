@@ -605,3 +605,100 @@ const inputStyles = {
         />
     </div>
 ```
+
+##### Lookup with different border radius
+
+```js
+import React from 'react';
+import { Lookup } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+const data = [
+    { label: 'Paris' },
+    { label: 'New York' },
+    { label: 'San Fransisco' },
+    { label: 'Madrid' },
+    { label: 'Miami' },
+    { label: 'London' },
+    { label: 'Tokyo' },
+    { label: 'Barcelona' },
+    { label: 'La Habana' },
+    { label: 'Buenos Aires' },
+    { label: 'Sao Paulo' },
+    { label: 'Toronto' },
+];
+
+function filter(query, options) {
+    if (query) {
+        return options.filter(item => {
+            const regex = new RegExp(query, 'i');
+            return regex.test(item.label);
+        });
+    }
+    return [];
+}
+
+function search(value) {
+    if (state.options && state.value && value.length > state.value.length) {
+        setState({
+            options: filter(value, state.options),
+            value,
+        });
+    } else if (value) {
+        setState({
+            value,
+        });
+        setState({
+            options: filter(value, data),
+            value,
+        });
+    } else {
+        setState({
+            value: '',
+            options: null,
+        });
+    }
+}
+
+<>
+    <Lookup
+        id="lookup-1"
+        label="Border radius square"
+        placeholder="Find"
+        options={state.options}
+        value={state.option}
+        onChange={option => setState({ option })}
+        onSearch={search}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        borderRadius="square"
+    />
+    <Lookup
+        id="lookup-1"
+        label="Border radius semi-rounded"
+        placeholder="Find"
+        options={state.options}
+        value={state.option}
+        onChange={option => setState({ option })}
+        onSearch={search}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        borderRadius="semi-rounded"
+    />
+    <Lookup
+        id="lookup-1"
+        label="Border radius rounded"
+        placeholder="Find"
+        options={state.options}
+        value={state.option}
+        onChange={option => setState({ option })}
+        onSearch={search}
+        style={containerStyles}
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        borderRadius="rounded"
+    />
+</>
+```

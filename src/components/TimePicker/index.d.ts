@@ -29,6 +29,7 @@ export interface TimePickerProps extends BaseProps {
     icon?: ReactNode;
     size?: 'small' | 'medium' | 'large';
     valueAlignment?: 'left' | 'center' | 'right';
+    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
 }
 
 declare const TimePicker: ComponentType<TimePickerProps>;
