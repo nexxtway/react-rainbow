@@ -40,6 +40,77 @@ const containerStyles = {
     </div>
 ```
 
+# DatePicker with with different border radius
+##### Use the `borderRadius` prop to change the border radius of the ColorInput.
+
+```js
+import React from 'react';
+import { Picklist, PicklistOption, DatePicker } from 'react-rainbow-components';
+
+const initialState = {
+    date: new Date('2019-10-25 10:44'),
+    locale: { name: 'en-US', label: 'English (US)' },
+};
+
+const containerStyles = {
+    maxWidth: 400,
+};
+
+    <div>
+        <GlobalHeader src="images/user/user2.jpg">
+            <div className="rainbow-flex rainbow-align_right">
+                <Picklist value={state.locale} onChange={value => setState({ locale: value })}>
+                    <PicklistOption name="en-US" label="English (US)" />
+                    <PicklistOption name="es-ES" label="Spanish (Spain)" />
+                    <PicklistOption name="fr-Fr" label="French" />
+                </Picklist>
+            </div>
+        </GlobalHeader>
+        <div
+            className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+            style={containerStyles}
+        >
+            <DatePicker
+                id="datePicker-1"
+                value={state.date}
+                onChange={value => setState({ date: value })}
+                label="DatePicker Border Radius Square"
+                formatStyle="large"
+                locale={state.locale.name}
+                borderRadius="square"
+            />
+        </div>
+        <div
+            className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+            style={containerStyles}
+        >
+            <DatePicker
+                id="datePicker-1"
+                value={state.date}
+                onChange={value => setState({ date: value })}
+                label="DatePicker Border Radius Semi-Rounded"
+                formatStyle="large"
+                locale={state.locale.name}
+                borderRadius="semi-rounded"
+            />
+        </div>
+        <div
+            className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+            style={containerStyles}
+        >
+            <DatePicker
+                id="datePicker-1"
+                value={state.date}
+                onChange={value => setState({ date: value })}
+                label="DatePicker Border Radius Rounded"
+                formatStyle="large"
+                locale={state.locale.name}
+                borderRadius="rounded"
+            />
+        </div>
+    </div>
+```
+
 # DatePicker with date constraints
 ##### Use `minDate` and `maxDate` to limit the available dates.
 
