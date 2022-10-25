@@ -40,8 +40,8 @@ const containerStyles = {
     </div>
 ```
 
-# DatePicker with with different border radius
-##### Use the `borderRadius` prop to change the border radius of the ColorInput.
+# DatePicker with different border radius
+##### Use the `borderRadius` prop to change the border radius of the DatePicker.
 
 ```js
 import React from 'react';
