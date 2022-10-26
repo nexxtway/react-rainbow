@@ -341,7 +341,7 @@ import { ButtonGroup, Button } from 'react-rainbow-components';
 
 ```js
 import React from 'react';
-import { ButtonGroup, Button, ButtonMenu, MenuItem, Card } from 'react-rainbow-components';
+import { ButtonGroup, Button } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const HeadingContent = styled.div`
@@ -360,25 +360,6 @@ const SubTitle = styled.span.attrs(props => {
 const Container = styled.div`
     max-width: 780px;
     margin: auto;
-`;
-
-const Content = styled.div`
-    @media (max-width: 767px) {
-        flex-direction: column;
-    }
-`;
-
-const SocialContentName = styled.span.attrs(props => {
-   return props.theme.rainbow.palette;
-})`
-    color: ${props => props.text.header};  
-`;
-
-const SocialContentCount = styled.h2.attrs(props => {
-   return props.theme.rainbow.palette;
-})`
-    font-size: 28px;
-    color: ${props => props.text.main};  
 `;
 
     <Container>
@@ -412,6 +393,4 @@ const SocialContentCount = styled.h2.attrs(props => {
             </ButtonGroup>
         </HeadingContent>
     </Container>
-
-   
 ```
