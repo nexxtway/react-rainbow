@@ -336,3 +336,82 @@ import { ButtonGroup, Button } from 'react-rainbow-components';
         </ButtonGroup>
     </div>
 ```
+
+##### button group with different border radius
+
+```js
+import React from 'react';
+import { ButtonGroup, Button, ButtonMenu, MenuItem, Card } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const HeadingContent = styled.div`
+    @media (max-width: 991px) {
+        flex-direction: column;
+        :nth-child(1) { text-align: center; }
+    }
+`;
+
+const SubTitle = styled.span.attrs(props => {
+   return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.header};
+`;
+
+const Container = styled.div`
+    max-width: 780px;
+    margin: auto;
+`;
+
+const Content = styled.div`
+    @media (max-width: 767px) {
+        flex-direction: column;
+    }
+`;
+
+const SocialContentName = styled.span.attrs(props => {
+   return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.header};  
+`;
+
+const SocialContentCount = styled.h2.attrs(props => {
+   return props.theme.rainbow.palette;
+})`
+    font-size: 28px;
+    color: ${props => props.text.main};  
+`;
+
+    <Container>
+        <HeadingContent className="rainbow-p-top_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
+            <div className="rainbow-m-bottom_medium">
+                <SubTitle>Button group with border radius square.</SubTitle>
+            </div>
+            <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="square">
+                <Button label="New" variant="neutral" />
+                <Button label="Edit" variant="neutral" />
+                <Button label="Remove" variant="neutral" />
+            </ButtonGroup>
+
+            <div className="rainbow-m-bottom_medium">
+                <SubTitle>Button group with border radius semi-rounded.</SubTitle>
+            </div>
+
+            <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="semi-rounded">
+                <Button label="New" variant="neutral" />
+                <Button label="Edit" variant="neutral" />
+                <Button label="Remove" variant="neutral" />
+            </ButtonGroup>
+            <div className="rainbow-m-bottom_medium">
+                <SubTitle>Button group with border radius rounded.</SubTitle>
+            </div>
+
+            <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="rounded">
+                <Button label="New" variant="neutral" />
+                <Button label="Edit" variant="neutral" />
+                <Button label="Remove" variant="neutral" />
+            </ButtonGroup>
+        </HeadingContent>
+    </Container>
+
+   
+```
