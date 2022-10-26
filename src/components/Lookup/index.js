@@ -665,6 +665,8 @@ Lookup.propTypes = {
     /** The variant changes the appearance of the Input. Accepted variants include default,
      * shaded and bare. This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 Lookup.defaultProps = {
@@ -694,6 +696,7 @@ Lookup.defaultProps = {
     debounce: false,
     preferredSelectedOption: 0,
     variant: 'default',
+    borderRadius: 'rounded',
 };
 
 export default withReduxForm(Lookup);

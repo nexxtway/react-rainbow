@@ -269,42 +269,42 @@ function ControlledStrongPasswordInput() {
 
     return (
         <>
-        <StrongPasswordInput
-            id="strong-password-input-1"
-            label="Password with border radius square"
-            placeholder="Placeholder text"
-            bottomHelpText="Your password must be at least 8 characters long."
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-            style={containerStyles}
-            value={value}
-            passwordState={passwordState}
-            onChange={handleOnChange}
-            borderRadius="square"
-        />
-        <StrongPasswordInput
-            id="strong-password-input-1"
-            label="Password with border radius semi-rounded"
-            placeholder="Placeholder text"
-            bottomHelpText="Your password must be at least 8 characters long."
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-            style={containerStyles}
-            value={value}
-            passwordState={passwordState}
-            onChange={handleOnChange}
-            borderRadius="semi-rounded"
-        />
-        <StrongPasswordInput
-            id="strong-password-input-1"
-            label="Password with border radius rounded"
-            placeholder="Placeholder text"
-            bottomHelpText="Your password must be at least 8 characters long."
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-            style={containerStyles}
-            value={value}
-            passwordState={passwordState}
-            onChange={handleOnChange}
-            borderRadius="rounded"
-        />
+            <StrongPasswordInput
+                id="strong-password-input-1"
+                label="Password with border radius square"
+                placeholder="Placeholder text"
+                bottomHelpText="Your password must be at least 8 characters long."
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                style={containerStyles}
+                value={value}
+                passwordState={passwordState}
+                onChange={handleOnChange}
+                borderRadius="square"
+            />
+            <StrongPasswordInput
+                id="strong-password-input-1"
+                label="Password with border radius semi-rounded"
+                placeholder="Placeholder text"
+                bottomHelpText="Your password must be at least 8 characters long."
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                style={containerStyles}
+                value={value}
+                passwordState={passwordState}
+                onChange={handleOnChange}
+                borderRadius="semi-rounded"
+            />
+            <StrongPasswordInput
+                id="strong-password-input-1"
+                label="Password with border radius rounded"
+                placeholder="Placeholder text"
+                bottomHelpText="Your password must be at least 8 characters long."
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                style={containerStyles}
+                value={value}
+                passwordState={passwordState}
+                onChange={handleOnChange}
+                borderRadius="rounded"
+            />
         </>
     )
 }

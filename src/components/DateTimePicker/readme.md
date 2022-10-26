@@ -363,7 +363,7 @@ const cancelButtonLocalizedLabel = {
                 okLabel={okButtonLocalizedLabel[state.locale.name]}
                 cancelLabel={cancelButtonLocalizedLabel[state.locale.name]}
                 borderRadius="semi-rounded"
-            />  
+            />
         </div>
         <div
             className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
@@ -379,7 +379,7 @@ const cancelButtonLocalizedLabel = {
                 okLabel={okButtonLocalizedLabel[state.locale.name]}
                 cancelLabel={cancelButtonLocalizedLabel[state.locale.name]}
                 borderRadius="rounded"
-            />  
+            />
         </div>
     </div>;
 ```

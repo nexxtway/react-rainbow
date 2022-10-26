@@ -112,29 +112,29 @@ const Form = () => {
 
     return (
         <>
-        <PhoneInput
-            label="Phone Number with border radius square"
-            placeholder="Enter your phone number"
-            onChange={setPhone}
-            value={phone}
-            borderRadius="square"
-        />
-        <PhoneInput
-            label="Phone Number with border radius semi-rounded"
-            placeholder="Enter your phone number"
-            onChange={setPhone}
-            value={phone}
-            borderRadius="semi-rounded"
-            style={{ marginTop: '20px' }}
-        />
-        <PhoneInput
-            label="Phone Number with border radius rounded"
-            placeholder="Enter your phone number"
-            onChange={setPhone}
-            value={phone}
-            borderRadius="rounded"
-            style={{ marginTop: '20px' }}
-        />
+            <PhoneInput
+                label="Phone Number with border radius square"
+                placeholder="Enter your phone number"
+                onChange={setPhone}
+                value={phone}
+                borderRadius="square"
+            />
+            <PhoneInput
+                label="Phone Number with border radius semi-rounded"
+                placeholder="Enter your phone number"
+                onChange={setPhone}
+                value={phone}
+                borderRadius="semi-rounded"
+                style={{ marginTop: '20px' }}
+            />
+            <PhoneInput
+                label="Phone Number with border radius rounded"
+                placeholder="Enter your phone number"
+                onChange={setPhone}
+                value={phone}
+                borderRadius="rounded"
+                style={{ marginTop: '20px' }}
+            />
         </>
     );
 };

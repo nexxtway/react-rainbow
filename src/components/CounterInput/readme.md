@@ -151,48 +151,47 @@ const CounterBorderRadius = (  ) => {
     const [counter, setCounter] = useState();
     return(
         <>
-        <CounterInput
-            id="input-component-1"
-            label="Border Radius square"
-            placeholder="Only numbers"
-            style={containerStyles}
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-            labelAlignment="center"
-            value={counter}
-            onChange={setCounter}
-            min={10}
-            max={100}
-            borderRadius="square"
-        />
-        <CounterInput
-            id="input-component-1"
-            label="Border Radius square"
-            placeholder="Only numbers"
-            style={containerStyles}
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-            labelAlignment="center"
-            value={counter}
-            onChange={setCounter}
-            min={10}
-            max={100}
-            borderRadius="semi-rounded"
-        />
-        <CounterInput
-            id="input-component-1"
-            label="Border Radius square"
-            placeholder="Only numbers"
-            style={containerStyles}
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-            labelAlignment="center"
-            value={counter}
-            onChange={setCounter}
-            min={10}
-            max={100}
-            borderRadius="rounded"
-        />
+            <CounterInput
+                id="input-component-1"
+                label="Border Radius square"
+                placeholder="Only numbers"
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                labelAlignment="center"
+                value={counter}
+                onChange={setCounter}
+                min={10}
+                max={100}
+                borderRadius="square"
+            />
+            <CounterInput
+                id="input-component-1"
+                label="Border Radius semi-rounded"
+                placeholder="Only numbers"
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                labelAlignment="center"
+                value={counter}
+                onChange={setCounter}
+                min={10}
+                max={100}
+                borderRadius="semi-rounded"
+            />
+            <CounterInput
+                id="input-component-1"
+                label="Border Radius rounded"
+                placeholder="Only numbers"
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                labelAlignment="center"
+                value={counter}
+                onChange={setCounter}
+                min={10}
+                max={100}
+                borderRadius="rounded"
+            />
         </>
     )
 }
     <CounterBorderRadius />
-    
 ```

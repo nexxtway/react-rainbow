@@ -8,13 +8,11 @@ export const StyledContainer = styled.div`
 
 export const StyledInput = styled(Input)`
     text-transform: capitalize;
-
     ${props =>
         props.borderRadius === 'square' &&
         `
             border-radius: ${BORDER_RADIUS_SQUARE};
         `};
-
     ${props =>
         props.borderRadius === 'semi-rounded' &&
         `
