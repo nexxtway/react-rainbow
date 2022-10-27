@@ -239,12 +239,6 @@ const SocialContentCount = styled.h2.attrs(props => {
     color: ${props => props.text.main};  
 `;
 
-const StyledButtonMenuIcon = styled(FontAwesomeIcon).attrs(props => {
-    return props.theme.rainbow.palette;
-})`
-    color: ${props => props.brand.main};
-`;
-
 const styles = {
     socialCard: { marginLeft: 0, marginRight: 0 },
     facebookIcon: { color: "#3C5997" } ,
