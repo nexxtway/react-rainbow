@@ -21,7 +21,6 @@ const StyledContainer = styled.fieldset`
     display: flex;
     flex-direction: column;
     align-items: center;
-
     ${props =>
         props.borderRadius === 'square' &&
         `
@@ -33,7 +32,6 @@ const StyledContainer = styled.fieldset`
                 border-radius: 0 ${BORDER_RADIUS_SQUARE} ${BORDER_RADIUS_SQUARE} 0 !important;
             };
         `};
-
     ${props =>
         props.borderRadius === 'semi-rounded' &&
         `
