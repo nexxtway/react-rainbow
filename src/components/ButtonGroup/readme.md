@@ -286,7 +286,7 @@ const socials = [
                 <ButtonMenu
                     menuAlignment="right"
                     menuSize="x-small"
-                    icon={<StyledButtonMenuIcon icon={faAngleDown} border={false} />}
+                    icon={ <FontAwesomeIcon icon={faAngleDown} className="rainbow-m-right_small rainbow-color_brand" /> }
                 >
                     <MenuItem label="Settings" />
                     <MenuItem label="Utilities" />
