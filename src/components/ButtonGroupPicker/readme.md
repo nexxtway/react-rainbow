@@ -205,3 +205,77 @@ const ButtonGroupPickerTry = () => {
     <ButtonGroupPickerTry />;
 
 ```
+
+##### ButtonGroupPicker with different border radius
+
+```js
+import React from 'react';
+import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
+
+class ButtonGroupPickerTry extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { value: '' };
+        this.handleOnChange = this.handleOnChange.bind(this);
+    }
+
+    handleOnChange(value) {
+        this.setState({ value });
+    }
+
+    render() {
+        const { value } = this.state;
+        return (
+            <div className="rainbow-m-bottom_medium">
+                <ButtonGroupPicker
+                    id="button-group-picker-component-1"
+                    label="Button Group Picker with border radius square"
+                    value={value}
+                    onChange={this.handleOnChange}
+                    name="filter"
+                    size="medium"
+                    bottomHelpText="Select one option"
+                    className="rainbow-m-around_medium"
+                    borderRadius="square"
+                >
+                    <ButtonOption label="Month" name="month" />
+                    <ButtonOption label="Week" name="week" />
+                    <ButtonOption label="Day" name="day" />
+                </ButtonGroupPicker>
+                <ButtonGroupPicker
+                    id="button-group-picker-component-1"
+                    label="Select view type"
+                    value={value}
+                    onChange={this.handleOnChange}
+                    name="filter"
+                    size="medium"
+                    bottomHelpText="Select one option"
+                    className="rainbow-m-around_medium"
+                    borderRadius="semi-rounded"
+                >
+                    <ButtonOption label="Month" name="month" />
+                    <ButtonOption label="Week" name="week" />
+                    <ButtonOption label="Day" name="day" />
+                </ButtonGroupPicker>
+                <ButtonGroupPicker
+                    id="button-group-picker-component-1"
+                    label="Select view type"
+                    value={value}
+                    onChange={this.handleOnChange}
+                    name="filter"
+                    size="medium"
+                    bottomHelpText="Select one option"
+                    borderRadius="rounded"
+                >
+                    <ButtonOption label="Month" name="month" />
+                    <ButtonOption label="Week" name="week" />
+                    <ButtonOption label="Day" name="day" />
+                </ButtonGroupPicker>
+            </div>
+        );
+    }
+}
+
+    <ButtonGroupPickerTry />;
+
+```
