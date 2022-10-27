@@ -215,23 +215,33 @@ import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
 class ButtonGroupPickerTry extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { value: '' };
-        this.handleOnChange = this.handleOnChange.bind(this);
+        this.state = { value1: '', value2: '', value3: '' };
+        this.handleOnChange1 = this.handleOnChange1.bind(this);
+        this.handleOnChange2 = this.handleOnChange2.bind(this);
+        this.handleOnChange3 = this.handleOnChange3.bind(this);
     }
 
-    handleOnChange(value) {
-        this.setState({ value });
+    handleOnChange1(value1) {
+        this.setState({ value1 });
+    }
+
+    handleOnChange2(value2) {
+        this.setState({ value2 });
+    }
+
+    handleOnChange3(value3) {
+        this.setState({ value3 });
     }
 
     render() {
-        const { value } = this.state;
+        const { value1, value2, value3 } = this.state;
         return (
             <div className="rainbow-m-bottom_medium">
                 <ButtonGroupPicker
                     id="button-group-picker-component-1"
                     label="Button Group Picker with border radius square"
-                    value={value}
-                    onChange={this.handleOnChange}
+                    value={value1}
+                    onChange={this.handleOnChange1}
                     name="filter"
                     size="medium"
                     bottomHelpText="Select one option"
@@ -242,11 +252,12 @@ class ButtonGroupPickerTry extends React.Component {
                     <ButtonOption label="Week" name="week" />
                     <ButtonOption label="Day" name="day" />
                 </ButtonGroupPicker>
+
                 <ButtonGroupPicker
                     id="button-group-picker-component-1"
                     label="Select view type"
-                    value={value}
-                    onChange={this.handleOnChange}
+                    value={value2}
+                    onChange={this.handleOnChange2}
                     name="filter"
                     size="medium"
                     bottomHelpText="Select one option"
@@ -257,16 +268,18 @@ class ButtonGroupPickerTry extends React.Component {
                     <ButtonOption label="Week" name="week" />
                     <ButtonOption label="Day" name="day" />
                 </ButtonGroupPicker>
+
                 <ButtonGroupPicker
                     id="button-group-picker-component-1"
                     label="Select view type"
-                    value={value}
-                    onChange={this.handleOnChange}
+                    value={value3}
+                    onChange={this.handleOnChange3}
                     name="filter"
                     size="medium"
                     bottomHelpText="Select one option"
                     borderRadius="rounded"
                 >
+
                     <ButtonOption label="Month" name="month" />
                     <ButtonOption label="Week" name="week" />
                     <ButtonOption label="Day" name="day" />
