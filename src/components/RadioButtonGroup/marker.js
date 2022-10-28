@@ -5,7 +5,7 @@ import StyledMarkerContainer from './styled/markerContainer';
 import StyledMarker from './styled/marker';
 
 export default function Marker(props) {
-    const { style, isVisible, variant, size } = props;
+    const { style, isVisible, variant, size, borderRadius } = props;
     const markerStyle = {
         ...style,
         opacity: isVisible ? 1 : 0,
@@ -14,7 +14,12 @@ export default function Marker(props) {
     return (
         <RenderIf isTrue={isVisible}>
             <StyledMarkerContainer size={size}>
-                <StyledMarker variant={variant} size={size} style={markerStyle} />
+                <StyledMarker
+                    variant={variant}
+                    size={size}
+                    style={markerStyle}
+                    borderRadius={borderRadius}
+                />
             </StyledMarkerContainer>
         </RenderIf>
     );
@@ -25,6 +30,7 @@ Marker.propTypes = {
     isVisible: PropTypes.any,
     variant: PropTypes.oneOf(['default', 'inverse', 'brand']),
     size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 Marker.defaultProps = {
@@ -32,4 +38,5 @@ Marker.defaultProps = {
     isVisible: false,
     variant: 'default',
     size: 'medium',
+    borderRadius: 'rounded',
 };
