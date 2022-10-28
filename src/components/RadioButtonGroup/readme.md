@@ -42,70 +42,6 @@ class SimpleRadioButtonGroup extends React.Component {
     </div>
 ```
 
-##### RadioButtonGroup brand with Border Radius
-
-```js
-import React from 'react';
-import { RadioButtonGroup } from 'react-rainbow-components';
-
-const options = [
-    { value: 'off', label: 'Off' },
-    { value: 'parking', label: 'Parking' },
-    { value: 'auto', label: 'Auto' },
-    { value: 'on', label: 'On' },
-];
-
-class BorderRadiusRadioButtonGroup extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: 'auto',
-        };
-        this.handleOnChange = this.handleOnChange.bind(this);
-    }
-
-    handleOnChange(event) {
-        return this.setState({ value: event.target.value });
-    }
-
-    render() {
-        const { value } = this.state;
-        return (
-            <>
-                <RadioButtonGroup
-                    label="Border Radius Square"
-                    id="radio-button-group-component-1"
-                    options={options}
-                    value={value}
-                    onChange={this.handleOnChange}
-                    borderRadius="square"
-                />
-                <RadioButtonGroup
-                    label="Border Radius Semi Rounded"
-                    id="radio-button-group-component-1"
-                    options={options}
-                    value={value}
-                    onChange={this.handleOnChange}
-                    borderRadius="semi-rounded"
-                />
-                <RadioButtonGroup
-                    label="Border Radius Rounded"
-                    id="radio-button-group-component-1"
-                    options={options}
-                    value={value}
-                    onChange={this.handleOnChange}
-                    borderRadius="rounded"
-                />
-            </>
-        );
-    }
-}
-
-    <div className="rainbow-p-around_x-large rainbow-align-content_center" style={ { "flex-direction" : "column", "gap": "20px" }}>
-        <BorderRadiusRadioButtonGroup />
-    </div>
-```
-
 ##### RadioButtonGroup small
 
 ```js
@@ -335,7 +271,7 @@ class RequiredRadioButtonGroup extends React.Component {
 ##### RadioButtonGroup error
 
 ```js
-import React from 'react';
+import React , { useState } from 'react';
 import { RadioButtonGroup } from 'react-rainbow-components';
 
 const options = [
@@ -345,36 +281,23 @@ const options = [
     { value: 'on', label: 'On' },
 ];
 
-class ErrorRadioButtonGroup extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: 'anonymous',
-        };
-        this.handleOnChange = this.handleOnChange.bind(this);
-    }
-
-    handleOnChange(event) {
-        return this.setState({ value: event.target.value });
-    }
-
-    render() {
-        const { value } = this.state;
+    const ErrorRadioButtonGroup = () => {
+        const [value, setValue] = useState('anonymous');
+        const handleOnChange = event => setValue(event.target.value);
         return (
             <RadioButtonGroup
                 options={options}
                 value={value}
-                onChange={this.handleOnChange}
+                onChange={handleOnChange}
                 label="RadioButtonGroup Label"
                 error="This field is required"
             />
         );
     }
-}
 
-    <div className="rainbow-p-around_x-large rainbow-align-content_center">
-        <ErrorRadioButtonGroup />
-    </div>
+        <div className="rainbow-p-around_x-large rainbow-align-content_center">
+            <ErrorRadioButtonGroup />
+        </div>
 ```
 
 
@@ -562,4 +485,70 @@ const Contacts = ({ data: contacts }) => {
         <Title className="rainbow-m-top_large">Contributors</Title>
         <Contacts data={data} />
     </div>
+```
+
+
+##### RadioButtonGroup with different Border Radius
+
+```js
+
+    import React, { useState } from 'react';
+    import { RadioButtonGroup } from 'react-rainbow-components';
+
+    const options = [
+        { value: 'off', label: 'Off' },
+        { value: 'parking', label: 'Parking' },
+        { value: 'auto', label: 'Auto' },
+        { value: 'on', label: 'On' },
+    ];
+
+    const BorderRadiusRadioButtonGroup = () => {
+        const [value1, setValue1] = useState('auto');
+        const [value2, setValue2] = useState('auto');
+        const [value3, setValue3] = useState('auto');
+
+        const handleOnChange1 = event => {
+            setValue1(event.target.value);
+        }
+        const handleOnChange2 = event => {
+            setValue2(event.target.value);
+        }
+        const handleOnChange3 = event => {
+            setValue3(event.target.value);
+        }
+
+        return (
+            <>
+                <RadioButtonGroup
+                    label="Border Radius Square"
+                    id="radio-button-group-component-1"
+                    options={options}
+                    value={value1}
+                    onChange={handleOnChange1}
+                    borderRadius="square"
+                />
+                <RadioButtonGroup
+                    label="Border Radius Semi Rounded"
+                    id="radio-button-group-component-1"
+                    options={options}
+                    value={value2}
+                    onChange={handleOnChange2}
+                    borderRadius="semi-rounded"
+                />
+                <RadioButtonGroup
+                    label="Border Radius Rounded"
+                    id="radio-button-group-component-1"
+                    options={options}
+                    value={value3}
+                    onChange={handleOnChange3}
+                    borderRadius="rounded"
+                />
+            </>
+        );
+    }
+
+        <div className="rainbow-p-around_x-large rainbow-align-content_center" style={ { "flex-direction" : "column", "gap": "20px" }}>
+            <BorderRadiusRadioButtonGroup />
+        </div>
+
 ```
