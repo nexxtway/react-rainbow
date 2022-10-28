@@ -1,29 +1,19 @@
 ##### ButtonGroupPicker base
 
 ```js
-import React from 'react';
-import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
+    import React from 'react';
+    import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
 
-class ButtonGroupPickerTry extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { value: '' };
-        this.handleOnChange = this.handleOnChange.bind(this);
-    }
+    const ButtonGroupPickerTry = () => {
+        const [value, setValue] = React.useState('');
 
-    handleOnChange(value) {
-        this.setState({ value });
-    }
-
-    render() {
-        const { value } = this.state;
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
                 <ButtonGroupPicker
                     id="button-group-picker-component-1"
                     label="Select view type"
                     value={value}
-                    onChange={this.handleOnChange}
+                    onChange={setValue}
                     name="filter"
                     size="medium"
                     bottomHelpText="Select one option"
@@ -34,44 +24,33 @@ class ButtonGroupPickerTry extends React.Component {
                 </ButtonGroupPicker>
             </div>
         );
-    }
-}
+    };
 
-    <ButtonGroupPickerTry />;
+        <ButtonGroupPickerTry />;
 
 ```
 
 ##### ButtonGroupPicker multiple options selected
 
 ```js
-import React from 'react';
-import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBold, faItalic, faUnderline, faStrikethrough } from '@fortawesome/free-solid-svg-icons';
+    import React, { useState } from 'react';
+    import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
+    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+    import { faBold, faItalic, faUnderline, faStrikethrough } from '@fortawesome/free-solid-svg-icons';
 
-class ButtonGroupPickerTry extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { values: [
+    const ButtonGroupPickerTry = () => {
+        const [values, setValues] = useState([
             'bold',
             'italic',
-        ] };
-        this.handleOnChange = this.handleOnChange.bind(this);
-    }
+        ]);
 
-    handleOnChange(values) {
-        this.setState({ values });
-    }
-
-    render() {
-        const { values } = this.state;
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
                 <ButtonGroupPicker
                     id="button-group-picker-component-3"
                     className="rainbow-m-around_medium"
                     value={values}
-                    onChange={this.handleOnChange}
+                    onChange={setValues}
                     name="text-options-multiple"
                     multiple
                 >
@@ -82,41 +61,31 @@ class ButtonGroupPickerTry extends React.Component {
                 </ButtonGroupPicker>
             </div>
         );
-    }
-}
+    };
 
-    <ButtonGroupPickerTry />;
+        <ButtonGroupPickerTry />;
 
 ```
 
 ##### ButtonGroupPicker with option disabled
 
 ```js
-import React from 'react';
-import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAlignLeft, faAlignCenter, faAlignRight } from '@fortawesome/free-solid-svg-icons';
 
-class ButtonGroupPickerTry extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { value: '' };
-        this.handleOnChange = this.handleOnChange.bind(this);
-    }
+    import React, { useState } from 'react';
+    import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
+    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+    import { faAlignLeft, faAlignCenter, faAlignRight } from '@fortawesome/free-solid-svg-icons';
 
-    handleOnChange(value) {
-        this.setState({ value });
-    }
+    const ButtonGroupPickerTry = () => {
+        const [value, setValue] = useState('');
 
-    render() {
-        const { value } = this.state;
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
                 <ButtonGroupPicker
                     id="button-group-picker-component-5"
                     className="rainbow-m-around_medium"
                     value={value}
-                    onChange={this.handleOnChange}
+                    onChange={setValue}
                     name="text-options"
                 >
                     <ButtonOption label={<FontAwesomeIcon icon={faAlignLeft} />} name="left" disabled />
@@ -125,38 +94,26 @@ class ButtonGroupPickerTry extends React.Component {
                 </ButtonGroupPicker>
             </div>
         );
-    }
-}
+    };
 
-    <ButtonGroupPickerTry />;
+        <ButtonGroupPickerTry />;
 
 ```
 
 ##### ButtonGroupPicker with error
 
 ```js
-import React from 'react';
-import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
+    import React from 'react';
+    import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
 
-class ButtonGroupPickerTry extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { value: '' };
-        this.handleOnChange = this.handleOnChange.bind(this);
-    }
-
-    handleOnChange(value) {
-        this.setState({ value });
-    }
-
-    render() {
-        const { value } = this.state;
+    const ButtonGroupPickerTry = () => {
+        const [value, setValue] = React.useState('');
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
                 <ButtonGroupPicker
                     label="Select view type"
                     value={value}
-                    onChange={this.handleOnChange}
+                    onChange={setValue}
                     name="date-filter"
                     error="This field is required"
                     required
@@ -167,10 +124,9 @@ class ButtonGroupPickerTry extends React.Component {
                 </ButtonGroupPicker>
             </div>
         );
-    }
-}
+    };
 
-    <ButtonGroupPickerTry />;
+        <ButtonGroupPickerTry />;
 
 ```
 
@@ -209,40 +165,22 @@ const ButtonGroupPickerTry = () => {
 ##### ButtonGroupPicker with different border radius
 
 ```js
-import React from 'react';
-import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
+    import React, { useState } from 'react';
+    import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
 
-class ButtonGroupPickerTry extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { value1: '', value2: '', value3: '' };
-        this.handleOnChange1 = this.handleOnChange1.bind(this);
-        this.handleOnChange2 = this.handleOnChange2.bind(this);
-        this.handleOnChange3 = this.handleOnChange3.bind(this);
-    }
+    const ButtonGroupPickerTry = () => {
+        const [value1, setValue1] = useState('');
+        const [value2, setValue2] = useState('');
+        const [value3, setValue3] = useState('');
 
-    handleOnChange1(value1) {
-        this.setState({ value1 });
-    }
-
-    handleOnChange2(value2) {
-        this.setState({ value2 });
-    }
-
-    handleOnChange3(value3) {
-        this.setState({ value3 });
-    }
-
-    render() {
-        const { value1, value2, value3 } = this.state;
         return (
             <div className="rainbow-m-bottom_medium">
                 <ButtonGroupPicker
                     id="button-group-picker-component-1"
                     label="Button Group Picker with border radius square"
                     value={value1}
-                    onChange={this.handleOnChange1}
-                    name="filter"
+                    onChange={setValue1}
+                    name="border-radius-square"
                     size="medium"
                     bottomHelpText="Select one option"
                     className="rainbow-m-around_medium"
@@ -254,11 +192,11 @@ class ButtonGroupPickerTry extends React.Component {
                 </ButtonGroupPicker>
 
                 <ButtonGroupPicker
-                    id="button-group-picker-component-1"
+                    id="button-group-picker-component-2"
                     label="Select view type"
                     value={value2}
-                    onChange={this.handleOnChange2}
-                    name="filter"
+                    onChange={setValue2}
+                    name="border-radius-semi-rounded"
                     size="medium"
                     bottomHelpText="Select one option"
                     className="rainbow-m-around_medium"
@@ -270,11 +208,11 @@ class ButtonGroupPickerTry extends React.Component {
                 </ButtonGroupPicker>
 
                 <ButtonGroupPicker
-                    id="button-group-picker-component-1"
+                    id="button-group-picker-component-3"
                     label="Select view type"
                     value={value3}
-                    onChange={this.handleOnChange3}
-                    name="filter"
+                    onChange={setValue3}
+                    name="border-radius-rounded"
                     size="medium"
                     bottomHelpText="Select one option"
                     borderRadius="rounded"
@@ -287,8 +225,7 @@ class ButtonGroupPickerTry extends React.Component {
             </div>
         );
     }
-}
 
-    <ButtonGroupPickerTry />;
+        <ButtonGroupPickerTry />;
 
 ```
