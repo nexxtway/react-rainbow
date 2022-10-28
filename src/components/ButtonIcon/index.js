@@ -61,6 +61,7 @@ const ButtonIcon = React.forwardRef((props, ref) => {
         variant,
         size,
         tooltip,
+        borderRadius,
     } = props;
     const {
         onMouseEnter,
@@ -119,6 +120,7 @@ const ButtonIcon = React.forwardRef((props, ref) => {
             onMouseLeave={handleMouseLeave}
             form={form}
             ref={buttonRef}
+            borderRadius={borderRadius}
         >
             {icon}
             <AssistiveText text={assistiveText} />
@@ -209,6 +211,8 @@ ButtonIcon.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 ButtonIcon.defaultProps = {
@@ -237,6 +241,7 @@ ButtonIcon.defaultProps = {
     ariaControls: undefined,
     ariaExpanded: undefined,
     form: undefined,
+    borderRadius: 'rounded',
 };
 
 export default ButtonIcon;

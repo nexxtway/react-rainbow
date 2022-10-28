@@ -34,6 +34,7 @@
     },
     "dependencies": {
         "@rainbow-modules/hooks": "^0.12.0",
+        "@rainbow-modules/validation": "^0.53.0",
         "autosize": "^4.0.2",
         "chart.js": "2.9.4",
         "clipboard-copy": "^2.0.0",
@@ -134,7 +135,10 @@
         "@rainbow-modules/icons": "^0.24.1-canary.2",
         "@rainbow-modules/search": "^0.51.1",
         "@stripe/stripe-js": "^1.3.0",
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^12.1.5",
         "@testing-library/react-hooks": "^3.2.1",
+        "@testing-library/user-event": "^14.4.3",
         "@wdio/allure-reporter": "^7",
         "@wdio/cli": "^7",
         "@wdio/jasmine-framework": "^7",

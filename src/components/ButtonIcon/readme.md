@@ -33,6 +33,28 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
     </div>
 ```
 
+# ButtonIcons with Border Radius
+##### ButtonIcons with different border radius.
+
+```js
+import React from 'react';
+import { ButtonIcon } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
+
+    <div className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center">
+        <div className="rainbow-p-right_large">
+            <ButtonIcon variant="neutral" borderRadius="square" icon={<FontAwesomeIcon icon={faStar} />} />
+        </div>
+        <div className="rainbow-p-right_large">
+            <ButtonIcon variant="neutral" borderRadius="semi-rounded" icon={<FontAwesomeIcon icon={faStar} />} />
+        </div>
+        <div className="rainbow-p-right_large">
+            <ButtonIcon variant="neutral" borderRadius="rounded" icon={<FontAwesomeIcon icon={faStar} />} />
+        </div>
+    </div>
+```
+
 # ButtonIcons with shaded variant
 ##### The appearance of a ButtonIcon can be changed by implementing the shaded variant, so the whole section will appear with a shadow around it.
 

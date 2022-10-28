@@ -1,12 +1,13 @@
 import formatInteger from '../../CurrencyInput/helpers/formatInteger';
+import { isValidNumberValue } from '../../CurrencyInput/helpers';
 
 export default function normalizeValue({ value, locale, decimalSeparator, options }) {
     const stringValue = String(value);
-    if (value === '-' || value === '' || value === null) {
+    if (value === '-') {
         return value;
     }
 
-    if (!Number.isNaN(Number(value))) {
+    if (isValidNumberValue(value)) {
         const [integer, fraction] = stringValue.split('.');
         const formattedInteger = formatInteger({ integer: Number(integer) / 100, locale, options });
 
