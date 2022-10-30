@@ -129,12 +129,13 @@ describe('<Tabset />', () => {
         );
         component.instance().updateButtonsVisibility = jest.fn();
         expect(component.instance().isFirstTime).toBe(true);
+        component.instance().tabsetChildren = [
+            <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />,
+            <Tab label="Tab-2" name="tab-2" registerTab={registerTabMockFn} />,
+            <Tab label="Tab-3" name="tab-3" registerTab={registerTabMockFn} />,
+        ];
         component.setState({
-            tabsetChildren: [
-                <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />,
-                <Tab label="Tab-2" name="tab-2" registerTab={registerTabMockFn} />,
-                <Tab label="Tab-3" name="tab-3" registerTab={registerTabMockFn} />,
-            ],
+            key: Date.now(),
         });
         expect(component.instance().updateButtonsVisibility).toHaveBeenCalledTimes(1);
         expect(component.instance().isFirstTime).toBe(false);
@@ -178,12 +179,13 @@ describe('<Tabset />', () => {
             </Tabset>,
         );
         component.instance().tabsetRef.current = { offsetWidth: 500 };
+        component.instance().tabsetChildren = [
+            <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />,
+            <Tab label="Tab-2" name="tab-2" registerTab={registerTabMockFn} />,
+            <Tab label="Tab-3" name="tab-3" registerTab={registerTabMockFn} />,
+        ];
         component.setState({
-            tabsetChildren: [
-                <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />,
-                <Tab label="Tab-2" name="tab-2" registerTab={registerTabMockFn} />,
-                <Tab label="Tab-3" name="tab-3" registerTab={registerTabMockFn} />,
-            ],
+            key: Date.now(),
         });
         expect(component.state().areButtonsVisible).toBe(true);
     });

@@ -178,7 +178,6 @@ export default class Tabset extends Component {
         const [...nodes] = getChildTabNodes(this.tabsetRef.current);
         const newChildrenRefs = insertChildOrderly(tabsetChildren, tab, nodes);
         this.tabsetChildren = newChildrenRefs;
-        this.setState({ key: Date.now() });
     }
 
     unRegisterTab(tabName) {
