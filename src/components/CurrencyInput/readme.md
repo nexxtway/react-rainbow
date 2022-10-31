@@ -35,7 +35,9 @@ const containerStyles = {
     maxWidth: 700,
 };
 const SetValueInput = () => {
-    const [ value, setValue ] = useState();
+    const [ value1, setValue1 ] = useState();
+    const [ value2, setValue2 ] = useState();
+    const [ value3, setValue3 ] = useState();
 
     return (
         <>
@@ -44,8 +46,8 @@ const SetValueInput = () => {
                 placeholder="Enter your amout"
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-m_auto"
-                value={value}
-                onChange={setValue}
+                value={value1}
+                onChange={setValue1}
                 borderRadius="square"
             />
             <CurrencyInput
@@ -53,8 +55,8 @@ const SetValueInput = () => {
                 placeholder="Enter your amout"
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-m_auto"
-                value={value}
-                onChange={setValue}
+                value={value2}
+                onChange={setValue2}
                 borderRadius="semi-rounded"
             />
             <CurrencyInput
@@ -62,8 +64,8 @@ const SetValueInput = () => {
                 placeholder="Enter your amout"
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-m_auto"
-                value={value}
-                onChange={setValue}
+                value={value3}
+                onChange={setValue3}
                 borderRadius="rounded"
             />
         </>

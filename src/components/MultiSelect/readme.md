@@ -321,7 +321,9 @@ const containerStyles = {
 };
 
 const MultiSelectExample = () => {
-    const [value, setValue] = useState([]);
+    const [value1, setValue1] = useState([]);
+    const [value2, setValue2] = useState([]);
+    const [value3, setValue3] = useState([]);
 
     return (
         <>
@@ -331,8 +333,8 @@ const MultiSelectExample = () => {
                 placeholder="Placeholder text"
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-                value={value}
-                onChange={setValue}
+                value={value1}
+                onChange={setValue1}
                 bottomHelpText="You can select several options."
                 showCheckbox
                 borderRadius="square"
@@ -348,13 +350,13 @@ const MultiSelectExample = () => {
                 <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
             </MultiSelect>
             <MultiSelect
-                id="multiselect-component-1"
+                id="multiselect-component-2"
                 label="MultiSelect with border radius semi-rounded"
                 placeholder="Placeholder text"
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-                value={value}
-                onChange={setValue}
+                value={value2}
+                onChange={setValue2}
                 bottomHelpText="You can select several options."
                 showCheckbox
                 borderRadius="semi-rounded"
@@ -370,13 +372,13 @@ const MultiSelectExample = () => {
                 <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
             </MultiSelect>
             <MultiSelect
-                id="multiselect-component-1"
+                id="multiselect-component-3"
                 label="MultiSelect with border radius semi-rounded"
                 placeholder="Placeholder text"
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-                value={value}
-                onChange={setValue}
+                value={value3}
+                onChange={setValue3}
                 bottomHelpText="You can select several options."
                 showCheckbox
                 borderRadius="rounded"

@@ -496,6 +496,7 @@ class Lookup extends Component {
                         errorMessageId={errorMessageId}
                         ref={this.inputRef}
                         onClearValue={onDeleteValue}
+                        borderRadius={borderRadius}
                     />
                 </RenderIf>
 

@@ -148,7 +148,9 @@ const containerStyles = {
 };
 
 const CounterBorderRadius = (  ) => {
-    const [counter, setCounter] = useState();
+    const [counter1, setCounter1] = useState();
+    const [counter2, setCounter2] = useState();
+    const [counter3, setCounter3] = useState();
     return(
         <>
             <CounterInput
@@ -158,34 +160,34 @@ const CounterBorderRadius = (  ) => {
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 labelAlignment="center"
-                value={counter}
-                onChange={setCounter}
+                value={counter1}
+                onChange={setCounter1}
                 min={10}
                 max={100}
                 borderRadius="square"
             />
             <CounterInput
-                id="input-component-1"
+                id="input-component-2"
                 label="Border Radius semi-rounded"
                 placeholder="Only numbers"
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 labelAlignment="center"
-                value={counter}
-                onChange={setCounter}
+                value={counter2}
+                onChange={setCounter2}
                 min={10}
                 max={100}
                 borderRadius="semi-rounded"
             />
             <CounterInput
-                id="input-component-1"
+                id="input-component-3"
                 label="Border Radius rounded"
                 placeholder="Only numbers"
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 labelAlignment="center"
-                value={counter}
-                onChange={setCounter}
+                value={counter3}
+                onChange={setCounter3}
                 min={10}
                 max={100}
                 borderRadius="rounded"

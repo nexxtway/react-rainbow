@@ -198,31 +198,33 @@ const Container = styled.div`
 `;
 
 const Payment = () => {
-    const [stripeCard, setStripeCard] = useState();
+    const [stripeCard1, setStripeCard1] = useState();
+    const [stripeCard2, setStripeCard2] = useState();
+    const [stripeCard3, setStripeCard3] = useState();
 
     return (
         <Container>
             <StripeCardInput
                 apiKey={LIBRARY_STRIPE_APIKEY}
                 label="StripeCardInput with border radius square"
-                onChange={setStripeCard}
-                error={(stripeCard && stripeCard.error && stripeCard.error.message)}
+                value={stripeCard1}
+                onChange={setStripeCard1}
                 borderRadius="square"
                 style={{ marginBottom: '20px' }}
             />
             <StripeCardInput
                 apiKey={LIBRARY_STRIPE_APIKEY}
                 label="StripeCardInput with border radius semi-rounded"
-                onChange={setStripeCard}
-                error={(stripeCard && stripeCard.error && stripeCard.error.message)}
+                value={stripeCard2}
+                onChange={setStripeCard2}
                 borderRadius="semi-rounded"
                 style={{ marginBottom: '20px' }}
             />
             <StripeCardInput
                 apiKey={LIBRARY_STRIPE_APIKEY}
+                value={stripeCard3}
                 label="StripeCardInput with border radius rounded"
-                onChange={setStripeCard}
-                error={(stripeCard && stripeCard.error && stripeCard.error.message)}
+                onChange={setStripeCard3}
                 borderRadius="rounded"
             />
         </Container>

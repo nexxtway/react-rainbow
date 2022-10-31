@@ -60,6 +60,7 @@ export default class SelectedValue extends Component {
             onClick,
             errorMessageId,
             error,
+            borderRadius,
         } = this.props;
         const { label, icon } = formatValue(value);
 
@@ -81,6 +82,7 @@ export default class SelectedValue extends Component {
                     iconPosition="left"
                     icon={icon}
                     error={error}
+                    borderRadius={borderRadius}
                 />
             );
         }
@@ -101,16 +103,17 @@ export default class SelectedValue extends Component {
                 iconPosition="left"
                 icon={icon}
                 error={error}
+                borderRadius={borderRadius}
             />
         );
     }
 
     render() {
-        const { value, disabled, readOnly, onClearValue } = this.props;
+        const { value, disabled, readOnly, onClearValue, borderRadius } = this.props;
         const { icon } = formatValue(value);
 
         return (
-            <StyledSelectedValueContainer readOnly={readOnly}>
+            <StyledSelectedValueContainer readOnly={readOnly} borderRadius={borderRadius}>
                 <RenderIf isTrue={icon}>
                     <StyledSelectedValueIcon readOnly={readOnly}>{icon}</StyledSelectedValueIcon>
                 </RenderIf>
@@ -152,6 +155,7 @@ SelectedValue.propTypes = {
     onClearValue: PropTypes.func,
     errorMessageId: PropTypes.string,
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 SelectedValue.defaultProps = {
@@ -166,4 +170,5 @@ SelectedValue.defaultProps = {
     onClearValue: undefined,
     errorMessageId: undefined,
     error: undefined,
+    borderRadius: 'rounded',
 };

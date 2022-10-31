@@ -245,13 +245,21 @@ const containerStyles = {
 };
 
 function ControlledStrongPasswordInput() {
-    const [value, setValue] = useState('');
+    const [value1, setValue1] = useState('');
+    const [value2, setValue2] = useState('');
+    const [value3, setValue3] = useState('');
 
-    const handleOnChange = event => {
-        setValue(event.target.value);
+    const handleOnChange1 = event => {
+        setValue1(event.target.value);
+    }
+    const handleOnChange2 = event => {
+        setValue2(event.target.value);
+    }
+    const handleOnChange3 = event => {
+        setValue3(event.target.value);
     }
 
-    const getStrength = () => {
+    const getStrength = value => {
         const { length } = value;
         if (length === 0) {
             return undefined;
@@ -265,7 +273,9 @@ function ControlledStrongPasswordInput() {
         return 'strong';
     }
 
-    const passwordState = getStrength();
+    const passwordState1 = getStrength(value1);
+    const passwordState2 = getStrength(value2);
+    const passwordState3 = getStrength(value3);
 
     return (
         <>
@@ -276,33 +286,33 @@ function ControlledStrongPasswordInput() {
                 bottomHelpText="Your password must be at least 8 characters long."
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 style={containerStyles}
-                value={value}
-                passwordState={passwordState}
-                onChange={handleOnChange}
+                value={value1}
+                passwordState={passwordState1}
+                onChange={handleOnChange1}
                 borderRadius="square"
             />
             <StrongPasswordInput
-                id="strong-password-input-1"
+                id="strong-password-input-2"
                 label="Password with border radius semi-rounded"
                 placeholder="Placeholder text"
                 bottomHelpText="Your password must be at least 8 characters long."
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 style={containerStyles}
-                value={value}
-                passwordState={passwordState}
-                onChange={handleOnChange}
+                value={value2}
+                passwordState={passwordState2}
+                onChange={handleOnChange2}
                 borderRadius="semi-rounded"
             />
             <StrongPasswordInput
-                id="strong-password-input-1"
+                id="strong-password-input-3"
                 label="Password with border radius rounded"
                 placeholder="Placeholder text"
                 bottomHelpText="Your password must be at least 8 characters long."
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 style={containerStyles}
-                value={value}
-                passwordState={passwordState}
-                onChange={handleOnChange}
+                value={value3}
+                passwordState={passwordState3}
+                onChange={handleOnChange3}
                 borderRadius="rounded"
             />
         </>

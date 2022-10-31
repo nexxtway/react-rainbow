@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import Input from '../../Input/styled/input';
+import { BORDER_RADIUS_SQUARE, BORDER_RADIUS_SEMI_ROUNDED } from '../../../styles/borderRadius';
 
 const StyledSelectedInput = attachThemeAttrs(styled(Input))`
 caret-color: transparent;
@@ -29,6 +30,17 @@ caret-color: transparent;
             padding-right: 1rem;
         }
     }
+
+    ${props =>
+        props.borderRadius === 'square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+    ${props =>
+        props.borderRadius === 'semi-rounded' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
+        `};
 `;
 
 export default StyledSelectedInput;

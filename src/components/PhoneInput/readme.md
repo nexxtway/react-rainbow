@@ -108,30 +108,32 @@ const Container = styled.div`
     min-height: 300px;
 `;
 const Form = () => {
-    const [phone, setPhone] = useState();
+    const [phone1, setPhone1] = useState();
+    const [phone2, setPhone2] = useState();
+    const [phone3, setPhone3] = useState();
 
     return (
         <>
             <PhoneInput
                 label="Phone Number with border radius square"
                 placeholder="Enter your phone number"
-                onChange={setPhone}
-                value={phone}
+                onChange={setPhone1}
+                value={phone1}
                 borderRadius="square"
             />
             <PhoneInput
                 label="Phone Number with border radius semi-rounded"
                 placeholder="Enter your phone number"
-                onChange={setPhone}
-                value={phone}
+                onChange={setPhone2}
+                value={phone2}
                 borderRadius="semi-rounded"
                 style={{ marginTop: '20px' }}
             />
             <PhoneInput
                 label="Phone Number with border radius rounded"
                 placeholder="Enter your phone number"
-                onChange={setPhone}
-                value={phone}
+                onChange={setPhone3}
+                value={phone3}
                 borderRadius="rounded"
                 style={{ marginTop: '20px' }}
             />

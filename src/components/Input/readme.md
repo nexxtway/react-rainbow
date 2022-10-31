@@ -566,7 +566,7 @@ const containerStyles = {
         />
 
         <Input
-            id="input-component-1"
+            id="input-component-2"
             label="Border radius semi-rounded"
             placeholder="Placeholder text"
             style={containerStyles}
@@ -575,7 +575,7 @@ const containerStyles = {
         />
 
         <Input
-            id="input-component-1"
+            id="input-component-3"
             label="Border radius rounded"
             placeholder="Placeholder text"
             style={containerStyles}
