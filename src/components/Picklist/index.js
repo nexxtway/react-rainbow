@@ -20,7 +20,7 @@ import InternalDropdown from '../InternalDropdown';
 import InternalOverlay from '../InternalOverlay';
 import WindowResize from '../../libs/WindowResize';
 
-function positionResolver(opts) {
+function positionResolver(opts, enableSearch) {
     const { trigger, viewport, content } = opts;
     const newOpts = {
         trigger,
@@ -30,6 +30,13 @@ function positionResolver(opts) {
             width: trigger.width,
         },
     };
+    if (enableSearch && viewport.width <= 600) {
+        return {
+            top: 0,
+            left: 0,
+            width: viewport.width,
+        };
+    }
     return {
         ...InternalOverlay.defaultPositionResolver(newOpts),
         width: trigger.width,
@@ -82,7 +89,9 @@ class Picklist extends Component {
                     this.handleBlur();
                 }
             });
-            this.windowScrolling.startListening(this.handleWindowScroll);
+            if (window.screen.width > 600) {
+                this.windowScrolling.startListening(this.handleWindowScroll);
+            }
             this.windowResize.startListening(this.handleWindowResize);
         }
     }
@@ -298,9 +307,10 @@ class Picklist extends Component {
                     />
                     <InternalOverlay
                         isVisible={isOpen}
-                        positionResolver={positionResolver}
+                        positionResolver={opt => positionResolver(opt, enableSearch)}
                         onOpened={() => this.dropdownRef.current.focus()}
                         triggerElementRef={() => this.triggerRef}
+                        keepScrollEnabled
                     >
                         <InternalDropdown
                             id={this.listboxId}
