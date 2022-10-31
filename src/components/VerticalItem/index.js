@@ -66,6 +66,9 @@ function Item(props) {
                     tabIndex={resolveTabIndex()}
                     isSelected={isSelected}
                 >
+                    <RenderIf isTrue={icon}>
+                        <StyledIcon>{icon}</StyledIcon>
+                    </RenderIf>
                     <ItemContent label={label} notification={notification} />
                 </StyledAnchor>
             </RenderIf>
