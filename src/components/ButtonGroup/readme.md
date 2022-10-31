@@ -349,6 +349,7 @@ const HeadingContent = styled.div`
         flex-direction: column;
         :nth-child(1) { text-align: center; }
     }
+    flex-direction: column;
 `;
 
 const SubTitle = styled.span.attrs(props => {
@@ -362,35 +363,41 @@ const Container = styled.div`
     margin: auto;
 `;
 
-    <Container>
-        <HeadingContent className="rainbow-p-top_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
-            <div className="rainbow-m-bottom_medium">
-                <SubTitle>Button group with border radius square.</SubTitle>
-            </div>
-            <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="square">
-                <Button label="New" variant="neutral" />
-                <Button label="Edit" variant="neutral" />
-                <Button label="Remove" variant="neutral" />
-            </ButtonGroup>
+    const ButtonGroupExample = () => {
+        return (
+            <Container>
+                <HeadingContent className="rainbow-p-top_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
+                    <div className="rainbow-m-bottom_medium">
+                        <SubTitle>Button group with border radius square.</SubTitle>
+                    </div>
+                    <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="square">
+                        <Button label="New" variant="neutral" />
+                        <Button label="Edit" variant="neutral" />
+                        <Button label="Remove" variant="neutral" />
+                    </ButtonGroup>
 
-            <div className="rainbow-m-bottom_medium">
-                <SubTitle>Button group with border radius semi-rounded.</SubTitle>
-            </div>
+                    <div className="rainbow-m-bottom_medium">
+                        <SubTitle>Button group with border radius semi-rounded.</SubTitle>
+                    </div>
 
-            <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="semi-rounded">
-                <Button label="New" variant="neutral" />
-                <Button label="Edit" variant="neutral" />
-                <Button label="Remove" variant="neutral" />
-            </ButtonGroup>
-            <div className="rainbow-m-bottom_medium">
-                <SubTitle>Button group with border radius rounded.</SubTitle>
-            </div>
+                    <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="semi-rounded">
+                        <Button label="New" variant="neutral" />
+                        <Button label="Edit" variant="neutral" />
+                        <Button label="Remove" variant="neutral" />
+                    </ButtonGroup>
+                    <div className="rainbow-m-bottom_medium">
+                        <SubTitle>Button group with border radius rounded.</SubTitle>
+                    </div>
 
-            <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="rounded">
-                <Button label="New" variant="neutral" />
-                <Button label="Edit" variant="neutral" />
-                <Button label="Remove" variant="neutral" />
-            </ButtonGroup>
-        </HeadingContent>
-    </Container>
+                    <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="rounded">
+                        <Button label="New" variant="neutral" />
+                        <Button label="Edit" variant="neutral" />
+                        <Button label="Remove" variant="neutral" />
+                    </ButtonGroup>
+                </HeadingContent>
+            </Container>
+        );
+    };
+
+        <ButtonGroupExample />;
 ```
