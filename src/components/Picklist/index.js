@@ -55,7 +55,6 @@ class Picklist extends Component {
         this.handleBlur = this.handleBlur.bind(this);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleContainerClick = this.handleContainerClick.bind(this);
         this.closeAndFocusInput = this.closeAndFocusInput.bind(this);
         this.handleWindowScroll = this.handleWindowScroll.bind(this);
         this.handleWindowResize = this.handleWindowResize.bind(this);
@@ -78,7 +77,7 @@ class Picklist extends Component {
         if (!wasOpen && isOpen) {
             // eslint-disable-next-line id-length
             this.outsideClick.startListening(this.containerRef.current, (_, event) => {
-                if (this.eventTarget !== event.target) {
+                if (!this.dropdownRef.current.contains(event.target)) {
                     this.closeMenu();
                     this.handleBlur();
                 }
@@ -182,10 +181,6 @@ class Picklist extends Component {
         }, 0);
     }
 
-    handleContainerClick(event) {
-        this.eventTarget = event.target;
-    }
-
     /**
      * Sets focus on the element.
      * @public
@@ -250,7 +245,6 @@ class Picklist extends Component {
                 onKeyDown={this.handleKeyPressed}
                 ref={this.containerRef}
                 readOnly={readOnly}
-                onClick={this.handleContainerClick}
             >
                 <RenderIf isTrue={pickListLabel}>
                     <Label
