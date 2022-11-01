@@ -139,6 +139,7 @@ export default class InputBase extends Component {
                     inputId={this.inputId}
                     readOnly={isReadOnly}
                     id={this.getInlineTextLabelId()}
+                    size={size}
                 />
                 <RelativeElement>
                     <RenderIf isTrue={icon}>
