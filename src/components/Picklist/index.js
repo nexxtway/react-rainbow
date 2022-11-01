@@ -255,6 +255,7 @@ class Picklist extends Component {
                         inputId={this.inputId}
                         readOnly={isReadOnly}
                         variant={labelVariant}
+                        size={size}
                     />
                 </RenderIf>
 

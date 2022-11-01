@@ -187,6 +187,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 inputId={inputId}
                 readOnly={readOnly}
                 id={labelId}
+                size={size}
             />
             <StyledInputContainer
                 disabled={disabled}

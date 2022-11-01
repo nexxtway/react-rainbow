@@ -78,6 +78,7 @@ class Select extends Component {
                     hideLabel={hideLabel}
                     required={required}
                     inputId={this.selectId}
+                    size={size}
                 />
                 <StyledInnerContainer error={error} disabled={disabled}>
                     <StyledSelect
