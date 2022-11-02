@@ -6,10 +6,16 @@ import StyledContainer from './styled/container';
  * Button groups are used to bunch together buttons with similar actions
  */
 export default function ButtonGroup(props) {
-    const { className, style, children, variant } = props;
+    const { className, style, children, variant, borderRadius } = props;
 
     return (
-        <StyledContainer className={className} style={style} role="group" variant={variant}>
+        <StyledContainer
+            className={className}
+            style={style}
+            role="group"
+            variant={variant}
+            borderRadius={borderRadius}
+        >
             {children}
         </StyledContainer>
     );
@@ -26,6 +32,8 @@ ButtonGroup.propTypes = {
     /** The variant changes the appearance of the ButtonGroup. Accepted variants include default,
      * and shaded. This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'shaded']),
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 ButtonGroup.defaultProps = {
@@ -33,4 +41,5 @@ ButtonGroup.defaultProps = {
     className: undefined,
     style: undefined,
     variant: 'default',
+    borderRadius: 'rounded',
 };
