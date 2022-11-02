@@ -25,6 +25,7 @@ export interface ButtonIconProps extends BaseProps {
     ariaPressed?: boolean;
     form?: string;
     id?: string;
+    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
 }
 
 declare const ButtonIcon: ComponentType<ButtonIconProps>;
