@@ -605,3 +605,108 @@ const inputStyles = {
         />
     </div>
 ```
+
+##### Lookup with different border radius
+
+```js
+import React, { useState } from 'react';
+import { Lookup } from 'react-rainbow-components';
+
+const LookupBorderRadius = () => {
+    const containerStyles = {
+        maxWidth: 700,
+    };
+
+    const data = [
+        { label: 'Paris' },
+        { label: 'New York' },
+        { label: 'San Fransisco' },
+        { label: 'Madrid' },
+        { label: 'Miami' },
+        { label: 'London' },
+        { label: 'Tokyo' },
+        { label: 'Barcelona' },
+        { label: 'La Habana' },
+        { label: 'Buenos Aires' },
+        { label: 'Sao Paulo' },
+        { label: 'Toronto' },
+    ];
+
+    const [value1, setValue1] = useState('');
+    const [value2, setValue2] = useState('');
+    const [value3, setValue3] = useState('');
+
+    function filter(query, options) {
+        if (query) {
+            return options.filter(item => {
+                const regex = new RegExp(query, 'i');
+                return regex.test(item.label);
+            });
+        }
+        return [];
+    }
+
+    const search1 = value => {
+        if (value) {
+            setValue1(value);
+        } else {
+            setValue1('');
+        }
+    }
+    const search2 = value => {
+        if (value) {
+            setValue2(value);
+        } else {
+            setValue2('');
+        }
+    }
+    const search3 = value => {
+        if (value) {
+            setValue3(value);
+        } else {
+            setValue3('');
+        }
+    }
+    return (
+        <>
+            <Lookup
+                id="lookup-1"
+                label="Border radius square"
+                placeholder="Find"
+                options={filter(value1, data)}
+                value={value1}
+                onChange={setValue1}
+                onSearch={search1}
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                borderRadius="square"
+            />
+            <Lookup
+                id="lookup-2"
+                label="Border radius semi-rounded"
+                placeholder="Find"
+                options={filter(value2, data)}
+                value={value2}
+                onChange={setValue2}
+                onSearch={search2}
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                borderRadius="semi-rounded"
+            />
+            <Lookup
+                id="lookup-3"
+                label ="Border radius rounded"
+                placeholder="Find"
+                options={filter(value3, data)}
+                value={value3}
+                onChange={setValue3}
+                onSearch={search3}
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                borderRadius="rounded"
+            />
+        </>
+    );
+};
+    <LookupBorderRadius />;
+```

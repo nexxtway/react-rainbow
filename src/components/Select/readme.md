@@ -195,3 +195,47 @@ const ControlledSelect = () => {
 
     <ControlledSelect />;
 ```
+
+# Select with different border radius
+##### The `Select` component is used to create a dropdown list, most often used in forms to collect user input.
+
+```js
+import React from 'react';
+import { Select } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+const options = [
+    { value: 'option 1', label: 'Option 1' },
+    { value: 'option 2', label: 'Option 2' },
+    { value: 'option 3', label: 'Option 3' },
+];
+    <>
+        <Select
+            label="Select with border radius square"
+            options={options}
+            id="example-select-1"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            borderRadius="square"
+        />
+        <Select
+            label="Select with border radius semi-rounded"
+            options={options}
+            id="example-select-1"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            borderRadius="semi-rounded"
+        />
+        <Select
+            label="Select with border radius rounded"
+            options={options}
+            id="example-select-1"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            borderRadius="rounded"
+        />
+    </>
+```

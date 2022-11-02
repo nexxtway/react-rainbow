@@ -56,7 +56,7 @@ describe('Picklist with multiple options', () => {
         await firstOption.waitUntilIsVisible();
         await expect(await firstOption.isVisible()).toBe(true);
     });
-    it.skip('should not close when click on search input', async () => {
+    it('should not close when click on search input', async () => {
         const picklist = new PagePicklist(PICKLIST);
         await picklist.clickInput();
         await picklist.waitUntilOpen();

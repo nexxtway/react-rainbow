@@ -310,3 +310,57 @@ function FileSelectorExample() {
 
     <FileSelectorExample />
 ```
+
+##### FileSelector with different border radius
+
+```js
+import React, { useState } from 'react';
+import { FileSelector } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 300,
+};
+
+function FileSelectorExample() {
+    // eslint-disable-next-line no-unused-vars
+    const [files, setFiles] = useState([]);
+
+    const handleChange = value => {
+        setFiles(value);
+    }
+
+    return (
+        <div>
+            <FileSelector
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                style={containerStyles}
+                label="File selector with border radius square"
+                placeholder="Drag & Drop or Click to Browse"
+                bottomHelpText="Select only one file"
+                onChange={handleChange}
+                borderRadius="square"
+            />
+            <FileSelector
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                style={containerStyles}
+                label="File selector with border radius semi-rounded"
+                placeholder="Drag & Drop or Click to Browse"
+                bottomHelpText="Select only one file"
+                onChange={handleChange}
+                borderRadius="semi-rounded"
+            />
+            <FileSelector
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                style={containerStyles}
+                label="File selector wirh border radius rounded"
+                placeholder="Drag & Drop or Click to Browse"
+                bottomHelpText="Select only one file"
+                onChange={handleChange}
+                borderRadius="rounded"
+            />
+        </div>
+    );
+}
+
+    <FileSelectorExample />
+```

@@ -50,6 +50,7 @@ const CounterInput = React.forwardRef((props, ref) => {
         className,
         style,
         size,
+        borderRadius,
     } = useReduxForm(props);
 
     const inputRef = useRef(null);
@@ -142,6 +143,7 @@ const CounterInput = React.forwardRef((props, ref) => {
                     step={step}
                     autoComplete="off"
                     size={size}
+                    borderRadius={borderRadius}
                 />
                 <ButtonContainer iconPosition="right" readOnly={readOnly} error={error}>
                     <StyledButton
@@ -221,6 +223,8 @@ CounterInput.propTypes = {
     style: PropTypes.object,
     /** The size of the input. Valid values are small, medium, and large. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 CounterInput.defaultProps = {
@@ -249,4 +253,5 @@ CounterInput.defaultProps = {
     className: undefined,
     style: undefined,
     size: 'mediun',
+    borderRadius: 'rounded',
 };

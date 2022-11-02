@@ -31,7 +31,6 @@ describe('Day', () => {
                 disabledDays={['04/24/2019']}
             />,
         );
-        console.log(component.html());
         component.find('span').simulate('keydown', { key: 'Enter' });
         expect(onChangeMockFn).not.toBeCalled();
     });

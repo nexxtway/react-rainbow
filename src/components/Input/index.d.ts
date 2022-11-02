@@ -63,6 +63,7 @@ export interface InputProps extends BaseProps {
     autoComplete?: string;
     size?: 'small' | 'medium' | 'large';
     valueAlignment?: 'left' | 'center' | 'right';
+    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
 }
 
 declare const Input: ComponentType<InputProps>;
