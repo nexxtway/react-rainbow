@@ -16,6 +16,7 @@ export interface ButtonGroupPickerProps extends BaseProps {
     variant?: 'default' | 'shaded';
     error?: ReactNode;
     bottomHelpText?: ReactNode;
+    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
 }
 
 declare const ButtonGroupPicker: ComponentType<ButtonGroupPickerProps>;

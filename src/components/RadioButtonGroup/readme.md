@@ -521,7 +521,6 @@ const Contacts = ({ data: contacts }) => {
             <>
                 <RadioButtonGroup
                     label="Border Radius Square"
-                    id="radio-button-group-component-1"
                     options={options}
                     value={value1}
                     onChange={handleOnChange1}
@@ -529,7 +528,6 @@ const Contacts = ({ data: contacts }) => {
                 />
                 <RadioButtonGroup
                     label="Border Radius Semi Rounded"
-                    id="radio-button-group-component-1"
                     options={options}
                     value={value2}
                     onChange={handleOnChange2}
@@ -537,7 +535,6 @@ const Contacts = ({ data: contacts }) => {
                 />
                 <RadioButtonGroup
                     label="Border Radius Rounded"
-                    id="radio-button-group-component-1"
                     options={options}
                     value={value3}
                     onChange={handleOnChange3}
