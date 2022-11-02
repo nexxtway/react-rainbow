@@ -1,5 +1,4 @@
-/* eslint-disable react/sort-comp */
-/* eslint-disable max-len */
+/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from './context';
@@ -38,7 +37,7 @@ export default class Tabset extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabsetChildren: [],
+            key: Date.now(),
             areButtonsVisible: false,
         };
         this.isFirstTime = true;
@@ -56,6 +55,7 @@ export default class Tabset extends Component {
             [RIGHT_KEY]: () => this.selectTab(RIGHT_SIDE),
             [LEFT_KEY]: () => this.selectTab(LEFT_SIDE),
         };
+        this.tabsetChildren = [];
     }
 
     componentDidMount() {
@@ -67,9 +67,8 @@ export default class Tabset extends Component {
 
     componentDidUpdate(prevProp) {
         const { children } = this.props;
-        const { tabsetChildren } = this.state;
         const { isFirstTime } = this;
-        const areAllChildrenRegistered = children.length === tabsetChildren.length;
+        const areAllChildrenRegistered = children.length === this.tabsetChildren.length;
         if (isNotSameChildren(children, prevProp.children)) {
             this.updateButtonsVisibility();
         }
@@ -84,17 +83,16 @@ export default class Tabset extends Component {
     }
 
     setAsSelectedTab(tabIndex) {
-        const { tabsetChildren } = this.state;
-        tabsetChildren[tabIndex].ref.click();
-        tabsetChildren[tabIndex].ref.focus();
+        this.tabsetChildren[tabIndex].ref.click();
+        this.tabsetChildren[tabIndex].ref.focus();
     }
 
     updateButtonsVisibility() {
-        const { tabsetChildren, areButtonsVisible, variant } = this.state;
+        const { areButtonsVisible, variant } = this.state;
         const tabset = this.tabsetRef.current;
         const { offsetWidth: resizeWidth } = this.resizeTarget.current;
         const { scrollWidth, scrollLeft, offsetWidth: tabsetWidth } = tabset;
-        const childrenTotalWidth = getChildrenTotalWidth(tabsetChildren);
+        const childrenTotalWidth = getChildrenTotalWidth(this.tabsetChildren);
         const buttonWidth = areButtonsVisible ? 94 : 0;
         const padding = resizeWidth - tabsetWidth - buttonWidth;
         const delta = variant === 'line' ? 0 : 1;
@@ -115,7 +113,7 @@ export default class Tabset extends Component {
 
     selectTab(side) {
         const { activeTabName } = this.props;
-        const { tabsetChildren } = this.state;
+        const { tabsetChildren } = this;
         const activeTabIndex = getTabIndexFromName(tabsetChildren, activeTabName);
 
         if (activeTabIndex === tabsetChildren.length - 1 && side === RIGHT_SIDE) {
@@ -129,7 +127,7 @@ export default class Tabset extends Component {
 
     isLeftButtonDisabled() {
         const { activeTabName } = this.props;
-        const { tabsetChildren } = this.state;
+        const { tabsetChildren } = this;
         const { screenWidth, scrollLeft } = this;
         return getLeftButtonDisabledState({
             activeTabName,
@@ -141,7 +139,7 @@ export default class Tabset extends Component {
 
     isRightButtonDisabled() {
         const { activeTabName } = this.props;
-        const { tabsetChildren } = this.state;
+        const { tabsetChildren } = this;
         const { screenWidth, scrollLeft, maxScroll } = this;
         return getRightButtonDisabledState({
             activeTabName,
@@ -169,26 +167,29 @@ export default class Tabset extends Component {
     }
 
     updateTab(tab, nameToUpdate) {
-        const { tabsetChildren } = this.state;
+        const { tabsetChildren } = this;
         const newTabsetChildren = getUpdatedTabsetChildren(tabsetChildren, tab, nameToUpdate);
-        this.setState({ tabsetChildren: newTabsetChildren });
+        this.tabsetChildren = newTabsetChildren;
+        this.setState({ key: Date.now() });
     }
 
     registerTab(tab) {
-        const { tabsetChildren } = this.state;
+        const { tabsetChildren } = this;
         const [...nodes] = getChildTabNodes(this.tabsetRef.current);
         const newChildrenRefs = insertChildOrderly(tabsetChildren, tab, nodes);
-        this.setState({ tabsetChildren: newChildrenRefs });
+        this.tabsetChildren = newChildrenRefs;
+        this.setState({ key: Date.now() });
     }
 
     unRegisterTab(tabName) {
-        const { tabsetChildren } = this.state;
+        const { tabsetChildren } = this;
         const newTabsetChildren = tabsetChildren.filter(tab => tab.name !== tabName);
-        this.setState({ tabsetChildren: newTabsetChildren });
+        this.tabsetChildren = newTabsetChildren;
+        this.setState({ key: Date.now() });
     }
 
     scrollToSelectedTab(name) {
-        const { tabsetChildren } = this.state;
+        const { tabsetChildren } = this;
         const tabset = this.tabsetRef.current;
         const { scrollLeft, offsetWidth: tabsetWidth } = tabset;
         const tabIndex = getTabIndexFromName(tabsetChildren, name);

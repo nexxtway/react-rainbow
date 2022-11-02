@@ -20,7 +20,7 @@ import InternalDropdown from '../InternalDropdown';
 import InternalOverlay from '../InternalOverlay';
 import WindowResize from '../../libs/WindowResize';
 
-function positionResolver(opts) {
+function positionResolver(opts, enableSearch) {
     const { trigger, viewport, content } = opts;
     const newOpts = {
         trigger,
@@ -30,6 +30,13 @@ function positionResolver(opts) {
             width: trigger.width,
         },
     };
+    if (enableSearch && viewport.width <= 600) {
+        return {
+            top: 0,
+            left: 0,
+            width: viewport.width,
+        };
+    }
     return {
         ...InternalOverlay.defaultPositionResolver(newOpts),
         width: trigger.width,
@@ -55,7 +62,6 @@ class Picklist extends Component {
         this.handleBlur = this.handleBlur.bind(this);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleContainerClick = this.handleContainerClick.bind(this);
         this.closeAndFocusInput = this.closeAndFocusInput.bind(this);
         this.handleWindowScroll = this.handleWindowScroll.bind(this);
         this.handleWindowResize = this.handleWindowResize.bind(this);
@@ -78,12 +84,14 @@ class Picklist extends Component {
         if (!wasOpen && isOpen) {
             // eslint-disable-next-line id-length
             this.outsideClick.startListening(this.containerRef.current, (_, event) => {
-                if (this.eventTarget !== event.target) {
+                if (!this.dropdownRef.current.contains(event.target)) {
                     this.closeMenu();
                     this.handleBlur();
                 }
             });
-            this.windowScrolling.startListening(this.handleWindowScroll);
+            if (window.screen.width > 600) {
+                this.windowScrolling.startListening(this.handleWindowScroll);
+            }
             this.windowResize.startListening(this.handleWindowResize);
         }
     }
@@ -182,10 +190,6 @@ class Picklist extends Component {
         }, 0);
     }
 
-    handleContainerClick(event) {
-        this.eventTarget = event.target;
-    }
-
     /**
      * Sets focus on the element.
      * @public
@@ -250,7 +254,6 @@ class Picklist extends Component {
                 onKeyDown={this.handleKeyPressed}
                 ref={this.containerRef}
                 readOnly={readOnly}
-                onClick={this.handleContainerClick}
             >
                 <RenderIf isTrue={pickListLabel}>
                     <Label
@@ -304,9 +307,10 @@ class Picklist extends Component {
                     />
                     <InternalOverlay
                         isVisible={isOpen}
-                        positionResolver={positionResolver}
+                        positionResolver={opt => positionResolver(opt, enableSearch)}
                         onOpened={() => this.dropdownRef.current.focus()}
                         triggerElementRef={() => this.triggerRef}
+                        keepScrollEnabled
                     >
                         <InternalDropdown
                             id={this.listboxId}
