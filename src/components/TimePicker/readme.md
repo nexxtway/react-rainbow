@@ -168,3 +168,56 @@ const containerStyles = {
         icon={<FontAwesomeIcon icon={faClock} />}
     />
 ```
+
+# TimePicker with different border radius:
+##### If you need to change the border radius of your TimePicker, you can do so using the `borderRadius` prop.
+
+```js
+import React, { useState } from 'react';
+import { TimePicker } from 'react-rainbow-components';
+
+const TimePickerBorderRadius = () => {
+    const containerStyles = {
+        maxWidth: 400,
+    };
+
+    const [value1, setValue1] = useState();
+    const [value2, setValue2] = useState();
+    const [value3, setValue3] = useState();
+
+    return (
+        <>
+            <TimePicker
+                id="time-picker-1"
+                value={value1}
+                label="TimePicker with border radius square"
+                onChange={setValue1}
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                borderRadius="square"
+            />
+            <TimePicker
+                id="time-picker-1"
+                value={value2}
+                label="TimePicker with border radius semi-rounded"
+                onChange={setValue2}
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                borderRadius="semi-rounded"
+            />
+            <TimePicker
+                id="time-picker-1"
+                value={value3}
+                label="TimePicker with border radius rounded"
+                onChange={setValue3}
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                borderRadius="rounded"
+            />
+        </>
+    );
+};
+
+    <TimePickerBorderRadius />;
+
+```

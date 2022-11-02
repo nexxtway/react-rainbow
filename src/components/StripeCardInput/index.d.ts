@@ -37,6 +37,7 @@ export interface StripeCardInput extends BaseProps {
     onChange?: (event: StripeCardEvent) => void;
     onBlur?: () => void;
     onFocus?: () => void;
+    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
     locale?:
         | 'ar'
         | 'da'

@@ -26,6 +26,7 @@ export interface SelectProps extends BaseProps {
     tabIndex?: number | string;
     variant?: 'default' | 'shaded';
     size?: 'small' | 'medium' | 'large';
+    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
 }
 
 declare const Select: React.ComponentType<SelectProps>;

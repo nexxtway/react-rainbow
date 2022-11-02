@@ -3,7 +3,11 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import IconContainer from '../../Input/styled/iconContainer';
 import ButtonIcon from '../../ButtonIcon';
 import { MARGIN_X_SMALL } from '../../../styles/margins';
-import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
+import {
+    BORDER_RADIUS_2,
+    BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_ROUNDED,
+} from '../../../styles/borderRadius';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
 import replaceAlpha from '../../../styles/helpers/color/replaceAlpha';
@@ -90,6 +94,20 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         background-color: ${replaceAlpha(props.palette.brand.main, 0.05)};
         border-color: ${props.palette.brand.main};
     `}
+
+
+    ${props =>
+        props.borderRadius === 'square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+
+    ${props =>
+        props.borderRadius === 'semi-rounded' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
+        `};
+
 `;
 
 export const TruncatedText = styled.span`

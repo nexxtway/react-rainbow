@@ -32,6 +32,7 @@ export interface TextareaProps extends BaseProps {
     onPaste?: (event: ClipboardEvent<HTMLTextAreaElement>) => void;
     id?: string;
     variant?: 'default' | 'shaded';
+    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
 }
 
 declare const Textarea: ComponentType<TextareaProps>;

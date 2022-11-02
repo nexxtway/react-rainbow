@@ -366,3 +366,83 @@ const StyledInput = styled.div`
         </StyledInput>
     </div>
 ```
+
+# DatePicker with different border radius
+##### Use the `borderRadius` prop to change the border radius of the DatePicker.
+
+```js
+
+import React, { useState } from 'react';
+import { Picklist, PicklistOption, DatePicker } from 'react-rainbow-components';
+
+    const DatePickerBorderRadius = () => {
+        const initialState = {
+            date: new Date('2019-10-25 10:44'),
+            locale: { name: 'en-US', label: 'English (US)' },
+        };
+        const containerStyles = {
+            maxWidth: 400,
+        };
+        const [value1, setValue1] = useState( initialState.date );
+        const [value2, setValue2] = useState( initialState.date );
+        const [value3, setValue3] = useState( initialState.date );
+        const [locale, setLocale] = useState( initialState.locale );
+        return (
+            <div>
+                <GlobalHeader src="images/user/user2.jpg">
+                    <div className="rainbow-flex rainbow-align_right">
+                        <Picklist value={locale} onChange={setLocale}>
+                            <PicklistOption name="en-US" label="English (US)" />
+                            <PicklistOption name="es-ES" label="Spanish (Spain)" />
+                            <PicklistOption name="fr-Fr" label="French" />
+                        </Picklist>
+                    </div>
+                </GlobalHeader>
+                <div
+                    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+                    style={containerStyles}
+                >
+                    <DatePicker
+                        id="datePicker-1"
+                        value={value1}
+                        onChange={value => setValue1(value)}
+                        label="DatePicker Border Radius Square"
+                        formatStyle="large"
+                        locale={locale}
+                        borderRadius="square"
+                    />
+                </div>
+                <div
+                    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+                    style={containerStyles}
+                >
+                    <DatePicker
+                        id="datePicker-2"
+                        value={value2}
+                        onChange={value => setValue2(value)}
+                        label="DatePicker Border Radius Semi Rounded"
+                        formatStyle="large"
+                        locale={value2.locale}
+                        borderRadius="semi-rounded"
+                    />
+                </div>
+                <div
+                    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+                    style={containerStyles}
+                >
+                    <DatePicker
+                        id="datePicker-3"
+                        value={value3}
+                        onChange={value => setValue3(value)}
+                        label="DatePicker Border Radius Rounded"
+                        formatStyle="large"
+                        locale={locale}
+                        borderRadius="rounded"
+                    />
+                </div>
+            </div>
+        );
+    };
+
+        <DatePickerBorderRadius />;
+```

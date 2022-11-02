@@ -42,6 +42,7 @@ const TimePicker = React.forwardRef((props, ref) => {
         icon: iconInProps,
         size,
         valueAlignment,
+        borderRadius,
     } = useReduxForm(props);
     const [isOpen, setIsOpen] = useState(false);
     const [value, setValue] = useState(hour24 ? valueProp : get12HourTime(valueProp));
@@ -124,6 +125,7 @@ const TimePicker = React.forwardRef((props, ref) => {
                 tabIndex={tabIndex}
                 size={size}
                 valueAlignment={valueAlignment}
+                borderRadius={borderRadius}
             />
 
             <StyledModal
@@ -202,6 +204,8 @@ TimePicker.propTypes = {
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** Specifies the alignment of the value text. This value defaults to left. */
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 TimePicker.defaultProps = {
@@ -231,6 +235,7 @@ TimePicker.defaultProps = {
     icon: undefined,
     size: 'medium',
     valueAlignment: undefined,
+    borderRadius: 'rounded',
 };
 
 export default TimePicker;
