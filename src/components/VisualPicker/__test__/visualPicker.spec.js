@@ -89,6 +89,7 @@ describe('<VisualPicker/>', () => {
             hideLabel: false,
             as: 'legend',
             variant: 'default',
+            size: 'medium',
         });
     });
 });
