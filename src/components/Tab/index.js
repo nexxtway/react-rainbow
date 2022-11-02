@@ -16,7 +16,7 @@ class TabItem extends Component {
     componentDidMount() {
         const { privateRegisterTab, name, disabled } = this.props;
         if (!disabled) {
-            setTimeout(() => privateRegisterTab({ name, ref: this.tabRef.current }), 0);
+            privateRegisterTab({ name, ref: this.tabRef.current });
         }
     }
 
