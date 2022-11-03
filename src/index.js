@@ -42,6 +42,8 @@ export { default as HelpText } from './components/HelpText';
 export { default as HighlightedText } from './components/HighlightedText';
 export { default as ImportRecordsFlow } from './components/ImportRecordsFlow';
 export { default as Input } from './components/Input';
+export { default as InternalOverlay } from './components/InternalOverlay';
+export { default as InternalTooltip } from './components/InternalTooltip';
 export { default as LoadingShape } from './components/LoadingShape';
 export { default as Lookup } from './components/Lookup';
 export { default as MapMarker } from './components/MapMarker';
@@ -97,5 +99,11 @@ export { default as VisualPickerOptionFooter } from './components/VisualPickerOp
 export { default as WeekDayPicker } from './components/WeekDayPicker';
 export { default as WeeklyCalendar } from './components/WeeklyCalendar';
 export { default as ZoomableImage } from './components/ZoomableImage';
+export { default as attachThemeAttrs } from './styles/helpers/attachThemeAttrs';
 export { default as withDebounce } from './libs/hocs/withDebounce';
 export { default as withRainbowTheme } from './libs/hocs/withRainbowTheme';
+export {
+    default as useDefaultTooltipConnector,
+} from './components/InternalTooltip/hooks/useDefaultTooltipConnector';
+export { default as useLocale } from './libs/hooks/useLocale';
+export { default as useTheme } from './libs/hooks/useTheme';
