@@ -148,6 +148,8 @@ module.exports = {
         },
     ],
     webpackConfig: {
+        mode: 'production',
+        devtool: 'cheap-module-source-map',
         resolve: {
             alias: {
                 'react-rainbow-components': path.resolve(__dirname, './src'),
