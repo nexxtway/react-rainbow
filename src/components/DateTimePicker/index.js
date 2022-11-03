@@ -103,7 +103,6 @@ const DateTimePicker = React.forwardRef((props, ref) => {
     };
 
     const handleChange = (...args) => {
-        closeModal();
         onChange(...args);
     };
 

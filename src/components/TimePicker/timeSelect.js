@@ -276,6 +276,8 @@ export default class TimeSelect extends Component {
         if (inputFocusedIndex === 2) {
             this.setNextAmPmValue();
         }
+
+        this.updateStateValues();
     }
 
     decrementHandler() {
@@ -290,6 +292,20 @@ export default class TimeSelect extends Component {
         if (inputFocusedIndex === 2) {
             this.setNextAmPmValue();
         }
+        this.updateStateValues();
+    }
+
+    updateStateValues() {
+        setTimeout(() => {
+            const { onChange } = this.props;
+            const { hour, minutes, ampm } = this.state;
+            const time = get24HourTime({
+                hour,
+                minutes,
+                ampm,
+            });
+            onChange(time);
+        }, 50);
     }
 
     handleButtonsDown() {
