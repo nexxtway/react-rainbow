@@ -453,6 +453,7 @@ class Lookup extends Component {
             isLoading,
             icon,
             variant,
+            borderRadius,
         } = this.props;
         const { searchValue, focusedItemIndex, options } = this.state;
         const onDeleteValue = disabled || readOnly ? undefined : this.handleRemoveValue;
@@ -479,6 +480,7 @@ class Lookup extends Component {
                     required={required}
                     inputId={this.inputId}
                     readOnly={readOnly}
+                    size={size}
                 />
 
                 <RenderIf isTrue={currentValue}>
@@ -495,6 +497,7 @@ class Lookup extends Component {
                         errorMessageId={errorMessageId}
                         ref={this.inputRef}
                         onClearValue={onDeleteValue}
+                        borderRadius={borderRadius}
                     />
                 </RenderIf>
 
@@ -541,6 +544,8 @@ class Lookup extends Component {
                             error={errorValue}
                             isLoading={isLoading}
                             variant={variant}
+                            size={size}
+                            borderRadius={borderRadius}
                         />
                         <InternalOverlay
                             isVisible={isLookupOpen}
@@ -663,6 +668,8 @@ Lookup.propTypes = {
     /** The variant changes the appearance of the Input. Accepted variants include default,
      * shaded and bare. This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 Lookup.defaultProps = {
@@ -692,6 +699,7 @@ Lookup.defaultProps = {
     debounce: false,
     preferredSelectedOption: 0,
     variant: 'default',
+    borderRadius: 'rounded',
 };
 
 export default withReduxForm(Lookup);

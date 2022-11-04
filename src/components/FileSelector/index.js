@@ -42,6 +42,7 @@ const FileSelector = React.forwardRef((props, ref) => {
         onFocus,
         onBlur,
         value,
+        borderRadius,
     } = useReduxForm(props);
 
     const [isDragOver, setIsDragOver] = useState(false);
@@ -145,6 +146,7 @@ const FileSelector = React.forwardRef((props, ref) => {
                 hasFocus={hasFocus}
                 disabled={disabled}
                 error={error}
+                borderRadius={borderRadius}
             >
                 <StyledInput
                     type="file"
@@ -252,6 +254,8 @@ FileSelector.propTypes = {
     onBlur: PropTypes.func,
     /** A null value that prevents the icon from changing after a file is loaded  */
     value: PropTypes.object,
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 FileSelector.defaultProps = {
@@ -276,6 +280,7 @@ FileSelector.defaultProps = {
     onChange: () => {},
     onFocus: () => {},
     onBlur: () => {},
+    borderRadius: 'rounded',
 };
 
 export default FileSelector;

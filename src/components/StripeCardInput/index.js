@@ -34,6 +34,7 @@ const StripeCardInput = React.forwardRef((props, ref) => {
         style,
         isScriptLoaded,
         isScriptLoadSucceed,
+        borderRadius,
     } = props;
     const [stripe, setStripe] = useState(null);
     const cardRef = useRef();
@@ -98,7 +99,12 @@ const StripeCardInput = React.forwardRef((props, ref) => {
                 inputId={stripeCardInputId}
                 required={required}
             />
-            <StyledCardInput ref={cardRef} id={stripeCardInputId} disabled={disabled} />
+            <StyledCardInput
+                ref={cardRef}
+                id={stripeCardInputId}
+                disabled={disabled}
+                borderRadius={borderRadius}
+            />
             <RenderIf isTrue={bottomHelpText}>
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
             </RenderIf>
@@ -178,6 +184,8 @@ StripeCardInput.propTypes = {
      * @ignore
      */
     isScriptLoadSucceed: PropTypes.bool.isRequired,
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 StripeCardInput.defaultProps = {
@@ -195,6 +203,7 @@ StripeCardInput.defaultProps = {
     onBlur: () => {},
     className: undefined,
     style: undefined,
+    borderRadius: 'rounded',
 };
 
 export default scriptLoader('https://js.stripe.com/v3')(withReduxForm(StripeCardInput));

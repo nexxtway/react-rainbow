@@ -9,6 +9,7 @@ export interface DateTimePickerProps extends DatePickerProps {
     labelAlignment?: LabelAlignment;
     hideLabel?: boolean;
     disabledDays?: Array<Date | string>;
+    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
 }
 
 declare const DatePicker: ComponentType<DateTimePickerProps>;

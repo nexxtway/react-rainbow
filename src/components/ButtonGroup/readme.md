@@ -239,12 +239,6 @@ const SocialContentCount = styled.h2.attrs(props => {
     color: ${props => props.text.main};  
 `;
 
-const StyledButtonMenuIcon = styled(FontAwesomeIcon).attrs(props => {
-    return props.theme.rainbow.palette;
-})`
-    color: ${props => props.brand.main};
-`;
-
 const styles = {
     socialCard: { marginLeft: 0, marginRight: 0 },
     facebookIcon: { color: "#3C5997" } ,
@@ -286,7 +280,7 @@ const socials = [
                 <ButtonMenu
                     menuAlignment="right"
                     menuSize="x-small"
-                    icon={<StyledButtonMenuIcon icon={faAngleDown} border={false} />}
+                    icon={ <FontAwesomeIcon icon={faAngleDown} className="rainbow-m-right_small rainbow-color_brand" /> }
                 >
                     <MenuItem label="Settings" />
                     <MenuItem label="Utilities" />
@@ -335,4 +329,69 @@ import { ButtonGroup, Button } from 'react-rainbow-components';
             <Button label="Save" variant="neutral" />
         </ButtonGroup>
     </div>
+```
+
+##### button group with different border radius
+
+```js
+import React from 'react';
+import { ButtonGroup, Button } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const HeadingContent = styled.div`
+    @media (max-width: 991px) {
+        flex-direction: column;
+        :nth-child(1) { text-align: center; }
+    }
+    flex-direction: column;
+`;
+
+const SubTitle = styled.span.attrs(props => {
+   return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.header};
+`;
+
+const Container = styled.div`
+    max-width: 780px;
+    margin: auto;
+`;
+
+    const ButtonGroupExample = () => {
+        return (
+            <Container>
+                <HeadingContent className="rainbow-p-top_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
+                    <div className="rainbow-m-bottom_medium">
+                        <SubTitle>Button group with border radius square.</SubTitle>
+                    </div>
+                    <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="square">
+                        <Button label="New" variant="neutral" />
+                        <Button label="Edit" variant="neutral" />
+                        <Button label="Remove" variant="neutral" />
+                    </ButtonGroup>
+
+                    <div className="rainbow-m-bottom_medium">
+                        <SubTitle>Button group with border radius semi-rounded.</SubTitle>
+                    </div>
+
+                    <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="semi-rounded">
+                        <Button label="New" variant="neutral" />
+                        <Button label="Edit" variant="neutral" />
+                        <Button label="Remove" variant="neutral" />
+                    </ButtonGroup>
+                    <div className="rainbow-m-bottom_medium">
+                        <SubTitle>Button group with border radius rounded.</SubTitle>
+                    </div>
+
+                    <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="rounded">
+                        <Button label="New" variant="neutral" />
+                        <Button label="Edit" variant="neutral" />
+                        <Button label="Remove" variant="neutral" />
+                    </ButtonGroup>
+                </HeadingContent>
+            </Container>
+        );
+    };
+
+        <ButtonGroupExample />;
 ```

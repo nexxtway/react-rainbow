@@ -82,6 +82,7 @@ describe('<InputBase/>', () => {
             hideLabel: false,
             inputId: expect.any(String),
             variant: 'default',
+            size: 'medium',
         });
     });
     it('should toggle the password visibility', () => {

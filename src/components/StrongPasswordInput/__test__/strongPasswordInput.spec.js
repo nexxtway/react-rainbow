@@ -80,6 +80,7 @@ describe('<StrongPasswordInput />', () => {
             inputId: expect.any(String),
             id: expect.any(String),
             variant: 'default',
+            size: 'medium',
         });
     });
 

@@ -1,4 +1,4 @@
-import { ComponentType, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 export interface LabelProps {
     className?: string;
@@ -11,6 +11,7 @@ export interface LabelProps {
     variant?: 'default' | 'inverse';
     hideLabel?: boolean;
     as?: string;
+    size?: 'small' | 'medium' | 'large';
 }
 
 export default function(props: LabelProps): JSX.Element | null;
