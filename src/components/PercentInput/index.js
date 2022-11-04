@@ -141,6 +141,7 @@ const PercentInput = forwardRef((props, ref) => {
                 inputId={inputId}
                 readOnly={isReadOnly}
                 id={labelId}
+                size={size}
             />
             <RelativeElement>
                 <RenderIf isTrue={icon}>

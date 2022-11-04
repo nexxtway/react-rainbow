@@ -33,6 +33,7 @@ describe('<CodeInput />', () => {
             hideLabel: false,
             as: 'legend',
             variant: 'default',
+            size: 'medium',
         });
     });
     it('should have bottomHelpText rendered if is sent as param', () => {

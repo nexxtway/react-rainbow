@@ -104,6 +104,7 @@ const CounterInput = React.forwardRef((props, ref) => {
                 inputId={inputId}
                 readOnly={isReadOnly}
                 id={labelId}
+                size={size}
             />
             <RelativeElement>
                 <ButtonContainer iconPosition="left" readOnly={readOnly} error={error}>

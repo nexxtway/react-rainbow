@@ -17,6 +17,7 @@ export default function Label(props) {
         hideLabel,
         variant,
         as,
+        size,
     } = props;
     if (hideLabel) {
         return (
@@ -37,6 +38,7 @@ export default function Label(props) {
                 as={as}
                 id={id}
                 variant={variant}
+                size={size}
             >
                 <RequiredAsterisk required={required} />
                 {label}
@@ -56,6 +58,7 @@ Label.propTypes = {
     hideLabel: PropTypes.bool,
     as: PropTypes.string,
     variant: PropTypes.oneOf(['default', 'inverse']),
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 Label.defaultProps = {
@@ -69,4 +72,5 @@ Label.defaultProps = {
     hideLabel: false,
     as: undefined,
     variant: 'default',
+    size: 'medium',
 };

@@ -76,6 +76,7 @@ describe('<PickerInput/>', () => {
             labelAlignment: 'center',
             inputId: expect.any(String),
             variant: 'default',
+            size: 'medium',
         });
     });
     it('should render StyledPickerInput when readOnly is not passed', () => {

@@ -19,6 +19,7 @@ describe('<WeekDayPicker />', () => {
             hideLabel: false,
             as: 'legend',
             variant: 'default',
+            size: 'medium',
         });
     });
     it('should render bottom help text when bottomHelpText prop is passed', () => {

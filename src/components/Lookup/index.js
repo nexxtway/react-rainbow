@@ -480,6 +480,7 @@ class Lookup extends Component {
                     required={required}
                     inputId={this.inputId}
                     readOnly={readOnly}
+                    size={size}
                 />
 
                 <RenderIf isTrue={currentValue}>
@@ -543,6 +544,7 @@ class Lookup extends Component {
                             error={errorValue}
                             isLoading={isLoading}
                             variant={variant}
+                            size={size}
                             borderRadius={borderRadius}
                         />
                         <InternalOverlay
