@@ -1,13 +1,9 @@
-/* eslint-disable react/sort-comp */
-/* eslint-disable react/prop-types */
-import React, { Component } from 'react';
+import React, { useRef, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
-import { uniqueId } from '../../libs/utils';
-import { Consumer } from '../Accordion/context';
+import { AccordionContext } from '../Accordion/context';
 import RightArrow from './rightArrow';
-import isInArray from './isInArray';
-import removeItemFromArray from './removeItemFromArray';
+import { getIsExpanded, isInArray } from './helpers';
 import StyledLi from './styled/li';
 import StyledSummary from './styled/summary';
 import StyledHeading from './styled/heading';
@@ -15,169 +11,147 @@ import StyledIcon from './styled/icon';
 import StyledContent from './styled/content';
 import AssistiveText from '../AssistiveText';
 import StyledSpan from './styled/span';
+import useUniqueIdentifier from '../../libs/hooks/useUniqueIdentifier';
 
-class AccordionItem extends Component {
-    constructor(props) {
-        super(props);
-        this.accordionDetailsId = uniqueId('accordion-section-details');
-        this.name = uniqueId('accordion-section');
-        this.handleToggleSection = this.handleToggleSection.bind(this);
-        this.handleFocusSection = this.handleFocusSection.bind(this);
-        this.handleKeyPressed = this.handleKeyPressed.bind(this);
-        this.containerRef = React.createRef();
-        this.buttonRef = React.createRef();
-    }
-
-    componentDidMount() {
-        const { privateRegisterAccordionSection, disabled } = this.props;
-        if (!disabled) {
-            return setTimeout(
-                () =>
-                    privateRegisterAccordionSection({
-                        name: this.getCurrentName(),
-                        ref: this.containerRef.current,
-                        focusButton: () => this.buttonRef.current.focus(),
-                    }),
-                0,
-            );
-        }
-        return null;
-    }
-
-    componentWillUnmount() {
-        const { privateUnregisterAccordionSection } = this.props;
-        privateUnregisterAccordionSection(this.getCurrentName());
-    }
-
-    getCurrentName() {
-        const { name } = this.props;
-        return name || this.name;
-    }
-
-    resolveActiveNamesWhenMultiple() {
-        const { activeNames } = this.props;
-        const nameToToggle = this.getCurrentName();
-
-        if (activeNames === undefined) {
-            return [nameToToggle];
-        }
-        if (isInArray(activeNames, nameToToggle)) {
-            return removeItemFromArray(activeNames, nameToToggle);
-        }
-        return activeNames.concat([nameToToggle]);
-    }
-
-    resolveActiveNames() {
-        const { multiple, activeNames } = this.props;
-        const nameToToggle = this.getCurrentName();
-        if (multiple) {
-            return this.resolveActiveNamesWhenMultiple();
-        }
-        if (nameToToggle === activeNames) {
-            return '';
-        }
-        return nameToToggle;
-    }
-
-    handleToggleSection(event) {
-        const { disabled, privateOnToggleSection } = this.props;
-        if (!disabled) {
-            privateOnToggleSection(event, this.resolveActiveNames());
-        }
-    }
-
-    handleFocusSection() {
-        const { disabled, privateOnFocusSection } = this.props;
-        if (!disabled) {
-            privateOnFocusSection(this.getCurrentName());
-        }
-    }
-
-    handleKeyPressed(event) {
-        const { disabled, privateOnKeyPressed } = this.props;
-        if (!disabled) {
-            privateOnKeyPressed(event);
-        }
-    }
-
-    isExpanded() {
-        const { activeNames, multiple } = this.props;
-        const currentName = this.getCurrentName();
-        if (multiple && Array.isArray(activeNames)) {
-            return isInArray(activeNames, currentName);
-        }
-        return activeNames === currentName;
-    }
-
-    render() {
-        const {
-            style,
-            disabled,
-            children,
-            label,
-            icon,
-            assistiveText,
-            className,
-            variant,
-        } = this.props;
-
-        const isExpanded = this.isExpanded();
-
-        return (
-            <StyledLi
-                data-id="accordion-section-li"
-                className={className}
-                style={style}
-                disabled={disabled}
-                variant={variant}
-                isExpanded={isExpanded}
-                ref={this.containerRef}
-            >
-                <StyledSummary
-                    data-id="accordion-section-summary"
-                    isExpanded={isExpanded}
-                    variant={variant}
-                    disabled={disabled}
-                    onClick={this.handleToggleSection}
-                    onFocus={this.handleFocusSection}
-                    onKeyDown={this.handleKeyPressed}
-                    aria-controls={this.accordionDetailsId}
-                    aria-expanded={isExpanded}
-                    type="button"
-                    ref={this.buttonRef}
-                >
-                    <RightArrow isExpanded={isExpanded} disabled={disabled} />
-                    <AssistiveText text={assistiveText} />
-                    <StyledHeading disabled={disabled}>
-                        <RenderIf isTrue={icon}>
-                            <StyledIcon>{icon}</StyledIcon>
-                        </RenderIf>
-                        <RenderIf isTrue={label}>
-                            <StyledSpan data-id="accordion-section-label">{label}</StyledSpan>
-                        </RenderIf>
-                    </StyledHeading>
-                </StyledSummary>
-                <StyledContent
-                    data-id="accordion-section-content"
-                    aria-hidden={!isExpanded}
-                    isCollapsed={!isExpanded}
-                    id={this.accordionDetailsId}
-                >
-                    {children}
-                </StyledContent>
-            </StyledLi>
-        );
-    }
-}
+const contextDefault = {
+    privateRegisterAccordionSection: () => {},
+    privateUnregisterAccordionSection: () => {},
+};
 
 /**
  * An AccordionSection is single section that is nested in the Accordion component.
  * @category Layout
  */
-export default function AccordionSection(props) {
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    return <Consumer>{context => <AccordionItem {...props} {...context} />}</Consumer>;
-}
+const AccordionSection = props => {
+    const {
+        style,
+        disabled,
+        children,
+        label,
+        icon,
+        assistiveText,
+        className,
+        variant,
+        name,
+    } = props;
+    const {
+        activeNames,
+        multiple,
+        privateOnToggleSection,
+        privateOnFocusSection,
+        privateRegisterAccordionSection,
+        privateUnregisterAccordionSection,
+        privateOnKeyPressed,
+    } = useContext(AccordionContext) ?? contextDefault;
+
+    const containerRef = useRef();
+    const buttonRef = useRef();
+    const uniqueName = useUniqueIdentifier('accordion-section');
+    const accordionDetailsId = useUniqueIdentifier('accordion-section-details');
+
+    const currentName = name || uniqueName;
+
+    useEffect(() => {
+        if (!disabled) {
+            privateRegisterAccordionSection({
+                name: currentName,
+                ref: containerRef.current,
+                focusButton: () => buttonRef.current.focus(),
+            });
+        }
+        return () => {
+            if (!disabled) {
+                privateUnregisterAccordionSection(currentName);
+            }
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const isExpanded = getIsExpanded({ multiple, activeNames, currentName });
+
+    const resolveActiveNamesWhenMultiple = () => {
+        if (activeNames === undefined) {
+            return [currentName];
+        }
+        if (isInArray(activeNames, currentName)) {
+            return activeNames.filter(element => element !== currentName);
+        }
+        return [...activeNames, currentName];
+    };
+
+    const resolveActiveNames = () => {
+        if (multiple) {
+            return resolveActiveNamesWhenMultiple();
+        }
+        if (currentName === activeNames) {
+            return '';
+        }
+        return currentName;
+    };
+
+    const handleToggleSection = event => {
+        if (!disabled) {
+            privateOnToggleSection(event, resolveActiveNames());
+        }
+    };
+
+    const handleFocusSection = () => {
+        if (!disabled) {
+            privateOnFocusSection(currentName);
+        }
+    };
+
+    const handleKeyPressed = event => {
+        if (!disabled) {
+            privateOnKeyPressed(event);
+        }
+    };
+
+    return (
+        <StyledLi
+            data-id="accordion-section-li"
+            className={className}
+            style={style}
+            disabled={disabled}
+            variant={variant}
+            isExpanded={isExpanded}
+            ref={containerRef}
+        >
+            <StyledSummary
+                data-id="accordion-section-summary"
+                isExpanded={isExpanded}
+                variant={variant}
+                disabled={disabled}
+                onClick={handleToggleSection}
+                onFocus={handleFocusSection}
+                onKeyDown={handleKeyPressed}
+                aria-controls={accordionDetailsId}
+                aria-expanded={isExpanded}
+                type="button"
+                ref={buttonRef}
+            >
+                <RightArrow isExpanded={isExpanded} disabled={disabled} />
+                <AssistiveText text={assistiveText} />
+                <StyledHeading disabled={disabled}>
+                    <RenderIf isTrue={icon}>
+                        <StyledIcon>{icon}</StyledIcon>
+                    </RenderIf>
+                    <RenderIf isTrue={label}>
+                        <StyledSpan data-id="accordion-section-label">{label}</StyledSpan>
+                    </RenderIf>
+                </StyledHeading>
+            </StyledSummary>
+            <StyledContent
+                data-id="accordion-section-content"
+                aria-hidden={!isExpanded}
+                isCollapsed={!isExpanded}
+                id={accordionDetailsId}
+            >
+                {children}
+            </StyledContent>
+        </StyledLi>
+    );
+};
 
 AccordionSection.propTypes = {
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -216,3 +190,5 @@ AccordionSection.defaultProps = {
     name: undefined,
     variant: 'default',
 };
+
+export default AccordionSection;

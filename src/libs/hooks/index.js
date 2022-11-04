@@ -8,3 +8,5 @@ export { default as useDisclosure } from './useDisclosure';
 export { default as useWindowResize } from './useWindowResize';
 export { default as useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 export { useOutsideClick } from '@rainbow-modules/hooks';
+export { default as useChildrenRegister } from './useChildrenRegister';
+export { default as useChildrenRegisterRef } from './useChildrenRegisterRef';

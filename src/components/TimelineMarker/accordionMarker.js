@@ -14,8 +14,7 @@ import StyledDatetime from './styled/datetime';
 import StyledDescription from './styled/description';
 import StyledBody from './styled/body';
 import ExpandCollapseButton from './expandCollapseButton';
-import removeItemFromArray from '../AccordionSection/removeItemFromArray';
-import isInArray from '../AccordionSection/isInArray';
+import { removeItemFromArray, isInArray } from '../AccordionSection/helpers';
 
 export default function AccordionTimelineMarker(props) {
     const {
