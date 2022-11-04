@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
+import {
+    BORDER_RADIUS_2,
+    BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_ROUNDED,
+} from '../../../styles/borderRadius';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
 import {
     FONT_SIZE_TEXT_LARGE,
@@ -117,6 +121,18 @@ const StyledSelect = attachThemeAttrs(styled.select)`
                 border: 0.125rem ${props.palette.error.main} solid;
             }
         `};
+
+        ${props =>
+            props.borderRadius === 'square' &&
+            `
+                border-radius: ${BORDER_RADIUS_SQUARE};
+            `};
+    
+        ${props =>
+            props.borderRadius === 'semi-rounded' &&
+            `
+                border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
+            `};
 `;
 
 export default StyledSelect;

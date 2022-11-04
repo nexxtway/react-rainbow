@@ -33,6 +33,7 @@ export interface StrongPasswordInputProps extends BaseProps {
     passwordState?: 'weak' | 'average' | 'strong';
     passwordStateLabels?: PasswordStateLabels;
     size?: 'small' | 'medium' | 'large';
+    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
 }
 
 export default function(props: StrongPasswordInputProps): JSX.Element | null;

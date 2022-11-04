@@ -253,3 +253,46 @@ const containerStyles = {
         className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
     />;
 ```
+
+##### Textarea with different border radius
+
+```js
+import React from 'react';
+import { Textarea } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+    <>
+        <Textarea
+            id="example-textarea-1"
+            label="Textarea with border radius square"
+            rows={3}
+            placeholder="Placeholder Text"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            borderRadius="square"
+        />
+
+        <Textarea
+            id="example-textarea-1"
+            label="Textarea with border radius semi-rounded"
+            rows={3}
+            placeholder="Placeholder Text"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            borderRadius="semi-rounded"
+        />
+
+        <Textarea
+            id="example-textarea-1"
+            label="Textarea with border radius rounded"
+            rows={3}
+            placeholder="Placeholder Text"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            borderRadius="rounded"
+        />
+    </>;
+```

@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
+import {
+    BORDER_RADIUS_2,
+    BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_ROUNDED,
+} from '../../../styles/borderRadius';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledCardInput = attachThemeAttrs(styled.div)`
@@ -25,6 +29,19 @@ const StyledCardInput = attachThemeAttrs(styled.div)`
                 border: 1px solid ${props.palette.border.disabled} !important;
             }
     `}
+
+    ${props =>
+        props.borderRadius === 'square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+
+    ${props =>
+        props.borderRadius === 'semi-rounded' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
+        `};
+
 `;
 
 export default StyledCardInput;

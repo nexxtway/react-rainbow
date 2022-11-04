@@ -93,3 +93,55 @@ const Form = () => {
         <Form />
     </Container>
 ```
+
+##### PhoneInput with different border radius
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { PhoneInput } from 'react-rainbow-components';
+
+const Container = styled.div`
+    max-width: 480px;
+    margin: 30px auto;
+    padding: 20px 10px;
+    min-height: 300px;
+`;
+const Form = () => {
+    const [phone1, setPhone1] = useState();
+    const [phone2, setPhone2] = useState();
+    const [phone3, setPhone3] = useState();
+
+    return (
+        <>
+            <PhoneInput
+                label="Phone Number with border radius square"
+                placeholder="Enter your phone number"
+                onChange={setPhone1}
+                value={phone1}
+                borderRadius="square"
+            />
+            <PhoneInput
+                label="Phone Number with border radius semi-rounded"
+                placeholder="Enter your phone number"
+                onChange={setPhone2}
+                value={phone2}
+                borderRadius="semi-rounded"
+                style={{ marginTop: '20px' }}
+            />
+            <PhoneInput
+                label="Phone Number with border radius rounded"
+                placeholder="Enter your phone number"
+                onChange={setPhone3}
+                value={phone3}
+                borderRadius="rounded"
+                style={{ marginTop: '20px' }}
+            />
+        </>
+    );
+};
+
+    <Container>
+        <Form />
+    </Container>
+```

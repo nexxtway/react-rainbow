@@ -592,3 +592,70 @@ const initialState = { value: { name: 'option 3', label: 'Central Park' } };
         </div>
     </InverseContainer>;
 ```
+
+##### Picklist with different border radius
+
+```js
+    import React, { useState } from 'react';
+    import { Picklist, Option } from 'react-rainbow-components';
+
+    const containerStyles = {
+        maxWidth: 700,
+    };
+
+    const initialState = { value: { name: 'option 3', label: 'Central Park' } };
+    const PicklistExample = () => {
+        const [value1, setValue1] = useState({ name: 'option 3', label: 'Central Park' });
+        const [value2, setValue2] = useState({ name: 'option 3', label: 'Central Park' });
+        const [value3, setValue3] = useState({ name: 'option 3', label: 'Central Park' });
+
+        return (
+            <>
+                <Picklist
+                    id="picklist-1"
+                    style={containerStyles}
+                    onChange={setValue1}
+                    value={value1}
+                    label="Select Building"
+                    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                    borderRadius="square"
+                >
+                    <Option name="header" label="Your Buildings" variant="header" />
+                    <Option name="option 1" label="Experimental Building" />
+                    <Option name="option 2" label="Empire State" />
+                    <Option name="option 3" label="Central Park" />
+                </Picklist>
+                <Picklist
+                    id="picklist-2"
+                    style={containerStyles}
+                    onChange={setValue2}
+                    value={value2}
+                    label="Select Building"
+                    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                    borderRadius="semi-rounded"
+                >
+                    <Option name="header" label="Your Buildings" variant="header" />
+                    <Option name="option 1" label="Experimental Building" />
+                    <Option name="option 2" label="Empire State" />
+                    <Option name="option 3" label="Central Park" />
+                </Picklist>
+                <Picklist
+                    id="picklist-3"
+                    style={containerStyles}
+                    onChange={setValue3}
+                    value={value3}
+                    label="Select Building"
+                    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                    borderRadius="rounded"
+                >
+                    <Option name="header" label="Your Buildings" variant="header" />
+                    <Option name="option 1" label="Experimental Building" />
+                    <Option name="option 2" label="Empire State" />
+                    <Option name="option 3" label="Central Park" />
+                </Picklist>
+            </>
+        );
+    };
+
+        <PicklistExample />;
+```

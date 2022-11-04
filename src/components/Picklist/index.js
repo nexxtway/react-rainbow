@@ -20,7 +20,7 @@ import InternalDropdown from '../InternalDropdown';
 import InternalOverlay from '../InternalOverlay';
 import WindowResize from '../../libs/WindowResize';
 
-function positionResolver(opts) {
+function positionResolver(opts, enableSearch) {
     const { trigger, viewport, content } = opts;
     const newOpts = {
         trigger,
@@ -30,6 +30,13 @@ function positionResolver(opts) {
             width: trigger.width,
         },
     };
+    if (enableSearch && viewport.width <= 600) {
+        return {
+            top: 0,
+            left: 0,
+            width: viewport.width,
+        };
+    }
     return {
         ...InternalOverlay.defaultPositionResolver(newOpts),
         width: trigger.width,
@@ -82,7 +89,9 @@ class Picklist extends Component {
                     this.handleBlur();
                 }
             });
-            this.windowScrolling.startListening(this.handleWindowScroll);
+            if (window.screen.width > 600) {
+                this.windowScrolling.startListening(this.handleWindowScroll);
+            }
             this.windowResize.startListening(this.handleWindowResize);
         }
     }
@@ -229,6 +238,7 @@ class Picklist extends Component {
             debounce,
             emptyComponent,
             size,
+            borderRadius,
         } = this.props;
         const { label: valueLabel, icon } = getNormalizeValue(valueInProps);
         const value = valueLabel || '';
@@ -296,12 +306,14 @@ class Picklist extends Component {
                         iconPosition="left"
                         variant={variant}
                         size={size}
+                        borderRadius={borderRadius}
                     />
                     <InternalOverlay
                         isVisible={isOpen}
-                        positionResolver={positionResolver}
+                        positionResolver={opt => positionResolver(opt, enableSearch)}
                         onOpened={() => this.dropdownRef.current.focus()}
                         triggerElementRef={() => this.triggerRef}
+                        keepScrollEnabled
                     >
                         <InternalDropdown
                             id={this.listboxId}
@@ -391,6 +403,8 @@ Picklist.propTypes = {
     emptyComponent: PropTypes.node,
     /** The size of the input. Valid values are small, medium, and large. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 Picklist.defaultProps = {
@@ -420,6 +434,7 @@ Picklist.defaultProps = {
     debounce: false,
     emptyComponent: undefined,
     size: 'medium',
+    borderRadius: 'rounded',
 };
 
 export default withReduxForm(Picklist);

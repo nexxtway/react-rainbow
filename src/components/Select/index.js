@@ -68,6 +68,7 @@ class Select extends Component {
             tabIndex,
             variant,
             size,
+            borderRadius,
         } = this.props;
 
         return (
@@ -96,6 +97,7 @@ class Select extends Component {
                         variant={variant}
                         ref={this.selectRef}
                         size={size}
+                        borderRadius={borderRadius}
                     >
                         <Options options={options} />
                     </StyledSelect>
@@ -162,6 +164,8 @@ Select.propTypes = {
     variant: PropTypes.oneOf(['default', 'shaded']),
     /** The size of the input. Valid values are small, medium, and large. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 Select.defaultProps = {
@@ -185,6 +189,7 @@ Select.defaultProps = {
     tabIndex: undefined,
     variant: 'default',
     size: 'medium',
+    borderRadius: 'rounded',
 };
 
 export default withReduxForm(Select);

@@ -125,6 +125,7 @@ export default class InputBase extends Component {
             variant,
             size,
             valueAlignment,
+            borderRadius,
         } = this.props;
         const isReadOnly = !!(!disabled && readOnly);
         const isPassword = type === 'password';
@@ -184,6 +185,7 @@ export default class InputBase extends Component {
                         error={error}
                         variant={variant}
                         size={size}
+                        borderRadius={borderRadius}
                     />
                     <RenderIf isTrue={isPassword}>
                         <TogglePasswordButton
@@ -257,6 +259,7 @@ InputBase.propTypes = {
     hideLabel: PropTypes.bool,
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 InputBase.defaultProps = {
@@ -294,4 +297,5 @@ InputBase.defaultProps = {
     hideLabel: false,
     size: 'medium',
     valueAlignment: undefined,
+    borderRadius: 'rounded',
 };

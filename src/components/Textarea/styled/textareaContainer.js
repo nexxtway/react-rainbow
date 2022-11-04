@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
+import {
+    BORDER_RADIUS_1,
+    BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_ROUNDED,
+} from '../../../styles/borderRadius';
 
 const StyledTextareaContainer = attachThemeAttrs(styled.div)`
     display: flex;
@@ -60,6 +64,18 @@ const StyledTextareaContainer = attachThemeAttrs(styled.div)`
                 border: none;
             }
         `};
+    
+        ${props =>
+            props.borderRadius === 'square' &&
+            `
+                border-radius: ${BORDER_RADIUS_SQUARE};
+            `};
+    
+        ${props =>
+            props.borderRadius === 'semi-rounded' &&
+            `
+                border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
+            `};
 `;
 
 export default StyledTextareaContainer;
