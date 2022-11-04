@@ -180,6 +180,7 @@ const PercentInput = forwardRef((props, ref) => {
                     size={size}
                     valueAlignment={valueAlignment}
                     borderRadius={borderRadius}
+                    pattern="\d*"
                 />
             </RelativeElement>
             <RenderIf isTrue={bottomHelpText}>
