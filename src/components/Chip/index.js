@@ -10,10 +10,16 @@ import StyledButtonIcon from './styled/buttonIcon';
  * A Chip displays a label that can be removed from view.
  */
 export default function Chip(props) {
-    const { label, onDelete, variant, title, className, style } = props;
+    const { label, onDelete, variant, title, className, style, borderRadius } = props;
 
     return (
-        <StyledContainer className={className} style={style} variant={variant} title={title}>
+        <StyledContainer
+            className={className}
+            style={style}
+            variant={variant}
+            title={title}
+            borderRadius={borderRadius}
+        >
             <TruncatedText>{label}</TruncatedText>
             <RenderIf isTrue={onDelete}>
                 <StyledButtonIcon
@@ -51,6 +57,8 @@ Chip.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The border radius of the Chip. Options include square, semi-rounded and rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 Chip.defaultProps = {
@@ -60,4 +68,5 @@ Chip.defaultProps = {
     onDelete: undefined,
     className: undefined,
     style: undefined,
+    borderRadius: 'rounded',
 };
