@@ -60,20 +60,20 @@
 }
 
 .react-rainbow-styleguide-open-chat-button {
-    position: fixed;
+    position: fixed !important;
     bottom: 24px;
     right: 24px;
-    width: 64px;
-    height: 64px;
+    width: 64px !important;
+    height: 64px !important;
     z-index: 6000;
 }
 
 .react-rainbow-styleguide_hamburger-button {
-    position: fixed;
+    position: fixed !important;
     top: 8px;
     right: 8px;
     z-index: 6000;
-    display: none;
+    display: none !important;
 }
 
 @media (max-width: 800px) {
@@ -88,7 +88,7 @@
     }
 
     .react-rainbow-styleguide_hamburger-button {
-        display: inline-block;
+        display: inline-block !important;
     }
 
     .react-rainbow-styleguide-sidebar {

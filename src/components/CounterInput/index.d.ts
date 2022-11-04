@@ -33,6 +33,7 @@ export interface CounterInputProps extends BaseProps {
     hideLabel?: boolean;
     bottomHelpText?: ReactNode;
     size?: 'small' | 'medium' | 'large';
+    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
 }
 
 declare const CounterInput: ComponentType<CounterInputProps>;

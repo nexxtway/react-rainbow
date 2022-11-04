@@ -50,6 +50,7 @@ const PercentInput = forwardRef((props, ref) => {
         locale: localeProp,
         size,
         valueAlignment,
+        borderRadius,
     } = useReduxForm(props);
 
     const inputRef = useRef();
@@ -177,6 +178,7 @@ const PercentInput = forwardRef((props, ref) => {
                     variant={variant}
                     size={size}
                     valueAlignment={valueAlignment}
+                    borderRadius={borderRadius}
                 />
             </RelativeElement>
             <RenderIf isTrue={bottomHelpText}>
@@ -262,6 +264,8 @@ PercentInput.propTypes = {
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** Specifies the alignment of the value text. This value defaults to left. */
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 PercentInput.defaultProps = {
@@ -296,6 +300,7 @@ PercentInput.defaultProps = {
     maximumSignificantDigits: undefined,
     size: 'medium',
     valueAlignment: 'left',
+    borderRadius: 'rounded',
 };
 
 export default PercentInput;

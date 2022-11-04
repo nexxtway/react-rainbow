@@ -135,3 +135,65 @@ const CounterControlled = () => {
 
     <CounterControlled />
 ```
+
+# CounterInput with different border radius
+##### Use the `borderRadius` prop to change the border radius of the CounterInput.
+
+```js
+import React, { useState } from 'react';
+import { CounterInput } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 220,
+};
+
+const CounterBorderRadius = (  ) => {
+    const [counter1, setCounter1] = useState();
+    const [counter2, setCounter2] = useState();
+    const [counter3, setCounter3] = useState();
+    return(
+        <>
+            <CounterInput
+                id="input-component-1"
+                label="Border Radius square"
+                placeholder="Only numbers"
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                labelAlignment="center"
+                value={counter1}
+                onChange={setCounter1}
+                min={10}
+                max={100}
+                borderRadius="square"
+            />
+            <CounterInput
+                id="input-component-2"
+                label="Border Radius semi-rounded"
+                placeholder="Only numbers"
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                labelAlignment="center"
+                value={counter2}
+                onChange={setCounter2}
+                min={10}
+                max={100}
+                borderRadius="semi-rounded"
+            />
+            <CounterInput
+                id="input-component-3"
+                label="Border Radius rounded"
+                placeholder="Only numbers"
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                labelAlignment="center"
+                value={counter3}
+                onChange={setCounter3}
+                min={10}
+                max={100}
+                borderRadius="rounded"
+            />
+        </>
+    )
+}
+    <CounterBorderRadius />
+```

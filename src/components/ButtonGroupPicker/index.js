@@ -71,11 +71,17 @@ class ButtonGroupPicker extends Component {
             labelAlignment,
             hideLabel,
             variant,
+            borderRadius,
         } = this.props;
         const context = this.getContext();
 
         return (
-            <StyledContainer id={id} className={className} style={style}>
+            <StyledContainer
+                id={id}
+                className={className}
+                style={style}
+                borderRadius={borderRadius}
+            >
                 <RenderIf isTrue={label}>
                     <Label
                         label={label}
@@ -85,7 +91,7 @@ class ButtonGroupPicker extends Component {
                         as="legend"
                     />
                 </RenderIf>
-                <StyledButtonGroup variant={variant}>
+                <StyledButtonGroup variant={variant} borderRadius={borderRadius}>
                     <Provider value={context}>{children}</Provider>
                 </StyledButtonGroup>
                 <RenderIf isTrue={bottomHelpText}>
@@ -144,6 +150,8 @@ ButtonGroupPicker.propTypes = {
     /** The variant changes the appearance of the ButtonGroupPicker. Accepted variants include default,
      * and shaded. This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'shaded']),
+    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
 };
 
 ButtonGroupPicker.defaultProps = {
@@ -163,6 +171,7 @@ ButtonGroupPicker.defaultProps = {
     labelAlignment: 'center',
     variant: 'default',
     hideLabel: false,
+    borderRadius: 'rounded',
 };
 
 export default withReduxForm(ButtonGroupPicker);
