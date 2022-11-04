@@ -58,6 +58,8 @@ const initialState = { value: null };
                     placeholder="Choose Building"
                     onChange={value => setState({ value })}
                     value={state.value}
+                    onClick={() => console.log('click')}
+                    onFocus={() => console.log('focus')}
                     label="Select Building"
                     hideLabel
                     enableSearch

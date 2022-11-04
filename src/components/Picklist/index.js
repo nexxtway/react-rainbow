@@ -157,19 +157,22 @@ class Picklist extends Component {
     }
 
     handleInputClick(event) {
-        const { onClick } = this.props;
         const { isOpen } = this.state;
-        onClick(event);
         if (isOpen) {
             return this.closeMenu();
         }
+        const { onClick } = this.props;
+        onClick(event);
         return this.openMenu();
     }
 
     handleFocus() {
-        const { onFocus, value } = this.props;
-        const eventValue = value || null;
-        onFocus(eventValue);
+        const { isOpen } = this.state;
+        if (!isOpen) {
+            const { onFocus, value } = this.props;
+            const eventValue = value || null;
+            onFocus(eventValue);
+        }
     }
 
     handleBlur() {
@@ -185,7 +188,6 @@ class Picklist extends Component {
         const { label, name, icon, value } = option;
         this.closeMenu();
         setTimeout(() => {
-            this.focus();
             return onChange({ label, name, icon, value });
         }, 0);
     }
