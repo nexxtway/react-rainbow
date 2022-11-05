@@ -1,4 +1,4 @@
-const getChildNodes = ({ ref, selector }) => {
+const getChildNodes = ({ ref, selector } = {}) => {
     if (ref) {
         const [...node] = ref.querySelectorAll(selector);
         return node;
