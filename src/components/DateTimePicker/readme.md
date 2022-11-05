@@ -301,27 +301,27 @@ const PictureIcon = styled(Picture)`
 import React, { useState } from 'react';
 import { DateTimePicker, Picklist, PicklistOption } from 'react-rainbow-components';
 
+    const containerStyles = {
+        maxWidth: 400,
+    };
+
+    const initialState = {
+        value: new Date('2019-10-25 10:44'),
+        locale: { name: 'en-US', label: 'English (US)' },
+    };
+
+    const okButtonLocalizedLabel = {
+        'en-US': 'OK',
+        'es-ES': 'Aceptar',
+        'fr-Fr': "D'accord",
+    };
+
+    const cancelButtonLocalizedLabel = {
+        'en-US': 'Cancel',
+        'es-ES': 'Cancelar',
+        'fr-Fr': 'Annuler',
+    };
     const DateTimePickerBorderRadius = () => {
-        const containerStyles = {
-            maxWidth: 400,
-        };
-
-        const initialState = {
-            value: new Date('2019-10-25 10:44'),
-            locale: { name: 'en-US', label: 'English (US)' },
-        };
-
-        const okButtonLocalizedLabel = {
-            'en-US': 'OK',
-            'es-ES': 'Aceptar',
-            'fr-Fr': "D'accord",
-        };
-
-        const cancelButtonLocalizedLabel = {
-            'en-US': 'Cancel',
-            'es-ES': 'Cancelar',
-            'fr-Fr': 'Annuler',
-        };
 
         const [value1, setValue1] = useState(initialState.value);
         const [value2, setValue2] = useState(initialState.value);
