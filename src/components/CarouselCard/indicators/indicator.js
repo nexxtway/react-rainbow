@@ -19,9 +19,9 @@ export default class Indicator extends Component {
     }
 
     componentDidMount() {
-        const { onCreate, indicatorID } = this.props;
+        const { onCreate, id } = this.props;
         onCreate({
-            indicatorID,
+            id,
             ref: this.indicatorRef,
         });
     }
@@ -44,20 +44,20 @@ export default class Indicator extends Component {
     }
 
     render() {
-        const { indicatorID, containerID, header, onSelect } = this.props;
+        const { id, containerID, header, onSelect } = this.props;
         const assistiveText = getAssistiveText(header);
-        const isSelected = this.isSelected(indicatorID);
+        const isSelected = this.isSelected(id);
         return (
-            <StyledIndicatorLi role="presentation" key={indicatorID}>
+            <StyledIndicatorLi role="presentation" key={id}>
                 <StyledIndicatorButton
-                    id={indicatorID}
+                    id={id}
                     isSelected={isSelected}
                     role="tab"
-                    tabIndex={this.getTabIndex(indicatorID)}
+                    tabIndex={this.getTabIndex(id)}
                     aria-selected={isSelected}
                     aria-controls={containerID}
                     title={assistiveText}
-                    onClick={() => onSelect(indicatorID)}
+                    onClick={() => onSelect(id)}
                     ref={this.indicatorRef}
                 >
                     <AssistiveText text={assistiveText} />
@@ -68,7 +68,7 @@ export default class Indicator extends Component {
 }
 
 Indicator.propTypes = {
-    indicatorID: PropTypes.string,
+    id: PropTypes.string,
     containerID: PropTypes.string,
     header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onSelect: PropTypes.func,
@@ -78,7 +78,7 @@ Indicator.propTypes = {
 };
 
 Indicator.defaultProps = {
-    indicatorID: undefined,
+    id: undefined,
     containerID: undefined,
     header: undefined,
     onSelect: () => {},

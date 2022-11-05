@@ -42,7 +42,7 @@ class Item extends Component {
             () =>
                 privateRegisterChild({
                     containerID: this.carouselImageID,
-                    indicatorID: this.carouselIndicatorID,
+                    id: this.carouselIndicatorID,
                     ref: this.itemRef.current,
                     header,
                 }),
@@ -56,15 +56,15 @@ class Item extends Component {
     }
 
     getAnimationDirection() {
-        const { childrenRegistred, isAnimationPaused } = this.props;
+        const { childrenRegistered, isAnimationPaused } = this.props;
         const { activeItem, prevActiveItem } = this.state;
         if (isAnimationPaused) {
-            const activeItemIndex = getItemIndex(childrenRegistred, activeItem);
-            const prevItemIndex = getItemIndex(childrenRegistred, prevActiveItem);
-            if (activeItemIndex === 0 && prevItemIndex === childrenRegistred.length - 1) {
+            const activeItemIndex = getItemIndex(childrenRegistered, activeItem);
+            const prevItemIndex = getItemIndex(childrenRegistered, prevActiveItem);
+            if (activeItemIndex === 0 && prevItemIndex === childrenRegistered.length - 1) {
                 return 'right-to-left';
             }
-            if (prevItemIndex === 0 && activeItemIndex === childrenRegistred.length - 1) {
+            if (prevItemIndex === 0 && activeItemIndex === childrenRegistered.length - 1) {
                 return 'left-to-right';
             }
             if (activeItemIndex > prevItemIndex) {

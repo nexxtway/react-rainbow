@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { LEFT_KEY, RIGHT_KEY } from '../../../libs/constants';
-import { getItemIndex } from '../utils';
+import { getItemIndex } from '../helpers';
 import { getChildTabNodes, insertChildOrderly } from './utils';
 import Indicator from './indicator';
 import StyledIndicatorUl from '../styled/indicatorsUl';
@@ -82,7 +82,7 @@ export default class Indicators extends Component {
                 selectedItem={selectedItem}
                 onCreate={this.registerIndicator}
                 onDestroy={this.unregisterIndicator}
-                key={rest.indicatorID}
+                key={rest.id}
             />
         ));
     }

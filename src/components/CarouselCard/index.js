@@ -1,140 +1,96 @@
-/* eslint-disable react/no-unused-state */
-/* eslint-disable no-script-url,max-len */
-import React, { Component } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from './context';
 import Indicators from './indicators';
+import { useChildrenRegister } from '../../libs/hooks';
+import { getHeight, getItemIndex } from './helpers';
 import AnimationButton from './animationButton';
-import {
-    getItemIndex,
-    getChildTabNodes,
-    insertChildOrderly,
-    getCarouselCardContainerStyles,
-} from './utils';
 import StyledContainer from './styled/container';
 import StyledAutoplay from './styled/autoplay';
 import StyledImagesUl from './styled/imagesUl';
 
+const SELECTOR = '[role="tabpanel"]';
+
 /**
  * A carouselCard allows multiple pieces of featured content to occupy an allocated amount of space.
  */
-export default class CarouselCard extends Component {
-    constructor(props) {
-        super(props);
-        this.container = React.createRef();
-        this.registerChild = this.registerChild.bind(this);
-        this.unregisterChild = this.unregisterChild.bind(this);
-        this.setActiveItem = this.setActiveItem.bind(this);
-        this.handleOnClick = this.handleOnClick.bind(this);
-        const { disableAutoScroll } = this.props;
-        this.state = {
-            childrenRegistred: [],
-            activeItem: undefined,
-            isAnimationPaused: disableAutoScroll,
-            privateRegisterChild: this.registerChild,
-            privateUnregisterChild: this.unregisterChild,
-        };
-        this.containerRef = React.createRef();
-    }
+const CarouselCard = props => {
+    const {
+        children,
+        id,
+        className,
+        style,
+        scrollDuration,
+        disableAutoScroll,
+        disableAutoRefresh,
+    } = props;
 
-    componentDidMount() {
-        const { isAnimationPaused } = this.state;
-        if (!isAnimationPaused) {
-            this.startAnimation();
-        }
-    }
+    const containerRef = useRef();
+    const listRef = useRef();
+    const animationTimeoutRef = useRef();
 
-    componentWillUnmount() {
-        if (this.animationTimeout) {
-            clearTimeout(this.animationTimeout);
-        }
-    }
+    const [isAnimationPaused, setIsAnimationPaused] = useState(disableAutoScroll);
+    const [activeItem, setActiveItem] = useState();
 
-    getContainerStyle() {
-        const { style } = this.props;
-        return { ...getCarouselCardContainerStyles(this.container.current), ...style };
-    }
+    const { childrenRegistered, register, unregister } = useChildrenRegister({
+        containerRef: listRef,
+        selector: SELECTOR,
+    });
 
-    setActiveItem(id) {
-        this.setState({ activeItem: id, isAnimationPaused: true });
-    }
-
-    handleOnClick() {
-        const { isAnimationPaused } = this.state;
-        if (isAnimationPaused) {
-            this.startAnimation();
-        }
-        this.setState({ isAnimationPaused: !isAnimationPaused });
-    }
-
-    startAnimation() {
-        const { scrollDuration, disableAutoRefresh } = this.props;
-        this.animationTimeout = setTimeout(() => {
-            const { isAnimationPaused } = this.state;
+    const startAnimation = () => {
+        animationTimeoutRef.current = setTimeout(() => {
             if (!isAnimationPaused) {
-                const { childrenRegistred, activeItem } = this.state;
-                const selectedItemIndex = getItemIndex(childrenRegistred, activeItem);
-                const isLastItem = selectedItemIndex === childrenRegistred.length - 1;
+                const selectedItemIndex = getItemIndex(childrenRegistered, activeItem);
+                const isLastItem = selectedItemIndex === childrenRegistered.length - 1;
                 const nextItem = isLastItem ? 0 : selectedItemIndex + 1;
                 if (isLastItem && disableAutoRefresh) {
-                    this.setState({ isAnimationPaused: true });
+                    setIsAnimationPaused(true);
                 } else {
-                    this.startAnimation();
-                    this.setState({
-                        activeItem: childrenRegistred[nextItem].indicatorID,
-                    });
+                    setActiveItem(childrenRegistered[nextItem].id);
+                    startAnimation();
                 }
             }
         }, scrollDuration * 1000);
-    }
+    };
 
-    registerChild(child) {
-        const { childrenRegistred } = this.state;
-        const [...nodes] = getChildTabNodes(this.containerRef.current);
-        const newChildren = insertChildOrderly(childrenRegistred, child, nodes);
-        this.setState({
-            childrenRegistred: newChildren,
-            activeItem: newChildren[0].indicatorID,
-        });
-    }
+    const handleSelect = childId => {
+        setActiveItem(childId);
+        setIsAnimationPaused(true);
+    };
 
-    unregisterChild(indicatorID) {
-        const { childrenRegistred } = this.state;
-        const newChildren = childrenRegistred.filter(child => child.indicatorID !== indicatorID);
-        this.setState({
-            childrenRegistred: newChildren,
-            activeItem: newChildren[0].indicatorID,
-        });
-    }
+    const handleOnClick = () => {
+        if (isAnimationPaused) {
+            startAnimation();
+        }
+        setIsAnimationPaused(!isAnimationPaused);
+    };
 
-    render() {
-        const { children, id, className } = this.props;
-        const { childrenRegistred, activeItem, isAnimationPaused } = this.state;
-        return (
-            <StyledContainer
-                className={className}
-                style={this.getContainerStyle()}
-                id={id}
-                ref={this.container}
-            >
-                <StyledAutoplay>
-                    <AnimationButton
-                        onClick={this.handleOnClick}
-                        isAnimationPaused={isAnimationPaused}
-                    />
-                </StyledAutoplay>
-                <StyledImagesUl ref={this.containerRef}>
-                    <Provider value={this.state}>{children}</Provider>
-                </StyledImagesUl>
-                <Indicators
-                    carouselChildren={childrenRegistred}
-                    onSelect={this.setActiveItem}
-                    selectedItem={activeItem}
-                />
-            </StyledContainer>
-        );
-    }
-}
+    const containerStyle = { height: getHeight(containerRef.current), style };
+
+    const context = {
+        childrenRegistered,
+        activeItem,
+        isAnimationPaused,
+        privateRegisterChild: register,
+        privateUnregisterChild: unregister,
+    };
+
+    return (
+        <StyledContainer className={className} style={containerStyle} id={id} ref={containerRef}>
+            <StyledAutoplay>
+                <AnimationButton onClick={handleOnClick} isAnimationPaused={isAnimationPaused} />
+            </StyledAutoplay>
+            <StyledImagesUl ref={listRef}>
+                <Provider value={context}>{children}</Provider>
+            </StyledImagesUl>
+            <Indicators
+                carouselChildren={childrenRegistered}
+                onSelect={handleSelect}
+                selectedItem={activeItem}
+            />
+        </StyledContainer>
+    );
+};
 
 CarouselCard.propTypes = {
     /** The auto scroll duration. The default is 5 seconds, after that the next image is displayed. */
@@ -166,3 +122,5 @@ CarouselCard.defaultProps = {
     children: null,
     id: undefined,
 };
+
+export default CarouselCard;
