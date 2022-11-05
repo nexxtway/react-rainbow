@@ -225,3 +225,19 @@ const Icon = styled.span.attrs(props => {
         />
     </div>
 ```
+
+
+##### Chip with different border radius
+
+```js
+import React from 'react';
+import { Chip } from 'react-rainbow-components';
+
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+        <Chip className="rainbow-m-around_medium" label="Border Radius square" variant="neutral" borderRadius="square"/>
+
+        <Chip className="rainbow-m-around_medium" label="Border Radius semi-rounded" variant="neutral" borderRadius="semi-rounded"/>
+
+        <Chip className="rainbow-m-around_medium" label="Border Radius semi-rounded" variant="neutral" borderRadius="rounded"/>
+    </div>
+```
