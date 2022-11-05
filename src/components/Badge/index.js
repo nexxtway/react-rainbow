@@ -7,7 +7,7 @@ import Content from './content';
  * Badges are labels that hold small amounts of information.
  */
 export default function Badge(props) {
-    const { className, style, label, title, children, variant, size } = props;
+    const { className, style, label, title, children, variant, size, borderRadius } = props;
 
     if (children === null && label === null) {
         return null;
@@ -20,6 +20,7 @@ export default function Badge(props) {
             variant={variant}
             title={title}
             size={size}
+            borderRadius={borderRadius}
         >
             <Content label={label}>{children}</Content>
         </StyledContainer>
