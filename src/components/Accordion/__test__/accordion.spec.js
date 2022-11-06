@@ -1,67 +1,61 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
 import Accordion from '../index';
 import AccordionSection from '../../AccordionSection';
-import StyledContent from '../../AccordionSection/styled/content';
 
 describe('<Accordion />', () => {
-    it('should set the right "state" when onToggleSection is passed and it is not a function', () => {
-        const component = mount(
+    it('should be visible the dialog when the button of the section is clicked', async () => {
+        const { getByRole } = render(
             <Accordion onToggleSection="string">
                 <AccordionSection name="accordion-test-1" label="Rainbow Accordion">
-                    AccordionSection-1
+                    <div role="dialog">AccordionSection-1</div>
                 </AccordionSection>
             </Accordion>,
         );
-        const buttonComponent = component.find('button');
-        buttonComponent.simulate('click');
-
-        expect(component.state('activeNames')).toEqual('accordion-test-1');
+        fireEvent.click(getByRole('button'));
+        expect(getByRole('dialog')).toBeVisible();
     });
-    it('should set the right "state" when multiple is passed', () => {
+    it('should be visible the dialogues when multiple is passed and he button of the section is clicked', () => {
         const activeNames = ['accordion-test-1'];
-        const component = mount(
+        const { getAllByRole } = render(
             <Accordion multiple activeSectionNames={activeNames}>
                 <AccordionSection name="accordion-test-1" label="Rainbow Accordion">
-                    AccordionSection-1
+                    <div role="dialog">AccordionSection-1</div>
                 </AccordionSection>
                 <AccordionSection name="accordion-test-2" label="Rainbow Accordion">
-                    AccordionSection-2
+                    <div role="dialog">AccordionSection-2</div>
                 </AccordionSection>
             </Accordion>,
         );
-        const secondAccordionSection = component.find('ul').childAt(1);
-        const secondAccordionSectionButton = secondAccordionSection.find('button');
-        secondAccordionSectionButton.simulate('click');
 
-        expect(component.state('activeNames')).toEqual(['accordion-test-1', 'accordion-test-2']);
+        fireEvent.click(getAllByRole('button')[1]);
+        const sections = getAllByRole('dialog');
+        sections.forEach(section => {
+            expect(section).toBeVisible();
+        });
     });
     it('should not fire an event when click in the AccordionSection and disabled is passed', () => {
         const handleToggleSectionMockFn = jest.fn();
-        const component = mount(
+        const { getByRole } = render(
             <Accordion onToggleSection={handleToggleSectionMockFn}>
                 <AccordionSection disabled name="accordion-test-1" label="Rainbow Accordion">
                     AccordionSection-1
                 </AccordionSection>
             </Accordion>,
         );
-        const buttonComponent = component.find('button');
-        buttonComponent.simulate('click');
-
+        fireEvent.click(getByRole('button'));
         expect(handleToggleSectionMockFn).toHaveBeenCalledTimes(0);
     });
     it('should fire an event with the right arguments when click in the AccordionSection and multiple is not passed', () => {
         const handleToggleSectionMockFn = jest.fn();
-        const component = mount(
+        const { getByRole } = render(
             <Accordion onToggleSection={handleToggleSectionMockFn}>
                 <AccordionSection name="accordion-test-1" label="Rainbow Accordion">
                     AccordionSection-1
                 </AccordionSection>
             </Accordion>,
         );
-        const buttonComponent = component.find('button');
-        buttonComponent.simulate('click');
-
+        fireEvent.click(getByRole('button'));
         expect(handleToggleSectionMockFn).toHaveBeenCalledWith(
             expect.any(Object),
             'accordion-test-1',
@@ -70,7 +64,7 @@ describe('<Accordion />', () => {
     it('should fire an event with the right arguments when click in the second AccordionSection and multiple is passed', () => {
         const handleToggleSectionMockFn = jest.fn();
         const activeNames = ['accordion-test-1'];
-        const component = mount(
+        const { getAllByRole } = render(
             <Accordion
                 multiple
                 activeSectionNames={activeNames}
@@ -84,9 +78,7 @@ describe('<Accordion />', () => {
                 </AccordionSection>
             </Accordion>,
         );
-        const secondAccordionSection = component.find('ul').childAt(1);
-        const secondAccordionSectionButton = secondAccordionSection.find('button');
-        secondAccordionSectionButton.simulate('click');
+        fireEvent.click(getAllByRole('button')[1]);
 
         expect(handleToggleSectionMockFn).toHaveBeenCalledWith(expect.any(Object), [
             'accordion-test-1',
@@ -96,7 +88,7 @@ describe('<Accordion />', () => {
     it('should fire an event with the right arguments when click in the expanded first AccordionSection', () => {
         const handleToggleSectionMockFn = jest.fn();
         const activeNames = 'accordion-test-1';
-        const component = mount(
+        const { getAllByRole } = render(
             <Accordion activeSectionNames={activeNames} onToggleSection={handleToggleSectionMockFn}>
                 <AccordionSection name="accordion-test-1" label="Rainbow Accordion">
                     AccordionSection-1
@@ -106,16 +98,13 @@ describe('<Accordion />', () => {
                 </AccordionSection>
             </Accordion>,
         );
-        const firstAccordionSection = component.find('ul').childAt(0);
-        const firstAccordionSectionButton = firstAccordionSection.find('button');
-        firstAccordionSectionButton.simulate('click');
-
+        fireEvent.click(getAllByRole('button')[0]);
         expect(handleToggleSectionMockFn.mock.calls[0][1]).toEqual('');
     });
     it('should fire an event with the right arguments when click in the second AccordionSection, multiple is passed and both AccordionSection are expanded', () => {
         const handleToggleSectionMockFn = jest.fn();
         const activeNames = ['accordion-test-1', 'accordion-test-2'];
-        const component = mount(
+        const { getAllByRole } = render(
             <Accordion
                 multiple
                 activeSectionNames={activeNames}
@@ -129,15 +118,12 @@ describe('<Accordion />', () => {
                 </AccordionSection>
             </Accordion>,
         );
-        const secondAccordionSection = component.find('ul').childAt(1);
-        const secondAccordionSectionButton = secondAccordionSection.find('button');
-        secondAccordionSectionButton.simulate('click');
-
+        fireEvent.click(getAllByRole('button')[1]);
         expect(handleToggleSectionMockFn.mock.calls[0][1]).toEqual(['accordion-test-1']);
     });
     it('should fire an event with the right arguments when click in the second AccordionSection, it is collapsed for the first time and multiple is passed', () => {
         const handleToggleSectionMockFn = jest.fn();
-        const component = mount(
+        const { getAllByRole } = render(
             <Accordion multiple onToggleSection={handleToggleSectionMockFn}>
                 <AccordionSection name="accordion-test-1" label="Rainbow Accordion">
                     AccordionSection-1
@@ -147,46 +133,37 @@ describe('<Accordion />', () => {
                 </AccordionSection>
             </Accordion>,
         );
-        const secondAccordionSection = component.find('ul').childAt(1);
-        const secondAccordionSectionButton = secondAccordionSection.find('button');
-        secondAccordionSectionButton.simulate('click');
-
+        fireEvent.click(getAllByRole('button')[1]);
         expect(handleToggleSectionMockFn.mock.calls[0][1]).toEqual(['accordion-test-2']);
     });
     it('should set ariaExpanded to true in button when the AccordionSection is expanded', () => {
         const activeNames = 'accordion-test-1';
-        const component = mount(
+        const { getByRole } = render(
             <Accordion activeSectionNames={activeNames}>
                 <AccordionSection name="accordion-test-1" label="Rainbow Accordion">
                     AccordionSection-1
                 </AccordionSection>
             </Accordion>,
         );
-        const button = component.find('button');
-
-        expect(button.prop('aria-expanded')).toBe(true);
+        expect(getByRole('button')).toHaveAttribute('aria-expanded', 'true');
     });
     it('should set ariaExpanded to false in button when the AccordionSection is collapsed', () => {
-        const component = mount(
+        const { getByRole } = render(
             <Accordion>
                 <AccordionSection label="Rainbow Accordion">AccordionSection-1</AccordionSection>
             </Accordion>,
         );
-        const button = component.find('button');
-
-        expect(button.prop('aria-expanded')).toBe(false);
+        expect(getByRole('button')).toHaveAttribute('aria-expanded', 'false');
     });
     it('should set aria-hidden to false in container of the content when the content is expanded', () => {
         const activeNames = 'accordion-test-1';
-        const component = mount(
+        const { getByText } = render(
             <Accordion activeSectionNames={activeNames}>
                 <AccordionSection name="accordion-test-1" label="Rainbow Accordion">
                     AccordionSection-1
                 </AccordionSection>
             </Accordion>,
         );
-        const contentContainer = component.find(StyledContent);
-
-        expect(contentContainer.prop('aria-hidden')).toBe(false);
+        expect(getByText('AccordionSection-1')).toHaveAttribute('aria-hidden', 'false');
     });
 });
