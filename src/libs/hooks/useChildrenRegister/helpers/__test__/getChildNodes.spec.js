@@ -9,11 +9,11 @@ describe('getChildNodes', () => {
         querySelectorAll: jest.fn(() => elements),
     };
     it('should call querySelectorAll with a[role="menuitem"]', () => {
-        getChildNodes(ref);
+        getChildNodes({ ref, selector: 'div[role="option"]' });
         expect(ref.querySelectorAll).toHaveBeenCalledWith('div[role="option"]');
     });
     it('should return the elements resolved by querySelectorAll', () => {
-        expect(getChildNodes(ref)).toEqual(elements);
+        expect(getChildNodes({ ref })).toEqual(elements);
     });
     it('should return an empty array if anything is passed', () => {
         expect(getChildNodes()).toEqual([]);

@@ -4,7 +4,7 @@ import Accordion from '../index';
 import AccordionSection from '../../AccordionSection';
 
 describe('<Accordion />', () => {
-    it('should set the right "state" when onToggleSection is passed and it is not a function', async () => {
+    it('should be visible the dialog when the button of the section is clicked', async () => {
         const { getByRole } = render(
             <Accordion onToggleSection="string">
                 <AccordionSection name="accordion-test-1" label="Rainbow Accordion">
@@ -15,7 +15,7 @@ describe('<Accordion />', () => {
         fireEvent.click(getByRole('button'));
         expect(getByRole('dialog')).toBeVisible();
     });
-    it('should set the right "state" when multiple is passed', () => {
+    it('should be visible the dialogues when multiple is passed and he button of the section is clicked', () => {
         const activeNames = ['accordion-test-1'];
         const { getAllByRole } = render(
             <Accordion multiple activeSectionNames={activeNames}>
