@@ -46,7 +46,7 @@ const Accordion = props => {
 
     const selectAccordionSection = side => {
         const accordionSectionIndex = childrenRegistered.findIndex(
-            section => section.name === currentSection,
+            section => section.id === currentSection,
         );
         if (accordionSectionIndex === childrenRegistered.length - 1 && side === RIGHT_SIDE) {
             setAsSelectAccordionSection(0);

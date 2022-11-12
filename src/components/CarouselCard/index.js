@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from './context';
 import Indicators from './indicators';
-import { useChildrenRegister } from '../../libs/hooks';
+import { useChildrenRegister, usePrevious } from '../../libs/hooks';
 import { getHeight, getItemIndex } from './helpers';
 import AnimationButton from './animationButton';
 import StyledContainer from './styled/container';
@@ -31,54 +31,67 @@ const CarouselCard = props => {
 
     const [isAnimationPaused, setIsAnimationPaused] = useState(disableAutoScroll);
     const [activeItem, setActiveItem] = useState();
+    const prevActiveItem = usePrevious(activeItem);
 
     const { childrenRegistered, register, unregister } = useChildrenRegister({
         containerRef: listRef,
         selector: SELECTOR,
     });
 
-    const startAnimation = () => {
-        animationTimeoutRef.current = setTimeout(() => {
-            if (!isAnimationPaused) {
+    useEffect(() => {
+        if (childrenRegistered[0] && childrenRegistered[0].id !== activeItem) {
+            setActiveItem(childrenRegistered[0].id);
+        }
+        return () => {
+            if (childrenRegistered[0] && childrenRegistered[0].id !== activeItem) {
+                setActiveItem(childrenRegistered[0].id);
+            }
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [childrenRegistered]);
+
+    useEffect(() => {
+        if (!isAnimationPaused) {
+            animationTimeoutRef.current = setTimeout(() => {
                 const selectedItemIndex = getItemIndex(childrenRegistered, activeItem);
                 const isLastItem = selectedItemIndex === childrenRegistered.length - 1;
                 const nextItem = isLastItem ? 0 : selectedItemIndex + 1;
                 if (isLastItem && disableAutoRefresh) {
                     setIsAnimationPaused(true);
-                } else {
+                } else if (childrenRegistered[nextItem]) {
                     setActiveItem(childrenRegistered[nextItem].id);
-                    startAnimation();
                 }
+            }, scrollDuration * 1000);
+        }
+        return () => {
+            if (animationTimeoutRef.current) {
+                clearTimeout(animationTimeoutRef.current);
             }
-        }, scrollDuration * 1000);
-    };
+        };
+    }, [activeItem, childrenRegistered, disableAutoRefresh, isAnimationPaused, scrollDuration]);
 
     const handleSelect = childId => {
         setActiveItem(childId);
         setIsAnimationPaused(true);
     };
 
-    const handleOnClick = () => {
-        if (isAnimationPaused) {
-            startAnimation();
-        }
-        setIsAnimationPaused(!isAnimationPaused);
-    };
-
-    const containerStyle = { height: getHeight(containerRef.current), style };
-
+    const containerStyle = { height: getHeight(containerRef.current), ...style };
     const context = {
         childrenRegistered,
         activeItem,
+        prevActiveItem,
         isAnimationPaused,
-        privateRegisterChild: register,
-        privateUnregisterChild: unregister,
+        register,
+        unregister,
     };
 
     return (
         <StyledContainer className={className} style={containerStyle} id={id} ref={containerRef}>
             <StyledAutoplay>
-                <AnimationButton onClick={handleOnClick} isAnimationPaused={isAnimationPaused} />
+                <AnimationButton
+                    onClick={() => setIsAnimationPaused(!isAnimationPaused)}
+                    isAnimationPaused={isAnimationPaused}
+                />
             </StyledAutoplay>
             <StyledImagesUl ref={listRef}>
                 <Provider value={context}>{children}</Provider>

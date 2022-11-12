@@ -10,7 +10,7 @@ const useChildrenRegister = props => {
             case 'register': {
                 if (child && !isChildRegistered({ children: state, id: child.id })) {
                     const nodes = getChildNodes({ ref: containerRef.current, selector });
-                    return insertChildOrderly({ childrenRegistered: state, child, nodes });
+                    return insertChildOrderly({ children: state, child, nodes });
                 }
                 return state;
             }
