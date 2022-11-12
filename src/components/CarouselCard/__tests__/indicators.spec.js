@@ -1,19 +1,19 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import Indicators from '../indicators';
 
 const carouselItems = [
     {
-        indicatorID: 'indicator-1',
-        containerID: 'container-1',
+        id: 'indicator-1',
+        containerId: 'container-1',
         ref: {
             click: jest.fn(),
         },
         header: 'Header',
     },
     {
-        indicatorID: 'indicator-2',
-        containerID: 'container-2',
+        id: 'indicator-2',
+        containerId: 'container-2',
         ref: {
             click: jest.fn(),
         },
@@ -23,13 +23,8 @@ const carouselItems = [
 
 describe('<Indicators />', () => {
     it('should render the right amount of indicators', () => {
-        const component = mount(<Indicators carouselChildren={carouselItems} />);
+        const { getAllByRole } = render(<Indicators carouselChildren={carouselItems} />);
 
-        expect(component.find('li').length).toBe(2);
-    });
-    it('should set the role as tablist in ul element', () => {
-        const component = mount(<Indicators carouselChildren={carouselItems} />);
-
-        expect(component.find('ul').prop('role')).toBe('tablist');
+        expect(getAllByRole('tab').length).toBe(2);
     });
 });

@@ -1,44 +1,43 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import ButtonIcon from '../../ButtonIcon';
+import { render, fireEvent } from '@testing-library/react';
 import AnimationButtom from '../animationButton';
 
 describe('<AnimationButtom />', () => {
     it('should set the right assistive text', () => {
-        const component = mount(<AnimationButtom isAnimationPaused />);
+        const { getByText } = render(<AnimationButtom isAnimationPaused />);
 
-        expect(component.find(ButtonIcon).prop('assistiveText')).toBe('Start auto-play');
+        expect(getByText('Start auto-play')).toBeDefined();
     });
 
     it('should set the right assistive text', () => {
-        const component = mount(<AnimationButtom isAnimationPaused={false} />);
+        const { getByText } = render(<AnimationButtom isAnimationPaused={false} />);
 
-        expect(component.find(ButtonIcon).prop('assistiveText')).toBe('Stop auto-play');
+        expect(getByText('Stop auto-play')).toBeDefined();
     });
 
     it('should set the right aria-pressed value', () => {
-        const component = mount(<AnimationButtom isAnimationPaused />);
+        const { getByRole } = render(<AnimationButtom isAnimationPaused />);
 
-        expect(component.find(ButtonIcon).prop('ariaPressed')).toBe(true);
+        expect(getByRole('button')).toHaveAttribute('aria-pressed', 'true');
     });
 
     it('should show the play icon', () => {
-        const component = mount(<AnimationButtom />);
+        const { getByTitle } = render(<AnimationButtom />);
 
-        expect(component.find('PlayIcon').exists()).toBe(true);
+        expect(getByTitle('play')).toBeDefined();
     });
 
     it('should show the pause icon when isAnimationPaused is false', () => {
-        const component = mount(<AnimationButtom isAnimationPaused={false} />);
+        const { getByTitle } = render(<AnimationButtom isAnimationPaused={false} />);
 
-        expect(component.find('PauseIcon').exists()).toBe(true);
+        expect(getByTitle('pause')).toBeDefined();
     });
 
     it('should call the function passed in onClick', () => {
         const onClickMockFn = jest.fn();
-        const component = mount(<AnimationButtom onClick={onClickMockFn} />);
-        component.find(ButtonIcon).simulate('click');
+        const { getByRole } = render(<AnimationButtom onClick={onClickMockFn} />);
 
+        fireEvent.click(getByRole('button'));
         expect(onClickMockFn).toHaveBeenCalledTimes(1);
     });
 });
