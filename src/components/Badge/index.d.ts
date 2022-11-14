@@ -6,6 +6,7 @@ export interface BadgeProps extends BaseProps {
     title?: string;
     children?: ReactNode;
     size?: 'small' | 'medium' | 'large';
+    borderRadius?: string;
     variant?:
         | 'default'
         | 'inverse'
