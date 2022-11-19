@@ -1,10 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import AccordionSection from '..';
 
 describe('<AccordionSection/>', () => {
     it('should have type button on section summary', () => {
-        const component = mount(<AccordionSection label="Test section" />);
-        expect(component.find('button').prop('type')).toBe('button');
+        const { getByRole } = render(<AccordionSection label="Test section" />);
+        expect(getByRole('button')).toHaveAttribute('type', 'button');
     });
 });
