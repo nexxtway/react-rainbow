@@ -259,6 +259,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                         tabIndex={tabIndex}
                         onFocus={onFocus}
                         onBlur={onBlur}
+                        borderRadius={borderRadius}
                     />
                 </RenderIf>
                 <InternalOverlay
