@@ -1,7 +1,11 @@
 /* stylelint-disable no-descending-specificity */
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { BORDER_RADIUS_SQUARE, BORDER_RADIUS_SEMI_ROUNDED } from '../../../styles/borderRadius';
+import {
+    BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_SQUARE,
+    BORDER_RADIUS_SEMI_ROUNDED,
+} from '../../../styles/borderRadius';
 
 const StyledContainer = attachThemeAttrs(styled.div)`
     display: inline-flex;
@@ -72,6 +76,18 @@ const StyledContainer = attachThemeAttrs(styled.div)`
             };
             > button:last-child {
                 border-radius: 0 ${BORDER_RADIUS_SQUARE} ${BORDER_RADIUS_SQUARE} 0;
+            };
+        `};
+
+    ${props =>
+        props.borderRadius === 'semi-square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
+            > button:first-child {
+                border-radius: ${BORDER_RADIUS_SEMI_SQUARE} 0 0 ${BORDER_RADIUS_SEMI_SQUARE};
+            };
+            > button:last-child {
+                border-radius: 0 ${BORDER_RADIUS_SEMI_SQUARE} ${BORDER_RADIUS_SEMI_SQUARE} 0;
             };
         `};
 

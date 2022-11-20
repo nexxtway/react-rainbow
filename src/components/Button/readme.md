@@ -175,7 +175,23 @@ import { Button } from 'react-rainbow-components';
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <Button label="Button Square" variant="brand" className="rainbow-m-around_medium" borderRadius="square"/>
-        <Button label="Button Semi Rounded" variant="brand" className="rainbow-m-around_medium" borderRadius="semi-rounded"/>
-        <Button label="Button Rounded" variant="brand" className="rainbow-m-around_medium" borderRadius="rounded"/>
+        <Button
+            label="Button Semi Square"
+            variant="brand"
+            className="rainbow-m-around_medium"
+            borderRadius="semi-square"
+        />
+        <Button
+            label="Button Semi Rounded"
+            variant="brand"
+            className="rainbow-m-around_medium"
+            borderRadius="semi-rounded"
+        />
+        <Button
+            label="Button Rounded"
+            variant="brand"
+            className="rainbow-m-around_medium"
+            borderRadius="rounded"
+        />
     </div>
 ```

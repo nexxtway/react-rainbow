@@ -29,7 +29,7 @@ export interface MultiSelectProps extends BaseProps {
     children?: ReactNode;
     showCheckbox?: boolean;
     enableSearch?: boolean;
-    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
+    borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 
 export default function(props: MultiSelectProps): JSX.Element | null;

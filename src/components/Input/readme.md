@@ -557,7 +557,6 @@ const containerStyles = {
 };
     <>
         <Input
-            id="input-component-1"
             label="Border radius square"
             placeholder="Placeholder text"
             style={containerStyles}
@@ -566,7 +565,14 @@ const containerStyles = {
         />
 
         <Input
-            id="input-component-2"
+            label="Border radius semi-square"
+            placeholder="Placeholder text"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            borderRadius="semi-square"
+        />
+
+        <Input
             label="Border radius semi-rounded"
             placeholder="Placeholder text"
             style={containerStyles}
@@ -575,7 +581,6 @@ const containerStyles = {
         />
 
         <Input
-            id="input-component-3"
             label="Border radius rounded"
             placeholder="Placeholder text"
             style={containerStyles}

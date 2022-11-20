@@ -35,7 +35,7 @@ export interface DatePickerProps extends BaseProps {
     disabledDays?: Array<Date | string>;
     size?: 'small' | 'medium' | 'large';
     valueAlignment?: 'left' | 'center' | 'right';
-    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
+    borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 
 export default function(props: DatePickerProps): JSX.Element | null;

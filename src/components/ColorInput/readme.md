@@ -68,6 +68,7 @@ import React, { useState } from 'react';
 import { ColorInput } from 'react-rainbow-components';
 
 const containerStyles = {
+    gap: 20,
     maxWidth: 250,
 };
 
@@ -75,11 +76,23 @@ const ColorInputExample = () => {
     const [value1, setValue1] = useState();
     const [value2, setValue2] = useState();
     const [value3, setValue3] = useState();
+    const [value4, setValue4] = useState();
 
     return <div className="rainbow-m-vertical_x-large rainbow-m_auto rainbow-align-content_center rainbow-flex_wrap" style={containerStyles}>
-        <ColorInput label="Border Radius square" value={value1} onChange={setValue1} borderRadius="square" />
-        <ColorInput label="Border Radius semi-rounded" value={value2} onChange={setValue2} borderRadius="semi-rounded" />
-        <ColorInput label="Border Radius rounded" value={value3} onChange={setValue3} borderRadius="rounded" />
+        <ColorInput label="Border radius square" value={value1} onChange={setValue1} borderRadius="square" />
+        <ColorInput
+            label="Border radius semi-square"
+            value={value2}
+            onChange={setValue2}
+            borderRadius="semi-square"
+        />
+        <ColorInput
+            label="Border radius semi-rounded"
+            value={value3}
+            onChange={setValue3}
+            borderRadius="semi-rounded"
+        />
+        <ColorInput label="Border radius rounded" value={value4} onChange={setValue4} borderRadius="rounded" />
     </div>
 }
     <ColorInputExample />

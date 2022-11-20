@@ -4,6 +4,7 @@ import { replaceAlpha } from '../../../styles/helpers/color';
 import {
     BORDER_RADIUS_2,
     BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_SQUARE,
     BORDER_RADIUS_SEMI_ROUNDED,
 } from '../../../styles/borderRadius';
 import { COLOR_GRAY_2 } from '../../../styles/colors';
@@ -40,6 +41,12 @@ const StyledButtonItemsContainer = attachThemeAttrs(styled.div).attrs(props => {
             props.borderRadius === 'square' &&
             `
                 border-radius: ${BORDER_RADIUS_SQUARE} !important;
+            `};
+
+        ${props =>
+            props.borderRadius === 'semi-square' &&
+            `
+                border-radius: ${BORDER_RADIUS_SEMI_SQUARE} !important;
             `};
         
         ${props =>
