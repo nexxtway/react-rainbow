@@ -130,3 +130,17 @@ import { Badge } from 'react-rainbow-components';
         <Badge size="large" variant="inverse" title="the badge title" className="rainbow-m-around_medium" label="Badge Large" />
     </div>
 ```
+
+# Badges of different border radius 
+##### If you need to change the border radius of your badge, you can do so using the `borderRadius` prop.
+
+```js
+import React from 'react';
+import { Badge } from 'react-rainbow-components';
+
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+        <Badge variant="outline-brand" title="the badge title" className="rainbow-m-around_medium" label="Badge with Border Radius square" borderRadius="square" />
+        <Badge variant="outline-brand" title="the badge title" className="rainbow-m-around_medium" label="Badge with Border Radius semi-rounded" borderRadius="semi-rounded"/>
+        <Badge variant="outline-brand" title="the badge title" className="rainbow-m-around_medium" label="Badge with Border Radius rounded" borderRadius="rounded"/>
+    </div>
+```
