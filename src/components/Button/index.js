@@ -179,7 +179,7 @@ Button.propTypes = {
     isLoading: PropTypes.bool,
     /** The size of the button. Valid values are small, medium and large. This value defaults to medium. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
-    /** The border radius of the button. Valid values are square, 'semi-square', semi-rounded and rounded. This value defaults to rounded. */
+    /** The border radius of the button. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
