@@ -635,6 +635,7 @@ const LookupBorderRadius = () => {
     const [value1, setValue1] = useState('');
     const [value2, setValue2] = useState('');
     const [value3, setValue3] = useState('');
+    const [value4, setValue4] = useState('');
 
     function filter(query, options) {
         if (query) {
@@ -667,10 +668,16 @@ const LookupBorderRadius = () => {
             setValue3('');
         }
     }
+    const search4 = value => {
+        if (value) {
+            setValue4(value);
+        } else {
+            setValue4('');
+        }
+    }
     return (
         <>
             <Lookup
-                id="lookup-1"
                 label="Border radius square"
                 placeholder="Find"
                 options={filter(value1, data)}
@@ -682,8 +689,7 @@ const LookupBorderRadius = () => {
                 borderRadius="square"
             />
             <Lookup
-                id="lookup-2"
-                label="Border radius semi-rounded"
+                label="Border radius semi-square"
                 placeholder="Find"
                 options={filter(value2, data)}
                 value={value2}
@@ -691,16 +697,26 @@ const LookupBorderRadius = () => {
                 onSearch={search2}
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-                borderRadius="semi-rounded"
+                borderRadius="semi-square"
             />
             <Lookup
-                id="lookup-3"
-                label ="Border radius rounded"
+                label ="Border radius semi-rounded"
                 placeholder="Find"
                 options={filter(value3, data)}
                 value={value3}
                 onChange={setValue3}
                 onSearch={search3}
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                borderRadius="semi-rounded"
+            />
+            <Lookup
+                label ="Border radius rounded"
+                placeholder="Find"
+                options={filter(value4, data)}
+                value={value4}
+                onChange={setValue4}
+                onSearch={search4}
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 borderRadius="rounded"

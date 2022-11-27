@@ -266,7 +266,6 @@ const containerStyles = {
 
     <>
         <Textarea
-            id="example-textarea-1"
             label="Textarea with border radius square"
             rows={3}
             placeholder="Placeholder Text"
@@ -276,7 +275,15 @@ const containerStyles = {
         />
 
         <Textarea
-            id="example-textarea-1"
+            label="Textarea with border radius semi-square"
+            rows={3}
+            placeholder="Placeholder Text"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            borderRadius="semi-square"
+        />
+
+        <Textarea
             label="Textarea with border radius semi-rounded"
             rows={3}
             placeholder="Placeholder Text"
@@ -286,7 +293,6 @@ const containerStyles = {
         />
 
         <Textarea
-            id="example-textarea-1"
             label="Textarea with border radius rounded"
             rows={3}
             placeholder="Placeholder Text"

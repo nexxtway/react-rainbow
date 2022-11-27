@@ -224,8 +224,8 @@ Textarea.propTypes = {
     header: PropTypes.node,
     /** It is what will be displayed at the bottom of the component. */
     footer: PropTypes.node,
-    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
-    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
+    /** The border radius of the textarea. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 Textarea.defaultProps = {

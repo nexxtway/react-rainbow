@@ -125,9 +125,27 @@ import React from 'react';
 import { Badge } from 'react-rainbow-components';
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-        <Badge size="small" variant="inverse" title="the badge title" className="rainbow-m-around_medium" label="Badge Small" />
-        <Badge size="medium" variant="inverse" title="the badge title" className="rainbow-m-around_medium" label="Badge Medium" />
-        <Badge size="large" variant="inverse" title="the badge title" className="rainbow-m-around_medium" label="Badge Large" />
+        <Badge
+            size="small"
+            variant="inverse"
+            title="the badge title"
+            className="rainbow-m-around_medium"
+            label="Badge Small"
+        />
+        <Badge
+            size="medium"
+            variant="inverse"
+            title="the badge title"
+            className="rainbow-m-around_medium"
+            label="Badge Medium"
+        />
+        <Badge
+            size="large"
+            variant="inverse"
+            title="the badge title"
+            className="rainbow-m-around_medium"
+            label="Badge Large"
+        />
     </div>
 ```
 
@@ -139,8 +157,33 @@ import React from 'react';
 import { Badge } from 'react-rainbow-components';
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-        <Badge variant="outline-brand" title="the badge title" className="rainbow-m-around_medium" label="Badge with Border Radius square" borderRadius="square" />
-        <Badge variant="outline-brand" title="the badge title" className="rainbow-m-around_medium" label="Badge with Border Radius semi-rounded" borderRadius="semi-rounded"/>
-        <Badge variant="outline-brand" title="the badge title" className="rainbow-m-around_medium" label="Badge with Border Radius rounded" borderRadius="rounded"/>
+        <Badge
+            variant="outline-brand"
+            title="the badge title"
+            className="rainbow-m-around_medium"
+            label="Badge with border badius square"
+            borderRadius="square"
+        />
+        <Badge
+            variant="outline-brand"
+            title="the badge title"
+            className="rainbow-m-around_medium"
+            label="Badge with rorder radius semi-square"
+            borderRadius="semi-square"
+        />
+        <Badge
+            variant="outline-brand"
+            title="the badge title"
+            className="rainbow-m-around_medium"
+            label="Badge with border radius semi-rounded"
+            borderRadius="semi-rounded"
+        />
+        <Badge
+            variant="outline-brand"
+            title="the badge title"
+            className="rainbow-m-around_medium"
+            label="Badge with border radius rounded"
+            borderRadius="rounded"
+        />
     </div>
 ```

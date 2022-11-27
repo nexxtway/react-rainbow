@@ -386,6 +386,7 @@ import { Picklist, PicklistOption, DatePicker } from 'react-rainbow-components';
         const [value1, setValue1] = useState( initialState.date );
         const [value2, setValue2] = useState( initialState.date );
         const [value3, setValue3] = useState( initialState.date );
+        const [value4, setValue4] = useState( initialState.date );
         const [locale, setLocale] = useState( initialState.locale );
         return (
             <div>
@@ -403,12 +404,11 @@ import { Picklist, PicklistOption, DatePicker } from 'react-rainbow-components';
                     style={containerStyles}
                 >
                     <DatePicker
-                        id="datePicker-1"
                         value={value1}
-                        onChange={value => setValue1(value)}
+                        onChange={setValue1}
                         label="DatePicker Border Radius Square"
                         formatStyle="large"
-                        locale={locale}
+                        locale={locale.name}
                         borderRadius="square"
                     />
                 </div>
@@ -417,12 +417,24 @@ import { Picklist, PicklistOption, DatePicker } from 'react-rainbow-components';
                     style={containerStyles}
                 >
                     <DatePicker
-                        id="datePicker-2"
                         value={value2}
-                        onChange={value => setValue2(value)}
+                        onChange={setValue2}
+                        label="DatePicker Border Radius Semi Square"
+                        formatStyle="large"
+                        locale={locale.name}
+                        borderRadius="semi-square"
+                    />
+                </div>
+                <div
+                    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+                    style={containerStyles}
+                >
+                    <DatePicker
+                        value={value3}
+                        onChange={setValue3}
                         label="DatePicker Border Radius Semi Rounded"
                         formatStyle="large"
-                        locale={value2.locale}
+                        locale={locale.name}
                         borderRadius="semi-rounded"
                     />
                 </div>
@@ -431,12 +443,11 @@ import { Picklist, PicklistOption, DatePicker } from 'react-rainbow-components';
                     style={containerStyles}
                 >
                     <DatePicker
-                        id="datePicker-3"
-                        value={value3}
-                        onChange={value => setValue3(value)}
+                        value={value4}
+                        onChange={setValue4}
                         label="DatePicker Border Radius Rounded"
                         formatStyle="large"
-                        locale={locale}
+                        locale={locale.name}
                         borderRadius="rounded"
                     />
                 </div>

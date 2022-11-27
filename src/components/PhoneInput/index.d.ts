@@ -29,7 +29,7 @@ export interface PhoneInputProps extends BaseProps {
     value?: PhoneInputValue;
     countries?: Array<string>;
     size?: 'small' | 'medium' | 'large';
-    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
+    borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 
 export default function(props: PhoneInputProps): JSX.Element | null;

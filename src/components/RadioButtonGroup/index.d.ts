@@ -13,7 +13,7 @@ export interface RadioButtonGroupProps extends BaseProps {
     options?: RadioOption[];
     error?: ReactNode;
     id?: string;
-    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
+    borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 
 declare const RadioButtonGroup: ComponentType<RadioButtonGroupProps>;

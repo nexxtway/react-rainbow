@@ -172,11 +172,11 @@ const ButtonGroupPickerTry = () => {
         const [value1, setValue1] = useState('');
         const [value2, setValue2] = useState('');
         const [value3, setValue3] = useState('');
+        const [value4, setValue4] = useState('');
 
         return (
             <div className="rainbow-m-bottom_medium">
                 <ButtonGroupPicker
-                    id="button-group-picker-component-1"
                     label="Button Group Picker with border radius square"
                     value={value1}
                     onChange={setValue1}
@@ -192,15 +192,14 @@ const ButtonGroupPickerTry = () => {
                 </ButtonGroupPicker>
 
                 <ButtonGroupPicker
-                    id="button-group-picker-component-2"
                     label="Select view type"
                     value={value2}
                     onChange={setValue2}
-                    name="border-radius-semi-rounded"
+                    name="border-radius-semi-square"
                     size="medium"
                     bottomHelpText="Select one option"
                     className="rainbow-m-around_medium"
-                    borderRadius="semi-rounded"
+                    borderRadius="semi-square"
                 >
                     <ButtonOption label="Month" name="month" />
                     <ButtonOption label="Week" name="week" />
@@ -208,10 +207,24 @@ const ButtonGroupPickerTry = () => {
                 </ButtonGroupPicker>
 
                 <ButtonGroupPicker
-                    id="button-group-picker-component-3"
                     label="Select view type"
                     value={value3}
                     onChange={setValue3}
+                    name="border-radius-semi-rounded"
+                    size="medium"
+                    bottomHelpText="Select one option"
+                    borderRadius="semi-rounded"
+                >
+
+                    <ButtonOption label="Month" name="month" />
+                    <ButtonOption label="Week" name="week" />
+                    <ButtonOption label="Day" name="day" />
+                </ButtonGroupPicker>
+
+                <ButtonGroupPicker
+                    label="Select view type"
+                    value={value4}
+                    onChange={setValue4}
                     name="border-radius-rounded"
                     size="medium"
                     bottomHelpText="Select one option"
