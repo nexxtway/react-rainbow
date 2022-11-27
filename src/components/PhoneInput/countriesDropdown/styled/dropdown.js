@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
+import { BorderRadiusElement } from '../../../Structural';
 
-const StyledDropdown = attachThemeAttrs(styled.div)`
+const StyledDropdown = attachThemeAttrs(styled(BorderRadiusElement))`
     position: relative;
     overflow: hidden;
     float: left;
@@ -9,7 +10,6 @@ const StyledDropdown = attachThemeAttrs(styled.div)`
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     border: solid 1px ${props => props.palette.border.divider};
-    border-radius: 0.875rem;
     padding: 0 0 1rem 0;
     font-size: 0.75rem;
     background: ${props => props.palette.background.main};

@@ -177,3 +177,48 @@ function InternalDropdownWithMultipleSelection() {
 
     <InternalDropdownWithMultipleSelection />
 ```
+
+##### With different border radius
+:
+
+```js
+/* eslint-disable react/jsx-no-undef */
+// eslint-disable arrow-parens
+import React, { useState } from 'react';
+import styled from 'styled-components'
+import { PicklistOption } from 'react-rainbow-components';
+
+const Title = styled.h2`
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 10px;
+`
+
+const InternalDropdownBorderRadius = props => {
+    const { borderRadius } = props;
+    const [value, setValue] = useState();
+    return (
+        <div className="rainbow-m-around_xx-large">
+            <Title>Border radius {borderRadius}</Title>
+            <InternalDropdown value={value} onChange={setValue} borderRadius={borderRadius}>
+                <PicklistOption name="option-1" label="All Buildings" icon={<DashboardIcon />} />
+                <PicklistOption name="option-2" label="New Building" icon={<AddFilledIcon />} />
+                <PicklistOption name="header" label="Your Buildings" variant="header" />
+                <PicklistOption name="option-3" label="Experimental" icon={<BuildingIcon />} />
+                <PicklistOption name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
+                <PicklistOption name="option-5" label="Empire State" icon={<BuildingIcon />} />
+                <PicklistOption name="option-6" label="Central Park" icon={<BuildingIcon />} />
+                <PicklistOption name="option-7" label="Chrysler" icon={<BuildingIcon />} />
+                <PicklistOption name="option-8" label="Plaza" icon={<BuildingIcon />} />
+            </InternalDropdown>
+        </div>
+    );
+}
+
+    <>
+        <InternalDropdownBorderRadius borderRadius="square" />
+        <InternalDropdownBorderRadius borderRadius="semi-square" />
+        <InternalDropdownBorderRadius borderRadius="semi-rounded" />
+        <InternalDropdownBorderRadius borderRadius="rounded" />
+    </>
+```

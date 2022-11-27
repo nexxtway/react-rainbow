@@ -279,6 +279,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                             placeholder={placeholder}
                             showCheckbox={showCheckbox}
                             enableSearch={enableSearch}
+                            borderRadius={borderRadius}
                             multiple
                         >
                             {children}
