@@ -369,6 +369,7 @@ const InternalDropdown = forwardRef((props, reference) => {
     const isPlaceholderOptionChecked = isChecked(value, activeChildren.current);
     const shouldRenderPlaceholderOption = placeholder && showCheckbox;
     const showEmptyComponent = showEmptyMessage && EmptyComponent;
+
     return (
         <Dropdown
             id={id}
