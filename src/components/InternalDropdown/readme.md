@@ -3,22 +3,22 @@
 ```js
 /* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
-import { PicklistOption } from 'react-rainbow-components';
+import { Option } from 'react-rainbow-components';
 
 function BasicInternalDropdown() {
     const [value, setValue] = useState();
     return (
         <div className="rainbow-m-around_xx-large">
             <InternalDropdown id="internal-dropdown-1" value={value} onChange={setValue}>
-                <PicklistOption name="option-1" label="All Buildings" icon={<DashboardIcon />} />
-                <PicklistOption name="option-2" label="New Building" icon={<AddFilledIcon />} />
-                <PicklistOption name="header" label="Your Buildings" variant="header" />
-                <PicklistOption name="option-3" label="Experimental" icon={<BuildingIcon />} />
-                <PicklistOption name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
-                <PicklistOption name="option-5" label="Empire State" icon={<BuildingIcon />} />
-                <PicklistOption name="option-6" label="Central Park" icon={<BuildingIcon />} />
-                <PicklistOption name="option-7" label="Chrysler" icon={<BuildingIcon />} />
-                <PicklistOption name="option-8" label="Plaza" icon={<BuildingIcon />} />
+                <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
+                <Option name="option-2" label="New Building" icon={<AddFilledIcon />} />
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option-3" label="Experimental" icon={<BuildingIcon />} />
+                <Option name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
+                <Option name="option-5" label="Empire State" icon={<BuildingIcon />} />
+                <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
+                <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
+                <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
             </InternalDropdown>
         </div>
     );
@@ -32,22 +32,22 @@ function BasicInternalDropdown() {
 ```js
 /* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
-import { PicklistOption } from 'react-rainbow-components';
+import { Option } from 'react-rainbow-components';
 
 function InternalDropdownWithSearch() {
     const [value, setValue] = useState();
     return (
         <div className="rainbow-m-around_xx-large">
             <InternalDropdown id="internal-dropdown-3" value={value} onChange={setValue} enableSearch>
-                <PicklistOption name="option-1" label="All Buildings" icon={<DashboardIcon />} />
-                <PicklistOption name="option-2" label="New Building" icon={<AddFilledIcon />} />
-                <PicklistOption name="header" label="Your Buildings" variant="header" />
-                <PicklistOption name="option-3" label="Experimental" icon={<BuildingIcon />} />
-                <PicklistOption name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
-                <PicklistOption name="option-5" label="Empire State" icon={<BuildingIcon />} />
-                <PicklistOption name="option-6" label="Central Park" icon={<BuildingIcon />} />
-                <PicklistOption name="option-7" label="Chrysler" icon={<BuildingIcon />} />
-                <PicklistOption name="option-8" label="Plaza" icon={<BuildingIcon />} />
+                <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
+                <Option name="option-2" label="New Building" icon={<AddFilledIcon />} />
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option-3" label="Experimental" icon={<BuildingIcon />} />
+                <Option name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
+                <Option name="option-5" label="Empire State" icon={<BuildingIcon />} />
+                <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
+                <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
+                <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
             </InternalDropdown>
         </div>
     );
@@ -61,7 +61,7 @@ function InternalDropdownWithSearch() {
 ```js
 /* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
-import { PicklistOption } from 'react-rainbow-components';
+import { Option } from 'react-rainbow-components';
 
 const textStyle = { fontSize: '16px' };
 const searchValueStyle = { fontFamily: 'Lato Bold' };
@@ -82,15 +82,15 @@ function InternalDropdownWithSearch() {
     return (
         <div className="rainbow-m-around_xx-large">
             <InternalDropdown id="internal-dropdown-5" value={value} onChange={setValue} enableSearch emptyComponent={CustomEmptyComponent}>
-                <PicklistOption name="option-1" label="All Buildings" icon={<DashboardIcon />} />
-                <PicklistOption name="option-2" label="New Building" icon={<AddFilledIcon />} />
-                <PicklistOption name="header" label="Your Buildings" variant="header" />
-                <PicklistOption name="option-3" label="Experimental" icon={<BuildingIcon />} />
-                <PicklistOption name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
-                <PicklistOption name="option-5" label="Empire State" icon={<BuildingIcon />} />
-                <PicklistOption name="option-6" label="Central Park" icon={<BuildingIcon />} />
-                <PicklistOption name="option-7" label="Chrysler" icon={<BuildingIcon />} />
-                <PicklistOption name="option-8" label="Plaza" icon={<BuildingIcon />} />
+                <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
+                <Option name="option-2" label="New Building" icon={<AddFilledIcon />} />
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option-3" label="Experimental" icon={<BuildingIcon />} />
+                <Option name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
+                <Option name="option-5" label="Empire State" icon={<BuildingIcon />} />
+                <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
+                <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
+                <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
             </InternalDropdown>
         </div>
     );
@@ -154,22 +154,22 @@ function InternalDropdownWithAlgoliaSearch() {
 ```js
 /* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
-import { PicklistOption } from 'react-rainbow-components';
+import { Option } from 'react-rainbow-components';
 
 function InternalDropdownWithMultipleSelection() {
     const [value, setValue] = useState();
     return (
         <div className="rainbow-m-around_xx-large">
             <InternalDropdown value={value} onChange={setValue} enableSearch multiple>
-                <PicklistOption name="option-1" label="All Buildings" icon={<DashboardIcon />} />
-                <PicklistOption name="option-2" label="New Building" icon={<AddFilledIcon />} />
-                <PicklistOption name="header" label="Your Buildings" variant="header" />
-                <PicklistOption name="option-3" label="Experimental" icon={<BuildingIcon />} />
-                <PicklistOption name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
-                <PicklistOption name="option-5" label="Empire State" icon={<BuildingIcon />} />
-                <PicklistOption name="option-6" label="Central Park" icon={<BuildingIcon />} />
-                <PicklistOption name="option-7" label="Chrysler" icon={<BuildingIcon />} />
-                <PicklistOption name="option-8" label="Plaza" icon={<BuildingIcon />} />
+                <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
+                <Option name="option-2" label="New Building" icon={<AddFilledIcon />} />
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option-3" label="Experimental" icon={<BuildingIcon />} />
+                <Option name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
+                <Option name="option-5" label="Empire State" icon={<BuildingIcon />} />
+                <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
+                <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
+                <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
             </InternalDropdown>
         </div>
     );
@@ -186,7 +186,7 @@ function InternalDropdownWithMultipleSelection() {
 // eslint-disable arrow-parens
 import React, { useState } from 'react';
 import styled from 'styled-components'
-import { PicklistOption } from 'react-rainbow-components';
+import { Option } from 'react-rainbow-components';
 
 const Title = styled.h2`
     font-size: 1rem;
@@ -201,15 +201,15 @@ const InternalDropdownBorderRadius = props => {
         <div className="rainbow-m-around_xx-large">
             <Title>Border radius {borderRadius}</Title>
             <InternalDropdown value={value} onChange={setValue} borderRadius={borderRadius}>
-                <PicklistOption name="option-1" label="All Buildings" icon={<DashboardIcon />} />
-                <PicklistOption name="option-2" label="New Building" icon={<AddFilledIcon />} />
-                <PicklistOption name="header" label="Your Buildings" variant="header" />
-                <PicklistOption name="option-3" label="Experimental" icon={<BuildingIcon />} />
-                <PicklistOption name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
-                <PicklistOption name="option-5" label="Empire State" icon={<BuildingIcon />} />
-                <PicklistOption name="option-6" label="Central Park" icon={<BuildingIcon />} />
-                <PicklistOption name="option-7" label="Chrysler" icon={<BuildingIcon />} />
-                <PicklistOption name="option-8" label="Plaza" icon={<BuildingIcon />} />
+                <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
+                <Option name="option-2" label="New Building" icon={<AddFilledIcon />} />
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option-3" label="Experimental" icon={<BuildingIcon />} />
+                <Option name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
+                <Option name="option-5" label="Empire State" icon={<BuildingIcon />} />
+                <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
+                <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
+                <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
             </InternalDropdown>
         </div>
     );
