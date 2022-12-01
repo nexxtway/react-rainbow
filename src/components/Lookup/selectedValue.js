@@ -6,10 +6,11 @@ import RenderIf from '../RenderIf/index';
 import CloseIcon from '../Chip/closeIcon';
 import ButtonIcon from '../ButtonIcon/index';
 import StyledReadOnlySelectedInput from './styled/input';
-import StyledSelectedInput from './styled/selectedInput';
 import StyledSelectedValueIcon from './styled/selectedValueIcon';
 import StyledSelectedValueContainer from './styled/selectedValueContainer';
 import StyledSelectedValueClearButton from './styled/selectedValueClearButton';
+import { StyledCombobox, StyledInput } from '../MultiSelect/styled';
+import StyledChip from './styled/chip';
 
 export default class SelectedValue extends Component {
     constructor(props) {
@@ -61,6 +62,7 @@ export default class SelectedValue extends Component {
             errorMessageId,
             error,
             borderRadius,
+            onClearValue,
         } = this.props;
         const { label, icon } = formatValue(value);
 
@@ -87,24 +89,43 @@ export default class SelectedValue extends Component {
             );
         }
         return (
-            <StyledSelectedInput
-                id={id}
-                name={name}
-                type="text"
-                value={label}
-                tabIndex={tabIndex}
+            // <StyledSelectedInput
+            //     id={id}
+            //     name={name}
+            //     type="text"
+            //     value={label}
+            //     tabIndex={tabIndex}
+            //     onFocus={this.handleFocus}
+            //     onClick={onClick}
+            //     disabled={disabled}
+            //     readOnly
+            //     aria-describedby={errorMessageId}
+            //     required={required}
+            //     ref={this.inputRef}
+            //     iconPosition="left"
+            //     icon={icon}
+            //     error={error}
+            //     borderRadius={borderRadius}
+            // />
+            <StyledCombobox
+                error={error}
+                disabled={disabled}
+                role="combobox"
+                borderRadius={borderRadius}
                 onFocus={this.handleFocus}
                 onClick={onClick}
-                disabled={disabled}
-                readOnly
-                aria-describedby={errorMessageId}
-                required={required}
-                ref={this.inputRef}
-                iconPosition="left"
-                icon={icon}
-                error={error}
-                borderRadius={borderRadius}
-            />
+            >
+                <StyledInput
+                    id={id}
+                    role="textbox"
+                    aria-autocomplete="none"
+                    tabIndex={tabIndex}
+                    disabled={disabled}
+                    ref={this.inputRef}
+                    readOnly
+                />
+                <StyledChip label={label} onDelete={onClearValue} borderRadius={borderRadius} />
+            </StyledCombobox>
         );
     }
 
@@ -120,7 +141,7 @@ export default class SelectedValue extends Component {
 
                 {this.renderInput()}
 
-                <RenderIf isTrue={!(readOnly || disabled)}>
+                {/* <RenderIf isTrue={!(readOnly || disabled)}>
                     <StyledSelectedValueClearButton>
                         <ButtonIcon
                             assistiveText="clear"
@@ -130,7 +151,7 @@ export default class SelectedValue extends Component {
                             onClick={onClearValue}
                         />
                     </StyledSelectedValueClearButton>
-                </RenderIf>
+                </RenderIf> */}
             </StyledSelectedValueContainer>
         );
     }
