@@ -36,4 +36,6 @@ export interface InternalDropdownProps extends BaseProps {
     debounce?: boolean;
     /** A component that is displayed when no search matches are found */
     emptyComponent?: ReactNode;
+    /** The border radius of the container. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }

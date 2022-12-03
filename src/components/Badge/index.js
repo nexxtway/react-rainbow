@@ -54,7 +54,7 @@ Badge.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The border radius of the badge. Valid values are square, 'semi-square', semi-rounded and rounded.
+    /** The border radius of the badge. Valid values are square, semi-square, semi-rounded and rounded.
      * This value defaults to rounded. */
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };

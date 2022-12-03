@@ -4,12 +4,12 @@ import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 import SearchIcon from '../icons/searchIcon';
 import PrimitiveCheckbox from '../../PrimitiveCheckbox';
 import StyledHeader from '../../Option/styled/header';
+import BorderRadiusElement from '../../Structural/borderRadiusElement';
 
-export const Dropdown = attachThemeAttrs(styled.div)`
+export const Dropdown = attachThemeAttrs(styled(BorderRadiusElement))`
     position: relative;
     overflow: hidden;
     width: 100%;
-    border-radius: 0.875rem;
     font-size: 0.75rem;
     background: ${props => props.palette.background.main};
     box-shadow: ${props => props.shadows.shadow_12};
