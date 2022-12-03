@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { BorderRadiusElement } from '../../Structural';
 
-const StyledModalContainer = attachThemeAttrs(styled.section)`
+const StyledModalContainer = attachThemeAttrs(styled(BorderRadiusElement))`
     top: 0;
     right: 0;
     bottom: 0;
@@ -13,7 +13,6 @@ const StyledModalContainer = attachThemeAttrs(styled.section)`
     min-height: 4rem;
     background-color: ${props => props.palette.background.main};
     color: ${props => props.palette.text.main};
-    border-radius: ${BORDER_RADIUS_1};
     box-shadow: ${props => props.shadows.shadow_2};
     flex-direction: column;
     box-sizing: border-box;

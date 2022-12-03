@@ -277,6 +277,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     onKeyDown={handleKeyDown}
                     onCountryChange={onCountryChange}
                     ref={pickerRef}
+                    borderRadius={borderRadius}
                 />
             </InternalOverlay>
         </StyledContainer>

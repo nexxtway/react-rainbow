@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { BorderRadiusElement } from '../../Structural';
 
 const ListOptionsMenu = keyframes`
     0% {
@@ -11,9 +12,8 @@ const ListOptionsMenu = keyframes`
     }
 `;
 
-const StyledOptionsMenu = attachThemeAttrs(styled.div)`
+const StyledOptionsMenu = attachThemeAttrs(styled(BorderRadiusElement))`
     width: 100%;
-    border-radius: 12px;
     background-color: ${props => props.palette.background.main};
     box-shadow: ${props => props.shadows.shadow_12};
     overflow: hidden;
