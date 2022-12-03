@@ -57,6 +57,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         onSearch,
         debounce,
         emptyComponent: EmptyComponent,
+        borderRadius,
     } = props;
     const [showScrollUpArrow, setShowScrollUpArrow] = useState(false);
     const [showScrollDownArrow, setShowScrollDownArrow] = useState(false);
@@ -368,6 +369,7 @@ const InternalDropdown = forwardRef((props, reference) => {
     const isPlaceholderOptionChecked = isChecked(value, activeChildren.current);
     const shouldRenderPlaceholderOption = placeholder && showCheckbox;
     const showEmptyComponent = showEmptyMessage && EmptyComponent;
+
     return (
         <Dropdown
             id={id}
@@ -379,6 +381,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             onKeyDown={handleKeyPressed}
             tabIndex="-1"
             ref={containerRef}
+            borderRadius={borderRadius}
         >
             <RenderIf isTrue={enableSearch}>
                 <SearchContainer isLoading={isLoading}>
@@ -476,6 +479,8 @@ InternalDropdown.propTypes = {
     debounce: PropTypes.bool,
     /** A component that is displayed when no search matches are found */
     emptyComponent: PropTypes.node,
+    /** The border radius of the container. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 InternalDropdown.defaultProps = {
@@ -493,6 +498,7 @@ InternalDropdown.defaultProps = {
     onSearch: undefined,
     emptyComponent: undefined,
     debounce: false,
+    borderRadius: 'rounded',
 };
 
 export default InternalDropdown;

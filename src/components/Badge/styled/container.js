@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { BORDER_RADIUS_SEMI_ROUNDED, BORDER_RADIUS_SQUARE } from '../../../styles/borderRadius';
+import {
+    BORDER_RADIUS_SEMI_ROUNDED,
+    BORDER_RADIUS_SEMI_SQUARE,
+    BORDER_RADIUS_SQUARE,
+} from '../../../styles/borderRadius';
 import attchThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledContainer = attchThemeAttrs(styled.span).attrs(props => {
@@ -87,6 +91,12 @@ const StyledContainer = attchThemeAttrs(styled.span).attrs(props => {
         props.borderRadius === 'square' &&
         `
             border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+    
+    ${props =>
+        props.borderRadius === 'semi-square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
         `};
     
     ${props =>

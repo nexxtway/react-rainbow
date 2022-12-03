@@ -3,6 +3,7 @@ import ButtonIcon from '../../ButtonIcon';
 import {
     BORDER_RADIUS_2,
     BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_SQUARE,
     BORDER_RADIUS_SEMI_ROUNDED,
 } from '../../../styles/borderRadius';
 import {
@@ -193,6 +194,12 @@ export const StyledInput = attachThemeAttrs(styled.input)`
         props.borderRadius === 'square' &&
         `
             border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+
+    ${props =>
+        props.borderRadius === 'semi-square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
         `};
 
     ${props =>

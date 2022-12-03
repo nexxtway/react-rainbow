@@ -970,3 +970,49 @@ const FormModal = () => {
     </div>
 
 ```
+
+##### Modal with border radius
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components'
+import { Modal, Button } from 'react-rainbow-components';
+
+const Container = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    gap: 10px;
+`;
+
+const ModalBorderRadius = props => {
+    const { borderRadius } = props;
+    const [isOpen, setOpen] = useState(false);
+    const label = `Open ${borderRadius} modal`;
+
+    return (
+        <div>
+            <Button
+                variant="neutral"
+                label={label}
+                onClick={() => setOpen(true)}
+            />
+            <Modal isOpen={isOpen} onRequestClose={() => setOpen(false)} borderRadius={borderRadius}>
+                <img
+                    src="images/illustrations/Illustration-rainbow-1.svg"
+                    className="rainbow-p-around_xx-large rainbow-m_auto rainbow-align-content_center"
+                    alt="landscape with rainbows, birds and colorful balloons"
+                />
+            </Modal>
+        </div>
+    );
+}
+
+    <Container>
+        <ModalBorderRadius borderRadius="square" />
+        <ModalBorderRadius borderRadius="semi-square" />
+        <ModalBorderRadius borderRadius="semi-rounded" />
+        <ModalBorderRadius borderRadius="rounded" />
+    </Container>
+```

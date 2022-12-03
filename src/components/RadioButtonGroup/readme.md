@@ -494,6 +494,7 @@ const Contacts = ({ data: contacts }) => {
 
     import React, { useState } from 'react';
     import { RadioButtonGroup } from 'react-rainbow-components';
+    import styled from 'styled-components';
 
     const options = [
         { value: 'off', label: 'Off' },
@@ -502,10 +503,16 @@ const Contacts = ({ data: contacts }) => {
         { value: 'on', label: 'On' },
     ];
 
+    const Container = styled.div`
+        flex-direction : column;
+        gap: 20px;
+    `;
+
     const BorderRadiusRadioButtonGroup = () => {
         const [value1, setValue1] = useState('auto');
         const [value2, setValue2] = useState('auto');
         const [value3, setValue3] = useState('auto');
+        const [value4, setValue4] = useState('auto');
 
         const handleOnChange1 = event => {
             setValue1(event.target.value);
@@ -516,9 +523,12 @@ const Contacts = ({ data: contacts }) => {
         const handleOnChange3 = event => {
             setValue3(event.target.value);
         }
+        const handleOnChange4 = event => {
+            setValue4(event.target.value);
+        }
 
         return (
-            <>
+            <Container className="rainbow-p-around_x-large rainbow-align-content_center">
                 <RadioButtonGroup
                     label="Border Radius Square"
                     options={options}
@@ -527,25 +537,30 @@ const Contacts = ({ data: contacts }) => {
                     borderRadius="square"
                 />
                 <RadioButtonGroup
-                    label="Border Radius Semi Rounded"
+                    label="Border Radius Semi Square"
                     options={options}
                     value={value2}
                     onChange={handleOnChange2}
+                    borderRadius="semi-square"
+                />
+                <RadioButtonGroup
+                    label="Border Radius Semi Rounded"
+                    options={options}
+                    value={value3}
+                    onChange={handleOnChange3}
                     borderRadius="semi-rounded"
                 />
                 <RadioButtonGroup
                     label="Border Radius Rounded"
                     options={options}
-                    value={value3}
-                    onChange={handleOnChange3}
+                    value={value4}
+                    onChange={handleOnChange4}
                     borderRadius="rounded"
                 />
-            </>
+            </Container>
         );
     }
 
-        <div className="rainbow-p-around_x-large rainbow-align-content_center" style={ { "flex-direction" : "column", "gap": "20px" }}>
-            <BorderRadiusRadioButtonGroup />
-        </div>
+        <BorderRadiusRadioButtonGroup />
 
 ```

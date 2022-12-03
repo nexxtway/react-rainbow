@@ -159,7 +159,6 @@ const initialState = { value: null };
 
     <>
         <GoogleAddressLookup
-            id="gaddresslookup-1"
             label="GoogleAddressLookup with border radius square"
             onChange={value => setState({ value })}
             value={state.value}
@@ -170,7 +169,16 @@ const initialState = { value: null };
             borderRadius="square"
         />
         <GoogleAddressLookup
-            id="gaddresslookup-1"
+            label="GoogleAddressLookup with border radius semi-square"
+            onChange={value => setState({ value })}
+            value={state.value}
+            placeholder="Enter location"
+            apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            borderRadius="semi-square"
+        />
+        <GoogleAddressLookup
             label="GoogleAddressLookup with border radius semi-rounded"
             onChange={value => setState({ value })}
             value={state.value}
@@ -181,7 +189,6 @@ const initialState = { value: null };
             borderRadius="semi-rounded"
         />
         <GoogleAddressLookup
-            id="gaddresslookup-1"
             label="GoogleAddressLookup with border radius rounded"
             onChange={value => setState({ value })}
             value={state.value}

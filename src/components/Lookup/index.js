@@ -557,6 +557,7 @@ class Lookup extends Component {
                                 id={this.listboxId}
                                 role="listbox"
                                 data-id="lookup-options-container"
+                                borderRadius={borderRadius}
                             >
                                 <RenderIf isTrue={showScrollUpArrow}>
                                     <MenuArrowButton
@@ -668,8 +669,8 @@ Lookup.propTypes = {
     /** The variant changes the appearance of the Input. Accepted variants include default,
      * shaded and bare. This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
-    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
-    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
+    /** The border radius of the input. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 Lookup.defaultProps = {

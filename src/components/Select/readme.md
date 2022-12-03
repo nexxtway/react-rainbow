@@ -222,6 +222,14 @@ const options = [
             borderRadius="square"
         />
         <Select
+            label="Select with border radius semi-square"
+            options={options}
+            id="example-select-1"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            borderRadius="semi-square"
+        />
+        <Select
             label="Select with border radius semi-rounded"
             options={options}
             id="example-select-1"

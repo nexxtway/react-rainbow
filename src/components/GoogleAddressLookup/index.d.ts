@@ -123,7 +123,7 @@ export interface GoogleAddressLookupProps extends BaseProps {
     onBlur?: (event: null | LookupValue) => void;
     searchOptions?: SearchOptionsShape;
     variant?: 'default' | 'shaded' | 'bare';
-    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
+    borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 
 export default function(props: GoogleAddressLookupProps): JSX.Element | null;

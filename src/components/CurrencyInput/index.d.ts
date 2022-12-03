@@ -34,7 +34,7 @@ export interface CurrencyInputProps extends BaseProps {
     maximumSignificantDigits?: number;
     size?: 'small' | 'medium' | 'large';
     valueAlignment?: 'left' | 'center' | 'right';
-    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
+    borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 
 export default function(props: CurrencyInputProps): JSX.Element | null;

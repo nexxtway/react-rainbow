@@ -248,6 +248,7 @@ function ControlledStrongPasswordInput() {
     const [value1, setValue1] = useState('');
     const [value2, setValue2] = useState('');
     const [value3, setValue3] = useState('');
+    const [value4, setValue4] = useState('');
 
     const handleOnChange1 = event => {
         setValue1(event.target.value);
@@ -257,6 +258,9 @@ function ControlledStrongPasswordInput() {
     }
     const handleOnChange3 = event => {
         setValue3(event.target.value);
+    }
+    const handleOnChange4 = event => {
+        setValue4(event.target.value);
     }
 
     const getStrength = value => {
@@ -276,11 +280,11 @@ function ControlledStrongPasswordInput() {
     const passwordState1 = getStrength(value1);
     const passwordState2 = getStrength(value2);
     const passwordState3 = getStrength(value3);
+    const passwordState4 = getStrength(value4);
 
     return (
         <>
             <StrongPasswordInput
-                id="strong-password-input-1"
                 label="Password with border radius square"
                 placeholder="Placeholder text"
                 bottomHelpText="Your password must be at least 8 characters long."
@@ -292,8 +296,7 @@ function ControlledStrongPasswordInput() {
                 borderRadius="square"
             />
             <StrongPasswordInput
-                id="strong-password-input-2"
-                label="Password with border radius semi-rounded"
+                label="Password with border radius semi-square"
                 placeholder="Placeholder text"
                 bottomHelpText="Your password must be at least 8 characters long."
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
@@ -301,11 +304,10 @@ function ControlledStrongPasswordInput() {
                 value={value2}
                 passwordState={passwordState2}
                 onChange={handleOnChange2}
-                borderRadius="semi-rounded"
+                borderRadius="semi-square"
             />
             <StrongPasswordInput
-                id="strong-password-input-3"
-                label="Password with border radius rounded"
+                label="Password with border radius semi-rounded"
                 placeholder="Placeholder text"
                 bottomHelpText="Your password must be at least 8 characters long."
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
@@ -313,6 +315,17 @@ function ControlledStrongPasswordInput() {
                 value={value3}
                 passwordState={passwordState3}
                 onChange={handleOnChange3}
+                borderRadius="semi-rounded"
+            />
+            <StrongPasswordInput
+                label="Password with border radius rounded"
+                placeholder="Placeholder text"
+                bottomHelpText="Your password must be at least 8 characters long."
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                style={containerStyles}
+                value={value4}
+                passwordState={passwordState4}
+                onChange={handleOnChange4}
                 borderRadius="rounded"
             />
         </>

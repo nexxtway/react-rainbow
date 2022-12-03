@@ -124,12 +124,7 @@ class RadioButtonGroup extends Component {
         };
 
         return (
-            <StyledContainer
-                id={id}
-                className={className}
-                style={style}
-                borderRadius={borderRadius}
-            >
+            <StyledContainer id={id} className={className} style={style}>
                 <RenderIf isTrue={label}>
                     <StyledLabel
                         label={label}
@@ -213,8 +208,8 @@ RadioButtonGroup.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** The border radius of the radio button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
-    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
+    /** The border radius of the radio button. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 RadioButtonGroup.defaultProps = {

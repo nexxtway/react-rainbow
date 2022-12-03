@@ -184,11 +184,11 @@ const TimePickerBorderRadius = () => {
     const [value1, setValue1] = useState();
     const [value2, setValue2] = useState();
     const [value3, setValue3] = useState();
+    const [value4, setValue4] = useState();
 
     return (
         <>
             <TimePicker
-                id="time-picker-1"
                 value={value1}
                 label="TimePicker with border radius square"
                 onChange={setValue1}
@@ -197,19 +197,25 @@ const TimePickerBorderRadius = () => {
                 borderRadius="square"
             />
             <TimePicker
-                id="time-picker-1"
                 value={value2}
-                label="TimePicker with border radius semi-rounded"
+                label="TimePicker with border radius semi-square"
                 onChange={setValue2}
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                borderRadius="semi-square"
+            />
+            <TimePicker
+                value={value3}
+                label="TimePicker with border radius semi-rounded"
+                onChange={setValue3}
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 borderRadius="semi-rounded"
             />
             <TimePicker
-                id="time-picker-1"
-                value={value3}
+                value={value4}
                 label="TimePicker with border radius rounded"
-                onChange={setValue3}
+                onChange={setValue4}
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 borderRadius="rounded"
