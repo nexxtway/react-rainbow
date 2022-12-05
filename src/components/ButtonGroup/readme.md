@@ -371,18 +371,26 @@ const Container = styled.div`
                     </ButtonGroup>
 
                     <div className="rainbow-m-bottom_medium">
+                        <SubTitle>Button group with border radius semi-square.</SubTitle>
+                    </div>
+                    <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="semi-square">
+                        <Button label="New" variant="neutral" />
+                        <Button label="Edit" variant="neutral" />
+                        <Button label="Remove" variant="neutral" />
+                    </ButtonGroup>
+
+                    <div className="rainbow-m-bottom_medium">
                         <SubTitle>Button group with border radius semi-rounded.</SubTitle>
                     </div>
-
                     <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="semi-rounded">
                         <Button label="New" variant="neutral" />
                         <Button label="Edit" variant="neutral" />
                         <Button label="Remove" variant="neutral" />
                     </ButtonGroup>
+
                     <div className="rainbow-m-bottom_medium">
                         <SubTitle>Button group with border radius rounded.</SubTitle>
                     </div>
-
                     <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="rounded">
                         <Button label="New" variant="neutral" />
                         <Button label="Edit" variant="neutral" />

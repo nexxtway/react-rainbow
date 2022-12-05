@@ -47,6 +47,9 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
             <ButtonIcon variant="neutral" borderRadius="square" icon={<FontAwesomeIcon icon={faStar} />} />
         </div>
         <div className="rainbow-p-right_large">
+            <ButtonIcon variant="neutral" borderRadius="semi-square" icon={<FontAwesomeIcon icon={faStar} />} />
+        </div>
+        <div className="rainbow-p-right_large">
             <ButtonIcon variant="neutral" borderRadius="semi-rounded" icon={<FontAwesomeIcon icon={faStar} />} />
         </div>
         <div className="rainbow-p-right_large">

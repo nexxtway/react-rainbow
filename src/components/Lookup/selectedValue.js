@@ -109,11 +109,11 @@ export default class SelectedValue extends Component {
     }
 
     render() {
-        const { value, disabled, readOnly, onClearValue, borderRadius } = this.props;
+        const { value, disabled, readOnly, onClearValue } = this.props;
         const { icon } = formatValue(value);
 
         return (
-            <StyledSelectedValueContainer readOnly={readOnly} borderRadius={borderRadius}>
+            <StyledSelectedValueContainer readOnly={readOnly}>
                 <RenderIf isTrue={icon}>
                     <StyledSelectedValueIcon readOnly={readOnly}>{icon}</StyledSelectedValueIcon>
                 </RenderIf>
@@ -155,7 +155,7 @@ SelectedValue.propTypes = {
     onClearValue: PropTypes.func,
     errorMessageId: PropTypes.string,
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 SelectedValue.defaultProps = {

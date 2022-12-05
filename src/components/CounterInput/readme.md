@@ -151,11 +151,12 @@ const CounterBorderRadius = (  ) => {
     const [counter1, setCounter1] = useState();
     const [counter2, setCounter2] = useState();
     const [counter3, setCounter3] = useState();
+    const [counter4, setCounter4] = useState();
+
     return(
         <>
             <CounterInput
-                id="input-component-1"
-                label="Border Radius square"
+                label="Border radius square"
                 placeholder="Only numbers"
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
@@ -167,8 +168,7 @@ const CounterBorderRadius = (  ) => {
                 borderRadius="square"
             />
             <CounterInput
-                id="input-component-2"
-                label="Border Radius semi-rounded"
+                label="Border radius semi-square"
                 placeholder="Only numbers"
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
@@ -177,17 +177,28 @@ const CounterBorderRadius = (  ) => {
                 onChange={setCounter2}
                 min={10}
                 max={100}
-                borderRadius="semi-rounded"
+                borderRadius="semi-square"
             />
             <CounterInput
-                id="input-component-3"
-                label="Border Radius rounded"
+                label="Border radius semi-rounded"
                 placeholder="Only numbers"
                 style={containerStyles}
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 labelAlignment="center"
                 value={counter3}
                 onChange={setCounter3}
+                min={10}
+                max={100}
+                borderRadius="semi-rounded"
+            />
+            <CounterInput
+                label="Border radius rounded"
+                placeholder="Only numbers"
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                labelAlignment="center"
+                value={counter4}
+                onChange={setCounter4}
                 min={10}
                 max={100}
                 borderRadius="rounded"

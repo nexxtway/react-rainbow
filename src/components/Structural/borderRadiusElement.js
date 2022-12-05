@@ -1,17 +1,13 @@
 import styled from 'styled-components';
-import Input from '../../Input/pickerInput';
 import {
+    BORDER_RADIUS_1,
     BORDER_RADIUS_SQUARE,
     BORDER_RADIUS_SEMI_SQUARE,
     BORDER_RADIUS_SEMI_ROUNDED,
-} from '../../../styles/borderRadius';
+} from '../../styles/borderRadius';
 
-export const StyledContainer = styled.div`
-    width: 100%;
-`;
-
-export const StyledInput = styled(Input)`
-    text-transform: capitalize;
+const BorderRadiusElement = styled.div`
+    border-radius: ${BORDER_RADIUS_1};
     ${props =>
         props.borderRadius === 'square' &&
         `
@@ -28,3 +24,5 @@ export const StyledInput = styled(Input)`
             border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
         `};
 `;
+
+export default BorderRadiusElement;

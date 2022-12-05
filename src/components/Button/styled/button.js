@@ -5,7 +5,11 @@ import {
     FONT_SIZE_TEXT_MEDIUM,
     FONT_SIZE_HEADING_MEDIUM,
 } from '../../../styles/fontSizes';
-import { BORDER_RADIUS_SQUARE, BORDER_RADIUS_SEMI_ROUNDED } from '../../../styles/borderRadius';
+import {
+    BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_SQUARE,
+    BORDER_RADIUS_SEMI_ROUNDED,
+} from '../../../styles/borderRadius';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { COLOR_WHITE, COLOR_GRAY_3, COLOR_DARK_1 } from '../../../styles/colors';
 import { lighten } from '../../../styles/helpers/color';
@@ -88,6 +92,12 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
         props.borderRadius === 'square' &&
         `
             border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+
+    ${props =>
+        props.borderRadius === 'semi-square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
         `};
 
     ${props =>

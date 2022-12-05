@@ -240,6 +240,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                             disabled={disabled}
                             value={value}
                             onDelete={handleDelete}
+                            borderRadius={borderRadius}
                         />
                     </RenderIf>
                 </StyledChipContainer>
@@ -258,6 +259,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                         tabIndex={tabIndex}
                         onFocus={onFocus}
                         onBlur={onBlur}
+                        borderRadius={borderRadius}
                     />
                 </RenderIf>
                 <InternalOverlay
@@ -277,6 +279,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                             placeholder={placeholder}
                             showCheckbox={showCheckbox}
                             enableSearch={enableSearch}
+                            borderRadius={borderRadius}
                             multiple
                         >
                             {children}
@@ -350,8 +353,8 @@ MultiSelect.propTypes = {
      * @ignore
      */
     children: PropTypes.node,
-    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
-    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
+    /** The border radius of the input. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 MultiSelect.defaultProps = {

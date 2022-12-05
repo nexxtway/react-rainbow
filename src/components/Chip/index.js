@@ -57,8 +57,8 @@ Chip.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The border radius of the Chip. Options include square, semi-rounded and rounded. */
-    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
+    /** The border radius of the Chip. Options include square, semi-square, semi-rounded and rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 Chip.defaultProps = {

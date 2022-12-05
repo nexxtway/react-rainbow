@@ -201,6 +201,7 @@ const Payment = () => {
     const [stripeCard1, setStripeCard1] = useState();
     const [stripeCard2, setStripeCard2] = useState();
     const [stripeCard3, setStripeCard3] = useState();
+    const [stripeCard4, setStripeCard4] = useState();
 
     return (
         <Container>
@@ -214,17 +215,24 @@ const Payment = () => {
             />
             <StripeCardInput
                 apiKey={LIBRARY_STRIPE_APIKEY}
-                label="StripeCardInput with border radius semi-rounded"
+                label="StripeCardInput with border radius semi-square"
                 value={stripeCard2}
                 onChange={setStripeCard2}
-                borderRadius="semi-rounded"
+                borderRadius="semi-square"
                 style={{ marginBottom: '20px' }}
             />
             <StripeCardInput
                 apiKey={LIBRARY_STRIPE_APIKEY}
                 value={stripeCard3}
-                label="StripeCardInput with border radius rounded"
+                label="StripeCardInput with border radius semi-rounded"
                 onChange={setStripeCard3}
+                borderRadius="semi-rounded"
+            />
+            <StripeCardInput
+                apiKey={LIBRARY_STRIPE_APIKEY}
+                value={stripeCard4}
+                label="StripeCardInput with border radius rounded"
+                onChange={setStripeCard4}
                 borderRadius="rounded"
             />
         </Container>

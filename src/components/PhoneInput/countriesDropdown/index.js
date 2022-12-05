@@ -24,7 +24,15 @@ import StyledEmptyMessage from '../../Lookup/options/styled/emptyMessage';
 
 const CountriesDropdown = memo(
     React.forwardRef((props, ref) => {
-        const { country, countries, isOpen, searchRef, onCountryChange, onKeyDown } = props;
+        const {
+            country,
+            countries,
+            isOpen,
+            searchRef,
+            onCountryChange,
+            onKeyDown,
+            borderRadius,
+        } = props;
 
         const scrollableRef = useRef();
         const [query, countriesFiltered, setQuery] = useFilterCountries(countries, country);
@@ -53,7 +61,12 @@ const CountriesDropdown = memo(
         const listHeight = countriesFiltered.length * 45;
 
         return (
-            <StyledDropdown isOpen={isOpen} onKeyDown={onKeyDown} ref={ref}>
+            <StyledDropdown
+                isOpen={isOpen}
+                onKeyDown={onKeyDown}
+                ref={ref}
+                borderRadius={borderRadius}
+            >
                 <StyledSearchContainer>
                     <StyledSearch
                         ref={searchRef}
@@ -115,6 +128,7 @@ CountriesDropdown.propTypes = {
     isOpen: PropTypes.bool,
     onCountryChange: PropTypes.func,
     onKeyDown: PropTypes.func,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 CountriesDropdown.defaultProps = {
@@ -124,6 +138,7 @@ CountriesDropdown.defaultProps = {
     searchRef: undefined,
     onCountryChange: () => {},
     onKeyDown: () => {},
+    borderRadius: 'rounded',
 };
 
 export default CountriesDropdown;
