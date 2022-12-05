@@ -557,6 +557,7 @@ class Lookup extends Component {
                                 id={this.listboxId}
                                 role="listbox"
                                 data-id="lookup-options-container"
+                                borderRadius={borderRadius}
                             >
                                 <RenderIf isTrue={showScrollUpArrow}>
                                     <MenuArrowButton

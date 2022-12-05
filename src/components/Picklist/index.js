@@ -325,6 +325,7 @@ class Picklist extends Component {
                             debounce={debounce}
                             ref={this.dropdownRef}
                             emptyComponent={emptyComponent}
+                            borderRadius={borderRadius}
                         >
                             {children}
                         </InternalDropdown>
