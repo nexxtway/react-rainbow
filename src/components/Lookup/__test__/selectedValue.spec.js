@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import copyFn from 'clipboard-copy';
 import ButtonIcon from '../../ButtonIcon';
 import SelectedValue from '../selectedValue';
-import StyledSelectedValueIcon from '../styled/selectedValueIcon';
+import StyledSelectedIconContainer from '../styled/selectedIconContainer';
 
 jest.mock('clipboard-copy');
 
@@ -22,14 +22,14 @@ describe('<SelectedValue />', () => {
     });
     it('should not render an icon container', () => {
         const component = mount(<SelectedValue value={value} />);
-        expect(component.find(StyledSelectedValueIcon).exists()).toBe(false);
+        expect(component.find(StyledSelectedIconContainer).exists()).toBe(false);
     });
     it('should render an icon container', () => {
         const component = mount(<SelectedValue value={valueWithIcon} />);
-        expect(component.find(StyledSelectedValueIcon).exists()).toBe(true);
+        expect(component.find(StyledSelectedIconContainer).exists()).toBe(true);
     });
     it('should render a close button', () => {
-        const component = mount(<SelectedValue />);
+        const component = mount(<SelectedValue onClearValue={() => {}} />);
         expect(component.find(ButtonIcon).exists()).toBe(true);
     });
     it('should fire an event when the close button is clicked', () => {
