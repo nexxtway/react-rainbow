@@ -42,11 +42,6 @@ const CarouselCard = props => {
         if (childrenRegistered[0] && childrenRegistered[0].id !== activeItem) {
             setActiveItem(childrenRegistered[0].id);
         }
-        return () => {
-            if (childrenRegistered[0] && childrenRegistered[0].id !== activeItem) {
-                setActiveItem(childrenRegistered[0].id);
-            }
-        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [childrenRegistered]);
 

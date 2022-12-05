@@ -4,7 +4,7 @@ import { LEFT_KEY, RIGHT_KEY } from '../../../libs/constants';
 import { getItemIndex } from '../helpers';
 import Indicator from './indicator';
 import StyledIndicatorUl from '../styled/indicatorsUl';
-import { useChildrenRegisterRef } from '../../../libs/hooks';
+import { useChildrenRegister } from '../../../libs/hooks';
 
 const RIGHT_SIDE = 1;
 const LEFT_SIDE = -1;
@@ -14,7 +14,7 @@ const Indicators = props => {
     const { carouselChildren, onSelect, selectedItem } = props;
     const containerRef = useRef();
 
-    const { childrenRegistered: indicatorsRefs, register, unregister } = useChildrenRegisterRef({
+    const { childrenRegistered: indicatorsRefs, register, unregister } = useChildrenRegister({
         containerRef,
         selector: SELECTOR,
     });
