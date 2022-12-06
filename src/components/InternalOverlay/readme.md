@@ -288,3 +288,118 @@ const Component = () => {
 
     <Component />
 ```
+
+##### Using InternalOverlay with border radius:
+
+```js
+/* eslint-disable import/extensions, import/no-unresolved */
+import React, { useRef, useState } from 'react';
+import { Button, InternalOverlay } from 'react-rainbow-components';
+import styled from 'styled-components';
+import { useOutsideClick, useWindowResize } from '../../libs/hooks';
+
+import {
+    BORDER_RADIUS_1,
+    BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_SQUARE,
+    BORDER_RADIUS_SEMI_ROUNDED,
+} from '../../styles/borderRadius';
+
+const BorderRadiusElement = styled.div`
+    width: 220px;
+    height: 220px;
+    border: solid 1px ${props => props.theme.rainbow.palette.border.divider};
+    background: ${props => props.theme.rainbow.palette.background.main};
+    box-shadow: ${props => props.theme.rainbow.shadows.shadow_2};
+    transition: all 0.1s linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: ${BORDER_RADIUS_1};
+    ${props =>
+        props.borderRadius === 'square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+    ${props =>
+        props.borderRadius === 'semi-square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
+        `};
+    ${props =>
+        props.borderRadius === 'semi-rounded' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
+        `};
+`;
+
+const Container = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    gap: 10px;
+`;
+
+const Text = styled.h1`
+    color: ${props => props.theme.rainbow.palette.text.label};
+    padding: 0.5rem 0;
+    font-size: 16px;
+    margin-top: 4px;
+`;
+
+const Image = styled(ParisIcon)`
+    width: 60%;
+    height: 60%;
+`;
+
+const Component = props => {
+    const { borderRadius } = props;
+    const triggerRef = useRef(null);
+    const dropdownRef = useRef();
+    const [isOpen, setIsOpen] = useState(false);
+
+    useOutsideClick(
+        dropdownRef,
+        event => {
+            if (event.target !== triggerRef.current.buttonRef.current) {
+                setIsOpen(false);
+            }
+        },
+        isOpen,
+    );
+    useWindowResize(() => setIsOpen(false), isOpen);
+
+    return (
+        <>
+            <Button
+                variant="neutral"
+                label={`Open ${borderRadius}`}
+                ref={triggerRef}
+                onClick={() => setIsOpen(!isOpen)}
+                borderRadius={borderRadius}
+            />
+            <InternalOverlay
+                isVisible={isOpen}
+                render={() => (
+                    <BorderRadiusElement ref={dropdownRef} borderRadius={borderRadius}>
+                        <Image />
+                        <Text>Paris</Text>
+                    </BorderRadiusElement>
+                )}
+                triggerElementRef={() => triggerRef.current.buttonRef}
+                borderRadius={borderRadius}
+            />
+
+        </>
+    );
+}
+
+    <Container id="overlay-1-container">
+        <Component borderRadius="square" />
+        <Component borderRadius="semi-square" />
+        <Component borderRadius="semi-rounded" />
+        <Component borderRadius="rounded" />
+    </Container>
+```

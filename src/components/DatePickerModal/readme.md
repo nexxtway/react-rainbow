@@ -298,3 +298,72 @@ function handleDatePickerChange(value) {
         />
     </div>
 ```
+
+
+##### DatePickerModal with border radius :
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Button, DatePickerModal } from 'react-rainbow-components';
+
+const Container = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    gap: 10px;
+`;
+const StyledButton = styled(Button)`
+    padding: 10px;
+`;
+
+const ArrowIcon = styled(ArrowDownIcon)`
+    color: ${props => props.theme.rainbow.palette.brand.main};
+    margin-left: 10px;
+`;
+
+const formatDates = dates => {
+    if (Array.isArray(dates) && dates.length > 1) {
+        const startDay = new Intl.DateTimeFormat().format(dates[0]);
+        if (dates.length > 1) {
+            const endDay = new Intl.DateTimeFormat().format(dates[1]);
+            return `${startDay  } - ${  endDay}`;
+        }
+        return startDay;
+    }
+    return 'CHECK IN / CHECK OUT';
+}
+
+const DatePickerModalBorderRadius = props => {
+    const { borderRadius } = props;
+    const [isOpen, setOpen] = useState();
+    const [dates, setDates] = useState();
+
+    return (
+        <>
+            <StyledButton onClick={() => setOpen(!isOpen)} variant="border-filled" borderRadius={borderRadius}>
+                {formatDates(dates)}
+                <ArrowIcon />
+            </StyledButton>
+            <DatePickerModal
+                title={state.title}
+                isOpen={isOpen}
+                value={dates}
+                variant="double"
+                selectionType="range"
+                onChange={setDates}
+                onRequestClose={() => setOpen(false)}
+                borderRadius={borderRadius}
+            />
+        </>
+    );
+}
+    <Container>
+        <DatePickerModalBorderRadius borderRadius="square" />
+        <DatePickerModalBorderRadius borderRadius="semi-square" />
+        <DatePickerModalBorderRadius borderRadius="semi-rounded" />
+        <DatePickerModalBorderRadius borderRadius="rounded" />
+    </Container>
+
+```
