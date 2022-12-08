@@ -10,3 +10,4 @@ export { default as useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffec
 export { useOutsideClick } from '@rainbow-modules/hooks';
 export { default as useChildrenRegister } from './useChildrenRegister';
 export { default as useChildrenRegisterRef } from './useChildrenRegisterRef';
+export { default as usePrevious } from './usePrevious';

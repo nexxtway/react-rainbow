@@ -1,11 +1,11 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import CarouselCard from '../index';
 import CarouselImage from '../../CarouselImage';
 
 describe('<CarouselCard />', () => {
-    it('should render the children passed', () => {
-        const component = mount(
+    it('should render the children passed', async () => {
+        const { getAllByRole } = render(
             <CarouselCard disableAutoScroll>
                 <CarouselImage
                     src="images/illustrations/rainbows-background.svg"
@@ -30,10 +30,12 @@ describe('<CarouselCard />', () => {
                 />
             </CarouselCard>,
         );
-        expect(component.find('a[href="/"]').length).toBe(3);
+
+        expect(getAllByRole('tab').length).toBe(3);
     });
     it('should set the right state when disableAutoScroll is passed', () => {
-        const component = mount(<CarouselCard disableAutoScroll />);
-        expect(component.state().isAnimationPaused).toBe(true);
+        const { getByTitle } = render(<CarouselCard disableAutoScroll />);
+
+        expect(getByTitle('play')).toBeDefined();
     });
 });

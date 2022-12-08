@@ -1,4 +1,3 @@
-const isChildRegistered = ({ children, name }) =>
-    children.findIndex(child => child.name === name) !== -1;
+const isChildRegistered = ({ children, id }) => children.findIndex(child => child.id === id) !== -1;
 
 export default isChildRegistered;
