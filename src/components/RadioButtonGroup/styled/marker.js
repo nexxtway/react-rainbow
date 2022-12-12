@@ -4,6 +4,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import {
     BORDER_RADIUS_2,
     BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_SQUARE,
     BORDER_RADIUS_SEMI_ROUNDED,
 } from '../../../styles/borderRadius';
 
@@ -37,17 +38,23 @@ const StyledMarker = attachThemeAttrs(styled.span)`
             border: solid 1px ${props.palette.brand.dark};
         `};
 
-        ${props =>
-            props.borderRadius === 'square' &&
-            `
-                border-radius: ${BORDER_RADIUS_SQUARE} !important;
-            `};
-            
-        ${props =>
-            props.borderRadius === 'semi-rounded' &&
-            `
-                border-radius: ${BORDER_RADIUS_SEMI_ROUNDED} !important;
-            `};
+    ${props =>
+        props.borderRadius === 'square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SQUARE} !important;
+        `};
+
+    ${props =>
+        props.borderRadius === 'semi-square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_SQUARE} !important;
+        `};
+        
+    ${props =>
+        props.borderRadius === 'semi-rounded' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_ROUNDED} !important;
+        `};
 `;
 
 export default StyledMarker;

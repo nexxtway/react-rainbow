@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
+import { FONT_SIZE_TEXT_LARGE, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import { MARGIN_MEDIUM } from '../../../styles/margins';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
@@ -70,6 +70,11 @@ const Label = attachThemeAttrs(styled.label).attrs(props => {
         `
         color: ${props.inverse.text};
     `}
+    ${props =>
+        props.size === 'large' &&
+        `
+            font-size: ${FONT_SIZE_TEXT_LARGE};
+        `};
 `;
 
 export { labelAlignmentMap };

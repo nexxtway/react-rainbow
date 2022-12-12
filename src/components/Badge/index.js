@@ -7,7 +7,7 @@ import Content from './content';
  * Badges are labels that hold small amounts of information.
  */
 export default function Badge(props) {
-    const { className, style, label, title, children, variant, size } = props;
+    const { className, style, label, title, children, variant, size, borderRadius } = props;
 
     if (children === null && label === null) {
         return null;
@@ -20,6 +20,7 @@ export default function Badge(props) {
             variant={variant}
             title={title}
             size={size}
+            borderRadius={borderRadius}
         >
             <Content label={label}>{children}</Content>
         </StyledContainer>
@@ -53,6 +54,9 @@ Badge.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The border radius of the badge. Valid values are square, semi-square, semi-rounded and rounded.
+     * This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 Badge.defaultProps = {
@@ -63,4 +67,5 @@ Badge.defaultProps = {
     size: 'medium',
     className: undefined,
     style: undefined,
+    borderRadius: 'rounded',
 };

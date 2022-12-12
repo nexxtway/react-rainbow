@@ -301,31 +301,32 @@ const PictureIcon = styled(Picture)`
 import React, { useState } from 'react';
 import { DateTimePicker, Picklist, PicklistOption } from 'react-rainbow-components';
 
+    const containerStyles = {
+        maxWidth: 400,
+    };
+
+    const initialState = {
+        value: new Date('2019-10-25 10:44'),
+        locale: { name: 'en-US', label: 'English (US)' },
+    };
+
+    const okButtonLocalizedLabel = {
+        'en-US': 'OK',
+        'es-ES': 'Aceptar',
+        'fr-Fr': "D'accord",
+    };
+
+    const cancelButtonLocalizedLabel = {
+        'en-US': 'Cancel',
+        'es-ES': 'Cancelar',
+        'fr-Fr': 'Annuler',
+    };
     const DateTimePickerBorderRadius = () => {
-        const containerStyles = {
-            maxWidth: 400,
-        };
-
-        const initialState = {
-            value: new Date('2019-10-25 10:44'),
-            locale: { name: 'en-US', label: 'English (US)' },
-        };
-
-        const okButtonLocalizedLabel = {
-            'en-US': 'OK',
-            'es-ES': 'Aceptar',
-            'fr-Fr': "D'accord",
-        };
-
-        const cancelButtonLocalizedLabel = {
-            'en-US': 'Cancel',
-            'es-ES': 'Cancelar',
-            'fr-Fr': 'Annuler',
-        };
 
         const [value1, setValue1] = useState(initialState.value);
         const [value2, setValue2] = useState(initialState.value);
         const [value3, setValue3] = useState(initialState.value);
+        const [value4, setValue4] = useState(initialState.value);
         const [locale, setLocale] = useState(initialState.locale);
 
         return (
@@ -344,7 +345,6 @@ import { DateTimePicker, Picklist, PicklistOption } from 'react-rainbow-componen
                     style={containerStyles}
                 >
                     <DateTimePicker
-                        id="datetimepicker-1"
                         label="DateTimePicker with border radius square"
                         value={value1}
                         onChange={setValue1}
@@ -360,10 +360,24 @@ import { DateTimePicker, Picklist, PicklistOption } from 'react-rainbow-componen
                     style={containerStyles}
                 >
                     <DateTimePicker
-                        id="datetimepicker-2"
-                        label="DateTimePicker with border radius semi-rounded"
+                        label="DateTimePicker with border radius semi-square"
                         value={value2}
                         onChange={setValue2}
+                        formatStyle="large"
+                        locale={locale.name}
+                        okLabel={okButtonLocalizedLabel[locale.name]}
+                        cancelLabel={cancelButtonLocalizedLabel[locale.name]}
+                        borderRadius="semi-square"
+                    />
+                </div>
+                <div
+                    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+                    style={containerStyles}
+                >
+                    <DateTimePicker
+                        label="DateTimePicker with border radius semi-rounded"
+                        value={value3}
+                        onChange={setValue3}
                         formatStyle="large"
                         locale={locale.name}
                         okLabel={okButtonLocalizedLabel[locale.name]}
@@ -376,10 +390,9 @@ import { DateTimePicker, Picklist, PicklistOption } from 'react-rainbow-componen
                     style={containerStyles}
                 >
                     <DateTimePicker
-                        id="datetimepicker-3"
                         label="DateTimePicker with border radius rounded"
-                        value={value3}
-                        onChange={setValue3}
+                        value={value4}
+                        onChange={setValue4}
                         formatStyle="large"
                         locale={locale.name}
                         okLabel={okButtonLocalizedLabel[locale.name]}

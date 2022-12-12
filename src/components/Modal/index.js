@@ -153,6 +153,7 @@ export default class Modal extends Component {
             id,
             size,
             hideCloseButton,
+            borderRadius,
         } = this.props;
 
         if (isOpen) {
@@ -176,6 +177,8 @@ export default class Modal extends Component {
                         isOpen={isOpen}
                         className={className}
                         size={size}
+                        as="section"
+                        borderRadius={borderRadius}
                     >
                         <RenderIf isTrue={!hideCloseButton}>
                             <StyledCloseButton
@@ -236,6 +239,8 @@ Modal.propTypes = {
     children: PropTypes.node,
     /** If true, hide the close button in the modal. */
     hideCloseButton: PropTypes.bool,
+    /** The border radius of the container. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 Modal.defaultProps = {
@@ -250,4 +255,5 @@ Modal.defaultProps = {
     onOpened: () => {},
     id: undefined,
     hideCloseButton: false,
+    borderRadius: 'rounded',
 };

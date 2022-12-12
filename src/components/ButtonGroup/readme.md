@@ -239,12 +239,6 @@ const SocialContentCount = styled.h2.attrs(props => {
     color: ${props => props.text.main};  
 `;
 
-const StyledButtonMenuIcon = styled(FontAwesomeIcon).attrs(props => {
-    return props.theme.rainbow.palette;
-})`
-    color: ${props => props.brand.main};
-`;
-
 const styles = {
     socialCard: { marginLeft: 0, marginRight: 0 },
     facebookIcon: { color: "#3C5997" } ,
@@ -286,7 +280,7 @@ const socials = [
                 <ButtonMenu
                     menuAlignment="right"
                     menuSize="x-small"
-                    icon={<StyledButtonMenuIcon icon={faAngleDown} border={false} />}
+                    icon={ <FontAwesomeIcon icon={faAngleDown} className="rainbow-m-right_small rainbow-color_brand" /> }
                 >
                     <MenuItem label="Settings" />
                     <MenuItem label="Utilities" />
@@ -377,18 +371,26 @@ const Container = styled.div`
                     </ButtonGroup>
 
                     <div className="rainbow-m-bottom_medium">
+                        <SubTitle>Button group with border radius semi-square.</SubTitle>
+                    </div>
+                    <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="semi-square">
+                        <Button label="New" variant="neutral" />
+                        <Button label="Edit" variant="neutral" />
+                        <Button label="Remove" variant="neutral" />
+                    </ButtonGroup>
+
+                    <div className="rainbow-m-bottom_medium">
                         <SubTitle>Button group with border radius semi-rounded.</SubTitle>
                     </div>
-
                     <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="semi-rounded">
                         <Button label="New" variant="neutral" />
                         <Button label="Edit" variant="neutral" />
                         <Button label="Remove" variant="neutral" />
                     </ButtonGroup>
+
                     <div className="rainbow-m-bottom_medium">
                         <SubTitle>Button group with border radius rounded.</SubTitle>
                     </div>
-
                     <ButtonGroup className="rainbow-m-bottom_medium" borderRadius="rounded">
                         <Button label="New" variant="neutral" />
                         <Button label="Edit" variant="neutral" />

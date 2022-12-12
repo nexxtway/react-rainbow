@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
+import {
+    BORDER_RADIUS_2,
+    BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_SQUARE,
+    BORDER_RADIUS_SEMI_ROUNDED,
+} from '../../../styles/borderRadius';
 import { PADDING_SMALL } from '../../../styles/paddings';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
@@ -43,6 +48,25 @@ const StyledContainer = attachThemeAttrs(styled.span)`
             border: 1px solid ${props.palette[props.variant].main};
             color: ${props.palette.getContrastText(props.palette[props.variant].main)};
         `};
+
+    ${props =>
+        props.borderRadius === 'square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+
+    ${props =>
+        props.borderRadius === 'semi-square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
+        `};
+    
+    ${props =>
+        props.borderRadius === 'semi-rounded' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
+        `};
+    
 `;
 
 export default StyledContainer;

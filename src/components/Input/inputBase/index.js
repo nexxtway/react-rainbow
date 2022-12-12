@@ -140,6 +140,7 @@ export default class InputBase extends Component {
                     inputId={this.inputId}
                     readOnly={isReadOnly}
                     id={this.getInlineTextLabelId()}
+                    size={size}
                 />
                 <RelativeElement>
                     <RenderIf isTrue={icon}>
@@ -258,7 +259,7 @@ InputBase.propTypes = {
     hideLabel: PropTypes.bool,
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     valueAlignment: PropTypes.oneOf(['left', 'center', 'right']),
-    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 InputBase.defaultProps = {

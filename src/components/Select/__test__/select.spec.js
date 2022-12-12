@@ -39,6 +39,7 @@ describe('Select component', () => {
             hideLabel: false,
             inputId: expect.any(String),
             variant: 'default',
+            size: 'medium',
         });
     });
 });

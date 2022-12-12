@@ -18,6 +18,7 @@ describe('<ButtonGroupPicker />', () => {
             hideLabel: false,
             as: 'legend',
             variant: 'default',
+            size: 'medium',
         });
     });
 

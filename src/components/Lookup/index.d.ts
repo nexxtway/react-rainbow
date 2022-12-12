@@ -25,7 +25,7 @@ export interface LookupProps extends BaseProps {
     onBlur?: (event: null | LookupValue) => void;
     id?: string;
     preferredSelectedOption?: number;
-    borderRadius?: 'square' | 'semi-rounded' | 'rounded';
+    borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 
 declare const Lookup: ComponentType<LookupProps>;

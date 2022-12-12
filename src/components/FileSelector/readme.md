@@ -343,7 +343,16 @@ function FileSelectorExample() {
             <FileSelector
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 style={containerStyles}
-                label="File selector with border radius semi-rounded"
+                label="File selector with border radius semi-square"
+                placeholder="Drag & Drop or Click to Browse"
+                bottomHelpText="Select only one file"
+                onChange={handleChange}
+                borderRadius="semi-square"
+            />
+            <FileSelector
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                style={containerStyles}
+                label="File selector wirh border radius semi-rounded"
                 placeholder="Drag & Drop or Click to Browse"
                 bottomHelpText="Select only one file"
                 onChange={handleChange}

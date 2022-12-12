@@ -30,7 +30,7 @@ Marker.propTypes = {
     isVisible: PropTypes.any,
     variant: PropTypes.oneOf(['default', 'inverse', 'brand']),
     size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 Marker.defaultProps = {

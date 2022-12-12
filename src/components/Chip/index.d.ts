@@ -6,6 +6,7 @@ export interface ChipProps extends BaseProps {
     title?: string;
     variant?: 'base' | 'neutral' | 'outline-brand' | 'brand' | 'success' | 'warning' | 'error';
     onDelete?: (event: MouseEvent<HTMLElement>) => void;
+    borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 
 export default function(props: ChipProps): JSX.Element | null;

@@ -104,6 +104,7 @@ const CounterInput = React.forwardRef((props, ref) => {
                 inputId={inputId}
                 readOnly={isReadOnly}
                 id={labelId}
+                size={size}
             />
             <RelativeElement>
                 <ButtonContainer iconPosition="left" readOnly={readOnly} error={error}>
@@ -223,8 +224,8 @@ CounterInput.propTypes = {
     style: PropTypes.object,
     /** The size of the input. Valid values are small, medium, and large. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
-    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
-    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
+    /** The border radius of the input. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 CounterInput.defaultProps = {

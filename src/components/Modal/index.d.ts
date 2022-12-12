@@ -11,6 +11,7 @@ export interface ModalProps extends BaseProps {
     id?: string;
     children?: ReactNode;
     hideCloseButton?: boolean;
+    borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 
 declare const Modal: ComponentType<ModalProps>;

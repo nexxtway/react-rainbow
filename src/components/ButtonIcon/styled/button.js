@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {
     BORDER_RADIUS_2,
     BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_SQUARE,
     BORDER_RADIUS_SEMI_ROUNDED,
 } from '../../../styles/borderRadius';
 import { COLOR_WHITE, COLOR_GRAY_3, COLOR_DARK_1 } from '../../../styles/colors';
@@ -406,6 +407,12 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
         props.borderRadius === 'square' &&
         `
             border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+
+    ${props =>
+        props.borderRadius === 'semi-square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
         `};
     
     ${props =>

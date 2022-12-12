@@ -33,6 +33,7 @@ describe('<Lookup />', () => {
             hideLabel: false,
             inputId: expect.any(String),
             variant: 'default',
+            size: 'medium',
         });
     });
     it('should render the Options menu when there are options and the input is focused', () => {

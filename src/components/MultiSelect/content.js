@@ -5,8 +5,7 @@ import { StyledText } from './styled';
 import Chips from './chips';
 
 const Content = props => {
-    const { variant, value, chipVariant, readOnly, disabled, onDelete } = props;
-
+    const { variant, value, chipVariant, readOnly, disabled, onDelete, borderRadius } = props;
     if (variant === 'chip') {
         return (
             <Chips
@@ -15,6 +14,7 @@ const Content = props => {
                 readOnly={readOnly}
                 disabled={disabled}
                 onDelete={onDelete}
+                borderRadius={borderRadius}
             />
         );
     }
@@ -36,6 +36,7 @@ Content.propTypes = {
         }),
     ),
     onDelete: PropTypes.func,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 Content.defaultProps = {
@@ -45,6 +46,7 @@ Content.defaultProps = {
     chipVariant: 'base',
     value: undefined,
     onDelete: () => {},
+    borderRadius: 'rounded',
 };
 
 export default Content;

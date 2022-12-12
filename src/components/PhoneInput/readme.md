@@ -111,6 +111,7 @@ const Form = () => {
     const [phone1, setPhone1] = useState();
     const [phone2, setPhone2] = useState();
     const [phone3, setPhone3] = useState();
+    const [phone4, setPhone4] = useState();
 
     return (
         <>
@@ -122,18 +123,26 @@ const Form = () => {
                 borderRadius="square"
             />
             <PhoneInput
-                label="Phone Number with border radius semi-rounded"
+                label="Phone Number with border radius semi-square"
                 placeholder="Enter your phone number"
                 onChange={setPhone2}
                 value={phone2}
+                borderRadius="semi-square"
+                style={{ marginTop: '20px' }}
+            />
+            <PhoneInput
+                label="Phone Number with border radius semi-rounded"
+                placeholder="Enter your phone number"
+                onChange={setPhone3}
+                value={phone3}
                 borderRadius="semi-rounded"
                 style={{ marginTop: '20px' }}
             />
             <PhoneInput
                 label="Phone Number with border radius rounded"
                 placeholder="Enter your phone number"
-                onChange={setPhone3}
-                value={phone3}
+                onChange={setPhone4}
+                value={phone4}
                 borderRadius="rounded"
                 style={{ marginTop: '20px' }}
             />

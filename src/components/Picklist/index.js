@@ -267,6 +267,7 @@ class Picklist extends Component {
                         inputId={this.inputId}
                         readOnly={isReadOnly}
                         variant={labelVariant}
+                        size={size}
                     />
                 </RenderIf>
 
@@ -326,6 +327,7 @@ class Picklist extends Component {
                             debounce={debounce}
                             ref={this.dropdownRef}
                             emptyComponent={emptyComponent}
+                            borderRadius={borderRadius}
                         >
                             {children}
                         </InternalDropdown>
@@ -404,8 +406,8 @@ Picklist.propTypes = {
     emptyComponent: PropTypes.node,
     /** The size of the input. Valid values are small, medium, and large. */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
-    /** The border radius of the button. Valid values are square, semi-rounded and rounded. This value defaults to rounded. */
-    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
+    /** The border radius of the input. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 Picklist.defaultProps = {

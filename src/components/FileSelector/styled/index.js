@@ -6,6 +6,7 @@ import { MARGIN_X_SMALL } from '../../../styles/margins';
 import {
     BORDER_RADIUS_2,
     BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_SQUARE,
     BORDER_RADIUS_SEMI_ROUNDED,
 } from '../../../styles/borderRadius';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
@@ -24,7 +25,7 @@ export const StyledContainer = styled.div`
 export const StyledDropzone = attachThemeAttrs(styled.div)`     
     position: relative;
     width: 100%;
-    height: 2.5rem;   
+    height: 2.5rem;
     padding: 4px;
     border: dashed 1px ${props => props.palette.text.disabled};
     border-radius: ${BORDER_RADIUS_2};
@@ -103,6 +104,12 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         `};
 
     ${props =>
+        props.borderRadius === 'semi-square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
+        `};
+
+    ${props =>
         props.borderRadius === 'semi-rounded' &&
         `
             border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
@@ -150,6 +157,24 @@ export const StyledBackdrop = attachThemeAttrs(styled.div)`
         height: 100%;
         width: 100%;
         `}
+    
+    ${props =>
+        props.borderRadius === 'square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+
+    ${props =>
+        props.borderRadius === 'semi-square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
+        `};
+
+    ${props =>
+        props.borderRadius === 'semi-rounded' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
+        `};
 `;
 
 export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`

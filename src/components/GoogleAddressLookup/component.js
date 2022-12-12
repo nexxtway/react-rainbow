@@ -243,7 +243,7 @@ PlacesLookupComponent.propTypes = {
     // onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
-    borderRadius: PropTypes.oneOf(['square', 'semi-rounded', 'rounded']),
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 PlacesLookupComponent.defaultProps = {
