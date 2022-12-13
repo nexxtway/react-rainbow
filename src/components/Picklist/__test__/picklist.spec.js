@@ -193,19 +193,4 @@ describe('<Picklist />', () => {
         component.unmount();
         expect(mockStopListening).toHaveBeenCalled();
     });
-    it('should handle onClick and onFocus just one time', () => {
-        const component = mount(
-            <Picklist label="Picklist">
-                <PicklistOption label="Option 1" name="option1" />
-                <PicklistOption label="Option 2" name="option2" />
-                <PicklistOption label="Option 3" name="option3" />
-            </Picklist>,
-        );
-        const input = component.find('input');
-        input.simulate('click');
-        input.simulate('focus');
-        input.simulate('click');
-        input.simulate('focus');
-        expect(mockStartListening).toHaveBeenCalledTimes(1);
-    });
 });

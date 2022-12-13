@@ -157,12 +157,12 @@ class Picklist extends Component {
     }
 
     handleInputClick(event) {
+        const { onClick } = this.props;
         const { isOpen } = this.state;
+        onClick(event);
         if (isOpen) {
             return this.closeMenu();
         }
-        const { onClick } = this.props;
-        onClick(event);
         return this.openMenu();
     }
 
