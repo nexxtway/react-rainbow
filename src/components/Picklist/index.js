@@ -154,6 +154,7 @@ class Picklist extends Component {
         this.setState({
             isOpen: false,
         });
+        this.focus();
     }
 
     handleInputClick(event) {
@@ -168,8 +169,8 @@ class Picklist extends Component {
 
     handleFocus() {
         const { isOpen } = this.state;
+        const { onFocus, value } = this.props;
         if (!isOpen) {
-            const { onFocus, value } = this.props;
             const eventValue = value || null;
             onFocus(eventValue);
         }
