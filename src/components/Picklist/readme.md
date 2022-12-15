@@ -22,8 +22,6 @@ const initialState = { value: { name: 'option 3', label: 'Central Park' } };
                     onChange={value => setState({ value })}
                     value={state.value}
                     label="Select Building"
-                    onClick={() => console.log('click')}
-                    onFocus={() => console.log('focus')}
                     hideLabel
                 >
                     <Option name="header" label="Your Buildings" variant="header" />
