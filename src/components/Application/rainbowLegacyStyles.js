@@ -2,7 +2,7 @@ import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { isServer } from '../../libs/utils';
 
-const font = url => {
+const fetchFont = url => {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, false);
     xhr.send();
@@ -15,55 +15,55 @@ const changeFontFamily = (fontFace, newName) => {
 };
 
 const latoBlack = changeFontFamily(
-    font('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap').toString(),
+    fetchFont('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap').toString(),
     'Lato Black',
 );
 const latoBlackItalic = changeFontFamily(
-    font(
+    fetchFont(
         'https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Lato:ital,wght@0,900;1,900&display=swap',
     ).toString(),
     'Lato Black Italic',
 );
 
 const latoBold = changeFontFamily(
-    font('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap').toString(),
+    fetchFont('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap').toString(),
     'Lato Bold',
 );
 const latoBoldItalic = changeFontFamily(
-    font(
+    fetchFont(
         'https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Lato:ital,wght@0,700;1,700&display=swap',
     ).toString(),
     'Lato Bold Italic',
 );
 
 const latoHairline = changeFontFamily(
-    font('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap').toString(),
+    fetchFont('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap').toString(),
     'Lato Hairline',
 );
 const latoHairlineItalic = changeFontFamily(
-    font(
+    fetchFont(
         'https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lato:ital,wght@0,100;1,100&display=swap',
     ).toString(),
     'Lato Hairline Italic',
 );
 
 const latoLight = changeFontFamily(
-    font('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap').toString(),
+    fetchFont('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap').toString(),
     'Lato Light',
 );
 const latoLightItalic = changeFontFamily(
-    font(
+    fetchFont(
         'https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Lato:ital,wght@0,300;1,300&display=swap',
     ).toString(),
     'Lato Light Italic',
 );
 
 const lato = changeFontFamily(
-    font('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap').toString(),
+    fetchFont('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap').toString(),
     'Lato',
 );
 const latoItalic = changeFontFamily(
-    font(
+    fetchFont(
         'https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Lato:ital,wght@0,400;1,400&display=swap',
     ).toString(),
     'Lato Italic',
