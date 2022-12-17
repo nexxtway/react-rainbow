@@ -2,94 +2,101 @@ import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { isServer } from '../../libs/utils';
 
-const fetchFont = url => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url, false);
-    xhr.send();
-    return xhr.responseText;
-};
-
-const changeFontFamily = (fontFace, newName) => {
-    const newFontFace = fontFace.replace(/Lato/g, newName);
-    return newFontFace;
-};
-
-const latoBlack = changeFontFamily(
-    fetchFont('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap').toString(),
-    'Lato Black',
-);
-const latoBlackItalic = changeFontFamily(
-    fetchFont(
-        'https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Lato:ital,wght@0,900;1,900&display=swap',
-    ).toString(),
-    'Lato Black Italic',
-);
-
-const latoBold = changeFontFamily(
-    fetchFont('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap').toString(),
-    'Lato Bold',
-);
-const latoBoldItalic = changeFontFamily(
-    fetchFont(
-        'https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Lato:ital,wght@0,700;1,700&display=swap',
-    ).toString(),
-    'Lato Bold Italic',
-);
-
-const latoHairline = changeFontFamily(
-    fetchFont('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap').toString(),
-    'Lato Hairline',
-);
-const latoHairlineItalic = changeFontFamily(
-    fetchFont(
-        'https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lato:ital,wght@0,100;1,100&display=swap',
-    ).toString(),
-    'Lato Hairline Italic',
-);
-
-const latoLight = changeFontFamily(
-    fetchFont('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap').toString(),
-    'Lato Light',
-);
-const latoLightItalic = changeFontFamily(
-    fetchFont(
-        'https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Lato:ital,wght@0,300;1,300&display=swap',
-    ).toString(),
-    'Lato Light Italic',
-);
-
-const lato = changeFontFamily(
-    fetchFont('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap').toString(),
-    'Lato',
-);
-const latoItalic = changeFontFamily(
-    fetchFont(
-        'https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Lato:ital,wght@0,400;1,400&display=swap',
-    ).toString(),
-    'Lato Italic',
-);
-
 const legacyStyles = `
+  @font-face {
+    font-family: 'Lato Black';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/lato/v23/S6u9w4BMUTPHh6UVSwaPGQ3q5d0N7w.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
 
-  ${latoBlack}
-  ${latoBlackItalic}
-  
-  ${latoBold}
-  ${latoBoldItalic}
+  @font-face {
+    font-family: 'Lato Black Italic';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/lato/v23/S6u_w4BMUTPHjxsI3wi_Gwftx9897g.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
 
-  ${latoHairline}
-  ${latoHairlineItalic}
+  @font-face {
+    font-family: 'Lato Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/lato/v23/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;    
+  }
 
-  ${latoLight}
-  ${latoLightItalic}
+  @font-face {
+    font-family: 'Lato Bold Italic';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/lato/v23/S6u_w4BMUTPHjxsI5wq_Gwftx9897g.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
 
-  ${lato}
-  ${latoItalic}
+  @font-face {
+    font-family: 'Lato Hairline';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/lato/v23/S6u8w4BMUTPHh30AXC-qNiXg7Q.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
 
-  html {
-    font-family: 'Lato', Arial, sans-serif;
-    font-size: 100%;
-    line-height: 1.5;
+  @font-face {
+    font-family: 'Lato Hairline Italic';
+    font-style: italic;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/lato/v23/S6u-w4BMUTPHjxsIPx-oPCLC79U1.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Lato Italic';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/lato/v23/S6u8w4BMUTPHjxsAXC-qNiXg7Q.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Lato Light';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/lato/v23/S6u9w4BMUTPHh7USSwiPGQ3q5d0.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Lato Light Italic';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/lato/v23/S6u_w4BMUTPHjxsI9w2_Gwftx9897g.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/lato/v23/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+    html {
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: 100%;
+      line-height: 1.5;
     background: #fafaf9;
     color: #3e3e3c;
     -ms-text-size-adjust: 100%;
