@@ -133,6 +133,7 @@ const TimePicker = React.forwardRef((props, ref) => {
                 isOpen={isOpen}
                 onRequestClose={closeModal}
                 onOpened={setFocusToHourInput}
+                borderRadius={borderRadius}
             >
                 <TimeSelect
                     onCloseModal={closeModal}

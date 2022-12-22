@@ -149,6 +149,7 @@ const DatePicker = React.forwardRef((props, ref) => {
                 onChange={handleChange}
                 onRequestClose={closeModal}
                 disabledDays={disabledDays}
+                borderRadius={borderRadius}
             />
         </StyledContainer>
     );

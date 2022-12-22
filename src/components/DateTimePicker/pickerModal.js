@@ -27,6 +27,7 @@ function DateTimePickerModal(props) {
         locale,
         hour24,
         disabledDays,
+        borderRadius,
     } = props;
 
     const [date, setDate] = useState(value);
@@ -56,7 +57,12 @@ function DateTimePickerModal(props) {
     };
 
     return (
-        <StyledModal id={id} isOpen={isOpen} onRequestClose={onRequestClose}>
+        <StyledModal
+            id={id}
+            isOpen={isOpen}
+            onRequestClose={onRequestClose}
+            borderRadius={borderRadius}
+        >
             <StyledHeader>
                 <StyledTitle>{modalTitle}</StyledTitle>
             </StyledHeader>
@@ -101,6 +107,7 @@ DateTimePickerModal.propTypes = {
     disabledDays: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     ),
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 DateTimePickerModal.defaultProps = {
@@ -115,6 +122,7 @@ DateTimePickerModal.defaultProps = {
     locale: undefined,
     hour24: false,
     disabledDays: [],
+    borderRadius: 'rounded',
 };
 
 export default DateTimePickerModal;

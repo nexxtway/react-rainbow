@@ -19,6 +19,7 @@ export default function DatePickerModal(props) {
         isOpen,
         title,
         disabledDays,
+        borderRadius,
     } = props;
 
     const calendarId = id && `${id}_calendar`;
@@ -30,6 +31,7 @@ export default function DatePickerModal(props) {
             style={style}
             isOpen={isOpen}
             onRequestClose={onRequestClose}
+            borderRadius={borderRadius}
         >
             <RenderIf isTrue={title}>
                 <Header variant={variant}>
@@ -92,6 +94,8 @@ DatePickerModal.propTypes = {
     disabledDays: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     ),
+    /** The border radius of the container. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 DatePickerModal.defaultProps = {
@@ -109,4 +113,5 @@ DatePickerModal.defaultProps = {
     onRequestClose: () => {},
     title: undefined,
     disabledDays: [],
+    borderRadius: 'rounded',
 };
