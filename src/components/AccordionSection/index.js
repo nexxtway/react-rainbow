@@ -54,7 +54,7 @@ const AccordionSection = props => {
     useEffect(() => {
         if (!disabled) {
             privateRegisterAccordionSection({
-                name: currentName,
+                id: currentName,
                 ref: containerRef.current,
                 focusButton: () => buttonRef.current.focus(),
             });
