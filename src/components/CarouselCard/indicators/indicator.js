@@ -1,5 +1,4 @@
-/* eslint-disable no-script-url */
-import React, { Component } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import AssistiveText from '../../AssistiveText';
 import StyledIndicatorLi from '../styled/indicatorLi';
@@ -12,64 +11,45 @@ function getAssistiveText(header) {
     return undefined;
 }
 
-export default class Indicator extends Component {
-    constructor(props) {
-        super(props);
-        this.indicatorRef = React.createRef();
-    }
+const Indicator = props => {
+    const { id, containerId, header, onSelect, selectedItem, onCreate, onDestroy } = props;
+    const indicatorRef = useRef();
 
-    componentDidMount() {
-        const { onCreate, indicatorID } = this.props;
-        onCreate({
-            indicatorID,
-            ref: this.indicatorRef,
-        });
-    }
+    useEffect(() => {
+        onCreate({ id, ref: indicatorRef.current });
 
-    componentWillUnmount() {
-        const { onDestroy } = this.props;
-        onDestroy(this.indicatorRef);
-    }
+        return () => {
+            onDestroy(id);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-    getTabIndex(id) {
-        if (this.isSelected(id)) {
-            return 0;
-        }
-        return -1;
-    }
+    const assistiveText = getAssistiveText(header);
+    const isSelected = selectedItem === id;
+    const tabIndex = isSelected ? 0 : -1;
 
-    isSelected(id) {
-        const { selectedItem } = this.props;
-        return selectedItem === id;
-    }
-
-    render() {
-        const { indicatorID, containerID, header, onSelect } = this.props;
-        const assistiveText = getAssistiveText(header);
-        const isSelected = this.isSelected(indicatorID);
-        return (
-            <StyledIndicatorLi role="presentation" key={indicatorID}>
-                <StyledIndicatorButton
-                    id={indicatorID}
-                    isSelected={isSelected}
-                    role="tab"
-                    tabIndex={this.getTabIndex(indicatorID)}
-                    aria-selected={isSelected}
-                    aria-controls={containerID}
-                    title={assistiveText}
-                    onClick={() => onSelect(indicatorID)}
-                    ref={this.indicatorRef}
-                >
-                    <AssistiveText text={assistiveText} />
-                </StyledIndicatorButton>
-            </StyledIndicatorLi>
-        );
-    }
-}
+    return (
+        <StyledIndicatorLi role="presentation" key={id}>
+            <StyledIndicatorButton
+                id={id}
+                isSelected={isSelected}
+                role="tab"
+                tabIndex={tabIndex}
+                aria-selected={isSelected}
+                aria-controls={containerId}
+                title={assistiveText}
+                onClick={() => onSelect(id)}
+                ref={indicatorRef}
+            >
+                <AssistiveText text={assistiveText} />
+            </StyledIndicatorButton>
+        </StyledIndicatorLi>
+    );
+};
 
 Indicator.propTypes = {
-    indicatorID: PropTypes.string,
-    containerID: PropTypes.string,
+    id: PropTypes.string,
+    containerId: PropTypes.string,
     header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onSelect: PropTypes.func,
     onCreate: PropTypes.func,
@@ -78,11 +58,13 @@ Indicator.propTypes = {
 };
 
 Indicator.defaultProps = {
-    indicatorID: undefined,
-    containerID: undefined,
+    id: undefined,
+    containerId: undefined,
     header: undefined,
     onSelect: () => {},
     onCreate: () => {},
     onDestroy: () => {},
     selectedItem: undefined,
 };
+
+export default Indicator;

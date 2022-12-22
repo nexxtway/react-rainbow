@@ -13,7 +13,7 @@ const useChildrenRegisterRef = props => {
         child => {
             if (
                 child &&
-                !isChildRegistered({ children: childrenRegisteredRef.current, name: child.name })
+                !isChildRegistered({ children: childrenRegisteredRef.current, id: child.id })
             ) {
                 const nodes = getChildNodes({ ref: containerRef.current, selector });
                 childrenRegisteredRef.current = insertChildOrderly({
@@ -26,9 +26,9 @@ const useChildrenRegisterRef = props => {
         [containerRef, selector],
     );
 
-    const unregister = useCallback(name => {
+    const unregister = useCallback(id => {
         childrenRegisteredRef.current = childrenRegisteredRef.current.filter(
-            value => value.name !== name,
+            value => value.id !== id,
         );
     }, []);
 
