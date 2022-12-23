@@ -41,7 +41,8 @@ class PageLookup {
      */
     async clickSelectedOptionInput() {
         await $(this.rootElement)
-            .$('div input[type="text"]')
+            .$('input[type="text"]')
+            .parentElement()
             .click();
     }
 
