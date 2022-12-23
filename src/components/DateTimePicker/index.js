@@ -153,6 +153,7 @@ const DateTimePicker = React.forwardRef((props, ref) => {
                 locale={locale}
                 hour24={hour24}
                 disabledDays={disabledDays}
+                borderRadius={borderRadius}
             />
         </StyledContainer>
     );
