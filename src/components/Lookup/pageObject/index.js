@@ -41,7 +41,7 @@ class PageLookup {
      */
     async clickSelectedOptionInput() {
         await $(this.rootElement)
-            .$('input[type="text"]')
+            .$('div input[type="text"]')
             .click();
     }
 
@@ -61,7 +61,7 @@ class PageLookup {
      */
     async clickRemoveSelectedOptionButton() {
         await $(this.rootElement)
-            .$('button[title="Remove selected option"]')
+            .$('button[title="Close"]')
             .click();
     }
 
@@ -94,7 +94,7 @@ class PageLookup {
      */
     async hasFocusRemoveSelectedOptionButton() {
         return $(this.rootElement)
-            .$('button[title="Remove selected option"]')
+            .$('button[title="Close"]')
             .isFocused();
     }
 
