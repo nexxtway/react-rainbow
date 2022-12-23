@@ -1,104 +1,69 @@
-/* eslint-disable no-script-url */
-import React, { Component } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { LEFT_KEY, RIGHT_KEY } from '../../../libs/constants';
-import { getItemIndex } from '../utils';
-import { getChildTabNodes, insertChildOrderly } from './utils';
+import { getItemIndex } from '../helpers';
 import Indicator from './indicator';
 import StyledIndicatorUl from '../styled/indicatorsUl';
+import { useChildrenRegister } from '../../../libs/hooks';
 
 const RIGHT_SIDE = 1;
 const LEFT_SIDE = -1;
+const SELECTOR = '[role="tab"]';
 
-export default class Indicators extends Component {
-    constructor(props) {
-        super(props);
-        this.container = React.createRef();
-        this.handleKeyPressed = this.handleKeyPressed.bind(this);
-        this.registerIndicator = this.registerIndicator.bind(this);
-        this.unregisterIndicator = this.unregisterIndicator.bind(this);
-        this.keyHandlerMap = {
-            [RIGHT_KEY]: () => this.selectIndicator(RIGHT_SIDE),
-            [LEFT_KEY]: () => this.selectIndicator(LEFT_SIDE),
-        };
-        this.state = {
-            indicatorsRefs: [],
-        };
-    }
+const Indicators = props => {
+    const { carouselChildren, onSelect, selectedItem } = props;
+    const containerRef = useRef();
 
-    setAsSelectedIndicator(tabIndex) {
-        const { indicatorsRefs } = this.state;
-        indicatorsRefs[tabIndex].ref.current.click();
-        indicatorsRefs[tabIndex].ref.current.focus();
-    }
+    const { childrenRegistered: indicatorsRefs, register, unregister } = useChildrenRegister({
+        containerRef,
+        selector: SELECTOR,
+    });
 
-    handleKeyPressed(event) {
-        if (this.keyHandlerMap[event.keyCode]) {
-            return this.keyHandlerMap[event.keyCode]();
-        }
-        return null;
-    }
+    const setAsSelectedIndicator = tabIndex => {
+        indicatorsRefs[tabIndex].ref.click();
+        indicatorsRefs[tabIndex].ref.focus();
+    };
 
-    registerIndicator(indicator) {
-        const { indicatorsRefs } = this.state;
-        const [...nodes] = getChildTabNodes(this.container.current);
-        const newRefs = insertChildOrderly(indicatorsRefs, indicator, nodes);
-        this.setState({ indicatorsRefs: newRefs });
-    }
-
-    unregisterIndicator(indicator) {
-        const { indicatorsRefs } = this.state;
-        const newChildren = indicatorsRefs.filter(child => child.ref !== indicator);
-        this.setState({
-            indicatorsRefs: newChildren,
-        });
-    }
-
-    selectIndicator(side) {
-        const { selectedItem } = this.props;
-        const { indicatorsRefs } = this.state;
+    const selectIndicator = side => {
         const indicatorIndex = getItemIndex(indicatorsRefs, selectedItem);
         if (indicatorIndex === indicatorsRefs.length - 1 && side === RIGHT_SIDE) {
-            this.setAsSelectedIndicator(0);
+            setAsSelectedIndicator(0);
         } else if (indicatorIndex === 0 && side === LEFT_SIDE) {
-            this.setAsSelectedIndicator(indicatorsRefs.length - 1);
+            setAsSelectedIndicator(indicatorsRefs.length - 1);
         } else {
-            this.setAsSelectedIndicator(indicatorIndex + side);
+            setAsSelectedIndicator(indicatorIndex + side);
         }
-    }
+    };
 
-    isSelected(id) {
-        const { selectedItem } = this.props;
-        return selectedItem === id;
-    }
+    const keyHandlerMap = {
+        [RIGHT_KEY]: () => selectIndicator(RIGHT_SIDE),
+        [LEFT_KEY]: () => selectIndicator(LEFT_SIDE),
+    };
 
-    renderIndicators() {
-        const { carouselChildren, onSelect, selectedItem } = this.props;
-        return carouselChildren.map(({ ref, ...rest }) => (
-            <Indicator
-                // eslint-disable-next-line react/jsx-props-no-spreading
-                {...rest}
-                onSelect={onSelect}
-                selectedItem={selectedItem}
-                onCreate={this.registerIndicator}
-                onDestroy={this.unregisterIndicator}
-                key={rest.indicatorID}
-            />
-        ));
-    }
+    const handleKeyPressed = event => {
+        if (keyHandlerMap[event.keyCode]) {
+            return keyHandlerMap[event.keyCode]();
+        }
+        return null;
+    };
 
-    render() {
-        return (
-            <StyledIndicatorUl
-                role="tablist"
-                onKeyDown={this.handleKeyPressed}
-                ref={this.container}
-            >
-                {this.renderIndicators()}
-            </StyledIndicatorUl>
-        );
-    }
-}
+    return (
+        <StyledIndicatorUl role="tablist" onKeyDown={handleKeyPressed} ref={containerRef}>
+            {carouselChildren.map(({ id, containerId, header }) => (
+                <Indicator
+                    id={id}
+                    containerId={containerId}
+                    header={header}
+                    onSelect={onSelect}
+                    selectedItem={selectedItem}
+                    onCreate={register}
+                    onDestroy={unregister}
+                    key={id}
+                />
+            ))}
+        </StyledIndicatorUl>
+    );
+};
 
 Indicators.propTypes = {
     carouselChildren: PropTypes.array,
@@ -111,3 +76,5 @@ Indicators.defaultProps = {
     onSelect: () => {},
     selectedItem: undefined,
 };
+
+export default Indicators;

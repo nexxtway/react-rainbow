@@ -1,10 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import CarouselImage from '../index';
 
 describe('<CarouselImage />', () => {
     it('should render an anchor when href is passed', () => {
-        const component = mount(
+        const { container } = render(
             <CarouselImage
                 src="images/illustrations/rainbows-background.svg"
                 header="First Card"
@@ -14,12 +14,12 @@ describe('<CarouselImage />', () => {
             />,
         );
 
-        const anchor = component.find('a[data-id="carousel-image_inner-container"]');
-        expect(anchor.exists()).toBe(true);
-        expect(anchor.prop('href')).toBe('/');
+        expect(
+            container.querySelector('a[data-id="carousel-image_inner-container"]'),
+        ).toHaveAttribute('href', '/');
     });
     it('should render a div when href is not passed', () => {
-        const component = mount(
+        const { container } = render(
             <CarouselImage
                 src="images/illustrations/rainbows-background.svg"
                 header="First Card"
@@ -28,11 +28,12 @@ describe('<CarouselImage />', () => {
             />,
         );
 
-        const divElement = component.find('div[data-id="carousel-image_inner-container"]');
-        expect(divElement.exists()).toBe(true);
+        expect(
+            container.querySelector('div[data-id="carousel-image_inner-container"]'),
+        ).toBeDefined();
     });
     it('should set tabIndex to -1 when href is passed', () => {
-        const component = mount(
+        const { container } = render(
             <CarouselImage
                 src="images/illustrations/rainbows-background.svg"
                 header="First Card"
@@ -42,11 +43,12 @@ describe('<CarouselImage />', () => {
             />,
         );
 
-        const anchor = component.find('a[data-id="carousel-image_inner-container"]');
-        expect(anchor.prop('tabIndex')).toBe(-1);
+        expect(
+            container.querySelector('a[data-id="carousel-image_inner-container"]'),
+        ).toHaveAttribute('tabindex', '-1');
     });
     it('should set tabIndex to undefined when href is not passed', () => {
-        const component = mount(
+        const { container } = render(
             <CarouselImage
                 src="images/illustrations/rainbows-background.svg"
                 header="First Card"
@@ -55,7 +57,8 @@ describe('<CarouselImage />', () => {
             />,
         );
 
-        const divElement = component.find('div[data-id="carousel-image_inner-container"]');
-        expect(divElement.prop('tabIndex')).toBe(undefined);
+        expect(
+            container.querySelector('div[data-id="carousel-image_inner-container"]'),
+        ).not.toHaveAttribute('tabindex');
     });
 });
