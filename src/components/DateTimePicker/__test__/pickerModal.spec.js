@@ -19,6 +19,10 @@ describe('<DateTimePickerModal/>', () => {
         const component = mount(<DateTimePickerModal isOpen value={value} />);
         expect(component.find('TimeSelect').props().value).toBe('08:48 PM');
     });
+    it('should have a time period of "PM" and not "p. m."', () => {
+        const component = mount(<DateTimePickerModal isOpen locale="es-ES" value={value} />);
+        expect(component.find('h2').text()).toBe('24/10/2019 08:48 PM');
+    });
     xit('should set 12:00 AM to TimeSelect when value is null and date is changed', () => {
         const component = mount(<DateTimePickerModal isOpen />);
         component

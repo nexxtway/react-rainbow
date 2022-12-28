@@ -18,10 +18,16 @@ export default function formatDateTime(
             const options = FORMATS[formatStyle] || FORMATS.medium;
             const value = typeof date === 'string' ? new Date(date) : date;
             const timeFormat = hour24 ? timeFormat24h : timeFormat12h;
-            return new Intl.DateTimeFormat(locale, {
+            const intlDate = new Intl.DateTimeFormat(locale, {
                 ...options,
                 ...timeFormat,
             }).format(value);
+            if (!hour24) {
+                const dayPeriod = value.getHours() >= 12 ? 'PM' : 'AM';
+                const lastDigit = /(\d)[^\d]*$/.exec(intlDate).index;
+                return `${intlDate.substring(0, lastDigit + 1)} ${dayPeriod}`;
+            }
+            return intlDate;
         } catch (error) {
             console.error(error);
             return '';
