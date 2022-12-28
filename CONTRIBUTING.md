@@ -43,7 +43,7 @@ We will only accept a pull request for which all tests pass. Make sure the follo
 -   The branch is not behind `master`.
 -   If a feature is being added: - If the result was already achievable with the core library, explain why this feature needs to be added to the core. - It includes relevant tests. - If this is a common use case, considered adding an example to the documentation.
 -   If a bug is being fixed, test cases that fail without the fix are included.
--   LCode linting is a requirement (run yarn lint).
+-   LCode linting is a requirement (run `yarn lint`).
 -   The PR title follows the pattern type: Imperative commit message. [How to Write a Git Commit Message](https://www.conventionalcommits.org/en/v1.0.0-beta.2/) for a great explanation.
 
 ## Getting started
@@ -80,7 +80,7 @@ Updating the component API documentation is easy. There are two ways:
 
 React Rainbow Components is migrating to `styled-components` the styles of the component.
 
-React Rainbow Components uses eslint, if possible, enable linting in your editor to get real-time feedback. The linting rules can be run manually with the following command yarn lint.
+React Rainbow Components uses eslint, if possible, enable linting in your editor to get real-time feedback. The linting rules can be run manually with the following command `yarn lint`.
 When pushing the changes they will run and the commit will not be pushed if they fail.
 Finally, when you submit a pull request, they will run again by Circle CI, hopefully, by then, your code is already clean!
 
