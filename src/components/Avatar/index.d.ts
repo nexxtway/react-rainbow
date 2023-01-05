@@ -6,7 +6,7 @@ export interface AvatarProps extends BaseProps {
     initials?: string | null;
     icon?: ReactNode;
     size?: AvatarSize;
-    avatarBackgroundColor?: string;
+    backgroundColor?: string;
     initialsVariant?: 'default' | 'inverse';
     title?: string | null;
     assistiveText?: string | null;
