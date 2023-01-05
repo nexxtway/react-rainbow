@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import BorderRadiusElement from '../../Structural/borderRadiusElement';
 
 export const StyledContainer = styled.div`
     position: relative;
@@ -18,13 +19,12 @@ export const StyledContent = styled.ul`
     box-sizing: border-box;
 `;
 
-export const StyledDropdown = attachThemeAttrs(styled.div)`
+export const StyledDropdown = attachThemeAttrs(styled(BorderRadiusElement))`
     min-width: 6rem;
     max-width: 20rem;
     max-height: 372px;
     margin-top: 0.125rem;
     margin-bottom: 0.125rem;
-    border-radius: 0.875rem;
     padding: 0.5rem 0;
     font-size: 0.75rem;
     background: ${props => props.palette.background.main};
