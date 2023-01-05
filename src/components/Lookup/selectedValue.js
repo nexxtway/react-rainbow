@@ -29,7 +29,6 @@ export default class SelectedValue extends Component {
         if (!disabled) {
             this.inputRef.current.focus();
         }
-
         onClick(event);
     }
 
