@@ -725,3 +725,69 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
         </GlobalHeader>
     </div>
 ```
+
+##### button menu with border radius
+
+```js
+import React from 'react';
+import { ButtonMenu, MenuItem } from 'react-rainbow-components';
+
+    <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
+            <ButtonMenu
+                menuAlignment="right"
+                menuSize="x-small"
+                className="rainbow-m-left_small"
+                buttonVariant="border"
+                label="Square"
+                borderRadius="square"
+
+            >
+                <MenuItem label="Menu Item One" />
+                <MenuItem label="Menu Item Two" />
+                <MenuItem label="Menu Item Three" />
+                <MenuItem label="Menu Item Four" />
+            </ButtonMenu>
+            <ButtonMenu
+                menuAlignment="right"
+                menuSize="x-small"
+                className="rainbow-m-left_small"
+                buttonVariant="border"
+                label="Semi Square"
+                borderRadius="semi-square"
+            >
+                <MenuItem label="Menu Item One" />
+                <MenuItem label="Menu Item Two" />
+                <MenuItem label="Menu Item Three" />
+                <MenuItem label="Menu Item Four" />
+            </ButtonMenu>
+            <ButtonMenu
+                menuAlignment="right"
+                menuSize="x-small"
+                className="rainbow-m-left_small"
+                buttonVariant="border"
+                label="Semi Rounded"
+                borderRadius="semi-rounded"
+            >
+                <MenuItem label="Menu Item One" />
+                <MenuItem label="Menu Item Two" />
+                <MenuItem label="Menu Item Three" />
+                <MenuItem label="Menu Item Four" />
+            </ButtonMenu>
+            <ButtonMenu
+                menuAlignment="right"
+                menuSize="x-small"
+                className="rainbow-m-left_small"
+                buttonVariant="border"
+                label="Rounded"
+                borderRadius="rounded"
+            >
+                <MenuItem label="Menu Item One" />
+                <MenuItem label="Menu Item Two" />
+                <MenuItem label="Menu Item Three" />
+                <MenuItem label="Menu Item Four" />
+            </ButtonMenu>
+
+        </GlobalHeader>
+    </div>
+```

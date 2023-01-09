@@ -25,6 +25,7 @@ const PrimitiveMenu = React.forwardRef((props, ref) => {
         title,
         assistiveText,
         trigger: Trigger,
+        borderRadius,
         ...rest
     } = props;
     const listboxId = useUniqueIdentifier('listbox');
@@ -94,6 +95,7 @@ const PrimitiveMenu = React.forwardRef((props, ref) => {
                 assistiveText={assistiveText}
                 onClick={toggleMenu}
                 ref={triggerRef}
+                borderRadius={borderRadius}
             />
             <InternalOverlay
                 isVisible={isOpen}
@@ -107,6 +109,7 @@ const PrimitiveMenu = React.forwardRef((props, ref) => {
                     menuSize={menuSize}
                     menuAlignment={menuAlignment}
                     isLoading={isLoading}
+                    borderRadius={borderRadius}
                 >
                     <MenuContent
                         ariaLabel={ariaLabel}
@@ -153,6 +156,8 @@ PrimitiveMenu.propTypes = {
     id: PropTypes.string,
     /** The element. */
     trigger: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
+    /** The border radius of the button and dropdown. Valid values are square, 'semi-square', semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 PrimitiveMenu.defaultProps = {
@@ -165,6 +170,7 @@ PrimitiveMenu.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    borderRadius: 'rounded',
 };
 
 export default PrimitiveMenu;
