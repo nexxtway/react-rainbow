@@ -67,6 +67,7 @@ const ColorInput = props => {
         bottomHelpText,
         onFocus: focusInProps,
         onBlur: blurInProps,
+        size,
         borderRadius,
     } = useReduxForm(props);
     const [isOpen, setIsOpen] = useState(false);
@@ -195,6 +196,7 @@ const ColorInput = props => {
                 inputId={inputId}
                 readOnly={readOnly}
                 id={labelId}
+                size={size}
             />
             <StyledInputContainer
                 disabled={disabled}
@@ -202,6 +204,7 @@ const ColorInput = props => {
                 error={error}
                 isFocus={isFocus}
                 borderRadius={borderRadius}
+                size={size}
             >
                 <StyledTrigger
                     ref={triggerRef}
@@ -213,7 +216,7 @@ const ColorInput = props => {
                     type="button"
                 >
                     <StyledFlagContainer disabled={disabled}>
-                        <ColorSample value={sampleColor} />
+                        <ColorSample value={sampleColor} size={size} />
                         <StyledIndicator error={error} disabled={disabled} />
                     </StyledFlagContainer>
                     <AssistiveText text="pick color" />
@@ -239,6 +242,7 @@ const ColorInput = props => {
                         aria-describedby={errorMessageId}
                         error={error}
                         isFocus={isFocus}
+                        size={size}
                     />
                 </ColorInputContainer>
                 <StyledAlpha disabled={disabled}>
@@ -354,6 +358,8 @@ ColorInput.propTypes = {
     onBlur: PropTypes.func,
     /** The action triggered when a key is pressed on the element. */
     onKeyDown: PropTypes.func,
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The border radius of the input. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
@@ -382,6 +388,7 @@ ColorInput.defaultProps = {
     label: undefined,
     labelAlignment: 'center',
     hideLabel: false,
+    size: 'medium',
     borderRadius: 'rounded',
 };
 
