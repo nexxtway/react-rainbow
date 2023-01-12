@@ -255,6 +255,7 @@ const ColorInput = props => {
                         onBlur={handleBlur}
                         onChange={handleAlphaChange}
                         value={alphaValue}
+                        size={size}
                     />
                     %
                 </StyledAlpha>
