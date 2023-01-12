@@ -201,6 +201,55 @@ const Payment = () => {
     const [stripeCard1, setStripeCard1] = useState();
     const [stripeCard2, setStripeCard2] = useState();
     const [stripeCard3, setStripeCard3] = useState();
+
+    return (
+        <Container>
+            <StripeCardInput
+                apiKey={LIBRARY_STRIPE_APIKEY}
+                label="StripeCardInput with border radius square"
+                value={stripeCard1}
+                onChange={setStripeCard1}
+                size="small"
+                style={{ marginBottom: '20px' }}
+            />
+            <StripeCardInput
+                apiKey={LIBRARY_STRIPE_APIKEY}
+                label="StripeCardInput with border radius semi-square"
+                value={stripeCard2}
+                onChange={setStripeCard2}
+                style={{ marginBottom: '20px' }}
+            />
+            <StripeCardInput
+                apiKey={LIBRARY_STRIPE_APIKEY}
+                value={stripeCard3}
+                label="StripeCardInput with border radius semi-rounded"
+                onChange={setStripeCard3}
+                size="large"
+            />
+        </Container>
+    );
+};
+    <Payment/>
+
+```
+
+##### StripeCardInput with different border radius
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { StripeCardInput } from 'react-rainbow-components';
+
+const Container = styled.div`
+    max-width: 480px;
+    margin: 30px auto;
+    padding: 20px 10px;
+`;
+
+const Payment = () => {
+    const [stripeCard1, setStripeCard1] = useState();
+    const [stripeCard2, setStripeCard2] = useState();
+    const [stripeCard3, setStripeCard3] = useState();
     const [stripeCard4, setStripeCard4] = useState();
 
     return (
