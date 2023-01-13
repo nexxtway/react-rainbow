@@ -184,7 +184,7 @@ const Payment = () => {
     <Payment/>
 ```
 
-##### StripeCardInput with different border radius
+##### StripeCardInput with different size
 
 ```js
 import React, { useState } from 'react';

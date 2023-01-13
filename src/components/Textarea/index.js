@@ -110,6 +110,7 @@ class Textarea extends Component {
             header,
             footer,
             variant,
+            size,
             borderRadius,
         } = this.props;
         const { isFocused } = this.state;
@@ -123,6 +124,7 @@ class Textarea extends Component {
                     required={required}
                     inputId={this.textareaId}
                     readOnly={readOnly}
+                    size={size}
                     id={this.getInlineTextLabelId()}
                 />
                 <StyledTextareaContainer
@@ -154,6 +156,7 @@ class Textarea extends Component {
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.textareaRef}
+                        size={size}
                     />
                     <RenderIf isTrue={footer}>{footer}</RenderIf>
                 </StyledTextareaContainer>
@@ -224,6 +227,8 @@ Textarea.propTypes = {
     header: PropTypes.node,
     /** It is what will be displayed at the bottom of the component. */
     footer: PropTypes.node,
+    /** The size of the textarea. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The border radius of the textarea. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
@@ -255,6 +260,7 @@ Textarea.defaultProps = {
     hideLabel: false,
     header: undefined,
     footer: undefined,
+    size: 'medium',
     borderRadius: 'rounded',
 };
 
