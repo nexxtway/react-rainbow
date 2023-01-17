@@ -21,6 +21,7 @@ export interface FileSelectorProps extends BaseProps {
     onChange?: (value: FileList) => void;
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
+    size?: 'small' | 'medium' | 'large';
     borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 

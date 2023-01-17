@@ -184,7 +184,7 @@ const Payment = () => {
     <Payment/>
 ```
 
-##### StripeCardInput with different size
+##### StripeCardInput with different sizes
 
 ```js
 import React, { useState } from 'react';
@@ -206,7 +206,7 @@ const Payment = () => {
         <Container>
             <StripeCardInput
                 apiKey={LIBRARY_STRIPE_APIKEY}
-                label="StripeCardInput with border radius square"
+                label="StripeCardInput with small size"
                 value={stripeCard1}
                 onChange={setStripeCard1}
                 size="small"
@@ -214,7 +214,7 @@ const Payment = () => {
             />
             <StripeCardInput
                 apiKey={LIBRARY_STRIPE_APIKEY}
-                label="StripeCardInput with border radius semi-square"
+                label="StripeCardInput with medium size"
                 value={stripeCard2}
                 onChange={setStripeCard2}
                 style={{ marginBottom: '20px' }}
@@ -222,7 +222,7 @@ const Payment = () => {
             <StripeCardInput
                 apiKey={LIBRARY_STRIPE_APIKEY}
                 value={stripeCard3}
-                label="StripeCardInput with border radius semi-rounded"
+                label="StripeCardInput with large size"
                 onChange={setStripeCard3}
                 size="large"
             />

@@ -196,7 +196,7 @@ function FileSelectorExample() {
             <FileSelector
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 style={containerStyles}
-                label="File selector with error"
+                label="File selector multiline disabled"
                 placeholder="Drag & Drop or Click to Browse"
                 variant="multiline"
                 disabled
@@ -303,6 +303,62 @@ function FileSelectorExample() {
                 bottomHelpText="Select only one file"
                 variant="multiline"
                 onChange={handleChange}
+            />
+        </div>
+    );
+}
+
+    <FileSelectorExample />
+```
+
+##### FileSelector with different sizes
+
+```js
+import React, { useState } from 'react';
+import { FileSelector } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 300,
+};
+
+function FileSelectorExample() {
+    // eslint-disable-next-line no-unused-vars
+    const [files, setFiles] = useState([]);
+
+    const handleChange = value => {
+        setFiles(value);
+    }
+
+    return (
+        <div>
+            <FileSelector
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                style={containerStyles}
+                label="File selector with small size"
+                placeholder="Drag & Drop or Click to Browse"
+                bottomHelpText="Select only one file"
+                onChange={handleChange}
+                size="small"
+                multiple
+            />
+            <FileSelector
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                style={containerStyles}
+                label="File selector with medium size"
+                placeholder="Drag & Drop or Click to Browse"
+                bottomHelpText="Select only one file"
+                onChange={handleChange}
+                multiple
+            />
+            <FileSelector
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                style={containerStyles}
+                label="File selector wirh large size"
+                placeholder="Drag & Drop or Click to Browse"
+                bottomHelpText="Select only one file"
+                onChange={handleChange}
+                size="large"
+                multiple
             />
         </div>
     );
