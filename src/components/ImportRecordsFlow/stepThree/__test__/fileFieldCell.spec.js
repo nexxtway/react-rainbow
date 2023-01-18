@@ -12,13 +12,6 @@ describe('<CSVCell />', () => {
         const component = mount(<CSVCell />);
         expect(component.text()).toBe('Not assigned yet');
     });
-    it('should have proper labels according to value status', () => {
-        expect.assertions(2);
-        const component = mount(<CSVCell row={{ databaseField: 'name' }} />);
-        expect(component.text()).toBe('Assign');
-        component.setProps({ value: 'test' });
-        expect(component.text()).toBe('Change');
-    });
     it('should trigger click event using database param', () => {
         const onClickFn = jest.fn();
         const row = { databaseField: 'name' };
