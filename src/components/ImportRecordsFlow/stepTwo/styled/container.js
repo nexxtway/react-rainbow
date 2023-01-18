@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
+import Table from '../../../Table';
 
-const StyledContainer = attachThemeAttrs(styled.div)`
+export const StyledContainer = attachThemeAttrs(styled.div)`
     border-radius: 4px;
     border: dashed 1px ${props => props.palette.background.highlight};
     background-color: ${props => props.palette.background.secondary};
@@ -20,4 +21,14 @@ const StyledContainer = attachThemeAttrs(styled.div)`
         `};
 `;
 
-export default StyledContainer;
+export const TableContainer = styled.div`
+    margin-left: -32px;
+    margin-right: -32px;
+    display: flex;
+    overflow: auto;
+    box-sizing: border-box;
+`;
+
+export const StyledTable = styled(Table)`
+    margin: 0 48px;
+`;
