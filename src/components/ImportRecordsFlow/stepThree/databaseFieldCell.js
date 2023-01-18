@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RequiredAsterisk from '../../RequiredAsterisk';
-import { DatabaseFieldContent } from './styled/databaseFieldCell';
+import DatabaseFieldContent from './styled/databaseFieldCell';
 
 export default function DatabaseFieldCell(props) {
     const {
