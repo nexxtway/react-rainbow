@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RequiredAsterisk from '../../RequiredAsterisk';
+import DatabaseFieldContent from './styled/databaseFieldCell';
 
 export default function DatabaseFieldCell(props) {
     const {
@@ -8,10 +9,10 @@ export default function DatabaseFieldCell(props) {
         row: { required },
     } = props;
     return (
-        <span>
+        <DatabaseFieldContent>
             <RequiredAsterisk required={!!required} />
             {value}
-        </span>
+        </DatabaseFieldContent>
     );
 }
 

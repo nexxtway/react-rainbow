@@ -9,10 +9,18 @@ export default function StepFour(props) {
     const previewData = getPreviewDataToImport(data.slice(0, 5), fieldsMap, attributes);
 
     return (
-        <StyledTable keyField="id" data={previewData}>
+        <StyledTable keyField="id" data={previewData} variant="listview">
             {schemaFields.map((field, index) => {
                 const key = `column-${index}`;
-                return <Column key={key} header={field} field={field} />;
+                return (
+                    <Column
+                        key={key}
+                        header={field}
+                        field={field}
+                        headerAlignment="left"
+                        cellAlignment="left"
+                    />
+                );
             })}
         </StyledTable>
     );

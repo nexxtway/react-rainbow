@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Column from '../../Column';
 import getAssignFieldsData from '../helpers/getAssignFieldsData';
-import ModifyCell from './modifyCell';
-import FileFieldCell from './fileFieldCell';
+import CSVCell from './csvCell';
 import DatabaseFieldCell from './databaseFieldCell';
 import AssignFieldModal from './assignFieldModal';
-import StyledTable from '../styled/table';
+import StyledTable from './styled/table';
 
 export default function StepThree(props) {
     const { attributes, columns, onAssignField, fieldsMap, data, matchField } = props;
@@ -36,20 +35,24 @@ export default function StepThree(props) {
 
     return (
         <div>
-            <StyledTable keyField="id" data={assignData}>
+            <StyledTable keyField="id" data={assignData} variant="listview">
                 <Column
-                    header="Modify"
-                    field="fileField"
-                    component={rowProps => (
-                        // eslint-disable-next-line react/jsx-props-no-spreading
-                        <ModifyCell {...rowProps} onClick={openAssignFieldModal} />
-                    )}
-                />
-                <Column header="CSV titles" field="fileField" component={FileFieldCell} />
-                <Column
+                    defaultWidth={200}
                     header="Database fields"
                     field="databaseField"
                     component={DatabaseFieldCell}
+                    headerAlignment="left"
+                    cellAlignment="left"
+                />
+                <Column
+                    field="fileField"
+                    header="Fields on your CSV"
+                    component={rowProps => (
+                        // eslint-disable-next-line react/jsx-props-no-spreading
+                        <CSVCell {...rowProps} onClick={openAssignFieldModal} />
+                    )}
+                    headerAlignment="left"
+                    cellAlignment="left"
                 />
             </StyledTable>
             <AssignFieldModal
