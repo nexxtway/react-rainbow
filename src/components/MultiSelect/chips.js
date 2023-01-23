@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyledChip } from './styled';
 
 const Chips = props => {
-    const { value, variant, onDelete, disabled, readOnly, borderRadius } = props;
+    const { value, variant, onDelete, disabled, readOnly, size, borderRadius } = props;
     const getDeleteCallback = val => {
         return disabled || readOnly ? null : () => onDelete(val);
     };
@@ -20,6 +20,7 @@ const Chips = props => {
                     label={val.label}
                     variant={variant}
                     onDelete={getDeleteCallback(val)}
+                    size={size}
                     borderRadius={borderRadius}
                 />
             );
@@ -45,6 +46,7 @@ Chips.propTypes = {
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
     onDelete: PropTypes.func,
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
@@ -54,6 +56,7 @@ Chips.defaultProps = {
     disabled: undefined,
     readOnly: undefined,
     onDelete: () => {},
+    size: 'medium',
     borderRadius: 'rounded',
 };
 

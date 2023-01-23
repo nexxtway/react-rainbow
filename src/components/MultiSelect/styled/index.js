@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
+import {
+    FONT_SIZE_TEXT_LARGE,
+    FONT_SIZE_HEADING_MEDIUM,
+    FONT_SIZE_TEXT_MEDIUM,
+} from '../../../styles/fontSizes';
 import Chip from '../../Chip';
 import ButtonIcon from '../../ButtonIcon';
 import { TruncatedText } from '../../Structural';
@@ -43,6 +47,22 @@ export const StyledCombobox = attachThemeAttrs(styled.div)`
     box-sizing: border-box;
     margin: 0;
     padding: 0.1rem 1px;
+
+    ${props =>
+        props.size === 'large' &&
+        `
+        line-height: 3.275rem;
+        font-size: ${FONT_SIZE_HEADING_MEDIUM};
+        border-radius: 30px;
+    `};
+
+    ${props =>
+        props.size === 'small' &&
+        `
+        line-height: 1.775rem;
+        font-size: ${FONT_SIZE_TEXT_MEDIUM};
+        border-radius: 18px;
+    `};
 
     ${props =>
         props.isBare &&
@@ -126,7 +146,6 @@ export const StyledChipContainer = styled.div`
     flex-grow: 1;
     align-items: center;
     overflow: hidden;
-    min-height: 2.2rem;
 `;
 
 export const StyledChip = styled(Chip)`
@@ -142,6 +161,20 @@ export const StyledButtonIcon = styled(ButtonIcon)`
         width: 0.85rem !important;
         height: 0.85rem !important;
         font-size: 0.85rem !important;
+        ${props =>
+            props.sizeIcon === 'large' &&
+            `
+            width: 1.25rem !important;
+            height: 1.25rem !important;
+            font-size: 1.25rem !important;
+        `};
+        ${props =>
+            props.sizeIcon === 'small' &&
+            `
+            width: 0.8rem !important;
+            height: 0.8rem !important;
+            font-size: 0.8rem !important;
+        `};
     }
 `;
 
@@ -155,6 +188,21 @@ export const StyledPlaceholder = attachThemeAttrs(styled.span)`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    ${props =>
+        props.size === 'large' &&
+        `
+        line-height: 3.275rem;
+        font-size: ${FONT_SIZE_HEADING_MEDIUM};
+        height: 3.1rem;
+    `};
+
+    ${props =>
+        props.size === 'small' &&
+        `
+        line-height: 1.775rem;
+        font-size: ${FONT_SIZE_TEXT_MEDIUM};
+        height: 1.7rem;
+    `};
 `;
 
 export const StyledText = attachThemeAttrs(styled(TruncatedText))`
@@ -163,7 +211,22 @@ export const StyledText = attachThemeAttrs(styled(TruncatedText))`
     font-size: ${FONT_SIZE_TEXT_LARGE};
     align-self: center;
     max-width: 100%;
-    padding: 0.1rem 0.8rem;
+    padding: 0 0.8rem;
+    ${props =>
+        props.size === 'large' &&
+        `
+        line-height: 3.275rem;
+        font-size: ${FONT_SIZE_HEADING_MEDIUM};
+        height: 3.1rem;
+    `};
+
+    ${props =>
+        props.size === 'small' &&
+        `
+        line-height: 1.775rem;
+        font-size: ${FONT_SIZE_TEXT_MEDIUM};
+        height: 1.7rem;
+    `};
 `;
 
 export const StyledCountText = attachThemeAttrs(styled.span)`
@@ -171,6 +234,22 @@ export const StyledCountText = attachThemeAttrs(styled.span)`
     font-weight: bold;
     font-size: ${FONT_SIZE_TEXT_LARGE};
     align-self: center;
+
+    ${props =>
+        props.size === 'large' &&
+        `
+        line-height: 3.275rem;
+        font-size: ${FONT_SIZE_HEADING_MEDIUM};
+        height: 3.1rem;
+    `};
+
+    ${props =>
+        props.size === 'small' &&
+        `
+        line-height: 1.775rem;
+        font-size: ${FONT_SIZE_TEXT_MEDIUM};
+        height: 1.7rem;
+    `};
 
     ${props =>
         props.readOnly &&

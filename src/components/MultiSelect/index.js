@@ -26,7 +26,7 @@ import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import PlusIcon from './icons/plus';
 import { ENTER_KEY, SPACE_KEY, ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
-import { hasContent, positionResolver } from './helpers';
+import { getSizeButton, hasContent, positionResolver } from './helpers';
 import normalizeValue from './helpers/normalizeValue';
 import Content from './content';
 
@@ -56,6 +56,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
         children,
         showCheckbox,
         enableSearch,
+        size,
         borderRadius,
     } = useReduxForm(props);
 
@@ -191,6 +192,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
     const inputTabIndex = readOnly ? tabIndex : '-1';
 
     const dropdownWidth = comboboxRef.current ? comboboxRef.current.offsetWidth : 0;
+    const sizeButton = getSizeButton(size);
 
     return (
         <StyledContainer id={id} className={className} style={style}>
@@ -201,6 +203,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                 hideLabel={hideLabel}
                 required={required}
                 inputId={inputId}
+                size={size}
             />
             <StyledCombobox
                 id={comboboxId}
@@ -215,6 +218,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                 ref={comboboxRef}
                 aria-labelledby={labelId}
                 variant={variant}
+                size={size}
                 borderRadius={borderRadius}
             >
                 <StyledInput
@@ -230,7 +234,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                 />
                 <StyledChipContainer ref={refCallback}>
                     <RenderIf isTrue={!shouldRenderContent}>
-                        <StyledPlaceholder>{placeholder}</StyledPlaceholder>
+                        <StyledPlaceholder size={size}>{placeholder}</StyledPlaceholder>
                     </RenderIf>
                     <RenderIf isTrue={shouldRenderContent}>
                         <Content
@@ -240,18 +244,21 @@ const MultiSelect = React.forwardRef((props, ref) => {
                             disabled={disabled}
                             value={value}
                             onDelete={handleDelete}
+                            size={size}
                             borderRadius={borderRadius}
                         />
                     </RenderIf>
                 </StyledChipContainer>
                 <RenderIf isTrue={shouldRenderCount}>
-                    <StyledCountText readOnly={readOnly}>({selectedCount})</StyledCountText>
+                    <StyledCountText readOnly={readOnly} size={size}>
+                        ({selectedCount})
+                    </StyledCountText>
                 </RenderIf>
                 <RenderIf isTrue={shouldRenderButton}>
                     <StyledButtonIcon
                         title="Add"
                         variant="neutral"
-                        size="small"
+                        size={sizeButton}
                         icon={<PlusIcon />}
                         onClick={handleTriggerClick}
                         disabled={disabled}
@@ -259,6 +266,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
                         tabIndex={tabIndex}
                         onFocus={onFocus}
                         onBlur={onBlur}
+                        sizeIcon={size}
                         borderRadius={borderRadius}
                     />
                 </RenderIf>
@@ -353,6 +361,8 @@ MultiSelect.propTypes = {
      * @ignore
      */
     children: PropTypes.node,
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The border radius of the input. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
@@ -379,6 +389,7 @@ MultiSelect.defaultProps = {
     onFocus: () => {},
     onBlur: () => {},
     children: null,
+    size: 'medium',
     borderRadius: 'rounded',
 };
 
