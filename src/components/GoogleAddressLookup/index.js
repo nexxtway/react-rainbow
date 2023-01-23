@@ -87,8 +87,6 @@ GoogleAddressLookup.propTypes = {
     /** The variant changes the appearance of the Input. Accepted variants include default,
      *shaded and bare. This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
-    /** The size of the input. Valid values are small, medium, and large. */
-    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The border radius of the input. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
@@ -114,6 +112,5 @@ GoogleAddressLookup.defaultProps = {
     hideLabel: false,
     searchOptions: {},
     variant: 'default',
-    size: 'medium',
     borderRadius: 'rounded',
 };

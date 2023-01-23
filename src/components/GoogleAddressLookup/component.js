@@ -172,7 +172,6 @@ class PlacesLookupComponent extends Component {
             // onFocus,
             onBlur,
             variant,
-            size,
             borderRadius,
         } = this.props;
         const { isSearching, suggestions } = this.state;
@@ -204,7 +203,6 @@ class PlacesLookupComponent extends Component {
                     icon={<LocationIcon />}
                     preferredSelectedOption={1}
                     variant={variant}
-                    size={size}
                     borderRadius={borderRadius}
                 />
                 <RenderIf isTrue={!error}>
@@ -245,7 +243,6 @@ PlacesLookupComponent.propTypes = {
     // onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     variant: PropTypes.oneOf(['default', 'shaded', 'bare']),
-    size: PropTypes.oneOf(['small', 'medium', 'large']),
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
@@ -270,7 +267,6 @@ PlacesLookupComponent.defaultProps = {
     labelAlignment: 'center',
     hideLabel: false,
     variant: 'default',
-    size: 'medium',
     borderRadius: 'rounded',
 };
 
