@@ -34,7 +34,6 @@ export default function AssignFieldModal(props) {
     }, [columns, databaseFieldToAssign, fieldsMap, isAssignFieldModalOpen]);
 
     const [fileFieldsToAssign, setFileFieldsToAssign] = useState([]);
-    const isAssignButtonDisabled = fileFieldsToAssign.length === 0;
     useEffect(() => {
         if (fieldsMap[databaseFieldToAssign]) {
             return setFileFieldsToAssign(fieldsMap[databaseFieldToAssign].split(','));
@@ -72,13 +71,7 @@ export default function AssignFieldModal(props) {
             isOpen={isAssignFieldModalOpen}
             size="small"
             onRequestClose={onRequestClose}
-            footer={
-                <AssignFieldModalFooter
-                    onCancel={onRequestClose}
-                    onAssign={handleAssign}
-                    isAssignButtonDisabled={isAssignButtonDisabled}
-                />
-            }
+            footer={<AssignFieldModalFooter onCancel={onRequestClose} onAssign={handleAssign} />}
         >
             <StyledModalContainer hasNotFileFieldsToAssign={hasNotFileFieldsToAssign}>
                 <StyledSelect

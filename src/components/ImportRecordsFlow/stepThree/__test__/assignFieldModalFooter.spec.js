@@ -16,8 +16,4 @@ describe('<AssignFieldModalFooter />', () => {
         component.find('Button').simulate('click');
         expect(onAssignFn).toHaveBeenCalled();
     });
-    it('should disable the button when disable param is set to true', () => {
-        const component = shallow(<AssignFieldModalFooter isAssignButtonDisabled />);
-        expect(component.find('Button').prop('disabled')).toBe(true);
-    });
 });
