@@ -63,7 +63,11 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
     }
 
     &:active {
-        transform: scale(0.7);
+        ${props =>
+            !props.disabled &&
+            `
+            transform: scale(0.7);
+        `}
         transition: all 0.3s ease;
     }
 
