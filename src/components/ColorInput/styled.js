@@ -3,9 +3,29 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../styles/helpers/attachThemeAttrs';
 import Card from '../Card';
 import { StyledInput as StyledPhoneInput } from '../PhoneInput/styled';
+import {
+    BORDER_RADIUS_SQUARE,
+    BORDER_RADIUS_SEMI_SQUARE,
+    BORDER_RADIUS_SEMI_ROUNDED,
+} from '../../styles/borderRadius';
 
 export const StyledCard = styled(Card)`
     padding: 10px;
+    ${props =>
+        props.borderRadius === 'square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+    ${props =>
+        props.borderRadius === 'semi-square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
+        `};
+    ${props =>
+        props.borderRadius === 'semi-rounded' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
+        `};
 `;
 
 export const StyledContent = styled.div`
