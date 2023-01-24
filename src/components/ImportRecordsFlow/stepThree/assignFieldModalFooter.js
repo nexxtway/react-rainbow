@@ -5,11 +5,16 @@ import StyledFooter from './styled/footer';
 import StyledCancelButton from './styled/cancelButton';
 
 export default function AssignFieldModalFooter(props) {
-    const { onCancel, onAssign } = props;
+    const { onCancel, onAssign, isAssignButtonDisabled } = props;
     return (
         <StyledFooter>
             <StyledCancelButton label="Cancel" onClick={onCancel} />
-            <Button label="Assign" variant="brand" onClick={onAssign} />
+            <Button
+                label="Assign"
+                variant="brand"
+                onClick={onAssign}
+                disabled={isAssignButtonDisabled}
+            />
         </StyledFooter>
     );
 }
@@ -17,9 +22,11 @@ export default function AssignFieldModalFooter(props) {
 AssignFieldModalFooter.propTypes = {
     onCancel: PropTypes.func,
     onAssign: PropTypes.func,
+    isAssignButtonDisabled: PropTypes.bool,
 };
 
 AssignFieldModalFooter.defaultProps = {
     onCancel: () => {},
     onAssign: () => {},
+    isAssignButtonDisabled: false,
 };
