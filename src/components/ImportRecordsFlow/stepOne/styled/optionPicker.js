@@ -79,9 +79,9 @@ export const StyledMergeFiles = attachThemeAttrs(styled(MergeFiles))`
     flex-shrink: 0;
 `;
 
-export const IconContainer = styled.div`
+export const IconContainer = attachThemeAttrs(styled.div)`
     display: flex;
-    background-color: ${props => props.theme.rainbow.palette.background.highlight};
+    background-color: ${props => props.palette.background.highlight};
     align-items: center;
     justify-content: center;
     width: 40px;
