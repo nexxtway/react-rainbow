@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import VisualPickerOption from '../../VisualPickerOption';
-import VisualPickerOptionFooter from '../../VisualPickerOptionFooter';
 import RenderIf from '../../RenderIf';
 import Select from '../../Select';
-import AddRecordsIcon from '../icons/addRecords';
-import MergeRecordsIcon from '../icons/mergeRecords';
 import getSchemaFieldOptions from '../helpers/getSchemaFieldOptions';
 import StyledContainer from './styled/container';
-import StyledVisualPicker from './styled/visualPicker';
+import { StyledRadioGroup } from './styled/optionPicker';
+import OptionPicker from './optionPicker';
 
 export default function StepOne(props) {
     const { schemaFields, actionOption, onChangeAction, matchField, onChangeMatchField } = props;
@@ -19,36 +16,60 @@ export default function StepOne(props) {
         setFieldOptions(getSchemaFieldOptions(schemaFields));
     }, [schemaFields]);
 
-    return (
-        <StyledContainer>
-            <StyledVisualPicker
-                label="Select the option type that do you want to do"
-                onChange={onChangeAction}
-                value={actionOption}
-            >
-                <VisualPickerOption
+    const onChange = event => {
+        onChangeAction(event.target.value);
+    };
+
+    const options = [
+        {
+            value: 'add-records',
+            label: (
+                <OptionPicker
                     name="add-records"
-                    footer={<VisualPickerOptionFooter label="Add new records" />}
-                >
-                    <AddRecordsIcon />
-                </VisualPickerOption>
-                <VisualPickerOption
-                    name="merge-records"
-                    footer={<VisualPickerOptionFooter label="Merge exist records" />}
-                >
-                    <MergeRecordsIcon />
-                </VisualPickerOption>
-            </StyledVisualPicker>
-            <RenderIf isTrue={isMergeOption}>
-                <Select
-                    label="Match Field"
-                    placeholder="Select the Field do you want match"
-                    options={fieldOptions}
-                    onChange={event => onChangeMatchField(event.target.value)}
-                    value={matchField}
+                    value={actionOption}
+                    label={'Add New records'}
+                    description={'Short description'}
                 />
-            </RenderIf>
-        </StyledContainer>
+            ),
+            name: 'add-records',
+            id: 'add-records',
+        },
+        {
+            value: 'merge-records',
+            label: (
+                <OptionPicker
+                    name="merge-records"
+                    value={actionOption}
+                    label={'Merge exist records'}
+                    description={'Short description'}
+                />
+            ),
+            name: 'merge-records',
+            id: 'merge-records',
+        },
+    ];
+
+    return (
+        <>
+            <StyledContainer>
+                <StyledRadioGroup
+                    onChange={onChange}
+                    value={actionOption}
+                    options={options}
+                    id="radio-group-component-1"
+                />
+
+                <RenderIf isTrue={isMergeOption}>
+                    <Select
+                        label="Match Field"
+                        placeholder="Select the Field do you want match"
+                        options={fieldOptions}
+                        onChange={event => onChangeMatchField(event.target.value)}
+                        value={matchField}
+                    />
+                </RenderIf>
+            </StyledContainer>
+        </>
     );
 }
 
