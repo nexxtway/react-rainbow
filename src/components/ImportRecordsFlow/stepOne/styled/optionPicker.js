@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import File from '../../icons/file';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 import RadioGroup from '../../../RadioGroup';
@@ -15,16 +15,16 @@ export const OptionContainer = attachThemeAttrs(styled.li)`
 
     ${props =>
         props.isSelected &&
-        css`
-            background-color: ${props.theme.rainbow.palette.brand.light};
-            border: 1px solid ${props.theme.rainbow.palette.brand.light};
+        `
+            background-color: ${props.palette.brand.light};
+            border: 1px solid ${props.palette.brand.light};
 
             svg {
-                color: ${props.theme.rainbow.palette.background.highlight};
+                color: ${props.palette.background.highlight};
             }
 
             div:nth-child(2) {
-                background-color: ${props.theme.rainbow.palette.brand.main};
+                background-color: ${props.palette.brand.main};
             }
         `}
 
