@@ -29,16 +29,16 @@ export const OptionContainer = attachThemeAttrs(styled.li)`
         `}
 
     &:hover {
-        background-color: ${props => props.theme.rainbow.palette.brand.light};
-        border: 1px solid ${props => props.theme.rainbow.palette.brand.light};
+        background-color: ${props => props.palette.brand.light};
+        border: 1px solid ${props => props.palette.brand.light};
         cursor: pointer;
 
         svg {
-            color: ${props => props.theme.rainbow.palette.background.highlight};
+            color: ${props => props.palette.background.highlight};
         }
 
         div:nth-child(2) {
-            background-color: ${props => props.theme.rainbow.palette.brand.main};
+            background-color: ${props => props.palette.brand.main};
         }
     }
 `;
