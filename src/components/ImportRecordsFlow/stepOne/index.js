@@ -27,8 +27,8 @@ export default function StepOne(props) {
                 <OptionPicker
                     name="add-records"
                     value={actionOption}
-                    label={'Add New records'}
-                    description={'Short description'}
+                    label="Add New records"
+                    description="Short description"
                 />
             ),
             name: 'add-records',
@@ -40,8 +40,8 @@ export default function StepOne(props) {
                 <OptionPicker
                     name="merge-records"
                     value={actionOption}
-                    label={'Merge exist records'}
-                    description={'Short description'}
+                    label="Merge exist records"
+                    description="Short description"
                 />
             ),
             name: 'merge-records',
