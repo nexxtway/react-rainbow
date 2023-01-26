@@ -53,7 +53,7 @@ export const OptionLeftContent = attachThemeAttrs(styled.div)`
 `;
 
 export const OptionName = attachThemeAttrs(styled.h3)`
-    color: ${props => props.theme.rainbow.palette.text.main};
+    color: ${props => props.palette.text.main};
     font-size: 16px;
     width: 500;
     text-overflow: ellipsis;
@@ -63,19 +63,19 @@ export const OptionName = attachThemeAttrs(styled.h3)`
 
 export const OptionDescription = attachThemeAttrs(styled.p)`
     font-size: 14px;
-    color: ${props => props.theme.rainbow.palette.text.header};
+    color: ${props => props.palette.text.header};
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 `;
 
 export const StyledFile = attachThemeAttrs(styled(File))`
-    color: ${props => props.theme.rainbow.palette.text.label};
+    color: ${props => props.palette.text.label};
     flex-shrink: 0;
 `;
 
 export const StyledMergeFiles = attachThemeAttrs(styled(MergeFiles))`
-    color: ${props => props.theme.rainbow.palette.text.label};
+    color: ${props => props.palette.text.label};
     flex-shrink: 0;
 `;
 
