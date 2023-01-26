@@ -10,7 +10,7 @@ export const OptionContainer = attachThemeAttrs(styled.li)`
     justify-content: space-between;
     width: 40rem;
     padding: 8px 14px;
-    background-color: ${props => props.theme.rainbow.palette.border.disabled};
+    background-color: ${props => props.palette.border.disabled};
     border-radius: 10px;
 
     ${props =>
