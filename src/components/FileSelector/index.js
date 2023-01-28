@@ -42,6 +42,7 @@ const FileSelector = React.forwardRef((props, ref) => {
         onFocus,
         onBlur,
         value,
+        size,
         borderRadius,
     } = useReduxForm(props);
 
@@ -138,6 +139,7 @@ const FileSelector = React.forwardRef((props, ref) => {
                 required={required}
                 inputId={inputId}
                 id={labelId}
+                size={size}
             />
             <StyledDropzone
                 id={dropzoneId}
@@ -146,6 +148,7 @@ const FileSelector = React.forwardRef((props, ref) => {
                 hasFocus={hasFocus}
                 disabled={disabled}
                 error={error}
+                size={size}
                 borderRadius={borderRadius}
             >
                 <StyledInput
@@ -170,6 +173,7 @@ const FileSelector = React.forwardRef((props, ref) => {
                 <StyledBackdrop
                     isFileSelected={isFileSelected}
                     variant={variant}
+                    size={size}
                     borderRadius={borderRadius}
                 >
                     <StyledIconContainer
@@ -178,6 +182,8 @@ const FileSelector = React.forwardRef((props, ref) => {
                         variant={variant}
                         error={error}
                         disabled={disabled}
+                        size={size}
+                        isDragOver={isDragOver}
                     >
                         <Icon
                             files={files}
@@ -189,13 +195,13 @@ const FileSelector = React.forwardRef((props, ref) => {
                     </StyledIconContainer>
                     <TruncatedText>{text}</TruncatedText>
                     <RenderIf isTrue={shouldRenderCancel}>
-                        <StyledIconContainer iconPosition="right">
+                        <StyledIconContainer iconPosition="right" size={size}>
                             <StyledButtonIcon
                                 id={buttonId}
-                                size="xx-small"
                                 icon={<CancelIcon />}
                                 onClick={handleCancel}
                                 pickerVariant={variant}
+                                sizeIcon={size}
                             />
                         </StyledIconContainer>
                     </RenderIf>
@@ -258,6 +264,8 @@ FileSelector.propTypes = {
     onBlur: PropTypes.func,
     /** A null value that prevents the icon from changing after a file is loaded  */
     value: PropTypes.object,
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The border radius of the button. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
@@ -284,6 +292,7 @@ FileSelector.defaultProps = {
     onChange: () => {},
     onFocus: () => {},
     onBlur: () => {},
+    size: 'medium',
     borderRadius: 'rounded',
 };
 
