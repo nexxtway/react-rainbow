@@ -270,7 +270,7 @@ const ColorInput = props => {
             </RenderIf>
             <InternalOverlay isVisible={isOpen} triggerElementRef={() => triggerRef}>
                 <div ref={pickerRef}>
-                    <StyledCard>
+                    <StyledCard borderRadius={borderRadius}>
                         <StyledContent>
                             <ColorPicker
                                 value={colorValue}
