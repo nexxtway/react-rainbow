@@ -28,7 +28,7 @@ export default function StepOne(props) {
                     name="add-records"
                     value={actionOption}
                     label="Add New records"
-                    description="Short description"
+                    description="Allows adding all records without checking for duplicates in existing records."
                 />
             ),
             name: 'add-records',
@@ -41,7 +41,7 @@ export default function StepOne(props) {
                     name="merge-records"
                     value={actionOption}
                     label="Merge exist records"
-                    description="Short description"
+                    description="Allows you to create only unique records avoiding duplications with existing records."
                 />
             ),
             name: 'merge-records',
