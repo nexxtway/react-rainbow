@@ -28,7 +28,16 @@ const ADD_RECORDS_TYPE = 'add-records';
  */
 
 function ImportRecordsFlow(props) {
-    const { className, style, isOpen, onRequestClose, schema, onComplete, actionType } = props;
+    const {
+        className,
+        style,
+        isOpen,
+        onRequestClose,
+        schema,
+        onComplete,
+        actionType,
+        borderRadius,
+    } = props;
     const [currentStepIndex, setCurrentStepIndex] = useState(
         actionType === ADD_RECORDS_TYPE ? 1 : 0,
     );
@@ -160,6 +169,7 @@ function ImportRecordsFlow(props) {
             size="medium"
             isOpen={isOpen}
             onRequestClose={onRequestClose}
+            borderRadius={borderRadius}
             footer={
                 <Footer
                     onBack={goBackStep}
@@ -215,6 +225,8 @@ ImportRecordsFlow.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The border radius of the modal. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 ImportRecordsFlow.defaultProps = {
@@ -227,6 +239,7 @@ ImportRecordsFlow.defaultProps = {
     onRequestClose: () => {},
     onComplete: () => {},
     actionType: undefined,
+    borderRadius: 'rounded',
 };
 
 ImportRecordsFlow.MERGE_RECORDS = MERGE_RECORDS;

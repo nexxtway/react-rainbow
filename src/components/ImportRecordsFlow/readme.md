@@ -125,6 +125,7 @@ class ImportRecordsFlowModal extends React.Component {
                     schema={schema}
                     onComplete={data => console.log(data)}
                     actionType="add-records"
+                    borderRadius="square"
                 />
             </div>
         );
