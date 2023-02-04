@@ -178,6 +178,7 @@ function ImportRecordsFlow(props) {
                     isBackButtonDisabled={isBackButtonDisabled()}
                     isNextButtonDisabled={isNextButtonDisabled()}
                     actionType={actionType}
+                    borderRadius={borderRadius}
                 />
             }
         >
@@ -198,6 +199,7 @@ function ImportRecordsFlow(props) {
                 onRemoveFile={removeFile}
                 onAssignField={assignField}
                 fieldsMap={fieldsMap}
+                borderRadius={borderRadius}
             />
         </Modal>
     );
