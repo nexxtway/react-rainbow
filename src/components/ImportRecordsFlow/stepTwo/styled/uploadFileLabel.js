@@ -74,13 +74,11 @@ const StyledUploadFileLabel = styled.label.attrs(props => {
         `
             border-radius: ${BORDER_RADIUS_SQUARE};
         `};
-
     ${props =>
         props.borderRadius === 'semi-square' &&
         `
             border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
         `};
-
     ${props =>
         props.borderRadius === 'semi-rounded' &&
         `

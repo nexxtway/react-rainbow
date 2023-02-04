@@ -51,8 +51,8 @@ export default function StepThree(props) {
                     field="fileField"
                     header="Fields on your CSV"
                     component={rowProps => (
-                        // eslint-disable-next-line react/jsx-props-no-spreading
                         <CSVCell
+                            // eslint-disable-next-line react/jsx-props-no-spreading
                             {...rowProps}
                             onClick={openAssignFieldModal}
                             borderRadius={borderRadius}

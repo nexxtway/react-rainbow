@@ -22,3 +22,7 @@ DatabaseFieldCell.propTypes = {
     row: PropTypes.object.isRequired,
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
+
+DatabaseFieldCell.defaultProps = {
+    borderRadius: 'rounded',
+};
