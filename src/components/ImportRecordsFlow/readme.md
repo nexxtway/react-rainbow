@@ -140,13 +140,20 @@ class ImportRecordsFlowModal extends React.Component {
     </div>
 ```
 
+
 ##### ImportRecordsFlow with different border radius:
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import { ImportRecordsFlow, Button } from 'react-rainbow-components';
 
-const containerStyles = { height: 360 };
+const containerStyles = {
+    height: 200,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '4rem',
+};
 
 const schema = {
     collection: 'users',
@@ -164,50 +171,70 @@ const schema = {
     },
 };
 
-class ImportRecordsFlowModal extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: false,
-        };
-        this.handleOnClick = this.handleOnClick.bind(this);
-        this.handleOnClose = this.handleOnClose.bind(this);
-    }
+const ImportRecordsFlowModal = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [borderRadius, setBorderRadius] = useState('rounded');
 
-    handleOnClick() {
-        return this.setState({ isOpen: true });
-    }
+    const handleOnClick = value => {
+        setBorderRadius(value);
+        setIsOpen(true);
+    };
 
-    handleOnClose() {
-        return this.setState({ isOpen: false });
-    }
+    const handleOnClose = () => {
+        setIsOpen(false);
+    };
 
-    render() {
-        const { isOpen } = this.state;
-        return (
-            <div>
-                <Button variant="neutral" onClick={this.handleOnClick}>
-                    <UploadIcon className="rainbow-m-right_x-small" />
-                    Import
-                </Button>
-                <ImportRecordsFlow
-                    isOpen={isOpen}
-                    onRequestClose={this.handleOnClose}
-                    schema={schema}
-                    onComplete={data => console.log(data)}
-                    actionType="add-records"
-                    borderRadius="square"
-                />
-            </div>
-        );
-    }
-}
+    return (
+        <div>
+            <Button
+                className="rainbow-m-right_medium"
+                variant="neutral"
+                onClick={() => handleOnClick('square')}
+                borderRadius="square"
+            >
+                Square
+            </Button>
+            <Button
+                className="rainbow-m-right_medium"
+                variant="neutral"
+                onClick={() => handleOnClick('semi-square')}
+                borderRadius="semi-square"
+            >
+                Semi-Square
+            </Button>
+            <Button
+                className="rainbow-m-right_medium"
+                variant="neutral"
+                onClick={() => handleOnClick('semi-rounded')}
+                borderRadius="semi-rounded"
+            >
+                Semi-Rounded
+            </Button>
+            <Button
+                className="rainbow-m-right_medium"
+                variant="neutral"
+                onClick={() => handleOnClick('rounded')}
+                borderRadius="rounded"
+            >
+                Rounded
+            </Button>
+            <ImportRecordsFlow
+                isOpen={isOpen}
+                onRequestClose={handleOnClose}
+                schema={schema}
+                onComplete={data => console.log(data)}
+                borderRadius={borderRadius}
+                actionType="add-records"
+            />
+        </div>
+    );
+};
 
     <div style={containerStyles}>
-        <GlobalHeader>
-            <div className="rainbow-m-right_medium">
-                <ImportRecordsFlowModal />
-            </div>
-        </GlobalHeader>
-    </div>
+        <div className="rainbow-m-right_medium">
+            <ImportRecordsFlowModal />
+        </div>
+    </div>;
+
 ```
+
