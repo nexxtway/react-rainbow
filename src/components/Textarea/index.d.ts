@@ -29,9 +29,11 @@ export interface TextareaProps extends BaseProps {
     onClick?: (event: MouseEvent<HTMLTextAreaElement>) => void;
     onFocus?: (event: FocusEvent<HTMLTextAreaElement>) => void;
     onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void;
+    onKeyDown?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
     onPaste?: (event: ClipboardEvent<HTMLTextAreaElement>) => void;
     id?: string;
     variant?: 'default' | 'shaded';
+    size?: 'small' | 'medium' | 'large';
     borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 
