@@ -40,6 +40,25 @@ class ImportRecordsFlowModal extends React.Component {
         return this.setState({ isOpen: false });
     }
 
+    validateRecords(record) {
+        const error = {};
+
+            if (record.name === 'adrian') {
+                error.name = 'Name is required';
+            }
+            if (record.email === '') {
+                error.email = 'Email is required';
+            }
+            if (record.driver === '') {
+                error.driver = 'Driver is required';
+            }
+            if (record.date === '') {
+                error.date = 'Date is required';
+            }
+            return error;
+    }
+
+
     render() {
         const { isOpen } = this.state;
         return (
@@ -53,6 +72,7 @@ class ImportRecordsFlowModal extends React.Component {
                     onRequestClose={this.handleOnClose}
                     schema={schema}
                     onComplete={data => console.log(data)}
+                    validateRecordFn={this.validateRecords}
                 />
             </div>
         );

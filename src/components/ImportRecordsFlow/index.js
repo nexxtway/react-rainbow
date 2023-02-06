@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 import XLSX from 'xlsx';
 import Modal from '../Modal';
 import getDataFromWorkbook from './helpers/getDataFromWorkbook';
@@ -9,6 +9,7 @@ import getDataToImport from './helpers/getDataToImport';
 import isStepThreeNextButtonDisabled from './helpers/isStepThreeNextButtonDisabled';
 import Footer from './footer';
 import getStepComponent from './helpers/getStepComponent';
+import getValidatedData from './helpers/getValidatedData';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4'];
 
@@ -28,7 +29,16 @@ const ADD_RECORDS_TYPE = 'add-records';
  */
 
 function ImportRecordsFlow(props) {
-    const { className, style, isOpen, onRequestClose, schema, onComplete, actionType } = props;
+    const {
+        className,
+        style,
+        isOpen,
+        onRequestClose,
+        schema,
+        onComplete,
+        actionType,
+        validateRecordFn,
+    } = props;
     const [currentStepIndex, setCurrentStepIndex] = useState(
         actionType === ADD_RECORDS_TYPE ? 1 : 0,
     );
@@ -42,6 +52,8 @@ function ImportRecordsFlow(props) {
     const [hasFileSelected, setHasFileSelected] = useState(false);
     const [columns, setColumns] = useState([]);
     const [data, setData] = useState([]);
+    const [errors, setErrors] = useState([]);
+    const [validatedData, setValidatedData] = useState([]);
     const [fieldsMap, setFieldsMap] = useState({});
     const [schemaFields, setSchemaFields] = useState([]);
 
@@ -55,6 +67,7 @@ function ImportRecordsFlow(props) {
         setData([]);
         setColumns([]);
         setFieldsMap({});
+        setErrors([]);
     };
 
     useEffect(() => {
@@ -87,10 +100,26 @@ function ImportRecordsFlow(props) {
     };
 
     const goNextStep = () => {
+        if (currentStepIndex === 2) {
+            const { data: dataToValidate } = getDataToImport({
+                data,
+                fieldsMap,
+                schema,
+                actionOption,
+                matchField,
+            });
+            const { validatedData, errors } = getValidatedData({
+                validateRecordFn,
+                dataToValidate,
+                data,
+            });
+            setValidatedData(validatedData);
+            setErrors(errors);
+        }
         if (currentStepIndex === 3) {
             onComplete(
                 getDataToImport({
-                    data,
+                    data: validatedData,
                     fieldsMap,
                     schema,
                     actionOption,
@@ -188,6 +217,9 @@ function ImportRecordsFlow(props) {
                 onRemoveFile={removeFile}
                 onAssignField={assignField}
                 fieldsMap={fieldsMap}
+                validateRecordFn={validateRecordFn}
+                errors={errors}
+                validatedData={validatedData}
             />
         </Modal>
     );
@@ -215,6 +247,8 @@ ImportRecordsFlow.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** A function to validate the record before import it. */
+    validateRecordFn: PropTypes.func,
 };
 
 ImportRecordsFlow.defaultProps = {
@@ -227,6 +261,7 @@ ImportRecordsFlow.defaultProps = {
     onRequestClose: () => {},
     onComplete: () => {},
     actionType: undefined,
+    validateRecordFn: () => {},
 };
 
 ImportRecordsFlow.MERGE_RECORDS = MERGE_RECORDS;

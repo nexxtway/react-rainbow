@@ -3,26 +3,30 @@ import PropTypes from 'prop-types';
 import Column from '../../Column';
 import getPreviewDataToImport from '../helpers/getPreviewDataToImport';
 import StyledTable from '../styled/table';
+import StatsCard from './statsCard';
 
 export default function StepFour(props) {
-    const { schemaFields, data, fieldsMap, attributes } = props;
-    const previewData = getPreviewDataToImport(data.slice(0, 5), fieldsMap, attributes);
+    const { schemaFields, data, fieldsMap, attributes, validatedData, errors } = props;
+    const previewData = getPreviewDataToImport(validatedData.slice(0, 5), fieldsMap, attributes);
 
     return (
-        <StyledTable keyField="id" data={previewData} variant="listview">
-            {schemaFields.map((field, index) => {
-                const key = `column-${index}`;
-                return (
-                    <Column
-                        key={key}
-                        header={field}
-                        field={field}
-                        headerAlignment="left"
-                        cellAlignment="left"
-                    />
-                );
-            })}
-        </StyledTable>
+        <>
+            <StatsCard validatedData={validatedData} data={data} errors={errors} />
+            <StyledTable keyField="id" data={previewData} variant="listview">
+                {schemaFields.map((field, index) => {
+                    const key = `column-${index}`;
+                    return (
+                        <Column
+                            key={key}
+                            header={field}
+                            field={field}
+                            headerAlignment="left"
+                            cellAlignment="left"
+                        />
+                    );
+                })}
+            </StyledTable>
+        </>
     );
 }
 
@@ -31,6 +35,8 @@ StepFour.propTypes = {
     data: PropTypes.array,
     fieldsMap: PropTypes.object,
     attributes: PropTypes.object,
+    validatedData: PropTypes.array,
+    errors: PropTypes.array,
 };
 
 StepFour.defaultProps = {
@@ -38,4 +44,6 @@ StepFour.defaultProps = {
     data: [],
     fieldsMap: {},
     attributes: {},
+    validatedData: [],
+    errors: [],
 };
