@@ -17,7 +17,6 @@ export const OptionContainer = attachThemeAttrs(styled.li)`
         props.isSelected &&
         `
             background-color: ${props.palette.brand.light};
-            border: 1px solid ${props.palette.brand.light};
 
             svg {
                 color: ${props.palette.background.highlight};
@@ -30,7 +29,6 @@ export const OptionContainer = attachThemeAttrs(styled.li)`
 
     &:hover {
         background-color: ${props => props.palette.brand.light};
-        border: 1px solid ${props => props.palette.brand.light};
         cursor: pointer;
 
         svg {

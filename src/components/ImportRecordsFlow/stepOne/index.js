@@ -61,6 +61,7 @@ export default function StepOne(props) {
 
                 <RenderIf isTrue={isMergeOption}>
                     <Select
+                        style={{ marginTop: '15px' }}
                         label="Match Field"
                         placeholder="Select the Field do you want match"
                         options={fieldOptions}
