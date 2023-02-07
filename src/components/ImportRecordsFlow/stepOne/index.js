@@ -62,6 +62,7 @@ export default function StepOne(props) {
                 <RenderIf isTrue={isMergeOption}>
                     <StyledSelect
                         label="Match Field"
+                        labelAlignment="left"
                         placeholder="Select the Field do you want match"
                         options={fieldOptions}
                         onChange={event => onChangeMatchField(event.target.value)}
