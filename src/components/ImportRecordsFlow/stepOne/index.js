@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../../RenderIf';
-import Select from '../../Select';
 import getSchemaFieldOptions from '../helpers/getSchemaFieldOptions';
 import StyledContainer from './styled/container';
 import { StyledRadioGroup } from './styled/optionPicker';
 import OptionPicker from './optionPicker';
+import StyledSelect from './styled/styledSelect';
 
 export default function StepOne(props) {
     const { schemaFields, actionOption, onChangeAction, matchField, onChangeMatchField } = props;
@@ -60,8 +60,7 @@ export default function StepOne(props) {
                 />
 
                 <RenderIf isTrue={isMergeOption}>
-                    <Select
-                        style={{ marginTop: '20px', width: '40rem' }}
+                    <StyledSelect
                         label="Match Field"
                         placeholder="Select the Field do you want match"
                         options={fieldOptions}

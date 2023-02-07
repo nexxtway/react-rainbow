@@ -3,7 +3,6 @@ import File from '../../icons/file';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 import RadioGroup from '../../../RadioGroup';
 import MergeFiles from '../../icons/mergeFiles';
-import { Select } from 'react-rainbow-components';
 
 export const OptionContainer = attachThemeAttrs(styled.li)`
     display: flex;
