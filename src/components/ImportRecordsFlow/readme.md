@@ -42,20 +42,19 @@ class ImportRecordsFlowModal extends React.Component {
 
     validateRecords(record) {
         const error = {};
-
-            if (record.name === 'adrian') {
-                error.name = 'Name is required';
-            }
-            if (record.email === '') {
-                error.email = 'Email is required';
-            }
-            if (record.driver === '') {
-                error.driver = 'Driver is required';
-            }
-            if (record.date === '') {
-                error.date = 'Date is required';
-            }
-            return error;
+        if (record.name === 'adrian') {
+            error.name = 'Name is required';
+        }
+        if (record.email === '') {
+            error.email = 'Email is required';
+        }
+        if (record.driver === '') {
+            error.driver = 'Driver is required';
+        }
+        if (record.date === '') {
+            error.date = 'Date is required';
+        }
+        return error;
     }
 
 

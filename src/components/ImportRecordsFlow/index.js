@@ -100,7 +100,9 @@ function ImportRecordsFlow(props) {
     };
 
     const goNextStep = () => {
-        if (currentStepIndex === 2) {
+        //check if the current step is step 2 and the validateRecordFn is not empty
+        if (currentStepIndex === 2 && validateRecordFn) {
+            console.log('validateRecordFn', validateRecordFn);
             const { data: dataToValidate } = getDataToImport({
                 data,
                 fieldsMap,
@@ -261,7 +263,9 @@ ImportRecordsFlow.defaultProps = {
     onRequestClose: () => {},
     onComplete: () => {},
     actionType: undefined,
-    validateRecordFn: () => {},
+    validateRecordFn: record => {
+        return record;
+    },
 };
 
 ImportRecordsFlow.MERGE_RECORDS = MERGE_RECORDS;

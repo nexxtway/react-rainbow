@@ -19,26 +19,26 @@ export default function XCircle(props) {
                 <path
                     d="M8.00016 15.5013C11.6821 15.5013 14.6668 12.5165 14.6668 8.83463C14.6668 5.15274 11.6821 2.16797 8.00016 2.16797C4.31826 2.16797 1.3335 5.15274 1.3335 8.83463C1.3335 12.5165 4.31826 15.5013 8.00016 15.5013Z"
                     stroke="#FE4849"
-                    stroke-opacity="0.9"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeOpacity="0.9"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                 />
                 <path
                     d="M10 6.83398L6 10.834"
                     stroke="#FE4849"
-                    stroke-opacity="0.9"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeOpacity="0.9"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                 />
                 <path
                     d="M6 6.83398L10 10.834"
                     stroke="#FE4849"
-                    stroke-opacity="0.9"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeOpacity="0.9"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                 />
             </g>
             <defs>
