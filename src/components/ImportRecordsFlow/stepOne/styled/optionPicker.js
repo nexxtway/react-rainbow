@@ -3,6 +3,7 @@ import File from '../../icons/file';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 import RadioGroup from '../../../RadioGroup';
 import MergeFiles from '../../icons/mergeFiles';
+import { Select } from 'react-rainbow-components';
 
 export const OptionContainer = attachThemeAttrs(styled.li)`
     display: flex;
@@ -12,6 +13,7 @@ export const OptionContainer = attachThemeAttrs(styled.li)`
     padding: 8px 14px;
     background-color: ${props => props.palette.border.disabled};
     border-radius: 10px;
+    margin-top: -20px;
 
     ${props =>
         props.isSelected &&
@@ -79,7 +81,7 @@ export const StyledMergeFiles = attachThemeAttrs(styled(MergeFiles))`
 
 export const IconContainer = attachThemeAttrs(styled.div)`
     display: flex;
-    background-color: ${props => props.palette.background.highlight};
+    background-color: ${props => props.palette.background.secondary};
     align-items: center;
     justify-content: center;
     width: 40px;
