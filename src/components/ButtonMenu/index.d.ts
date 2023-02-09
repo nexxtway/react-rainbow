@@ -20,6 +20,7 @@ export interface ButtonMenuProps extends BaseProps {
     onBlur?: (event: FocusEvent<HTMLElement>) => void;
     id?: string;
     label?: ReactNode;
+    borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 
 export default function(props: ButtonMenuProps): JSX.Element | null;

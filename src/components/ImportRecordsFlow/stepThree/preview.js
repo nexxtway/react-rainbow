@@ -19,8 +19,13 @@ export default function Preview(props) {
                     <b>{` “${fieldsToAssing}”`}</b> {`${fieldWord} to`}
                     <b>{` “${field}”`}</b> database field
                 </StyledPreviewText>
-                <StyledTable keyField="id" data={mappedData}>
-                    <Column header={field} field={field} />
+                <StyledTable keyField="id" data={mappedData} variant="listview">
+                    <Column
+                        header={field}
+                        field={field}
+                        headerAlignment="left"
+                        cellAlignment="left"
+                    />
                 </StyledTable>
             </div>
         );

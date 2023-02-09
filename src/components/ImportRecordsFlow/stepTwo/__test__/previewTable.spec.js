@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import PreviewTable from '../previewTable';
-import StyledTable from '../../styled/table';
+import { StyledTable } from '../styled/container';
 
 const data = [
     { First_Name: 'John', Last_Name: 'Doe' },

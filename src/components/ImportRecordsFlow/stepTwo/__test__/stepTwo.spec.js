@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import StyledContainer from '../styled/container';
+import { StyledContainer } from '../styled/container';
 import StepTwo from '..';
 
 describe('<StepTwo />', () => {

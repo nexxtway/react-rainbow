@@ -1,4 +1,11 @@
-export default function getCardElementOptions(theme, disabled) {
+const SIZES = {
+    small: '14px',
+    medium: '16px',
+    large: '20px',
+};
+
+export default function getCardElementOptions(theme, disabled, size) {
+    const fontSize = SIZES[size] || SIZES.medium;
     return {
         style: {
             base: {
@@ -8,7 +15,7 @@ export default function getCardElementOptions(theme, disabled) {
                     ? theme.palette.background.disabled
                     : theme.palette.background.main,
                 color: theme.palette.text.main,
-                fontSize: '16px',
+                fontSize,
                 '::placeholder': {
                     color: theme.palette.text.header,
                     fontWeight: 300,

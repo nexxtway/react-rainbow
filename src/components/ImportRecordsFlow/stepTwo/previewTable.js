@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Column from '../../Column';
 import Spinner from '../../Spinner';
 import StyledSpinnerContainer from './styled/spinnerContainer';
-import StyledTable from '../styled/table';
+import { TableContainer, StyledTable } from './styled/container';
 
 export default function PreviewTable(props) {
     const { columns, data, isLoading } = props;
@@ -16,11 +16,19 @@ export default function PreviewTable(props) {
         );
     }
     return (
-        <StyledTable keyField="id" data={data}>
-            {columns.map(col => (
-                <Column key={col} header={col} field={col} />
-            ))}
-        </StyledTable>
+        <TableContainer>
+            <StyledTable keyField="id" data={data} minColumnWidth={180} variant="listview">
+                {columns.map(col => (
+                    <Column
+                        key={col}
+                        header={col}
+                        field={col}
+                        headerAlignment="left"
+                        cellAlignment="left"
+                    />
+                ))}
+            </StyledTable>
+        </TableContainer>
     );
 }
 

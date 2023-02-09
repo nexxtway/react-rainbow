@@ -1,21 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RequiredAsterisk from '../../RequiredAsterisk';
+import DatabaseFieldContent from './styled/databaseFieldCell';
 
 export default function DatabaseFieldCell(props) {
     const {
         value,
         row: { required },
+        borderRadius,
     } = props;
     return (
-        <span>
+        <DatabaseFieldContent borderRadius={borderRadius}>
             <RequiredAsterisk required={!!required} />
             {value}
-        </span>
+        </DatabaseFieldContent>
     );
 }
 
 DatabaseFieldCell.propTypes = {
     value: PropTypes.string.isRequired,
     row: PropTypes.object.isRequired,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
+};
+
+DatabaseFieldCell.defaultProps = {
+    borderRadius: 'rounded',
 };

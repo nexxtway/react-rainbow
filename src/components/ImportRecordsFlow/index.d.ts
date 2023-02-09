@@ -16,6 +16,7 @@ export interface ImportRecordsFlowProps extends BaseProps {
     onRequestClose?: () => void;
     onComplete?: (value: CompleteValue) => void;
     actionType?: 'add-records';
+    borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 
 export default function(props: ImportRecordsFlowProps): JSX.Element | null;
