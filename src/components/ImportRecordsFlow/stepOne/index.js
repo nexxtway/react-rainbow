@@ -11,7 +11,14 @@ import StyledContainer from './styled/container';
 import StyledVisualPicker from './styled/visualPicker';
 
 export default function StepOne(props) {
-    const { schemaFields, actionOption, onChangeAction, matchField, onChangeMatchField } = props;
+    const {
+        schemaFields,
+        actionOption,
+        onChangeAction,
+        matchField,
+        onChangeMatchField,
+        borderRadius,
+    } = props;
     const [fieldOptions, setFieldOptions] = useState([]);
     const isMergeOption = actionOption === 'merge-records';
 
@@ -46,6 +53,7 @@ export default function StepOne(props) {
                     options={fieldOptions}
                     onChange={event => onChangeMatchField(event.target.value)}
                     value={matchField}
+                    borderRadius={borderRadius}
                 />
             </RenderIf>
         </StyledContainer>
@@ -58,6 +66,7 @@ StepOne.propTypes = {
     onChangeAction: PropTypes.func,
     matchField: PropTypes.string,
     onChangeMatchField: PropTypes.func,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 StepOne.defaultProps = {
@@ -66,4 +75,5 @@ StepOne.defaultProps = {
     onChangeAction: () => {},
     matchField: '',
     onChangeMatchField: () => {},
+    borderRadius: 'rounded',
 };
