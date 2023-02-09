@@ -7,9 +7,10 @@ export default function DatabaseFieldCell(props) {
     const {
         value,
         row: { required },
+        borderRadius,
     } = props;
     return (
-        <DatabaseFieldContent>
+        <DatabaseFieldContent borderRadius={borderRadius}>
             <RequiredAsterisk required={!!required} />
             {value}
         </DatabaseFieldContent>
@@ -19,4 +20,9 @@ export default function DatabaseFieldCell(props) {
 DatabaseFieldCell.propTypes = {
     value: PropTypes.string.isRequired,
     row: PropTypes.object.isRequired,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
+};
+
+DatabaseFieldCell.defaultProps = {
+    borderRadius: 'rounded',
 };
