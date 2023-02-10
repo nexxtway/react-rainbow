@@ -68,6 +68,7 @@ export default function StepOne(props) {
                         options={fieldOptions}
                         onChange={event => onChangeMatchField(event.target.value)}
                         value={matchField}
+                        borderRadius={borderRadius}
                     />
                 </RenderIf>
             </StyledContainer>

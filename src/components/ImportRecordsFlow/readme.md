@@ -224,7 +224,6 @@ const ImportRecordsFlowModal = () => {
                 schema={schema}
                 onComplete={data => console.log(data)}
                 borderRadius={borderRadius}
-                actionType="add-records"
             />
         </div>
     );
