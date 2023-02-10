@@ -13,6 +13,7 @@ const StyledIcon = styled(CsvIcon).attrs(props => {
 })`
     fill: ${props => props.backgroundColor};
     color: ${props => props.brandMainColor};
+    width: 90px;
 `;
 
 export default StyledIcon;

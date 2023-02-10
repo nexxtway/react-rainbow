@@ -3,20 +3,22 @@ import PropTypes from 'prop-types';
 import StyledStatsCard from './styled/styledstatsCard';
 import StyledStatsCardContent from './styled/statsCardContent';
 import StyledStatsCardTitle from './styled/statsCardTitle';
-import StyledStatsCardDescription from './styled/statsCardDescription';
 import StyledIcon from './styled/icon';
 import StatsCardLeftContainer from './styled/statsLeftContainer';
 import StyledStatsCardDescriptionContainer from './styled/statsCardDescriptionContainer';
-import StyledDownloadButton from './styled/styledDownloadButton';
 import StyledDownloadIcon from './styled/styledDownloadIcon';
 import StatsCount from './statsCount';
 import downloadErrorsCSV from '../helpers/downloadErrorsCsv';
+import StyledDownloadErrors from './styled/styledDownloadErrors';
+import RenderIf from '../../RenderIf';
 
 export default function StatsCard(props) {
-    const { validatedData, errors, data } = props;
-
+    const { validRecords, invalidRecords } = props;
+    const invalidCount = invalidRecords.length;
+    const validCount = validRecords.length;
+    const totalRecords = invalidCount + validCount;
     const onClick = () => {
-        downloadErrorsCSV({ errors });
+        downloadErrorsCSV({ invalidRecords });
     };
 
     return (
@@ -25,30 +27,30 @@ export default function StatsCard(props) {
             <StyledStatsCardContent>
                 <StatsCardLeftContainer>
                     <StyledStatsCardTitle>
-                        Total: {data.length} records on your file
+                        Total: {totalRecords} records on your file
                     </StyledStatsCardTitle>
                     <StyledStatsCardDescriptionContainer>
-                        <StatsCount type="success" amount={validatedData.length} />
-                        <StatsCount type="error" amount={errors.length} />
+                        <StatsCount type="success" amount={validCount} />
+                        <StatsCount type="error" amount={invalidCount} />
                     </StyledStatsCardDescriptionContainer>
                 </StatsCardLeftContainer>
             </StyledStatsCardContent>
-            <StyledDownloadButton variant="base" onClick={onClick}>
-                <StyledDownloadIcon />
-                Download errors
-            </StyledDownloadButton>
+            <RenderIf isTrue={invalidCount > 0}>
+                <StyledDownloadErrors onClick={onClick}>
+                    <StyledDownloadIcon />
+                    Download errors
+                </StyledDownloadErrors>
+            </RenderIf>
         </StyledStatsCard>
     );
 }
 
 StatsCard.propTypes = {
-    validatedData: PropTypes.array,
-    errors: PropTypes.array,
-    data: PropTypes.array,
+    validRecords: PropTypes.array,
+    invalidRecords: PropTypes.array,
 };
 
 StatsCard.defaultProps = {
-    validatedData: [],
-    errors: [],
-    data: [],
+    validRecords: [],
+    invalidRecords: [],
 };

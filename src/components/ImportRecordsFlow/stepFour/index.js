@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Column from '../../Column';
-import getPreviewDataToImport from '../helpers/getPreviewDataToImport';
 import StyledTable from '../styled/table';
 import StatsCard from './statsCard';
 
 export default function StepFour(props) {
-    const { schemaFields, data, fieldsMap, attributes, validatedData, errors } = props;
-    const previewData = getPreviewDataToImport(validatedData.slice(0, 5), fieldsMap, attributes);
-
+    const { schemaFields, validRecords, invalidRecords } = props;
+    const previewData = validRecords.slice(0, 5);
     return (
         <>
-            <StatsCard validatedData={validatedData} data={data} errors={errors} />
+            <StatsCard validRecords={validRecords} invalidRecords={invalidRecords} />
             <StyledTable keyField="id" data={previewData} variant="listview">
                 {schemaFields.map((field, index) => {
                     const key = `column-${index}`;
@@ -32,18 +30,12 @@ export default function StepFour(props) {
 
 StepFour.propTypes = {
     schemaFields: PropTypes.array,
-    data: PropTypes.array,
-    fieldsMap: PropTypes.object,
-    attributes: PropTypes.object,
-    validatedData: PropTypes.array,
-    errors: PropTypes.array,
+    validRecords: PropTypes.array,
+    invalidRecords: PropTypes.array,
 };
 
 StepFour.defaultProps = {
     schemaFields: [],
-    data: [],
-    fieldsMap: {},
-    attributes: {},
-    validatedData: [],
-    errors: [],
+    validRecords: [],
+    invalidRecords: [],
 };

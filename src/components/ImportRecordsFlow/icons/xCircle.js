@@ -15,7 +15,7 @@ export default function XCircle(props) {
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
         >
-            <g clip-path="url(#clip0_661_16711)">
+            <g clipPath="url(#clip0_661_16711)">
                 <path
                     d="M8.00016 15.5013C11.6821 15.5013 14.6668 12.5165 14.6668 8.83463C14.6668 5.15274 11.6821 2.16797 8.00016 2.16797C4.31826 2.16797 1.3335 5.15274 1.3335 8.83463C1.3335 12.5165 4.31826 15.5013 8.00016 15.5013Z"
                     stroke="#FE4849"

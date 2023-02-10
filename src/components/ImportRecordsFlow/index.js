@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 import XLSX from 'xlsx';
 import Modal from '../Modal';
 import getDataFromWorkbook from './helpers/getDataFromWorkbook';
@@ -52,10 +52,12 @@ function ImportRecordsFlow(props) {
     const [hasFileSelected, setHasFileSelected] = useState(false);
     const [columns, setColumns] = useState([]);
     const [data, setData] = useState([]);
-    const [errors, setErrors] = useState([]);
-    const [validatedData, setValidatedData] = useState([]);
     const [fieldsMap, setFieldsMap] = useState({});
     const [schemaFields, setSchemaFields] = useState([]);
+
+    const mappedRecords = useRef([]);
+    const [validRecords, setValidRecords] = useState([]);
+    const [invalidRecords, setInvalidRecords] = useState([]);
 
     const currentStep = stepNames[currentStepIndex];
     const StepComponent = getStepComponent({ currentStep });
@@ -67,7 +69,6 @@ function ImportRecordsFlow(props) {
         setData([]);
         setColumns([]);
         setFieldsMap({});
-        setErrors([]);
     };
 
     useEffect(() => {
@@ -100,34 +101,34 @@ function ImportRecordsFlow(props) {
     };
 
     const goNextStep = () => {
-        //check if the current step is step 2 and the validateRecordFn is not empty
-        if (currentStepIndex === 2 && validateRecordFn) {
-            console.log('validateRecordFn', validateRecordFn);
-            const { data: dataToValidate } = getDataToImport({
+        if (currentStepIndex === 2) {
+            mappedRecords.current = getDataToImport({
                 data,
                 fieldsMap,
                 schema,
                 actionOption,
                 matchField,
             });
-            const { validatedData, errors } = getValidatedData({
-                validateRecordFn,
-                dataToValidate,
-                data,
-            });
-            setValidatedData(validatedData);
-            setErrors(errors);
+            if (typeof validateRecordFn === 'function') {
+                const {
+                    validRecords: validValidatedRecord,
+                    invalidRecords: invalidValidatedRecord,
+                } = getValidatedData({
+                    validateRecordFn,
+                    dataToValidate: mappedRecords.current.data,
+                });
+                setValidRecords(validValidatedRecord);
+                setInvalidRecords(invalidValidatedRecord);
+            } else {
+                setValidRecords(mappedRecords.current.data);
+            }
         }
+
         if (currentStepIndex === 3) {
-            onComplete(
-                getDataToImport({
-                    data: validatedData,
-                    fieldsMap,
-                    schema,
-                    actionOption,
-                    matchField,
-                }),
-            );
+            onComplete({
+                ...mappedRecords.current,
+                data: validRecords,
+            });
         }
         if (currentStepIndex < stepNames.length - 1) {
             const nextStepIndex = currentStepIndex + 1;
@@ -219,9 +220,8 @@ function ImportRecordsFlow(props) {
                 onRemoveFile={removeFile}
                 onAssignField={assignField}
                 fieldsMap={fieldsMap}
-                validateRecordFn={validateRecordFn}
-                errors={errors}
-                validatedData={validatedData}
+                invalidRecords={invalidRecords}
+                validRecords={validRecords}
             />
         </Modal>
     );
@@ -249,7 +249,9 @@ ImportRecordsFlow.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** A function to validate the record before import it. */
+    /** A function to validate the record before import it. This function will be invoke on each record of the CSV returning
+     * an object with the errors found in a record on each field. If the object doesn't have properties then the record is valid.
+     */
     validateRecordFn: PropTypes.func,
 };
 
@@ -263,9 +265,7 @@ ImportRecordsFlow.defaultProps = {
     onRequestClose: () => {},
     onComplete: () => {},
     actionType: undefined,
-    validateRecordFn: record => {
-        return record;
-    },
+    validateRecordFn: undefined,
 };
 
 ImportRecordsFlow.MERGE_RECORDS = MERGE_RECORDS;

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StyledStatsCardDescription from './styled/statsCardDescription';
-import { RenderIf } from 'react-rainbow-components';
 import XCircle from '../icons/xCircle';
 import CheckCircle from '../icons/checkCircle';
+import RenderIf from '../../RenderIf';
 
 export default function StatsCount(props) {
     const { type, amount } = props;

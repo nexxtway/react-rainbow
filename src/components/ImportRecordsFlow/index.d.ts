@@ -7,7 +7,9 @@ interface CompleteValue {
     data?: object[];
 }
 
-export interface ImportRecordsFlowProps extends BaseProps {
+export type ValidationErrorObject = Record<string, string>;
+
+export interface ImportRecordsFlowProps<T extends Record<string, unknown>> extends BaseProps {
     schema?: {
         collection?: string;
         attributes?: object;
@@ -16,7 +18,7 @@ export interface ImportRecordsFlowProps extends BaseProps {
     onRequestClose?: () => void;
     onComplete?: (value: CompleteValue) => void;
     actionType?: 'add-records';
-    validateRecordFn?: (record: object) => object;
+    validateRecordFn?: (record: T) => ValidationErrorObject;
 }
 
 export default function(props: ImportRecordsFlowProps): JSX.Element | null;
