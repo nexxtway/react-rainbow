@@ -3,6 +3,11 @@ import File from '../../icons/file';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 import RadioGroup from '../../../RadioGroup';
 import MergeFiles from '../../icons/mergeFiles';
+import {
+    BORDER_RADIUS_SEMI_ROUNDED,
+    BORDER_RADIUS_SEMI_SQUARE,
+    BORDER_RADIUS_SQUARE,
+} from '../../../../styles/borderRadius';
 
 export const OptionContainer = attachThemeAttrs(styled.div)`
     display: flex;
@@ -40,6 +45,24 @@ export const OptionContainer = attachThemeAttrs(styled.div)`
             background-color: ${props => props.palette.brand.main};
         }
     }
+
+    ${props =>
+        props.borderRadius === 'square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
+    
+    ${props =>
+        props.borderRadius === 'semi-square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
+        `};
+    
+    ${props =>
+        props.borderRadius === 'semi-rounded' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
+        `};
 `;
 
 export const OptionLeftContent = attachThemeAttrs(styled.div)`

@@ -11,11 +11,11 @@ import {
     StyledMergeFiles,
 } from './styled/optionPicker';
 
-export default function OptionPicker({ name, label, description, value }) {
+export default function OptionPicker({ name, label, description, value, borderRadius }) {
     const isSelected = value === name;
     const isMerge = name === 'merge-records';
     return (
-        <OptionContainer isSelected={isSelected}>
+        <OptionContainer isSelected={isSelected} borderRadius={borderRadius}>
             <OptionLeftContent>
                 <OptionName>{label}</OptionName>
                 <OptionDescription>{description}</OptionDescription>
@@ -37,6 +37,7 @@ OptionPicker.propTypes = {
     label: PropTypes.string,
     description: PropTypes.string,
     value: PropTypes.string,
+    borderRadius: PropTypes.oneOf(['rounded', 'square', 'semi-rounded', 'semi-square']),
 };
 
 OptionPicker.defaultProps = {
@@ -44,4 +45,5 @@ OptionPicker.defaultProps = {
     label: undefined,
     description: undefined,
     value: undefined,
+    borderRadius: 'rounded',
 };
