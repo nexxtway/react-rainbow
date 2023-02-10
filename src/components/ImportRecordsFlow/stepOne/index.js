@@ -52,13 +52,7 @@ export default function StepOne(props) {
     return (
         <>
             <StyledContainer>
-                <StyledRadioGroup
-                    onChange={onChange}
-                    value={actionOption}
-                    options={options}
-                    id="radio-group-component-1"
-                />
-
+                <StyledRadioGroup onChange={onChange} value={actionOption} options={options} />
                 <RenderIf isTrue={isMergeOption}>
                     <StyledSelect
                         label="Match Field"

@@ -4,7 +4,7 @@ import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 import RadioGroup from '../../../RadioGroup';
 import MergeFiles from '../../icons/mergeFiles';
 
-export const OptionContainer = attachThemeAttrs(styled.li)`
+export const OptionContainer = attachThemeAttrs(styled.div)`
     display: flex;
     align-items: center;
     justify-content: space-between;
