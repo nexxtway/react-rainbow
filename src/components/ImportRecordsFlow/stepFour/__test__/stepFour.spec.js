@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import getPreviewDataToImport from '../../helpers/getPreviewDataToImport';
+import { shallow } from 'enzyme';
 import StepFour from '..';
 import Column from '../../../Column';
 
