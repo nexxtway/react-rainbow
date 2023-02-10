@@ -5,11 +5,15 @@ import StyledTable from '../styled/table';
 import StatsCard from './statsCard';
 
 export default function StepFour(props) {
-    const { schemaFields, validRecords, invalidRecords } = props;
+    const { schemaFields, validRecords, invalidRecords, borderRadius } = props;
     const previewData = validRecords.slice(0, 5);
     return (
         <>
-            <StatsCard validRecords={validRecords} invalidRecords={invalidRecords} />
+            <StatsCard
+                validRecords={validRecords}
+                invalidRecords={invalidRecords}
+                borderRadius={borderRadius}
+            />
             <StyledTable keyField="id" data={previewData} variant="listview">
                 {schemaFields.map((field, index) => {
                     const key = `column-${index}`;
@@ -32,10 +36,12 @@ StepFour.propTypes = {
     schemaFields: PropTypes.array,
     validRecords: PropTypes.array,
     invalidRecords: PropTypes.array,
+    borderRadius: PropTypes.oneOf(['rounded', 'square', 'semi-rounded', 'semi-square']),
 };
 
 StepFour.defaultProps = {
     schemaFields: [],
     validRecords: [],
     invalidRecords: [],
+    borderRadius: 'rounded',
 };

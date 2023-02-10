@@ -13,7 +13,7 @@ import StyledDownloadErrors from './styled/styledDownloadErrors';
 import RenderIf from '../../RenderIf';
 
 export default function StatsCard(props) {
-    const { validRecords, invalidRecords } = props;
+    const { validRecords, invalidRecords, borderRadius } = props;
     const invalidCount = invalidRecords.length;
     const validCount = validRecords.length;
     const totalRecords = invalidCount + validCount;
@@ -22,7 +22,7 @@ export default function StatsCard(props) {
     };
 
     return (
-        <StyledStatsCard>
+        <StyledStatsCard borderRadius={borderRadius}>
             <StyledIcon />
             <StyledStatsCardContent>
                 <StatsCardLeftContainer>
@@ -48,9 +48,11 @@ export default function StatsCard(props) {
 StatsCard.propTypes = {
     validRecords: PropTypes.array,
     invalidRecords: PropTypes.array,
+    borderRadius: PropTypes.oneOf(['rounded', 'square', 'semi-rounded', 'semi-square']),
 };
 
 StatsCard.defaultProps = {
     validRecords: [],
     invalidRecords: [],
+    borderRadius: 'rounded',
 };
