@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StyledChip from './styled/chip';
 
-export default function SelectedFieldsToAssign({ values, onDelete }) {
+export default function SelectedFieldsToAssign({ values, onDelete, borderRadius }) {
     return values.map((value, index) => {
         const key = `field-${index}`;
         return (
@@ -12,6 +12,7 @@ export default function SelectedFieldsToAssign({ values, onDelete }) {
                 title={value}
                 variant="neutral"
                 onDelete={() => onDelete(value)}
+                borderRadius={borderRadius}
             />
         );
     });
@@ -20,9 +21,11 @@ export default function SelectedFieldsToAssign({ values, onDelete }) {
 SelectedFieldsToAssign.propTypes = {
     values: PropTypes.array,
     onDelete: PropTypes.func,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 SelectedFieldsToAssign.defaultProps = {
     values: [],
     onDelete: () => {},
+    borderRadius: 'rounded',
 };

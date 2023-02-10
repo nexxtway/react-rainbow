@@ -11,7 +11,7 @@ const StyledHeaderContainer = styled.div`
         props.theme.variant === 'listview' &&
         `
             justify-content: center;
-            text-transform: capitalize;
+            text-transform: none;
         `};
     ${props => props.headerAlignment === 'left' && 'justify-content: left;'}
     ${props => props.headerAlignment === 'center' && 'justify-content: center;'}

@@ -10,14 +10,14 @@ import StyledButtonIcon from './styled/buttonIcon';
 import StyledIcon from './styled/icon';
 
 export default function Preview(props) {
-    const { fileName, fileType, columns, data, isLoading, onRemoveFile } = props;
+    const { fileName, fileType, columns, data, isLoading, onRemoveFile, borderRadius } = props;
     const previewData = data.slice(0, 5);
     const name = fileName || 'Unknow File Name';
     const type = fileType || 'Unknow File Type';
 
     return (
         <div>
-            <StyledFileCard>
+            <StyledFileCard borderRadius={borderRadius}>
                 <CSVDocIcon />
                 <StyledFileCardContent>
                     <StyledFileCardTitle title={name}>{name}</StyledFileCardTitle>
@@ -42,6 +42,7 @@ Preview.propTypes = {
     data: PropTypes.array,
     isLoading: PropTypes.bool,
     onRemoveFile: PropTypes.func,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 Preview.defaultProps = {
@@ -51,4 +52,5 @@ Preview.defaultProps = {
     data: [],
     isLoading: false,
     onRemoveFile: () => {},
+    borderRadius: 'rounded',
 };

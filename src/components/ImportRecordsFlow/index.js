@@ -37,6 +37,7 @@ function ImportRecordsFlow(props) {
         schema,
         onComplete,
         actionType,
+        borderRadius,
         validateRecordFn,
     } = props;
     const [currentStepIndex, setCurrentStepIndex] = useState(
@@ -192,6 +193,7 @@ function ImportRecordsFlow(props) {
             size="medium"
             isOpen={isOpen}
             onRequestClose={onRequestClose}
+            borderRadius={borderRadius}
             footer={
                 <Footer
                     onBack={goBackStep}
@@ -200,6 +202,7 @@ function ImportRecordsFlow(props) {
                     isBackButtonDisabled={isBackButtonDisabled()}
                     isNextButtonDisabled={isNextButtonDisabled()}
                     actionType={actionType}
+                    borderRadius={borderRadius}
                 />
             }
         >
@@ -222,6 +225,7 @@ function ImportRecordsFlow(props) {
                 fieldsMap={fieldsMap}
                 invalidRecords={invalidRecords}
                 validRecords={validRecords}
+                borderRadius={borderRadius}
             />
         </Modal>
     );
@@ -249,6 +253,8 @@ ImportRecordsFlow.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The border radius of the modal. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
     /** A function to validate the record before import it. This function will be invoke on each record of the CSV returning
      * an object with the errors found in a record on each field. If the object doesn't have properties then the record is valid.
      */
@@ -266,6 +272,7 @@ ImportRecordsFlow.defaultProps = {
     onComplete: () => {},
     actionType: undefined,
     validateRecordFn: undefined,
+    borderRadius: 'rounded',
 };
 
 ImportRecordsFlow.MERGE_RECORDS = MERGE_RECORDS;

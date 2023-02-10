@@ -8,7 +8,7 @@ import AssignFieldModal from './assignFieldModal';
 import StyledTable from './styled/table';
 
 export default function StepThree(props) {
-    const { attributes, columns, onAssignField, fieldsMap, data, matchField } = props;
+    const { attributes, columns, onAssignField, fieldsMap, data, matchField, borderRadius } = props;
     const previewData = data.slice(0, 3);
 
     const [assignData, setAssignData] = useState([]);
@@ -40,7 +40,10 @@ export default function StepThree(props) {
                     defaultWidth={200}
                     header="Database fields"
                     field="databaseField"
-                    component={DatabaseFieldCell}
+                    component={rowProps => (
+                        // eslint-disable-next-line react/jsx-props-no-spreading
+                        <DatabaseFieldCell {...rowProps} borderRadius={borderRadius} />
+                    )}
                     headerAlignment="left"
                     cellAlignment="left"
                 />
@@ -48,8 +51,12 @@ export default function StepThree(props) {
                     field="fileField"
                     header="Fields on your CSV"
                     component={rowProps => (
-                        // eslint-disable-next-line react/jsx-props-no-spreading
-                        <CSVCell {...rowProps} onClick={openAssignFieldModal} />
+                        <CSVCell
+                            // eslint-disable-next-line react/jsx-props-no-spreading
+                            {...rowProps}
+                            onClick={openAssignFieldModal}
+                            borderRadius={borderRadius}
+                        />
                     )}
                     headerAlignment="left"
                     cellAlignment="left"
@@ -64,6 +71,7 @@ export default function StepThree(props) {
                 onAssignField={onAssignField}
                 fieldsMap={fieldsMap}
                 data={previewData}
+                borderRadius={borderRadius}
             />
         </div>
     );
@@ -76,6 +84,7 @@ StepThree.propTypes = {
     attributes: PropTypes.object,
     matchField: PropTypes.string,
     columns: PropTypes.array,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 StepThree.defaultProps = {
@@ -85,4 +94,5 @@ StepThree.defaultProps = {
     attributes: {},
     matchField: '',
     columns: [],
+    borderRadius: 'rounded',
 };
