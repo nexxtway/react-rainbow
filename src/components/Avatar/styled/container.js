@@ -31,6 +31,7 @@ const StyledContainer = attachThemeAttrs(styled.span)`
             height: 3.2rem;
             width: 3.2rem;
         `};
+
     ${props =>
         props.size === 'medium' &&
         `
@@ -38,6 +39,7 @@ const StyledContainer = attachThemeAttrs(styled.span)`
             height: 2.5rem;
             width: 2.5rem;
         `};
+
     ${props =>
         props.size === 'small' &&
         `
@@ -45,6 +47,7 @@ const StyledContainer = attachThemeAttrs(styled.span)`
             height: 1.5rem;
             width: 1.5rem;
         `};
+
     ${props =>
         props.size === 'x-small' &&
         `

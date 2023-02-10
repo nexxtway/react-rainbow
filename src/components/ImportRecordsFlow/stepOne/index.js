@@ -8,7 +8,14 @@ import OptionPicker from './optionPicker';
 import StyledSelect from './styled/styledSelect';
 
 export default function StepOne(props) {
-    const { schemaFields, actionOption, onChangeAction, matchField, onChangeMatchField } = props;
+    const {
+        schemaFields,
+        actionOption,
+        onChangeAction,
+        matchField,
+        onChangeMatchField,
+        borderRadius,
+    } = props;
     const [fieldOptions, setFieldOptions] = useState([]);
     const isMergeOption = actionOption === 'merge-records';
 
@@ -74,6 +81,7 @@ StepOne.propTypes = {
     onChangeAction: PropTypes.func,
     matchField: PropTypes.string,
     onChangeMatchField: PropTypes.func,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 StepOne.defaultProps = {
@@ -82,4 +90,5 @@ StepOne.defaultProps = {
     onChangeAction: () => {},
     matchField: '',
     onChangeMatchField: () => {},
+    borderRadius: 'rounded',
 };

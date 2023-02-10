@@ -16,6 +16,20 @@ const StyledCardInput = attachThemeAttrs(styled.div)`
     cursor: text;
 
     ${props =>
+        props.size === 'large' &&
+        `
+            padding: 0.9rem 1.2rem 0 1.2rem;
+            height: 3.4rem;
+        `};
+
+    ${props =>
+        props.size === 'small' &&
+        `
+            padding: 0.38rem 0.8rem 0 0.8rem;
+            height: 1.9rem;
+        `};
+
+    ${props =>
         props.disabled &&
         `
         background-color: ${props.palette.background.disabled} !important;

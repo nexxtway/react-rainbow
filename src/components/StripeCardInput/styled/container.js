@@ -12,6 +12,18 @@ const StyledContainer = attachThemeAttrs(styled.div)`
         background-color: ${props => props.palette.background.main};
         box-shadow: ${props => props.shadows.brand};
         outline: 0;
+
+        ${props =>
+            props.size === 'large' &&
+            `
+                padding: 0.84rem 1.125rem 0 1.125rem;
+            `};
+    
+        ${props =>
+            props.size === 'small' &&
+            `
+                padding: 0.32rem 0.75rem 0 0.75rem;
+            `};
     }
 
     .StripeElement--webkit-autofill {

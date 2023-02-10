@@ -148,6 +148,7 @@ export default function Cell(props) {
                 data-label={getHeaderLabel()}
                 isEditable={isEditable}
                 cellAlignment={cellAlignment}
+                component={component}
             >
                 <StyledCellContent component={component} isEditable={isEditable}>
                     <CellValue
