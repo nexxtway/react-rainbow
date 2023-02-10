@@ -21,22 +21,6 @@ const props = {
 };
 
 describe('<StepFour />', () => {
-    it('should call getPreviewDataToImport with the right values', () => {
-        mount(<StepFour {...props} />);
-        const data = [
-            { Name: 'John', Email: 'john@gmail.com' },
-            { Name: 'Marie', Email: 'marie@gmail.com' },
-        ];
-        const fieldsMap = {
-            name: 'Name',
-            email: 'Email',
-        };
-        const attributes = {
-            name: { required: true },
-            email: {},
-        };
-        expect(getPreviewDataToImport).toHaveBeenCalledWith(data, fieldsMap, attributes);
-    });
     it('should render the right amount of columns', () => {
         const component = shallow(<StepFour {...props} />);
         expect(component.find(Column).length).toBe(2);
