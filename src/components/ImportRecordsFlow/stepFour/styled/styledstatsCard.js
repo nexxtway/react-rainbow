@@ -18,20 +18,20 @@ const StyledStatsCard = attachThemeAttrs(styled.div)`
     ${props =>
         props.borderRadius === 'square' &&
         `
-                border-radius: ${BORDER_RADIUS_SQUARE};
-            `};
+            border-radius: ${BORDER_RADIUS_SQUARE};
+        `};
         
-        ${props =>
-            props.borderRadius === 'semi-square' &&
-            `
-                border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
-            `};
+    ${props =>
+        props.borderRadius === 'semi-square' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
+        `};
         
-        ${props =>
-            props.borderRadius === 'semi-rounded' &&
-            `
-                border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
-            `};
+    ${props =>
+        props.borderRadius === 'semi-rounded' &&
+        `
+            border-radius: ${BORDER_RADIUS_SEMI_ROUNDED};
+        `};
 `;
 
 export default StyledStatsCard;
