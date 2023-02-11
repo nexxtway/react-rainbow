@@ -253,12 +253,15 @@ const schema = {
             type: String,
             required: true,
         },
-        email: String,
-        lastName: String,
+        email: {
+            type: String,
+            required: true,
+        },
         phone: {
             type: String,
             required: true,
         },
+        lastName: String,
     },
 };
 
