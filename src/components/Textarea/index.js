@@ -91,6 +91,7 @@ class Textarea extends Component {
             onClick,
             onFocus,
             onBlur,
+            onKeyDown,
             onPaste,
             value,
             readOnly,
@@ -110,6 +111,7 @@ class Textarea extends Component {
             header,
             footer,
             variant,
+            size,
             borderRadius,
         } = this.props;
         const { isFocused } = this.state;
@@ -123,6 +125,7 @@ class Textarea extends Component {
                     required={required}
                     inputId={this.textareaId}
                     readOnly={readOnly}
+                    size={size}
                     id={this.getInlineTextLabelId()}
                 />
                 <StyledTextareaContainer
@@ -147,6 +150,7 @@ class Textarea extends Component {
                         onClick={onClick}
                         onFocus={this.updateFocus(true, onFocus)}
                         onBlur={this.updateFocus(false, onBlur)}
+                        onKeyDown={onKeyDown}
                         onPaste={onPaste}
                         readOnly={readOnly}
                         rows={rows}
@@ -154,6 +158,7 @@ class Textarea extends Component {
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.textareaRef}
+                        size={size}
                     />
                     <RenderIf isTrue={footer}>{footer}</RenderIf>
                 </StyledTextareaContainer>
@@ -209,6 +214,8 @@ Textarea.propTypes = {
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
+    /** The action triggered when a key is pressed on the element. */
+    onKeyDown: PropTypes.func,
     /** Event fired when the user paste on the Textarea */
     onPaste: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -224,6 +231,8 @@ Textarea.propTypes = {
     header: PropTypes.node,
     /** It is what will be displayed at the bottom of the component. */
     footer: PropTypes.node,
+    /** The size of the textarea. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The border radius of the textarea. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
@@ -246,6 +255,7 @@ Textarea.defaultProps = {
     onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
+    onKeyDown: () => {},
     onPaste: () => {},
     className: undefined,
     style: undefined,
@@ -255,6 +265,7 @@ Textarea.defaultProps = {
     hideLabel: false,
     header: undefined,
     footer: undefined,
+    size: 'medium',
     borderRadius: 'rounded',
 };
 

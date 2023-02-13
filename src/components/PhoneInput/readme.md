@@ -94,12 +94,18 @@ const Form = () => {
     </Container>
 ```
 
-##### PhoneInput with different border radius
+# PhoneInput of different sizes
+##### If you need to resize your input, you can do so using the `size` prop.
 
 ```js
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PhoneInput } from 'react-rainbow-components';
+
+const inputStyles = {
+    width: 500,
+    marginTop: 20,
+};
 
 const Container = styled.div`
     max-width: 480px;
@@ -107,14 +113,71 @@ const Container = styled.div`
     padding: 20px 10px;
     min-height: 300px;
 `;
-const Form = () => {
+
+const PhoneInputExample = () => {
+    const [value1, setValue1] = useState();
+    const [value2, setValue2] = useState();
+    const [value3, setValue3] = useState();
+
+    return (
+        <Container>
+            <PhoneInput
+                label="Input Label"
+                placeholder="Enter your phone number"
+                size="small"
+                value={value1}
+                onChange={setValue1}
+                style={inputStyles}
+            />
+            <PhoneInput
+                label="Input Label"
+                placeholder="Enter your phone number"
+                value={value2}
+                onChange={setValue2}
+                style={inputStyles}
+            />
+            <PhoneInput
+                label="Input Label"
+                placeholder="Enter your phone number"
+                size="large"
+                value={value3}
+                onChange={setValue3}
+                style={inputStyles}
+            />
+        </Container>
+    );
+}
+
+    <PhoneInputExample />
+
+```
+
+# PhoneInput with different border radius
+##### Use the `borderRadius` prop to change the border radius of the PhoneInput.
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { PhoneInput } from 'react-rainbow-components';
+
+const inputStyles = {
+    marginTop: 20,
+};
+
+const Container = styled.div`
+    max-width: 480px;
+    margin: 30px auto;
+    padding: 20px 10px;
+    min-height: 300px;
+`;
+const PhoneInputExample = () => {
     const [phone1, setPhone1] = useState();
     const [phone2, setPhone2] = useState();
     const [phone3, setPhone3] = useState();
     const [phone4, setPhone4] = useState();
 
     return (
-        <>
+        <Container>
             <PhoneInput
                 label="Phone Number with border radius square"
                 placeholder="Enter your phone number"
@@ -128,7 +191,7 @@ const Form = () => {
                 onChange={setPhone2}
                 value={phone2}
                 borderRadius="semi-square"
-                style={{ marginTop: '20px' }}
+                style={inputStyles}
             />
             <PhoneInput
                 label="Phone Number with border radius semi-rounded"
@@ -136,7 +199,7 @@ const Form = () => {
                 onChange={setPhone3}
                 value={phone3}
                 borderRadius="semi-rounded"
-                style={{ marginTop: '20px' }}
+                style={inputStyles}
             />
             <PhoneInput
                 label="Phone Number with border radius rounded"
@@ -144,13 +207,11 @@ const Form = () => {
                 onChange={setPhone4}
                 value={phone4}
                 borderRadius="rounded"
-                style={{ marginTop: '20px' }}
+                style={inputStyles}
             />
-        </>
+        </Container>
     );
 };
 
-    <Container>
-        <Form />
-    </Container>
+    <PhoneInputExample />
 ```

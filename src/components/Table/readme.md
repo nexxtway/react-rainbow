@@ -743,12 +743,6 @@ function TableListView() {
                         sortable
                     />
                     <Column
-                        header={<StyledTaskHeader>Task</StyledTaskHeader>}
-                        field="task"
-                        component={Task}
-                        cellAlignment="left"
-                    />
-                    <Column
                         header="Priority"
                         field="priority"
                         component={Priority}

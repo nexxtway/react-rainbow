@@ -24,6 +24,7 @@ export default function StepTwo(props) {
         onRemoveFile,
         fileName,
         fileType,
+        borderRadius,
     } = props;
 
     const [isDragOver, setIsDragOver] = useState(false);
@@ -59,6 +60,7 @@ export default function StepTwo(props) {
                 data={data}
                 isLoading={isLoading}
                 onRemoveFile={onRemoveFile}
+                borderRadius={borderRadius}
             />
         );
     }
@@ -72,7 +74,11 @@ export default function StepTwo(props) {
             onDrop={handleDrop}
             draggable
         >
-            <UploadFileButton onChange={handleChange} isDragOver={isDragOver} />
+            <UploadFileButton
+                onChange={handleChange}
+                isDragOver={isDragOver}
+                borderRadius={borderRadius}
+            />
 
             <RenderIf isTrue={isDragOver}>
                 <StyledDropImg />
@@ -98,6 +104,7 @@ StepTwo.propTypes = {
     onRemoveFile: PropTypes.func,
     fileName: PropTypes.string,
     fileType: PropTypes.string,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 StepTwo.defaultProps = {
@@ -109,4 +116,5 @@ StepTwo.defaultProps = {
     onRemoveFile: () => {},
     fileName: '',
     fileType: '',
+    borderRadius: 'rounded',
 };

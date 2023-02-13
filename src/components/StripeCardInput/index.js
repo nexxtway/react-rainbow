@@ -34,6 +34,7 @@ const StripeCardInput = React.forwardRef((props, ref) => {
         style,
         isScriptLoaded,
         isScriptLoadSucceed,
+        size,
         borderRadius,
     } = props;
     const [stripe, setStripe] = useState(null);
@@ -41,8 +42,9 @@ const StripeCardInput = React.forwardRef((props, ref) => {
     const stripeCardInputId = useUniqueIdentifier('stripe-card-input');
     const errorMessageId = useUniqueIdentifier('error-message');
     const theme = useTheme().rainbow;
-    const cardElementOptions = useMemo(() => getCardElementOptions(theme, disabled), [
+    const cardElementOptions = useMemo(() => getCardElementOptions(theme, disabled, size), [
         disabled,
+        size,
         theme,
     ]);
     const localeStripe = useLocale(locale);
@@ -91,6 +93,7 @@ const StripeCardInput = React.forwardRef((props, ref) => {
             style={style}
             disabled={disabled}
             error={error}
+            size={size}
         >
             <Label
                 label={label}
@@ -98,11 +101,13 @@ const StripeCardInput = React.forwardRef((props, ref) => {
                 labelAlignment={labelAlignment}
                 inputId={stripeCardInputId}
                 required={required}
+                size={size}
             />
             <StyledCardInput
                 ref={cardRef}
                 id={stripeCardInputId}
                 disabled={disabled}
+                size={size}
                 borderRadius={borderRadius}
             />
             <RenderIf isTrue={bottomHelpText}>
@@ -184,6 +189,8 @@ StripeCardInput.propTypes = {
      * @ignore
      */
     isScriptLoadSucceed: PropTypes.bool.isRequired,
+    /** The size of the input. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The border radius of the input. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
@@ -203,6 +210,7 @@ StripeCardInput.defaultProps = {
     onBlur: () => {},
     className: undefined,
     style: undefined,
+    size: 'medium',
     borderRadius: 'rounded',
 };
 

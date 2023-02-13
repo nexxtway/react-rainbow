@@ -9,7 +9,11 @@ import {
     BORDER_RADIUS_SEMI_SQUARE,
     BORDER_RADIUS_SEMI_ROUNDED,
 } from '../../../styles/borderRadius';
-import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
+import {
+    FONT_SIZE_TEXT_MEDIUM,
+    FONT_SIZE_TEXT_LARGE,
+    FONT_SIZE_TEXT_SMALL,
+} from '../../../styles/fontSizes';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
 import replaceAlpha from '../../../styles/helpers/color/replaceAlpha';
 
@@ -34,7 +38,24 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+    font-size: 0.8125rem;
+
+    ${props =>
+        props.size === 'large' &&
+        `
+            line-height: 3.275rem;
+            font-size: ${FONT_SIZE_TEXT_LARGE};
+            height: 3.4rem;
+    `};
+
+    ${props =>
+        props.size === 'small' &&
+        `
+            line-height: 1.775rem;
+            font-size: ${FONT_SIZE_TEXT_SMALL};
+            height: 1.9rem;
+    `};
 
     &:hover {
         cursor: pointer;
@@ -59,34 +80,36 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
     `}
 
     ${props =>
-        props.disabled &&
-        `
-        color: ${props.palette.text.disabled};
-
-        &:hover {
-            cursor: not-allowed;
-            border-color: ${props.palette.text.disabled};
-        }
-    `}
-
-    ${props =>
         props.error &&
         `
         color: ${props.palette.error.main};
         border: dashed 1px ${props.palette.error.main};
         background-color: ${replaceAlpha(props.palette.error.main, 0.1)};
 
-        &:hover {
-            border: dashed 1px ${props.palette.error.main};
-        }
-
         ${props.hasFocus &&
             `
             outline: 0;
             border: solid 1px ${props.palette.error.main};
             box-shadow: ${props.shadows.error};
-            `}
         `}
+
+        &:hover {
+            border: dashed 1px ${props.palette.error.main};
+        };
+    `}
+
+    ${props =>
+        props.disabled &&
+        `
+        color: ${props.palette.text.disabled};
+        border: dashed 1px ${props.palette.text.disabled};
+        background-color: ${props.palette.background.disabled};
+
+        &:hover {
+            cursor: not-allowed;
+            border-color: ${props.palette.text.disabled};
+        }
+    `}
     
     ${props =>
         props.isDragOver &&
@@ -137,6 +160,17 @@ export const StyledBackdrop = attachThemeAttrs(styled.div)`
     pointer-events: none;
 
     ${props =>
+        props.size === 'small' &&
+        `
+            padding-left: 2rem;
+        `};
+    ${props =>
+        props.size === 'large' &&
+        `
+            padding-left: 3rem;
+        `};
+
+    ${props =>
         props.isFileSelected &&
         `
         justify-content: left;
@@ -156,7 +190,18 @@ export const StyledBackdrop = attachThemeAttrs(styled.div)`
         background: transparent;
         height: 100%;
         width: 100%;
-        `}
+        
+        ${props.size === 'large' &&
+            `
+                font-size: ${FONT_SIZE_TEXT_LARGE};
+            `};
+    
+        ${props.size === 'small' &&
+            `
+                font-size: ${FONT_SIZE_TEXT_SMALL};
+            `};
+    `}
+
     
     ${props =>
         props.borderRadius === 'square' &&
@@ -187,7 +232,7 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
         ${props =>
             props.error &&
             `
-            color: ${props.palette.error.main}
+            color: ${props.palette.error.main};
         `}
 
         ${props =>
@@ -195,6 +240,25 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
             `
             color: ${props.palette.text.disabled};
         `}
+
+        ${props =>
+            props.isDragOver &&
+            `
+            color: ${props.palette.brand.main};
+        `}
+
+        ${props =>
+            props.size === 'small' &&
+            `
+                width: 20px !important;
+                height: 20px !important;
+            `};
+        ${props =>
+            props.size === 'large' &&
+            `
+            width: 28px !important;
+            height: 28px !important;
+        `};
     }
 
     ${props =>
@@ -205,18 +269,45 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
             width: 18px !important;
             height: 18px !important;
             font-size: 18px !important;
+            ${props.size === 'small' &&
+                `
+                width: 14px !important;
+                height: 14px !important;
+            `};
+            ${props.size === 'large' &&
+                `
+                width: 24px !important;
+                height: 24px !important;
+            `};
         }
     `}
 
     ${props =>
         props.iconPosition === 'left' &&
         `
-        left: ${props.readOnly ? 0 : '0.8rem'};
+        width: unset;
+        left: 0.8rem;
+        ${props.size === 'small' &&
+            `
+            left: 0.7rem;
+        `};
+        ${props.size === 'large' &&
+            `
+            left: 1.2rem;
+        `};
     `}
     ${props =>
         props.iconPosition === 'right' &&
         `
-        right: ${props.readOnly ? 0 : '0.3rem'};
+            right: 0.3rem;
+            ${props.size === 'small' &&
+                `
+                right: 0.1rem;
+            `};
+            ${props.size === 'large' &&
+                `
+                right: 0.6rem;
+            `};
     `}
 
     ${props =>
@@ -230,13 +321,32 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
             width: 64px !important;
             height: 64px !important;
             font-size: 64px !important;
+            ${props.size === 'small' &&
+                `
+                width: 40px !important;
+                height: 40px !important;
+            `};
+            ${props.size === 'large' &&
+                `
+                width: 80px !important;
+                height: 80px !important;
+            `};
 
             ${props.error &&
                 `
                 height: 40px !important;
                 width: 40px !important;
                 font-size: 40px !important;
-                color: ${props.palette.error.main};
+                ${props.size === 'small' &&
+                    `
+                    height: 32px !important;
+                    width: 32px !important;
+                `};
+                ${props.size === 'large' &&
+                    `
+                    height: 60px !important;
+                    width: 60px !important;
+                `};
             `}
         }
     `}
@@ -257,6 +367,20 @@ export const StyledButtonIcon = styled(ButtonIcon)`
 
     svg {
         pointer-events: none;
+        width: 20px;
+        height: 20px;
+        ${props =>
+            props.sizeIcon === 'small' &&
+            `
+                width: 16px !important;
+                height: 16px !important;
+            `};
+        ${props =>
+            props.sizeIcon === 'large' &&
+            `
+                width: 30px !important;
+                height: 30px !important;
+            `};
     }
 `;
 
