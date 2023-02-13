@@ -1,5 +1,5 @@
 const getErrors = errors => {
-    return Object.entries(errors).reduce((acc, [key, value]) => `${acc} ${key}: ${value},`, '');
+    return Object.entries(errors).reduce((acc, [key, value]) => `${acc} ${key}: ${value}. `, '');
 };
 
 export default function downloadErrorsCSV({ invalidRecords }) {
