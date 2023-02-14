@@ -29,6 +29,7 @@ export interface ColorInputProps extends BaseProps {
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
     onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
+    size?: 'small' | 'medium' | 'large';
     borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
 }
 

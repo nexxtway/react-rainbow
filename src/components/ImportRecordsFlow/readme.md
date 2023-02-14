@@ -139,3 +139,101 @@ class ImportRecordsFlowModal extends React.Component {
         </GlobalHeader>
     </div>
 ```
+
+
+##### ImportRecordsFlow with different border radius:
+
+```js
+import React, { useState } from 'react';
+import { ImportRecordsFlow, Button } from 'react-rainbow-components';
+
+const containerStyles = {
+    height: 200,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '4rem',
+};
+
+const schema = {
+    collection: 'users',
+    attributes: {
+        name: {
+            type: String,
+            required: true,
+        },
+        email: String,
+        driver: {
+            type: Number,
+            defaultTo: 0,
+        },
+        date: Date,
+    },
+};
+
+const ImportRecordsFlowModal = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [borderRadius, setBorderRadius] = useState('rounded');
+
+    const handleOnClick = value => {
+        setBorderRadius(value);
+        setIsOpen(true);
+    };
+
+    const handleOnClose = () => {
+        setIsOpen(false);
+    };
+
+    return (
+        <div>
+            <Button
+                className="rainbow-m-right_medium"
+                variant="neutral"
+                onClick={() => handleOnClick('square')}
+                borderRadius="square"
+            >
+                Square
+            </Button>
+            <Button
+                className="rainbow-m-right_medium"
+                variant="neutral"
+                onClick={() => handleOnClick('semi-square')}
+                borderRadius="semi-square"
+            >
+                Semi-Square
+            </Button>
+            <Button
+                className="rainbow-m-right_medium"
+                variant="neutral"
+                onClick={() => handleOnClick('semi-rounded')}
+                borderRadius="semi-rounded"
+            >
+                Semi-Rounded
+            </Button>
+            <Button
+                className="rainbow-m-right_medium"
+                variant="neutral"
+                onClick={() => handleOnClick('rounded')}
+                borderRadius="rounded"
+            >
+                Rounded
+            </Button>
+            <ImportRecordsFlow
+                isOpen={isOpen}
+                onRequestClose={handleOnClose}
+                schema={schema}
+                onComplete={data => console.log(data)}
+                borderRadius={borderRadius}
+            />
+        </div>
+    );
+};
+
+    <div style={containerStyles}>
+        <div className="rainbow-m-right_medium">
+            <ImportRecordsFlowModal />
+        </div>
+    </div>;
+
+```
+
