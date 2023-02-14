@@ -14,12 +14,14 @@ import ButtonIcon from '../../ButtonIcon';
 import useDefaultTooltipConnector from '../../InternalTooltip/hooks/useDefaultTooltipConnector';
 import DownloadCsv from '../icons/downloadCsv';
 import StyledTooltipText from './styled/styledTooltipText';
+import getPluralization from '../helpers/getPluralization';
 
 export default function StatsCard(props) {
     const { validRecords, invalidRecords, borderRadius } = props;
     const invalidCount = invalidRecords.length;
     const validCount = validRecords.length;
     const totalRecords = invalidCount + validCount;
+    const titleText = `Total: ${totalRecords} record${getPluralization(totalRecords)} on your file`;
     const onClick = () => {
         downloadErrorsCSV({ invalidRecords });
     };
@@ -36,9 +38,7 @@ export default function StatsCard(props) {
             <StyledIcon />
             <StyledStatsCardContent>
                 <StatsCardLeftContainer>
-                    <StyledStatsCardTitle>
-                        Total: {totalRecords} records on your file
-                    </StyledStatsCardTitle>
+                    <StyledStatsCardTitle>{titleText}</StyledStatsCardTitle>
                     <StyledStatsCardDescriptionContainer>
                         <StatsCount type="success" amount={validCount} />
                         <StatsCount type="error" amount={invalidCount} />

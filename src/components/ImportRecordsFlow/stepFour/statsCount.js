@@ -4,9 +4,16 @@ import StyledStatsCardDescription from './styled/statsCardDescription';
 import XCircle from '../icons/xCircle';
 import CheckCircle from '../icons/checkCircle';
 import RenderIf from '../../RenderIf';
+import getPluralization from '../helpers/getPluralization';
+
+const getCardDescription = (type, amount) => {
+    const plural = type === 'success' ? '' : getPluralization(amount);
+    return `${amount} ${type === 'success' ? 'Successful' : 'Error'}${plural}`;
+};
 
 export default function StatsCount(props) {
     const { type, amount } = props;
+    const description = getCardDescription(type, amount);
     return (
         <>
             <RenderIf isTrue={type === 'success'}>
@@ -15,9 +22,7 @@ export default function StatsCount(props) {
             <RenderIf isTrue={type === 'error'}>
                 <XCircle />
             </RenderIf>
-            <StyledStatsCardDescription>
-                {amount} {type === 'success' ? 'Successful' : 'Errors'}
-            </StyledStatsCardDescription>
+            <StyledStatsCardDescription>{description}</StyledStatsCardDescription>
         </>
     );
 }

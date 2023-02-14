@@ -255,7 +255,7 @@ ImportRecordsFlow.propTypes = {
     style: PropTypes.object,
     /** The border radius of the modal. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
-    /** A function to validate the record before import it. This function will be invoke on each record of the CSV returning
+    /** A function to validate the records before importing them. This function will be invoked on each record of the CSV returning
      * an object with the errors found in a record on each field. If the object doesn't have properties then the record is valid.
      */
     validateRecordFn: PropTypes.func,

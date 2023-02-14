@@ -4,8 +4,6 @@ import { shallow } from 'enzyme';
 import StepFour from '..';
 import Column from '../../../Column';
 
-jest.mock('../../helpers/getPreviewDataToImport', () => jest.fn());
-
 const props = {
     schemaFields: ['name', 'email'],
     data: [{ Name: 'John', Email: 'john@gmail.com' }, { Name: 'Marie', Email: 'marie@gmail.com' }],

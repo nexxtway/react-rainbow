@@ -237,10 +237,10 @@ const ImportRecordsFlowModal = () => {
 ```
 
 # ImportRecordFlow using validateRecordsFn
-##### The `validateRecordsFn` prop is a function to validate the record before import it. This function will be invoked on each record of the CSV returning an object with the errors found in a record on each field. If the object doesn't have properties then the record is valid.
+##### The `validateRecordsFn` prop is a function to validate the records before importing them. This function will be invoked on each record of the CSV returning of the CSV returning an object with the errors found in a record on each field. If the object doesn't have properties then the record is valid.
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import { ImportRecordsFlow, Button } from 'react-rainbow-components';
 
 const containerStyles = { height: 360 };
@@ -264,19 +264,19 @@ const schema = {
     },
 };
 
-function isPhoneValid(phone) {
+const isPhoneValid = phone => {
     const phoneRegex = /^\d{10}$/;
     return phoneRegex.test(phone);
 };
 
-function isEmailValid (email) {
+const isEmailValid = email => {
     const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     return emailRegex.test(email);
 };
 
-function validateRecords(record) {
+const validateRecords = record => {
     const error = {};
-    if (record.firstName === undefined ) {
+    if (record.firstName === undefined) {
         error.firstname = 'Name is required';
     }
     if (record.phone !== undefined && !isPhoneValid(record.phone)) {
@@ -286,46 +286,37 @@ function validateRecords(record) {
         error.email = 'Email is not valid';
     }
     return error;
-}
+};
 
-class ImportRecordsFlowModal extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: false,
-        };
-        this.handleOnClick = this.handleOnClick.bind(this);
-        this.handleOnClose = this.handleOnClose.bind(this);
-    }
+const ImportRecordsFlowModal = () => {
+    const [isOpen, setIsOpen] = useState(false);
 
-    handleOnClick() {
-        return this.setState({ isOpen: true });
-    }
+    const handleOnClick = () => {
+        setIsOpen(true);
+    };
 
-    handleOnClose() {
-        return this.setState({ isOpen: false });
-    }
+    const handleOnClose = () => {
+        setIsOpen(false);
+    };
 
-    render() {
-        const { isOpen } = this.state;
-        return (
-            <div>
-                <Button variant="neutral" onClick={this.handleOnClick}>
-                    <UploadIcon className="rainbow-m-right_x-small" />
-                    Import
-                </Button>
-                <ImportRecordsFlow
-                    isOpen={isOpen}
-                    onRequestClose={this.handleOnClose}
-                    schema={schema}
-                    onComplete={data => console.log(data)}
-                    actionType="add-records"
-                    validateRecordFn={validateRecords}
-                />
-            </div>
-        );
-    }
-}
+    return (
+        <div>
+            <Button variant="neutral" onClick={handleOnClick}>
+                <UploadIcon className="rainbow-m-right_x-small" />
+                Import
+            </Button>
+            <ImportRecordsFlow
+                isOpen={isOpen}
+                onRequestClose={handleOnClose}
+                schema={schema}
+                onComplete={data => console.log(data)}
+                actionType="add-records"
+                validateRecordFn={validateRecords}
+            />
+        </div>
+    );
+};
+
 
     <div style={containerStyles}>
         <GlobalHeader>
