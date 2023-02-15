@@ -1,7 +1,7 @@
-export default function getValidatedData({ validateRecordFn, dataToValidate }) {
+export default function getValidatedData({ validateRecordCallback, dataToValidate }) {
     return dataToValidate.reduce(
         (acc, record) => {
-            const errors = validateRecordFn(record);
+            const errors = validateRecordCallback(record);
             if (Object.keys(errors).length > 0) {
                 const recordWithErrors = {
                     ...record,

@@ -236,8 +236,8 @@ const ImportRecordsFlowModal = () => {
 
 ```
 
-# ImportRecordFlow using validateRecordsFn
-##### The `validateRecordsFn` prop is a function to validate the records before importing them. This function will be invoked on each record of the CSV returning of the CSV returning an object with the errors found in a record on each field. If the object doesn't have properties then the record is valid.
+# ImportRecordFlow using validateRecordCallback
+##### The `validateRecordCallback` prop is a function to validate the records before importing them. This function will be invoked on each record of the CSV returning of the CSV returning an object with the errors found in a record on each field. If the object doesn't have properties then the record is valid.
 
 ```js
 import React, { useState } from 'react';
@@ -274,7 +274,7 @@ const isEmailValid = email => {
     return emailRegex.test(email);
 };
 
-const validateRecords = record => {
+const validateRecord = record => {
     const error = {};
     if (record.firstName === undefined) {
         error.firstname = 'Name is required';
@@ -311,7 +311,7 @@ const ImportRecordsFlowModal = () => {
                 schema={schema}
                 onComplete={data => console.log(data)}
                 actionType="add-records"
-                validateRecordFn={validateRecords}
+                validateRecordCallback={validateRecord}
             />
         </div>
     );

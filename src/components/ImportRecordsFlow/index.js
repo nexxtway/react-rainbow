@@ -38,7 +38,7 @@ function ImportRecordsFlow(props) {
         onComplete,
         actionType,
         borderRadius,
-        validateRecordFn,
+        validateRecordCallback,
     } = props;
     const [currentStepIndex, setCurrentStepIndex] = useState(
         actionType === ADD_RECORDS_TYPE ? 1 : 0,
@@ -110,12 +110,12 @@ function ImportRecordsFlow(props) {
                 actionOption,
                 matchField,
             });
-            if (typeof validateRecordFn === 'function') {
+            if (typeof validateRecordCallback === 'function') {
                 const {
                     validRecords: validValidatedRecord,
                     invalidRecords: invalidValidatedRecord,
                 } = getValidatedData({
-                    validateRecordFn,
+                    validateRecordCallback,
                     dataToValidate: mappedRecords.current.data,
                 });
                 setValidRecords(validValidatedRecord);
@@ -258,7 +258,7 @@ ImportRecordsFlow.propTypes = {
     /** A function to validate the records before importing them. This function will be invoked on each record of the CSV returning
      * an object with the errors found in a record on each field. If the object doesn't have properties then the record is valid.
      */
-    validateRecordFn: PropTypes.func,
+    validateRecordCallback: PropTypes.func,
 };
 
 ImportRecordsFlow.defaultProps = {
@@ -271,7 +271,7 @@ ImportRecordsFlow.defaultProps = {
     onRequestClose: () => {},
     onComplete: () => {},
     actionType: undefined,
-    validateRecordFn: undefined,
+    validateRecordCallback: undefined,
     borderRadius: 'rounded',
 };
 

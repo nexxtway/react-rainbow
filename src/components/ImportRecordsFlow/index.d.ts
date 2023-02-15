@@ -19,7 +19,7 @@ export interface ImportRecordsFlowProps<T extends Record<string, unknown>> exten
     onComplete?: (value: CompleteValue) => void;
     actionType?: 'add-records';
     borderRadius?: 'square' | 'semi-square' | 'semi-rounded' | 'rounded';
-    validateRecordFn?: (record: T) => ValidationErrorObject;
+    validateRecordCallback?: (record: T) => ValidationErrorObject;
 }
 
 export default function(props: ImportRecordsFlowProps): JSX.Element | null;
