@@ -140,7 +140,6 @@ class ImportRecordsFlowModal extends React.Component {
     </div>
 ```
 
-
 ##### ImportRecordsFlow with different border radius:
 
 ```js
@@ -237,3 +236,93 @@ const ImportRecordsFlowModal = () => {
 
 ```
 
+# ImportRecordFlow using validateRecordsFn
+##### The `validateRecordsFn` prop is a function to validate the records before importing them. This function will be invoked on each record of the CSV returning of the CSV returning an object with the errors found in a record on each field. If the object doesn't have properties then the record is valid.
+
+```js
+import React, { useState } from 'react';
+import { ImportRecordsFlow, Button } from 'react-rainbow-components';
+
+const containerStyles = { height: 360 };
+
+const schema = {
+    collection: 'contacts',
+    attributes: {
+        firstName: {
+            type: String,
+            required: true,
+        },
+        email: {
+            type: String,
+            required: true,
+        },
+        phone: {
+            type: String,
+            required: true,
+        },
+        lastName: String,
+    },
+};
+
+const isPhoneValid = phone => {
+    const phoneRegex = /^\d{10}$/;
+    return phoneRegex.test(phone);
+};
+
+const isEmailValid = email => {
+    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return emailRegex.test(email);
+};
+
+const validateRecords = record => {
+    const error = {};
+    if (record.firstName === undefined) {
+        error.firstname = 'Name is required';
+    }
+    if (record.phone !== undefined && !isPhoneValid(record.phone)) {
+        error.phone = 'Phone is not valid';
+    }
+    if (!isEmailValid(record.email)) {
+        error.email = 'Email is not valid';
+    }
+    return error;
+};
+
+const ImportRecordsFlowModal = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleOnClick = () => {
+        setIsOpen(true);
+    };
+
+    const handleOnClose = () => {
+        setIsOpen(false);
+    };
+
+    return (
+        <div>
+            <Button variant="neutral" onClick={handleOnClick}>
+                <UploadIcon className="rainbow-m-right_x-small" />
+                Import
+            </Button>
+            <ImportRecordsFlow
+                isOpen={isOpen}
+                onRequestClose={handleOnClose}
+                schema={schema}
+                onComplete={data => console.log(data)}
+                actionType="add-records"
+                validateRecordFn={validateRecords}
+            />
+        </div>
+    );
+};
+
+
+    <div style={containerStyles}>
+        <GlobalHeader>
+            <div className="rainbow-m-right_medium">
+                <ImportRecordsFlowModal />
+            </div>
+        </GlobalHeader>
+    </div>
+```
