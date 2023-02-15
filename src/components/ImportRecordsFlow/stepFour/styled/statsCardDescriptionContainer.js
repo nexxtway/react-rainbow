@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledStatsCardDescriptionContainer = styled.div`
     display: flex;
