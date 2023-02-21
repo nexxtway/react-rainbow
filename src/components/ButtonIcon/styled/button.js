@@ -60,6 +60,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
     &:focus,
     &:active {
         color: ${props => props.palette.brand.dark};
+        background: ${props => props.palette.brand.light};
     }
 
     &:active {
@@ -99,7 +100,9 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             &:hover,
             &:focus,
             &:active {
-                background-color: ${props.palette.action.active};
+                background-color: ${props.palette.brand.light};
+                border: 1px solid ${props.palette.brand.dark};
+                color: ${props.palette.brand.dark};
             }
 
             &[disabled] {
@@ -150,7 +153,9 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             &:hover,
             &:focus,
             &:active {
-                border-color: ${props.palette.brand.dark};
+                background-color: ${props.palette.brand.light};
+                border: 1px solid ${props.palette.brand.dark};
+                color: ${props.palette.brand.dark};
             }
         
             &[disabled] {
@@ -249,9 +254,9 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             &:hover,
             &:focus,
             &:active {
-                background-color: transparent;
-                border: 1px solid ${props.palette.brand.dark};
-                color: ${props.palette.brand.dark};
+                background-color: ${props.palette.background.highlight};
+                border: 1px solid ${props.palette.border.divider};
+                color: ${props.palette.text.main};
             }
         
             &[disabled] {
@@ -271,7 +276,9 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             &:hover,
             &:focus,
             &:active {
-                background-color: ${props.palette.action.active};
+                background-color: ${props.palette.background.highlight};
+                border: 1px solid ${props.palette.border.divider};
+                color: ${props.palette.text.main};
             }
         
             &[disabled] {
@@ -339,6 +346,13 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
         `
             box-shadow: ${props.shadows.shadow_10};
             border: 1px solid transparent;
+
+            &:hover,
+            &:focus,
+            &:active {
+                border: 1px solid transparent;
+                box-shadow: ${props.shadows.shadow_11};
+            }
         `};
     ${props =>
         props.size === 'xx-small' &&
