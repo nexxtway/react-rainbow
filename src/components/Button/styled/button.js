@@ -70,6 +70,8 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
     &:active,
     &:visited {
         text-decoration: none;
+        background-color: ${props => props.palette.brand.light};
+        color: ${props => props.palette.brand.dark};
     }
 
     ${props =>
@@ -121,7 +123,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
         ${props =>
             !props.disabled &&
             `transform: scale(0.95);
-            `}
+        `}
         transition: all 0.2s ease;
     }
 
@@ -145,7 +147,9 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             &:hover,
             &:focus,
             &:active {
-                background-color: ${props.palette.action.active};
+                background-color: ${props.palette.brand.light};
+                border: 1px solid ${props.palette.brand.dark};
+                color: ${props.palette.brand.dark};
             }
 
             &[disabled] {
@@ -154,6 +158,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
                 };
             }
         `};
+
     ${props => {
         const brandMainContrastText = props.palette.getContrastText(props.palette.brand.main);
         const brandDarkContrastText = props.palette.getContrastText(props.palette.brand.dark);
@@ -190,6 +195,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
         `
         );
     }};
+
     ${props =>
         props.variant === 'outline-brand' &&
         `
@@ -201,6 +207,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             &:focus,
             &:active {
                 border-color: ${props.palette.brand.dark};
+                color: ${props.palette.brand.dark};
             }
         
             &[disabled] {
@@ -210,6 +217,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
                 };
             }
         `};
+
     ${props => {
         const errorMainContrastText = props.palette.getContrastText(props.palette.error.main);
         const errorDarkContrastText = props.palette.getContrastText(props.palette.error.dark);
@@ -306,9 +314,9 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             &:hover,
             &:focus,
             &:active {
-                background-color: transparent;
-                border: 1px solid ${props.palette.brand.dark};
-                color: ${props.palette.brand.dark};
+                background-color: ${props.palette.background.highlight};
+                border: 1px solid ${props.palette.border.divider};
+                color: ${props.palette.text.main};
             }
         
             &[disabled] {
@@ -329,13 +337,16 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             &:hover,
             &:focus,
             &:active {
-                background-color: ${props.palette.action.active};
+                background-color: ${props.palette.background.highlight};
+                border: 1px solid ${props.palette.border.divider};
+                color: ${props.palette.text.main};
             }
         
             &[disabled] {
                 background-color: transparent;
             }
         `};
+
     ${props =>
         props.variant === 'inverse' &&
         `
@@ -359,6 +370,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
                 color: ${props.inverse.disabled};
             }
         `};
+
     ${props =>
         props.variant === 'border-inverse' &&
         `   background-color: transparent;
@@ -387,8 +399,15 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
     ${props =>
         props.shaded &&
         `
-        box-shadow: ${props.shadows.shadow_10};
-        border: 1px solid transparent;
+            box-shadow: ${props.shadows.shadow_10};
+            border: 1px solid transparent;
+
+        &:hover,
+        &:focus,
+        &:active {
+            border: 1px solid transparent;
+            box-shadow: ${props.shadows.shadow_11};
+        }
     `};
 `;
 
