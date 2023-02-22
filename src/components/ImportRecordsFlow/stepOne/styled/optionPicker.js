@@ -14,10 +14,10 @@ export const OptionContainer = attachThemeAttrs(styled.div)`
     align-items: center;
     justify-content: space-between;
     width: 40rem;
-    padding: 8px 14px;
-    background-color: ${props => props.palette.border.disabled};
+    padding: 12px 16px 12px 20px;
+    background-color: ${props => props.palette.background.secondary};
     border-radius: 10px;
-    margin-top: -20px;
+    margin-top: -16px;
 
     ${props =>
         props.isSelected &&
@@ -85,7 +85,7 @@ export const OptionName = attachThemeAttrs(styled.h3)`
 
 export const OptionDescription = attachThemeAttrs(styled.p)`
     font-size: 14px;
-    color: ${props => props.palette.text.header};
+    color: ${props => props.palette.text.label};
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -103,7 +103,7 @@ export const StyledMergeFiles = attachThemeAttrs(styled(MergeFiles))`
 
 export const IconContainer = attachThemeAttrs(styled.div)`
     display: flex;
-    background-color: ${props => props.palette.background.secondary};
+    background-color: ${props => props.palette.background.main};
     align-items: center;
     justify-content: center;
     width: 40px;
