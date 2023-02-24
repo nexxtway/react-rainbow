@@ -38,18 +38,6 @@ const StyledTextarea = attachThemeAttrs(styled.textarea)`
     :focus,
     :active {
         outline: 0;
-        padding: 0.563rem 0.9375rem;
-        ${props =>
-            props.size === 'large' &&
-            `
-                padding: 0.563rem 1.125rem;
-            `};
-    
-        ${props =>
-            props.size === 'small' &&
-            `
-                padding: 0.563rem 0.75rem;
-            `};
     }
 
     ::placeholder {
