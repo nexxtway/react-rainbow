@@ -113,7 +113,6 @@ class Textarea extends Component {
             variant,
             size,
             borderRadius,
-            grow,
         } = this.props;
         const { isFocused } = this.state;
 
@@ -161,7 +160,6 @@ class Textarea extends Component {
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.textareaRef}
                         size={size}
-                        grow={grow}
                     />
                     <RenderIf isTrue={footer}>{footer}</RenderIf>
                 </StyledTextareaContainer>
