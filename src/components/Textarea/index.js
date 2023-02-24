@@ -135,7 +135,6 @@ class Textarea extends Component {
                     variant={variant}
                     isFocused={isFocused}
                     borderRadius={borderRadius}
-                    grow={grow}
                 >
                     <RenderIf isTrue={header}>{header}</RenderIf>
                     <StyledTextarea
