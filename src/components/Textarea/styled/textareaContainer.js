@@ -18,10 +18,10 @@ const StyledTextareaContainer = attachThemeAttrs(styled.div)`
     ${props =>
         props.isFocused &&
         `
-        outline: solid 1px ${props.palette.brand.main};
-        border: solid 1px ${props.palette.brand.main};
         background-color: ${props.palette.background.main};
         box-shadow: ${props.shadows.brand};
+        outline: solid 1px ${props.palette.brand.main};
+        border: solid 1px ${props.palette.brand.main};
         `}
     ${props =>
         props.variant === 'shaded' &&
