@@ -129,6 +129,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
 
     &[disabled] {
         color: ${props => props.palette.text.disabled};
+        background-color: ${props => props.palette.background.disabled};
         cursor: default;
     }
 
@@ -154,8 +155,12 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
 
             &[disabled] {
                 background-color: ${
-                    props.isLoading ? props.palette.background.main : 'transparent'
+                    props.isLoading
+                        ? props.palette.background.main
+                        : props.palette.background.disabled
                 };
+                border: 1px solid ${props.palette.border.divider};
+                color: ${props.palette.text.disabled};
             }
         `};
 
@@ -215,6 +220,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
                 border-color: ${
                     props.isLoading ? props.palette.brand.main : props.palette.border.divider
                 };
+                color: ${props.palette.text.disabled};
             }
         `};
 
@@ -344,6 +350,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
         
             &[disabled] {
                 background-color: transparent;
+                color: ${props.palette.text.disabled};
             }
         `};
 
