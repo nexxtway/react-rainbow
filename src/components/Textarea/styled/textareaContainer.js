@@ -22,12 +22,21 @@ const StyledTextareaContainer = attachThemeAttrs(styled.div)`
         border: solid 2px ${props.palette.brand.main};
         box-shadow: ${props.shadows.brand};
         `}
+
     ${props =>
         props.variant === 'shaded' &&
         `
-        box-shadow:${props.disabled || props.readOnly ? '' : props.shadows.shadow_10};
-        border: 1px solid transparent;
+            box-shadow:${props.disabled || props.readOnly ? '' : props.shadows.shadow_10};
+            border: 1px solid transparent;
         `}
+
+    ${props =>
+        props.variant === 'shaded' &&
+        props.isFocused &&
+        `
+            border: 2px solid transparent;
+        `}
+
 
     ${props =>
         props.error &&
