@@ -355,11 +355,11 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
                 color: ${props.palette.text.disabled};
             }
         `};
-
     ${props => {
         const inverseBackgroundColor = replaceAlpha(colorToRgba(props.inverse.active), 0.1);
-        if (props.variant === 'inverse') {
-            return `
+        return (
+            props.variant === 'inverse' &&
+            `
             background-color: transparent;
             border: 1px solid transparent;
             color: ${props.inverse.text};
@@ -380,39 +380,40 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
                 background-color: transparent;
                 color: ${props.inverse.disabled};
             }
-        `;
-        }
+        `
+        );
     }};
 
     ${props => {
         const inverseBackgroundColor = replaceAlpha(colorToRgba(props.inverse.active), 0.1);
-        if (props.variant === 'border-inverse') {
-            return `   
-                background-color: transparent;
-                border: 1px solid ${props.inverse.text};
-                color: ${props.inverse.border};
+        return (
+            props.variant === 'border-inverse' &&
+            `   
+            background-color: transparent;
+            border: 1px solid ${props.inverse.text};
+            color: ${props.inverse.border};
 
-                &:hover,
-                &:focus,
-                &:active {
-                    border-color: ${props.inverse.active};
-                    color: ${props.inverse.active};
-                    background-color: ${inverseBackgroundColor}
-                }
+            &:hover,
+            &:focus,
+            &:active {
+                border-color: ${props.inverse.active};
+                color: ${props.inverse.active};
+                background-color: ${inverseBackgroundColor}
+            }
             
-                &:focus {
-                    outline: none;
-                    box-shadow: ${props.shadows.shadow_5};
-                }
+            &:focus {
+                outline: none;
+                box-shadow: ${props.shadows.shadow_5};
+            }
             
-                &[disabled] {
-                    background-color: transparent;
-                    border-color: ${props.isLoading ? props.inverse.text : props.inverse.disabled};
-                    color: ${props.inverse.disabled};
-                }
-            `;
-        }
-    }};   
+            &[disabled] {
+                background-color: transparent;
+                border-color: ${props.isLoading ? props.inverse.text : props.inverse.disabled};
+                color: ${props.inverse.disabled};
+            }
+        `
+        );
+    }}};   
     
     ${props =>
         props.shaded &&
