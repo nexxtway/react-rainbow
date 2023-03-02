@@ -79,6 +79,8 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
 
     &[disabled] {
         color: ${props => props.palette.text.disabled};
+        background-color: transparent;
+        border-color: transparent;
         cursor: default;
     }
 
@@ -106,9 +108,9 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             }
 
             &[disabled] {
-                background-color: ${
-                    props.isLoading ? props.palette.background.main : 'transparent'
-                };
+                background-color: transparent;
+                border-color: ${props.palette.border.disabled};
+                color: ${props.palette.text.disabled};
             }
         `};
     ${props => {
@@ -137,7 +139,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             
                 &[disabled] {
                     background-color: ${props.palette.background.disabled};
-                    border: 1px solid ${props.palette.border.disabled};
+                    border-color: ${props.palette.background.disabled};
                     color: ${props.palette.text.disabled};
                 }
             `
@@ -160,9 +162,8 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
         
             &[disabled] {
                 background-color: transparent;
-                border-color: ${
-                    props.isLoading ? props.palette.brand.main : props.palette.border.divider
-                };
+                border-color: ${props.palette.border.disabled};
+                color: ${props.palette.text.disabled};
             }
         `};
     ${props => {
@@ -199,12 +200,8 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             }
         
             &[disabled] {
-                background-color: ${
-                    props.isLoading ? props.palette.error.main : props.palette.background.disabled
-                };
-                border-color: ${
-                    props.isLoading ? props.palette.error.main : props.palette.background.disabled
-                };
+                background-color: ${props.palette.background.disabled};
+                border-color: ${props.palette.background.disabled};
                 color: ${props.palette.text.disabled};
             }
         `
@@ -237,7 +234,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             
                 &[disabled] {
                     background-color: ${props.palette.background.disabled};
-                    border: 1px solid ${props.palette.border.disabled};
+                    border-color: ${props.palette.background.disabled};
                     color: ${props.palette.text.disabled};
                 }
             `
@@ -283,6 +280,8 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
         
             &[disabled] {
                 background-color: transparent;
+                border-color: ${props.palette.border.disabled};
+                color: ${props.palette.text.disabled};
             }
         `};
 

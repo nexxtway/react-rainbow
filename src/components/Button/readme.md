@@ -93,19 +93,26 @@ import React from 'react';
 import { Button } from 'react-rainbow-components';
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-        <Button disabled label="Button Base Disabled" className="rainbow-m-around_medium" />
+        <Button variant="base" label="Button Base" className="rainbow-m-around_medium" disabled/>
+        <Button label="Button Outline Brand" variant="outline-brand" className="rainbow-m-around_medium" disabled/>
+        <Button label="Button Border" variant="border" className="rainbow-m-around_medium" disabled/>
+        <Button label="Button Neutral" variant="neutral" className="rainbow-m-around_medium" disabled/>
+        <Button label="Button Border Filled" variant="border-filled" className="rainbow-m-around_medium" disabled/>
         <Button
-            disabled
-            label="Button Neutral Disabled"
-            variant="neutral"
-            className="rainbow-m-around_medium"
-        />
-        <Button
-            disabled
-            label="Button Brand Disabled"
+            label="Button Brand"
+            onClick={() => alert('clicked!')}
             variant="brand"
             className="rainbow-m-around_medium"
+            disabled
         />
+        <Button
+            label="Button Success"
+            onBlur={() => alert('blurred!')}
+            variant="success"
+            className="rainbow-m-around_medium"
+            disabled
+        />
+        <Button label="Button Destructive" variant="destructive" className="rainbow-m-around_medium" disabled/>
     </div>
 ```
 

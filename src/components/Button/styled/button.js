@@ -12,7 +12,7 @@ import {
 } from '../../../styles/borderRadius';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { COLOR_WHITE, COLOR_GRAY_3, COLOR_DARK_1 } from '../../../styles/colors';
-import { lighten } from '../../../styles/helpers/color';
+import { lighten, colorToRgba, replaceAlpha } from '../../../styles/helpers/color';
 
 const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
     if (props.palette.isDark) {
@@ -129,8 +129,9 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
 
     &[disabled] {
         color: ${props => props.palette.text.disabled};
-        background-color: ${props => props.palette.background.disabled};
+        background-color: transparent;
         cursor: default;
+        border-color: transparent;
     }
 
     &[disabled] * {
@@ -154,12 +155,10 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             }
 
             &[disabled] {
-                background-color: ${
-                    props.isLoading
-                        ? props.palette.background.main
-                        : props.palette.background.disabled
+                background-color: transparent;
+                border-color: ${
+                    props.isLoading ? props.palette.brand.main : props.palette.border.disabled
                 };
-                border: 1px solid ${props.palette.border.divider};
                 color: ${props.palette.text.disabled};
             }
         `};
@@ -193,7 +192,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
                     props.isLoading ? props.palette.brand.main : props.palette.background.disabled
                 };
                 border-color: ${
-                    props.isLoading ? props.palette.brand.main : props.palette.border.divider
+                    props.isLoading ? props.palette.brand.main : props.palette.background.disabled
                 };
                 color: ${props.palette.text.disabled};
             }
@@ -218,7 +217,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             &[disabled] {
                 background-color: transparent;
                 border-color: ${
-                    props.isLoading ? props.palette.brand.main : props.palette.border.divider
+                    props.isLoading ? props.palette.brand.main : props.palette.border.disabled
                 };
                 color: ${props.palette.text.disabled};
             }
@@ -327,7 +326,9 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
         
             &[disabled] {
                 background-color: transparent;
-                border: 1px solid ${props.palette.border.disabled};
+                border-color: ${
+                    props.isLoading ? props.palette.brand.main : props.palette.border.disabled
+                };
                 color: ${props.palette.text.disabled};
             }
         `};
@@ -350,13 +351,15 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
         
             &[disabled] {
                 background-color: transparent;
+                border-color: ${props.palette.border.disabled};
                 color: ${props.palette.text.disabled};
             }
         `};
 
-    ${props =>
-        props.variant === 'inverse' &&
-        `
+    ${props => {
+        const inverseBackgroundColor = replaceAlpha(colorToRgba(props.inverse.active), 0.1);
+        if (props.variant === 'inverse') {
+            return `
             background-color: transparent;
             border: 1px solid transparent;
             color: ${props.inverse.text};
@@ -365,6 +368,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             &:focus,
             &:active {
                 color: ${props.inverse.active};
+                background-color: ${inverseBackgroundColor};
             }
         
             &:focus {
@@ -376,32 +380,39 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
                 background-color: transparent;
                 color: ${props.inverse.disabled};
             }
-        `};
+        `;
+        }
+    }};
 
-    ${props =>
-        props.variant === 'border-inverse' &&
-        `   background-color: transparent;
-            border: 1px solid ${props.inverse.text};
-            color: ${props.inverse.border};
-
-            &:hover,
-            &:focus,
-            &:active {
-                border-color: ${props.inverse.active};
-                color: ${props.inverse.active};
-            }
-        
-            &:focus {
-                outline: none;
-                box-shadow: ${props.shadows.shadow_5};
-            }
-        
-            &[disabled] {
+    ${props => {
+        const inverseBackgroundColor = replaceAlpha(colorToRgba(props.inverse.active), 0.1);
+        if (props.variant === 'border-inverse') {
+            return `   
                 background-color: transparent;
-                border-color: ${props.isLoading ? props.inverse.text : props.inverse.disabled};
-                color: ${props.inverse.disabled};
-            }
-        `};   
+                border: 1px solid ${props.inverse.text};
+                color: ${props.inverse.border};
+
+                &:hover,
+                &:focus,
+                &:active {
+                    border-color: ${props.inverse.active};
+                    color: ${props.inverse.active};
+                    background-color: ${inverseBackgroundColor}
+                }
+            
+                &:focus {
+                    outline: none;
+                    box-shadow: ${props.shadows.shadow_5};
+                }
+            
+                &[disabled] {
+                    background-color: transparent;
+                    border-color: ${props.isLoading ? props.inverse.text : props.inverse.disabled};
+                    color: ${props.inverse.disabled};
+                }
+            `;
+        }
+    }};   
     
     ${props =>
         props.shaded &&
