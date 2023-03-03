@@ -107,36 +107,37 @@ const StyledTextarea = attachThemeAttrs(styled.textarea)`
     &[readonly] {
         padding: 0;
         width: 100%;
+        border-radius: 0;
 
         :focus,
         :active {
             width: 100%;
-            border-radius: 0;
+        }
     }
 
     ${props =>
         props.error &&
         `
-            background-clip: padding-box;
+        background-clip: padding-box;
 
-            &:focus,
-            &:active {
-                padding: 0.625rem 1rem;
-                width: calc(100% - 2rem);
+        :focus,
+        :active {
+            padding: 0.625rem 1rem;
+            width: calc(100% - 2rem);
 
-                ${props.size === 'large' &&
-                    `
-                        padding: 0.625rem 1.2rem;
-                        width: calc(100% - 2.4rem);
-                    `};
-            
-                ${props.size === 'small' &&
-                    `
-                        padding: 0.625rem 0.8rem;
-                        width: calc(100% - 1.6rem);
-                    `};
-            }
-        `};
+            ${props.size === 'large' &&
+                `
+                    padding: 0.625rem 1.2rem;
+                    width: calc(100% - 2.4rem);
+                `};
+        
+            ${props.size === 'small' &&
+                `
+                    padding: 0.625rem 0.8rem;
+                    width: calc(100% - 1.6rem);
+                `};
+        }
+    `}};
 `;
 
 export default StyledTextarea;
