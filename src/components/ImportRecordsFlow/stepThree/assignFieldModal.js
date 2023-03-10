@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Modal from '../../Modal';
 import getFileFieldsOptions from '../helpers/getFileFieldsOptions';
@@ -19,8 +19,10 @@ export default function AssignFieldModal(props) {
         fieldsMap,
         data,
         attributes,
+        borderRadius,
     } = props;
     const modalTitle = <AssignFieldModalTitle field={databaseFieldToAssign} />;
+    const hasAssignRef = useRef(false);
 
     const [fileFieldsOptions, setFileFieldsOptions] = useState([]);
     useEffect(() => {
@@ -34,12 +36,18 @@ export default function AssignFieldModal(props) {
     }, [columns, databaseFieldToAssign, fieldsMap, isAssignFieldModalOpen]);
 
     const [fileFieldsToAssign, setFileFieldsToAssign] = useState([]);
-    const isAssignButtonDisabled = fileFieldsToAssign.length === 0;
+    const isAssignButtonDisabled = !hasAssignRef.current && fileFieldsToAssign.length === 0;
     useEffect(() => {
         if (fieldsMap[databaseFieldToAssign]) {
+            if (fieldsMap[databaseFieldToAssign].split(',').length > 0) {
+                hasAssignRef.current = true;
+            }
             return setFileFieldsToAssign(fieldsMap[databaseFieldToAssign].split(','));
         }
-        return setFileFieldsToAssign([]);
+        return setFileFieldsToAssign(() => {
+            hasAssignRef.current = false;
+            return [];
+        });
     }, [fieldsMap, databaseFieldToAssign, isAssignFieldModalOpen]);
 
     const handleAssign = () => {
@@ -77,8 +85,10 @@ export default function AssignFieldModal(props) {
                     onCancel={onRequestClose}
                     onAssign={handleAssign}
                     isAssignButtonDisabled={isAssignButtonDisabled}
+                    borderRadius={borderRadius}
                 />
             }
+            borderRadius={borderRadius}
         >
             <StyledModalContainer hasNotFileFieldsToAssign={hasNotFileFieldsToAssign}>
                 <StyledSelect
@@ -86,8 +96,13 @@ export default function AssignFieldModal(props) {
                     options={fileFieldsOptions}
                     onChange={selectFileField}
                     value="default"
+                    borderRadius={borderRadius}
                 />
-                <SelectedFieldsToAssign values={fileFieldsToAssign} onDelete={deleteFileField} />
+                <SelectedFieldsToAssign
+                    values={fileFieldsToAssign}
+                    onDelete={deleteFileField}
+                    borderRadius={borderRadius}
+                />
                 <Preview
                     field={databaseFieldToAssign}
                     fileFields={fileFieldsToAssign}
@@ -108,6 +123,7 @@ AssignFieldModal.propTypes = {
     fieldsMap: PropTypes.object,
     data: PropTypes.array,
     attributes: PropTypes.object.isRequired,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 AssignFieldModal.defaultProps = {
@@ -118,4 +134,5 @@ AssignFieldModal.defaultProps = {
     onAssignField: () => {},
     fieldsMap: {},
     data: [],
+    borderRadius: 'square',
 };

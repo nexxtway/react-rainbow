@@ -8,8 +8,7 @@ import { CellContainer, StyledCVSFieldContainer } from './styled/cvsFieldContain
 import StyledCancelIcon from './styled/cancelIcon';
 
 export default function CSVCell(props) {
-    const { onClick, row, value } = props;
-
+    const { onClick, row, value, borderRadius } = props;
     return (
         <CellContainer>
             <RenderIf isTrue={value}>
@@ -19,6 +18,7 @@ export default function CSVCell(props) {
                     onClick={() => onClick(row.databaseField)}
                     icon={<Pencil />}
                     size="small"
+                    borderRadius={borderRadius}
                 />
             </RenderIf>
             <RenderIf isTrue={!value}>
@@ -31,6 +31,7 @@ export default function CSVCell(props) {
                     onClick={() => onClick(row.databaseField)}
                     icon={<Plus />}
                     size="small"
+                    borderRadius={borderRadius}
                 />
             </RenderIf>
         </CellContainer>
@@ -41,9 +42,11 @@ CSVCell.propTypes = {
     onClick: PropTypes.func,
     row: PropTypes.object.isRequired,
     value: PropTypes.string,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 CSVCell.defaultProps = {
     onClick: () => {},
     value: undefined,
+    borderRadius: 'rounded',
 };

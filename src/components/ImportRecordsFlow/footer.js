@@ -15,6 +15,7 @@ export default function DirectionalFooter(props) {
         isBackButtonDisabled,
         isNextButtonDisabled,
         actionType,
+        borderRadius,
     } = props;
 
     const getLabel = () => {
@@ -26,7 +27,12 @@ export default function DirectionalFooter(props) {
 
     return (
         <StyledFooter>
-            <StyledBackButton label="Back" onClick={onBack} disabled={isBackButtonDisabled} />
+            <StyledBackButton
+                label="Back"
+                onClick={onBack}
+                disabled={isBackButtonDisabled}
+                borderRadius={borderRadius}
+            />
             <ProgressIndicator currentStepName={currentStep}>
                 <RenderIf isTrue={!actionType}>
                     <ProgressStep name="step-1" />
@@ -40,6 +46,7 @@ export default function DirectionalFooter(props) {
                 variant="brand"
                 onClick={onNext}
                 disabled={isNextButtonDisabled}
+                borderRadius={borderRadius}
             />
         </StyledFooter>
     );
@@ -52,6 +59,7 @@ DirectionalFooter.propTypes = {
     isBackButtonDisabled: PropTypes.bool,
     isNextButtonDisabled: PropTypes.bool,
     actionType: PropTypes.string,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 DirectionalFooter.defaultProps = {
@@ -61,4 +69,5 @@ DirectionalFooter.defaultProps = {
     isBackButtonDisabled: false,
     isNextButtonDisabled: false,
     actionType: undefined,
+    borderRadius: 'rounded',
 };

@@ -14,6 +14,12 @@ const StyledCell = attachThemeAttrs(styled.th)`
 
     :first-child > div {
         padding-left: 18px;
+
+        ${props =>
+            props.component &&
+            `
+                padding-left: 0;
+        `}
     }
 
     ${props =>
@@ -48,7 +54,6 @@ const StyledCell = attachThemeAttrs(styled.th)`
             border-top-left-radius: 12px; 
             border-bottom-left-radius: 12px;
             overflow: hidden;
-            padding-left: 0.75rem;
         }
     `}
 

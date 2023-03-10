@@ -254,6 +254,45 @@ const containerStyles = {
     />;
 ```
 
+##### Textarea with different sizes
+
+```js
+import React from 'react';
+import { Textarea } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+    <>
+        <Textarea
+            label="Textarea with small size"
+            rows={3}
+            placeholder="Placeholder Text"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            size="small"
+        />
+
+        <Textarea
+            label="Textarea with medium size"
+            rows={3}
+            placeholder="Placeholder Text"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        />
+
+        <Textarea
+            label="Textarea with large size"
+            rows={3}
+            placeholder="Placeholder Text"
+            style={containerStyles}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            size="large"
+        />
+    </>;
+```
+
 ##### Textarea with different border radius
 
 ```js
