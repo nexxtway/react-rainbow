@@ -6,7 +6,7 @@ import {
     BORDER_RADIUS_SEMI_SQUARE,
     BORDER_RADIUS_SEMI_ROUNDED,
 } from '../../../styles/borderRadius';
-import { PADDING_SMALL } from '../../../styles/paddings';
+import { PADDING_X_SMALL, PADDING_SMALL, PADDING_MEDIUM } from '../../../styles/paddings';
 import {
     FONT_SIZE_TEXT_MEDIUM,
     FONT_SIZE_TEXT_LARGE,
@@ -58,6 +58,7 @@ const StyledContainer = attachThemeAttrs(styled.span)`
             `
                 font-size: ${FONT_SIZE_TEXT_LARGE};
                 height: 2.9rem;
+                padding: 0 ${PADDING_MEDIUM};
             `};
     
         ${props =>
@@ -65,6 +66,7 @@ const StyledContainer = attachThemeAttrs(styled.span)`
             `
                 font-size: ${FONT_SIZE_TEXT_SMALL};
                 height: 1.6rem;
+                padding: 0 ${PADDING_X_SMALL};
             `};
 
     ${props =>
