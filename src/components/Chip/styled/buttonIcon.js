@@ -13,6 +13,17 @@ const StyledButtonIcon = attachThemeAttrs(styled(ButtonIcon))`
     ${props =>
         variants.includes(props.variant) &&
         `fill: ${props.palette.getContrastText(props.palette[props.variant].main)};`};
+    ${props =>
+        props.size === 'medium' &&
+        `
+            margin-right: -0.8rem;
+        `};
+
+    ${props =>
+        props.size === 'x-small' &&
+        `
+            margin-right: -0.4rem;
+        `};
 `;
 
 export default StyledButtonIcon;

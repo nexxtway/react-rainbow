@@ -6,11 +6,18 @@ import StyledContainer from './styled/container';
 import TruncatedText from '../Structural/truncatedText';
 import StyledButtonIcon from './styled/buttonIcon';
 
+const sizesMap = {
+    small: 'x-small',
+    medium: 'small',
+    large: 'medium',
+};
+
 /**
  * A Chip displays a label that can be removed from view.
  */
 export default function Chip(props) {
-    const { label, onDelete, variant, title, className, style, borderRadius } = props;
+    const { label, onDelete, variant, title, className, style, size, borderRadius } = props;
+    const sizeButton = sizesMap[size] || sizesMap.medium;
 
     return (
         <StyledContainer
@@ -18,6 +25,7 @@ export default function Chip(props) {
             style={style}
             variant={variant}
             title={title}
+            size={size}
             borderRadius={borderRadius}
         >
             <TruncatedText>{label}</TruncatedText>
@@ -25,7 +33,7 @@ export default function Chip(props) {
                 <StyledButtonIcon
                     variant={variant}
                     icon={<CloseIcon />}
-                    size="small"
+                    size={sizeButton}
                     title="Close"
                     onClick={onDelete}
                     assistiveText="Remove"
@@ -57,6 +65,8 @@ Chip.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The size of the chip. Valid values are small, medium, and large. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The border radius of the Chip. Options include square, semi-square, semi-rounded and rounded. */
     borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
@@ -68,5 +78,6 @@ Chip.defaultProps = {
     onDelete: undefined,
     className: undefined,
     style: undefined,
+    size: 'medium',
     borderRadius: 'rounded',
 };

@@ -226,6 +226,38 @@ const Icon = styled.span.attrs(props => {
     </div>
 ```
 
+##### Chip with different size
+
+```js
+import React from 'react';
+import { Chip } from 'react-rainbow-components';
+
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+        <Chip
+            className="rainbow-m-around_medium"
+            label="Size small"
+            variant="neutral"
+            size="small"
+            onDelete={() => alert('Delete Chip!')}
+        />
+
+        <Chip
+            className="rainbow-m-around_medium"
+            label="Size medium"
+            variant="neutral"
+            onDelete={() => alert('Delete Chip!')}
+        />
+
+        <Chip
+            className="rainbow-m-around_medium"
+            label="Size large"
+            variant="neutral"
+            size="large"
+            onDelete={() => alert('Delete Chip!')}
+        />
+    </div>
+```
+
 
 ##### Chip with different border radius
 

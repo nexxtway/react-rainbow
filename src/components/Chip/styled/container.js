@@ -6,8 +6,12 @@ import {
     BORDER_RADIUS_SEMI_SQUARE,
     BORDER_RADIUS_SEMI_ROUNDED,
 } from '../../../styles/borderRadius';
-import { PADDING_SMALL } from '../../../styles/paddings';
-import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
+import { PADDING_X_SMALL, PADDING_SMALL, PADDING_MEDIUM } from '../../../styles/paddings';
+import {
+    FONT_SIZE_TEXT_MEDIUM,
+    FONT_SIZE_TEXT_LARGE,
+    FONT_SIZE_TEXT_SMALL,
+} from '../../../styles/fontSizes';
 
 const variants = ['brand', 'success', 'warning', 'error'];
 const StyledContainer = attachThemeAttrs(styled.span)`
@@ -48,6 +52,22 @@ const StyledContainer = attachThemeAttrs(styled.span)`
             border: 1px solid ${props.palette[props.variant].main};
             color: ${props.palette.getContrastText(props.palette[props.variant].main)};
         `};
+
+        ${props =>
+            props.size === 'large' &&
+            `
+                font-size: ${FONT_SIZE_TEXT_LARGE};
+                height: 2.9rem;
+                padding: 0 ${PADDING_MEDIUM};
+            `};
+    
+        ${props =>
+            props.size === 'small' &&
+            `
+                font-size: ${FONT_SIZE_TEXT_SMALL};
+                height: 1.6rem;
+                padding: 0 ${PADDING_X_SMALL};
+            `};
 
     ${props =>
         props.borderRadius === 'square' &&
