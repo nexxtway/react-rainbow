@@ -6,25 +6,27 @@ import {
     BORDER_RADIUS_SQUARE,
 } from '../../../../styles/borderRadius';
 
-const DatabaseFieldContent = attachThemeAttrs(styled.div)`
-    background: ${props => props.palette.brand.light};
-    color: ${props => props.palette.text.main};
-    margin: 8px 20px 8px 12px;
-    border-radius: 8px;
-    padding-left: 12px;
-    line-height: 30px;
+const StyledStatsCard = attachThemeAttrs(styled.div)`
+    border: solid 1px ${props => props.palette.background.highlight};
+    background-color: ${props => props.palette.background.secondary};
+    padding: 10px 8px 10px 16px;
+    display: flex;
+    align-items: center;
+    margin: 0 16px 16px 16px;
+    border-radius: 12px;
+
     ${props =>
         props.borderRadius === 'square' &&
         `
             border-radius: ${BORDER_RADIUS_SQUARE};
         `};
-    
+        
     ${props =>
         props.borderRadius === 'semi-square' &&
         `
             border-radius: ${BORDER_RADIUS_SEMI_SQUARE};
         `};
-    
+        
     ${props =>
         props.borderRadius === 'semi-rounded' &&
         `
@@ -32,4 +34,4 @@ const DatabaseFieldContent = attachThemeAttrs(styled.div)`
         `};
 `;
 
-export default DatabaseFieldContent;
+export default StyledStatsCard;
