@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import VisualPickerOption from '../../VisualPickerOption';
-import VisualPickerOptionFooter from '../../VisualPickerOptionFooter';
 import RenderIf from '../../RenderIf';
-import Select from '../../Select';
-import AddRecordsIcon from '../icons/addRecords';
-import MergeRecordsIcon from '../icons/mergeRecords';
 import getSchemaFieldOptions from '../helpers/getSchemaFieldOptions';
 import StyledContainer from './styled/container';
-import StyledVisualPicker from './styled/visualPicker';
+import { StyledRadioGroup } from './styled/optionPicker';
+import OptionPicker from './optionPicker';
+import StyledSelect from './styled/styledSelect';
 
 export default function StepOne(props) {
-    const { schemaFields, actionOption, onChangeAction, matchField, onChangeMatchField } = props;
+    const {
+        schemaFields,
+        actionOption,
+        onChangeAction,
+        matchField,
+        onChangeMatchField,
+        borderRadius,
+    } = props;
     const [fieldOptions, setFieldOptions] = useState([]);
     const isMergeOption = actionOption === 'merge-records';
 
@@ -19,36 +23,58 @@ export default function StepOne(props) {
         setFieldOptions(getSchemaFieldOptions(schemaFields));
     }, [schemaFields]);
 
-    return (
-        <StyledContainer>
-            <StyledVisualPicker
-                label="Select the option type that do you want to do"
-                onChange={onChangeAction}
-                value={actionOption}
-            >
-                <VisualPickerOption
+    const onChange = event => {
+        onChangeAction(event.target.value);
+    };
+
+    const options = [
+        {
+            value: 'add-records',
+            label: (
+                <OptionPicker
                     name="add-records"
-                    footer={<VisualPickerOptionFooter label="Add new records" />}
-                >
-                    <AddRecordsIcon />
-                </VisualPickerOption>
-                <VisualPickerOption
-                    name="merge-records"
-                    footer={<VisualPickerOptionFooter label="Merge exist records" />}
-                >
-                    <MergeRecordsIcon />
-                </VisualPickerOption>
-            </StyledVisualPicker>
-            <RenderIf isTrue={isMergeOption}>
-                <Select
-                    label="Match Field"
-                    placeholder="Select the Field do you want match"
-                    options={fieldOptions}
-                    onChange={event => onChangeMatchField(event.target.value)}
-                    value={matchField}
+                    value={actionOption}
+                    label="Add New records"
+                    description="Allows adding all records without checking for duplicates in existing records."
+                    borderRadius={borderRadius}
                 />
-            </RenderIf>
-        </StyledContainer>
+            ),
+            name: 'add-records',
+            id: 'add-records',
+        },
+        {
+            value: 'merge-records',
+            label: (
+                <OptionPicker
+                    name="merge-records"
+                    value={actionOption}
+                    label="Merge exist records"
+                    description="Allows you to create only unique records avoiding duplications with existing records."
+                    borderRadius={borderRadius}
+                />
+            ),
+            name: 'merge-records',
+            id: 'merge-records',
+        },
+    ];
+
+    return (
+        <>
+            <StyledContainer>
+                <StyledRadioGroup onChange={onChange} value={actionOption} options={options} />
+                <RenderIf isTrue={isMergeOption}>
+                    <StyledSelect
+                        label="Match Field"
+                        labelAlignment="left"
+                        placeholder="Select the Field do you want match"
+                        options={fieldOptions}
+                        onChange={event => onChangeMatchField(event.target.value)}
+                        value={matchField}
+                        borderRadius={borderRadius}
+                    />
+                </RenderIf>
+            </StyledContainer>
+        </>
     );
 }
 
@@ -58,6 +84,7 @@ StepOne.propTypes = {
     onChangeAction: PropTypes.func,
     matchField: PropTypes.string,
     onChangeMatchField: PropTypes.func,
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
 };
 
 StepOne.defaultProps = {
@@ -66,4 +93,5 @@ StepOne.defaultProps = {
     onChangeAction: () => {},
     matchField: '',
     onChangeMatchField: () => {},
+    borderRadius: 'rounded',
 };

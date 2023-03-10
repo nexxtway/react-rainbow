@@ -91,6 +91,7 @@ class Textarea extends Component {
             onClick,
             onFocus,
             onBlur,
+            onKeyDown,
             onPaste,
             value,
             readOnly,
@@ -149,6 +150,7 @@ class Textarea extends Component {
                         onClick={onClick}
                         onFocus={this.updateFocus(true, onFocus)}
                         onBlur={this.updateFocus(false, onBlur)}
+                        onKeyDown={onKeyDown}
                         onPaste={onPaste}
                         readOnly={readOnly}
                         rows={rows}
@@ -212,6 +214,8 @@ Textarea.propTypes = {
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
+    /** The action triggered when a key is pressed on the element. */
+    onKeyDown: PropTypes.func,
     /** Event fired when the user paste on the Textarea */
     onPaste: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -251,6 +255,7 @@ Textarea.defaultProps = {
     onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
+    onKeyDown: () => {},
     onPaste: () => {},
     className: undefined,
     style: undefined,

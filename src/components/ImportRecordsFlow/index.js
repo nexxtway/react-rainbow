@@ -9,6 +9,7 @@ import getDataToImport from './helpers/getDataToImport';
 import isStepThreeNextButtonDisabled from './helpers/isStepThreeNextButtonDisabled';
 import Footer from './footer';
 import getStepComponent from './helpers/getStepComponent';
+import getValidatedData from './helpers/getValidatedData';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4'];
 
@@ -28,7 +29,17 @@ const ADD_RECORDS_TYPE = 'add-records';
  */
 
 function ImportRecordsFlow(props) {
-    const { className, style, isOpen, onRequestClose, schema, onComplete, actionType } = props;
+    const {
+        className,
+        style,
+        isOpen,
+        onRequestClose,
+        schema,
+        onComplete,
+        actionType,
+        borderRadius,
+        validateRecordCallback,
+    } = props;
     const [currentStepIndex, setCurrentStepIndex] = useState(
         actionType === ADD_RECORDS_TYPE ? 1 : 0,
     );
@@ -44,6 +55,10 @@ function ImportRecordsFlow(props) {
     const [data, setData] = useState([]);
     const [fieldsMap, setFieldsMap] = useState({});
     const [schemaFields, setSchemaFields] = useState([]);
+
+    const mappedRecords = useRef([]);
+    const [validRecords, setValidRecords] = useState([]);
+    const [invalidRecords, setInvalidRecords] = useState([]);
 
     const currentStep = stepNames[currentStepIndex];
     const StepComponent = getStepComponent({ currentStep });
@@ -87,16 +102,34 @@ function ImportRecordsFlow(props) {
     };
 
     const goNextStep = () => {
+        if (currentStepIndex === 2) {
+            mappedRecords.current = getDataToImport({
+                data,
+                fieldsMap,
+                schema,
+                actionOption,
+                matchField,
+            });
+            if (typeof validateRecordCallback === 'function') {
+                const {
+                    validRecords: validValidatedRecord,
+                    invalidRecords: invalidValidatedRecord,
+                } = getValidatedData({
+                    validateRecordCallback,
+                    dataToValidate: mappedRecords.current.data,
+                });
+                setValidRecords(validValidatedRecord);
+                setInvalidRecords(invalidValidatedRecord);
+            } else {
+                setValidRecords(mappedRecords.current.data);
+            }
+        }
+
         if (currentStepIndex === 3) {
-            onComplete(
-                getDataToImport({
-                    data,
-                    fieldsMap,
-                    schema,
-                    actionOption,
-                    matchField,
-                }),
-            );
+            onComplete({
+                ...mappedRecords.current,
+                data: validRecords,
+            });
         }
         if (currentStepIndex < stepNames.length - 1) {
             const nextStepIndex = currentStepIndex + 1;
@@ -160,6 +193,7 @@ function ImportRecordsFlow(props) {
             size="medium"
             isOpen={isOpen}
             onRequestClose={onRequestClose}
+            borderRadius={borderRadius}
             footer={
                 <Footer
                     onBack={goBackStep}
@@ -168,6 +202,7 @@ function ImportRecordsFlow(props) {
                     isBackButtonDisabled={isBackButtonDisabled()}
                     isNextButtonDisabled={isNextButtonDisabled()}
                     actionType={actionType}
+                    borderRadius={borderRadius}
                 />
             }
         >
@@ -188,6 +223,9 @@ function ImportRecordsFlow(props) {
                 onRemoveFile={removeFile}
                 onAssignField={assignField}
                 fieldsMap={fieldsMap}
+                invalidRecords={invalidRecords}
+                validRecords={validRecords}
+                borderRadius={borderRadius}
             />
         </Modal>
     );
@@ -215,6 +253,12 @@ ImportRecordsFlow.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The border radius of the modal. Valid values are square, semi-square, semi-rounded and rounded. This value defaults to rounded. */
+    borderRadius: PropTypes.oneOf(['square', 'semi-square', 'semi-rounded', 'rounded']),
+    /** A function to validate the records before importing them. This function will be invoked on each record of the CSV returning
+     * an object with the errors found in a record on each field. If the object doesn't have properties then the record is valid.
+     */
+    validateRecordCallback: PropTypes.func,
 };
 
 ImportRecordsFlow.defaultProps = {
@@ -227,6 +271,8 @@ ImportRecordsFlow.defaultProps = {
     onRequestClose: () => {},
     onComplete: () => {},
     actionType: undefined,
+    validateRecordCallback: undefined,
+    borderRadius: 'rounded',
 };
 
 ImportRecordsFlow.MERGE_RECORDS = MERGE_RECORDS;
