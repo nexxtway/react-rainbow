@@ -75,6 +75,7 @@ export { default as Rating } from './components/Rating';
 export { default as ReCaptcha } from './components/ReCaptcha';
 export { default as RenderIf } from './components/RenderIf';
 export { default as Select } from './components/Select';
+export { default as ServerApplication } from './components/ServerApplication';
 export { default as ShowIf } from './components/ShowIf';
 export { default as Sidebar } from './components/Sidebar';
 export { default as SidebarItem } from './components/SidebarItem';
