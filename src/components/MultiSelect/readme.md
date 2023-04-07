@@ -310,6 +310,92 @@ const MultiSelectExample = () => {
     <MultiSelectExample />
 ```
 
+##### MultiSelect with different size
+
+```js
+import React, { useState } from 'react';
+import { MultiSelect, Option } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 400,
+};
+
+const MultiSelectExample = () => {
+    const [value1, setValue1] = useState([]);
+    const [value2, setValue2] = useState([]);
+    const [value3, setValue3] = useState([]);
+
+    return (
+        <>
+            <MultiSelect
+                label="MultiSelect small size"
+                placeholder="Placeholder text"
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                value={value1}
+                onChange={setValue1}
+                bottomHelpText="You can select several options."
+                showCheckbox
+                size="small"
+            >
+                <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
+                <Option name="option-2" label="New Building" icon={<AddFilledIcon />} />
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option-3" label="Experimental" icon={<BuildingIcon />} />
+                <Option name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
+                <Option name="option-5" label="Empire State" icon={<BuildingIcon />} />
+                <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
+                <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
+                <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
+            </MultiSelect>
+            <MultiSelect
+                label="MultiSelect medium size"
+                placeholder="Placeholder text"
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                value={value2}
+                onChange={setValue2}
+                bottomHelpText="You can select several options."
+                showCheckbox
+            >
+                <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
+                <Option name="option-2" label="New Building" icon={<AddFilledIcon />} />
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option-3" label="Experimental" icon={<BuildingIcon />} />
+                <Option name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
+                <Option name="option-5" label="Empire State" icon={<BuildingIcon />} />
+                <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
+                <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
+                <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
+            </MultiSelect>
+            <MultiSelect
+                label="MultiSelect large size"
+                placeholder="Placeholder text"
+                style={containerStyles}
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+                value={value3}
+                onChange={setValue3}
+                bottomHelpText="You can select several options."
+                showCheckbox
+                size="large"
+            >
+                <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
+                <Option name="option-2" label="New Building" icon={<AddFilledIcon />} />
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option-3" label="Experimental" icon={<BuildingIcon />} />
+                <Option name="option-4" label="Bennet Towers" icon={<BuildingIcon />} />
+                <Option name="option-5" label="Empire State" icon={<BuildingIcon />} />
+                <Option name="option-6" label="Central Park" icon={<BuildingIcon />} />
+                <Option name="option-7" label="Chrysler" icon={<BuildingIcon />} />
+                <Option name="option-8" label="Plaza" icon={<BuildingIcon />} />
+            </MultiSelect>
+        </>
+    )
+}
+
+    <MultiSelectExample />
+```
+
 ##### MultiSelect with different border radius
 
 ```js
