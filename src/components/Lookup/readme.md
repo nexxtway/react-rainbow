@@ -79,8 +79,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBuilding } from '@fortawesome/free-regular-svg-icons';
 
 const IconStyles = {
-    height: 30,
-    width: 30,
+    height: 24,
+    width: 24,
     backgroundColor: '#01b6f5',
     borderRadius: 40,
     display: 'flex',
@@ -99,8 +99,7 @@ const data = [
         description: 'This is an awesome city',
         icon: (
             <span style={IconStyles}>
-                {' '}
-                <FontAwesomeIcon icon={faBuilding} />{' '}
+                <FontAwesomeIcon icon={faBuilding} />
             </span>
         ),
     },
@@ -109,8 +108,7 @@ const data = [
         description: 'This is an awesome city',
         icon: (
             <span style={IconStyles}>
-                {' '}
-                <FontAwesomeIcon icon={faBuilding} />{' '}
+                <FontAwesomeIcon icon={faBuilding} />
             </span>
         ),
     },
@@ -119,8 +117,7 @@ const data = [
         description: 'This is an awesome city',
         icon: (
             <span style={IconStyles}>
-                {' '}
-                <FontAwesomeIcon icon={faBuilding} />{' '}
+                <FontAwesomeIcon icon={faBuilding} />
             </span>
         ),
     },
@@ -129,8 +126,7 @@ const data = [
         description: 'This is an awesome city',
         icon: (
             <span style={IconStyles}>
-                {' '}
-                <FontAwesomeIcon icon={faBuilding} />{' '}
+                <FontAwesomeIcon icon={faBuilding} />
             </span>
         ),
     },
@@ -139,8 +135,7 @@ const data = [
         description: 'This is an awesome city',
         icon: (
             <span style={IconStyles}>
-                {' '}
-                <FontAwesomeIcon icon={faBuilding} />{' '}
+                <FontAwesomeIcon icon={faBuilding} />
             </span>
         ),
     },
@@ -149,8 +144,7 @@ const data = [
         description: 'This is an awesome city',
         icon: (
             <span style={IconStyles}>
-                {' '}
-                <FontAwesomeIcon icon={faBuilding} />{' '}
+                <FontAwesomeIcon icon={faBuilding} />
             </span>
         ),
     },
@@ -159,8 +153,7 @@ const data = [
         description: 'This is an awesome city',
         icon: (
             <span style={IconStyles}>
-                {' '}
-                <FontAwesomeIcon icon={faBuilding} />{' '}
+                <FontAwesomeIcon icon={faBuilding} />
             </span>
         ),
     },
@@ -169,8 +162,7 @@ const data = [
         description: 'This is an awesome city',
         icon: (
             <span style={IconStyles}>
-                {' '}
-                <FontAwesomeIcon icon={faBuilding} />{' '}
+                <FontAwesomeIcon icon={faBuilding} />
             </span>
         ),
     },
@@ -179,8 +171,7 @@ const data = [
         description: 'This is an awesome city',
         icon: (
             <span style={IconStyles}>
-                {' '}
-                <FontAwesomeIcon icon={faBuilding} />{' '}
+                <FontAwesomeIcon icon={faBuilding} />
             </span>
         ),
     },
@@ -189,8 +180,7 @@ const data = [
         description: 'This is an awesome city',
         icon: (
             <span style={IconStyles}>
-                {' '}
-                <FontAwesomeIcon icon={faBuilding} />{' '}
+                <FontAwesomeIcon icon={faBuilding} />
             </span>
         ),
     },
@@ -199,8 +189,7 @@ const data = [
         description: 'This is an awesome city',
         icon: (
             <span style={IconStyles}>
-                {' '}
-                <FontAwesomeIcon icon={faBuilding} />{' '}
+                <FontAwesomeIcon icon={faBuilding} />
             </span>
         ),
     },
@@ -209,8 +198,7 @@ const data = [
         description: 'This is an awesome city',
         icon: (
             <span style={IconStyles}>
-                {' '}
-                <FontAwesomeIcon icon={faBuilding} />{' '}
+                <FontAwesomeIcon icon={faBuilding} />
             </span>
         ),
     },

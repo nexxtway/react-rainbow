@@ -9,6 +9,7 @@ import StyledSelectedValueContainer from './styled/selectedValueContainer';
 import { StyledCombobox, StyledInput } from '../MultiSelect/styled';
 import StyledChip from './styled/chip';
 import StyledSelectedIconContainer from './styled/selectedIconContainer';
+import StyledChipContainer from './styled/chipContainer';
 
 export default class SelectedValue extends Component {
     constructor(props) {
@@ -121,14 +122,14 @@ export default class SelectedValue extends Component {
                         />
                         <StyledChip
                             label={
-                                <span>
+                                <StyledChipContainer>
                                     <RenderIf isTrue={icon}>
                                         <StyledSelectedIconContainer>
                                             {icon}
                                         </StyledSelectedIconContainer>
                                     </RenderIf>
                                     {label}
-                                </span>
+                                </StyledChipContainer>
                             }
                             onDelete={onClearValue}
                             borderRadius={borderRadius}
