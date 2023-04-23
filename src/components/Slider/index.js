@@ -8,13 +8,14 @@ import StyledSlider from './styled/slider';
 import StyledInputRange from './styled/inputRange';
 import StyledValue from './styled/value';
 import ErrorText from '../Input/styled/errorText';
+import withReduxForm from '../../libs/hocs/withReduxForm';
 
 /**
  * An input range slider lets the user specify a numeric value which must be between
  * two specified values.
  * @category Form
  */
-export default class Slider extends Component {
+class Slider extends Component {
     constructor(props) {
         super(props);
         this.sliderId = uniqueId('slider-id');
@@ -176,3 +177,5 @@ Slider.defaultProps = {
     labelAlignment: 'center',
     hideLabel: false,
 };
+
+export default withReduxForm(Slider);
