@@ -253,6 +253,6 @@ CounterInput.defaultProps = {
     bottomHelpText: null,
     className: undefined,
     style: undefined,
-    size: 'mediun',
+    size: 'medium',
     borderRadius: 'rounded',
 };
