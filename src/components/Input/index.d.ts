@@ -38,6 +38,7 @@ export interface InputProps extends BaseProps {
     iconPosition?: IconPosition;
     max?: number | string;
     min?: number | string;
+    step?: number | string;
     maxLength?: number;
     minLength?: number;
     bottomHelpText?: ReactNode;

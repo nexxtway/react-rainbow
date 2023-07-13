@@ -108,6 +108,7 @@ export default class InputBase extends Component {
             type,
             max,
             min,
+            step,
             maxLength,
             minLength,
             pattern,
@@ -171,6 +172,7 @@ export default class InputBase extends Component {
                         required={required}
                         max={max}
                         min={min}
+                        step={step}
                         maxLength={maxLength}
                         minLength={minLength}
                         pattern={pattern}
@@ -233,6 +235,7 @@ InputBase.propTypes = {
     iconPosition: PropTypes.oneOf(['left', 'right']),
     max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    step: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     maxLength: PropTypes.number,
     minLength: PropTypes.number,
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -272,6 +275,7 @@ InputBase.defaultProps = {
     iconPosition: 'left',
     max: undefined,
     min: undefined,
+    step: undefined,
     maxLength: undefined,
     minLength: undefined,
     bottomHelpText: null,
