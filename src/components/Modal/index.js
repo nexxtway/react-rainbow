@@ -187,6 +187,7 @@ export default class Modal extends Component {
                                 title="Close"
                                 onClick={this.closeModal}
                                 ref={this.buttonRef}
+                                borderRadius={borderRadius}
                             />
                         </RenderIf>
 
