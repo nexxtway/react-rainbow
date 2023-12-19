@@ -1,5 +1,5 @@
 const drivers = {
-    chrome: { version: '103.0.5060.53' }, // https://chromedriver.chromium.org/
+    chrome: { version: '114.0.5735.90' }, // https://chromedriver.chromium.org/
     firefox: { version: '0.31.0' }, // https://github.com/mozilla/geckodriver/releases
     chromiumedge: { version: '103.0.1264.37' }, // https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
 };
