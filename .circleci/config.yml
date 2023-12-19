@@ -73,7 +73,7 @@ jobs:
             - *create_env_file
             - run: yarn install
 
-            - browser-tools/install-chrome:
+            - browser-tools/install-chrome
 
             - run:
                   command: yarn start
