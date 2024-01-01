@@ -83,6 +83,7 @@ function DayComponent(props) {
                 <StyledDayButton
                     ref={buttonRef}
                     tabIndex={tabIndex}
+                    type="button"
                     onClick={() => onChange(date)}
                     onMouseEnter={() => privateOnHover(date)}
                     isSelected={isSelected}
