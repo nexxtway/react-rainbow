@@ -82,6 +82,10 @@ Calendar.propTypes = {
     disabledDays: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     ),
+    /** An array containing the days that should be highlighted with a mark. Used for example to show an indicator that there are notifications in these days. */
+    highlightedDays: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+    ),
 };
 
 Calendar.defaultProps = {
@@ -96,4 +100,5 @@ Calendar.defaultProps = {
     selectionType: 'single',
     variant: 'single',
     disabledDays: [],
+    highlightedDays: [],
 };

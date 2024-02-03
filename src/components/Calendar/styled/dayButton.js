@@ -114,6 +114,22 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
         color: ${props.palette.getContrastText(props.palette.brand.main)};
         background-color: ${props.palette.brand.dark};
         `};
+
+    ${props =>
+        props.isHighlighted &&
+        `
+        &::after {
+            content: '';
+            height: 6px;
+            width: 6px;
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            background-color: ${props.palette.error.main};
+        }
+    `}
 `;
 
 export default StyledDayButton;

@@ -135,7 +135,7 @@ class SingleCalendar extends Component {
 
     getContext() {
         const { focusedDate, currentRange, maxRangeEnd } = this.state;
-        const { selectionType, selectedRange, disabledDays } = this.props;
+        const { selectionType, selectedRange, disabledDays, highlightedDays } = this.props;
         return {
             focusedDate,
             useAutoFocus: this.enableNavKeys,
@@ -143,6 +143,7 @@ class SingleCalendar extends Component {
             selectedRange,
             currentRange,
             disabledDays,
+            highlightedDays,
             maxRangeEnd,
             privateKeyDown: this.handleKeyDown,
             privateOnFocus: this.onDayFocus,
@@ -385,6 +386,9 @@ SingleCalendar.propTypes = {
     disabledDays: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     ),
+    highlightedDays: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+    ),
 };
 
 SingleCalendar.defaultProps = {
@@ -399,6 +403,7 @@ SingleCalendar.defaultProps = {
     selectionType: 'single',
     selectedRange: undefined,
     disabledDays: [],
+    highlightedDays: [],
 };
 
 export default SingleCalendar;
