@@ -11,6 +11,7 @@ export interface CalendarProps extends BaseProps {
     variant?: 'single' | 'double';
     locale?: string;
     disabledDays?: Array<string | Date>;
+    highlightedDays?: Array<string | Date>;
 }
 
 declare const Calendar: ComponentType<CalendarProps>;
