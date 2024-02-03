@@ -26,6 +26,7 @@ function DayComponent(props) {
         focusedDate,
         currentRange,
         disabledDays,
+        highlightedDays,
         privateKeyDown,
         privateOnFocus,
         privateOnBlur,
@@ -40,6 +41,7 @@ function DayComponent(props) {
         compareDates(date, minDate) < 0 ||
         (maxRangeEnd && compareDates(date, maxRangeEnd) > 0) ||
         isInArray(date, disabledDays);
+    const isHighlighted = isInArray(date, highlightedDays);
     const tabIndex = isSameDay(focusedDate, date) ? 0 : -1;
     const buttonRef = useRef();
     const isRangeStartDate = useRangeStartDate(date, currentRange);
@@ -63,6 +65,7 @@ function DayComponent(props) {
                     onBlur={privateOnBlur}
                     role="button"
                     aria-disabled="true"
+                    isHighlighted={isHighlighted}
                 >
                     {day}
                 </StyledDayAdjacent>
@@ -94,6 +97,7 @@ function DayComponent(props) {
                     onBlur={privateOnBlur}
                     isWithinRange={isWithinRange}
                     isToday={isToday}
+                    isHighlighted={isHighlighted}
                 >
                     {day}
                 </StyledDayButton>

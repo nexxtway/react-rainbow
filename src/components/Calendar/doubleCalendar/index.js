@@ -48,6 +48,7 @@ export default function DoubleCalendar(props) {
         selectedRange,
         selectionType,
         disabledDays,
+        highlightedDays,
     } = props;
     const currentValue = useNormalizedValue(value);
     const [focusedDate, setFocusedDate] = useState(currentValue);
@@ -241,6 +242,7 @@ export default function DoubleCalendar(props) {
                         selectedRange,
                         currentRange,
                         disabledDays,
+                        highlightedDays,
                         maxRangeEnd,
                         privateOnFocus: handleOnDayFocus,
                         privateOnBlur: handleOnDayBlur,
@@ -270,6 +272,7 @@ export default function DoubleCalendar(props) {
                         selectedRange,
                         currentRange,
                         disabledDays,
+                        highlightedDays,
                         maxRangeEnd,
                         privateOnFocus: handleOnDayFocus,
                         privateOnBlur: handleOnDayBlur,
@@ -310,6 +313,9 @@ DoubleCalendar.propTypes = {
     disabledDays: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     ),
+    highlightedDays: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+    ),
 };
 
 DoubleCalendar.defaultProps = {
@@ -324,4 +330,5 @@ DoubleCalendar.defaultProps = {
     selectionType: 'single',
     selectedRange: undefined,
     disabledDays: [],
+    highlightedDays: [],
 };

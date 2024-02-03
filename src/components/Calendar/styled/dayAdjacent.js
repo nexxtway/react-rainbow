@@ -16,6 +16,7 @@ const StyledDayAdjacent = attachThemeAttrs(styled.span)`
     cursor: not-allowed;
     user-select: none;
     border-radius: 48px;
+    position: relative;
 
     @media (max-width: 600px) {
         margin: 3px auto;
@@ -29,6 +30,22 @@ const StyledDayAdjacent = attachThemeAttrs(styled.span)`
         line-height: 36px;
         outline: none;
     }
+
+    ${props =>
+        props.isHighlighted &&
+        `
+        &::after {
+            content: '';
+            height: 6px;
+            width: 6px;
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            background-color: ${props.palette.error.main};
+        }
+    `}
 `;
 
 export default StyledDayAdjacent;
