@@ -29,6 +29,7 @@ import {
 import { useCountry, useCountries } from './hooks';
 import CountriesDropdown from './countriesDropdown';
 import positionResolver from './helpers/positionResolver';
+import useIsMobile from '../../libs/hooks/useIsMobile';
 
 /**
  * phone input are used for freeform data entry.
@@ -89,6 +90,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
     const [isOpen, setIsOpen] = useState(false);
     const [hasFocus, setHasFocus] = useState(false);
 
+    const isMobile = useIsMobile();
     useOutsideClick(
         pickerRef,
         event => {
@@ -108,7 +110,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
         triggerElementRef: () => triggerRef,
         threshold: 10,
     });
-    useWindowResize(() => setIsOpen(false), isOpen);
+    useWindowResize(() => setIsOpen(false), isOpen && !isMobile);
 
     useEffect(() => {
         if (isOpen) searchRef.current.focus();
