@@ -59,11 +59,13 @@
     "module": "./esm/index.js",
     "exports": {
         ".": {
+            "types": "./index.d.ts",
             "module": "./esm/index.js",
             "require": "./index.js",
             "default": "./esm/index.js"
         },
         "./*": {
+            "types": "./index.d.ts",
             "module": "./esm/*",
             "require": "./*",
             "default": "./esm/*"
