@@ -1,4 +1,4 @@
-import { ReactNode, RefObject } from 'react';
+import { PropsWithChildren, ReactNode, RefObject } from 'react';
 import { TriggerElementRefFunction } from '../InternalOverlay';
 import { BaseProps } from '../types';
 
@@ -8,4 +8,4 @@ export interface InternalTooltipProps extends BaseProps {
     triggerElementRef?: RefObject<HTMLElement> | TriggerElementRefFunction;
 }
 
-export default function(props: InternalTooltipProps): JSX.Element | null;
+export default function(props: PropsWithChildren<InternalTooltipProps>): JSX.Element | null;
