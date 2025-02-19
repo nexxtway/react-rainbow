@@ -28,6 +28,8 @@ React Rainbow is a collection of components that will reliably help you build yo
 
 </div>
 
+<a href="https://www.producthunt.com/posts/react-rainbow-components?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-react&#0045;rainbow&#0045;components" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=167887&theme=light&period=daily&t=1739979219817" alt="React&#0032;Rainbow&#0032;Components - Build&#0032;your&#0032;web&#0032;application&#0032;in&#0032;a&#0032;snap&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+
 ### ✨ Features
 
 -   90+ components built on top of React.
