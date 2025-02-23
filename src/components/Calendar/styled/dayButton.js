@@ -38,7 +38,6 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
     &:active {
         box-shadow: ${props => props.shadows.brand};
         border: 1px solid ${props => props.palette.brand.main};
-        line-height: 36px;
     }
 
     ${props =>
@@ -48,11 +47,12 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
 
         &::after {
             content: '';
-            height: 4px;
-            width: 4px;
             position: absolute;
-            top: 28px;
-            left: 16px;
+            height: 6px;
+            width: 6px;
+            bottom: 1px;
+            left: 50%;
+            transform: translateX(-50%);
             border-radius: 50%;
             background: ${
                 props.isSelected || props.isHovered
@@ -66,14 +66,13 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
 
     ${props =>
         props.isSelected &&
-        props.isToday &&
+        (props.isToday || props.isHighlighted) &&
         `
             &:hover,
             &:focus,
             &:active {
                 &::after {
-                    top: 27px;
-                    left: 16px;
+                    bottom: 0px;
                 }
             }
         `};
@@ -120,10 +119,10 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
         `
         &::after {
             content: '';
+            position: absolute;
             height: 6px;
             width: 6px;
-            position: absolute;
-            bottom: 0px;
+            bottom: 1px;
             left: 50%;
             transform: translateX(-50%);
             border-radius: 50%;
