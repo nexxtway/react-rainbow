@@ -154,6 +154,7 @@ class Picklist extends Component {
         this.setState({
             isOpen: false,
         });
+        this.focus();
     }
 
     handleInputClick(event) {
@@ -167,9 +168,12 @@ class Picklist extends Component {
     }
 
     handleFocus() {
+        const { isOpen } = this.state;
         const { onFocus, value } = this.props;
-        const eventValue = value || null;
-        onFocus(eventValue);
+        if (!isOpen) {
+            const eventValue = value || null;
+            onFocus(eventValue);
+        }
     }
 
     handleBlur() {
@@ -185,7 +189,6 @@ class Picklist extends Component {
         const { label, name, icon, value } = option;
         this.closeMenu();
         setTimeout(() => {
-            this.focus();
             return onChange({ label, name, icon, value });
         }, 0);
     }
